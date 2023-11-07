@@ -13,7 +13,7 @@ type RawChatResponse struct {
 					Actions []struct{
 						AddChatItemAction struct {
 							Item struct {
-								LiveChatTextMessageRenderer struct {
+								LiveChatTextMessageRenderer *struct {
 									AuthorExternalChannelId string `json:"authorExternalChannelId"`
 									AuthorName struct {
 										SimpleText string `json:"simpleText"`
@@ -35,7 +35,29 @@ type RawChatResponse struct {
 											Tooltip string `json:"tooltip"`
 										} `json:"liveChatAuthorBadgeRenderer"`
 									} `json:"authorBadges"`
-								} `json:"liveChatTextMessageRenderer"`
+								} `json:"liveChatTextMessageRenderer,omitempty"`
+								LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer *struct {
+									AuthorExternalChannelId string `json:"authorExternalChannelId"`
+									Id string `json:"id"`
+									TimestampUsec string `json:"timestampUsec"`
+									Header struct {
+										LiveChatSponsorshipsHeaderRenderer struct {
+											AuthorName struct {
+												SimpleText string `json:"simpleText"`
+											} `json:"authorName"`
+											PrimaryText struct {
+												Runs []struct {
+													Text string `json:"text"`
+												} `json:"runs"`
+											} `json:"primaryText"`
+											AuthorBadges []struct {
+												LiveChatAuthorBadgeRenderer struct {
+													Tooltip       string `json:"tooltip"`
+												} `json:"liveChatAuthorBadgeRenderer"`
+											} `json:"authorBadges"`
+										} `json:"liveChatSponsorshipsHeaderRenderer"`
+									} `json:"header,omitempty"`
+								} `json:"liveChatSponsorshipsGiftPurchaseAnnouncementRenderer"`
 							} `json:"item"`
 						} `json:"addChatItemAction"`
 					} `json:"actions"`
@@ -60,6 +82,15 @@ type ChatItem struct {
 	Badges []Badge `json:"badges"`
 	VideoOffsetTimeMsec int `json:"videoOffsetTimeMsec"`
 	Text []string
+}
+
+type GiftItem struct{
+	AuthorChannelId string `json:"authorChannelId"`
+	Amount int `json:"amount"`
+	Id string `json:"id"`
+	TimestampUsec int `json:"timestampUsec"`
+	VideoOffsetTimeMsec int `json:"videoOffsetTimeMsec"`
+	Badges []Badge `json:"badges"`
 }
 
 type Badge struct {

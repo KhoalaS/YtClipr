@@ -12,11 +12,11 @@ import (
 	"regexp"
 	"sort"
 	"strconv"
+	"time"
 
 	"github.com/anaskhan96/soup"
 	"github.com/go-echarts/go-echarts/v2/charts"
 	"github.com/go-echarts/go-echarts/v2/opts"
-
 )
 
 var client = http.Client{}
@@ -104,6 +104,8 @@ func getKey() string {
 
 func getLiveChatResponse(url string) {
 	chat := []pkg.ChatItem{}
+	//gifts := []pkg.GiftItem{}
+
 	key := getKey()
 	fmt.Printf("Aquired API key: %s\n", key)
 	contId := getContinuation(url)
@@ -136,6 +138,13 @@ func getLiveChatResponse(url string) {
 	for true {
 		for _, val := range obj.ContinuationContents.LiveChatContinuation.Actions {
 			renderer := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatTextMessageRenderer 
+			if renderer == nil {
+				fmt.Println("renderer is nil")
+				if val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer != nil {
+					fmt.Println(val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer.Header.LiveChatSponsorshipsHeaderRenderer.PrimaryText)
+				}
+				continue
+			}
 			ts, _ := strconv.Atoi(renderer.TimestampUsec)
 			badges := make([]pkg.Badge, len(renderer.AuthorBadges))
 			textRuns := make([]string, len(renderer.Message.Runs))
@@ -203,10 +212,16 @@ func getLiveChatResponse(url string) {
 		}
 		resBodyBytes, _ := ioutil.ReadAll(res.Body)
 		res.Body.Close()
-		err := json.Unmarshal(resBodyBytes, &obj)
+
+		var tempObj pkg.RawChatResponse
+		
+		err := json.Unmarshal(resBodyBytes, &tempObj)
 		if err != nil {
 			log.Fatal("Could not parse live chat json response")
 		}
+		obj = tempObj
+
+		time.Sleep(1*time.Second)
 	}
 
 
