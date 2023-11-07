@@ -20,21 +20,10 @@ type RawChatResponse struct {
 									} `json:"authorName"`
 									Id string `json:"id"`
 									Message struct {
-										Runs []struct {
-											Text string `json:"text,omitempty"`
-											Emoji *struct {
-												EmojiId string `json:"emojiId"`
-												Shortcuts []string `json:"shortcuts"`
-											}`json:"emoji,omitempty"`
-
-										} `json:"runs"`
+										Runs []Runs `json:"runs"`
 									} `json:"message"`
 									TimestampUsec string `json:"timestampUsec"`
-									AuthorBadges []struct{
-										LiveChatAuthorBadgeRenderer struct {
-											Tooltip string `json:"tooltip"`
-										} `json:"liveChatAuthorBadgeRenderer"`
-									} `json:"authorBadges"`
+									AuthorBadges []AuthorBadges `json:"authorBadges"`
 								} `json:"liveChatTextMessageRenderer,omitempty"`
 								LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer *struct {
 									AuthorExternalChannelId string `json:"authorExternalChannelId"`
@@ -50,14 +39,11 @@ type RawChatResponse struct {
 													Text string `json:"text"`
 												} `json:"runs"`
 											} `json:"primaryText"`
-											AuthorBadges []struct {
-												LiveChatAuthorBadgeRenderer struct {
-													Tooltip       string `json:"tooltip"`
-												} `json:"liveChatAuthorBadgeRenderer"`
-											} `json:"authorBadges"`
+											AuthorBadges []AuthorBadges `json:"authorBadges"`
 										} `json:"liveChatSponsorshipsHeaderRenderer"`
 									} `json:"header,omitempty"`
-								} `json:"liveChatSponsorshipsGiftPurchaseAnnouncementRenderer"`
+								} `json:"liveChatSponsorshipsGiftPurchaseAnnouncementRenderer"` 
+								LiveChatPaidMessageRenderer *LiveChatPaidMessageRenderer `json:"liveChatPaidMessageRenderer,omitempty"`
 							} `json:"item"`
 						} `json:"addChatItemAction"`
 					} `json:"actions"`
@@ -72,6 +58,20 @@ type RawChatResponse struct {
 			} `json:"continuations"`
 		} `json:"liveChatContinuation"`
 	} `json:"continuationContents"`
+}
+
+type AuthorBadges struct {
+	LiveChatAuthorBadgeRenderer struct {
+		Tooltip       string `json:"tooltip"`
+	} `json:"liveChatAuthorBadgeRenderer"`
+}
+
+type Runs struct {
+	Text string `json:"text,omitempty"`
+	Emoji *struct {
+		EmojiId string `json:"emojiId"`
+		Shortcuts []string `json:"shortcuts"`
+	}`json:"emoji,omitempty"`
 }
 
 type ChatItem struct {
@@ -194,4 +194,34 @@ type User struct {
 	Name string
 	AmountChats int
 	Membership int
+}
+
+type LiveChatPaidMessageRenderer struct {
+	Id            string `json:"id"`
+	TimestampUsec string `json:"timestampUsec"`
+	AuthorName    struct {
+		SimpleText string `json:"simpleText"`
+	} `json:"authorName"`
+	PurchaseAmountText struct {
+		SimpleText string `json:"simpleText"`
+	} `json:"purchaseAmountText"`
+	Message struct {
+		Runs []Runs `json:"runs"`
+	} `json:"message"`
+	BodyBackgroundColor     int64  `json:"bodyBackgroundColor"`
+	AuthorExternalChannelId string `json:"authorExternalChannelId"`
+	AuthorBadges []AuthorBadges `json:"authorBadges"`
+}
+
+type SuperchatItem struct {
+	Id string `json:"id"`
+	TimestampUsec int `json:"timestampUsec"`
+	AuthorName string `json:"authorName"`
+	Amount string `json:"amount"`
+	Currency string `json:"currency"`
+	Text []string `json:"text"`
+	Color int64 `json:"color"`
+	AuthorChannelId string `json:"authorChannelId"`
+	Badges []Badge `json:"badges"`	
+	VideoOffsetTimeMsec int `json:"videoOffsetTimeMsec"`
 }

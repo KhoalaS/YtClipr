@@ -12,6 +12,7 @@ import (
 	"regexp"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/anaskhan96/soup"
@@ -102,9 +103,53 @@ func getKey() string {
 	return ""
 }
 
+func parseBadges(rawBadges []pkg.AuthorBadges) []pkg.Badge {
+	memberRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Monate*\)`)
+
+	badges := make([]pkg.Badge, len(rawBadges))
+
+	for i, badge := range rawBadges {
+		tooltip := badge.LiveChatAuthorBadgeRenderer.Tooltip
+		if	tooltip == "Bestätigt" {
+			badges[i] = pkg.Badge{Type: pkg.VERIFIED}
+		} else if tooltip == "Kanalinhaber"{
+			badges[i] = pkg.Badge{Type: pkg.CHANNELOWNER}
+		} else if tooltip == "Neues Mitglied"{
+			duration := -1
+			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
+		} else {
+			member := memberRegex.FindStringSubmatch(tooltip)
+			if member != nil {
+				duration, _ := strconv.Atoi(member[1])
+				badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
+			}
+		}
+	}
+	return badges
+}
+
+func parseTextRuns(rawTextRuns []pkg.Runs) []string {
+	textRuns := make([]string, len(rawTextRuns))
+
+	for i, msg := range rawTextRuns {
+		text := msg.Text
+		if len(text) > 0 {
+			textRuns[i] = text
+		}else if msg.Emoji != nil {
+			if len(msg.Emoji.Shortcuts) > 0 {
+				textRuns[i] = msg.Emoji.Shortcuts[0]
+			}else{
+				textRuns[i] = msg.Emoji.EmojiId
+			}
+		}
+	}
+	return textRuns
+}
+
 func getLiveChatResponse(url string) {
 	chat := []pkg.ChatItem{}
-	//gifts := []pkg.GiftItem{}
+	gifts := []pkg.GiftItem{}
+	superchats := []pkg.SuperchatItem{}
 
 	key := getKey()
 	fmt.Printf("Aquired API key: %s\n", key)
@@ -119,6 +164,7 @@ func getLiveChatResponse(url string) {
 		return
 	}
 
+	memberRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Monate*\)`)
 
 	bodyBytes, err := ioutil.ReadAll(res.Body)
 	
@@ -139,18 +185,55 @@ func getLiveChatResponse(url string) {
 		for _, val := range obj.ContinuationContents.LiveChatContinuation.Actions {
 			renderer := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatTextMessageRenderer 
 			if renderer == nil {
-				fmt.Println("renderer is nil")
-				if val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer != nil {
-					fmt.Println(val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer.Header.LiveChatSponsorshipsHeaderRenderer.PrimaryText)
+				giftMessage := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer
+				superchatMessage := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatPaidMessageRenderer
+				if  giftMessage != nil {
+					timestampUsec, _ := strconv.Atoi(giftMessage.TimestampUsec)
+					videoOffsetMs, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
+					badges := parseBadges(giftMessage.Header.LiveChatSponsorshipsHeaderRenderer.AuthorBadges)
+
+					amountStr := giftMessage.Header.LiveChatSponsorshipsHeaderRenderer.PrimaryText.Runs[1].Text
+					amount := 1
+					
+					amount, _ = strconv.Atoi(amountStr)
+
+					giftObj := pkg.GiftItem{
+						AuthorChannelId: giftMessage.AuthorExternalChannelId,
+						Id: giftMessage.Id,
+						TimestampUsec: timestampUsec,
+						VideoOffsetTimeMsec: videoOffsetMs,
+						Badges: badges,
+						Amount: amount,
+					}
+					gifts = append(gifts, giftObj)
+				} 
+				if superchatMessage != nil {
+					timestampUsec, _ := strconv.Atoi(superchatMessage.TimestampUsec)
+					videoOffsetTimeMsec, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
+					sp := strings.Split(superchatMessage.PurchaseAmountText.SimpleText, " ")
+					badges := parseBadges(superchatMessage.AuthorBadges)
+					text := parseTextRuns(superchatMessage.Message.Runs)
+					
+					superchatObj := pkg.SuperchatItem{
+						Id: superchatMessage.Id,
+						TimestampUsec: timestampUsec,
+						AuthorName: superchatMessage.AuthorName.SimpleText,
+						AuthorChannelId: superchatMessage.AuthorExternalChannelId,
+						Color: superchatMessage.BodyBackgroundColor,
+						VideoOffsetTimeMsec: videoOffsetTimeMsec,
+						Amount: sp[0],
+						Currency: sp[1],
+						Badges: badges,
+						Text: text,
+					}
+					superchats = append(superchats, superchatObj)
 				}
 				continue
 			}
 			ts, _ := strconv.Atoi(renderer.TimestampUsec)
 			badges := make([]pkg.Badge, len(renderer.AuthorBadges))
 			textRuns := make([]string, len(renderer.Message.Runs))
-	
-			memberRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Monate*\)`)
-	
+		
 			for i, badge := range renderer.AuthorBadges {
 				tooltip := badge.LiveChatAuthorBadgeRenderer.Tooltip
 				if	tooltip == "Bestätigt" {
@@ -173,8 +256,12 @@ func getLiveChatResponse(url string) {
 				text := msg.Text
 				if len(text) > 0 {
 					textRuns[i] = text
-				}else {
-					textRuns[i] = msg.Emoji.Shortcuts[0]
+				}else if msg.Emoji != nil {
+					if len(msg.Emoji.Shortcuts) > 0 {
+						textRuns[i] = msg.Emoji.Shortcuts[0]
+					}else{
+						textRuns[i] = msg.Emoji.EmojiId
+					}
 				}
 			}
 	
@@ -227,7 +314,21 @@ func getLiveChatResponse(url string) {
 
 	m, _ := json.Marshal(chat)
 
-	werr := os.WriteFile("./chat.json", m, 0644)
+	werr := os.WriteFile("./out/chat.json", m, 0644)
+	if werr != nil {
+		log.Fatal(werr)
+	}
+
+	g, _ := json.Marshal(gifts)
+
+	werr = os.WriteFile("./out/gifts.json", g, 0644)
+	if werr != nil {
+		log.Fatal(werr)
+	}
+
+	s, _ := json.Marshal(superchats)
+
+	werr = os.WriteFile("./out/superchats.json", s, 0644)
 	if werr != nil {
 		log.Fatal(werr)
 	}
@@ -250,7 +351,7 @@ func main() {
 	}
 
 	chat := []pkg.ChatItem{}
-	loadChatJsonData("./chat.json", &chat)
+	loadChatJsonData("./out/chat.json", &chat)
 	userMap := make(map[string]int)
 	channelIdUserMap := make(map[string]string)
 	channelIdMemberMap := make(map[string]int)
@@ -344,7 +445,7 @@ func main() {
 
 	bar.SetXAxis(labels).AddSeries("Chat Messages", timeData)
 
-	f, _ := os.Create("bar.html")
+	f, _ := os.Create("./plots/bar.html")
 	bar.Render(f)
 
 	memBar := charts.NewBar()
@@ -353,6 +454,6 @@ func main() {
 
 	memBar.SetXAxis(memberLabels).AddSeries("Membership duration", memberShipData)
 
-	f, _ = os.Create("membar.html")
+	f, _ = os.Create("./plots/membar.html")
 	memBar.Render(f)
 }
