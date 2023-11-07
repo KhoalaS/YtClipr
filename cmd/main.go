@@ -163,9 +163,7 @@ func getLiveChatResponse(url string) {
 		log.Default().Println("Could not make request")
 		return
 	}
-
-	memberRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Monate*\)`)
-
+	
 	bodyBytes, err := ioutil.ReadAll(res.Body)
 	
 	if err != nil {
@@ -231,39 +229,8 @@ func getLiveChatResponse(url string) {
 				continue
 			}
 			ts, _ := strconv.Atoi(renderer.TimestampUsec)
-			badges := make([]pkg.Badge, len(renderer.AuthorBadges))
-			textRuns := make([]string, len(renderer.Message.Runs))
-		
-			for i, badge := range renderer.AuthorBadges {
-				tooltip := badge.LiveChatAuthorBadgeRenderer.Tooltip
-				if	tooltip == "Bestätigt" {
-					badges[i] = pkg.Badge{Type: pkg.VERIFIED}
-				} else if tooltip == "Kanalinhaber"{
-					badges[i] = pkg.Badge{Type: pkg.CHANNELOWNER}
-				} else if tooltip == "Neues Mitglied"{
-					duration := -1
-					badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
-				} else {
-					member := memberRegex.FindStringSubmatch(tooltip)
-					if member != nil {
-						duration, _ := strconv.Atoi(member[1])
-						badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
-					}
-				}
-			}
-	
-			for i, msg := range renderer.Message.Runs {
-				text := msg.Text
-				if len(text) > 0 {
-					textRuns[i] = text
-				}else if msg.Emoji != nil {
-					if len(msg.Emoji.Shortcuts) > 0 {
-						textRuns[i] = msg.Emoji.Shortcuts[0]
-					}else{
-						textRuns[i] = msg.Emoji.EmojiId
-					}
-				}
-			}
+			badges := parseBadges(renderer.AuthorBadges)
+			textRuns := parseTextRuns(renderer.Message.Runs)
 	
 			if len(badges) == 0{
 				badges = append(badges, pkg.Badge{Type: pkg.NONE})
