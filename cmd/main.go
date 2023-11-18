@@ -5,7 +5,7 @@ import (
 	"com/khoa/ytc-dl/pkg"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -13,7 +13,8 @@ import (
 	"sort"
 	"strconv"
 	"strings"
-	"time"
+
+	//"time"
 
 	"github.com/anaskhan96/soup"
 	"github.com/go-echarts/go-echarts/v2/charts"
@@ -21,11 +22,12 @@ import (
 )
 
 var client = http.Client{}
-const userAgent string = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" 
+
+const userAgent string = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 
 func baseRequest(method string, url string) *http.Request {
 	req, _ := http.NewRequest(method, url, nil)
-	
+
 	req.Header.Add("User-Agent", userAgent)
 	return req
 }
@@ -38,7 +40,7 @@ func liveChatRequest(reqObj pkg.LiveChatReqBody, key string) *http.Request {
 	q.Add("prettyPrint", "false")
 
 	req.URL.RawQuery = q.Encode()
-	
+
 	req.Header.Add("User-Agent", userAgent)
 
 	return req
@@ -51,7 +53,7 @@ func getContinuation(url string) string {
 
 	if res.StatusCode == 200 {
 		defer res.Body.Close()
-		bytes, err := ioutil.ReadAll(res.Body)
+		bytes, err := io.ReadAll(res.Body)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -85,7 +87,7 @@ func getKey() string {
 	}
 	defer res.Body.Close()
 
-	body, err := ioutil.ReadAll(res.Body)
+	body, err := io.ReadAll(res.Body)
 
 	if err != nil {
 		log.Fatal("Could not read body")
@@ -110,11 +112,11 @@ func parseBadges(rawBadges []pkg.AuthorBadges) []pkg.Badge {
 
 	for i, badge := range rawBadges {
 		tooltip := badge.LiveChatAuthorBadgeRenderer.Tooltip
-		if	tooltip == "Bestätigt" {
+		if tooltip == "Bestätigt" {
 			badges[i] = pkg.Badge{Type: pkg.VERIFIED}
-		} else if tooltip == "Kanalinhaber"{
+		} else if tooltip == "Kanalinhaber" {
 			badges[i] = pkg.Badge{Type: pkg.CHANNELOWNER}
-		} else if tooltip == "Neues Mitglied"{
+		} else if tooltip == "Neues Mitglied" {
 			duration := -1
 			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
 		} else {
@@ -135,10 +137,10 @@ func parseTextRuns(rawTextRuns []pkg.Runs) []string {
 		text := msg.Text
 		if len(text) > 0 {
 			textRuns[i] = text
-		}else if msg.Emoji != nil {
+		} else if msg.Emoji != nil {
 			if len(msg.Emoji.Shortcuts) > 0 {
 				textRuns[i] = msg.Emoji.Shortcuts[0]
-			}else{
+			} else {
 				textRuns[i] = msg.Emoji.EmojiId
 			}
 		}
@@ -163,16 +165,16 @@ func getLiveChatResponse(url string) {
 		log.Default().Println("Could not make request")
 		return
 	}
-	
-	bodyBytes, err := ioutil.ReadAll(res.Body)
-	
+
+	bodyBytes, err := io.ReadAll(res.Body)
+
 	if err != nil {
 		log.Fatal(err)
 	}
 	text := string(bodyBytes)
 	doc := soup.HTMLParse(text)
 	script := doc.Find("body").FindAll("script")[1].Text()
-	script = script[26:len(script)-1]
+	script = script[26 : len(script)-1]
 
 	var obj pkg.RawChatResponse
 	json.Unmarshal([]byte(script), &obj)
@@ -181,48 +183,48 @@ func getLiveChatResponse(url string) {
 
 	for true {
 		for _, val := range obj.ContinuationContents.LiveChatContinuation.Actions {
-			renderer := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatTextMessageRenderer 
+			renderer := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatTextMessageRenderer
 			if renderer == nil {
 				giftMessage := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer
 				superchatMessage := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatPaidMessageRenderer
-				if  giftMessage != nil {
+				if giftMessage != nil {
 					timestampUsec, _ := strconv.Atoi(giftMessage.TimestampUsec)
 					videoOffsetMs, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
 					badges := parseBadges(giftMessage.Header.LiveChatSponsorshipsHeaderRenderer.AuthorBadges)
 
 					amountStr := giftMessage.Header.LiveChatSponsorshipsHeaderRenderer.PrimaryText.Runs[1].Text
 					amount := 1
-					
+
 					amount, _ = strconv.Atoi(amountStr)
 
 					giftObj := pkg.GiftItem{
-						AuthorChannelId: giftMessage.AuthorExternalChannelId,
-						Id: giftMessage.Id,
-						TimestampUsec: timestampUsec,
+						AuthorChannelId:     giftMessage.AuthorExternalChannelId,
+						Id:                  giftMessage.Id,
+						TimestampUsec:       timestampUsec,
 						VideoOffsetTimeMsec: videoOffsetMs,
-						Badges: badges,
-						Amount: amount,
+						Badges:              badges,
+						Amount:              amount,
 					}
 					gifts = append(gifts, giftObj)
-				} 
+				}
 				if superchatMessage != nil {
 					timestampUsec, _ := strconv.Atoi(superchatMessage.TimestampUsec)
 					videoOffsetTimeMsec, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
 					sp := strings.Split(superchatMessage.PurchaseAmountText.SimpleText, " ")
 					badges := parseBadges(superchatMessage.AuthorBadges)
 					text := parseTextRuns(superchatMessage.Message.Runs)
-					
+
 					superchatObj := pkg.SuperchatItem{
-						Id: superchatMessage.Id,
-						TimestampUsec: timestampUsec,
-						AuthorName: superchatMessage.AuthorName.SimpleText,
-						AuthorChannelId: superchatMessage.AuthorExternalChannelId,
-						Color: superchatMessage.BodyBackgroundColor,
+						Id:                  superchatMessage.Id,
+						TimestampUsec:       timestampUsec,
+						AuthorName:          superchatMessage.AuthorName.SimpleText,
+						AuthorChannelId:     superchatMessage.AuthorExternalChannelId,
+						Color:               superchatMessage.BodyBackgroundColor,
 						VideoOffsetTimeMsec: videoOffsetTimeMsec,
-						Amount: sp[0],
-						Currency: sp[1],
-						Badges: badges,
-						Text: text,
+						Amount:              sp[0],
+						Currency:            sp[1],
+						Badges:              badges,
+						Text:                text,
 					}
 					superchats = append(superchats, superchatObj)
 				}
@@ -231,21 +233,21 @@ func getLiveChatResponse(url string) {
 			ts, _ := strconv.Atoi(renderer.TimestampUsec)
 			badges := parseBadges(renderer.AuthorBadges)
 			textRuns := parseTextRuns(renderer.Message.Runs)
-	
-			if len(badges) == 0{
+
+			if len(badges) == 0 {
 				badges = append(badges, pkg.Badge{Type: pkg.NONE})
 			}
-	
+
 			videoOffsetMs, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
-	
+
 			chat = append(chat, pkg.ChatItem{
-				AuthorChannelId: renderer.AuthorExternalChannelId,
-				AuthorName: renderer.AuthorName.SimpleText,
-				Id: renderer.Id,
-				TimestampUsec: ts,
-				Badges: badges,
+				AuthorChannelId:     renderer.AuthorExternalChannelId,
+				AuthorName:          renderer.AuthorName.SimpleText,
+				Id:                  renderer.Id,
+				TimestampUsec:       ts,
+				Badges:              badges,
 				VideoOffsetTimeMsec: videoOffsetMs,
-				Text: textRuns,
+				Text:                textRuns,
 			})
 		}
 
@@ -264,20 +266,19 @@ func getLiveChatResponse(url string) {
 		if res.StatusCode != 200 {
 			log.Fatal(res.Status)
 		}
-		resBodyBytes, _ := ioutil.ReadAll(res.Body)
+		resBodyBytes, _ := io.ReadAll(res.Body)
 		res.Body.Close()
 
 		var tempObj pkg.RawChatResponse
-		
+
 		err := json.Unmarshal(resBodyBytes, &tempObj)
 		if err != nil {
 			log.Fatal("Could not parse live chat json response")
 		}
 		obj = tempObj
 
-		time.Sleep(1*time.Second)
+		//time.Sleep(1*time.Second)
 	}
-
 
 	m, _ := json.Marshal(chat)
 
@@ -301,14 +302,13 @@ func getLiveChatResponse(url string) {
 	}
 }
 
-func loadChatJsonData(path string, chatObj *[]pkg.ChatItem){
+func loadChatJsonData(path string, chatObj *[]pkg.ChatItem) {
 	dat, _ := os.ReadFile(path)
 	err := json.Unmarshal(dat, chatObj)
 	if err != nil {
 		log.Fatal(err)
 	}
 }
-
 
 func main() {
 	args := os.Args[1:]
@@ -323,7 +323,6 @@ func main() {
 	channelIdUserMap := make(map[string]string)
 	channelIdMemberMap := make(map[string]int)
 	membershipMap := make(map[int]int)
-
 
 	userArr := []pkg.User{}
 
@@ -340,9 +339,9 @@ func main() {
 			}
 
 		}
-		userMap[val.AuthorChannelId] = count+1
+		userMap[val.AuthorChannelId] = count + 1
 	}
-	for id, count := range userMap{
+	for id, count := range userMap {
 		userArr = append(userArr, pkg.User{Name: channelIdUserMap[id], AmountChats: count, Membership: channelIdMemberMap[id]})
 	}
 
@@ -354,22 +353,20 @@ func main() {
 	fmt.Printf("People sent %d chat messages in this stream.\n", len(chat))
 	fmt.Printf("The User '%s' sent the most messages, a total of %d.\n", userArr[0].Name, userArr[0].AmountChats)
 	fmt.Println("Top 5 Chatters")
-	for i := 0; i < 5; i++{
+	for i := 0; i < 5; i++ {
 		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
 	}
 
-	
-
 	frameDuration := 60000
 
-	labels := make([]int, chat[len(chat)-1].VideoOffsetTimeMsec / frameDuration)
+	labels := make([]int, chat[len(chat)-1].VideoOffsetTimeMsec/frameDuration)
 	for i := range labels {
 		labels[i] = i
 	}
 
 	timeMap := make(map[int]int)
 
-	for _, val := range chat{
+	for _, val := range chat {
 		timeframe := val.VideoOffsetTimeMsec / frameDuration
 		timeMap[timeframe] = timeMap[timeframe] + 1
 	}
@@ -389,7 +386,7 @@ func main() {
 	}
 
 	memberLabels := make([]string, memberMax+1)
-	for i:=0; i<memberMax+1; i++{
+	for i := 0; i < memberMax+1; i++ {
 		if i == 0 {
 			memberLabels[i] = "<1"
 			continue
@@ -407,20 +404,26 @@ func main() {
 	}
 
 	bar := charts.NewBar()
+
 	bar.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
-		Title:    "Amount of chat messages per minute"	}))
+		Title: "Amount of chat messages per minute"}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+	)
 
 	bar.SetXAxis(labels).AddSeries("Chat Messages", timeData)
 
 	f, _ := os.Create("./plots/bar.html")
+
 	bar.Render(f)
 
 	memBar := charts.NewBar()
 	memBar.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
-		Title:    "Amount of Memberships by Duration[Month]"	}))
+		Title: "Amount of Memberships by Duration[Month]"}))
 
 	memBar.SetXAxis(memberLabels).AddSeries("Membership duration", memberShipData)
 
 	f, _ = os.Create("./plots/membar.html")
+
 	memBar.Render(f)
 }
