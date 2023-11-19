@@ -321,6 +321,14 @@ func loadSuperchatJsonData(path string, chatObj *[]pkg.SuperchatItem) {
 	}
 }
 
+func loadGiftJsonData(path string, chatObj *[]pkg.GiftItem) {
+	dat, _ := os.ReadFile(path)
+	err := json.Unmarshal(dat, chatObj)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
 func getSuperchatPieData(scMap map[int64]int) []opts.PieData {
 	items := make([]opts.PieData, 7)
 	items[0] = opts.PieData{Name: "Blue", Value: scMap[pkg.BLUE]}
@@ -452,7 +460,7 @@ func getChatMembershipBarChart(membershipMap map[int]int) *charts.Bar {
 	return memBar
 }
 
-func getChatMessagesBarChart(chat []pkg.ChatItem, membershipMap map[int]int) *charts.Bar {
+func getChatMessagesBarChart(chat []pkg.ChatItem, superchats []pkg.SuperchatItem, membershipMap map[int]int) *charts.Bar {
 	frameDuration := 60000
 
 	labels := make([]string, chat[len(chat)-1].VideoOffsetTimeMsec/frameDuration)
@@ -468,17 +476,28 @@ func getChatMessagesBarChart(chat []pkg.ChatItem, membershipMap map[int]int) *ch
 	}
 
 	timeMap := make(map[int]int)
+	scTimeMap := make(map[int]int)
 
 	for _, val := range chat {
 		timeframe := val.VideoOffsetTimeMsec / frameDuration
 		timeMap[timeframe] = timeMap[timeframe] + 1
 	}
 
+	for _, val := range superchats {
+		timeframe := val.VideoOffsetTimeMsec / frameDuration
+		scTimeMap[timeframe] = scTimeMap[timeframe] + 1
+	}
+
 	max := chat[len(chat)-1].VideoOffsetTimeMsec / frameDuration
 	timeData := make([]opts.BarData, max+1)
+	scTimeData := make([]opts.BarData, max+1)
 
 	for key, value := range timeMap {
 		timeData[key] = opts.BarData{Value: value}
+	}
+	
+	for key, value := range scTimeMap {
+		scTimeData[key] = opts.BarData{Value: value}
 	}
 
 	bar := charts.NewBar()
@@ -489,8 +508,39 @@ func getChatMessagesBarChart(chat []pkg.ChatItem, membershipMap map[int]int) *ch
 		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
 	)
 
-	bar.SetXAxis(labels).AddSeries("Chat Messages", timeData)
+	bar.SetXAxis(labels).
+		AddSeries("Chat Messages", timeData).
+		AddSeries("Superchats", scTimeData)
 	return bar
+}
+
+func getMembershipPieChart(gifts []pkg.GiftItem) *charts.Pie {
+	pie := charts.NewPie()
+	memberMap := make(map[int]int)
+	items := make([]opts.PieData, 4)
+
+	for _, item := range gifts {
+		memberMap[item.Amount] += 1
+	}
+
+	items[0] = opts.PieData{Name: "1 Gift", Value: memberMap[1]}
+	items[1] = opts.PieData{Name: "5 Gift", Value: memberMap[5]}
+	items[2] = opts.PieData{Name: "10 Gift", Value: memberMap[10]}
+	items[3] = opts.PieData{Name: "20 Gift", Value: memberMap[20]}
+
+	pie.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{Title: "Amount Membership Gifts"}),
+		charts.WithColorsOpts(opts.Colors{"#00e5ff", "#ffca28", "#f57c00", "#e62117"}),
+	)
+
+	pie.AddSeries("Superchats", items).
+		SetSeriesOptions(charts.WithLabelOpts(
+			opts.Label{
+				Show:      true,
+				Formatter: "{b}: {c}",
+			}),
+		)
+	return pie
 }
 
 func main() {
@@ -505,9 +555,11 @@ func main() {
 
 	chat := []pkg.ChatItem{}
 	superchats := []pkg.SuperchatItem{}
+	gifts := []pkg.GiftItem{}
 
 	loadChatJsonData("./out/chat.json", &chat)
 	loadSuperchatJsonData("./out/superchats.json", &superchats)
+	loadGiftJsonData("./out/gifts.json", &gifts)
 
 	userMap := make(map[string]int)
 	channelIdUserMap := make(map[string]string)
@@ -547,16 +599,15 @@ func main() {
 		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
 	}
 
-	
-
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		page := components.NewPage()
 
 		page.AddCharts(
-			getChatMessagesBarChart(chat, membershipMap), 
-			getChatMembershipBarChart(membershipMap), 
-			getScPieChart(superchats), 
+			getChatMessagesBarChart(chat, superchats, membershipMap),
+			getChatMembershipBarChart(membershipMap),
+			getScPieChart(superchats),
 			getScBarChart(superchats),
+			getMembershipPieChart(gifts),
 		)
 	
 		page.Render(w)
