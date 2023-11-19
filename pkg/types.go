@@ -3,6 +3,7 @@ package pkg
 import (
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 type RawChatResponse struct {
@@ -225,3 +226,134 @@ type SuperchatItem struct {
 	Badges []Badge `json:"badges"`	
 	VideoOffsetTimeMsec int `json:"videoOffsetTimeMsec"`
 }
+
+type ExchangeRateResponse struct {
+	Disclaimer string `json:"disclaimer"`
+	License    string `json:"license"`
+	Timestamp  int64    `json:"timestamp"`
+	Base       string `json:"base"`
+	Rates      map[string]float64 `json:"rates"`
+}
+
+func (exObj ExchangeRateResponse) GetDollarAmount(amount string, currency string) float64 {
+	amountF, err := strconv.ParseFloat(amount, 64)
+	check(err)
+
+	switch currency {
+		case "$":
+			return amountF
+		case "€":
+			return amountF / exObj.Rates["EUR"]
+		case "£":
+			return amountF / exObj.Rates["GBP"]
+		case "฿":	
+			return amountF / exObj.Rates["THB"]
+		case "¥":
+			return amountF / exObj.Rates["JPY"]
+		default:
+			rate, ex := exObj.Rates[currency]
+			if !ex {
+				currencySnd := codeSymbolMap[currency]
+				rateSnd, exSnd :=  exObj.Rates[currencySnd]
+				if !exSnd {
+					currencyThr := strings.Replace(currency, "$", "D", 1)
+					rateThr, exThr :=  exObj.Rates[currencyThr]
+					if !exThr {
+						fmt.Println(currency, "not found")
+						return 0
+					}
+					return amountF / rateThr
+				}
+				return amountF / rateSnd
+			}
+			return amountF / rate
+		}
+}
+
+var codeSymbolMap map[string]string = map[string]string{
+	"Lek": "ALL",
+"؋": "AFN",
+"$": "ARS",
+"ƒ": "AWG",
+"₼": "AZN",
+"Br": "BYN",
+"BZ$": "BZD",
+"$b": "BOB",
+"KM": "BAM",
+"P": "BWP",
+"лв": "BGN",
+"R$": "BRL",
+"៛": "KHR",
+"¥": "CNY",
+"₡": "CRC",
+"kn": "HRK",
+"₱": "CUP",
+"Kč": "CZK",
+"kr": "DKK",
+"RD$": "DOP",
+"£": "EGP",
+"€": "EUR",
+"¢": "GHS",
+"Q": "GTQ",
+"L": "HNL",
+"Ft": "HUF",
+"₹": "INR",
+"Rp": "IDR",
+"﷼": "IRR",
+"₪": "ILS",
+"J$": "JMD",
+"₩": "KPW",
+"₭": "LAK",
+"ден": "MKD",
+"RM": "MYR",
+"₨": "MUR",
+"₮": "MNT",
+"د.إ": "MNT",
+"MT": "MZN",
+"C$": "NIO",
+"₦": "NGN",
+"B/.": "PAB",
+"Gs": "PYG",
+"S/.": "PEN",
+"zł": "PLN",
+"lei": "RON",
+"₽": "RUB",
+"Дин.": "RSD",
+"S": "SOS",
+"R": "ZAR",
+"CHF": "CHF",
+"NT$": "TWD",
+"฿": "THB",
+"TT$": "TTD",
+"₺": "TRY",
+"₴": "UAH",
+"$U": "UYU",
+"Bs": "VEF",
+"₫": "VND",
+"Z$": "ZWD",
+"MX$": "MXN",
+}
+
+
+var CodeColorMap map[int64]string = map[int64]string{
+	4280191205: "Blue",
+	4278248959: "LightBlue",
+	4280150454: "Green",
+	4294953512: "Yellow",
+	4294278144: "Orange",
+	4293467747: "Pink",
+	4293271831: "Red",
+}
+type Sc int64
+
+const (
+	BLUE = 4280191205
+	LIGHTBLUE = 4278248959
+	GREEN = 4280150454
+	YELLOW = 4294953512
+	ORANGE = 4294278144
+	PINK = 4293467747
+	RED = 4293271831
+)
+
+	

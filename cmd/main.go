@@ -18,6 +18,7 @@ import (
 
 	"github.com/anaskhan96/soup"
 	"github.com/go-echarts/go-echarts/v2/charts"
+	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/go-echarts/go-echarts/v2/opts"
 )
 
@@ -211,6 +212,8 @@ func getLiveChatResponse(url string) {
 					timestampUsec, _ := strconv.Atoi(superchatMessage.TimestampUsec)
 					videoOffsetTimeMsec, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
 					sp := strings.Split(superchatMessage.PurchaseAmountText.SimpleText, " ")
+					sp[0] = strings.ReplaceAll(sp[0], ".", "")
+					sp[0] = strings.ReplaceAll(sp[0], ",", ".")
 					badges := parseBadges(superchatMessage.AuthorBadges)
 					text := parseTextRuns(superchatMessage.Message.Runs)
 
@@ -310,6 +313,103 @@ func loadChatJsonData(path string, chatObj *[]pkg.ChatItem) {
 	}
 }
 
+func loadSuperchatJsonData(path string, chatObj *[]pkg.SuperchatItem) {
+	dat, _ := os.ReadFile(path)
+	err := json.Unmarshal(dat, chatObj)
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+
+func getSuperchatPieData(scMap map[int64]int) []opts.PieData {
+	items := make([]opts.PieData, 7)
+	items[0] = opts.PieData{Name: "Blue", Value: scMap[pkg.BLUE]}
+	items[1] = opts.PieData{Name: "Light Blue", Value: scMap[pkg.LIGHTBLUE]}
+	items[2] = opts.PieData{Name: "Green", Value: scMap[pkg.GREEN]}
+	items[3] = opts.PieData{Name: "Yellow", Value: scMap[pkg.YELLOW]}
+	items[4] = opts.PieData{Name: "Orange", Value: scMap[pkg.ORANGE]}
+	items[5] = opts.PieData{Name: "Pink", Value: scMap[pkg.PINK]}
+	items[6] = opts.PieData{Name: "Red", Value: scMap[pkg.RED]}
+
+	return items
+}
+
+func getSuperchatBarData(scMap map[int64]float64) []opts.BarData {
+	items := make([]opts.BarData, 7)
+	items[0] = opts.BarData{Name: "Blue", Value: scMap[pkg.BLUE]}
+	items[1] = opts.BarData{Name: "Light Blue", Value: scMap[pkg.LIGHTBLUE]}
+	items[2] = opts.BarData{Name: "Green", Value: scMap[pkg.GREEN]}
+	items[3] = opts.BarData{Name: "Yellow", Value: scMap[pkg.YELLOW]}
+	items[4] = opts.BarData{Name: "Orange", Value: scMap[pkg.ORANGE]}
+	items[5] = opts.BarData{Name: "Pink", Value: scMap[pkg.PINK]}
+	items[6] = opts.BarData{Name: "Red", Value: scMap[pkg.RED]}
+
+	return items
+}
+
+func getScPieChart(superchats []pkg.SuperchatItem) *charts.Pie {
+	exchangeRates := pkg.GetRates(&client)
+	scMap := map[int64]int{}
+	scTotalDollar := 0.0
+
+	for _, item := range superchats {
+		scMap[item.Color] += 1
+		convAmount := exchangeRates.GetDollarAmount(item.Amount, item.Currency)
+		scTotalDollar += convAmount
+	}
+
+	items := getSuperchatPieData(scMap)
+
+	pie := charts.NewPie()
+	pie.SetGlobalOptions(
+		charts.WithTitleOpts(opts.Title{Title: "Amount Superchats"}),
+		charts.WithColorsOpts(opts.Colors{"#1e88e5", "#00e5ff", "#1de9b6", "#ffca28", "#f57c00", "#e91e63", "#e62117"}),
+	)
+
+	pie.AddSeries("Superchats", items).
+		SetSeriesOptions(charts.WithLabelOpts(
+			opts.Label{
+				Show:      true,
+				Formatter: "{b}: {c}",
+			}),
+		)
+
+	return pie
+}
+
+func getScBarChart(superchats []pkg.SuperchatItem) *charts.Bar {
+	exchangeRates := pkg.GetRates(&client)
+	scMap := map[int64]float64{}
+
+	for _, item := range superchats {
+		scMap[item.Color] += exchangeRates.GetDollarAmount(item.Amount, item.Currency)
+	}
+
+	items := getSuperchatBarData(scMap)
+
+	bar := charts.NewBar()
+	bar.SetGlobalOptions(
+		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+		charts.WithTitleOpts(opts.Title{Title: "Dollar Amount Superchats"}),
+		charts.WithColorsOpts(opts.Colors{"#1e88e5", "#00e5ff", "#1de9b6", "#ffca28", "#f57c00", "#e91e63", "#e62117"}),
+	)
+
+	labels := []string{"Blue", "LightBlue",
+	"Green",
+	"Yellow",
+	"Orange",
+	"Pink",
+	"Red"}
+	bar.SetXAxis([]string{"Superchat Tiers"})
+	for i, item := range items {
+		bar.AddSeries(labels[i], []opts.BarData{item})
+	}
+
+
+	return bar
+}
+
 func main() {
 	args := os.Args[1:]
 
@@ -318,7 +418,14 @@ func main() {
 	}
 
 	chat := []pkg.ChatItem{}
+	superchats := []pkg.SuperchatItem{}
+
+	pkg.MakeDir("./out")
+	pkg.MakeDir("./plots")
+
 	loadChatJsonData("./out/chat.json", &chat)
+	loadSuperchatJsonData("./out/superchats.json", &superchats)
+
 	userMap := make(map[string]int)
 	channelIdUserMap := make(map[string]string)
 	channelIdMemberMap := make(map[string]int)
@@ -359,9 +466,16 @@ func main() {
 
 	frameDuration := 60000
 
-	labels := make([]int, chat[len(chat)-1].VideoOffsetTimeMsec/frameDuration)
+	labels := make([]string, chat[len(chat)-1].VideoOffsetTimeMsec/frameDuration)
 	for i := range labels {
-		labels[i] = i
+		m := i % 60
+		h := (i - m) / 60
+		mStr := strconv.Itoa(m)
+		if m < 10 {
+			mStr = "0" + mStr
+		}
+		label := fmt.Sprintf("%d:%s", h, mStr)
+		labels[i] = label
 	}
 
 	timeMap := make(map[int]int)
@@ -391,7 +505,7 @@ func main() {
 			memberLabels[i] = "<1"
 			continue
 		}
-		memberLabels[i] = strconv.Itoa(i)
+		memberLabels[i] = strconv.Itoa(i) + "+"
 	}
 
 	memberShipData := make([]opts.BarData, memberMax+1)
@@ -403,27 +517,31 @@ func main() {
 		memberShipData[i] = opts.BarData{Value: val}
 	}
 
+	page := components.NewPage()
+
 	bar := charts.NewBar()
 
 	bar.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
-		Title: "Amount of chat messages per minute"}),
+		Title: "Amount of Chat Messages per Minute"}),
 		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
 		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
 	)
 
 	bar.SetXAxis(labels).AddSeries("Chat Messages", timeData)
 
-	f, _ := os.Create("./plots/bar.html")
-
-	bar.Render(f)
-
 	memBar := charts.NewBar()
-	memBar.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
-		Title: "Amount of Memberships by Duration[Month]"}))
+	memBar.SetGlobalOptions(
+		charts.WithColorsOpts(opts.Colors{"#2ba640"}),
+		charts.WithTitleOpts(
+			opts.Title{
+				Title: "Amount Chatters with Membership by Duration[Month]"}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+	)
 
-	memBar.SetXAxis(memberLabels).AddSeries("Membership duration", memberShipData)
-
-	f, _ = os.Create("./plots/membar.html")
-
-	memBar.Render(f)
+	memBar.SetXAxis(memberLabels).AddSeries("Duration", memberShipData)
+	
+	page.AddCharts(bar, memBar, getScPieChart(superchats), getScBarChart(superchats))
+	f, _ := os.Create("./plots/main.html")
+	page.Render(io.MultiWriter(f))
 }
