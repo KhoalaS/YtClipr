@@ -594,8 +594,8 @@ func main() {
 	fmt.Printf("%d people sent messages in this stream.\n", len(channelIdUserMap))
 	fmt.Printf("People sent %d chat messages in this stream.\n", len(chat))
 	fmt.Printf("The User '%s' sent the most messages, a total of %d.\n", userArr[0].Name, userArr[0].AmountChats)
-	fmt.Println("Top 5 Chatters")
-	for i := 0; i < 5; i++ {
+	fmt.Println("Top 10 Chatters")
+	for i := 0; i < 10; i++ {
 		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
 	}
 
