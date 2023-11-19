@@ -43,6 +43,10 @@ func GetRates(client *http.Client) ExchangeRateResponse {
 
 	defer res.Body.Close()
 	resBodyBytes, _ := io.ReadAll(res.Body) 
+	
+	werr := os.WriteFile("./out/latest.json", resBodyBytes, 0644)
+	check(werr)
+
 	var exObj ExchangeRateResponse
 	
 	err = json.Unmarshal(resBodyBytes, &exObj)

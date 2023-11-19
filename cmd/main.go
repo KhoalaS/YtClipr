@@ -334,15 +334,19 @@ func getSuperchatPieData(scMap map[int64]int) []opts.PieData {
 	return items
 }
 
+func dollarFormat(val float64) string {
+	return fmt.Sprintf("%.2f", val)
+}
+
 func getSuperchatBarData(scMap map[int64]float64) []opts.BarData {
 	items := make([]opts.BarData, 7)
-	items[0] = opts.BarData{Name: "Blue", Value: scMap[pkg.BLUE]}
-	items[1] = opts.BarData{Name: "Light Blue", Value: scMap[pkg.LIGHTBLUE]}
-	items[2] = opts.BarData{Name: "Green", Value: scMap[pkg.GREEN]}
-	items[3] = opts.BarData{Name: "Yellow", Value: scMap[pkg.YELLOW]}
-	items[4] = opts.BarData{Name: "Orange", Value: scMap[pkg.ORANGE]}
-	items[5] = opts.BarData{Name: "Pink", Value: scMap[pkg.PINK]}
-	items[6] = opts.BarData{Name: "Red", Value: scMap[pkg.RED]}
+	items[0] = opts.BarData{Name: "Blue", Value: dollarFormat(scMap[pkg.BLUE])}
+	items[1] = opts.BarData{Name: "Light Blue", Value: dollarFormat(scMap[pkg.LIGHTBLUE])}
+	items[2] = opts.BarData{Name: "Green", Value: dollarFormat(scMap[pkg.GREEN])}
+	items[3] = opts.BarData{Name: "Yellow", Value: dollarFormat(scMap[pkg.YELLOW])}
+	items[4] = opts.BarData{Name: "Orange", Value: dollarFormat(scMap[pkg.ORANGE])}
+	items[5] = opts.BarData{Name: "Pink", Value: dollarFormat(scMap[pkg.PINK])}
+	items[6] = opts.BarData{Name: "Red", Value: dollarFormat(scMap[pkg.RED])}
 
 	return items
 }
@@ -389,29 +393,111 @@ func getScBarChart(superchats []pkg.SuperchatItem) *charts.Bar {
 
 	bar := charts.NewBar()
 	bar.SetGlobalOptions(
-		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: true, Formatter: "${c}"}),
 		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
 		charts.WithTitleOpts(opts.Title{Title: "Dollar Amount Superchats"}),
 		charts.WithColorsOpts(opts.Colors{"#1e88e5", "#00e5ff", "#1de9b6", "#ffca28", "#f57c00", "#e91e63", "#e62117"}),
 	)
 
 	labels := []string{"Blue", "LightBlue",
-	"Green",
-	"Yellow",
-	"Orange",
-	"Pink",
-	"Red"}
+		"Green",
+		"Yellow",
+		"Orange",
+		"Pink",
+		"Red"}
 	bar.SetXAxis([]string{"Superchat Tiers"})
 	for i, item := range items {
 		bar.AddSeries(labels[i], []opts.BarData{item})
 	}
 
+	return bar
+}
 
+func getChatMembershipBarChart(membershipMap map[int]int) *charts.Bar {
+	memberMax := -1
+	for i := range membershipMap {
+		if i > memberMax {
+			memberMax = i
+		}
+	}
+
+	memberLabels := make([]string, memberMax+1)
+	for i := 0; i < memberMax+1; i++ {
+		if i == 0 {
+			memberLabels[i] = "<1"
+			continue
+		}
+		memberLabels[i] = strconv.Itoa(i) + "+"
+	}
+
+	memberShipData := make([]opts.BarData, memberMax+1)
+	for i, val := range membershipMap {
+		if i == -1 {
+			memberShipData[0] = opts.BarData{Value: val}
+			continue
+		}
+		memberShipData[i] = opts.BarData{Value: val}
+	}
+	memBar := charts.NewBar()
+	memBar.SetGlobalOptions(
+		charts.WithColorsOpts(opts.Colors{"#2ba640"}),
+		charts.WithTitleOpts(
+			opts.Title{
+				Title: "Amount Chatters with Membership by Duration[Month]"}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+	)
+
+	memBar.SetXAxis(memberLabels).AddSeries("Duration", memberShipData)
+	return memBar
+}
+
+func getChatMessagesBarChart(chat []pkg.ChatItem, membershipMap map[int]int) *charts.Bar {
+	frameDuration := 60000
+
+	labels := make([]string, chat[len(chat)-1].VideoOffsetTimeMsec/frameDuration)
+	for i := range labels {
+		m := i % 60
+		h := (i - m) / 60
+		mStr := strconv.Itoa(m)
+		if m < 10 {
+			mStr = "0" + mStr
+		}
+		label := fmt.Sprintf("%d:%s", h, mStr)
+		labels[i] = label
+	}
+
+	timeMap := make(map[int]int)
+
+	for _, val := range chat {
+		timeframe := val.VideoOffsetTimeMsec / frameDuration
+		timeMap[timeframe] = timeMap[timeframe] + 1
+	}
+
+	max := chat[len(chat)-1].VideoOffsetTimeMsec / frameDuration
+	timeData := make([]opts.BarData, max+1)
+
+	for key, value := range timeMap {
+		timeData[key] = opts.BarData{Value: value}
+	}
+
+	bar := charts.NewBar()
+
+	bar.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
+		Title: "Amount of Chat Messages per Minute"}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+	)
+
+	bar.SetXAxis(labels).AddSeries("Chat Messages", timeData)
 	return bar
 }
 
 func main() {
 	args := os.Args[1:]
+
+	pkg.MakeDir("./out")
+	pkg.MakeDir("./plots")
 
 	if len(args) > 0 {
 		getLiveChatResponse(args[0])
@@ -419,9 +505,6 @@ func main() {
 
 	chat := []pkg.ChatItem{}
 	superchats := []pkg.SuperchatItem{}
-
-	pkg.MakeDir("./out")
-	pkg.MakeDir("./plots")
 
 	loadChatJsonData("./out/chat.json", &chat)
 	loadSuperchatJsonData("./out/superchats.json", &superchats)
@@ -464,84 +547,20 @@ func main() {
 		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
 	}
 
-	frameDuration := 60000
-
-	labels := make([]string, chat[len(chat)-1].VideoOffsetTimeMsec/frameDuration)
-	for i := range labels {
-		m := i % 60
-		h := (i - m) / 60
-		mStr := strconv.Itoa(m)
-		if m < 10 {
-			mStr = "0" + mStr
-		}
-		label := fmt.Sprintf("%d:%s", h, mStr)
-		labels[i] = label
-	}
-
-	timeMap := make(map[int]int)
-
-	for _, val := range chat {
-		timeframe := val.VideoOffsetTimeMsec / frameDuration
-		timeMap[timeframe] = timeMap[timeframe] + 1
-	}
-
-	max := chat[len(chat)-1].VideoOffsetTimeMsec / frameDuration
-	timeData := make([]opts.BarData, max+1)
-
-	for key, value := range timeMap {
-		timeData[key] = opts.BarData{Value: value}
-	}
-
-	memberMax := -1
-	for i := range membershipMap {
-		if i > memberMax {
-			memberMax = i
-		}
-	}
-
-	memberLabels := make([]string, memberMax+1)
-	for i := 0; i < memberMax+1; i++ {
-		if i == 0 {
-			memberLabels[i] = "<1"
-			continue
-		}
-		memberLabels[i] = strconv.Itoa(i) + "+"
-	}
-
-	memberShipData := make([]opts.BarData, memberMax+1)
-	for i, val := range membershipMap {
-		if i == -1 {
-			memberShipData[0] = opts.BarData{Value: val}
-			continue
-		}
-		memberShipData[i] = opts.BarData{Value: val}
-	}
-
-	page := components.NewPage()
-
-	bar := charts.NewBar()
-
-	bar.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
-		Title: "Amount of Chat Messages per Minute"}),
-		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
-		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
-	)
-
-	bar.SetXAxis(labels).AddSeries("Chat Messages", timeData)
-
-	memBar := charts.NewBar()
-	memBar.SetGlobalOptions(
-		charts.WithColorsOpts(opts.Colors{"#2ba640"}),
-		charts.WithTitleOpts(
-			opts.Title{
-				Title: "Amount Chatters with Membership by Duration[Month]"}),
-		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
-		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
-	)
-
-	memBar.SetXAxis(memberLabels).AddSeries("Duration", memberShipData)
 	
-	page.AddCharts(bar, memBar, getScPieChart(superchats), getScBarChart(superchats))
-	f, _ := os.Create("./plots/main.html")
-	page.Render(io.MultiWriter(f))
+
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		page := components.NewPage()
+
+		page.AddCharts(
+			getChatMessagesBarChart(chat, membershipMap), 
+			getChatMembershipBarChart(membershipMap), 
+			getScPieChart(superchats), 
+			getScBarChart(superchats),
+		)
+	
+		page.Render(w)
+	})
+
+	http.ListenAndServe(":8081", nil)
 }
