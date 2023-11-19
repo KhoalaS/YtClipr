@@ -2,6 +2,7 @@ package pkg
 
 import (
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
@@ -18,6 +19,12 @@ func check(e error) {
 
 func GetRates(client *http.Client) ExchangeRateResponse {
 
+	if _, err := os.Stat("./out/latest.json"); errors.Is(err, os.ErrNotExist) {
+		d1 := []byte("{}\n")
+		err := os.WriteFile("./out/latest.json", d1, 0644)
+		check(err)
+	}
+
 	f, err := os.ReadFile("./out/latest.json")
 	check(err)
 
@@ -26,7 +33,10 @@ func GetRates(client *http.Client) ExchangeRateResponse {
 	err = json.Unmarshal(f, &oldExObj)
 	check(err)
 
-	if time.Now().UnixMilli() - oldExObj.Timestamp < 86400000 {
+	timeDelta := time.Now().Unix() - oldExObj.Timestamp
+
+	if timeDelta < 86400 {
+		log.Default().Println("Exchange rates are already up to date")
 		return oldExObj
 	}
 

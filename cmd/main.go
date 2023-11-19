@@ -108,7 +108,8 @@ func getKey() string {
 
 func parseBadges(rawBadges []pkg.AuthorBadges) []pkg.Badge {
 	memberRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Monate*\)`)
-
+	memberYearRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Jahr[e*]*\)`)
+	
 	badges := make([]pkg.Badge, len(rawBadges))
 
 	for i, badge := range rawBadges {
@@ -120,12 +121,12 @@ func parseBadges(rawBadges []pkg.AuthorBadges) []pkg.Badge {
 		} else if tooltip == "Neues Mitglied" {
 			duration := -1
 			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
-		} else {
-			member := memberRegex.FindStringSubmatch(tooltip)
-			if member != nil {
-				duration, _ := strconv.Atoi(member[1])
-				badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
-			}
+		} else if member := memberRegex.FindStringSubmatch(tooltip); member != nil{
+			duration, _ := strconv.Atoi(member[1])
+			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
+		} else if member := memberYearRegex.FindStringSubmatch(tooltip); member != nil{
+			duration, _ := strconv.Atoi(member[1])
+			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration * 12}
 		}
 	}
 	return badges
@@ -587,6 +588,8 @@ func main() {
 		userArr = append(userArr, pkg.User{Name: channelIdUserMap[id], AmountChats: count, Membership: channelIdMemberMap[id]})
 	}
 
+	fmt.Println(membershipMap)
+
 	sort.Slice(userArr, func(i, j int) bool {
 		return userArr[i].AmountChats > userArr[j].AmountChats
 	})
@@ -594,8 +597,8 @@ func main() {
 	fmt.Printf("%d people sent messages in this stream.\n", len(channelIdUserMap))
 	fmt.Printf("People sent %d chat messages in this stream.\n", len(chat))
 	fmt.Printf("The User '%s' sent the most messages, a total of %d.\n", userArr[0].Name, userArr[0].AmountChats)
-	fmt.Println("Top 10 Chatters")
-	for i := 0; i < 10; i++ {
+	fmt.Println("Top 5 Chatters")
+	for i := 0; i < 5; i++ {
 		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
 	}
 
