@@ -33,6 +33,32 @@ func baseRequest(method string, url string) *http.Request {
 	return req
 }
 
+func errLog(err error, msg string) {
+	if err != nil {
+		log.Default().Printf(msg)
+		return
+	}
+}
+
+func getMemberOffers(channelHandle string){
+	req := baseRequest("GET", fmt.Sprintf("https://www.youtube.com/@%s", channelHandle))
+	res, _ := client.Do(req)
+
+	if res.StatusCode != 200 {
+		log.Default().Printf("Could not fetch info of channel %s\n", channelHandle)
+		return 
+	}
+
+	defer res.Body.Close()
+	bodyBytes, err := io.ReadAll(res.Body)
+	errLog(err, "Could not read request body")
+
+	bodyText := string(bodyBytes)
+	r := regexp.MustCompile(`\"ypcGetOffersEndpoint\":\{\"params\":\"([^\"]+)\"}`)
+	matches := r.FindStringSubmatch(bodyText)
+	fmt.Println(matches)
+}
+
 func liveChatRequest(reqObj pkg.LiveChatReqBody, key string) *http.Request {
 	bodyBytes, _ := json.Marshal(reqObj)
 	req, _ := http.NewRequest("POST", "https://www.youtube.com/youtubei/v1/live_chat/get_live_chat_replay", bytes.NewBuffer(bodyBytes))
@@ -52,21 +78,24 @@ func getContinuation(url string) string {
 
 	res, _ := client.Do(req)
 
-	if res.StatusCode == 200 {
-		defer res.Body.Close()
-		bytes, err := io.ReadAll(res.Body)
-		if err != nil {
-			log.Fatal(err)
-		}
-
-		text := string(bytes)
-
-		r := regexp.MustCompile(`"continuation":"([^\"]+)"`)
-		cont := r.FindStringSubmatch(text)
-		return cont[1]
+	if res.StatusCode != 200 {
+		log.Fatal("Could not request next continuation id...")
+		return ""		
 	}
 
-	return ""
+	defer res.Body.Close()
+	bytes, err := io.ReadAll(res.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	text := string(bytes)
+	r := regexp.MustCompile(`"continuation":"([^\"]+)"`)
+	cont := r.FindStringSubmatch(text)
+	if len(cont) < 1 {
+		os.WriteFile("./out/getContRes.html", bytes, 0644)
+		log.Fatal("No continuation id in response found")
+	}
+	return cont[1]
 }
 
 func getLivechatReq(id string) *http.Request {
@@ -262,7 +291,7 @@ func getLiveChatResponse(url string) {
 		}
 
 		reqObj := pkg.NewLiveChatReqBody(contId, lastOffset)
-		log.Default().Printf("Parsed all chat messages until offset %d", lastOffset)
+		log.Default().Printf("Parsed all chat messages until offset %d\r", lastOffset)
 
 		req := liveChatRequest(reqObj, key)
 
@@ -518,7 +547,7 @@ func getChatMessagesBarChart(chat []pkg.ChatItem, superchats []pkg.SuperchatItem
 func getMembershipPieChart(gifts []pkg.GiftItem) *charts.Pie {
 	pie := charts.NewPie()
 	memberMap := make(map[int]int)
-	items := make([]opts.PieData, 4)
+	items := make([]opts.PieData, 5)
 
 	for _, item := range gifts {
 		memberMap[item.Amount] += 1
@@ -528,10 +557,11 @@ func getMembershipPieChart(gifts []pkg.GiftItem) *charts.Pie {
 	items[1] = opts.PieData{Name: "5 Gift", Value: memberMap[5]}
 	items[2] = opts.PieData{Name: "10 Gift", Value: memberMap[10]}
 	items[3] = opts.PieData{Name: "20 Gift", Value: memberMap[20]}
+	items[4] = opts.PieData{Name: "50 Gift", Value: memberMap[50]}
 
 	pie.SetGlobalOptions(
 		charts.WithTitleOpts(opts.Title{Title: "Amount Membership Gifts"}),
-		charts.WithColorsOpts(opts.Colors{"#00e5ff", "#ffca28", "#f57c00", "#e62117"}),
+		charts.WithColorsOpts(opts.Colors{"#00e5ff", "#ffca28", "#f57c00","#e91e63", "#e62117"}),
 	)
 
 	pie.AddSeries("Superchats", items).
