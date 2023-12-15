@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"com/khoa/ytc-dl/pkg"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io"
 	"log"
@@ -76,7 +77,10 @@ func liveChatRequest(reqObj pkg.LiveChatReqBody, key string) *http.Request {
 func getContinuation(url string) string {
 	req := baseRequest("GET", url)
 
-	res, _ := client.Do(req)
+	res, err := client.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	if res.StatusCode != 200 {
 		log.Fatal("Could not request next continuation id...")
@@ -218,6 +222,7 @@ func getLiveChatResponse(url string) {
 			if renderer == nil {
 				giftMessage := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatSponsorshipsGiftPurchaseAnnouncementRenderer
 				superchatMessage := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatPaidMessageRenderer
+				superstickerMessage := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatPaidStickerRenderer
 				if giftMessage != nil {
 					timestampUsec, _ := strconv.Atoi(giftMessage.TimestampUsec)
 					videoOffsetMs, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
@@ -239,6 +244,7 @@ func getLiveChatResponse(url string) {
 					gifts = append(gifts, giftObj)
 				}
 				if superchatMessage != nil {
+					// add supersticker support
 					timestampUsec, _ := strconv.Atoi(superchatMessage.TimestampUsec)
 					videoOffsetTimeMsec, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
 					sp := strings.Split(superchatMessage.PurchaseAmountText.SimpleText, " ")
@@ -258,6 +264,28 @@ func getLiveChatResponse(url string) {
 						Currency:            sp[1],
 						Badges:              badges,
 						Text:                text,
+					}
+					superchats = append(superchats, superchatObj)
+				}
+				if superstickerMessage != nil {
+					// add supersticker support
+					timestampUsec, _ := strconv.Atoi(superstickerMessage.TimestampUsec)
+					videoOffsetTimeMsec, _ := strconv.Atoi(val.ReplayChatItemAction.VideoOffsetTimeMsec)
+					sp := strings.Split(superstickerMessage.PurchaseAmountText.SimpleText, " ")
+					sp[0] = strings.ReplaceAll(sp[0], ".", "")
+					sp[0] = strings.ReplaceAll(sp[0], ",", ".")
+					badges := parseBadges(superstickerMessage.AuthorBadges)
+
+					superchatObj := pkg.SuperchatItem{
+						Id:                  superstickerMessage.Id,
+						TimestampUsec:       timestampUsec,
+						AuthorName:          superstickerMessage.AuthorName.SimpleText,
+						AuthorChannelId:     superstickerMessage.AuthorExternalChannelId,
+						Color:               superstickerMessage.BackgroundColor,
+						VideoOffsetTimeMsec: videoOffsetTimeMsec,
+						Amount:              sp[0],
+						Currency:            sp[1],
+						Badges:              badges,
 					}
 					superchats = append(superchats, superchatObj)
 				}
@@ -575,13 +603,24 @@ func getMembershipPieChart(gifts []pkg.GiftItem) *charts.Pie {
 }
 
 func main() {
-	args := os.Args[1:]
 
 	pkg.MakeDir("./out")
 	pkg.MakeDir("./plots")
 
+	searchPtr := flag.String("s", "", "Word to search for in chat message")
+	flag.Parse()
+
+	args := flag.Args()
 	if len(args) > 0 {
 		getLiveChatResponse(args[0])
+	}
+
+	var r *regexp.Regexp
+	search := false
+
+	if len(*searchPtr) != 0 {
+		r, _ = regexp.Compile(*searchPtr)
+		search = true
 	}
 
 	chat := []pkg.ChatItem{}
@@ -600,6 +639,13 @@ func main() {
 	userArr := []pkg.User{}
 
 	for _, val := range chat {
+		if search {
+			for _, t := range val.Text {
+				if r.MatchString(t) {
+					log.Default().Println(val.AuthorName, val.Text, val.TimestampUsec)
+				}
+			}
+		}
 		count := userMap[val.AuthorChannelId]
 		if _, ex := channelIdUserMap[val.AuthorChannelId]; !ex {
 			channelIdUserMap[val.AuthorChannelId] = val.AuthorName
@@ -617,8 +663,6 @@ func main() {
 	for id, count := range userMap {
 		userArr = append(userArr, pkg.User{Name: channelIdUserMap[id], AmountChats: count, Membership: channelIdMemberMap[id]})
 	}
-
-	fmt.Println(membershipMap)
 
 	sort.Slice(userArr, func(i, j int) bool {
 		return userArr[i].AmountChats > userArr[j].AmountChats

@@ -45,7 +45,8 @@ type RawChatResponse struct {
 									} `json:"header,omitempty"`
 								} `json:"liveChatSponsorshipsGiftPurchaseAnnouncementRenderer"` 
 								LiveChatPaidMessageRenderer *LiveChatPaidMessageRenderer `json:"liveChatPaidMessageRenderer,omitempty"`
-							} `json:"item"`
+								LiveChatPaidStickerRenderer *LiveChatPaidStickerRenderer `json:"liveChatPaidStickerRenderer,omitempty"`
+								} `json:"item"`
 						} `json:"addChatItemAction"`
 					} `json:"actions"`
 					VideoOffsetTimeMsec string `json:"videoOffsetTimeMsec"`
@@ -212,6 +213,32 @@ type LiveChatPaidMessageRenderer struct {
 	BodyBackgroundColor     int64  `json:"bodyBackgroundColor"`
 	AuthorExternalChannelId string `json:"authorExternalChannelId"`
 	AuthorBadges []AuthorBadges `json:"authorBadges"`
+}
+
+type LiveChatPaidStickerRenderer struct {
+	Id                  string `json:"id"`
+	TimestampUsec string `json:"timestampUsec"`
+	AuthorName struct {
+		SimpleText string `json:"simpleText"`
+	} `json:"authorName"`
+	PurchaseAmountText       struct {
+		SimpleText string `json:"simpleText"`
+	} `json:"purchaseAmountText"`
+	BackgroundColor      int64  `json:"backgroundColor"`
+	AuthorExternalChannelId string `json:"authorExternalChannelId"`
+	AuthorBadges []AuthorBadges `json:"authorBadges"`
+	Sticker struct {
+		Thumbnails []struct {
+			URL    string `json:"url"`
+			Width  int    `json:"width"`
+			Height int    `json:"height"`
+		} `json:"thumbnails"`
+		Accessibility struct {
+			AccessibilityData struct {
+				Label string `json:"label"`
+			} `json:"accessibilityData"`
+		} `json:"accessibility"`
+	} `json:"sticker"`
 }
 
 type SuperchatItem struct {
