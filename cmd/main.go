@@ -14,6 +14,7 @@ import (
 	"sort"
 	"strconv"
 	"strings"
+	"time"
 
 	//"time"
 
@@ -28,7 +29,8 @@ var client = http.Client{}
 const userAgent string = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 
 func baseRequest(method string, url string) *http.Request {
-	req, _ := http.NewRequest(method, url, nil)
+	req, err := http.NewRequest(method, url, nil)
+	errLog(err, "Could not create baseRequest")
 
 	req.Header.Add("User-Agent", userAgent)
 	return req
@@ -36,7 +38,8 @@ func baseRequest(method string, url string) *http.Request {
 
 func errLog(err error, msg string) {
 	if err != nil {
-		log.Default().Printf(msg)
+		log.Default().Println(msg)
+		log.Fatal(err)
 		return
 	}
 }
@@ -61,7 +64,9 @@ func getMemberOffers(channelHandle string){
 }
 
 func liveChatRequest(reqObj pkg.LiveChatReqBody, key string) *http.Request {
-	bodyBytes, _ := json.Marshal(reqObj)
+	bodyBytes, err := json.Marshal(reqObj)
+	errLog(err, "Could not marhsal reqObj")
+
 	req, _ := http.NewRequest("POST", "https://www.youtube.com/youtubei/v1/live_chat/get_live_chat_replay", bytes.NewBuffer(bodyBytes))
 	q := req.URL.Query()
 	q.Add("key", key)
@@ -94,12 +99,13 @@ func getContinuation(url string) string {
 	}
 	text := string(bytes)
 	r := regexp.MustCompile(`"continuation":"([^\"]+)"`)
-	cont := r.FindStringSubmatch(text)
-	if len(cont) < 1 {
-		os.WriteFile("./out/getContRes.html", bytes, 0644)
-		log.Fatal("No continuation id in response found")
+	cont := r.FindAllStringSubmatch(text, 3)
+
+	if len(cont) != 3 {
+		log.Fatal("Could not find continuation for live-chat")
 	}
-	return cont[1]
+	os.WriteFile("./out/getContRes.html", bytes, 0644)
+	return cont[2][1]
 }
 
 func getLivechatReq(id string) *http.Request {
@@ -115,7 +121,9 @@ func getLivechatReq(id string) *http.Request {
 func getKey() string {
 	req := baseRequest("GET", "https://youtube.com")
 
-	res, _ := client.Do(req)
+	res, err := client.Do(req)
+	errLog(err, "Could not make request for key")
+
 	if res.StatusCode != 200 {
 		log.Fatal(res.Status)
 	}
@@ -194,7 +202,8 @@ func getLiveChatResponse(url string) {
 	fmt.Printf("Aquired continuation ID: %s\n", contId)
 
 	req := getLivechatReq(contId)
-	res, _ := client.Do(req)
+	res, err := client.Do(req)
+	errLog(err, "Could not make initial request")
 
 	if res.StatusCode != 200 {
 		log.Default().Println("Could not make request")
@@ -323,22 +332,26 @@ func getLiveChatResponse(url string) {
 
 		req := liveChatRequest(reqObj, key)
 
-		res, _ := client.Do(req)
+		res, err := client.Do(req)
+		errLog(err, "Could not make request")
+
 		if res.StatusCode != 200 {
 			log.Fatal(res.Status)
 		}
-		resBodyBytes, _ := io.ReadAll(res.Body)
+
+		resBodyBytes, err := io.ReadAll(res.Body)
+		errLog(err, "Could not read from response body")
 		res.Body.Close()
 
 		var tempObj pkg.RawChatResponse
 
-		err := json.Unmarshal(resBodyBytes, &tempObj)
+		err = json.Unmarshal(resBodyBytes, &tempObj)
 		if err != nil {
 			log.Fatal("Could not parse live chat json response")
 		}
 		obj = tempObj
 
-		//time.Sleep(1*time.Second)
+		time.Sleep(100*time.Millisecond)
 	}
 
 	m, _ := json.Marshal(chat)
@@ -637,12 +650,15 @@ func main() {
 	membershipMap := make(map[int]int)
 
 	userArr := []pkg.User{}
+	searchCounter := 0
 
 	for _, val := range chat {
 		if search {
 			for _, t := range val.Text {
 				if r.MatchString(t) {
-					log.Default().Println(val.AuthorName, val.Text, val.TimestampUsec)
+					searchCounter++
+					break
+					//log.Default().Println(val.AuthorName, val.Text, val.TimestampUsec)
 				}
 			}
 		}
@@ -660,6 +676,11 @@ func main() {
 		}
 		userMap[val.AuthorChannelId] = count + 1
 	}
+
+	if search {
+		log.Default().Printf("Amount of messages containing '%s': %d", *searchPtr, searchCounter)
+	}
+
 	for id, count := range userMap {
 		userArr = append(userArr, pkg.User{Name: channelIdUserMap[id], AmountChats: count, Membership: channelIdMemberMap[id]})
 	}
