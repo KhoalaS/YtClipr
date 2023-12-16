@@ -651,18 +651,23 @@ func main() {
 
 	userArr := []pkg.User{}
 	searchCounter := 0
+	searchUsers := make(map[string]int)
+	searchUserMessage := make(map[string]string)
 
 	for _, val := range chat {
 		if search {
 			for _, t := range val.Text {
-				if r.MatchString(t) {
+				if f := r.FindString(t); len(f) > 0 {
+					if _, ex := searchUserMessage[val.AuthorChannelId]; !ex {
+						searchUserMessage[val.AuthorChannelId] = f
+					}
 					searchCounter++
+					searchUsers[val.AuthorChannelId]++
 					break
 					//log.Default().Println(val.AuthorName, val.Text, val.TimestampUsec)
 				}
 			}
 		}
-		count := userMap[val.AuthorChannelId]
 		if _, ex := channelIdUserMap[val.AuthorChannelId]; !ex {
 			channelIdUserMap[val.AuthorChannelId] = val.AuthorName
 			for _, badge := range val.Badges {
@@ -674,11 +679,16 @@ func main() {
 			}
 
 		}
-		userMap[val.AuthorChannelId] = count + 1
+		userMap[val.AuthorChannelId]++
 	}
 
 	if search {
-		log.Default().Printf("Amount of messages containing '%s': %d", *searchPtr, searchCounter)
+		fmt.Printf("Amount of messages containing '%s': %d\n", *searchPtr, searchCounter)
+		fmt.Printf("Amount of users sending messages containing '%s': %d\n", *searchPtr, len(searchUsers))
+		mapFile, _ := os.Create("./out/searchUserMessage.json")
+		mapBytes, _ := json.Marshal(searchUserMessage)
+		mapFile.Write(mapBytes)
+		mapFile.Close()
 	}
 
 	for id, count := range userMap {
