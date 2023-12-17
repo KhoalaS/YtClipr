@@ -620,7 +620,9 @@ func main() {
 	pkg.MakeDir("./out")
 	pkg.MakeDir("./plots")
 
-	searchPtr := flag.String("s", "", "Word to search for in chat message")
+	searchPtr := flag.String("s", "", "Regex to search for in chat message")
+	extract := flag.Bool("x", false, "Extract the matched string")
+
 	flag.Parse()
 
 	args := flag.Args()
@@ -659,7 +661,11 @@ func main() {
 			for _, t := range val.Text {
 				if f := r.FindString(t); len(f) > 0 {
 					if _, ex := searchUserMessage[val.AuthorChannelId]; !ex {
-						searchUserMessage[val.AuthorChannelId] = f
+						if *extract {
+							searchUserMessage[val.AuthorChannelId] = f
+						} else {
+							searchUserMessage[val.AuthorChannelId] = t
+						}
 					}
 					searchCounter++
 					searchUsers[val.AuthorChannelId]++
