@@ -40,6 +40,8 @@ func GetRates(client *http.Client) ExchangeRateResponse {
 		return oldExObj
 	}
 
+	var exObj ExchangeRateResponse
+
 	API_KEY := os.Getenv("OPENEX_KEY")
 	url := fmt.Sprintf("https://openexchangerates.org/api/latest.json?app_id=%s", API_KEY)
 	req, _ := http.NewRequest("GET", url, nil)
@@ -47,20 +49,18 @@ func GetRates(client *http.Client) ExchangeRateResponse {
 
 	check(err)
 
-	if res.StatusCode != 200 {
-		log.Fatal(res.Status)
+	if res.StatusCode == 200 {
+		defer res.Body.Close()
+		resBodyBytes, _ := io.ReadAll(res.Body)
+
+		werr := os.WriteFile("./out/latest.json", resBodyBytes, 0644)
+		check(werr)
+
+		err = json.Unmarshal(resBodyBytes, &exObj)
+		check(err)
+	} else {
+		return oldExObj
 	}
-
-	defer res.Body.Close()
-	resBodyBytes, _ := io.ReadAll(res.Body) 
-	
-	werr := os.WriteFile("./out/latest.json", resBodyBytes, 0644)
-	check(werr)
-
-	var exObj ExchangeRateResponse
-	
-	err = json.Unmarshal(resBodyBytes, &exObj)
-	check(err)
 
 	return exObj
 }

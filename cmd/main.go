@@ -499,6 +499,9 @@ func getChatMembershipBarChart(membershipMap map[int]int) *charts.Bar {
 			memberMax = i
 		}
 	}
+	if memberMax == -1 {
+		memberMax = 0
+	}
 
 	memberLabels := make([]string, memberMax+1)
 	for i := 0; i < memberMax+1; i++ {
