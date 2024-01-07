@@ -605,7 +605,7 @@ func getMembershipPieChart(gifts []pkg.GiftItem) *charts.Pie {
 
 	pie.SetGlobalOptions(
 		charts.WithTitleOpts(opts.Title{Title: "Amount Membership Gifts"}),
-		charts.WithColorsOpts(opts.Colors{"#00e5ff", "#ffca28", "#f57c00","#e91e63", "#e62117"}),
+		charts.WithColorsOpts(opts.Colors{"#1de9b6", "#f57c00", "#e91e63","#e62117", "#8c0b0b"}),
 	)
 
 	pie.AddSeries("Superchats", items).
