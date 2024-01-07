@@ -4,3 +4,5 @@ testing
 out
 plots
 test.go
+*.exe
+main

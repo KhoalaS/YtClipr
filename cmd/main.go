@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"regexp"
 	"sort"
 	"strconv"
@@ -25,6 +26,8 @@ import (
 )
 
 var client = http.Client{}
+
+const frameDuration = 60000
 
 const userAgent string = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
 
@@ -44,13 +47,13 @@ func errLog(err error, msg string) {
 	}
 }
 
-func getMemberOffers(channelHandle string){
+func getMemberOffers(channelHandle string) {
 	req := baseRequest("GET", fmt.Sprintf("https://www.youtube.com/@%s", channelHandle))
 	res, _ := client.Do(req)
 
 	if res.StatusCode != 200 {
 		log.Default().Printf("Could not fetch info of channel %s\n", channelHandle)
-		return 
+		return
 	}
 
 	defer res.Body.Close()
@@ -89,7 +92,7 @@ func getContinuation(url string) string {
 
 	if res.StatusCode != 200 {
 		log.Fatal("Could not request next continuation id...")
-		return ""		
+		return ""
 	}
 
 	defer res.Body.Close()
@@ -99,7 +102,21 @@ func getContinuation(url string) string {
 	}
 	text := string(bytes)
 	r := regexp.MustCompile(`"continuation":"([^\"]+)"`)
+	tr := regexp.MustCompile(`<title>(.+)<\/title>`)
+
 	cont := r.FindAllStringSubmatch(text, 3)
+	titleMatch := tr.FindStringSubmatch(text)
+
+	go func() {
+		f, _ := os.Create("./out/title.txt")
+		defer f.Close()
+
+		if len(titleMatch) != 2 {
+			log.Fatal("Could not extract title")
+		} else {
+			f.Write([]byte(titleMatch[1]))
+		}
+	}()
 
 	if len(cont) != 3 {
 		log.Fatal("Could not find continuation for live-chat")
@@ -150,7 +167,7 @@ func getKey() string {
 func parseBadges(rawBadges []pkg.AuthorBadges) []pkg.Badge {
 	memberRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Monate*\)`)
 	memberYearRegex := regexp.MustCompile(`Mitglied\s\((\d+)\x{00a0}Jahr[e*]*\)`)
-	
+
 	badges := make([]pkg.Badge, len(rawBadges))
 
 	for i, badge := range rawBadges {
@@ -162,10 +179,10 @@ func parseBadges(rawBadges []pkg.AuthorBadges) []pkg.Badge {
 		} else if tooltip == "Neues Mitglied" {
 			duration := -1
 			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
-		} else if member := memberRegex.FindStringSubmatch(tooltip); member != nil{
+		} else if member := memberRegex.FindStringSubmatch(tooltip); member != nil {
 			duration, _ := strconv.Atoi(member[1])
 			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration}
-		} else if member := memberYearRegex.FindStringSubmatch(tooltip); member != nil{
+		} else if member := memberYearRegex.FindStringSubmatch(tooltip); member != nil {
 			duration, _ := strconv.Atoi(member[1])
 			badges[i] = pkg.Badge{Type: pkg.MEMBER, Duration: duration * 12}
 		}
@@ -351,7 +368,7 @@ func getLiveChatResponse(url string) {
 		}
 		obj = tempObj
 
-		time.Sleep(100*time.Millisecond)
+		time.Sleep(100 * time.Millisecond)
 	}
 
 	m, _ := json.Marshal(chat)
@@ -398,6 +415,14 @@ func loadGiftJsonData(path string, chatObj *[]pkg.GiftItem) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func loadTitle() string {
+	dat, err := os.ReadFile("./out/title.txt")
+	if err != nil {
+		return ""
+	}
+	return strings.Trim(string(dat), "\n")
 }
 
 func getSuperchatPieData(scMap map[int64]int) []opts.PieData {
@@ -534,9 +559,7 @@ func getChatMembershipBarChart(membershipMap map[int]int) *charts.Bar {
 	return memBar
 }
 
-func getChatMessagesBarChart(chat []pkg.ChatItem, superchats []pkg.SuperchatItem, membershipMap map[int]int) *charts.Bar {
-	frameDuration := 60000
-
+func getChatMessagesBarChart(chat []pkg.ChatItem, superchats []pkg.SuperchatItem) *charts.Bar {
 	labels := make([]string, chat[len(chat)-1].VideoOffsetTimeMsec/frameDuration)
 	for i := range labels {
 		m := i % 60
@@ -569,7 +592,7 @@ func getChatMessagesBarChart(chat []pkg.ChatItem, superchats []pkg.SuperchatItem
 	for key, value := range timeMap {
 		timeData[key] = opts.BarData{Value: value}
 	}
-	
+
 	for key, value := range scTimeMap {
 		scTimeData[key] = opts.BarData{Value: value}
 	}
@@ -605,7 +628,7 @@ func getMembershipPieChart(gifts []pkg.GiftItem) *charts.Pie {
 
 	pie.SetGlobalOptions(
 		charts.WithTitleOpts(opts.Title{Title: "Amount Membership Gifts"}),
-		charts.WithColorsOpts(opts.Colors{"#1de9b6", "#f57c00", "#e91e63","#e62117", "#8c0b0b"}),
+		charts.WithColorsOpts(opts.Colors{"#1de9b6", "#f57c00", "#e91e63", "#e62117", "#8c0b0b"}),
 	)
 
 	pie.AddSeries("Superchats", items).
@@ -618,6 +641,83 @@ func getMembershipPieChart(gifts []pkg.GiftItem) *charts.Pie {
 	return pie
 }
 
+func downloadTopNClips(chat []pkg.ChatItem, n int, title string, url string) {
+	timeMap := make(map[int]int)
+
+	for _, val := range chat {
+		timeframe := val.VideoOffsetTimeMsec / frameDuration
+		timeMap[timeframe] = timeMap[timeframe] + 1
+	}
+
+	timeArr := make([]pkg.ChatData, len(timeMap))
+	i := 0
+
+	for ts, val := range timeMap {
+		timeArr[i] = pkg.ChatData{Timestamp: ts, Value: val}
+		i++
+	}
+	sort.Slice(timeArr, func(i2, j int) bool {
+		return timeArr[j].Value < timeArr[i2].Value
+	})
+
+	os.Mkdir(title, 0775)
+
+	ytdlp := exec.Command("yt-dlp")
+
+	topn := timeArr[:n]
+	for _, val := range topn {
+		m := val.Timestamp % 60
+		h := (val.Timestamp - m) / 60
+
+		mStart := m - 1
+		hStart := h
+
+		if mStart < 0 && h > 0 {
+			m = 59
+			hStart--
+		} else if mStart < 0 {
+			m = 0
+		}
+
+		if m == 59 {
+			m = 0
+			h++
+		}else{
+			m++
+		}
+
+		mStartStr := fmt.Sprintf("%d", mStart)
+		if mStart < 10 {
+			mStartStr = "0" + mStartStr
+		}
+
+		hStartStr := fmt.Sprintf("%d", hStart)
+		if hStart < 10 {
+			hStartStr = "0" + hStartStr
+		}
+
+		mStr := fmt.Sprintf("%d", m)
+		if m < 10 {
+			mStr = "0" + mStr
+		}
+
+		hStr := fmt.Sprintf("%d", h)
+		if h < 10 {
+			hStr = "0" + hStr
+		}
+
+		dl := fmt.Sprintf("--download-sections=*%s:%s:40-%s:%s:20", hStartStr, mStartStr, hStr, mStr)
+		ytdlp.Args = append(ytdlp.Args, dl)
+	}
+	ytdlp.Args = append(ytdlp.Args, "-o", fmt.Sprintf("%s/%%(section_start)s.%%(ext)s", title), url)
+
+	ytdlp.Stdout = os.Stdout
+	ytdlp.Stderr = os.Stderr
+	ytdlp.Start()
+	ytdlp.Wait()
+
+}
+
 func main() {
 
 	pkg.MakeDir("./out")
@@ -625,11 +725,13 @@ func main() {
 
 	searchPtr := flag.String("s", "", "Regex to search for in chat message")
 	extract := flag.Bool("x", false, "Extract the matched string")
+	topn := flag.Int("t", 0, "Download the top n most active sections.")
+	local := flag.Bool("l", false, "Use local files for charts.")
 
 	flag.Parse()
 
 	args := flag.Args()
-	if len(args) > 0 {
+	if len(args) > 0 && !*local {
 		getLiveChatResponse(args[0])
 	}
 
@@ -648,6 +750,7 @@ func main() {
 	loadChatJsonData("./out/chat.json", &chat)
 	loadSuperchatJsonData("./out/superchats.json", &superchats)
 	loadGiftJsonData("./out/gifts.json", &gifts)
+	title := loadTitle()
 
 	userMap := make(map[string]int)
 	channelIdUserMap := make(map[string]string)
@@ -716,17 +819,21 @@ func main() {
 		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
 	}
 
+	if *topn > 0 && len(args) > 0 {
+		downloadTopNClips(chat, *topn, title, args[0])
+	}
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		page := components.NewPage()
 
 		page.AddCharts(
-			getChatMessagesBarChart(chat, superchats, membershipMap),
+			getChatMessagesBarChart(chat, superchats),
 			getChatMembershipBarChart(membershipMap),
 			getScPieChart(superchats),
 			getScBarChart(superchats),
 			getMembershipPieChart(gifts),
 		)
-	
+
 		page.Render(w)
 	})
 

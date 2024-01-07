@@ -383,4 +383,9 @@ const (
 	RED = 4293271831
 )
 
+type ChatData struct {
+	Timestamp int
+	Value int
+}
+
 	
