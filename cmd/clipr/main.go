@@ -21,6 +21,7 @@ func main() {
 	pkg.MakeDir("./plots")
 
 	searchPtr := flag.String("s", "", "Regex to search for in chat message")
+	userSearch := flag.String("u", "", "Extract the messages of user with given username")
 	extract := flag.Bool("x", false, "Extract the matched string")
 	topn := flag.Int("t", 0, "Download the top n most active sections.")
 	local := flag.Bool("l", false, "Use local files for charts.")
@@ -34,10 +35,15 @@ func main() {
 
 	var r *regexp.Regexp
 	search := false
+	uSearch := false
 
 	if len(*searchPtr) != 0 {
 		r, _ = regexp.Compile(*searchPtr)
 		search = true
+	}
+
+	if len(*userSearch) != 0 {
+		uSearch = true
 	}
 
 	chat := []pkg.ChatItem{}
@@ -57,17 +63,23 @@ func main() {
 	userArr := []pkg.User{}
 	searchCounter := 0
 	searchUsers := make(map[string]int)
-	searchUserMessage := make(map[string]string)
+	searchMessage := make(map[string]string)
+	searchUser := []pkg.ChatItem{}
 
 	for _, val := range chat {
+		if uSearch {
+			if val.AuthorName == *userSearch {
+				searchUser = append(searchUser, val)
+			}
+		}
 		if search {
 			for _, t := range val.Text {
 				if f := r.FindString(t); len(f) > 0 {
-					if _, ex := searchUserMessage[val.AuthorChannelId]; !ex {
+					if _, ex := searchMessage[val.AuthorChannelId]; !ex {
 						if *extract {
-							searchUserMessage[val.AuthorChannelId] = f
+							searchMessage[val.AuthorChannelId] = f
 						} else {
-							searchUserMessage[val.AuthorChannelId] = t
+							searchMessage[val.AuthorChannelId] = t
 						}
 					}
 					searchCounter++
@@ -94,10 +106,19 @@ func main() {
 	if search {
 		fmt.Printf("Amount of messages containing '%s': %d\n", *searchPtr, searchCounter)
 		fmt.Printf("Amount of users sending messages containing '%s': %d\n", *searchPtr, len(searchUsers))
-		mapFile, _ := os.Create("./out/searchUserMessage.json")
-		mapBytes, _ := json.Marshal(searchUserMessage)
+		mapFile, _ := os.Create("./out/searchMessage.json")
+		mapBytes, _ := json.Marshal(searchMessage)
 		mapFile.Write(mapBytes)
 		mapFile.Close()
+	}
+
+	if uSearch {
+		fmt.Printf("Amount of messages from '%s': %d\n", *userSearch, len(searchUser))
+		mapFile, _ := os.Create("./out/searchUserMessage.json")
+		mapBytes, _ := json.Marshal(searchUser)
+		mapFile.Write(mapBytes)
+		mapFile.Close()
+		
 	}
 
 	for id, count := range userMap {
