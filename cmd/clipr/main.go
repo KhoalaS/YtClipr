@@ -23,12 +23,6 @@ var client = http.Client{}
 var db *sql.DB
 
 func main() {
-	var err error
-	db, err = sql.Open("sqlite", "out/data.db")
-	if err != nil {
-		log.Fatal(err)
-	}
-
 	pkg.MakeDir("./out")
 	pkg.MakeDir("./plots")
 
@@ -36,6 +30,7 @@ func main() {
 	userSearch := flag.String("u", "", "Extract the messages of user with given username")
 	extract := flag.Bool("x", false, "Extract the matched string")
 	topn := flag.Int("t", 0, "Download the top n most active sections.")
+	dbpath := flag.String("db", "./out/data.db", "path to database")
 
 	flag.Parse()
 
@@ -44,6 +39,12 @@ func main() {
 	if len(args) == 0 {
 		log.Println("No youtube url argument")
 		return
+	}
+
+	var err error
+	db, err = sql.Open("sqlite", *dbpath)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	var r *regexp.Regexp
@@ -134,7 +135,6 @@ func main() {
 		mapBytes, _ := json.Marshal(searchUser)
 		mapFile.Write(mapBytes)
 		mapFile.Close()
-
 	}
 
 	for id, count := range userMap {
@@ -153,7 +153,7 @@ func main() {
 		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
 	}
 
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/{$}", func(w http.ResponseWriter, r *http.Request) {
 		page := components.NewPage()
 		page.PageTitle = "Chat Analytics"
 
@@ -189,6 +189,9 @@ func main() {
 
 		embeds := []*pkg.EmbedData{}
 
+		if *topn > len(timeArr) {
+			*topn = len(timeArr)
+		}
 		topArr := timeArr[:*topn]
 		for _, val := range topArr {
 			m := val.Timestamp % 60
@@ -229,7 +232,7 @@ func main() {
 
 			embedUrl := fmt.Sprintf("https://www.youtube.com/embed/%s?&amp;start=%d", vId, secs)
 
-			embed := &pkg.EmbedData{Timestamp: fmt.Sprintf("%s:%s", hStartStr, mStartStr), URL: embedUrl}
+			embed := &pkg.EmbedData{Timestamp: fmt.Sprintf("%s:%s", hStartStr, mStartStr), URL: embedUrl, Amount: val.Value}
 			embeds = append(embeds, embed)
 		}
 

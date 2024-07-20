@@ -2,7 +2,7 @@ body {
     font-family: JetBrains Mono;
 }
 
-td {
-    padding-left: 16px;
+td, th {
+    text-align: center;
     padding-right: 16px;
 }

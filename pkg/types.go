@@ -391,5 +391,6 @@ type ChatData struct {
 type EmbedData struct {
 	URL string
 	Timestamp string
+	Amount int
 }
 	
