@@ -285,6 +285,8 @@ func main() {
 		tmpl, _ := template.ParseFiles("template/search.html")
 		tmpl.Execute(w, nil)
 	})
+
+	http.Handle("/static/", http.FileServer(http.Dir("./")))
 	http.ListenAndServe(":8081", nil)
 }
 
