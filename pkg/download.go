@@ -344,10 +344,11 @@ func DownloadTopNClips(chat []ChatItem, n int, title string, url string) {
 		hStart := h
 
 		if mStart < 0 && h > 0 {
-			m = 59
+			mStart = 59
 			hStart--
 		} else if mStart < 0 {
 			m = 0
+			mStart = 0
 		}
 
 		if m == 59 {
