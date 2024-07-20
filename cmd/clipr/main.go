@@ -264,6 +264,23 @@ func main() {
 		tmpl.Execute(w, res)
 
 	})
+	http.HandleFunc("POST /searchuser", func(w http.ResponseWriter, r *http.Request) {
+		u := r.FormValue("u")
+
+		res := []*FrontendChatItem{}
+
+		for _, c := range chat {
+			if c.AuthorName == u {
+				secs := c.VideoOffsetTimeMsec / 1000
+				url := fmt.Sprintf("https://youtube.com/watch?v=%s&t=%ds", vId, secs)
+				res = append(res, &FrontendChatItem{c, url})
+			}
+		}
+
+		tmpl, _ := template.ParseFiles("template/searchresult.html")
+		tmpl.Execute(w, res)
+
+	})
 	http.HandleFunc("GET /s", func(w http.ResponseWriter, r *http.Request) {
 		tmpl, _ := template.ParseFiles("template/search.html")
 		tmpl.Execute(w, nil)
