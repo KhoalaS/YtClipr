@@ -6,3 +6,4 @@ plots
 test.go
 *.exe
 main
+*.webm
