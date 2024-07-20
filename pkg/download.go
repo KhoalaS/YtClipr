@@ -1,11 +1,15 @@
 package pkg
 
 import (
+	"bytes"
+	"database/sql"
 	"encoding/json"
+	"errors"
 	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"net/url"
 	"os"
 	"os/exec"
 	"regexp"
@@ -13,13 +17,11 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"bytes"
 
 	"github.com/anaskhan96/soup"
 )
 
 const userAgent string = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36"
-
 
 func liveChatRequest(reqObj LiveChatReqBody, key string) *http.Request {
 	bodyBytes, err := json.Marshal(reqObj)
@@ -57,21 +59,8 @@ func getContinuation(url string, client *http.Client) string {
 	}
 	text := string(bytes)
 	r := regexp.MustCompile(`"continuation":"([^\"]+)"`)
-	tr := regexp.MustCompile(`<title>(.+)<\/title>`)
 
 	cont := r.FindAllStringSubmatch(text, 3)
-	titleMatch := tr.FindStringSubmatch(text)
-
-	go func() {
-		f, _ := os.Create("./out/title.txt")
-		defer f.Close()
-
-		if len(titleMatch) != 2 {
-			log.Fatal("Could not extract title")
-		} else {
-			f.Write([]byte(titleMatch[1]))
-		}
-	}()
 
 	if len(cont) != 3 {
 		log.Fatal("Could not find continuation for live-chat")
@@ -127,14 +116,39 @@ func getKey(client *http.Client) string {
 	return ""
 }
 
-func GetLiveChatResponse(url string, client *http.Client) {
+func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB) ([]ChatItem, []GiftItem, []SuperchatItem) {
+
+	pUrl, _ := url.Parse(rawUrl)
+	vId := pUrl.Query().Get("v")
+	if len(vId) == 0 {
+		log.Fatal("Invalid url")
+	}
+
 	chat := []ChatItem{}
 	gifts := []GiftItem{}
 	superchats := []SuperchatItem{}
 
+	var cData []byte
+	var gData []byte
+	var sData []byte
+
+	row := db.QueryRow("SELECT data FROM chats WHERE id = ?", vId)
+	if !errors.Is(row.Scan(&cData), sql.ErrNoRows) {
+		gRow := db.QueryRow("SELECT data FROM gifts WHERE id = ?", vId)
+		gRow.Scan(&gData)
+		sRow := db.QueryRow("SELECT data FROM superchats WHERE id = ?", vId)
+		sRow.Scan(&sData)
+
+		json.Unmarshal(cData, &chat)
+		json.Unmarshal(gData, &gifts)
+		json.Unmarshal(sData, &superchats)
+
+		return chat, gifts, superchats
+	}
+
 	key := getKey(client)
 	fmt.Printf("Aquired API key: %s\n", key)
-	contId := getContinuation(url, client)
+	contId := getContinuation(rawUrl, client)
 	fmt.Printf("Aquired continuation ID: %s\n", contId)
 
 	req := getLivechatReq(contId)
@@ -143,7 +157,7 @@ func GetLiveChatResponse(url string, client *http.Client) {
 
 	if res.StatusCode != 200 {
 		log.Default().Println("Could not make request")
-		return
+		return nil, nil, nil
 	}
 
 	bodyBytes, err := io.ReadAll(res.Body)
@@ -161,7 +175,7 @@ func GetLiveChatResponse(url string, client *http.Client) {
 
 	log.Default().Println("Successful initial request...")
 
-	for true {
+	for {
 		for _, val := range obj.ContinuationContents.LiveChatContinuation.Actions {
 			renderer := val.ReplayChatItemAction.Actions[0].AddChatItemAction.Item.LiveChatTextMessageRenderer
 			if renderer == nil {
@@ -291,25 +305,26 @@ func GetLiveChatResponse(url string, client *http.Client) {
 	}
 
 	m, _ := json.Marshal(chat)
-
-	werr := os.WriteFile("./out/chat.json", m, 0644)
-	if werr != nil {
-		log.Fatal(werr)
+	_, err = db.Exec("INSERT INTO chats VALUES (?,?)", vId, m)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	g, _ := json.Marshal(gifts)
 
-	werr = os.WriteFile("./out/gifts.json", g, 0644)
-	if werr != nil {
-		log.Fatal(werr)
+	_, err = db.Exec("INSERT INTO gifts VALUES (?,?)", vId, g)
+	if err != nil {
+		log.Fatal(err)
 	}
 
 	s, _ := json.Marshal(superchats)
 
-	werr = os.WriteFile("./out/superchats.json", s, 0644)
-	if werr != nil {
-		log.Fatal(werr)
+	_, err = db.Exec("INSERT INTO superchats VALUES (?,?)", vId, s)
+	if err != nil {
+		log.Fatal(err)
 	}
+
+	return chat, gifts, superchats
 }
 
 func DownloadTopNClips(chat []ChatItem, n int, title string, url string) {
@@ -354,7 +369,7 @@ func DownloadTopNClips(chat []ChatItem, n int, title string, url string) {
 		if m == 59 {
 			m = 0
 			h++
-		}else{
+		} else {
 			m++
 		}
 

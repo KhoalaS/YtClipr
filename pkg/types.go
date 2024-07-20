@@ -388,4 +388,8 @@ type ChatData struct {
 	Value int
 }
 
+type EmbedData struct {
+	URL string
+	Timestamp string
+}
 	

@@ -34,7 +34,7 @@ func GetMembershipPieChart(gifts []GiftItem) *charts.Pie {
 	pie.AddSeries("Superchats", items).
 		SetSeriesOptions(charts.WithLabelOpts(
 			opts.Label{
-				Show:      true,
+				Show:      opts.Bool(true),
 				Formatter: "{b}: {c}",
 			}),
 		)
@@ -83,8 +83,8 @@ func GetChatMessagesBarChart(chat []ChatItem, superchats []SuperchatItem) *chart
 
 	bar.SetGlobalOptions(charts.WithTitleOpts(opts.Title{
 		Title: "Amount of Chat Messages per Minute"}),
-		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
-		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: opts.Bool(true)}),
+		charts.WithLegendOpts(opts.Legend{Show: opts.Bool(true), Right: "80px"}),
 	)
 
 	bar.SetXAxis(labels).
@@ -127,8 +127,8 @@ func GetChatMembershipBarChart(membershipMap map[int]int) *charts.Bar {
 		charts.WithTitleOpts(
 			opts.Title{
 				Title: "Amount Chatters with Membership by Duration[Month]"}),
-		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
-		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: opts.Bool(true)}),
+		charts.WithLegendOpts(opts.Legend{Show: opts.Bool(true), Right: "80px"}),
 	)
 
 	memBar.SetXAxis(memberLabels).AddSeries("Duration", memberShipData)
@@ -147,8 +147,8 @@ func GetScBarChart(superchats []SuperchatItem, client *http.Client) *charts.Bar 
 
 	bar := charts.NewBar()
 	bar.SetGlobalOptions(
-		charts.WithTooltipOpts(opts.Tooltip{Show: true, Formatter: "${c}"}),
-		charts.WithLegendOpts(opts.Legend{Show: true, Right: "80px"}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: opts.Bool(true), Formatter: "${c}"}),
+		charts.WithLegendOpts(opts.Legend{Show: opts.Bool(true), Right: "80px"}),
 		charts.WithTitleOpts(opts.Title{Title: "Dollar Amount Superchats"}),
 		charts.WithColorsOpts(opts.Colors{"#1e88e5", "#00e5ff", "#1de9b6", "#ffca28", "#f57c00", "#e91e63", "#e62117"}),
 	)
@@ -189,7 +189,7 @@ func GetScPieChart(superchats []SuperchatItem, client *http.Client) *charts.Pie 
 	pie.AddSeries("Superchats", items).
 		SetSeriesOptions(charts.WithLabelOpts(
 			opts.Label{
-				Show:      true,
+				Show:      opts.Bool(true),
 				Formatter: "{b}: {c}",
 			}),
 		)
