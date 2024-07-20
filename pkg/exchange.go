@@ -43,11 +43,18 @@ func GetRates(client *http.Client) ExchangeRateResponse {
 	var exObj ExchangeRateResponse
 
 	API_KEY := os.Getenv("OPENEX_KEY")
+
+	if len(API_KEY) == 0 {
+		return oldExObj
+	}
+
 	url := fmt.Sprintf("https://openexchangerates.org/api/latest.json?app_id=%s", API_KEY)
 	req, _ := http.NewRequest("GET", url, nil)
 	res, err := client.Do(req)
 
-	check(err)
+	if err != nil {
+		return oldExObj
+	}
 
 	if res.StatusCode == 200 {
 		defer res.Body.Close()
