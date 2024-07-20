@@ -8,3 +8,4 @@ test.go
 main
 *.webm
 *.mp4
+build/*
