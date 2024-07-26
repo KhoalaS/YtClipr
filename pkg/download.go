@@ -39,7 +39,7 @@ func liveChatRequest(reqObj LiveChatReqBody, key string) *http.Request {
 	return req
 }
 
-func getContinuation(url string, client *http.Client) string {
+func getContinuation(url string, client *http.Client) (string, int) {
 	req := baseRequest("GET", url)
 
 	res, err := client.Do(req)
@@ -49,7 +49,6 @@ func getContinuation(url string, client *http.Client) string {
 
 	if res.StatusCode != 200 {
 		log.Fatal("Could not request next continuation id...")
-		return ""
 	}
 
 	defer res.Body.Close()
@@ -65,8 +64,28 @@ func getContinuation(url string, client *http.Client) string {
 	if len(cont) != 3 {
 		log.Fatal("Could not find continuation for live-chat")
 	}
+
+	duration := 1
+	durRegex := regexp.MustCompile(`<meta itemprop="duration" content="PT(.+?)">`)
+	matches := durRegex.FindStringSubmatch(text)
+
+	if len(matches) == 2 {
+		minutes := 0
+		seconds := 0
+		offset := 0
+		for idx, c := range matches[1] {
+			if c == 'M' {
+				minutes, _ = strconv.Atoi(matches[1][offset:idx])
+				offset = idx + 1
+			} else if c == 'S' {
+				seconds, _ = strconv.Atoi(matches[1][offset:idx])
+			}
+		}
+		duration = (seconds + 60*minutes) * 1000
+	}
+
 	os.WriteFile("./out/getContRes.html", bytes, 0644)
-	return cont[2][1]
+	return cont[2][1], duration
 }
 
 func baseRequest(method string, url string) *http.Request {
@@ -88,35 +107,37 @@ func getLivechatReq(id string) *http.Request {
 }
 
 func getKey(client *http.Client) string {
-	req := baseRequest("GET", "https://youtube.com")
+	/*
+		req := baseRequest("GET", "https://youtube.com")
 
-	res, err := client.Do(req)
-	errLog(err, "Could not make request for key")
+		res, err := client.Do(req)
+		errLog(err, "Could not make request for key")
 
-	if res.StatusCode != 200 {
-		log.Fatal(res.Status)
-	}
-	defer res.Body.Close()
+		if res.StatusCode != 200 {
+			log.Fatal(res.Status)
+		}
+		defer res.Body.Close()
 
-	body, err := io.ReadAll(res.Body)
+		body, err := io.ReadAll(res.Body)
 
-	if err != nil {
-		log.Fatal("Could not read body")
-	}
+		if err != nil {
+			log.Fatal("Could not read body")
+		}
 
-	bodyHtml := string(body)
+		bodyHtml := string(body)
 
-	r := regexp.MustCompile(`"INNERTUBE_API_KEY":"([^"]+)"`)
-	matches := r.FindStringSubmatch(bodyHtml)
-	if matches != nil {
-		return matches[1]
-	} else {
-		log.Fatal("Could not find key")
-	}
-	return ""
+		r := regexp.MustCompile(`"INNERTUBE_API_KEY":"([^"]+)"`)
+		matches := r.FindStringSubmatch(bodyHtml)
+		if matches != nil {
+			return matches[1]
+		} else {
+			log.Fatal("Could not find key")
+		}
+	*/
+	return "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
 }
 
-func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB) ([]ChatItem, []GiftItem, []SuperchatItem) {
+func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset *int, duration *int) ([]ChatItem, []GiftItem, []SuperchatItem) {
 
 	pUrl, _ := url.Parse(rawUrl)
 	vId := pUrl.Query().Get("v")
@@ -143,12 +164,15 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB) ([]Chat
 		json.Unmarshal(gData, &gifts)
 		json.Unmarshal(sData, &superchats)
 
+		*duration = 1
+		*offset = 1
 		return chat, gifts, superchats
 	}
 
 	key := getKey(client)
 	fmt.Printf("Aquired API key: %s\n", key)
-	contId := getContinuation(rawUrl, client)
+	contId, d := getContinuation(rawUrl, client)
+	*duration = d
 	fmt.Printf("Aquired continuation ID: %s\n", contId)
 
 	req := getLivechatReq(contId)
@@ -273,12 +297,13 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB) ([]Chat
 
 		contId = obj.ContinuationContents.LiveChatContinuation.Continuations[0].LiveChatReplayContinuationData.Continuation
 		lastOffset := chat[len(chat)-1].VideoOffsetTimeMsec
+		*offset = lastOffset
 		if len(obj.ContinuationContents.LiveChatContinuation.Continuations) == 1 {
 			break
 		}
 
 		reqObj := NewLiveChatReqBody(contId, lastOffset)
-		log.Default().Printf("Parsed all chat messages until offset %d\r", lastOffset)
+		//log.Default().Printf("Parsed all chat messages until offset %d\r", lastOffset)
 
 		req := liveChatRequest(reqObj, key)
 
@@ -323,6 +348,8 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB) ([]Chat
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	*offset = *duration
 
 	return chat, gifts, superchats
 }

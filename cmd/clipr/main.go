@@ -3,16 +3,16 @@ package main
 import (
 	"com/khoa/ytc-dl/pkg"
 	"database/sql"
-	"encoding/json"
 	"flag"
 	"fmt"
 	"html/template"
 	"log"
+	"net"
 	"net/http"
 	"net/url"
-	"os"
 	"regexp"
 	"sort"
+	"time"
 
 	"github.com/go-echarts/go-echarts/v2/components"
 
@@ -26,20 +26,10 @@ func main() {
 	pkg.MakeDir("./out")
 	pkg.MakeDir("./plots")
 
-	searchPtr := flag.String("s", "", "Regex to search for in chat message")
-	userSearch := flag.String("u", "", "Extract the messages of user with given username")
-	extract := flag.Bool("x", false, "Extract the matched string")
-	topn := flag.Int("t", 0, "Download the top n most active sections.")
+	topn := flag.Int("t", 100, "display top t active sections.")
 	dbpath := flag.String("db", "./out/data.db", "path to database")
 
 	flag.Parse()
-
-	args := flag.Args()
-
-	if len(args) == 0 {
-		log.Println("No youtube url argument")
-		return
-	}
 
 	var err error
 	db, err = sql.Open("sqlite", *dbpath)
@@ -47,113 +37,106 @@ func main() {
 		log.Fatal(err)
 	}
 
-	var r *regexp.Regexp
-	search := false
-	uSearch := false
+	var chat []pkg.ChatItem
+	var gifts []pkg.GiftItem
+	var superchats []pkg.SuperchatItem
+	duration := 0
+	offset := 0
 
-	if len(*searchPtr) != 0 {
-		r, _ = regexp.Compile(*searchPtr)
-		search = true
-	}
+	var userMap map[string]int
+	var channelIdUserMap map[string]string
+	var channelIdMemberMap map[string]int
+	var membershipMap map[int]int
 
-	if len(*userSearch) != 0 {
-		uSearch = true
-	}
+	var userArr []pkg.User
+	var vId string
 
-	pUrl, err := url.Parse(args[0])
+	urlRegex := regexp.MustCompile(`https:\/\/www\.youtube\.com\/watch\?v=.+`)
+
+	l, err := net.Listen("tcp", ":8082")
 	if err != nil {
-		log.Fatalf("Invalid url %s\n", args[0])
+		log.Fatal(err)
 	}
 
-	vId := pUrl.Query().Get("v")
-	if len(vId) == 0 {
-		log.Fatalf("Invalid url %s, no video id\n", args[0])
+	wsServer := &http.Server{
+		Handler: pkg.EchoServer{
+			LogF: log.Printf,
+			Duration: &duration,
+			Offset: &offset,
+		},
+		ReadTimeout:  time.Second * 10,
+		WriteTimeout: time.Second * 10,
 	}
 
-	chat, gifts, superchats := pkg.GetLiveChatResponse(args[0], &client, db)
+	go wsServer.Serve(l)
 
-	userMap := make(map[string]int)
-	channelIdUserMap := make(map[string]string)
-	channelIdMemberMap := make(map[string]int)
-	membershipMap := make(map[int]int)
+	mux := http.NewServeMux()
 
-	userArr := []pkg.User{}
-	searchCounter := 0
-	searchUsers := make(map[string]int)
-	searchMessage := make(map[string]string)
-	searchUser := []pkg.ChatItem{}
 
-	for _, val := range chat {
-		if uSearch {
-			if val.AuthorName == *userSearch {
-				searchUser = append(searchUser, val)
-			}
+	mux.HandleFunc("GET /users", func(w http.ResponseWriter, r *http.Request) {
+		tmpl, _ := template.ParseFiles("template/users.html")
+		n := 100
+		if len(userArr) < 100 {
+			n = len(userArr)
 		}
-		if search {
-			for _, t := range val.Text {
-				if f := r.FindString(t); len(f) > 0 {
-					if _, ex := searchMessage[val.AuthorChannelId]; !ex {
-						if *extract {
-							searchMessage[val.AuthorChannelId] = f
-						} else {
-							searchMessage[val.AuthorChannelId] = t
-						}
+
+		loyalty := loyaltyScore(userMap, channelIdMemberMap)
+		tmpl.Execute(w, struct {
+			Data    []pkg.User
+			Loyalty float64
+		}{
+			userArr[:n],
+			loyalty,
+		})
+	})
+	mux.HandleFunc("/analyze", func(w http.ResponseWriter, r *http.Request) {
+		rawUrl := r.FormValue("url")
+		if !urlRegex.MatchString(rawUrl) {
+			w.WriteHeader(424)
+			w.Write([]byte("not a youtube url"))
+			return
+		}
+
+		userMap = make(map[string]int)
+		channelIdUserMap = make(map[string]string)
+		channelIdMemberMap = make(map[string]int)
+		membershipMap = make(map[int]int)
+		userArr = []pkg.User{}
+
+		pUrl, err := url.Parse(rawUrl)
+		if err != nil {
+			w.WriteHeader(424)
+			w.Write([]byte("parse error"))
+			return
+		}
+
+		vId = pUrl.Query().Get("v")
+		chat, gifts, superchats= pkg.GetLiveChatResponse(fmt.Sprintf("https://www.youtube.com/watch?v=%s", vId), &client, db, &offset, &duration)
+		for _, val := range chat {
+			if _, ex := channelIdUserMap[val.AuthorChannelId]; !ex {
+				channelIdUserMap[val.AuthorChannelId] = val.AuthorName
+				for _, badge := range val.Badges {
+					if badge.Type == pkg.MEMBER {
+						channelIdMemberMap[val.AuthorChannelId] = badge.Duration
+						membershipMap[badge.Duration] = membershipMap[badge.Duration] + 1
+						break
 					}
-					searchCounter++
-					searchUsers[val.AuthorChannelId]++
-					break
-					//log.Default().Println(val.AuthorName, val.Text, val.TimestampUsec)
 				}
+
 			}
+			userMap[val.AuthorChannelId]++
 		}
-		if _, ex := channelIdUserMap[val.AuthorChannelId]; !ex {
-			channelIdUserMap[val.AuthorChannelId] = val.AuthorName
-			for _, badge := range val.Badges {
-				if badge.Type == pkg.MEMBER {
-					channelIdMemberMap[val.AuthorChannelId] = badge.Duration
-					membershipMap[badge.Duration] = membershipMap[badge.Duration] + 1
-					break
-				}
-			}
 
+		for id, count := range userMap {
+			userArr = append(userArr, pkg.User{Name: channelIdUserMap[id], AmountChats: count, Membership: channelIdMemberMap[id]})
 		}
-		userMap[val.AuthorChannelId]++
-	}
 
-	if search {
-		fmt.Printf("Amount of messages containing '%s': %d\n", *searchPtr, searchCounter)
-		fmt.Printf("Amount of users sending messages containing '%s': %d\n", *searchPtr, len(searchUsers))
-		mapFile, _ := os.Create("./out/searchMessage.json")
-		mapBytes, _ := json.Marshal(searchMessage)
-		mapFile.Write(mapBytes)
-		mapFile.Close()
-	}
-
-	if uSearch {
-		fmt.Printf("Amount of messages from '%s': %d\n", *userSearch, len(searchUser))
-		mapFile, _ := os.Create("./out/searchUserMessage.json")
-		mapBytes, _ := json.Marshal(searchUser)
-		mapFile.Write(mapBytes)
-		mapFile.Close()
-	}
-
-	for id, count := range userMap {
-		userArr = append(userArr, pkg.User{Name: channelIdUserMap[id], AmountChats: count, Membership: channelIdMemberMap[id]})
-	}
-
-	sort.Slice(userArr, func(i, j int) bool {
-		return userArr[i].AmountChats > userArr[j].AmountChats
+		sort.Slice(userArr, func(i, j int) bool {
+			return userArr[i].AmountChats > userArr[j].AmountChats
+		})
 	})
 
-	fmt.Printf("%d people sent messages in this stream.\n", len(channelIdUserMap))
-	fmt.Printf("People sent %d chat messages in this stream.\n", len(chat))
-	fmt.Printf("The User '%s' sent the most messages, a total of %d.\n", userArr[0].Name, userArr[0].AmountChats)
-	fmt.Println("Top 5 Chatters")
-	for i := 0; i < 5; i++ {
-		fmt.Printf("User: %s | Messages:%d\n", userArr[i].Name, userArr[i].AmountChats)
-	}
-
-	http.HandleFunc("/{$}", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/stats", func(w http.ResponseWriter, r *http.Request) {
 		page := components.NewPage()
 		page.PageTitle = "Chat Analytics"
 
@@ -167,8 +150,11 @@ func main() {
 
 		page.Render(w)
 	})
-
-	http.HandleFunc("GET /top", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/{$}", func(w http.ResponseWriter, r *http.Request) {
+		tmpl, _ := template.ParseFiles("template/index.html")
+		tmpl.Execute(w, nil)
+	})
+	mux.HandleFunc("GET /top", func(w http.ResponseWriter, r *http.Request) {
 		timeMap := make(map[int]int)
 
 		for _, val := range chat {
@@ -239,8 +225,7 @@ func main() {
 		tmpl, _ := template.ParseFiles("template/top.html")
 		tmpl.Execute(w, embeds)
 	})
-
-	http.HandleFunc("POST /search", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("POST /search", func(w http.ResponseWriter, r *http.Request) {
 		q := r.FormValue("q")
 		reg, _ := regexp.Compile(q)
 
@@ -267,7 +252,7 @@ func main() {
 		tmpl.Execute(w, res)
 
 	})
-	http.HandleFunc("POST /searchuser", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("POST /searchuser", func(w http.ResponseWriter, r *http.Request) {
 		u := r.FormValue("u")
 
 		res := []*FrontendChatItem{}
@@ -284,16 +269,45 @@ func main() {
 		tmpl.Execute(w, res)
 
 	})
-	http.HandleFunc("GET /s", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("GET /s", func(w http.ResponseWriter, r *http.Request) {
 		tmpl, _ := template.ParseFiles("template/search.html")
 		tmpl.Execute(w, nil)
 	})
 
-	http.Handle("/static/", http.FileServer(http.Dir("./")))
-	http.ListenAndServe(":8081", nil)
+	mux.Handle("/static/", http.FileServer(http.Dir("./")))
+	err = http.ListenAndServe(":8081", mux)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
 
 type FrontendChatItem struct {
 	pkg.ChatItem
 	URL string
+}
+
+func loyaltyScore(userMap map[string]int, memberMap map[string]int) float64 {
+	rating := 0.0
+	max := 0
+	maxMem := 0
+	for _, dur := range memberMap {
+		if dur > maxMem {
+			maxMem = dur
+		}
+	}
+
+	for id, count := range userMap {
+		mem := float64(memberMap[id])
+		if mem == -1 {
+			mem = 1
+		} else if mem == 0 {
+			mem = 0.5
+		}
+
+		rank := float64(count) * mem / float64(maxMem)
+		rating += rank
+		max += count
+	}
+
+	return rating / float64(max)
 }
