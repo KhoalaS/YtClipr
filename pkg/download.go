@@ -39,7 +39,7 @@ func liveChatRequest(reqObj LiveChatReqBody, key string) *http.Request {
 	return req
 }
 
-func getContinuation(url string, client *http.Client) (string, int) {
+func getContinuation(url string, client *http.Client) (string, int, int64, string, string, string, string, string) {
 	req := baseRequest("GET", url)
 
 	res, err := client.Do(req)
@@ -67,25 +67,78 @@ func getContinuation(url string, client *http.Client) (string, int) {
 
 	duration := 1
 	durRegex := regexp.MustCompile(`<meta itemprop="duration" content="PT(.+?)">`)
-	matches := durRegex.FindStringSubmatch(text)
+	match := durRegex.FindStringSubmatch(text)
 
-	if len(matches) == 2 {
+	if len(match) == 2 {
 		minutes := 0
 		seconds := 0
 		offset := 0
-		for idx, c := range matches[1] {
+		for idx, c := range match[1] {
 			if c == 'M' {
-				minutes, _ = strconv.Atoi(matches[1][offset:idx])
+				minutes, _ = strconv.Atoi(match[1][offset:idx])
 				offset = idx + 1
 			} else if c == 'S' {
-				seconds, _ = strconv.Atoi(matches[1][offset:idx])
+				seconds, _ = strconv.Atoi(match[1][offset:idx])
 			}
 		}
 		duration = (seconds + 60*minutes) * 1000
 	}
 
+	dateRegex := regexp.MustCompile(`"publishDate":"(.+?)"`)
+	match = dateRegex.FindStringSubmatch(text)
+	var ts int64 = 0
+
+	if len(match) == 2 {
+		// format 2024-07-15T03:04:34-07:00
+		date := match[1]
+		dateParse, _ := time.Parse(time.RFC3339, date)
+		ts = dateParse.Unix()
+	}
+
+	thRegex := regexp.MustCompile(`"thumbnails":\[{"url":"(.+?)"`)
+	match = thRegex.FindStringSubmatch(text)
+	th := ""
+	if len(match) == 2 {
+		th = match[1]
+	}
+
+	title := ""
+	titleRegex := regexp.MustCompile(`<meta name="title" content="(.+?)"`)
+	match = titleRegex.FindStringSubmatch(text)
+	if len(match) == 2 {
+		title = match[1]
+	}
+
+	views := ""
+	viewRegex := regexp.MustCompile(`viewCount":"(.+?)"`)
+	match = viewRegex.FindStringSubmatch(text)
+	if len(match) == 2 {
+		views = match[1]
+	}
+
+	channelId := ""
+	channelRegex := regexp.MustCompile(`"channelId":"(.+?)"`)
+	match = channelRegex.FindStringSubmatch(text)
+	if len(match) == 2 {
+		channelId = match[1]
+	}
+
+	pfpRegex := regexp.MustCompile(`videoOwnerRenderer.+?(\[.+?\])`)
+	match = pfpRegex.FindStringSubmatch(text)
+	pfp := ""
+	if len(match) == 2 {
+		var ths []Thumbnail
+		json.Unmarshal([]byte(match[1]), &ths)
+		for _, th := range ths {
+			pfp = th.Url
+			if th.Height > 80 {
+				break
+			}
+		}
+	}
+
 	os.WriteFile("./out/getContRes.html", bytes, 0644)
-	return cont[2][1], duration
+	return cont[2][1], duration, ts, th, title, views, channelId, pfp
 }
 
 func baseRequest(method string, url string) *http.Request {
@@ -171,8 +224,18 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 
 	key := getKey(client)
 	fmt.Printf("Aquired API key: %s\n", key)
-	contId, d := getContinuation(rawUrl, client)
+	contId, d, ts, th, title, views, channelId, pfp := getContinuation(rawUrl, client)
 	*duration = d
+
+	channel := db.QueryRow("SELECT id FROM channels WHERE id = ?", channelId)
+	if errors.Is(channel.Scan(&channelId), sql.ErrNoRows) {
+		db.Exec("INSERT INTO channels VALUES (?,?)", channelId, pfp)
+	}
+
+	_, err := db.Exec("INSERT INTO streams VALUES (?,?,?,?,?,?,?)", vId, d, ts, th, title, views, channelId)
+	if err != nil {
+		log.Fatal("error inserting into db:", err)
+	}
 	fmt.Printf("Aquired continuation ID: %s\n", contId)
 
 	req := getLivechatReq(contId)
@@ -352,6 +415,29 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 	*offset = *duration
 
 	return chat, gifts, superchats
+}
+
+func Download(start int, stop int, vId string) {
+	outDir := fmt.Sprintf("out/%s", vId)
+	os.MkdirAll(outDir, 0775)
+
+	startH := start / 3600
+	startM := (start % 3600) / 60
+	startS := start % 60
+
+	stopH := stop / 3600
+	stopM := (stop % 3600) / 60
+	stopS := stop % 60
+
+	url := fmt.Sprintf("https://youtube.com/watch?v=%s", vId)
+
+	ytdlp := exec.Command("yt-dlp")
+	ytdlp.Args = append(ytdlp.Args, fmt.Sprintf("--download-sections=*%d:%d:%d-%d:%d:%d", startH, startM, startS, stopH, stopM, stopS))
+	ytdlp.Args = append(ytdlp.Args, "-o", fmt.Sprintf("%s/%%(section_start)s.%%(ext)s", outDir), url)
+	ytdlp.Stdout = os.Stdout
+	ytdlp.Stderr = os.Stderr
+	ytdlp.Start()
+	ytdlp.Wait()
 }
 
 func DownloadTopNClips(chat []ChatItem, n int, title string, url string) {

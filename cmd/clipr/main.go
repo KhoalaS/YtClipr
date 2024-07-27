@@ -12,6 +12,7 @@ import (
 	"net/url"
 	"regexp"
 	"sort"
+	"strconv"
 	"time"
 
 	"github.com/go-echarts/go-echarts/v2/components"
@@ -60,9 +61,9 @@ func main() {
 
 	wsServer := &http.Server{
 		Handler: pkg.EchoServer{
-			LogF: log.Printf,
+			LogF:     log.Printf,
 			Duration: &duration,
-			Offset: &offset,
+			Offset:   &offset,
 		},
 		ReadTimeout:  time.Second * 10,
 		WriteTimeout: time.Second * 10,
@@ -71,7 +72,6 @@ func main() {
 	go wsServer.Serve(l)
 
 	mux := http.NewServeMux()
-
 
 	mux.HandleFunc("GET /users", func(w http.ResponseWriter, r *http.Request) {
 		tmpl, _ := template.ParseFiles("template/users.html")
@@ -111,7 +111,7 @@ func main() {
 		}
 
 		vId = pUrl.Query().Get("v")
-		chat, gifts, superchats= pkg.GetLiveChatResponse(fmt.Sprintf("https://www.youtube.com/watch?v=%s", vId), &client, db, &offset, &duration)
+		chat, gifts, superchats = pkg.GetLiveChatResponse(fmt.Sprintf("https://www.youtube.com/watch?v=%s", vId), &client, db, &offset, &duration)
 		for _, val := range chat {
 			if _, ex := channelIdUserMap[val.AuthorChannelId]; !ex {
 				channelIdUserMap[val.AuthorChannelId] = val.AuthorName
@@ -272,6 +272,14 @@ func main() {
 	mux.HandleFunc("GET /s", func(w http.ResponseWriter, r *http.Request) {
 		tmpl, _ := template.ParseFiles("template/search.html")
 		tmpl.Execute(w, nil)
+	})
+
+	mux.HandleFunc("GET /download", func(w http.ResponseWriter, r *http.Request) {
+		// start offset in seconds
+		start, _ := strconv.Atoi(r.URL.Query().Get("start"))
+		stop, _ := strconv.Atoi(r.URL.Query().Get("stop"))
+
+		pkg.Download(start, stop, vId)
 	})
 
 	mux.Handle("/static/", http.FileServer(http.Dir("./")))

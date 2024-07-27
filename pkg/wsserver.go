@@ -93,9 +93,9 @@ func progress(ctx context.Context, c *websocket.Conn, l *rate.Limiter, duration 
 		return w.Close()
 	}
 
-	p := float64(offsetVal) / float64(durVal)
+	p := float64(offsetVal) / float64(durVal-5000)
 	if p >= 1 {
-		*duration = 1
+		*duration = 0
 		*offset = 0
 		p = 1.0
 	}
