@@ -24,6 +24,7 @@ import (
 
 var client = http.Client{}
 var db *sql.DB
+var errTmpl, _ = template.ParseFiles("template/error.html")
 
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 
@@ -77,6 +78,11 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("GET /users", func(w http.ResponseWriter, r *http.Request) {
+		if len(vId) == 0 {
+			errTmpl.Execute(w, NOT_READY)
+			return
+		}
+
 		tmpl, _ := template.ParseFiles("template/users.html")
 		n := 100
 		if len(userArr) < 100 {
@@ -138,8 +144,12 @@ func main() {
 			return userArr[i].AmountChats > userArr[j].AmountChats
 		})
 	})
-
 	mux.HandleFunc("/stats", func(w http.ResponseWriter, r *http.Request) {
+		if len(vId) == 0 {
+			errTmpl.Execute(w, NOT_READY)
+			return
+		}
+
 		page := components.NewPage()
 		page.PageTitle = "Chat Analytics"
 
@@ -159,7 +169,7 @@ func main() {
 	})
 	mux.HandleFunc("GET /top", func(w http.ResponseWriter, r *http.Request) {
 		if len(vId) == 0 {
-			w.WriteHeader(424)
+			errTmpl.Execute(w, NOT_READY)
 			return
 		}
 
@@ -262,6 +272,12 @@ func main() {
 
 	})
 	mux.HandleFunc("POST /searchuser", func(w http.ResponseWriter, r *http.Request) {
+
+		if len(vId) == 0 {
+			errTmpl.Execute(w, NOT_READY)
+			return
+		}
+
 		u := r.FormValue("u")
 
 		res := []*FrontendChatItem{}
@@ -279,6 +295,12 @@ func main() {
 
 	})
 	mux.HandleFunc("GET /s", func(w http.ResponseWriter, r *http.Request) {
+
+		if len(vId) == 0 {
+			errTmpl.Execute(w, NOT_READY)
+			return
+		}
+
 		tmpl, _ := template.ParseFiles("template/search.html")
 		tmpl.Execute(w, nil)
 	})
@@ -451,7 +473,7 @@ func main() {
 	})
 	mux.Handle("/static/", http.FileServer(http.Dir("./")))
 
-	err = http.ListenAndServe(":8081", CorsMiddleWare(mux))
+	err = http.ListenAndServeTLS(":8081", "certs/localhost.pem", "certs/localhost-key.pem", CorsMiddleWare(mux))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -514,3 +536,11 @@ type Stream struct {
 	Thumbnail string
 	Views     string
 }
+
+type ErrorMessage string
+
+const (
+	NOT_READY      ErrorMessage = "no stream loaded"
+	REQUEST_FAILED ErrorMessage = "a request failed"
+	BODY_DECODE    ErrorMessage = "could not read request body"
+)

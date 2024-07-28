@@ -1,40 +1,41 @@
-<html>
-    <head>
-        <title>Chat Analytics</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-            rel="stylesheet"
+<div class="mt-8 w-[600px]">
+    <label for="textsearch">Text Search</label>
+    <form
+        id="textsearch"
+        hx-post="/search"
+        hx-target="#result"
+        hx-swap="innerHTML"
+    >
+        <input
+            class="focus:outline-none border-2 border-pink-600 rounded-full px-4 py-1"
+            name="q"
+            type="text"
         />
-        <link rel="stylesheet" href="/static/main.css" />
-    </head>
-    <script
-        src="https://unpkg.com/htmx.org@2.0.1"
-        integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
-        crossorigin="anonymous"
-    ></script>
-    <body>
-        <label for="textsearch">Text Search</label>
-        <form
-            id="textsearch"
-            hx-post="/search"
-            hx-target="#result"
-            hx-swap="innerHTML"
+        <button
+            class="bg-pink-200 hover:bg-pink-400 active:bg-pink-500 rounded-full px-4 py-2"
+            type="submit"
         >
-            <input name="q" type="text" />
-            <button type="submit">Search</button>
-        </form>
-        <label for="usersearch">User Search</label>
-        <form
-            id="usersearch"
-            hx-post="/searchuser"
-            hx-target="#result"
-            hx-swap="innerHTML"
+            Search
+        </button>
+    </form>
+    <label for="usersearch">User Search</label>
+    <form
+        id="usersearch"
+        hx-post="/searchuser"
+        hx-target="#result"
+        hx-swap="innerHTML"
+    >
+        <input
+            class="focus:outline-none border-2 border-pink-600 rounded-full px-4 py-1"
+            name="u"
+            type="text"
+        />
+        <button
+            class="bg-pink-200 hover:bg-pink-400 active:bg-pink-500 rounded-full px-4 py-2"
+            type="submit"
         >
-            <input name="u" type="text" />
-            <button type="submit">Search</button>
-        </form>
-        <div id="result"></div>
-    </body>
-</html>
+            Search
+        </button>
+    </form>
+    <div class="max-h-[70vh] overflow-y-scroll" id="result"></div>
+</div>

@@ -1,13 +1,7 @@
 <html>
     <head>
         <title>Chat Analytics</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="/static/main.css" />
+        <link rel="stylesheet" href="/static/output.css" />
         <script
             src="https://unpkg.com/htmx.org@2.0.1"
             integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
@@ -50,9 +44,7 @@
                     handle = setInterval(() => {
                         sock.send(JSON.stringify({ msg: "ping" }));
                     }, 500);
-                    document
-                        .querySelector("#prog-container")
-                        .setAttribute("style", "");
+                    document.querySelector("#prog-container");
                 };
 
                 sock.onmessage = (event) => {
@@ -61,55 +53,95 @@
 
                     if (Number(data.p) == 1) {
                         clearInterval(handle);
-                        document
-                            .querySelector("#prog-container")
-                            .setAttribute("style", "display: none;");
                         document.querySelector("#prog").value = 0;
-                        sock.close(1000, "done")
+                        sock.close(1000, "done");
                     }
                 };
             }
         </script>
     </head>
-    <body>
-        <form hx-post="/analyze" hx-swap="none">
-            <label for="url">Youtube VOD URL</label>
-            <input name="url" id="url" type="text" />
-            <button
-                type="submit"
-                onclick="progress()"
-                style="display: flex; align-items: center; gap: 8px"
+    <body class="m-4 flex font-jbmono">
+        <div class="flex flex-col gap-2">
+            <span class="text-xl">Navigation</span>
+            <a
+                class="pl-4 py-2 rounded-full hover:bg-pink-200 active:active:bg-pink-400 duration-200"
+                href="/stats"
+                target="_blank"
             >
-                Analyze
-                <img
-                    style="margin-top: auto; margin-bottom: auto"
-                    width="12px"
-                    height="12px"
-                    class="htmx-indicator"
-                    src="/static/loading.svg"
-                />
+                Stats
+            </a>
+
+            <button
+                class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
+                hx-get="/users"
+                hx-swap="innerHTML"
+                hx-target="#content"
+            >
+                Users
             </button>
-        </form>
-        <div id="nav" style="display: flex; gap: 12px; margin-bottom: 16px;">
-            <a href="/stats">
-                <button>Stats</button>
-            </a>
-            <a href="/users">
-                <button>Users</button>
-            </a>
-            <a href="/top">
-                <button>Top n</button>
-            </a>
-            <a href="/s">
-                <button>Search</button>
-            </a>
-            <a href="/channels">
-                <button>Channels</button>
-            </a>
+
+            <button
+                class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
+                hx-get="/top"
+                hx-swap="innerHTML"
+                hx-target="#content"
+            >
+                Top n
+            </button>
+
+            <button
+                class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
+                hx-get="/s"
+                hx-swap="innerHTML"
+                hx-target="#content"
+            >
+                Search
+            </button>
+            <button
+                class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
+                hx-get="/channels"
+                hx-swap="innerHTML"
+                hx-target="#content"
+            >
+                Channels
+            </button>
         </div>
-        <div style="display: none; margin-top: 16px" id="prog-container">
-            <label for="prog">Progress</label>
-            <progress id="prog" max="1" value="0.0"></progress>
+        <div class="flex flex-col w-full items-center">
+            <div>
+                <form
+                    class="flex items-center gap-4"
+                    hx-post="/analyze"
+                    hx-swap="none"
+                >
+                    <label for="url">Youtube VOD URL</label>
+                    <input
+                        class="focus:outline-none border-2 border-pink-600 rounded-full px-4 py-1"
+                        name="url"
+                        id="url"
+                        type="text"
+                    />
+                    <button
+                        class="bg-pink-200 hover:bg-pink-400 active:bg-pink-500 rounded-full px-4 py-2"
+                        type="submit"
+                        onclick="progress()"
+                        style="display: flex; align-items: center; gap: 8px"
+                    >
+                        Analyze
+                        <img
+                            style="margin-top: auto; margin-bottom: auto"
+                            width="12px"
+                            height="12px"
+                            class="htmx-indicator"
+                            src="/static/loading.svg"
+                        />
+                    </button>
+                </form>
+                <div id="prog-container">
+                    <label for="prog">Progress</label>
+                    <progress id="prog" max="1" value="0.0"></progress>
+                </div>
+            </div>
+            <div id="content"></div>
         </div>
     </body>
 </html>

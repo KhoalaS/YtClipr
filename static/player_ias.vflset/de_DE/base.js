@@ -24,7 +24,8 @@ window.fetch = async function (info, options) {
             referrerPolicy: info.referrerPolicy,
             integrity: info.integrity,
             keepalive: info.keepalive,
-            signal: info.signal
+            signal: info.signal,
+            duplex: "half"
         })
         }
         const response = await originalFetch(req, options);
