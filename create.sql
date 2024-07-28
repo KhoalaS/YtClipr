@@ -1,4 +1,4 @@
-CREATE TABLE channels(id TEXT PRIMARY KEY, profile_picture TEXT);
+CREATE TABLE channels(id TEXT PRIMARY KEY, profile_picture TEXT, channel_name TEXT);
 CREATE TABLE streams(
     id TEXT PRIMARY KEY,
     duration INTEGER,

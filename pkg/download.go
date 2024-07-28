@@ -39,7 +39,7 @@ func liveChatRequest(reqObj LiveChatReqBody, key string) *http.Request {
 	return req
 }
 
-func getContinuation(url string, client *http.Client) (string, int, int64, string, string, string, string, string) {
+func getContinuation(url string, client *http.Client) (string, int, int64, string, string, string, string, string, string) {
 	req := baseRequest("GET", url)
 
 	res, err := client.Do(req)
@@ -95,11 +95,19 @@ func getContinuation(url string, client *http.Client) (string, int, int64, strin
 		ts = dateParse.Unix()
 	}
 
-	thRegex := regexp.MustCompile(`"thumbnails":\[{"url":"(.+?)"`)
+	thRegex := regexp.MustCompile(`"thumbnails":(\[.+?\])`)
 	match = thRegex.FindStringSubmatch(text)
 	th := ""
 	if len(match) == 2 {
-		th = match[1]
+		var ths []Thumbnail
+
+		json.Unmarshal([]byte(match[1]), &ths)
+		for _, t := range ths {
+			th = t.Url
+			if t.Width > 300 {
+				break
+			}
+		}
 	}
 
 	title := ""
@@ -137,8 +145,15 @@ func getContinuation(url string, client *http.Client) (string, int, int64, strin
 		}
 	}
 
+	nameRegex := regexp.MustCompile(`<link itemprop="name" content="(.+?)"`)
+	match = nameRegex.FindStringSubmatch(text)
+	name := ""
+	if len(match) == 2 {
+		name = match[1]
+	}
+
 	os.WriteFile("./out/getContRes.html", bytes, 0644)
-	return cont[2][1], duration, ts, th, title, views, channelId, pfp
+	return cont[2][1], duration, ts, th, title, views, channelId, pfp, name
 }
 
 func baseRequest(method string, url string) *http.Request {
@@ -224,12 +239,12 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 
 	key := getKey(client)
 	fmt.Printf("Aquired API key: %s\n", key)
-	contId, d, ts, th, title, views, channelId, pfp := getContinuation(rawUrl, client)
+	contId, d, ts, th, title, views, channelId, pfp, name := getContinuation(rawUrl, client)
 	*duration = d
 
 	channel := db.QueryRow("SELECT id FROM channels WHERE id = ?", channelId)
 	if errors.Is(channel.Scan(&channelId), sql.ErrNoRows) {
-		db.Exec("INSERT INTO channels VALUES (?,?)", channelId, pfp)
+		db.Exec("INSERT INTO channels VALUES (?,?,?)", channelId, pfp, name)
 	}
 
 	_, err := db.Exec("INSERT INTO streams VALUES (?,?,?,?,?,?,?)", vId, d, ts, th, title, views, channelId)

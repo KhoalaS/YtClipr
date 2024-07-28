@@ -388,12 +388,6 @@ type ChatData struct {
 	Value int
 }
 
-type EmbedData struct {
-	URL string
-	Timestamp string
-	Amount int
-}
-
 type Thumbnail struct {
 	Url string `json:"url"`
 	Width int `json:"width"`

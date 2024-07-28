@@ -25,7 +25,6 @@ var db *sql.DB
 
 func main() {
 	pkg.MakeDir("./out")
-	pkg.MakeDir("./plots")
 
 	topn := flag.Int("t", 100, "display top t active sections.")
 	dbpath := flag.String("db", "./out/data.db", "path to database")
@@ -173,7 +172,7 @@ func main() {
 			return timeArr[j].Value < timeArr[i2].Value
 		})
 
-		embeds := []*pkg.EmbedData{}
+		embeds := []*EmbedData{}
 
 		if *topn > len(timeArr) {
 			*topn = len(timeArr)
@@ -218,7 +217,7 @@ func main() {
 
 			embedUrl := fmt.Sprintf("https://www.youtube.com/embed/%s?&amp;start=%d", vId, secs)
 
-			embed := &pkg.EmbedData{Timestamp: fmt.Sprintf("%s:%s", hStartStr, mStartStr), URL: embedUrl, Amount: val.Value}
+			embed := &EmbedData{Timestamp: fmt.Sprintf("%s:%s", hStartStr, mStartStr), URL: embedUrl, Amount: val.Value}
 			embeds = append(embeds, embed)
 		}
 
@@ -282,6 +281,66 @@ func main() {
 		pkg.Download(start, stop, vId)
 	})
 
+	mux.HandleFunc("/channels", func(w http.ResponseWriter, r *http.Request) {
+		rows, err := db.Query("SELECT * FROM channels")
+		if err != nil {
+			w.WriteHeader(424)
+			return
+		}
+
+		channels := []*Channel{}
+		for rows.Next() {
+			channel := &Channel{}
+			rows.Scan(&channel.Id, &channel.Icon, &channel.Name)
+			channels = append(channels, channel)
+		}
+		tmpl, _ := template.ParseFiles("template/channels.html")
+		tmpl.Execute(w, channels)
+
+	})
+
+	mux.HandleFunc("/streams/channel/{chId}", func(w http.ResponseWriter, r *http.Request) {
+		chId := r.PathValue("chId")
+		rows, err := db.Query("SELECT id,title,duration,thumbnail,views FROM streams WHERE channelId = ?", chId)
+		if err != nil {
+			w.WriteHeader(424)
+			return
+		}
+
+		streams := []*Stream{}
+		for rows.Next() {
+			stream := &Stream{}
+			var duration int
+			rows.Scan(&stream.Id, &stream.Title, &duration, &stream.Thumbnail, &stream.Views)
+
+			secs := duration / 1000
+			hours := secs / 3600
+			minutes := (secs - hours*3600) / 60
+			secs = secs % 60
+
+			minStr := ""
+			secStr := ""
+			if minutes < 10 {
+				minStr = fmt.Sprintf("0%d", minutes)
+			} else {
+				minStr = strconv.Itoa(minutes)
+			}
+
+			if secs < 10 {
+				secStr = fmt.Sprintf("0%d", secs)
+			} else {
+				secStr = strconv.Itoa(secs)
+			}
+
+			stream.Duration = fmt.Sprintf("%d:%s:%s", hours, minStr, secStr)
+			streams = append(streams, stream)
+		}
+
+		tmpl, _ := template.ParseFiles("template/streams.html")
+		tmpl.Execute(w, streams)
+
+	})
+
 	mux.Handle("/static/", http.FileServer(http.Dir("./")))
 	err = http.ListenAndServe(":8081", mux)
 	if err != nil {
@@ -318,4 +377,24 @@ func loyaltyScore(userMap map[string]int, memberMap map[string]int) float64 {
 	}
 
 	return rating / float64(max)
+}
+
+type EmbedData struct {
+	URL       string
+	Timestamp string
+	Amount    int
+}
+
+type Channel struct {
+	Id   string `json:"id"`
+	Icon string `json:"icon"`
+	Name string `json:"name"`
+}
+
+type Stream struct {
+	Id        string
+	Title     string
+	Duration  string
+	Thumbnail string
+	Views     string
 }
