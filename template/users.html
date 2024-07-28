@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <title>Chat Analytics</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/main.css" />
+    </head>
+    <body>
+        <div>Loyalty Score: {{.Loyalty}}</div>
+        <table>
+            <tr>
+                <th>Messages</th>
+                <th>Membership</th>
+                <th style="text-align: right">Username</th>
+            </tr>
+            {{range .Data}}
+            <tr>
+                <td>{{.AmountChats}}</td>
+                <td>{{.Membership}}</td>
+                <td style="text-align: right">{{.Name}}</td>
+            </tr>
+            {{end}}
+        </table>
+    </body>
+</html>

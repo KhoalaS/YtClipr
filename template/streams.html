@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Chat Analytics</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://unpkg.com/htmx.org@2.0.1"
+            integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="/static/main.css" />
+    </head>
+    <body>
+        <div>
+            <ul>
+                {{range .}}
+                <li style="display: flex; gap: 8px">
+                    <img
+                        width="320px"
+                        height="180px"
+                        style="object-fit: cover; background-color: transparent"
+                        src="{{.Thumbnail}}"
+                    />
+                    <div style="display: flex; flex-direction: column">
+                        <span style="font-weight: bold; font-size: large"
+                            >{{.Title}}</span
+                        >
+                        <span>Views {{.Views}}</span>
+                        <span>{{.Duration}}</span>
+                        <form hx-post="/analyze" hx-swap="none">
+                            <input
+                                name="url"
+                                style="display: none"
+                                type="text"
+                                value="https://www.youtube.com/watch?v={{.Id}}"
+                            />
+                            <button type="submit">Load Data</button>
+                        </form>
+                    </div>
+                </li>
+                {{end}}
+            </ul>
+        </div>
+    </body>
+</html>

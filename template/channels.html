@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Chat Analytics</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/main.css" />
+    </head>
+    <body>
+        <div>
+            <ul>
+                {{range .}}
+                <a href="/streams/channel/{{.Id}}">
+                    <li
+                        style="
+                            display: flex;
+                            align-items: center;
+                            gap: 8px;
+                            margin-bottom: 32px;
+                        "
+                    >
+                        <img style="border-radius: 45px" src="{{.Icon}}" />
+                        <span>{{.Name}}</span>
+                    </li>
+                </a>
+                {{end}}
+            </ul>
+        </div>
+    </body>
+</html>

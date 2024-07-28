@@ -1,0 +1,9 @@
+<ul>
+    {{range .}}
+    <li style="margin-bottom: 32px; border-bottom: 2px solid black;">
+        <div>User: <span style="font-weight: bold">{{.AuthorName}}</span></div>
+        <p>Message: {{.Text}}</p>
+        <a target="_blank" href="{{.URL}}">Context</a>
+    </li>
+    {{end}}
+</ul>

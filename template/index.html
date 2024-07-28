@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>Chat Analytics</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="/static/main.css" />
+        <script
+            src="https://unpkg.com/htmx.org@2.0.1"
+            integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/"
+            crossorigin="anonymous"
+        ></script>
+        <style>
+            .htmx-indicator {
+                display: none;
+            }
+            .htmx-request .htmx-indicator {
+                display: inline;
+                animation-name: spin;
+                animation-duration: 2000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+            .htmx-request.htmx-indicator {
+                display: inline;
+                animation-name: spin;
+                animation-duration: 2000ms;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+            }
+
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+        <script>
+            function progress() {
+                const sock = new WebSocket("ws://localhost:8082", "progress");
+
+                var handle;
+                sock.onopen = (event) => {
+                    handle = setInterval(() => {
+                        sock.send(JSON.stringify({ msg: "ping" }));
+                    }, 500);
+                    document
+                        .querySelector("#prog-container")
+                        .setAttribute("style", "");
+                };
+
+                sock.onmessage = (event) => {
+                    const data = JSON.parse(event.data);
+                    document.querySelector("#prog").value = data.p;
+
+                    if (Number(data.p) == 1) {
+                        clearInterval(handle);
+                        document
+                            .querySelector("#prog-container")
+                            .setAttribute("style", "display: none;");
+                        document.querySelector("#prog").value = 0;
+                        sock.close()
+                    }
+                };
+            }
+        </script>
+    </head>
+    <body>
+        <form hx-post="/analyze" hx-swap="none">
+            <label for="url">Youtube VOD URL</label>
+            <input name="url" id="url" type="text" />
+            <button
+                type="submit"
+                onclick="progress()"
+                style="display: flex; align-items: center; gap: 8px"
+            >
+                Analyze
+                <img
+                    style="margin-top: auto; margin-bottom: auto"
+                    width="12px"
+                    height="12px"
+                    class="htmx-indicator"
+                    src="/static/loading.svg"
+                />
+            </button>
+        </form>
+        <div id="nav" style="display: flex; gap: 12px">
+            <a href="/stats">
+                <button>Stats</button>
+            </a>
+            <a href="/users">
+                <button>Users</button>
+            </a>
+            <a href="/top">
+                <button>Top n</button>
+            </a>
+            <a href="/s">
+                <button>Search</button>
+            </a>
+            <a href="/channels">
+                <button>Channels</button>
+            </a>
+        </div>
+        <div style="display: none; margin-top: 16px" id="prog-container">
+            <label for="prog">Progress</label>
+            <progress id="prog" max="1" value="0.0"></progress>
+        </div>
+    </body>
+</html>
