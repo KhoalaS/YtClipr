@@ -238,7 +238,7 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 	}
 
 	key := getKey(client)
-	fmt.Printf("Aquired API key: %s\n", key)
+	log.Printf("Aquired API key: %s\n", key)
 	contId, d, ts, th, title, views, channelId, pfp, name := getContinuation(rawUrl, client)
 	*duration = d
 
@@ -251,7 +251,7 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 	if err != nil {
 		log.Fatal("error inserting into db:", err)
 	}
-	fmt.Printf("Aquired continuation ID: %s\n", contId)
+	log.Printf("Aquired continuation ID: %s\n", contId)
 
 	req := getLivechatReq(contId)
 	res, err := client.Do(req)

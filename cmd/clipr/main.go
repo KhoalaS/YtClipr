@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bytes"
 	"com/khoa/ytc-dl/pkg"
 	"database/sql"
 	"flag"
 	"fmt"
 	"html/template"
+	"io"
 	"log"
 	"net"
 	"net/http"
@@ -22,6 +24,8 @@ import (
 
 var client = http.Client{}
 var db *sql.DB
+
+const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 
 func main() {
 	pkg.MakeDir("./out")
@@ -154,6 +158,11 @@ func main() {
 		tmpl.Execute(w, nil)
 	})
 	mux.HandleFunc("GET /top", func(w http.ResponseWriter, r *http.Request) {
+		if len(vId) == 0 {
+			w.WriteHeader(424)
+			return
+		}
+
 		timeMap := make(map[int]int)
 
 		for _, val := range chat {
@@ -215,14 +224,15 @@ func main() {
 				secs = 0
 			}
 
-			embedUrl := fmt.Sprintf("https://www.youtube.com/embed/%s?&amp;start=%d", vId, secs)
-
-			embed := &EmbedData{Timestamp: fmt.Sprintf("%s:%s", hStartStr, mStartStr), URL: embedUrl, Amount: val.Value}
+			embed := &EmbedData{Timestamp: fmt.Sprintf("%s:%s", hStartStr, mStartStr), Start: secs, Amount: val.Value}
 			embeds = append(embeds, embed)
 		}
 
 		tmpl, _ := template.ParseFiles("template/top.html")
-		tmpl.Execute(w, embeds)
+		tmpl.Execute(w, struct {
+			Id     string
+			Embeds []*EmbedData
+		}{vId, embeds})
 	})
 	mux.HandleFunc("POST /search", func(w http.ResponseWriter, r *http.Request) {
 		q := r.FormValue("q")
@@ -301,7 +311,7 @@ func main() {
 
 	mux.HandleFunc("/streams/channel/{chId}", func(w http.ResponseWriter, r *http.Request) {
 		chId := r.PathValue("chId")
-		rows, err := db.Query("SELECT id,title,duration,thumbnail,views FROM streams WHERE channelId = ?", chId)
+		rows, err := db.Query("SELECT id,title,duration,thumbnail,views FROM streams WHERE channelId = ? ORDER BY published ASC", chId)
 		if err != nil {
 			w.WriteHeader(424)
 			return
@@ -340,9 +350,108 @@ func main() {
 		tmpl.Execute(w, streams)
 
 	})
+	mux.HandleFunc("/embed/{vId}", func(w http.ResponseWriter, r *http.Request) {
+		vId := r.PathValue("vId")
 
+		embedUrl := fmt.Sprintf("https://www.youtube.com/embed/%s", vId)
+		req, _ := http.NewRequest(http.MethodGet, embedUrl, nil)
+		req.Header.Add("User-Agent", UA)
+
+		res, err := client.Do(req)
+		if err != nil {
+			w.WriteHeader(424)
+			return
+		}
+
+		content, err := io.ReadAll(res.Body)
+		if err != nil {
+			w.WriteHeader(424)
+			return
+		}
+
+		reg := regexp.MustCompile(`s/player/.+?/`)
+		result := reg.ReplaceAllFunc(content, func(b []byte) []byte {
+			submatches := reg.FindSubmatch(b)
+			if len(submatches) > 0 {
+				var buffer bytes.Buffer
+				buffer.Write([]byte("static/"))
+				return buffer.Bytes()
+			}
+			return b
+		})
+		w.Header().Add("Content-Type", "text/html; charset=utf-8")
+		w.Write(result)
+	})
+	mux.HandleFunc("/youtubei/*", func(w http.ResponseWriter, r *http.Request) {
+		redirectUrl := fmt.Sprintf("https://www.youtube.com/%s", r.URL.Path)
+		req, _ := http.NewRequest(r.Method, redirectUrl, r.Body)
+
+		for key, headers := range r.Header {
+			for _, val := range headers {
+				req.Header.Add(key, val)
+			}
+		}
+
+		if len(req.Header.Get("Host")) > 0 {
+			req.Header.Set("Host", "youtube.com")
+		}
+		if len(req.Header.Get("Origin")) > 0 {
+			req.Header.Set("Origin", "https://www.youtube.com")
+		}
+		if len(req.Header.Get("Referer")) > 0 {
+			req.Header.Set("Referer", redirectUrl)
+		}
+
+		res, err := client.Do(req)
+		if err != nil {
+			w.WriteHeader(424)
+			return
+		}
+
+		content, _ := io.ReadAll(res.Body)
+
+		for key, headers := range res.Header {
+			for _, val := range headers {
+				w.Header().Add(key, val)
+			}
+		}
+
+		w.Write(content)
+	})
+
+	mux.HandleFunc("/video", func(w http.ResponseWriter, r *http.Request) {
+		orgUrl := r.Header.Get("orgurl")
+
+		req, _ := http.NewRequest(r.Method, orgUrl, r.Body)
+		for key, headers := range r.Header {
+			for _, val := range headers {
+				req.Header.Add(key, val)
+			}
+		}
+
+		if len(req.Header.Get("Origin")) > 0 {
+			req.Header.Set("Origin", "https://www.youtube.com")
+		}
+		if len(req.Header.Get("Referer")) > 0 {
+			req.Header.Set("Referer", "https://www.youtube.com/")
+		}
+
+		res, err := client.Do(req)
+		if err != nil {
+			w.WriteHeader(424)
+			return
+		}
+		for key, headers := range res.Header {
+			for _, val := range headers {
+				w.Header().Add(key, val)
+			}
+		}
+		content, _ := io.ReadAll(res.Body)
+		w.Write(content)
+	})
 	mux.Handle("/static/", http.FileServer(http.Dir("./")))
-	err = http.ListenAndServe(":8081", mux)
+
+	err = http.ListenAndServe(":8081", CorsMiddleWare(mux))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -379,8 +488,15 @@ func loyaltyScore(userMap map[string]int, memberMap map[string]int) float64 {
 	return rating / float64(max)
 }
 
+func CorsMiddleWare(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Add("Access-Control-Allow-Origin", "*")
+		next.ServeHTTP(w, r)
+	})
+}
+
 type EmbedData struct {
-	URL       string
+	Start     int
 	Timestamp string
 	Amount    int
 }

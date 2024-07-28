@@ -65,7 +65,7 @@
                             .querySelector("#prog-container")
                             .setAttribute("style", "display: none;");
                         document.querySelector("#prog").value = 0;
-                        sock.close()
+                        sock.close(1000, "done")
                     }
                 };
             }
@@ -90,7 +90,7 @@
                 />
             </button>
         </form>
-        <div id="nav" style="display: flex; gap: 12px">
+        <div id="nav" style="display: flex; gap: 12px; margin-bottom: 16px;">
             <a href="/stats">
                 <button>Stats</button>
             </a>

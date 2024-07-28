@@ -8,25 +8,57 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="/static/main.css" />
+        <script>
+            function skipToContext(start) {
+                var embed = document.querySelector("#embed");
+                embed.contentDocument.querySelector("video").currentTime =
+                    start;
+            }
+        </script>
     </head>
     <body>
-        <table>
-            <tr>
-                <th>Index</th>
-                <th>Amount</th>
-                <th>Time</th>
-                <th>Link</th>
-            </tr>
-            {{range $index, $element := . }}
-            <tr>
-                <td>{{$index}}</td>
-                <td>{{$element.Amount}}</td>
-                <td>{{$element.Timestamp}}</td>
-                <td>
-                    <a href="{{$element.URL}}" target="_blank">Context</a>
-                </td>
-            </tr>
-            {{end}}
-        </table>
+        <div
+            style="
+                display: flex;
+                gap: 16px;
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: center;
+            "
+        >
+            <div>
+                <iframe
+                    style="width: 1280px; height: 720px"
+                    id="embed"
+                    allowfullscreen
+                    frameborder="0"
+                    referrerpolicy="no=referrer"
+                    src="/embed/{{.Id}}"
+                ></iframe>
+            </div>
+            <div style="height: 90vh; overflow-y: scroll">
+                <table>
+                    <tr>
+                        <th>Amount</th>
+                        <th>Time</th>
+                        <th>Link</th>
+                    </tr>
+                    {{range .Embeds }}
+                    <tr>
+                        <td>{{.Amount}}</td>
+                        <td>{{.Timestamp}}</td>
+                        <td>
+                            <a
+                                onclick="skipToContext({{.Start}})"
+                                style="color: palevioletred; cursor: pointer"
+                                >Context</a
+                            >
+                        </td>
+                    </tr>
+                    {{end}}
+                </table>
+            </div>
+        </div>
     </body>
 </html>
