@@ -1,1 +1,1 @@
-import '@material/web/tabs/tabs'
+import '@material/web/'
