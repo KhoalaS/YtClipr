@@ -3,7 +3,8 @@
     <li style="margin-bottom: 32px; border-bottom: 2px solid black;">
         <div>User: <span style="font-weight: bold">{{.AuthorName}}</span></div>
         <p>Message: {{.Text}}</p>
-        <a target="_blank" href="{{.URL}}">Context</a>
+        <p>Time: {{.Timestamp}}</p>
+        <button class="text-pink-600" onclick="skipToContext({{.Start}})">Context</button>
     </li>
     {{end}}
 </ul>

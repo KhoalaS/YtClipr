@@ -36,6 +36,16 @@
             }
         </style>
         <script>
+            var lastActiveNav = null;
+
+            function clickNav(event) {
+                if (lastActiveNav != null) {
+                    lastActiveNav.classList.remove("bg-pink-200");
+                }
+                console.log(event.target);
+                event.target.classList.add("bg-pink-200");
+                lastActiveNav = event.target;
+            }
             function progress() {
                 const sock = new WebSocket("ws://localhost:8082", "progress");
 
@@ -62,7 +72,7 @@
     </head>
     <body class="m-4 flex font-jbmono">
         <div class="flex flex-col gap-2">
-            <span class="text-xl">Navigation</span>
+            <span class="text-xl text-pink-800 font-bold">Clipr</span>
             <a
                 class="pl-4 py-2 rounded-full hover:bg-pink-200 active:active:bg-pink-400 duration-200"
                 href="/stats"
@@ -72,6 +82,7 @@
             </a>
 
             <button
+                onclick="clickNav(event)"
                 class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
                 hx-get="/users"
                 hx-swap="innerHTML"
@@ -81,6 +92,7 @@
             </button>
 
             <button
+                onclick="clickNav(event)"
                 class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
                 hx-get="/top"
                 hx-swap="innerHTML"
@@ -90,6 +102,7 @@
             </button>
 
             <button
+                onclick="clickNav(event)"
                 class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
                 hx-get="/s"
                 hx-swap="innerHTML"
@@ -98,6 +111,7 @@
                 Search
             </button>
             <button
+                onclick="clickNav(event)"
                 class="text-left pl-4 py-2 rounded-full hover:bg-pink-200 active:bg-pink-400 duration-200"
                 hx-get="/channels"
                 hx-swap="innerHTML"

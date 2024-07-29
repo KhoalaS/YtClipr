@@ -6,14 +6,21 @@
         }
     </script>
     <div class="flex gap-4 justify-center items-center">
+        <div
+            hx-get="/s"
+            hx-swap="innerHTML"
+            hx-trigger="load"
+            class="overflow-y-scroll"
+        ></div>
         <div>
             <iframe
-                style="width: 1280px; height: 720px"
+                style="width: 720px; height: 405px"
                 id="embed"
                 allowfullscreen
                 frameborder="0"
+                allow="autoplay; picture-in-picture"
                 referrerpolicy="no=referrer"
-                src="/embed/{{.Id}}"
+                src="/embed/{{.Id}}?autoplay=1"
             ></iframe>
         </div>
         <div style="height: 90vh; overflow-y: scroll">
@@ -24,15 +31,16 @@
                     <th>Link</th>
                 </tr>
                 {{range .Embeds }}
-                <tr>
+                <tr class="mb-1">
                     <td>{{.Amount}}</td>
                     <td>{{.Timestamp}}</td>
                     <td>
-                        <a
+                        <div
                             onclick="skipToContext({{.Start}})"
-                            style="color: palevioletred; cursor: pointer"
-                            >Context</a
+                            class="hover:cursor-pointer text-pink-600"
                         >
+                            Context
+                        </div>
                     </td>
                 </tr>
                 {{end}}

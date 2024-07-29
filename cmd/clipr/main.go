@@ -263,8 +263,8 @@ func main() {
 			}
 
 			secs := c.VideoOffsetTimeMsec / 1000
-			url := fmt.Sprintf("https://youtube.com/watch?v=%s&t=%ds", vId, secs)
-			res = append(res, &FrontendChatItem{c, url})
+			formatTime := getFormatTime(c.VideoOffsetTimeMsec)
+			res = append(res, &FrontendChatItem{c, secs - 10, formatTime})
 		}
 
 		tmpl, _ := template.ParseFiles("template/searchresult.html")
@@ -285,8 +285,8 @@ func main() {
 		for _, c := range chat {
 			if c.AuthorName == u {
 				secs := c.VideoOffsetTimeMsec / 1000
-				url := fmt.Sprintf("https://youtube.com/watch?v=%s&t=%ds", vId, secs)
-				res = append(res, &FrontendChatItem{c, url})
+				formatTime := getFormatTime(c.VideoOffsetTimeMsec)
+				res = append(res, &FrontendChatItem{c, secs - 10, formatTime})
 			}
 		}
 
@@ -344,27 +344,7 @@ func main() {
 			stream := &Stream{}
 			var duration int
 			rows.Scan(&stream.Id, &stream.Title, &duration, &stream.Thumbnail, &stream.Views)
-
-			secs := duration / 1000
-			hours := secs / 3600
-			minutes := (secs - hours*3600) / 60
-			secs = secs % 60
-
-			minStr := ""
-			secStr := ""
-			if minutes < 10 {
-				minStr = fmt.Sprintf("0%d", minutes)
-			} else {
-				minStr = strconv.Itoa(minutes)
-			}
-
-			if secs < 10 {
-				secStr = fmt.Sprintf("0%d", secs)
-			} else {
-				secStr = strconv.Itoa(secs)
-			}
-
-			stream.Duration = fmt.Sprintf("%d:%s:%s", hours, minStr, secStr)
+			stream.Duration = getFormatTime(duration)
 			streams = append(streams, stream)
 		}
 
@@ -375,7 +355,7 @@ func main() {
 	mux.HandleFunc("/embed/{vId}", func(w http.ResponseWriter, r *http.Request) {
 		vId := r.PathValue("vId")
 
-		embedUrl := fmt.Sprintf("https://www.youtube.com/embed/%s", vId)
+		embedUrl := fmt.Sprintf("https://www.youtube.com/embed/%s?autoplay=1", vId)
 		req, _ := http.NewRequest(http.MethodGet, embedUrl, nil)
 		req.Header.Add("User-Agent", UA)
 
@@ -481,7 +461,8 @@ func main() {
 
 type FrontendChatItem struct {
 	pkg.ChatItem
-	URL string
+	Start     int
+	Timestamp string
 }
 
 func loyaltyScore(userMap map[string]int, memberMap map[string]int) float64 {
@@ -544,3 +525,26 @@ const (
 	REQUEST_FAILED ErrorMessage = "a request failed"
 	BODY_DECODE    ErrorMessage = "could not read request body"
 )
+
+func getFormatTime(millisecs int) string {
+	secs := millisecs / 1000
+	hours := secs / 3600
+	minutes := (secs - hours*3600) / 60
+	secs = secs % 60
+
+	minStr := ""
+	secStr := ""
+	if minutes < 10 {
+		minStr = fmt.Sprintf("0%d", minutes)
+	} else {
+		minStr = strconv.Itoa(minutes)
+	}
+
+	if secs < 10 {
+		secStr = fmt.Sprintf("0%d", secs)
+	} else {
+		secStr = strconv.Itoa(secs)
+	}
+
+	return fmt.Sprintf("%d:%s:%s", hours, minStr, secStr)
+}
