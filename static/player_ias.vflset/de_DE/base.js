@@ -1,17 +1,11 @@
 const originalFetch = window.fetch;
 
 window.fetch = async function (info, options) {
-    console.log("Custom fetch called");
-
     var modifiedUrl = info.url; // Modify if needed
-    console.log(modifiedUrl)
-
     var req = info
-
     try {
         if(modifiedUrl.includes("googlevideo")){
          info.headers.append("orgurl", info.url)
-         console.log(info)
          req = new Request("/video", {
             method: info.method,
             headers: info.headers,

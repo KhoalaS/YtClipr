@@ -1,4 +1,4 @@
-build: cmd/clipr/main.go pkg/*.go index.js
+build: cmd/clipr/main.go pkg/*.go static/main.css
 	go build -o build/clipr cmd/clipr/main.go
 	npx tailwindcss -i ./static/main.css -o ./static/output.css
 	
