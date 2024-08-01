@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"com/khoa/ytc-dl/pkg"
 	"database/sql"
+	"errors"
 	"flag"
 	"fmt"
 	"html/template"
@@ -41,6 +42,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	db.Exec("PRAGMA foreign_keys = 1")
 
 	var chat []pkg.ChatItem
 	var gifts []pkg.GiftItem
@@ -102,7 +105,6 @@ func main() {
 		rawUrl := r.FormValue("url")
 		if !urlRegex.MatchString(rawUrl) {
 			w.WriteHeader(424)
-			w.Write([]byte("not a youtube url"))
 			return
 		}
 
@@ -115,12 +117,17 @@ func main() {
 		pUrl, err := url.Parse(rawUrl)
 		if err != nil {
 			w.WriteHeader(424)
-			w.Write([]byte("parse error"))
 			return
 		}
 
 		vId = pUrl.Query().Get("v")
-		chat, gifts, superchats = pkg.GetLiveChatResponse(fmt.Sprintf("https://www.youtube.com/watch?v=%s", vId), &client, db, &offset, &duration)
+		chat, gifts, superchats, err = pkg.GetLiveChatResponse(fmt.Sprintf("https://www.youtube.com/watch?v=%s", vId), &client, db, &offset, &duration)
+		
+		if err != nil {
+			w.WriteHeader(424)
+			return
+		}
+
 		for _, val := range chat {
 			if _, ex := channelIdUserMap[val.AuthorChannelId]; !ex {
 				channelIdUserMap[val.AuthorChannelId] = val.AuthorName
@@ -324,6 +331,7 @@ func main() {
 		for rows.Next() {
 			channel := &Channel{}
 			rows.Scan(&channel.Id, &channel.Icon, &channel.Name)
+			channel.Icon = "/icon/" + channel.Id
 			channels = append(channels, channel)
 		}
 		tmpl, _ := template.ParseFiles("template/channels.html")
@@ -451,6 +459,36 @@ func main() {
 		content, _ := io.ReadAll(res.Body)
 		w.Write(content)
 	})
+	mux.HandleFunc("GET /icon/{id}", func(w http.ResponseWriter, r *http.Request) {
+		id := r.PathValue("id")
+
+		row := db.QueryRow("SELECT profile_picture FROM channels WHERE id = ?", id)
+		var icon string
+		if !errors.Is(row.Scan(&icon), sql.ErrNoRows) {
+			req, _ := http.NewRequest(http.MethodGet, icon, nil)
+			res, _ := client.Do(req)
+
+			for k, headers := range res.Header {
+				for _, h := range headers {
+					w.Header().Add(k, h)
+				}
+			}
+
+			content, _ := io.ReadAll(res.Body)
+			w.Write(content)
+		} else {
+			w.WriteHeader(404)
+		}
+	})
+
+	mux.HandleFunc("/deletechannel/{id}", func(w http.ResponseWriter, r *http.Request) {
+		id := r.PathValue("id")
+		_, err := db.Exec("DELETE FROM channels WHERE id = ?", id)
+		if err != nil {
+			w.WriteHeader(424)
+		}
+	})
+
 	mux.Handle("/static/", http.FileServer(http.Dir("./")))
 
 	err = http.ListenAndServeTLS(":8081", "certs/localhost.pem", "certs/localhost-key.pem", CorsMiddleWare(mux))

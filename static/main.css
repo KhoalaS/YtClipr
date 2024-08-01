@@ -12,3 +12,11 @@ td, th {
     text-align: center;
     padding-right: 16px;
 }
+
+button {
+    outline: none;
+}
+
+input {
+    outline: none;
+}

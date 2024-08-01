@@ -39,7 +39,7 @@ func liveChatRequest(reqObj LiveChatReqBody, key string) *http.Request {
 	return req
 }
 
-func getContinuation(url string, client *http.Client) (string, int, int64, string, string, string, string, string, string) {
+func getContinuation(url string, client *http.Client) (string, int, int64, string, string, string, string, string, string, error) {
 	req := baseRequest("GET", url)
 
 	res, err := client.Do(req)
@@ -48,7 +48,7 @@ func getContinuation(url string, client *http.Client) (string, int, int64, strin
 	}
 
 	if res.StatusCode != 200 {
-		log.Fatal("Could not request next continuation id...")
+		return "", 0, 0, "", "", "", "", "", "", fmt.Errorf("could not request next continuation id: %d", res.StatusCode)
 	}
 
 	defer res.Body.Close()
@@ -62,7 +62,7 @@ func getContinuation(url string, client *http.Client) (string, int, int64, strin
 	cont := r.FindAllStringSubmatch(text, 3)
 
 	if len(cont) != 3 {
-		log.Fatal("Could not find continuation for live-chat")
+		return "", 0, 0, "", "", "", "", "", "", fmt.Errorf("Live-Chat not available for stream")
 	}
 
 	duration := 1
@@ -153,7 +153,7 @@ func getContinuation(url string, client *http.Client) (string, int, int64, strin
 	}
 
 	os.WriteFile("./out/getContRes.html", bytes, 0644)
-	return cont[2][1], duration, ts, th, title, views, channelId, pfp, name
+	return cont[2][1], duration, ts, th, title, views, channelId, pfp, name, nil
 }
 
 func baseRequest(method string, url string) *http.Request {
@@ -205,7 +205,7 @@ func getKey(client *http.Client) string {
 	return "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
 }
 
-func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset *int, duration *int) ([]ChatItem, []GiftItem, []SuperchatItem) {
+func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset *int, duration *int) ([]ChatItem, []GiftItem, []SuperchatItem, error) {
 
 	pUrl, _ := url.Parse(rawUrl)
 	vId := pUrl.Query().Get("v")
@@ -234,12 +234,16 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 
 		*duration = 1
 		*offset = 1
-		return chat, gifts, superchats
+		return chat, gifts, superchats, nil
 	}
 
 	key := getKey(client)
 	log.Printf("Aquired API key: %s\n", key)
-	contId, d, ts, th, title, views, channelId, pfp, name := getContinuation(rawUrl, client)
+	contId, d, ts, th, title, views, channelId, pfp, name, err := getContinuation(rawUrl, client)
+	if err != nil {
+		return nil, nil, nil, err
+	}
+
 	*duration = d
 
 	channel := db.QueryRow("SELECT id FROM channels WHERE id = ?", channelId)
@@ -247,7 +251,7 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 		db.Exec("INSERT INTO channels VALUES (?,?,?)", channelId, pfp, name)
 	}
 
-	_, err := db.Exec("INSERT INTO streams VALUES (?,?,?,?,?,?,?)", vId, d, ts, th, title, views, channelId)
+	_, err = db.Exec("INSERT INTO streams VALUES (?,?,?,?,?,?,?)", vId, d, ts, th, title, views, channelId)
 	if err != nil {
 		log.Fatal("error inserting into db:", err)
 	}
@@ -255,11 +259,13 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 
 	req := getLivechatReq(contId)
 	res, err := client.Do(req)
-	errLog(err, "Could not make initial request")
+	if err != nil {
+		return nil, nil, nil, fmt.Errorf("could not make initial request: %w", err)
+	}
 
 	if res.StatusCode != 200 {
 		log.Default().Println("Could not make request")
-		return nil, nil, nil
+		return nil, nil, nil, fmt.Errorf("initial request returned: %d", res.StatusCode)
 	}
 
 	bodyBytes, err := io.ReadAll(res.Body)
@@ -429,7 +435,7 @@ func GetLiveChatResponse(rawUrl string, client *http.Client, db *sql.DB, offset 
 
 	*offset = *duration
 
-	return chat, gifts, superchats
+	return chat, gifts, superchats, nil
 }
 
 func Download(start int, stop int, vId string) {

@@ -1,17 +1,38 @@
 <div class="mt-4">
+    <script>
+        function remove(target, id) {
+            fetch(`/deletechannel/${id}`).then((res) => {
+                if (res.status == 200) {
+                    target.parentElement.remove();
+                }
+            });
+        }
+    </script>
     <div class="flex flex-col gap-4">
         {{range .}}
-        <button
-            hx-get="/streams/channel/{{.Id}}"
-            hx-swap="innerHTML"
-            hx-target="#content"
-            class="rounded-full px-4 py-2 hover:bg-pink-200"
-        >
-            <div style="display: flex; align-items: center; gap: 8px">
-                <img style="border-radius: 45px" src="{{.Icon}}" />
-                <span>{{.Name}}</span>
-            </div>
-        </button>
+        <div class="flex gap-4">
+            <button
+                hx-get="/streams/channel/{{.Id}}"
+                hx-swap="innerHTML"
+                hx-target="#content"
+                class="rounded-full px-4 py-2 hover:bg-pink-200"
+            >
+                <div style="display: flex; align-items: center; gap: 8px">
+                    <img style="border-radius: 45px" src="{{.Icon}}" />
+                    <span>{{.Name}}</span>
+                </div>
+            </button>
+            <button
+                onclick="remove(this, {{.Id}})"
+                class="hover:rounded-full hover:bg-red-400 active:bg-red-600 w-fit self-center p-2"
+            >
+                <img
+                    width="24"
+                    height="24"
+                    src="/static/delete_forever_24dp_5F6368_FILL0_wght400_GRAD0_opsz24.svg"
+                />
+            </button>
+        </div>
         {{end}}
     </div>
 </div>

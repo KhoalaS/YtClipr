@@ -6,12 +6,7 @@
         }
     </script>
     <div class="flex gap-4 justify-center items-center">
-        <div
-            hx-get="/s"
-            hx-swap="innerHTML"
-            hx-trigger="load"
-            class="overflow-y-scroll"
-        ></div>
+        <div hx-get="/s" hx-swap="outerHTML" hx-trigger="load"></div>
         <div>
             <iframe
                 style="width: 720px; height: 405px"

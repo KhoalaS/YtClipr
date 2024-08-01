@@ -7,7 +7,7 @@ CREATE TABLE streams(
     title TEXT,
     views INTEGER,
     channelId TEXT,
-    CONSTRAINT channelid FOREIGN KEY(channelId) REFERENCES channels(id) ON DELETE CASCADE
+    CONSTRAINT fk_channelid FOREIGN KEY(channelId) REFERENCES channels(id) ON DELETE CASCADE
 );
 CREATE TABLE chats(
     id TEXT,
