@@ -29,7 +29,7 @@
             }`;
         }
     </script>
-    <div class="flex gap-4 justify-center items-center">
+    <div class="flex gap-4 justify-center">
         <div hx-get="/s" hx-swap="outerHTML" hx-trigger="load"></div>
         <div>
             <form hx-post="/clip" hx-swap="none" class="flex flex-col gap-2">
@@ -89,7 +89,7 @@
                 src="/embed/{{.Id}}?autoplay=1"
             ></iframe>
         </div>
-        <div style="height: 90vh; overflow-y: scroll">
+        <div style="height: 80vh; overflow-y: scroll">
             <table>
                 <tr>
                     <th>Amount</th>
