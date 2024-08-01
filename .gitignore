@@ -7,3 +7,4 @@ main
 *.mp4
 build/*
 node_modules
+clips

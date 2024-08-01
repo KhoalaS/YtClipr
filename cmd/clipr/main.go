@@ -511,7 +511,7 @@ func main() {
 			return
 		}
 
-		outfile := fmt.Sprintf("out/%s/%%(section_start)s.%%(ext)s", title)
+		outfile := fmt.Sprintf("clips/%s/%%(section_start)s.%%(ext)s", title)
 		ytdlp := exec.Command("yt-dlp", "--download-sections", sectionArg, "-o", outfile, url)
 		yt_out, _ := os.OpenFile("out/ytdlp_out.log", os.O_CREATE|os.O_RDWR, 0644)
 
