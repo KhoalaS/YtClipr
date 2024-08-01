@@ -4,12 +4,83 @@
             var embed = document.querySelector("#embed");
             embed.contentDocument.querySelector("video").currentTime = start;
         }
+
+        function set(val) {
+            const currentTime = formatTime(
+                embed.contentDocument.querySelector("video").currentTime
+            );
+            switch (val) {
+                case 0:
+                    document.querySelector("#start_clip").value = currentTime;
+                    break;
+                case 1:
+                    document.querySelector("#end_clip").value = currentTime;
+                    break;
+            }
+        }
+
+        function formatTime(seconds) {
+            const h = Math.floor(seconds / 3600);
+            const m = Math.floor((seconds - h * 3600) / 60);
+            const s = Math.floor(seconds % 60);
+
+            return `${h < 10 ? "0" + h : h}:${m < 10 ? "0" + m : m}:${
+                s < 10 ? "0" + s : s
+            }`;
+        }
     </script>
     <div class="flex gap-4 justify-center items-center">
         <div hx-get="/s" hx-swap="outerHTML" hx-trigger="load"></div>
         <div>
+            <form hx-post="/clip" hx-swap="none" class="flex flex-col gap-2">
+                <div>
+                    <span> Start: </span>
+                    <input
+                        id="start_clip"
+                        name="start"
+                        type="text"
+                        class="focus:outline-none border-2 border-pink-600 rounded-full px-4 py-1"
+                    />
+                    <button
+                        type="button"
+                        onclick="set(0)"
+                        class="bg-pink-200 hover:bg-pink-400 active:bg-pink-500 rounded-full px-4 py-2"
+                    >
+                        Set
+                    </button>
+                </div>
+                <div>
+                    <span> End:&nbsp;&nbsp; </span>
+                    <input
+                        id="end_clip"
+                        name="end"
+                        type="text"
+                        class="focus:outline-none border-2 border-pink-600 rounded-full px-4 py-1"
+                    />
+                    <button
+                        type="button"
+                        onclick="set(1)"
+                        class="bg-pink-200 hover:bg-pink-400 active:bg-pink-500 rounded-full px-4 py-2"
+                    >
+                        Set
+                    </button>
+                </div>
+                <button
+                    type="submit"
+                    class="bg-pink-200 hover:bg-pink-400 active:bg-pink-500 rounded-full px-4 py-2"
+                >
+                    Clip
+                    <img
+                        style="margin-top: auto; margin-bottom: auto"
+                        width="12px"
+                        height="12px"
+                        class="htmx-indicator"
+                        src="/static/loading.svg"
+                    />
+                </button>
+            </form>
             <iframe
-                style="width: 720px; height: 405px"
+                style="width: 720px; height: 405px; margin-top: 16px"
                 id="embed"
                 allowfullscreen
                 frameborder="0"

@@ -13,6 +13,8 @@ import (
 	"net"
 	"net/http"
 	"net/url"
+	"os"
+	"os/exec"
 	"regexp"
 	"sort"
 	"strconv"
@@ -122,7 +124,7 @@ func main() {
 
 		vId = pUrl.Query().Get("v")
 		chat, gifts, superchats, err = pkg.GetLiveChatResponse(fmt.Sprintf("https://www.youtube.com/watch?v=%s", vId), &client, db, &offset, &duration)
-		
+
 		if err != nil {
 			w.WriteHeader(424)
 			return
@@ -484,6 +486,38 @@ func main() {
 	mux.HandleFunc("/deletechannel/{id}", func(w http.ResponseWriter, r *http.Request) {
 		id := r.PathValue("id")
 		_, err := db.Exec("DELETE FROM channels WHERE id = ?", id)
+		if err != nil {
+			w.WriteHeader(424)
+		}
+	})
+
+	mux.HandleFunc("/clip", func(w http.ResponseWriter, r *http.Request) {
+		start := r.FormValue("start")
+		end := r.FormValue("end")
+
+		if len(start) == 0 || len(end) == 0 {
+			w.WriteHeader(424)
+			return
+		}
+
+		sectionArg := fmt.Sprintf("*%s-%s", start, end)
+		url := fmt.Sprintf("https://www.youtube.com/watch?v=%s", vId)
+
+		var title string
+
+		row := db.QueryRow("SELECT title FROM streams WHERE id = ?", vId)
+		if errors.Is(row.Scan(&title), sql.ErrNoRows) {
+			w.WriteHeader(404)
+			return
+		}
+
+		outfile := fmt.Sprintf("out/%s/%%(section_start)s.%%(ext)s", title)
+		ytdlp := exec.Command("yt-dlp", "--download-sections", sectionArg, "-o", outfile, url)
+		yt_out, _ := os.OpenFile("out/ytdlp_out.log", os.O_CREATE|os.O_RDWR, 0644)
+
+		ytdlp.Stdout = yt_out
+		ytdlp.Stderr = os.Stderr
+		err := ytdlp.Run()
 		if err != nil {
 			w.WriteHeader(424)
 		}
