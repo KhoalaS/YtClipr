@@ -24,7 +24,6 @@ import (
 
 	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/joho/godotenv"
-	webview "github.com/webview/webview_go"
 
 	_ "modernc.org/sqlite"
 )
@@ -52,7 +51,7 @@ func main() {
 	topn := 100
 	dbpath := os.Getenv("DB_PATH")
 	auth := os.Getenv("USE_SSL") == "1" || strings.TrimSpace(strings.ToLower(os.Getenv("USE_SSL"))) == "true"
-	headless := os.Getenv("HEADLESS") == "1" || strings.TrimSpace(strings.ToLower(os.Getenv("HEADLESS"))) == "true"
+	port := os.Getenv("PORT")
 
 	flag.Parse()
 
@@ -540,9 +539,8 @@ func main() {
 
 		outfile := fmt.Sprintf("clips/%s/%%(section_start)s.%%(ext)s", title)
 		ytdlp := exec.Command("yt-dlp", "--download-sections", sectionArg, "-o", outfile, url)
-		yt_out, _ := os.OpenFile("out/ytdlp_out.log", os.O_CREATE|os.O_RDWR, 0644)
 
-		ytdlp.Stdout = yt_out
+		ytdlp.Stdout = os.Stdout
 		ytdlp.Stderr = os.Stderr
 		err := ytdlp.Run()
 		if err != nil {
@@ -550,33 +548,17 @@ func main() {
 		}
 	})
 
-	//mux.Handle("/static/", http.FileServer(http.Dir("./")))
 	mux.Handle("/static/", http.FileServerFS(static))
 
-	if !headless {
-		go func() {
-			var proto string
-			if auth {
-				proto = "https"
-			} else {
-				proto = "http"
-			}
-			w := webview.New(true)
-			defer w.Destroy()
-			w.SetTitle("Basic Example")
-			w.SetSize(480, 320, webview.HintNone)
-			w.Navigate(fmt.Sprintf("%s://localhost:8081", proto))
-			w.Run()
-		}()
-	}
-
+	fmt.Printf("Go to http://localhost:%s\n", port)
+	
 	if auth {
-		err = http.ListenAndServeTLS(":8081", os.Getenv("SSL_CERT"), os.Getenv("SSL_KEY"), CorsMiddleWare(mux))
+		err = http.ListenAndServeTLS(":"+port, os.Getenv("SSL_CERT"), os.Getenv("SSL_KEY"), CorsMiddleWare(mux))
 		if err != nil {
 			log.Fatal(err)
 		}
 	} else {
-		err := http.ListenAndServe(":8081", mux)
+		err := http.ListenAndServe(":"+port, mux)
 		if err != nil {
 			log.Fatal(err)
 		}
