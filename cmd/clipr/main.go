@@ -42,7 +42,6 @@ var errTmpl, _ = template.New("error").Parse(string(errContent))
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 
 func main() {
-	pkg.MakeDir("./out")
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading .env file")
@@ -551,7 +550,7 @@ func main() {
 	mux.Handle("/static/", http.FileServerFS(static))
 
 	fmt.Printf("Go to http://localhost:%s\n", port)
-	
+
 	if auth {
 		err = http.ListenAndServeTLS(":"+port, os.Getenv("SSL_CERT"), os.Getenv("SSL_KEY"), CorsMiddleWare(mux))
 		if err != nil {
