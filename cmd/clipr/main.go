@@ -580,7 +580,7 @@ func main() {
 		}
 
 		outfile := fmt.Sprintf("clips/%s/%%(section_start)s.%%(ext)s", title)
-		ytdlp := exec.Command("yt-dlp", "--download-sections", sectionArg, "-o", outfile, url)
+		ytdlp := exec.Command(ytdlpPath, "--download-sections", sectionArg, "-o", outfile, url)
 
 		ytdlp.Stdout = os.Stdout
 		ytdlp.Stderr = os.Stderr
