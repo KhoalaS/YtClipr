@@ -291,7 +291,7 @@ func main() {
 
 			secs := c.VideoOffsetTimeMsec / 1000
 			formatTime := getFormatTime(c.VideoOffsetTimeMsec)
-			res = append(res, &FrontendChatItem{c, secs - 10, formatTime})
+			res = append(res, &FrontendChatItem{c, secs - 20, formatTime})
 		}
 
 		tmplContent, _ := templates.ReadFile("template/searchresult.html")
