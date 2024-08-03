@@ -19,9 +19,11 @@ import (
 	"regexp"
 	"sort"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/go-echarts/go-echarts/v2/components"
+	"github.com/joho/godotenv"
 
 	_ "modernc.org/sqlite"
 )
@@ -41,14 +43,18 @@ const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 
 func main() {
 	pkg.MakeDir("./out")
+	err := godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
 
-	topn := flag.Int("t", 100, "display top t active sections.")
-	dbpath := flag.String("db", "./out/data.db", "path to database")
+	topn := 100
+	dbpath := os.Getenv("DB_PATH")
+	auth := os.Getenv("USE_SSL")
 
 	flag.Parse()
 
-	var err error
-	db, err = sql.Open("sqlite", *dbpath)
+	db, err = sql.Open("sqlite", dbpath)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -213,10 +219,10 @@ func main() {
 
 		embeds := []*EmbedData{}
 
-		if *topn > len(timeArr) {
-			*topn = len(timeArr)
+		if topn > len(timeArr) {
+			topn = len(timeArr)
 		}
-		topArr := timeArr[:*topn]
+		topArr := timeArr[:topn]
 		for _, val := range topArr {
 			m := val.Timestamp % 60
 			h := (val.Timestamp - m) / 60
@@ -544,9 +550,16 @@ func main() {
 	//mux.Handle("/static/", http.FileServer(http.Dir("./")))
 	mux.Handle("/static/", http.FileServerFS(static))
 
-	err = http.ListenAndServeTLS(":8081", "certs/localhost.pem", "certs/localhost-key.pem", CorsMiddleWare(mux))
-	if err != nil {
-		log.Fatal(err)
+	if auth == "0" || strings.TrimSpace(strings.ToLower(auth)) == "false" {
+		err := http.ListenAndServe(":8081", mux)
+		if err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		err = http.ListenAndServeTLS(":8081", os.Getenv("SSL_CERT"), os.Getenv("SSL_KEY"), CorsMiddleWare(mux))
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 }
 

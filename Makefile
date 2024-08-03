@@ -1,6 +1,6 @@
-build: cmd/clipr/main.go pkg/*.go static/main.css
+build: cmd/clipr/main.go pkg/*.go cmd/clipr/static/main.css
 	go build -o build/clipr cmd/clipr/main.go
-	npx tailwindcss -i ./static/main.css -o ./static/output.css
+	npx tailwindcss -i cmd/clipr/static/main.css -o cmd/clipr/static/output.css
 	
-frontend: static/main.css
-	npx tailwindcss -i ./static/main.css -o ./static/output.css
+frontend: cmd/clipr/static/main.css
+	npx tailwindcss -i cmd/clipr/static/main.css -o cmd/clipr/static/output.css
