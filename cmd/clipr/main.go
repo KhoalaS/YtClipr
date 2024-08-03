@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"com/khoa/ytc-dl/pkg"
 	"database/sql"
+	"embed"
 	"errors"
 	"flag"
 	"fmt"
@@ -19,7 +20,6 @@ import (
 	"sort"
 	"strconv"
 	"time"
-	"embed"
 
 	"github.com/go-echarts/go-echarts/v2/components"
 
@@ -28,6 +28,9 @@ import (
 
 //go:embed template/*.html
 var templates embed.FS
+
+//go:embed static
+var static embed.FS
 
 var client = http.Client{}
 var db *sql.DB
@@ -97,7 +100,7 @@ func main() {
 		if len(userArr) < 100 {
 			n = len(userArr)
 		}
-		
+
 		loyalty := loyaltyScore(userMap, channelIdMemberMap)
 
 		tmplContent, _ := templates.ReadFile("template/users.html")
@@ -321,7 +324,6 @@ func main() {
 			return
 		}
 
-		
 		tmplContent, _ := templates.ReadFile("template/search.html")
 		tmpl, _ := template.New("search").Parse(string(tmplContent))
 		tmpl.Execute(w, nil)
@@ -539,7 +541,8 @@ func main() {
 		}
 	})
 
-	mux.Handle("/static/", http.FileServer(http.Dir("./")))
+	//mux.Handle("/static/", http.FileServer(http.Dir("./")))
+	mux.Handle("/static/", http.FileServerFS(static))
 
 	err = http.ListenAndServeTLS(":8081", "certs/localhost.pem", "certs/localhost-key.pem", CorsMiddleWare(mux))
 	if err != nil {
