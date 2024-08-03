@@ -6,7 +6,6 @@ import (
 	"database/sql"
 	"embed"
 	"errors"
-	"flag"
 	"fmt"
 	"html/template"
 	"io"
@@ -17,6 +16,7 @@ import (
 	"os"
 	"os/exec"
 	"regexp"
+	"runtime"
 	"sort"
 	"strconv"
 	"strings"
@@ -52,7 +52,46 @@ func main() {
 	auth := os.Getenv("USE_SSL") == "1" || strings.TrimSpace(strings.ToLower(os.Getenv("USE_SSL"))) == "true"
 	port := os.Getenv("PORT")
 
-	flag.Parse()
+	ytdlpPath := "yt-dlp"
+	localBinary := false
+
+	_, err = exec.LookPath("yt-dlp")
+	if err != nil {
+		ytdlpPath = "./yt-dlp"
+		localBinary = true
+	}
+
+	if localBinary {
+		_, err := exec.LookPath(ytdlpPath)
+		if err != nil {
+			log.Println("yt-dlp not on path or in directory...")
+			log.Println("downloading latest release...")
+			
+			release := "https://github.com/yt-dlp/yt-dlp/releases/latest/download/%s"
+			var artifactUrl string
+			if runtime.GOOS == "windows" {
+				artifactUrl = fmt.Sprintf(release, "yt-dlp.exe")
+			} else if runtime.GOOS == "linux" {
+				if runtime.GOARCH == "amd64" {
+					artifactUrl = fmt.Sprintf(release, "yt-dlp_linux")
+				} else if runtime.GOARCH == "arm" {
+					artifactUrl = fmt.Sprintf(release, "yt-dlp_linux_armv7l")
+				} else if runtime.GOARCH == "arm64" {
+					artifactUrl = fmt.Sprintf(release, "yt-dlp_linux_aarch64")
+				}
+			} else if runtime.GOOS == "darwin" {
+				artifactUrl = fmt.Sprintf(release, "yt-dlp_macos")
+			}
+			req, _ := http.NewRequest(http.MethodGet, artifactUrl, nil)
+			res, err := client.Do(req)
+			if err != nil {
+				log.Fatal("could not download yt-dlp. Install it yourself or place a binary called 'yt-dlp' next to this file")
+			}
+
+			binContent, _ := io.ReadAll(res.Body)
+			os.WriteFile("./yt-dlp", binContent, 0775)
+		}
+	}
 
 	db, err = sql.Open("sqlite", dbpath)
 	if err != nil {
