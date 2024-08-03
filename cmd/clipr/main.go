@@ -66,7 +66,7 @@ func main() {
 		if err != nil {
 			log.Println("yt-dlp not on path or in directory...")
 			log.Println("downloading latest release...")
-			
+
 			release := "https://github.com/yt-dlp/yt-dlp/releases/latest/download/%s"
 			var artifactUrl string
 			if runtime.GOOS == "windows" {
@@ -89,7 +89,11 @@ func main() {
 			}
 
 			binContent, _ := io.ReadAll(res.Body)
-			os.WriteFile("./yt-dlp", binContent, 0775)
+			if runtime.GOOS == "windows" {
+				os.WriteFile("./yt-dlp.exe", binContent, 0775)
+			}else{
+				os.WriteFile("./yt-dlp", binContent, 0775)
+			}
 		}
 	}
 
