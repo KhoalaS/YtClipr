@@ -1,12 +1,12 @@
-build: cmd/clipr/main.go pkg/*.go cmd/clipr/static/main.css
+build: cmd/clipr/main.go pkg/*.go cmd/clipr/static/**/*
 	go build -o build/clipr cmd/clipr/main.go
 	npx tailwindcss -i cmd/clipr/static/main.css -o cmd/clipr/static/output.css
 
-build_windows: cmd/clipr/main.go pkg/*.go cmd/clipr/static/main.css
+build_windows: cmd/clipr/main.go pkg/*.go cmd/clipr/static/**/*
 	env GOOS=windows GOARCH=amd64 go build -o build/windows/clipr.exe cmd/clipr/main.go
 	npx tailwindcss -i cmd/clipr/static/main.css -o cmd/clipr/static/output.css
 
-build_mac: cmd/clipr/main.go pkg/*.go cmd/clipr/static/main.css
+build_mac: cmd/clipr/main.go pkg/*.go cmd/clipr/static/**/*
 	env GOOS=darwin GOARCH=amd64 go build -o build/mac/intel/clipr cmd/clipr/main.go
 	npx tailwindcss -i cmd/clipr/static/main.css -o cmd/clipr/static/output.css
 

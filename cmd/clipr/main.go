@@ -24,6 +24,7 @@ import (
 
 	"github.com/go-echarts/go-echarts/v2/components"
 	"github.com/joho/godotenv"
+	webview "github.com/webview/webview_go"
 
 	_ "modernc.org/sqlite"
 )
@@ -50,7 +51,8 @@ func main() {
 
 	topn := 100
 	dbpath := os.Getenv("DB_PATH")
-	auth := os.Getenv("USE_SSL")
+	auth := os.Getenv("USE_SSL") == "1" || strings.TrimSpace(strings.ToLower(os.Getenv("USE_SSL"))) == "true"
+	headless := os.Getenv("HEADLESS") == "1" || strings.TrimSpace(strings.ToLower(os.Getenv("HEADLESS"))) == "true"
 
 	flag.Parse()
 
@@ -458,7 +460,8 @@ func main() {
 	mux.HandleFunc("/video", func(w http.ResponseWriter, r *http.Request) {
 		orgUrl := r.Header.Get("orgurl")
 
-		req, _ := http.NewRequest(r.Method, orgUrl, r.Body)
+		body := []byte("x\n")
+		req, _ := http.NewRequest(http.MethodPost, orgUrl, bytes.NewBuffer(body))
 		for key, headers := range r.Header {
 			for _, val := range headers {
 				req.Header.Add(key, val)
@@ -550,13 +553,30 @@ func main() {
 	//mux.Handle("/static/", http.FileServer(http.Dir("./")))
 	mux.Handle("/static/", http.FileServerFS(static))
 
-	if auth == "0" || strings.TrimSpace(strings.ToLower(auth)) == "false" {
-		err := http.ListenAndServe(":8081", mux)
+	if !headless {
+		go func() {
+			var proto string
+			if auth {
+				proto = "https"
+			} else {
+				proto = "http"
+			}
+			w := webview.New(true)
+			defer w.Destroy()
+			w.SetTitle("Basic Example")
+			w.SetSize(480, 320, webview.HintNone)
+			w.Navigate(fmt.Sprintf("%s://localhost:8081", proto))
+			w.Run()
+		}()
+	}
+
+	if auth {
+		err = http.ListenAndServeTLS(":8081", os.Getenv("SSL_CERT"), os.Getenv("SSL_KEY"), CorsMiddleWare(mux))
 		if err != nil {
 			log.Fatal(err)
 		}
 	} else {
-		err = http.ListenAndServeTLS(":8081", os.Getenv("SSL_CERT"), os.Getenv("SSL_KEY"), CorsMiddleWare(mux))
+		err := http.ListenAndServe(":8081", mux)
 		if err != nil {
 			log.Fatal(err)
 		}
