@@ -19,15 +19,20 @@ import (
 	"sort"
 	"strconv"
 	"time"
+	"embed"
 
 	"github.com/go-echarts/go-echarts/v2/components"
 
 	_ "modernc.org/sqlite"
 )
 
+//go:embed template/*.html
+var templates embed.FS
+
 var client = http.Client{}
 var db *sql.DB
-var errTmpl, _ = template.ParseFiles("template/error.html")
+var errContent, _ = templates.ReadFile("template/error.html")
+var errTmpl, _ = template.New("error").Parse(string(errContent))
 
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36"
 
@@ -88,13 +93,15 @@ func main() {
 			return
 		}
 
-		tmpl, _ := template.ParseFiles("template/users.html")
 		n := 100
 		if len(userArr) < 100 {
 			n = len(userArr)
 		}
-
+		
 		loyalty := loyaltyScore(userMap, channelIdMemberMap)
+
+		tmplContent, _ := templates.ReadFile("template/users.html")
+		tmpl, _ := template.New("users").Parse(string(tmplContent))
 		tmpl.Execute(w, struct {
 			Data    []pkg.User
 			Loyalty float64
@@ -173,7 +180,8 @@ func main() {
 		page.Render(w)
 	})
 	mux.HandleFunc("/{$}", func(w http.ResponseWriter, r *http.Request) {
-		tmpl, _ := template.ParseFiles("template/index.html")
+		tmplContent, _ := templates.ReadFile("template/index.html")
+		tmpl, _ := template.New("index").Parse(string(tmplContent))
 		tmpl.Execute(w, nil)
 	})
 	mux.HandleFunc("GET /top", func(w http.ResponseWriter, r *http.Request) {
@@ -247,7 +255,8 @@ func main() {
 			embeds = append(embeds, embed)
 		}
 
-		tmpl, _ := template.ParseFiles("template/top.html")
+		tmplContent, _ := templates.ReadFile("template/top.html")
+		tmpl, _ := template.New("top").Parse(string(tmplContent))
 		tmpl.Execute(w, struct {
 			Id     string
 			Embeds []*EmbedData
@@ -276,7 +285,8 @@ func main() {
 			res = append(res, &FrontendChatItem{c, secs - 10, formatTime})
 		}
 
-		tmpl, _ := template.ParseFiles("template/searchresult.html")
+		tmplContent, _ := templates.ReadFile("template/searchresult.html")
+		tmpl, _ := template.New("searchresult").Parse(string(tmplContent))
 		tmpl.Execute(w, res)
 
 	})
@@ -299,7 +309,8 @@ func main() {
 			}
 		}
 
-		tmpl, _ := template.ParseFiles("template/searchresult.html")
+		tmplContent, _ := templates.ReadFile("template/searchresult.html")
+		tmpl, _ := template.New("searchresultuser").Parse(string(tmplContent))
 		tmpl.Execute(w, res)
 
 	})
@@ -310,7 +321,9 @@ func main() {
 			return
 		}
 
-		tmpl, _ := template.ParseFiles("template/search.html")
+		
+		tmplContent, _ := templates.ReadFile("template/search.html")
+		tmpl, _ := template.New("search").Parse(string(tmplContent))
 		tmpl.Execute(w, nil)
 	})
 
@@ -336,7 +349,9 @@ func main() {
 			channel.Icon = "/icon/" + channel.Id
 			channels = append(channels, channel)
 		}
-		tmpl, _ := template.ParseFiles("template/channels.html")
+
+		tmplContent, _ := templates.ReadFile("template/channels.html")
+		tmpl, _ := template.New("channels").Parse(string(tmplContent))
 		tmpl.Execute(w, channels)
 
 	})
@@ -358,7 +373,8 @@ func main() {
 			streams = append(streams, stream)
 		}
 
-		tmpl, _ := template.ParseFiles("template/streams.html")
+		tmplContent, _ := templates.ReadFile("template/streams.html")
+		tmpl, _ := template.New("streams").Parse(string(tmplContent))
 		tmpl.Execute(w, streams)
 
 	})

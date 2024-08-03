@@ -8,3 +8,4 @@ main
 build/*
 node_modules
 clips
+electron_app

@@ -174,7 +174,7 @@ func NewLiveChatReqBody(id string, offset int) LiveChatReqBody {
 				}{
 					Hl: "de", 
 					Gl: "DE", 
-					UserAgent: "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36,gzip(gfe)", 
+					UserAgent: userAgent, 
 					ClientName: "WEB", 
 					ClientVersion: "2.20231101.05.00", 
 					OriginalURL: fmt.Sprintf("https://www.youtube.com/live_chat_replay?continuation=%s&playerOffsetMs=0", id),
