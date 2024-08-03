@@ -557,7 +557,7 @@ func main() {
 			log.Fatal(err)
 		}
 	} else {
-		err := http.ListenAndServe(":"+port, mux)
+		err := http.ListenAndServe(":"+port, CorsMiddleWare(mux))
 		if err != nil {
 			log.Fatal(err)
 		}
