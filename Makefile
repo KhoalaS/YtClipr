@@ -33,13 +33,13 @@ build_mac: cmd/clipr/main.go pkg/*.go cmd/clipr/static/**/*
 	sqlite3 $(TMP_DIR)/data.db < create.sql
 	
 	env GOOS=darwin GOARCH=amd64 go build -o build/mac/intel/clipr cmd/clipr/main.go
-	cp build/mac/arm/clipr $(TMP_DIR)
-	cd /tmp && zip -r $(BUILD_DIR)/build_mac_arm64.zip clipr_build
+	cp build/mac/intel/clipr $(TMP_DIR)
+	cd /tmp && zip -r $(BUILD_DIR)/build_mac_amd64.zip clipr_build
 	rm $(TMP_DIR)/clipr
 
 	env GOOS=darwin GOARCH=arm64 go build -o build/mac/arm/clipr cmd/clipr/main.go
-	cp build/mac/intel/clipr $(TMP_DIR)
-	cd /tmp && zip -r $(BUILD_DIR)/build_mac_amd64.zip clipr_build
+	cp build/mac/arm/clipr $(TMP_DIR)
+	cd /tmp && zip -r $(BUILD_DIR)/build_mac_arm64.zip clipr_build
 	
 	rm -r $(TMP_DIR)
 
