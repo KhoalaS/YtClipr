@@ -89,6 +89,7 @@ func main() {
 			}
 
 			binContent, _ := io.ReadAll(res.Body)
+			defer res.Body.Close()
 			if runtime.GOOS == "windows" {
 				os.WriteFile("./yt-dlp.exe", binContent, 0775)
 			}else{
@@ -442,6 +443,7 @@ func main() {
 			return
 		}
 
+		defer res.Body.Close()
 		content, err := io.ReadAll(res.Body)
 		if err != nil {
 			w.WriteHeader(424)
@@ -463,6 +465,8 @@ func main() {
 	})
 	mux.HandleFunc("/youtubei/*", func(w http.ResponseWriter, r *http.Request) {
 		redirectUrl := fmt.Sprintf("https://www.youtube.com/%s", r.URL.Path)
+		
+		defer r.Body.Close()
 		req, _ := http.NewRequest(r.Method, redirectUrl, r.Body)
 
 		for key, headers := range r.Header {
@@ -487,6 +491,7 @@ func main() {
 			return
 		}
 
+		defer res.Body.Close()
 		content, _ := io.ReadAll(res.Body)
 
 		for key, headers := range res.Header {
@@ -526,6 +531,8 @@ func main() {
 				w.Header().Add(key, val)
 			}
 		}
+
+		defer res.Body.Close()
 		content, _ := io.ReadAll(res.Body)
 		w.Write(content)
 	})
@@ -544,6 +551,7 @@ func main() {
 				}
 			}
 
+			defer res.Body.Close()
 			content, _ := io.ReadAll(res.Body)
 			w.Write(content)
 		} else {
