@@ -15,17 +15,34 @@ build_mac: cmd/clipr/main.go pkg/*.go cmd/clipr/static/**/*
 frontend: cmd/clipr/static/main.css
 	npx tailwindcss -i cmd/clipr/static/main.css -o cmd/clipr/static/output.css
 
+TMP_DIR = /tmp/clipr_build
+BUILD_DIR = $(shell pwd)/build
 release:
 	$(MAKE) frontend
 	$(MAKE) build_linux
 	$(MAKE) build_windows
 	$(MAKE) build_mac
 
-	sqlite3 build/data.db < create.sql
-	cp .env build/
-	@cd build && zip -j build_linux_amd64.zip .env linux/clipr data.db
-	@cd build && zip -j build_windows_amd64.zip .env windows/clipr.exe data.db
-	@cd build && zip -j build_mac_amd64.zip .env mac/intel/clipr data.db
-	@cd build && zip -j build_mac_arm64.zip .env mac/arm//clipr data.db
+	mkdir $(TMP_DIR)
+	cp .env $(TMP_DIR)
 
-	rm build/.env build/data.db
+	sqlite3 $(TMP_DIR)/data.db < create.sql
+	
+	cp build/linux/clipr $(TMP_DIR)
+	cd /tmp && zip -r $(BUILD_DIR)/build_linux_amd64.zip clipr_build
+	rm $(TMP_DIR)/clipr
+	
+	cp build/windows/clipr.exe $(TMP_DIR)
+	cd /tmp && zip -r $(BUILD_DIR)/build_windows_amd64.zip clipr_build
+	rm $(TMP_DIR)/clipr.exe
+
+	cp build/mac/arm/clipr $(TMP_DIR)
+	cd /tmp && zip -r $(BUILD_DIR)/build_mac_arm64.zip clipr_build
+	rm $(TMP_DIR)/clipr
+
+	cp build/mac/intel/clipr $(TMP_DIR)
+	cd /tmp && zip -r $(BUILD_DIR)/build_mac_amd64.zip clipr_build
+	rm $(TMP_DIR)/clipr
+	
+	rm -r $(TMP_DIR)
+
