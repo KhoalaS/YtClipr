@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v4
       
       - name: Install make
-        run: sudo apt install make sqlite3
+        run: |
+          sudo apt install make sqlite3
+          npm install
 
       - name: Setup Go
         uses: actions/setup-go@v5
