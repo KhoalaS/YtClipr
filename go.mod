@@ -7,6 +7,7 @@ require (
 	github.com/go-echarts/go-echarts/v2 v2.4.0
 	github.com/joho/godotenv v1.5.1
 	golang.org/x/time v0.5.0
+	golang.org/x/tools v0.21.1-0.20240508182429-e35e4ccd0d2d
 	modernc.org/sqlite v1.30.2
 	nhooyr.io/websocket v1.8.11
 )
