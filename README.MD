@@ -2,6 +2,13 @@
 
 Youtube live chat analysis and clipping tool.
 
+## Demo 
+
+<video width="600" controls>
+  <source src="demo/demo_clipr.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
 ## Development
 
 ### Requirements
