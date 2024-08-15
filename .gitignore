@@ -12,3 +12,4 @@ electron_app
 data.db
 yt-dlp
 yt-dlp.exe
+!demo/*
