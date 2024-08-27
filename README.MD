@@ -6,6 +6,15 @@ Youtube live chat analysis and clipping tool.
 
 https://github.com/KhoalaS/YtClipr/raw/main/demo/demo_clipr.mp4
 
+<div style="display:flex; gap:8px; margin-bottom: 8px">
+<img src="https://raw.githubusercontent.com/KhoalaS/YtClipr/main/demo/screenshots/1.png">
+<img src="https://raw.githubusercontent.com/KhoalaS/YtClipr/main/demo/screenshots/2.png">
+</div>
+<div style="display:flex; gap:8px">
+<img src="https://raw.githubusercontent.com/KhoalaS/YtClipr/main/demo/screenshots/3.png">
+<img src="https://raw.githubusercontent.com/KhoalaS/YtClipr/main/demo/screenshots/4.png">
+</div>
+
 ## Development
 
 ### Requirements
