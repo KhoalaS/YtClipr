@@ -1,720 +1,7093 @@
-(function(g){var window=this;'use strict';var c7=function(a){g.pk(a,"zx",Math.floor(Math.random()*2147483648).toString(36)+Math.abs(Math.floor(Math.random()*2147483648)^g.Xa()).toString(36));return a},d7=function(a,b,c){Array.isArray(c)||(c=[String(c)]);
-g.Zga(a.D,b,c)},bqb=function(a){if(a instanceof g.en)return a;
-if(typeof a.wm=="function")return a.wm(!1);if(g.Pa(a)){var b=0,c=new g.en;c.next=function(){for(;;){if(b>=a.length)return g.n1;if(b in a)return g.fn(a[b++]);b++}};
-return c}throw Error("Not implemented");},cqb=function(a,b,c){if(g.Pa(a))g.cc(a,b,c);
-else for(a=bqb(a);;){var d=a.next();if(d.done)break;b.call(c,d.value,void 0,a)}},dqb=function(a,b){var c=[];
-cqb(b,function(d){try{var e=g.Kp.prototype.B.call(this,d,!0)}catch(f){if(f=="Storage: Invalid value was encountered")return;throw f;}e===void 0?c.push(d):g.Tla(e)&&c.push(d)},a);
-return c},eqb=function(a,b){dqb(a,b).forEach(function(c){g.Kp.prototype.remove.call(this,c)},a)},fqb=function(a){if(a.qa){if(a.qa.locationOverrideToken)return{locationOverrideToken:a.qa.locationOverrideToken};
-if(a.qa.latitudeE7!=null&&a.qa.longitudeE7!=null)return{latitudeE7:a.qa.latitudeE7,longitudeE7:a.qa.longitudeE7}}return null},gqb=function(a,b){g.Mb(a,b)||a.push(b)},hqb=function(a){var b=0,c;
-for(c in a)b++;return b},iqb=function(a,b){return g.zc(a,b)},jqb=function(a){try{return g.Ja.JSON.parse(a)}catch(b){}a=String(a);
-if(/^\s*$/.test(a)?0:/^[\],:{}\s\u2028\u2029]*$/.test(a.replace(/\\["\\\/bfnrtu]/g,"@").replace(/(?:"[^"\\\n\r\u2028\u2029\x00-\x08\x0a-\x1f]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)[\s\u2028\u2029]*(?=:|,|]|}|$)/g,"]").replace(/(?:^|:|,)(?:[\s\u2028\u2029]*\[)+/g,"")))try{return eval("("+a+")")}catch(b){}throw Error("Invalid JSON string: "+a);},e7=function(a){if(g.Ja.JSON)try{return g.Ja.JSON.parse(a)}catch(b){}return jqb(a)},kqb=function(a){if(a.Mm&&typeof a.Mm=="function")return a.Mm();
-if(typeof Map!=="undefined"&&a instanceof Map||typeof Set!=="undefined"&&a instanceof Set)return Array.from(a.values());if(typeof a==="string")return a.split("");if(g.Pa(a)){for(var b=[],c=a.length,d=0;d<c;d++)b.push(a[d]);return b}return g.wc(a)},lqb=function(a){if(a.Xn&&typeof a.Xn=="function")return a.Xn();
-if(!a.Mm||typeof a.Mm!="function"){if(typeof Map!=="undefined"&&a instanceof Map)return Array.from(a.keys());if(!(typeof Set!=="undefined"&&a instanceof Set)){if(g.Pa(a)||typeof a==="string"){var b=[];a=a.length;for(var c=0;c<a;c++)b.push(c);return b}return g.xc(a)}}},mqb=function(a,b){if(a.forEach&&typeof a.forEach=="function")a.forEach(b,void 0);
-else if(g.Pa(a)||typeof a==="string")Array.prototype.forEach.call(a,b,void 0);else for(var c=lqb(a),d=kqb(a),e=d.length,f=0;f<e;f++)b.call(void 0,d[f],c&&c[f],a)},nqb=function(a,b,c,d){var e=new g.hk(null);
-a&&g.ik(e,a);b&&g.jk(e,b);c&&g.kk(e,c);d&&(e.B=d);return e},oqb=function(){this.j=f7();
-this.j.gk("/client_streamz/youtube/living_room/mdx/channel/opened",{yd:3,xd:"channel_type"})},pqb=function(a,b){a.j.lm("/client_streamz/youtube/living_room/mdx/channel/opened",b)},qqb=function(){this.j=f7();
-this.j.gk("/client_streamz/youtube/living_room/mdx/channel/closed",{yd:3,xd:"channel_type"})},rqb=function(a,b){a.j.lm("/client_streamz/youtube/living_room/mdx/channel/closed",b)},sqb=function(){this.j=f7();
-this.j.gk("/client_streamz/youtube/living_room/mdx/channel/message_received",{yd:3,xd:"channel_type"})},tqb=function(a,b){a.j.lm("/client_streamz/youtube/living_room/mdx/channel/message_received",b)},uqb=function(){this.j=f7();
-this.j.gk("/client_streamz/youtube/living_room/mdx/channel/error",{yd:3,xd:"channel_type"})},vqb=function(a,b){a.j.lm("/client_streamz/youtube/living_room/mdx/channel/error",b)},wqb=function(){this.j=f7();
-this.j.gk("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps")},xqb=function(){this.j=f7();
-this.j.gk("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps")},yqb=function(a,b){return new g.jp(a,b)},g7=function(a,b){return Object.prototype.hasOwnProperty.call(a,b)},h7=function(a,b){this.B={};
-this.j=[];this.Iv=this.size=0;var c=arguments.length;if(c>1){if(c%2)throw Error("Uneven number of arguments");for(var d=0;d<c;d+=2)this.set(arguments[d],arguments[d+1])}else if(a)if(a instanceof h7)for(c=a.Xn(),d=0;d<c.length;d++)this.set(c[d],a.get(c[d]));else for(d in a)this.set(d,a[d])},i7=function(a){if(a.size!=a.j.length){for(var b=0,c=0;b<a.j.length;){var d=a.j[b];
-g7(a.B,d)&&(a.j[c++]=d);b++}a.j.length=c}if(a.size!=a.j.length){var e={};for(c=b=0;b<a.j.length;)d=a.j[b],g7(e,d)||(a.j[c++]=d,e[d]=1),b++;a.j.length=c}},Cqb=function(a){this.name=this.id="";
-this.clientName="UNKNOWN_INTERFACE";this.app="";this.type="REMOTE_CONTROL";this.ownerObfuscatedGaiaId=this.obfuscatedGaiaId=this.avatar=this.username="";this.capabilities=new Set;this.compatibleSenderThemes=new Set;this.experiments=new Set;this.theme="u";new h7;this.model=this.brand="";this.year=0;this.chipset=this.osVersion=this.os="";this.mdxDialServerType="MDX_DIAL_SERVER_TYPE_UNKNOWN";a&&(this.id=a.id||a.name,this.name=a.name,this.clientName=a.clientName?a.clientName.toUpperCase():"UNKNOWN_INTERFACE",
-this.app=a.app,this.type=a.type||"REMOTE_CONTROL",this.username=a.user||"",this.avatar=a.userAvatarUri||"",this.obfuscatedGaiaId=a.obfuscatedGaiaId||"",this.ownerObfuscatedGaiaId=a.ownerObfuscatedGaiaId||"",this.theme=a.theme||"u",zqb(this,a.capabilities||""),Aqb(this,a.compatibleSenderThemes||""),Bqb(this,a.experiments||""),this.brand=a.brand||"",this.model=a.model||"",this.year=a.year||0,this.os=a.os||"",this.osVersion=a.osVersion||"",this.chipset=a.chipset||"",this.mdxDialServerType=a.mdxDialServerType||
-"MDX_DIAL_SERVER_TYPE_UNKNOWN",a=a.deviceInfo)&&(a=JSON.parse(a),this.brand=a.brand||"",this.model=a.model||"",this.year=a.year||0,this.os=a.os||"",this.osVersion=a.osVersion||"",this.chipset=a.chipset||"",this.clientName=a.clientName?a.clientName.toUpperCase():"UNKNOWN_INTERFACE",this.mdxDialServerType=a.mdxDialServerType||"MDX_DIAL_SERVER_TYPE_UNKNOWN")},zqb=function(a,b){a.capabilities.clear();
-g.kn(b.split(","),g.Va(iqb,Dqb)).forEach(function(c){a.capabilities.add(c)})},Aqb=function(a,b){a.compatibleSenderThemes.clear();
-g.kn(b.split(","),g.Va(iqb,Eqb)).forEach(function(c){a.compatibleSenderThemes.add(c)})},Bqb=function(a,b){a.experiments.clear();
-b.split(",").forEach(function(c){a.experiments.add(c)})},j7=function(a){a=a||{};
-this.name=a.name||"";this.id=a.id||a.screenId||"";this.token=a.token||a.loungeToken||"";this.uuid=a.uuid||a.dialId||"";this.idType=a.screenIdType||"normal"},k7=function(a,b){return!!b&&(a.id==b||a.uuid==b)},Fqb=function(a){return{name:a.name,
-screenId:a.id,loungeToken:a.token,dialId:a.uuid,screenIdType:a.idType}},Gqb=function(a){return new j7(a)},Hqb=function(a){return Array.isArray(a)?g.Al(a,Gqb):[]},l7=function(a){return a?'{name:"'+a.name+'",id:'+a.id.substr(0,6)+"..,token:"+((a.token?".."+a.token.slice(-6):"-")+",uuid:"+(a.uuid?".."+a.uuid.slice(-6):"-")+",idType:"+a.idType+"}"):"null"},Iqb=function(a){return Array.isArray(a)?"["+g.Al(a,l7).join(",")+"]":"null"},Jqb=function(){return"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g,
-function(a){var b=Math.random()*16|0;
-return(a=="x"?b:b&3|8).toString(16)})},Kqb=function(a){return g.Al(a,function(b){return{key:b.id,
-name:b.name}})},Lqb=function(a,b){return g.Kb(a,function(c){return c||b?!c!=!b?!1:c.id==b.id:!0})},m7=function(a,b){return g.Kb(a,function(c){return k7(c,b)})},Mqb=function(){var a=(0,g.$s)();
-a&&eqb(a,a.j.wm(!0))},n7=function(){var a=g.ct("yt-remote-connected-devices")||[];
-g.$b(a);return a},Nqb=function(a){if(a.length==0)return[];
-var b=a[0].indexOf("#"),c=b==-1?a[0]:a[0].substring(0,b);return g.Al(a,function(d,e){return e==0?d:d.substring(c.length)})},Oqb=function(a){g.bt("yt-remote-connected-devices",a,86400)},o7=function(){if(Pqb)return Pqb;
-var a=g.ct("yt-remote-device-id");a||(a=Jqb(),g.bt("yt-remote-device-id",a,31536E3));for(var b=n7(),c=1,d=a;g.Mb(b,d);)c++,d=a+"#"+c;return Pqb=d},Qqb=function(){var a=n7(),b=o7();
-g.et()&&g.bc(a,b);a=Nqb(a);if(a.length==0)try{g.fs("remote_sid")}catch(c){}else try{g.ds("remote_sid",a.join(","),-1)}catch(c){}},Rqb=function(){return g.ct("yt-remote-session-browser-channel")},Sqb=function(){return g.ct("yt-remote-local-screens")||[]},Tqb=function(){g.bt("yt-remote-lounge-token-expiration",!0,86400)},Uqb=function(a){a.length>5&&(a=a.slice(a.length-5));
-var b=g.Al(Sqb(),function(d){return d.loungeToken}),c=g.Al(a,function(d){return d.loungeToken});
-g.Bl(c,function(d){return!g.Mb(b,d)})&&Tqb();
-g.bt("yt-remote-local-screens",a,31536E3)},p7=function(a){a||(g.dt("yt-remote-session-screen-id"),g.dt("yt-remote-session-video-id"));
-Qqb();a=n7();g.Pb(a,o7());Oqb(a)},Vqb=function(){if(!q7){var a=g.Qp();
-a&&(q7=new g.Hp(a))}},Wqb=function(){Vqb();
-return q7?!!q7.get("yt-remote-use-staging-server"):!1},r7=function(a,b){g.Ev[a]=!0;
-var c=g.Cv();c&&c.publish.apply(c,arguments);g.Ev[a]=!1},Xqb=function(){},f7=function(){if(!s7){s7=new g.Pe(new Xqb);
-var a=g.Qr("client_streamz_web_flush_count",-1);a!==-1&&(s7.C=a)}return s7},Yqb=function(){var a=window.navigator.userAgent.match(/Chrome\/([0-9]+)/);
-return a?parseInt(a[1],10):0},Zqb=function(a){return!!document.currentScript&&(document.currentScript.src.indexOf("?"+a)!=-1||document.currentScript.src.indexOf("&"+a)!=-1)},$qb=function(){return typeof window.__onGCastApiAvailable=="function"?window.__onGCastApiAvailable:null},t7=function(a){a.length?arb(a.shift(),function(){t7(a)}):brb()},crb=function(a){return"chrome-extension://"+a+"/cast_sender.js"},arb=function(a,b,c){var d=document.createElement("script");
-d.onerror=b;c&&(d.onload=c);g.Pd(d,g.Kq(a));(document.head||document.documentElement).appendChild(d)},drb=function(){var a=Yqb(),b=[];
-if(a>1){var c=a-1;b.push("//www.gstatic.com/eureka/clank/"+a+"/cast_sender.js");b.push("//www.gstatic.com/eureka/clank/"+c+"/cast_sender.js")}return b},brb=function(){var a=$qb();
-a&&a(!1,"No cast extension found")},frb=function(){if(erb){var a=2,b=$qb(),c=function(){a--;
-a==0&&b&&b(!0)};
-window.__onGCastApiAvailable=c;arb("//www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js",brb,c)}},grb=function(){frb();
-var a=drb();a.push("//www.gstatic.com/eureka/clank/cast_sender.js");t7(a)},irb=function(){frb();
-var a=drb();a.push.apply(a,g.x(hrb.map(crb)));a.push("//www.gstatic.com/eureka/clank/cast_sender.js");t7(a)},u7=function(a,b,c){g.O.call(this);
-this.K=c!=null?(0,g.Ua)(a,c):a;this.cj=b;this.G=(0,g.Ua)(this.W4,this);this.j=!1;this.B=0;this.C=this.ud=null;this.D=[]},v7=function(a,b,c){g.O.call(this);
-this.D=c!=null?a.bind(c):a;this.cj=b;this.C=null;this.j=!1;this.B=0;this.ud=null},jrb=function(a){a.ud=g.Ne(function(){a.ud=null;
-a.j&&!a.B&&(a.j=!1,jrb(a))},a.cj);
-var b=a.C;a.C=null;a.D.apply(null,b)},w7=function(){},krb=function(){g.lb.call(this,"p")},lrb=function(){g.lb.call(this,"o")},nrb=function(){return mrb=mrb||new g.Vc},orb=function(a){g.lb.call(this,"serverreachability",a)},x7=function(a){var b=nrb();
-b.dispatchEvent(new orb(b,a))},prb=function(a){g.lb.call(this,"statevent",a)},y7=function(a){var b=nrb();
-b.dispatchEvent(new prb(b,a))},qrb=function(a,b,c,d){g.lb.call(this,"timingevent",a);
-this.size=b;this.rtt=c;this.retries=d},z7=function(a,b){if(typeof a!=="function")throw Error("Fn must not be null and must be a function");
-return g.Ja.setTimeout(function(){a()},b)},A7=function(){},B7=function(a,b,c,d){this.C=a;
-this.D=b;this.Tb=c;this.Ob=d||1;this.yb=new g.uk(this);this.fb=45E3;this.Ka=null;this.K=!1;this.Y=this.Ya=this.Z=this.Ra=this.Ba=this.ob=this.qa=null;this.ra=[];this.j=null;this.N=0;this.G=this.Fa=null;this.Jb=-1;this.Ma=!1;this.Xa=0;this.Wa=null;this.Kb=this.Va=this.Ab=this.Ga=!1;this.B=new rrb},rrb=function(){this.C=null;
-this.j="";this.B=!1},trb=function(a,b,c){a.Ra=1;
-a.Z=c7(b.clone());a.Y=c;a.Ga=!0;srb(a,null)},srb=function(a,b){a.Ba=Date.now();
-C7(a);a.Ya=a.Z.clone();d7(a.Ya,"t",a.Ob);a.N=0;var c=a.C.Ra;a.B=new rrb;a.j=urb(a.C,c?b:null,!a.Y);a.Xa>0&&(a.Wa=new v7((0,g.Ua)(a.ZU,a,a.j),a.Xa));a.yb.listen(a.j,"readystatechange",a.Y4);b=a.Ka?g.Fc(a.Ka):{};a.Y?(a.Fa||(a.Fa="POST"),b["Content-Type"]="application/x-www-form-urlencoded",a.j.send(a.Ya,a.Fa,a.Y,b)):(a.Fa="GET",a.j.send(a.Ya,a.Fa,null,b));x7(1)},wrb=function(a){if(!vrb(a))return g.bj(a.j);
-var b=g.cj(a.j);if(b==="")return"";var c="",d=b.length,e=g.$i(a.j)==4;if(!a.B.C){if(typeof TextDecoder==="undefined")return D7(a),E7(a),"";a.B.C=new g.Ja.TextDecoder}for(var f=0;f<d;f++)a.B.B=!0,c+=a.B.C.decode(b[f],{stream:!(e&&f==d-1)});b.length=0;a.B.j+=c;a.N=0;return a.B.j},vrb=function(a){return a.j?a.Fa=="GET"&&a.Ra!=2&&a.C.jf:!1},zrb=function(a,b){var c=a.N,d=b.indexOf("\n",c);
-if(d==-1)return xrb;c=Number(b.substring(c,d));if(isNaN(c))return yrb;d+=1;if(d+c>b.length)return xrb;b=b.slice(d,d+c);a.N=d+c;return b},C7=function(a){a.ob=Date.now()+a.fb;
-Arb(a,a.fb)},Arb=function(a,b){if(a.qa!=null)throw Error("WatchDog timer not null");
-a.qa=z7((0,g.Ua)(a.X4,a),b)},Brb=function(a){a.qa&&(g.Ja.clearTimeout(a.qa),a.qa=null)},E7=function(a){a.C.Ng()||a.Ma||Crb(a.C,a)},D7=function(a){Brb(a);
-g.fb(a.Wa);a.Wa=null;a.yb.removeAll();if(a.j){var b=a.j;a.j=null;b.abort();b.dispose()}},Krb=function(a,b){try{var c=a.C;
-if(c.Sh!=0&&(c.j==a||Drb(c.B,a)))if(!a.Va&&Drb(c.B,a)&&c.Sh==3){try{var d=c.kf.j.parse(b)}catch(y){d=null}if(Array.isArray(d)&&d.length==3){var e=d;if(e[0]==0)a:{if(!c.Z){if(c.j)if(c.j.Ba+3E3<a.Ba)F7(c),G7(c);else break a;Erb(c);y7(18)}}else c.Ie=e[1],0<c.Ie-c.Wa&&e[2]<37500&&c.Va&&c.ra==0&&!c.qa&&(c.qa=z7((0,g.Ua)(c.Z4,c),6E3));if(Frb(c.B)<=1&&c.Rc){try{c.Rc()}catch(y){}c.Rc=void 0}}else H7(c,11)}else if((a.Va||c.j==a)&&F7(c),!g.pb(b))for(e=c.kf.j.parse(b),b=0;b<e.length;b++){var f=e[b];c.Wa=f[0];
-f=f[1];if(c.Sh==2)if(f[0]=="c"){c.D=f[1];c.Ob=f[2];var h=f[3];h!=null&&(c.aV=h);var l=f[5];l!=null&&typeof l==="number"&&l>0&&(c.Xa=1.5*l);d=c;var m=a.mQ();if(m){var n=g.dj(m,"X-Client-Wire-Protocol");if(n){var p=d.B;!p.j&&(g.rb(n,"spdy")||g.rb(n,"quic")||g.rb(n,"h2"))&&(p.D=p.G,p.j=new Set,p.B&&(Grb(p,p.B),p.B=null))}if(d.Ga){var q=g.dj(m,"X-HTTP-Session-Id");q&&(d.ze=q,g.pk(d.Ka,d.Ga,q))}}c.Sh=3;c.G&&c.G.gV();c.yc&&(c.Wc=Date.now()-a.Ba);d=c;var r=a;d.Ed=Hrb(d,d.Ra?d.Ob:null,d.Tb);if(r.Va){Irb(d.B,
-r);var t=r,u=d.Xa;u&&t.setTimeout(u);t.qa&&(Brb(t),C7(t));d.j=r}else Jrb(d);c.C.length>0&&I7(c)}else f[0]!="stop"&&f[0]!="close"||H7(c,7);else c.Sh==3&&(f[0]=="stop"||f[0]=="close"?f[0]=="stop"?H7(c,7):c.disconnect():f[0]!="noop"&&c.G&&c.G.fV(f),c.ra=0)}x7(4)}catch(y){}},Lrb=function(a,b){this.j=a;
-this.map=b;this.context=null},Mrb=function(a){this.G=a||10;
-g.Ja.PerformanceNavigationTiming?(a=g.Ja.performance.getEntriesByType("navigation"),a=a.length>0&&(a[0].nextHopProtocol=="hq"||a[0].nextHopProtocol=="h2")):a=!!(g.Ja.chrome&&g.Ja.chrome.loadTimes&&g.Ja.chrome.loadTimes()&&g.Ja.chrome.loadTimes().wasFetchedViaSpdy);this.D=a?this.G:1;this.j=null;this.D>1&&(this.j=new Set);this.B=null;this.C=[]},Nrb=function(a){return a.B?!0:a.j?a.j.size>=a.D:!1},Frb=function(a){return a.B?1:a.j?a.j.size:0},Drb=function(a,b){return a.B?a.B==b:a.j?a.j.has(b):!1},Grb=
-function(a,b){a.j?a.j.add(b):a.B=b},Irb=function(a,b){a.B&&a.B==b?a.B=null:a.j&&a.j.has(b)&&a.j.delete(b)},Orb=function(a){if(a.B!=null)return a.C.concat(a.B.ra);
-if(a.j!=null&&a.j.size!==0){var b=a.C;a=g.w(a.j.values());for(var c=a.next();!c.done;c=a.next())b=b.concat(c.value.ra);return b}return g.Tb(a.C)},Prb=function(a,b){var c=new A7;
-if(g.Ja.Image){var d=new Image;d.onload=g.Va(J7,c,"TestLoadImage: loaded",!0,b,d);d.onerror=g.Va(J7,c,"TestLoadImage: error",!1,b,d);d.onabort=g.Va(J7,c,"TestLoadImage: abort",!1,b,d);d.ontimeout=g.Va(J7,c,"TestLoadImage: timeout",!1,b,d);g.Ja.setTimeout(function(){if(d.ontimeout)d.ontimeout()},1E4);
-d.src=a}else b(!1)},Qrb=function(a,b){var c=new A7,d=new AbortController,e=setTimeout(function(){d.abort();
-J7(c,"TestPingServer: timeout",!1,b)},1E4);
-fetch(a,{signal:d.signal}).then(function(f){clearTimeout(e);f.ok?J7(c,"TestPingServer: ok",!0,b):J7(c,"TestPingServer: server error",!1,b)}).catch(function(){clearTimeout(e);
-J7(c,"TestPingServer: error",!1,b)})},J7=function(a,b,c,d,e){try{e&&(e.onload=null,e.onerror=null,e.onabort=null,e.ontimeout=null),d(c)}catch(f){}},Rrb=function(){this.j=new w7},Srb=function(a,b,c){var d=c||"";
-try{mqb(a,function(e,f){var h=e;g.Qa(e)&&(h=g.Ci(e));b.push(d+f+"="+encodeURIComponent(h))})}catch(e){throw b.push(d+"type="+encodeURIComponent("_badmap")),e;
-}},K7=function(a,b,c){return c&&c.b$?c.b$[a]||b:b},Trb=function(a){this.C=[];
-this.Ob=this.Ed=this.Ka=this.Tb=this.j=this.ze=this.Ga=this.Ma=this.N=this.Jb=this.Y=null;this.Rf=this.Ya=0;this.Qf=K7("failFast",!1,a);this.Va=this.qa=this.Z=this.K=this.G=null;this.wc=!0;this.Ie=this.Wa=-1;this.Kb=this.ra=this.Ba=0;this.Pf=K7("baseRetryDelayMs",5E3,a);this.Sf=K7("retryDelaySeedMs",1E4,a);this.wh=K7("forwardChannelMaxRetries",2,a);this.Fd=K7("forwardChannelRequestTimeoutMs",2E4,a);this.ge=a&&a.Ypa||void 0;this.Uf=a&&a.Ooa||void 0;this.jf=a&&a.Wpa||!1;this.Xa=void 0;this.Ra=a&&a.Cea||
-!1;this.D="";this.B=new Mrb(a&&a.Sma);this.kf=new Rrb;this.yb=a&&a.jna||!1;this.ob=a&&a.Yma||!1;this.yb&&this.ob&&(this.ob=!1);this.Tf=a&&a.Ima||!1;a&&a.lna&&(this.wc=!1);this.yc=!this.yb&&this.wc&&a&&a.Wma||!1;this.Zd=void 0;a&&a.s_&&a.s_>0&&(this.Zd=a.s_);this.Rc=void 0;this.Wc=0;this.fb=!1;this.Ab=this.Fa=null},G7=function(a){a.j&&(Urb(a),a.j.cancel(),a.j=null)},Vrb=function(a){G7(a);
-a.Z&&(g.Ja.clearTimeout(a.Z),a.Z=null);F7(a);a.B.cancel();a.K&&(typeof a.K==="number"&&g.Ja.clearTimeout(a.K),a.K=null)},I7=function(a){Nrb(a.B)||a.K||(a.K=!0,g.De(a.cV,a),a.Ba=0)},Xrb=function(a,b){if(Frb(a.B)>=a.B.D-(a.K?1:0))return!1;
-if(a.K)return a.C=b.ra.concat(a.C),!0;if(a.Sh==1||a.Sh==2||a.Ba>=(a.Qf?0:a.wh))return!1;a.K=z7((0,g.Ua)(a.cV,a,b),Wrb(a,a.Ba));a.Ba++;return!0},Zrb=function(a,b){var c;
-b?c=b.Tb:c=a.Ya++;var d=a.Ka.clone();g.pk(d,"SID",a.D);g.pk(d,"RID",c);g.pk(d,"AID",a.Wa);L7(a,d);a.N&&a.Y&&g.tk(d,a.N,a.Y);c=new B7(a,a.D,c,a.Ba+1);a.N===null&&(c.Ka=a.Y);b&&(a.C=b.ra.concat(a.C));b=Yrb(a,c,1E3);c.setTimeout(Math.round(a.Fd*.5)+Math.round(a.Fd*.5*Math.random()));Grb(a.B,c);trb(c,d,b)},L7=function(a,b){a.Ma&&g.qc(a.Ma,function(c,d){g.pk(b,d,c)});
-a.G&&mqb({},function(c,d){g.pk(b,d,c)})},Yrb=function(a,b,c){c=Math.min(a.C.length,c);
-var d=a.G?(0,g.Ua)(a.G.a5,a.G,a):null;a:{for(var e=a.C,f=-1;;){var h=["count="+c];f==-1?c>0?(f=e[0].j,h.push("ofs="+f)):f=0:h.push("ofs="+f);for(var l=!0,m=0;m<c;m++){var n=e[m].j,p=e[m].map;n-=f;if(n<0)f=Math.max(0,e[m].j-100),l=!1;else try{Srb(p,h,"req"+n+"_")}catch(q){d&&d(p)}}if(l){d=h.join("&");break a}}d=void 0}a=a.C.splice(0,c);b.ra=a;return d},Jrb=function(a){a.j||a.Z||(a.Kb=1,g.De(a.bV,a),a.ra=0)},Erb=function(a){if(a.j||a.Z||a.ra>=3)return!1;
-a.Kb++;a.Z=z7((0,g.Ua)(a.bV,a),Wrb(a,a.ra));a.ra++;return!0},Urb=function(a){a.Fa!=null&&(g.Ja.clearTimeout(a.Fa),a.Fa=null)},$rb=function(a){a.j=new B7(a,a.D,"rpc",a.Kb);
-a.N===null&&(a.j.Ka=a.Y);a.j.Xa=0;var b=a.Ed.clone();g.pk(b,"RID","rpc");g.pk(b,"SID",a.D);g.pk(b,"AID",a.Wa);g.pk(b,"CI",a.Va?"0":"1");!a.Va&&a.Zd&&g.pk(b,"TO",a.Zd);g.pk(b,"TYPE","xmlhttp");L7(a,b);a.N&&a.Y&&g.tk(b,a.N,a.Y);a.Xa&&a.j.setTimeout(a.Xa);var c=a.j;a=a.Ob;c.Ra=1;c.Z=c7(b.clone());c.Y=null;c.Ga=!0;srb(c,a)},F7=function(a){a.qa!=null&&(g.Ja.clearTimeout(a.qa),a.qa=null)},Crb=function(a,b){var c=null;
-if(a.j==b){F7(a);Urb(a);a.j=null;var d=2}else if(Drb(a.B,b))c=b.ra,Irb(a.B,b),d=1;else return;if(a.Sh!=0)if(b.K)if(d==1){c=b.Y?b.Y.length:0;b=Date.now()-b.Ba;var e=a.Ba;d=nrb();d.dispatchEvent(new qrb(d,c,b,e));I7(a)}else Jrb(a);else{var f=b.Jb;e=b.getLastError();if(e==3||e==0&&f>0||!(d==1&&Xrb(a,b)||d==2&&Erb(a)))switch(c&&c.length>0&&(b=a.B,b.C=b.C.concat(c)),e){case 1:H7(a,5);break;case 4:H7(a,10);break;case 3:H7(a,6);break;default:H7(a,2)}}},Wrb=function(a,b){var c=a.Pf+Math.floor(Math.random()*
-a.Sf);
-a.isActive()||(c*=2);return c*b},H7=function(a,b){if(b==2){var c=(0,g.Ua)(a.Jea,a),d=a.Uf,e=!d;
-d=new g.hk(d||"//www.google.com/images/cleardot.gif");g.Ja.location&&g.Ja.location.protocol=="http"||g.ik(d,"https");c7(d);e?Prb(d.toString(),c):Qrb(d.toString(),c)}else y7(2);a.Sh=0;a.G&&a.G.eV(b);asb(a);Vrb(a)},asb=function(a){a.Sh=0;
-a.Ab=[];if(a.G){var b=Orb(a.B);if(b.length!=0||a.C.length!=0)g.Ub(a.Ab,b),g.Ub(a.Ab,a.C),a.B.C.length=0,g.Tb(a.C),a.C.length=0;a.G.dV()}},bsb=function(a){if(a.Sh==0)return a.Ab;
-var b=[];g.Ub(b,Orb(a.B));g.Ub(b,a.C);return b},Hrb=function(a,b,c){var d=g.qk(c);
-d.j!=""?(b&&g.jk(d,b+"."+d.j),g.kk(d,d.C)):(d=g.Ja.location,d=nqb(d.protocol,b?b+"."+d.hostname:d.hostname,+d.port,c));b=a.Ga;c=a.ze;b&&c&&g.pk(d,b,c);g.pk(d,"VER",a.aV);L7(a,d);return d},urb=function(a,b,c){if(b&&!a.Ra)throw Error("Can't create secondary domain capable XhrIo object.");
-b=a.jf&&!a.ge?new g.Xi(new g.dk({I2:c})):new g.Xi(a.ge);b.K=a.Ra;return b},csb=function(){},dsb=function(){},N7=function(a,b){g.Vc.call(this);
-this.j=new Trb(b);this.G=a;this.B=b&&b.O$||null;a=b&&b.N$||null;b&&b.Qma&&(a?a["X-Client-Protocol"]="webchannel":a={"X-Client-Protocol":"webchannel"});this.j.Y=a;a=b&&b.qoa||null;b&&b.E_&&(a?a["X-WebChannel-Content-Type"]=b.E_:a={"X-WebChannel-Content-Type":b.E_});b&&b.wX&&(a?a["X-WebChannel-Client-Profile"]=b.wX:a={"X-WebChannel-Client-Profile":b.wX});this.j.Jb=a;(a=b&&b.poa)&&!g.pb(a)&&(this.j.N=a);this.K=b&&b.Cea||!1;this.D=b&&b.qpa||!1;(b=b&&b.Y9)&&!g.pb(b)&&(this.j.Ga=b,g.yc(this.B,b)&&(a=this.B,
-b in a&&delete a[b]));this.C=new M7(this)},esb=function(a){krb.call(this);
-a.__headers__&&(this.headers=a.__headers__,this.statusCode=a.__status__,delete a.__headers__,delete a.__status__);var b=a.__sm__;b?this.data=(this.j=g.vc(b))?g.Cc(b,this.j):b:this.data=a},fsb=function(a){lrb.call(this);
-this.status=1;this.errorCode=a},M7=function(a){this.j=a},gsb=function(a,b){this.B=a;
-this.j=b},hsb=function(a){return bsb(a.j).map(function(b){var c=a.B;
-b=b.map;"__data__"in b?(b=b.__data__,c=c.D?jqb(b):b):c=b;return c})},O7=function(a,b){if(typeof a!=="function")throw Error("Fn must not be null and must be a function");
-return g.Ja.setTimeout(function(){a()},b)},Q7=function(a){P7.dispatchEvent(new isb(P7,a))},isb=function(a){g.lb.call(this,"statevent",a)},R7=function(a,b,c,d){this.j=a;
-this.D=b;this.N=c;this.K=d||1;this.B=45E3;this.C=new g.uk(this);this.G=new g.Me;this.G.setInterval(250)},ksb=function(a,b,c){a.xI=1;
-a.lD=c7(b.clone());a.Xv=c;a.Ga=!0;jsb(a,null)},lsb=function(a,b,c,d,e){a.xI=1;
-a.lD=c7(b.clone());a.Xv=null;a.Ga=c;e&&(a.W1=!1);jsb(a,d)},jsb=function(a,b){a.oD=Date.now();
-msb(a);a.wI=a.lD.clone();d7(a.wI,"t",a.K);a.zI=0;a.uj=a.j.sN(a.j.pD()?b:null);a.qN>0&&(a.vI=new v7((0,g.Ua)(a.hV,a,a.uj),a.qN));a.C.listen(a.uj,"readystatechange",a.c5);b=a.Vv?g.Fc(a.Vv):{};a.Xv?(a.yI="POST",b["Content-Type"]="application/x-www-form-urlencoded",a.uj.send(a.wI,a.yI,a.Xv,b)):(a.yI="GET",a.W1&&!g.lc&&(b.Connection="close"),a.uj.send(a.wI,a.yI,null,b));a.j.xs(1)},psb=function(a,b){var c=a.zI,d=b.indexOf("\n",c);
-if(d==-1)return nsb;c=Number(b.substring(c,d));if(isNaN(c))return osb;d+=1;if(d+c>b.length)return nsb;b=b.slice(d,d+c);a.zI=d+c;return b},msb=function(a){a.rN=Date.now()+a.B;
-qsb(a,a.B)},qsb=function(a,b){if(a.nz!=null)throw Error("WatchDog timer not null");
-a.nz=O7((0,g.Ua)(a.b5,a),b)},rsb=function(a){a.nz&&(g.Ja.clearTimeout(a.nz),a.nz=null)},ssb=function(a){a.j.Ng()||a.mD||a.j.uN(a)},S7=function(a){rsb(a);
-g.fb(a.vI);a.vI=null;a.G.stop();a.C.removeAll();if(a.uj){var b=a.uj;a.uj=null;b.abort();b.dispose()}a.d3&&(a.d3=null)},tsb=function(a,b){try{a.j.iV(a,b),a.j.xs(4)}catch(c){}},vsb=function(a,b,c,d,e){if(d==0)c(!1);
-else{var f=e||0;d--;usb(a,b,function(h){h?c(!0):g.Ja.setTimeout(function(){vsb(a,b,c,d,f)},f)})}},usb=function(a,b,c){var d=new Image;
-d.onload=function(){try{T7(d),c(!0)}catch(e){}};
-d.onerror=function(){try{T7(d),c(!1)}catch(e){}};
-d.onabort=function(){try{T7(d),c(!1)}catch(e){}};
-d.ontimeout=function(){try{T7(d),c(!1)}catch(e){}};
-g.Ja.setTimeout(function(){if(d.ontimeout)d.ontimeout()},b);
-d.src=a},T7=function(a){a.onload=null;
-a.onerror=null;a.onabort=null;a.ontimeout=null},wsb=function(a){this.j=a;
-this.B=new w7},xsb=function(a){var b=U7(a.j,a.lE,"/mail/images/cleardot.gif");
-c7(b);vsb(b.toString(),5E3,(0,g.Ua)(a.t7,a),3,2E3);a.xs(1)},ysb=function(a){var b=a.j.K;
-b!=null?(Q7(5),b?(Q7(11),V7(a.j,a,!1)):(Q7(12),V7(a.j,a,!0))):(a.il=new R7(a),a.il.Vv=a.tN,b=a.j,b=U7(b,b.pD()?a.AI:null,a.vN),Q7(5),d7(b,"TYPE","xmlhttp"),lsb(a.il,b,!1,a.AI,!1))},zsb=function(a,b,c){this.j=1;
-this.B=[];this.C=[];this.G=new w7;this.Y=a||null;this.K=b!=null?b:null;this.Z=c||!1},Asb=function(a,b){this.j=a;
-this.map=b;this.context=null},Bsb=function(a,b,c,d){g.lb.call(this,"timingevent",a);
-this.size=b;this.rtt=c;this.retries=d},Csb=function(a){g.lb.call(this,"serverreachability",a)},Esb=function(a){a.d5(1,0);
-a.BI=U7(a,null,a.xN);Dsb(a)},Fsb=function(a){a.Jt&&(a.Jt.abort(),a.Jt=null);
-a.Wg&&(a.Wg.cancel(),a.Wg=null);a.jr&&(g.Ja.clearTimeout(a.jr),a.jr=null);W7(a);a.yk&&(a.yk.cancel(),a.yk=null);a.kt&&(g.Ja.clearTimeout(a.kt),a.kt=null)},Gsb=function(a,b){if(a.j==0)throw Error("Invalid operation: sending map when state is closed");
-a.B.push(new Asb(a.e5++,b));a.j!=2&&a.j!=3||Dsb(a)},Hsb=function(a){var b=0;
-a.Wg&&b++;a.yk&&b++;return b},Dsb=function(a){a.yk||a.kt||(a.kt=O7((0,g.Ua)(a.mV,a),0),a.pz=0)},Ksb=function(a,b){if(a.j==1){if(!b){a.rD=Math.floor(Math.random()*1E5);
-b=a.rD++;var c=new R7(a,"",b);c.Vv=a.tp;var d=Isb(a),e=a.BI.clone();g.pk(e,"RID",b);g.pk(e,"CVER","1");X7(a,e);ksb(c,e,d);a.yk=c;a.j=2}}else a.j==3&&(b?Jsb(a,b):a.B.length==0||a.yk||Jsb(a))},Jsb=function(a,b){if(b)if(a.Yv>6){a.B=a.C.concat(a.B);
-a.C.length=0;var c=a.rD-1;b=Isb(a)}else c=b.N,b=b.Xv;else c=a.rD++,b=Isb(a);var d=a.BI.clone();g.pk(d,"SID",a.D);g.pk(d,"RID",c);g.pk(d,"AID",a.qz);X7(a,d);c=new R7(a,a.D,c,a.pz+1);c.Vv=a.tp;c.setTimeout(1E4+Math.round(1E4*Math.random()));a.yk=c;ksb(c,d,b)},X7=function(a,b){a.Si&&(a=a.Si.qV())&&g.qc(a,function(c,d){g.pk(b,d,c)})},Isb=function(a){var b=Math.min(a.B.length,1E3),c=["count="+b];
-if(a.Yv>6&&b>0){var d=a.B[0].j;c.push("ofs="+d)}else d=0;for(var e={},f=0;f<b;e={gG:void 0},f++){e.gG=a.B[f].j;var h=a.B[f].map;e.gG=a.Yv<=6?f:e.gG-d;try{g.qc(h,function(l){return function(m,n){c.push("req"+l.gG+"_"+n+"="+encodeURIComponent(m))}}(e))}catch(l){c.push("req"+e.gG+"_type="+encodeURIComponent("_badmap"))}}a.C=a.C.concat(a.B.splice(0,b));
-return c.join("&")},Lsb=function(a){a.Wg||a.jr||(a.N=1,a.jr=O7((0,g.Ua)(a.lV,a),0),a.oz=0)},Nsb=function(a){if(a.Wg||a.jr||a.oz>=3)return!1;
-a.N++;a.jr=O7((0,g.Ua)(a.lV,a),Msb(a,a.oz));a.oz++;return!0},V7=function(a,b,c){a.dN=a.K==null?c:!a.K;
-a.vp=b.ir;a.Z||Esb(a)},W7=function(a){a.Zv!=null&&(g.Ja.clearTimeout(a.Zv),a.Zv=null)},Msb=function(a,b){var c=5E3+Math.floor(Math.random()*1E4);
-a.isActive()||(c*=2);return c*b},Y7=function(a,b){if(b==2||b==9){var c=null;
-a.Si&&(c=null);var d=(0,g.Ua)(a.Iea,a);c||(c=new g.hk("//www.google.com/images/cleardot.gif"),c7(c));usb(c.toString(),1E4,d)}else Q7(2);Osb(a,b)},Osb=function(a,b){a.j=0;
-a.Si&&a.Si.nV(b);Psb(a);Fsb(a)},Psb=function(a){a.j=0;
-a.vp=-1;if(a.Si)if(a.C.length==0&&a.B.length==0)a.Si.yN();else{var b=g.Tb(a.C),c=g.Tb(a.B);a.C.length=0;a.B.length=0;a.Si.yN(b,c)}},U7=function(a,b,c){var d=g.qk(c);
-if(d.j!="")b&&g.jk(d,b+"."+d.j),g.kk(d,d.C);else{var e=window.location;d=nqb(e.protocol,b?b+"."+e.hostname:e.hostname,+e.port,c)}a.qD&&g.qc(a.qD,function(f,h){g.pk(d,h,f)});
-g.pk(d,"VER",a.Yv);X7(a,d);return d},Qsb=function(){},Rsb=function(){this.j=[];
-this.B=[]},Ssb=function(a){g.lb.call(this,"channelMessage");
-this.message=a},Tsb=function(a){g.lb.call(this,"channelError");
-this.error=a},Usb=function(a,b){this.action=a;
-this.params=b||{}},Z7=function(a,b){g.O.call(this);
-this.j=new g.fp(this.xca,0,this);g.P(this,this.j);this.cj=5E3;this.B=0;if(typeof a==="function")b&&(a=(0,g.Ua)(a,b));else if(a&&typeof a.handleEvent==="function")a=(0,g.Ua)(a.handleEvent,a);else throw Error("Invalid listener argument");this.C=a},Vsb=function(a,b,c,d,e){c=c===void 0?!1:c;
-d=d===void 0?function(){return""}:d;
-e=e===void 0?!1:e;this.Ba=a;this.N=b;this.C=new g.Gp;this.B=new Z7(this.Nda,this);this.j=null;this.qa=!1;this.K=null;this.Y="";this.Z=this.G=0;this.D=[];this.Ra=c;this.ra=d;this.Va=e;this.Ka=new oqb;this.Fa=new qqb;this.Ma=new sqb;this.Ga=new uqb;this.Wa=new wqb;this.Ya=new xqb},Wsb=function(a){if(a.j){var b=a.ra(),c=a.j.tp||{};
-b?c["x-youtube-lounge-xsrf-token"]=b:delete c["x-youtube-lounge-xsrf-token"];a.j.tp=c}},$7=function(a){this.scheme="https";
-this.port=this.domain="";this.j="/api/lounge";this.B=!0;a=a||document.location.href;var b=Number(g.Mi(4,a))||"";b&&(this.port=":"+b);this.domain=g.Ni(a)||"";a=g.wb();a.search("MSIE")>=0&&(a=a.match(/MSIE ([\d.]+)/)[1],g.vb(a,"10.0")<0&&(this.B=!1))},a8=function(a,b){var c=a.j;
-a.B&&(c=a.scheme+"://"+a.domain+a.port+a.j);return g.Ti(c+b,{})},Xsb=function(a,b){g.Vc.call(this);
-var c=this;this.Hd=a();this.Hd.subscribe("handlerOpened",this.g5,this);this.Hd.subscribe("handlerClosed",this.onClosed,this);this.Hd.subscribe("handlerError",function(d,e){c.onError(e)});
-this.Hd.subscribe("handlerMessage",this.onMessage,this);this.j=b},Ysb=function(a,b,c){var d=this;
-c=c===void 0?function(){return""}:c;
-var e=e===void 0?new dsb:e;var f=f===void 0?new g.Gp:f;this.pathPrefix=a;this.j=b;this.Ba=c;this.G=f;this.Z=null;this.Y=this.N=0;this.channel=null;this.K=0;this.C=new Z7(function(){d.C.isActive();var h;((h=d.channel)==null?void 0:Frb((new gsb(h,h.j)).j.B))===0&&d.connect(d.Z,d.N)});
-this.D={};this.B={};this.qa=!1;this.logger=null;this.ra=[];this.Ag=void 0;this.Ka=new oqb;this.Fa=new qqb;this.Ma=new sqb;this.Ga=new uqb},Zsb=function(a){g.Nc(a.channel,"m",function(){a.K=3;
-a.C.reset();a.Z=null;a.N=0;for(var b=g.w(a.ra),c=b.next();!c.done;c=b.next())c=c.value,a.channel&&a.channel.send(c);a.ra=[];a.publish("webChannelOpened");pqb(a.Ka,"WEB_CHANNEL")});
-g.Nc(a.channel,"n",function(){a.K=0;a.C.isActive()||a.publish("webChannelClosed");var b,c=(b=a.channel)==null?void 0:hsb(new gsb(b,b.j));c&&(a.ra=[].concat(g.x(c)));rqb(a.Fa,"WEB_CHANNEL")});
-g.Nc(a.channel,"p",function(b){var c=b.data;c[0]==="gracefulReconnect"?(a.C.start(),a.channel&&a.channel.close()):a.publish("webChannelMessage",new Usb(c[0],c[1]));a.Ag=b.statusCode;tqb(a.Ma,"WEB_CHANNEL")});
-g.Nc(a.channel,"o",function(){a.Ag===401||a.C.start();a.publish("webChannelError");vqb(a.Ga,"WEB_CHANNEL")})},$sb=function(a){var b=a.Ba();
-b?a.D["x-youtube-lounge-xsrf-token"]=b:delete a.D["x-youtube-lounge-xsrf-token"]},atb=function(a){g.Vc.call(this);
-this.j=a();this.j.subscribe("webChannelOpened",this.i5,this);this.j.subscribe("webChannelClosed",this.onClosed,this);this.j.subscribe("webChannelError",this.onError,this);this.j.subscribe("webChannelMessage",this.onMessage,this)},btb=function(a,b,c,d,e){function f(){return new Vsb(a8(a,"/bc"),b,!1,c,d)}
-c=c===void 0?function(){return""}:c;
-return g.Pr("enable_mdx_web_channel_desktop")?new atb(function(){return new Ysb(a8(a,"/wc"),b,c)}):new Xsb(f,e)},ftb=function(){var a=ctb;
-dtb();b8.push(a);etb()},c8=function(a,b){dtb();
-var c=gtb(a,String(b));b8.length==0?htb(c):(etb(),g.cc(b8,function(d){d(c)}))},d8=function(a){c8("CP",a)},dtb=function(){b8||(b8=g.La("yt.mdx.remote.debug.handlers_")||[],g.Ka("yt.mdx.remote.debug.handlers_",b8))},htb=function(a){var b=(e8+1)%50;
-e8=b;f8[b]=a;g8||(g8=b==49)},etb=function(){var a=b8;
-if(f8[0]){var b=g8?e8:-1;do{b=(b+1)%50;var c=f8[b];g.cc(a,function(d){d(c)})}while(b!=e8);
-f8=Array(50);e8=-1;g8=!1}},gtb=function(a,b){var c=(Date.now()-itb)/1E3;
-c.toFixed&&(c=c.toFixed(3));var d=[];d.push("[",c+"s","] ");d.push("[","yt.mdx.remote","] ");d.push(a+": "+b,"\n");return d.join("")},h8=function(a){g.Fx.call(this);
-this.K=a;this.screens=[]},jtb=function(a,b){var c=a.get(b.uuid)||a.get(b.id);
-if(c)return a=c.name,c.id=b.id||c.id,c.name=b.name,c.token=b.token,c.uuid=b.uuid||c.uuid,c.name!=a;a.screens.push(b);return!0},ktb=function(a,b){var c=a.screens.length!=b.length;
-a.screens=g.kn(a.screens,function(f){return!!Lqb(b,f)});
-for(var d=0,e=b.length;d<e;d++)c=jtb(a,b[d])||c;return c},ltb=function(a,b){var c=a.screens.length;
-a.screens=g.kn(a.screens,function(d){return!(d||b?!d!=!b?0:d.id==b.id:1)});
-return a.screens.length<c},mtb=function(a,b,c,d,e){g.Fx.call(this);
-this.C=a;this.N=b;this.D=c;this.K=d;this.G=e;this.B=0;this.j=null;this.ud=NaN},j8=function(a){h8.call(this,"LocalScreenService");
-this.B=a;this.j=NaN;i8(this);this.info("Initializing with "+Iqb(this.screens))},ntb=function(a){if(a.screens.length){var b=g.Al(a.screens,function(d){return d.id}),c=a8(a.B,"/pairing/get_lounge_token_batch");
-a.B.sendRequest("POST",c,{screen_ids:b.join(",")},(0,g.Ua)(a.y9,a),(0,g.Ua)(a.x9,a))}},i8=function(a){if(g.Pr("deprecate_pair_servlet_enabled"))return ktb(a,[]);
-var b=Hqb(Sqb());b=g.kn(b,function(c){return!c.uuid});
-return ktb(a,b)},k8=function(a,b){Uqb(g.Al(a.screens,Fqb));
-b&&Tqb()},ptb=function(a,b){g.Fx.call(this);
-this.K=b;b=(b=g.ct("yt-remote-online-screen-ids")||"")?b.split(","):[];for(var c={},d=this.K(),e=d.length,f=0;f<e;++f){var h=d[f].id;c[h]=g.Mb(b,h)}this.j=c;this.G=a;this.C=this.D=NaN;this.B=null;otb("Initialized with "+g.Ci(this.j))},qtb=function(a,b,c){var d=a8(a.G,"/pairing/get_screen_availability");
-a.G.sendRequest("POST",d,{lounge_token:b.token},(0,g.Ua)(function(e){e=e.screens||[];for(var f=e.length,h=0;h<f;++h)if(e[h].loungeToken==b.token){c(e[h].status=="online");return}c(!1)},a),(0,g.Ua)(function(){c(!1)},a))},stb=function(a,b){a:if(hqb(b)!=hqb(a.j))var c=!1;
-else{c=g.xc(b);for(var d=c.length,e=0;e<d;++e)if(!a.j[c[e]]){c=!1;break a}c=!0}c||(otb("Updated online screens: "+g.Ci(a.j)),a.j=b,a.publish("screenChange"));rtb(a)},l8=function(a){isNaN(a.C)||g.Mr(a.C);
-a.C=g.Kr((0,g.Ua)(a.gT,a),a.D>0&&a.D<g.Xa()?2E4:1E4)},otb=function(a){c8("OnlineScreenService",a)},ttb=function(a){var b={};
-g.cc(a.K(),function(c){c.token?b[c.token]=c.id:this.gg("Requesting availability of screen w/o lounge token.")});
-return b},rtb=function(a){a=g.xc(g.rc(a.j,function(b){return b}));
-g.$b(a);a.length?g.bt("yt-remote-online-screen-ids",a.join(","),60):g.dt("yt-remote-online-screen-ids")},m8=function(a,b){b=b===void 0?!1:b;
-h8.call(this,"ScreenService");this.D=a;this.N=b;this.j=this.B=null;this.C=[];this.G={};utb(this)},wtb=function(a,b,c,d,e,f){a.info("getAutomaticScreenByIds "+c+" / "+b);
-c||(c=a.G[b]);var h=a.Dl(),l=c?m7(h,c):null;c&&(a.N||l)||(l=m7(h,b));if(l){l.uuid=b;var m=n8(a,l);qtb(a.j,m,function(n){e(n?m:null)})}else c?vtb(a,c,(0,g.Ua)(function(n){var p=n8(this,new j7({name:d,
-screenId:c,loungeToken:n,dialId:b||""}));qtb(this.j,p,function(q){e(q?p:null)})},a),f):e(null)},xtb=function(a,b){for(var c=a.screens.length,d=0;d<c;++d)if(a.screens[d].name==b)return a.screens[d];
-return null},ytb=function(a,b,c){qtb(a.j,b,c)},vtb=function(a,b,c,d){a.info("requestLoungeToken_ for "+b);
-var e={postParams:{screen_ids:b},method:"POST",context:a,onSuccess:function(f,h){f=h&&h.screens||[];f[0]&&f[0].screenId==b?c(f[0].loungeToken):d(Error("Missing lounge token in token response"))},
-onError:function(){d(Error("Request screen lounge token failed"))}};
-g.Ur(a8(a.D,"/pairing/get_lounge_token_batch"),e)},ztb=function(a){a.screens=a.B.Dl();
-var b=a.G,c={},d;for(d in b)c[b[d]]=d;b=a.screens.length;for(d=0;d<b;++d){var e=a.screens[d];e.uuid=c[e.id]||""}a.info("Updated manual screens: "+Iqb(a.screens))},utb=function(a){Atb(a);
-a.B=new j8(a.D);a.B.subscribe("screenChange",(0,g.Ua)(a.I9,a));ztb(a);a.N||(a.C=Hqb(g.ct("yt-remote-automatic-screen-cache")||[]));Atb(a);a.info("Initializing automatic screens: "+Iqb(a.C));a.j=new ptb(a.D,(0,g.Ua)(a.Dl,a,!0));a.j.subscribe("screenChange",(0,g.Ua)(function(){this.publish("onlineScreenChange")},a))},n8=function(a,b){var c=a.get(b.id);
-c?(c.uuid=b.uuid,b=c):((c=m7(a.C,b.uuid))?(c.id=b.id,c.token=b.token,b=c):a.C.push(b),a.N||Btb(a));Atb(a);a.G[b.uuid]=b.id;g.bt("yt-remote-device-id-map",a.G,31536E3);return b},Btb=function(a){a=g.kn(a.C,function(b){return b.idType!="shortLived"});
-g.bt("yt-remote-automatic-screen-cache",g.Al(a,Fqb))},Atb=function(a){a.G=g.ct("yt-remote-device-id-map")||{}},o8=function(a,b,c){g.Fx.call(this);
-this.Ga=c;this.D=a;this.B=b;this.j=null},p8=function(a,b){a.j=b;
-a.publish("sessionScreen",a.j)},Ctb=function(a,b){a.j&&(a.j.token=b,n8(a.D,a.j));
-a.publish("sessionScreen",a.j)},q8=function(a,b){c8(a.Ga,b)},r8=function(a,b,c){o8.call(this,a,b,"CastSession");
-var d=this;this.config_=c;this.C=null;this.ra=(0,g.Ua)(this.n5,this);this.Fa=(0,g.Ua)(this.Kca,this);this.qa=g.Kr(function(){Dtb(d,null)},12E4);
-this.N=this.G=this.K=this.Z=0;this.Ba=!1;this.Y="unknown"},Ftb=function(a,b){g.Mr(a.N);
-a.N=0;b==0?Etb(a):a.N=g.Kr(function(){Etb(a)},b)},Etb=function(a){Gtb(a,"getLoungeToken");
-g.Mr(a.G);a.G=g.Kr(function(){Htb(a,null)},3E4)},Gtb=function(a,b){a.info("sendYoutubeMessage_: "+b+" "+g.Ci());
-var c={};c.type=b;a.C?a.C.sendMessage("urn:x-cast:com.google.youtube.mdx",c,function(){},(0,g.Ua)(function(){q8(this,"Failed to send message: "+b+".")},a)):q8(a,"Sending yt message without session: "+g.Ci(c))},Itb=function(a,b){b?(a.info("onConnectedScreenId_: Received screenId: "+b),a.j&&a.j.id==b||a.HY(b,function(c){p8(a,c)},function(){return a.Kj()},5)):a.Kj(Error("Waiting for session status timed out."))},Ktb=function(a,b,c){a.info("onConnectedScreenData_: Received screenData: "+JSON.stringify(b));
-var d=new j7(b);Jtb(a,d,function(e){e?(a.Ba=!0,n8(a.D,d),p8(a,d),a.Y="unknown",Ftb(a,c)):(g.sr(Error("CastSession, RemoteScreen from screenData: "+JSON.stringify(b)+" is not online.")),a.Kj())},5)},Dtb=function(a,b){g.Mr(a.qa);
-a.qa=0;b?a.config_.enableCastLoungeToken&&b.loungeToken?b.deviceId?a.j&&a.j.uuid==b.deviceId||(b.loungeTokenRefreshIntervalMs?Ktb(a,{name:a.B.friendlyName,screenId:b.screenId,loungeToken:b.loungeToken,dialId:b.deviceId,screenIdType:"shortLived"},b.loungeTokenRefreshIntervalMs):(g.sr(Error("No loungeTokenRefreshIntervalMs presents in mdxSessionStatusData: "+JSON.stringify(b)+".")),Itb(a,b.screenId))):(g.sr(Error("No device id presents in mdxSessionStatusData: "+JSON.stringify(b)+".")),Itb(a,b.screenId)):
-Itb(a,b.screenId):a.Kj(Error("Waiting for session status timed out."))},Htb=function(a,b){g.Mr(a.G);
-a.G=0;var c=null;if(b)if(b.loungeToken){var d;((d=a.j)==null?void 0:d.token)==b.loungeToken&&(c="staleLoungeToken")}else c="missingLoungeToken";else c="noLoungeTokenResponse";c?(a.info("Did not receive a new lounge token in onLoungeToken_ with data: "+(JSON.stringify(b)+", error: "+c)),a.Y=c,Ftb(a,3E4)):(Ctb(a,b.loungeToken),a.Ba=!1,a.Y="unknown",Ftb(a,b.loungeTokenRefreshIntervalMs))},Jtb=function(a,b,c,d){g.Mr(a.K);
-a.K=0;ytb(a.D,b,function(e){e||d<0?c(e):a.K=g.Kr(function(){Jtb(a,b,c,d-1)},300)})},Ltb=function(a){g.Mr(a.Z);
-a.Z=0;g.Mr(a.K);a.K=0;g.Mr(a.qa);a.qa=0;g.Mr(a.G);a.G=0;g.Mr(a.N);a.N=0},s8=function(a,b,c,d){o8.call(this,a,b,"DialSession");
-this.config_=d;this.C=this.Z=null;this.Fa="";this.Ra=c;this.Ka=null;this.qa=function(){};
-this.Y=NaN;this.Ma=(0,g.Ua)(this.o5,this);this.G=function(){};
-this.N=this.K=0;this.ra=!1;this.Ba="unknown"},t8=function(a){var b;
-return!!(a.config_.enableDialLoungeToken&&((b=a.C)==null?0:b.getDialAppInfo))},Mtb=function(a){a.G=a.D.sV(a.Fa,a.B.label,a.B.friendlyName,t8(a),function(b,c){a.G=function(){};
-a.ra=!0;p8(a,b);b.idType=="shortLived"&&c>0&&u8(a,c)},function(b){a.G=function(){};
-a.Kj(b)})},Ntb=function(a){var b={};
-b.pairingCode=a.Fa;b.theme=a.Ra;Wqb()&&(b.env_useStageMdx=1);return g.Si(b)},Otb=function(a){return new Promise(function(b){a.Fa=Jqb();
-if(a.Ka){var c=new chrome.cast.DialLaunchResponse(!0,Ntb(a));b(c);Mtb(a)}else a.qa=function(){g.Mr(a.Y);a.qa=function(){};
-a.Y=NaN;var d=new chrome.cast.DialLaunchResponse(!0,Ntb(a));b(d);Mtb(a)},a.Y=g.Kr(function(){a.qa()},100)})},Qtb=function(a,b,c){a.info("initOnConnectedScreenDataPromise_: Received screenData: "+JSON.stringify(b));
-var d=new j7(b);return(new Promise(function(e){Ptb(a,d,function(f){f?(a.ra=!0,n8(a.D,d),p8(a,d),u8(a,c)):g.sr(Error("DialSession, RemoteScreen from screenData: "+JSON.stringify(b)+" is not online."));e(f)},5)})).then(function(e){return e?new chrome.cast.DialLaunchResponse(!1):Otb(a)})},Rtb=function(a,b){var c=a.Z.receiver.label,d=a.B.friendlyName;
-return(new Promise(function(e){wtb(a.D,c,b,d,function(f){f&&f.token&&p8(a,f);e(f)},function(f){q8(a,"Failed to get DIAL screen: "+f);
-e(null)})})).then(function(e){return e&&e.token?new chrome.cast.DialLaunchResponse(!1):Otb(a)})},Ptb=function(a,b,c,d){g.Mr(a.K);
-a.K=0;ytb(a.D,b,function(e){e||d<0?c(e):a.K=g.Kr(function(){Ptb(a,b,c,d-1)},300)})},u8=function(a,b){a.info("getDialAppInfoWithTimeout_ "+b);
-t8(a)&&(g.Mr(a.N),a.N=0,b==0?Stb(a):a.N=g.Kr(function(){Stb(a)},b))},Stb=function(a){t8(a)&&a.C.getDialAppInfo(function(b){a.info("getDialAppInfo dialLaunchData: "+JSON.stringify(b));
-b=b.extraData||{};var c=null;if(b.loungeToken){var d;((d=a.j)==null?void 0:d.token)==b.loungeToken&&(c="staleLoungeToken")}else c="missingLoungeToken";c?(a.Ba=c,u8(a,3E4)):(a.ra=!1,a.Ba="unknown",Ctb(a,b.loungeToken),u8(a,b.loungeTokenRefreshIntervalMs))},function(b){a.info("getDialAppInfo error: "+b);
-a.Ba="noLoungeTokenResponse";u8(a,3E4)})},Ttb=function(a){g.Mr(a.K);
-a.K=0;g.Mr(a.N);a.N=0;a.G();a.G=function(){};
-g.Mr(a.Y)},v8=function(a,b){o8.call(this,a,b,"ManualSession");
-this.C=g.Kr((0,g.Ua)(this.aB,this,null),150)},w8=function(a,b){g.Fx.call(this);
-this.config_=b;this.B=a;this.Z=b.appId||"233637DE";this.D=b.theme||"cl";this.Y=b.disableCastApi||!1;this.K=b.forceMirroring||!1;this.j=null;this.N=!1;this.C=[];this.G=(0,g.Ua)(this.Kba,this)},Utb=function(a,b){return b?g.Kb(a.C,function(c){return k7(b,c.label)},a):null},x8=function(a){c8("Controller",a)},ctb=function(a){window.chrome&&chrome.cast&&chrome.cast.logMessage&&chrome.cast.logMessage(a)},y8=function(a){return a.N||!!a.C.length||!!a.j},z8=function(a,b,c){b!=a.j&&(g.fb(a.j),(a.j=b)?(c?a.publish("yt-remote-cast2-receiver-resumed",
-b.B):a.publish("yt-remote-cast2-receiver-selected",b.B),b.subscribe("sessionScreen",(0,g.Ua)(a.D0,a,b)),b.subscribe("sessionFailed",function(){return Vtb(a,b)}),b.j?a.publish("yt-remote-cast2-session-change",b.j):c&&a.j.aB(null)):a.publish("yt-remote-cast2-session-change",null))},Vtb=function(a,b){a.j==b&&a.publish("yt-remote-cast2-session-failed")},Wtb=function(a){var b=a.B.rV(),c=a.j&&a.j.B;
-a=g.Al(b,function(d){c&&k7(d,c.label)&&(c=null);var e=d.uuid?d.uuid:d.id,f=Utb(this,d);f?(f.label=e,f.friendlyName=d.name):(f=new chrome.cast.Receiver(e,d.name),f.receiverType=chrome.cast.ReceiverType.CUSTOM);return f},a);
-c&&(c.receiverType!=chrome.cast.ReceiverType.CUSTOM&&(c=new chrome.cast.Receiver(c.label,c.friendlyName),c.receiverType=chrome.cast.ReceiverType.CUSTOM),a.push(c));return a},cub=function(a,b,c,d){d.disableCastApi?A8("Cannot initialize because disabled by Mdx config."):Xtb()?Ytb(b,d)&&(Ztb(!0),window.chrome&&chrome.cast&&chrome.cast.isAvailable?$tb(a,c):(window.__onGCastApiAvailable=function(e,f){e?$tb(a,c):(B8("Failed to load cast API: "+f),aub(!1),Ztb(!1),g.dt("yt-remote-cast-available"),g.dt("yt-remote-cast-receiver"),
-bub(),c(!1))},d.loadCastApiSetupScript?g.Jv("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js"):window.navigator.userAgent.indexOf("Android")>=0&&window.navigator.userAgent.indexOf("Chrome/")>=0&&window.navigator.presentation?Yqb()>=60&&grb():!window.chrome||!window.navigator.presentation||window.navigator.userAgent.indexOf("Edge")>=0?brb():Yqb()>=89?irb():(frb(),t7(hrb.map(crb))))):A8("Cannot initialize because not running Chrome")},bub=function(){A8("dispose");
-var a=C8();a&&a.dispose();g.Ka("yt.mdx.remote.cloudview.instance_",null);dub(!1);g.Hv(eub);eub.length=0},D8=function(){return!!g.ct("yt-remote-cast-installed")},fub=function(){var a=g.ct("yt-remote-cast-receiver");
-return a?a.friendlyName:null},gub=function(){A8("clearCurrentReceiver");
-g.dt("yt-remote-cast-receiver")},hub=function(){return D8()?C8()?C8().getCastSession():(B8("getCastSelector: Cast is not initialized."),null):(B8("getCastSelector: Cast API is not installed!"),null)},iub=function(){D8()?C8()?E8()?(A8("Requesting cast selector."),C8().requestSession()):(A8("Wait for cast API to be ready to request the session."),eub.push(g.Gv("yt-remote-cast2-api-ready",iub))):B8("requestCastSelector: Cast is not initialized."):B8("requestCastSelector: Cast API is not installed!")},
-F8=function(a,b){E8()?C8().setConnectedScreenStatus(a,b):B8("setConnectedScreenStatus called before ready.")},Xtb=function(){var a=g.wb().search(/ (CrMo|Chrome|CriOS)\//)>=0;
-return g.KE||a},jub=function(a,b){C8().init(a,b)},Ytb=function(a,b){var c=!1;
-C8()||(a=new w8(a,b),a.subscribe("yt-remote-cast2-availability-change",function(d){g.bt("yt-remote-cast-available",d);r7("yt-remote-cast2-availability-change",d)}),a.subscribe("yt-remote-cast2-receiver-selected",function(d){A8("onReceiverSelected: "+d.friendlyName);
-g.bt("yt-remote-cast-receiver",d);r7("yt-remote-cast2-receiver-selected",d)}),a.subscribe("yt-remote-cast2-receiver-resumed",function(d){A8("onReceiverResumed: "+d.friendlyName);
-g.bt("yt-remote-cast-receiver",d);r7("yt-remote-cast2-receiver-resumed",d)}),a.subscribe("yt-remote-cast2-session-change",function(d){A8("onSessionChange: "+l7(d));
-d||g.dt("yt-remote-cast-receiver");r7("yt-remote-cast2-session-change",d)}),g.Ka("yt.mdx.remote.cloudview.instance_",a),c=!0);
-A8("cloudview.createSingleton_: "+c);return c},C8=function(){return g.La("yt.mdx.remote.cloudview.instance_")},$tb=function(a,b){aub(!0);
-Ztb(!1);jub(a,function(c){c?(dub(!0),g.Iv("yt-remote-cast2-api-ready")):(B8("Failed to initialize cast API."),aub(!1),g.dt("yt-remote-cast-available"),g.dt("yt-remote-cast-receiver"),bub());b(c)})},A8=function(a){c8("cloudview",a)},B8=function(a){c8("cloudview",a)},aub=function(a){A8("setCastInstalled_ "+a);
-g.bt("yt-remote-cast-installed",a)},E8=function(){return!!g.La("yt.mdx.remote.cloudview.apiReady_")},dub=function(a){A8("setApiReady_ "+a);
-g.Ka("yt.mdx.remote.cloudview.apiReady_",a)},Ztb=function(a){g.Ka("yt.mdx.remote.cloudview.initializing_",a)},G8=function(a){this.index=-1;
-this.videoId=this.listId="";this.volume=this.playerState=-1;this.muted=!1;this.audioTrackId=null;this.K=this.N=0;this.trackData=null;this.Gl=this.Yp=!1;this.Z=this.G=this.j=this.D=0;this.C=NaN;this.B=!1;this.reset(a)},kub=function(a){a.audioTrackId=null;
-a.trackData=null;a.playerState=-1;a.Yp=!1;a.Gl=!1;a.N=0;a.K=g.Xa();a.D=0;a.j=0;a.G=0;a.Z=0;a.C=NaN;a.B=!1},H8=function(a){return a.isPlaying()?(g.Xa()-a.K)/1E3:0},I8=function(a,b){a.N=b;
-a.K=g.Xa()},J8=function(a){switch(a.playerState){case 1:case 1081:return(g.Xa()-a.K)/1E3+a.N;
-case -1E3:return 0}return a.N},K8=function(a,b,c){var d=a.videoId;
-a.videoId=b;a.index=c;b!=d&&kub(a)},lub=function(a){var b={};
-b.index=a.index;b.listId=a.listId;b.videoId=a.videoId;b.playerState=a.playerState;b.volume=a.volume;b.muted=a.muted;b.audioTrackId=a.audioTrackId;b.trackData=g.Gc(a.trackData);b.hasPrevious=a.Yp;b.hasNext=a.Gl;b.playerTime=a.N;b.playerTimeAt=a.K;b.seekableStart=a.D;b.seekableEnd=a.j;b.duration=a.G;b.loadedTime=a.Z;b.liveIngestionTime=a.C;return b},M8=function(a,b){g.Fx.call(this);
-var c=this;this.C=0;this.D=a;this.K=[];this.G=new Rsb;this.B=this.j=null;this.Y=(0,g.Ua)(this.xaa,this);this.N=(0,g.Ua)(this.uG,this);this.Z=(0,g.Ua)(this.waa,this);this.qa=(0,g.Ua)(this.zaa,this);var d=0;a?(d=a.getProxyState(),d!=3&&(a.subscribe("proxyStateChange",this.CT,this),mub(this))):d=3;d!=0&&(b?this.CT(d):g.Kr(function(){c.CT(d)},0));
-(a=hub())&&L8(this,a);this.subscribe("yt-remote-cast2-session-change",this.qa)},N8=function(a){return new G8(a.D.getPlayerContextData())},mub=function(a){g.cc("nowAutoplaying autoplayDismissed remotePlayerChange remoteQueueChange autoplayModeChange autoplayUpNext previousNextChange multiStateLoopEnabled loopModeChange".split(" "),function(b){this.K.push(this.D.subscribe(b,g.Va(this.Iba,b),this))},a)},nub=function(a){g.cc(a.K,function(b){this.D.unsubscribeByKey(b)},a);
-a.K.length=0},O8=function(a){return a.getState()==1},P8=function(a,b){var c=a.G;
-c.j.length+c.B.length<50&&a.G.enqueue(b)},oub=function(a,b,c){var d=N8(a);
-I8(d,c);d.playerState!=-1E3&&(d.playerState=b);Q8(a,d)},R8=function(a,b,c){a.D.sendMessage(b,c)},Q8=function(a,b){nub(a);
-a.D.setPlayerContextData(lub(b));mub(a)},L8=function(a,b){a.B&&(a.B.removeUpdateListener(a.Y),a.B.removeMediaListener(a.N),a.uG(null));
-a.B=b;a.B&&(d8("Setting cast session: "+a.B.sessionId),a.B.addUpdateListener(a.Y),a.B.addMediaListener(a.N),a.B.media.length&&a.uG(a.B.media[0]))},pub=function(a){var b=a.j.media,c=a.j.customData;
-if(b&&c){var d=N8(a);b.contentId!=d.videoId&&d8("Cast changing video to: "+b.contentId);d.videoId=b.contentId;d.playerState=c.playerState;I8(d,a.j.getEstimatedTime());Q8(a,d)}else d8("No cast media video. Ignoring state update.")},S8=function(a,b,c){return(0,g.Ua)(function(d){this.gg("Failed to "+b+" with cast v2 channel. Error code: "+d.code);
-d.code!=chrome.cast.ErrorCode.TIMEOUT&&(this.gg("Retrying "+b+" using MDx browser channel."),R8(this,b,c))},a)},V8=function(a,b,c,d){d=d===void 0?!1:d;
-g.Fx.call(this);var e=this;this.K=NaN;this.Fa=!1;this.Y=this.Z=this.ra=this.Ba=NaN;this.qa=[];this.G=this.N=this.D=this.j=this.B=null;this.Ka=a;this.Ma=d;this.qa.push(g.Rs(window,"beforeunload",function(){e.aA(2)}));
-this.C=[];this.j=new G8;this.Ra=b.id;this.Ga=b.idType;this.B=btb(this.Ka,c,this.wV,this.Ga=="shortLived",this.Ra);this.B.listen("channelOpened",function(){qub(e)});
-this.B.listen("channelClosed",function(){T8("Channel closed");isNaN(e.K)?p7(!0):p7();e.dispose()});
-this.B.listen("channelError",function(f){p7();isNaN(e.pF())?(f==1&&e.Ga=="shortLived"&&e.publish("browserChannelAuthError",f),T8("Channel error: "+f+" without reconnection"),e.dispose()):(e.Fa=!0,T8("Channel error: "+f+" with reconnection in "+e.pF()+" ms"),U8(e,2))});
-this.B.listen("channelMessage",function(f){rub(e,f)});
-this.B.Ks(b.token);this.subscribe("remoteQueueChange",function(){var f=e.j.videoId;g.et()&&g.bt("yt-remote-session-video-id",f)})},sub=function(a){return g.Kb(a.C,function(b){return b.type=="LOUNGE_SCREEN"})},T8=function(a){c8("conn",a)},U8=function(a,b){a.publish("proxyStateChange",b)},tub=function(a){a.K=g.Kr(function(){T8("Connecting timeout");
-a.aA(1)},2E4)},uub=function(a){g.Mr(a.K);
-a.K=NaN},vub=function(a){g.Mr(a.Ba);
-a.Ba=NaN},xub=function(a){wub(a);
-a.ra=g.Kr(function(){W8(a,"getNowPlaying")},2E4)},wub=function(a){g.Mr(a.ra);
-a.ra=NaN},qub=function(a){T8("Channel opened");
-a.Fa&&(a.Fa=!1,vub(a),a.Ba=g.Kr(function(){T8("Timing out waiting for a screen.");a.aA(1)},15E3))},zub=function(a,b){var c=null;
-if(b){var d=sub(a);d&&(c={clientName:d.clientName,deviceMake:d.brand,deviceModel:d.model,osVersion:d.osVersion})}g.Ka("yt.mdx.remote.remoteClient_",c);b&&(uub(a),vub(a));c=a.B.LA()&&isNaN(a.K);b==c?b&&(U8(a,1),W8(a,"getSubtitlesTrack")):b?(a.CY()&&a.j.reset(),U8(a,1),W8(a,"getNowPlaying"),yub(a)):a.aA(1)},Aub=function(a,b){var c=b.params.videoId;
-delete b.params.videoId;c==a.j.videoId&&(g.Bc(b.params)?a.j.trackData=null:a.j.trackData=b.params,a.publish("remotePlayerChange"))},Bub=function(a,b,c){var d=b.params.videoId||b.params.video_id,e=parseInt(b.params.currentIndex,10);
-a.j.listId=b.params.listId||a.j.listId;K8(a.j,d,e);a.publish("remoteQueueChange",c)},Dub=function(a,b){b.params=b.params||{};
-Bub(a,b,"NOW_PLAYING_MAY_CHANGE");Cub(a,b);a.publish("autoplayDismissed")},Cub=function(a,b){var c=parseInt(b.params.currentTime||b.params.current_time,10);
-I8(a.j,isNaN(c)?0:c);c=parseInt(b.params.state,10);c=isNaN(c)?-1:c;c==-1&&a.j.playerState==-1E3&&(c=-1E3);a.j.playerState=c;c=Number(b.params.loadedTime);a.j.Z=isNaN(c)?0:c;a.j.Xo(Number(b.params.duration));c=a.j;var d=Number(b.params.liveIngestionTime);c.C=d;c.B=isNaN(d)?!1:!0;c=a.j;d=Number(b.params.seekableStartTime);b=Number(b.params.seekableEndTime);c.D=isNaN(d)?0:d;c.j=isNaN(b)?0:b;a.j.playerState==1?xub(a):wub(a);a.publish("remotePlayerChange")},Eub=function(a,b){if(a.j.playerState!=-1E3){var c=
-1085;
-switch(parseInt(b.params.adState,10)){case 1:c=1081;break;case 2:c=1084;break;case 0:c=1083}a.j.playerState=c;b=parseInt(b.params.currentTime,10);I8(a.j,isNaN(b)?0:b);a.publish("remotePlayerChange")}},Fub=function(a,b){var c=b.params.muted=="true";
-a.j.volume=parseInt(b.params.volume,10);a.j.muted=c;a.publish("remotePlayerChange")},Gub=function(a,b){a.N=b.params.videoId;
-a.publish("nowAutoplaying",parseInt(b.params.timeout,10))},Hub=function(a,b){a.N=b.params.videoId||null;
-a.publish("autoplayUpNext",a.N)},Iub=function(a,b){a.G=b.params.autoplayMode;
-a.publish("autoplayModeChange",a.G);a.G=="DISABLED"&&a.publish("autoplayDismissed")},Jub=function(a,b){var c=b.params.hasNext=="true";
-a.j.Yp=b.params.hasPrevious=="true";a.j.Gl=c;a.publish("previousNextChange")},rub=function(a,b){b=b.message;
-b.params?T8("Received: action="+b.action+", params="+g.Ci(b.params)):T8("Received: action="+b.action+" {}");switch(b.action){case "loungeStatus":b=e7(b.params.devices);a.C=g.Al(b,function(d){return new Cqb(d)});
-b=!!g.Kb(a.C,function(d){return d.type=="LOUNGE_SCREEN"});
-zub(a,b);b=a.IZ("mlm");a.publish("multiStateLoopEnabled",b);break;case "loungeScreenDisconnected":g.Qb(a.C,function(d){return d.type=="LOUNGE_SCREEN"});
-zub(a,!1);break;case "remoteConnected":var c=new Cqb(e7(b.params.device));g.Kb(a.C,function(d){return c?d.id==c.id:!1})||gqb(a.C,c);
-break;case "remoteDisconnected":c=new Cqb(e7(b.params.device));g.Qb(a.C,function(d){return c?d.id==c.id:!1});
-break;case "gracefulDisconnect":break;case "playlistModified":Bub(a,b,"QUEUE_MODIFIED");break;case "nowPlaying":Dub(a,b);break;case "onStateChange":Cub(a,b);break;case "onAdStateChange":Eub(a,b);break;case "onVolumeChanged":Fub(a,b);break;case "onSubtitlesTrackChanged":Aub(a,b);break;case "nowAutoplaying":Gub(a,b);break;case "autoplayDismissed":a.publish("autoplayDismissed");break;case "autoplayUpNext":Hub(a,b);break;case "onAutoplayModeChanged":Iub(a,b);break;case "onHasPreviousNextChanged":Jub(a,
-b);break;case "requestAssistedSignIn":a.publish("assistedSignInRequested",b.params.authCode);break;case "onLoopModeChanged":a.publish("loopModeChange",b.params.loopMode);break;default:T8("Unrecognized action: "+b.action)}},yub=function(a){g.Mr(a.Y);
-a.Y=g.Kr(function(){a.aA(1)},864E5)},W8=function(a,b,c){c?T8("Sending: action="+b+", params="+g.Ci(c)):T8("Sending: action="+b);
-a.B.sendMessage(b,c)},Kub=function(a){h8.call(this,"ScreenServiceProxy");
-this.ih=a;this.j=[];this.j.push(this.ih.$_s("screenChange",(0,g.Ua)(this.s5,this)));this.j.push(this.ih.$_s("onlineScreenChange",(0,g.Ua)(this.qba,this)))},Pub=function(a,b){Vqb();
-if(!q7||!q7.get("yt-remote-disable-remote-module-for-dev")){b=g.pr("MDX_CONFIG")||b;Mqb();Qqb();X8||(X8=new $7(b?b.loungeApiHost:void 0),Wqb()&&(X8.j="/api/loungedev"));Y8||(Y8=g.La("yt.mdx.remote.deferredProxies_")||[],g.Ka("yt.mdx.remote.deferredProxies_",Y8));Lub();var c=Z8();if(!c){var d=new m8(X8,b?b.disableAutomaticScreenCache||!1:!1);g.Ka("yt.mdx.remote.screenService_",d);c=Z8();var e={};b&&(e={appId:b.appId,disableDial:b.disableDial,theme:b.theme,loadCastApiSetupScript:b.loadCastApiSetupScript,
-disableCastApi:b.disableCastApi,enableDialLoungeToken:b.enableDialLoungeToken,enableCastLoungeToken:b.enableCastLoungeToken,forceMirroring:b.forceMirroring});g.Ka("yt.mdx.remote.enableConnectWithInitialState_",b?b.enableConnectWithInitialState||!1:!1);cub(a,d,function(f){f?$8()&&F8($8(),"YouTube TV"):d.subscribe("onlineScreenChange",function(){r7("yt-remote-receiver-availability-change")})},e)}b&&!g.La("yt.mdx.remote.initialized_")&&(g.Ka("yt.mdx.remote.initialized_",!0),a9("Initializing: "+g.Ci(b)),
-b9.push(g.Gv("yt-remote-cast2-api-ready",function(){r7("yt-remote-api-ready")})),b9.push(g.Gv("yt-remote-cast2-availability-change",function(){r7("yt-remote-receiver-availability-change")})),b9.push(g.Gv("yt-remote-cast2-receiver-selected",function(){c9(null);
-r7("yt-remote-auto-connect","cast-selector-receiver")})),b9.push(g.Gv("yt-remote-cast2-receiver-resumed",function(){r7("yt-remote-receiver-resumed","cast-selector-receiver")})),b9.push(g.Gv("yt-remote-cast2-session-change",Mub)),b9.push(g.Gv("yt-remote-connection-change",function(f){f?F8($8(),"YouTube TV"):d9()||(F8(null,null),gub())})),b9.push(g.Gv("yt-remote-cast2-session-failed",function(){r7("yt-remote-connection-failed")})),a=Nub(),b.isAuto&&(a.id+="#dial"),e=b.capabilities||[],g.Pr("desktop_enable_autoplay")&&
-e.push("atp"),e.length>0&&(a.capabilities=e),a.name=b.device,a.app=b.app,(b=b.theme)&&(a.theme=b),a9(" -- with channel params: "+g.Ci(a)),a?(g.bt("yt-remote-session-app",a.app),g.bt("yt-remote-session-name",a.name)):(g.dt("yt-remote-session-app"),g.dt("yt-remote-session-name")),g.Ka("yt.mdx.remote.channelParams_",a),c.start(),$8()||Oub())}},Qub=function(){var a=Z8().ih.$_gos();
-var b=e9();b&&f9()&&(Lqb(a,b)||a.push(b));return Kqb(a)},Sub=function(){var a=Rub();
-!a&&D8()&&fub()&&(a={key:"cast-selector-receiver",name:fub()});return a},Rub=function(){var a=Qub(),b=e9();
-b||(b=d9());return g.Kb(a,function(c){return b&&k7(b,c.key)?!0:!1})},e9=function(){var a=$8();
-if(!a)return null;var b=Z8().Dl();return m7(b,a)},Mub=function(a){a9("remote.onCastSessionChange_: "+l7(a));
-if(a){var b=e9();if(b&&b.id==a.id){if(F8(b.id,"YouTube TV"),a.idType=="shortLived"&&(a=a.token))g9&&(g9.token=a),(b=f9())&&b.Ks(a)}else b&&h9(),i9(a,1)}else f9()&&h9()},h9=function(){E8()?C8().stopSession():B8("stopSession called before API ready.");
-var a=f9();a&&(a.disconnect(1),Tub(null))},Uub=function(){var a=f9();
-return!!a&&a.getProxyState()!=3},a9=function(a){c8("remote",a)},Z8=function(){if(!Vub){var a=g.La("yt.mdx.remote.screenService_");
-Vub=a?new Kub(a):null}return Vub},$8=function(){return g.La("yt.mdx.remote.currentScreenId_")},Wub=function(a){g.Ka("yt.mdx.remote.currentScreenId_",a)},Xub=function(){return g.La("yt.mdx.remote.connectData_")},c9=function(a){g.Ka("yt.mdx.remote.connectData_",a)},f9=function(){return g.La("yt.mdx.remote.connection_")},Tub=function(a){var b=f9();
-c9(null);a||Wub("");g.Ka("yt.mdx.remote.connection_",a);Y8&&(g.cc(Y8,function(c){c(a)}),Y8.length=0);
-b&&!a?r7("yt-remote-connection-change",!1):!b&&a&&r7("yt-remote-connection-change",!0)},d9=function(){var a=g.et();
-if(!a)return null;var b=Z8();if(!b)return null;b=b.Dl();return m7(b,a)},i9=function(a,b){$8();
-e9()&&e9();if(j9)g9=a;else{Wub(a.id);var c=g.La("yt.mdx.remote.enableConnectWithInitialState_")||!1;a=new V8(X8,a,Nub(),c);a.connect(b,Xub());a.subscribe("beforeDisconnect",function(d){r7("yt-remote-before-disconnect",d)});
-a.subscribe("beforeDispose",function(){f9()&&(f9(),Tub(null))});
-a.subscribe("browserChannelAuthError",function(){var d=e9();d&&d.idType=="shortLived"&&(E8()?C8().handleBrowserChannelAuthError():B8("refreshLoungeToken called before API ready."))});
-Tub(a)}},Oub=function(){var a=d9();
-a?(a9("Resume connection to: "+l7(a)),i9(a,0)):(p7(),gub(),a9("Skipping connecting because no session screen found."))},Lub=function(){var a=Nub();
-if(g.Bc(a)){a=o7();var b=g.ct("yt-remote-session-name")||"",c=g.ct("yt-remote-session-app")||"";a={device:"REMOTE_CONTROL",id:a,name:b,app:c,mdxVersion:3};a.authuser=String(g.pr("SESSION_INDEX","0"));(b=g.pr("DELEGATED_SESSION_ID"))&&(a.pageId=String(b));g.Ka("yt.mdx.remote.channelParams_",a)}},Nub=function(){return g.La("yt.mdx.remote.channelParams_")||{}},$ub=function(a,b,c){g.O.call(this);
-var d=this;this.module=a;this.J=b;this.Ic=c;this.events=new g.OE(this);this.D=!1;this.G=new g.LF(64);this.j=new g.fp(this.E2,500,this);this.B=new g.fp(this.F2,1E3,this);this.N=new u7(this.ffa,0,this);this.C={};this.Z=new g.fp(this.C3,1E3,this);this.K=new v7(this.seekTo,1E3,this);this.Y=this.events.T(this.J,"onVolumeChange",function(e){Yub(d,e)});
-g.P(this,this.events);this.events.T(b,"onCaptionsTrackListChanged",this.Zaa);this.events.T(b,"captionschanged",this.uaa);this.events.T(b,"captionssettingschanged",this.M2);this.events.T(b,"videoplayerreset",this.IL);this.events.T(b,"mdxautoplaycancel",function(){d.Ic.PX()});
-b.L("enable_mdx_video_play_directly")&&this.events.T(b,"videodatachange",function(){Zub(d.module)||k9(d)||l9(d,0)});
-a=this.Ic;a.La();a.subscribe("proxyStateChange",this.z0,this);a.subscribe("remotePlayerChange",this.EG,this);a.subscribe("remoteQueueChange",this.IL,this);a.subscribe("previousNextChange",this.w0,this);a.subscribe("nowAutoplaying",this.s0,this);a.subscribe("autoplayDismissed",this.X_,this);g.P(this,this.j);g.P(this,this.B);g.P(this,this.N);g.P(this,this.Z);g.P(this,this.K);this.M2();this.IL();this.EG()},Yub=function(a,b){if(k9(a)){a.Ic.unsubscribe("remotePlayerChange",a.EG,a);
-var c=Math.round(b.volume);b=!!b.muted;var d=N8(a.Ic);if(c!==d.volume||b!==d.muted)a.Ic.setVolume(c,b),a.Z.start();a.Ic.subscribe("remotePlayerChange",a.EG,a)}},avb=function(a){a.Tc(0);
-a.j.stop();a.Ec(new g.LF(64))},bvb=function(a,b){if(k9(a)&&!a.D){var c=null;
-b&&(c={style:a.J.getSubtitlesUserSettings()},g.Hc(c,b));a.Ic.vV(a.J.getVideoData(1).videoId,c);a.C=N8(a.Ic).trackData}},l9=function(a,b){var c=a.J.getPlaylist();
-if(c==null?0:c.listId){var d=c.index;var e=c.listId.toString()}c=a.J.getVideoData(1);a.Ic.playVideo(c.videoId,b,d,e,c.playerParams,c.Ma,fqb(c));a.Ec(new g.LF(1))},cvb=function(a,b){if(b){var c=a.J.getOption("captions","tracklist",{rZ:1});
-c&&c.length?(a.J.setOption("captions","track",b),a.D=!1):(a.J.loadModule("captions"),a.D=!0)}else a.J.setOption("captions","track",{})},k9=function(a){return N8(a.Ic).videoId===a.J.getVideoData(1).videoId},m9=function(){g.T.call(this,{I:"div",
-S:"ytp-mdx-popup-dialog",X:{role:"dialog"},V:[{I:"div",S:"ytp-mdx-popup-dialog-inner-content",V:[{I:"div",S:"ytp-mdx-popup-title",va:"Du bist nicht angemeldet"},{I:"div",S:"ytp-mdx-popup-description",va:"Videos, die du dir ansiehst, werden m\u00f6glicherweise zum TV-Wiedergabeverlauf hinzugef\u00fcgt und k\u00f6nnen sich damit auf deine TV-Empfehlungen auswirken. Melde dich auf einem Computer in YouTube an, um das zu vermeiden."},{I:"div",S:"ytp-mdx-privacy-popup-buttons",V:[{I:"button",Na:["ytp-button",
-"ytp-mdx-privacy-popup-cancel"],va:"Abbrechen"},{I:"button",Na:["ytp-button","ytp-mdx-privacy-popup-confirm"],va:"Best\u00e4tigen"}]}]}]});this.j=new g.Dy(this,250);this.cancelButton=this.Ea("ytp-mdx-privacy-popup-cancel");this.confirmButton=this.Ea("ytp-mdx-privacy-popup-confirm");g.P(this,this.j);this.T(this.cancelButton,"click",this.B);this.T(this.confirmButton,"click",this.C)},n9=function(a){g.T.call(this,{I:"div",
-S:"ytp-remote",V:[{I:"div",S:"ytp-remote-display-status",V:[{I:"div",S:"ytp-remote-display-status-icon",V:[g.isa()]},{I:"div",S:"ytp-remote-display-status-text",va:"{{statustext}}"}]}]});this.api=a;this.j=new g.Dy(this,250);g.P(this,this.j);this.T(a,"presentingplayerstatechange",this.onStateChange);this.zd(a.getPlayerStateObject())},o9=function(a,b){g.oT.call(this,"Wiedergeben auf",1,a,b);
-this.J=a;this.bv={};this.T(a,"onMdxReceiversChange",this.D);this.T(a,"presentingplayerstatechange",this.D);this.D()},dvb=function(a){g.XT.call(this,a);
-this.mq={key:Jqb(),name:"Dieser Computer"};this.ym=null;this.subscriptions=[];this.LS=this.Ic=null;this.bv=[this.mq];this.Mt=this.mq;this.Ee=new g.LF(64);this.WZ=0;this.wi=-1;this.XG=!1;this.WG=this.UB=null;if(!g.PO(this.player.U())&&!g.hz(this.player.U())){a=this.player;var b=g.nR(a);b&&(b=b.Lm())&&(b=new o9(a,b),g.P(this,b));b=new n9(a);g.P(this,b);g.GR(a,b.element,4);this.UB=new m9;g.P(this,this.UB);g.GR(a,this.UB.element,4);this.XG=!!d9()}},n$=function(a){a.WG&&(a.player.removeEventListener("presentingplayerstatechange",
-a.WG),a.WG=null)},evb=function(a,b,c){a.Ee=c;
-a.player.publish("presentingplayerstatechange",new g.Oy(c,b))},p$=function(a,b){if(b.key!==a.Mt.key)if(b.key===a.mq.key)h9();
-else if(Zub(a)&&fvb(a),a.Mt=b,!a.player.U().L("disable_mdx_connection_in_mdx_module_for_music_web")||!g.hz(a.player.U())){var c=a.player.getPlaylistId();var d=a.player.getVideoData(1);var e=d.videoId;if(!c&&!e||(a.player.getAppState()===2||a.player.getAppState()===1)&&a.player.U().L("should_clear_video_data_on_player_cued_unstarted"))d=null;else{var f=a.player.getPlaylist();if(f){var h=[];for(var l=0;l<f.length;l++)h[l]=g.UT(f,l).videoId}else h=[e];f=a.player.getCurrentTime(1);a={videoIds:h,listId:c,
-videoId:e,playerParams:d.playerParams,clickTrackingParams:d.Ma,index:Math.max(a.player.getPlaylistIndex(),0),currentTime:f===0?void 0:f};(d=fqb(d))&&(a.locationInfo=d);d=a}a9("Connecting to: "+g.Ci(b));b.key=="cast-selector-receiver"?(c9(d||null),b=d||null,E8()?C8().setLaunchParams(b):B8("setLaunchParams called before ready.")):!d&&Uub()&&$8()==b.key?r7("yt-remote-connection-change",!0):(h9(),c9(d||null),d=Z8().Dl(),(b=m7(d,b.key))&&i9(b,1))}},Zub=function(a){var b=a.player.U();
-return!b.L("mdx_enable_privacy_disclosure_ui")||a.isLoggedIn()||a.XG||!a.UB?!1:g.bP(b)||g.dP(b)},fvb=function(a){a.player.getPlayerStateObject().isPlaying()?a.player.pauseVideo():(a.WG=function(b){!a.XG&&g.Qy(b,8)&&(a.player.pauseVideo(),n$(a))},a.player.addEventListener("presentingplayerstatechange",a.WG));
-a.UB&&a.UB.pd();f9()||(j9=!0)};
-g.k=h7.prototype;g.k.Mm=function(){i7(this);for(var a=[],b=0;b<this.j.length;b++)a.push(this.B[this.j[b]]);return a};
-g.k.Xn=function(){i7(this);return this.j.concat()};
-g.k.has=function(a){return g7(this.B,a)};
-g.k.isEmpty=function(){return this.size==0};
-g.k.clear=function(){this.B={};this.Iv=this.size=this.j.length=0};
-g.k.remove=function(a){return this.delete(a)};
-g.k.delete=function(a){return g7(this.B,a)?(delete this.B[a],--this.size,this.Iv++,this.j.length>2*this.size&&i7(this),!0):!1};
-g.k.get=function(a,b){return g7(this.B,a)?this.B[a]:b};
-g.k.set=function(a,b){g7(this.B,a)||(this.size+=1,this.j.push(a),this.Iv++);this.B[a]=b};
-g.k.forEach=function(a,b){for(var c=this.Xn(),d=0;d<c.length;d++){var e=c[d],f=this.get(e);a.call(b,f,e,this)}};
-g.k.clone=function(){return new h7(this)};
-g.k.keys=function(){return g.Ap(this.wm(!0)).j()};
-g.k.values=function(){return g.Ap(this.wm(!1)).j()};
-g.k.entries=function(){var a=this;return yqb(this.keys(),function(b){return[b,a.get(b)]})};
-g.k.wm=function(a){i7(this);var b=0,c=this.Iv,d=this,e=new g.en;e.next=function(){if(c!=d.Iv)throw Error("The map has changed since the iterator was created");if(b>=d.j.length)return g.n1;var f=d.j[b++];return g.fn(a?f:d.B[f])};
-return e};
-var Dqb={tga:"atp",Qka:"ska",mka:"que",yja:"mus",Oka:"sus",aia:"dsp",Bka:"seq",pja:"mic",oha:"dpa",Bga:"cds",wja:"mlm",mha:"dsdtr",Fja:"ntb",Fla:"vsp",zha:"scn",oka:"rpe",iha:"dcn",jha:"dcp",Uja:"pas",lha:"drq",Kja:"opf",yha:"els",Gka:"svq",xja:"mvp"},Eqb={Ela:"u",Lga:"cl",Via:"k",sia:"i",aha:"cr",zja:"m",Nha:"g",W6:"up"},Pqb="",q7=null;
-Xqb.prototype.flush=function(a,b){a=a===void 0?[]:a;b=b===void 0?!1:b;if(g.Pr("enable_client_streamz_web")){a=g.w(a);for(var c=a.next();!c.done;c=a.next())c=g.kfa(c.value),c={serializedIncrementBatch:g.Te(c.j())},g.Ht("streamzIncremented",c,{sendIsolatedPayload:b})}};
-var s7,erb=Zqb("loadCastFramework")||Zqb("loadCastApplicationFramework"),hrb=["pkedcjkdefgpdelpbcmbmeomcjbeemfm","enhhojjnijigcajfphajepfemndkmdlo"];g.Ya(u7,g.O);g.k=u7.prototype;g.k.V4=function(a){this.D=arguments;this.j=!1;this.ud?this.C=g.Xa()+this.cj:this.ud=g.Ne(this.G,this.cj)};
-g.k.stop=function(){this.ud&&(g.Ja.clearTimeout(this.ud),this.ud=null);this.C=null;this.j=!1;this.D=[]};
-g.k.pause=function(){++this.B};
-g.k.resume=function(){this.B&&(--this.B,!this.B&&this.j&&(this.j=!1,this.K.apply(null,this.D)))};
-g.k.xa=function(){this.stop();u7.Of.xa.call(this)};
-g.k.W4=function(){this.ud&&(g.Ja.clearTimeout(this.ud),this.ud=null);this.C?(this.ud=g.Ne(this.G,this.C-g.Xa()),this.C=null):this.B?this.j=!0:(this.j=!1,this.K.apply(null,this.D))};g.z(v7,g.O);g.k=v7.prototype;g.k.pN=function(a){this.C=arguments;this.ud||this.B?this.j=!0:jrb(this)};
-g.k.stop=function(){this.ud&&(g.Ja.clearTimeout(this.ud),this.ud=null,this.j=!1,this.C=null)};
-g.k.pause=function(){this.B++};
-g.k.resume=function(){this.B--;this.B||!this.j||this.ud||(this.j=!1,jrb(this))};
-g.k.xa=function(){g.O.prototype.xa.call(this);this.stop()};w7.prototype.stringify=function(a){return g.Ja.JSON.stringify(a,void 0)};
-w7.prototype.parse=function(a){return g.Ja.JSON.parse(a,void 0)};g.Ya(krb,g.lb);g.Ya(lrb,g.lb);var mrb=null;g.Ya(orb,g.lb);g.Ya(prb,g.lb);g.Ya(qrb,g.lb);A7.prototype.debug=function(){};
-A7.prototype.info=function(){};
-A7.prototype.warning=function(){};var yrb={},xrb={};g.k=B7.prototype;g.k.setTimeout=function(a){this.fb=a};
-g.k.Y4=function(a){a=a.target;var b=this.Wa;b&&g.$i(a)==3?b.pN():this.ZU(a)};
-g.k.ZU=function(a){try{if(a==this.j)a:{var b=g.$i(this.j),c=this.j.B,d=this.j.getStatus();if(!(b<3)&&(b!=3||this.j&&(this.B.B||g.bj(this.j)||g.cj(this.j)))){this.Ma||b!=4||c==7||(c==8||d<=0?x7(3):x7(2));Brb(this);var e=this.j.getStatus();this.Jb=e;var f=wrb(this);if(this.K=e==200){if(this.Ab&&!this.Va){b:{if(this.j){var h=g.dj(this.j,"X-HTTP-Initial-Response");if(h&&!g.pb(h)){var l=h;break b}}l=null}if(a=l)this.Va=!0,Krb(this,a);else{this.K=!1;this.G=3;y7(12);D7(this);E7(this);break a}}if(this.Ga){a=
-!0;for(var m;!this.Ma&&this.N<f.length;)if(m=zrb(this,f),m==xrb){b==4&&(this.G=4,y7(14),a=!1);break}else if(m==yrb){this.G=4;y7(15);a=!1;break}else Krb(this,m);vrb(this)&&this.N!=0&&(this.B.j=this.B.j.slice(this.N),this.N=0);b!=4||f.length!=0||this.B.B||(this.G=1,y7(16),a=!1);this.K=this.K&&a;a?f.length>0&&!this.Kb&&(this.Kb=!0,this.C.UR(this)):(D7(this),E7(this))}else Krb(this,f);b==4&&D7(this);this.K&&!this.Ma&&(b==4?Crb(this.C,this):(this.K=!1,C7(this)))}else g.aga(this.j),e==400&&f.indexOf("Unknown SID")>
-0?(this.G=3,y7(12)):(this.G=0,y7(13)),D7(this),E7(this)}}}catch(n){}finally{}};
-g.k.cancel=function(){this.Ma=!0;D7(this)};
-g.k.X4=function(){this.qa=null;var a=Date.now();a-this.ob>=0?(this.Ra!=2&&(x7(3),y7(17)),D7(this),this.G=2,E7(this)):Arb(this,this.ob-a)};
-g.k.getLastError=function(){return this.G};
-g.k.mQ=function(){return this.j};Mrb.prototype.cancel=function(){this.C=Orb(this);if(this.B)this.B.cancel(),this.B=null;else if(this.j&&this.j.size!==0){for(var a=g.w(this.j.values()),b=a.next();!b.done;b=a.next())b.value.cancel();this.j.clear()}};g.k=Trb.prototype;g.k.aV=8;g.k.Sh=1;g.k.connect=function(a,b,c,d){y7(0);this.Tb=a;this.Ma=b||{};c&&d!==void 0&&(this.Ma.OSID=c,this.Ma.OAID=d);this.Va=this.wc;this.Ka=Hrb(this,null,this.Tb);I7(this)};
-g.k.disconnect=function(){Vrb(this);if(this.Sh==3){var a=this.Ya++,b=this.Ka.clone();g.pk(b,"SID",this.D);g.pk(b,"RID",a);g.pk(b,"TYPE","terminate");L7(this,b);a=new B7(this,this.D,a);a.Ra=2;a.Z=c7(b.clone());b=!1;if(g.Ja.navigator&&g.Ja.navigator.sendBeacon)try{b=g.Ja.navigator.sendBeacon(a.Z.toString(),"")}catch(c){}!b&&g.Ja.Image&&((new Image).src=a.Z,b=!0);b||(a.j=urb(a.C,null),a.j.send(a.Z));a.Ba=Date.now();C7(a)}asb(this)};
-g.k.Ng=function(){return this.Sh==0};
-g.k.getState=function(){return this.Sh};
-g.k.cV=function(a){if(this.K)if(this.K=null,this.Sh==1){if(!a){this.Ya=Math.floor(Math.random()*1E5);a=this.Ya++;var b=new B7(this,"",a),c=this.Y;this.Jb&&(c?(c=g.Fc(c),g.Hc(c,this.Jb)):c=this.Jb);this.N!==null||this.ob||(b.Ka=c,c=null);var d;if(this.yb)a:{for(var e=d=0;e<this.C.length;e++){b:{var f=this.C[e];if("__data__"in f.map&&(f=f.map.__data__,typeof f==="string")){f=f.length;break b}f=void 0}if(f===void 0)break;d+=f;if(d>4096){d=e;break a}if(d===4096||e===this.C.length-1){d=e+1;break a}}d=
-1E3}else d=1E3;d=Yrb(this,b,d);e=this.Ka.clone();g.pk(e,"RID",a);g.pk(e,"CVER",22);this.Ga&&g.pk(e,"X-HTTP-Session-Id",this.Ga);L7(this,e);c&&(this.ob?d="headers="+g.Rd(g.$ga(c))+"&"+d:this.N&&g.tk(e,this.N,c));Grb(this.B,b);this.Tf&&g.pk(e,"TYPE","init");this.yb?(g.pk(e,"$req",d),g.pk(e,"SID","null"),b.Ab=!0,trb(b,e,null)):trb(b,e,d);this.Sh=2}}else this.Sh==3&&(a?Zrb(this,a):this.C.length==0||Nrb(this.B)||Zrb(this))};
-g.k.bV=function(){this.Z=null;$rb(this);if(this.yc&&!(this.fb||this.j==null||this.Wc<=0)){var a=2*this.Wc;this.Fa=z7((0,g.Ua)(this.taa,this),a)}};
-g.k.taa=function(){this.Fa&&(this.Fa=null,this.Va=!1,this.fb=!0,y7(10),G7(this),$rb(this))};
-g.k.UR=function(a){this.j==a&&this.yc&&!this.fb&&(Urb(this),this.fb=!0,y7(11))};
-g.k.Z4=function(){this.qa!=null&&(this.qa=null,G7(this),Erb(this),y7(19))};
-g.k.Jea=function(a){a?y7(2):y7(1)};
-g.k.isActive=function(){return!!this.G&&this.G.isActive(this)};
-g.k=csb.prototype;g.k.gV=function(){};
-g.k.fV=function(){};
-g.k.eV=function(){};
-g.k.dV=function(){};
-g.k.isActive=function(){return!0};
-g.k.a5=function(){};g.Ya(N7,g.Vc);N7.prototype.open=function(){this.j.G=this.C;this.K&&(this.j.Ra=!0);this.j.connect(this.G,this.B||void 0)};
-N7.prototype.close=function(){this.j.disconnect()};
-N7.prototype.send=function(a){var b=this.j;if(typeof a==="string"){var c={};c.__data__=a;a=c}else this.D&&(c={},c.__data__=g.Ci(a),a=c);b.C.push(new Lrb(b.Rf++,a));b.Sh==3&&I7(b)};
-N7.prototype.xa=function(){this.j.G=null;delete this.C;this.j.disconnect();delete this.j;N7.Of.xa.call(this)};
-g.Ya(esb,krb);g.Ya(fsb,lrb);g.Ya(M7,csb);M7.prototype.gV=function(){this.j.dispatchEvent("m")};
-M7.prototype.fV=function(a){this.j.dispatchEvent(new esb(a))};
-M7.prototype.eV=function(a){this.j.dispatchEvent(new fsb(a))};
-M7.prototype.dV=function(){this.j.dispatchEvent("n")};var P7=new g.Vc;g.z(isb,g.lb);g.k=R7.prototype;g.k.Vv=null;g.k.jt=!1;g.k.nz=null;g.k.rN=null;g.k.oD=null;g.k.xI=null;g.k.lD=null;g.k.wI=null;g.k.Xv=null;g.k.uj=null;g.k.zI=0;g.k.d3=null;g.k.yI=null;g.k.Wv=null;g.k.nD=-1;g.k.W1=!0;g.k.mD=!1;g.k.qN=0;g.k.vI=null;var osb={},nsb={};g.k=R7.prototype;g.k.setTimeout=function(a){this.B=a};
-g.k.c5=function(a){a=a.target;var b=this.vI;b&&g.$i(a)==3?b.pN():this.hV(a)};
-g.k.hV=function(a){try{if(a==this.uj)a:{var b=g.$i(this.uj),c=this.uj.B,d=this.uj.getStatus();if(g.lc&&!g.kc("420+")){if(b<4)break a}else if(b<3||b==3&&!g.bj(this.uj))break a;this.mD||b!=4||c==7||(c==8||d<=0?this.j.xs(3):this.j.xs(2));rsb(this);var e=this.uj.getStatus();this.nD=e;var f=g.bj(this.uj);if(this.jt=e==200){b==4&&S7(this);if(this.Ga){for(a=!0;!this.mD&&this.zI<f.length;){var h=psb(this,f);if(h==nsb){b==4&&(this.Wv=4,Q7(15),a=!1);break}else if(h==osb){this.Wv=4;Q7(16);a=!1;break}else tsb(this,
-h)}b==4&&f.length==0&&(this.Wv=1,Q7(17),a=!1);this.jt=this.jt&&a;a||(S7(this),ssb(this))}else tsb(this,f);this.jt&&!this.mD&&(b==4?this.j.uN(this):(this.jt=!1,msb(this)))}else e==400&&f.indexOf("Unknown SID")>0?(this.Wv=3,Q7(13)):(this.Wv=0,Q7(14)),S7(this),ssb(this)}}catch(l){}finally{}};
-g.k.cancel=function(){this.mD=!0;S7(this)};
-g.k.b5=function(){this.nz=null;var a=Date.now();a-this.rN>=0?(this.xI!=2&&this.j.xs(3),S7(this),this.Wv=2,Q7(18),ssb(this)):qsb(this,this.rN-a)};
-g.k.getLastError=function(){return this.Wv};g.k=wsb.prototype;g.k.tN=null;g.k.il=null;g.k.hM=!1;g.k.vN=null;g.k.im=null;g.k.ir=-1;g.k.AI=null;g.k.lE=null;g.k.connect=function(a){this.vN=a;a=U7(this.j,null,this.vN);Q7(3);Date.now();var b=this.j.Y;b!=null?(this.AI=b[0],(this.lE=b[1])?(this.im=1,xsb(this)):(this.im=2,ysb(this))):(d7(a,"MODE","init"),this.il=new R7(this),this.il.Vv=this.tN,lsb(this.il,a,!1,null,!0),this.im=0)};
-g.k.t7=function(a){if(a)this.im=2,ysb(this);else{Q7(4);var b=this.j;b.vp=b.Jt.ir;Y7(b,9)}a&&this.xs(2)};
-g.k.sN=function(a){return this.j.sN(a)};
-g.k.abort=function(){this.il&&(this.il.cancel(),this.il=null);this.ir=-1};
-g.k.Ng=function(){return!1};
-g.k.iV=function(a,b){this.ir=a.nD;if(this.im==0)if(b){try{var c=this.B.parse(b)}catch(d){a=this.j;a.vp=this.ir;Y7(a,2);return}this.AI=c[0];this.lE=c[1]}else a=this.j,a.vp=this.ir,Y7(a,2);else this.im==2&&(this.hM?(Q7(7),Date.now()):b=="11111"?(Q7(6),this.hM=!0,Date.now(),this.ir=200,this.il.cancel(),Q7(12),V7(this.j,this,!0)):(Q7(8),Date.now(),this.hM=!1))};
-g.k.uN=function(){this.ir=this.il.nD;if(this.il.jt)this.im==0?this.lE?(this.im=1,xsb(this)):(this.im=2,ysb(this)):this.im==2&&(this.hM?(Q7(12),V7(this.j,this,!0)):(Q7(11),V7(this.j,this,!1)));else{this.im==0?Q7(9):this.im==2&&Q7(10);var a=this.j;this.il.getLastError();a.vp=this.ir;Y7(a,2)}};
-g.k.pD=function(){return this.j.pD()};
-g.k.isActive=function(){return this.j.isActive()};
-g.k.xs=function(a){this.j.xs(a)};g.k=zsb.prototype;g.k.tp=null;g.k.qD=null;g.k.yk=null;g.k.Wg=null;g.k.xN=null;g.k.BI=null;g.k.jV=null;g.k.wN=null;g.k.rD=0;g.k.e5=0;g.k.Si=null;g.k.kt=null;g.k.jr=null;g.k.Zv=null;g.k.Jt=null;g.k.dN=null;g.k.qz=-1;g.k.kV=-1;g.k.vp=-1;g.k.pz=0;g.k.oz=0;g.k.Yv=8;g.Ya(Bsb,g.lb);g.Ya(Csb,g.lb);g.k=zsb.prototype;g.k.connect=function(a,b,c,d,e){Q7(0);this.xN=b;this.qD=c||{};d&&e!==void 0&&(this.qD.OSID=d,this.qD.OAID=e);this.Z?(O7((0,g.Ua)(this.zX,this,a),100),Esb(this)):this.zX(a)};
-g.k.disconnect=function(){Fsb(this);if(this.j==3){var a=this.rD++,b=this.BI.clone();g.pk(b,"SID",this.D);g.pk(b,"RID",a);g.pk(b,"TYPE","terminate");X7(this,b);a=new R7(this,this.D,a);a.xI=2;a.lD=c7(b.clone());(new Image).src=a.lD.toString();a.oD=Date.now();msb(a)}Psb(this)};
-g.k.zX=function(a){this.Jt=new wsb(this);this.Jt.tN=this.tp;this.Jt.B=this.G;this.Jt.connect(a)};
-g.k.Ng=function(){return this.j==0};
-g.k.getState=function(){return this.j};
-g.k.mV=function(a){this.kt=null;Ksb(this,a)};
-g.k.lV=function(){this.jr=null;this.Wg=new R7(this,this.D,"rpc",this.N);this.Wg.Vv=this.tp;this.Wg.qN=0;var a=this.jV.clone();g.pk(a,"RID","rpc");g.pk(a,"SID",this.D);g.pk(a,"CI",this.dN?"0":"1");g.pk(a,"AID",this.qz);X7(this,a);g.pk(a,"TYPE","xmlhttp");lsb(this.Wg,a,!0,this.wN,!1)};
-g.k.iV=function(a,b){if(this.j!=0&&(this.Wg==a||this.yk==a))if(this.vp=a.nD,this.yk==a&&this.j==3)if(this.Yv>7){try{var c=this.G.parse(b)}catch(d){c=null}if(Array.isArray(c)&&c.length==3)if(a=c,a[0]==0)a:{if(!this.jr){if(this.Wg)if(this.Wg.oD+3E3<this.yk.oD)W7(this),this.Wg.cancel(),this.Wg=null;else break a;Nsb(this);Q7(19)}}else this.kV=a[1],0<this.kV-this.qz&&a[2]<37500&&this.dN&&this.oz==0&&!this.Zv&&(this.Zv=O7((0,g.Ua)(this.f5,this),6E3));else Y7(this,11)}else b!=null&&Y7(this,11);else if(this.Wg==
-a&&W7(this),!g.pb(b))for(a=this.G.parse(b),b=0;b<a.length;b++)c=a[b],this.qz=c[0],c=c[1],this.j==2?c[0]=="c"?(this.D=c[1],this.wN=c[2],c=c[3],c!=null?this.Yv=c:this.Yv=6,this.j=3,this.Si&&this.Si.pV(),this.jV=U7(this,this.pD()?this.wN:null,this.xN),Lsb(this)):c[0]=="stop"&&Y7(this,7):this.j==3&&(c[0]=="stop"?Y7(this,7):c[0]!="noop"&&this.Si&&this.Si.oV(c),this.oz=0)};
-g.k.f5=function(){this.Zv!=null&&(this.Zv=null,this.Wg.cancel(),this.Wg=null,Nsb(this),Q7(20))};
-g.k.uN=function(a){if(this.Wg==a){W7(this);this.Wg=null;var b=2}else if(this.yk==a)this.yk=null,b=1;else return;this.vp=a.nD;if(this.j!=0)if(a.jt)if(b==1){b=a.Xv?a.Xv.length:0;a=Date.now()-a.oD;var c=P7;c.dispatchEvent(new Bsb(c,b,a,this.pz));Dsb(this);this.C.length=0}else Lsb(this);else{c=a.getLastError();var d;if(!(d=c==3||c==7||c==0&&this.vp>0)){if(d=b==1)this.yk||this.kt||this.j==1||this.pz>=2?d=!1:(this.kt=O7((0,g.Ua)(this.mV,this,a),Msb(this,this.pz)),this.pz++,d=!0);d=!(d||b==2&&Nsb(this))}if(d)switch(c){case 1:Y7(this,
-5);break;case 4:Y7(this,10);break;case 3:Y7(this,6);break;case 7:Y7(this,12);break;default:Y7(this,2)}}};
-g.k.d5=function(a){if(!g.Mb(arguments,this.j))throw Error("Unexpected channel state: "+this.j);};
-g.k.Iea=function(a){a?Q7(2):(Q7(1),Osb(this,8))};
-g.k.sN=function(a){if(a)throw Error("Can't create secondary domain capable XhrIo object.");a=new g.Xi;a.K=!1;return a};
-g.k.isActive=function(){return!!this.Si&&this.Si.isActive(this)};
-g.k.xs=function(a){var b=P7;b.dispatchEvent(new Csb(b,a))};
-g.k.pD=function(){return!1};
-g.k=Qsb.prototype;g.k.pV=function(){};
-g.k.oV=function(){};
-g.k.nV=function(){};
-g.k.yN=function(){};
-g.k.qV=function(){return{}};
-g.k.isActive=function(){return!0};g.k=Rsb.prototype;g.k.enqueue=function(a){this.B.push(a)};
-g.k.isEmpty=function(){return this.j.length===0&&this.B.length===0};
-g.k.clear=function(){this.j=[];this.B=[]};
-g.k.contains=function(a){return g.Mb(this.j,a)||g.Mb(this.B,a)};
-g.k.remove=function(a){var b=this.j;var c=(0,g.Z8a)(b,a);c>=0?(g.Nb(b,c),b=!0):b=!1;return b||g.Pb(this.B,a)};
-g.k.Mm=function(){for(var a=[],b=this.j.length-1;b>=0;--b)a.push(this.j[b]);var c=this.B.length;for(b=0;b<c;++b)a.push(this.B[b]);return a};g.z(Ssb,g.lb);g.z(Tsb,g.lb);g.Ya(Z7,g.O);g.k=Z7.prototype;g.k.xca=function(){this.cj=Math.min(3E5,this.cj*2);this.C();this.B&&this.start()};
-g.k.start=function(){var a=this.cj+15E3*Math.random();g.gp(this.j,a);this.B=Date.now()+a};
-g.k.stop=function(){this.j.stop();this.B=0};
-g.k.isActive=function(){return this.j.isActive()};
-g.k.reset=function(){this.j.stop();this.cj=5E3};g.Ya(Vsb,Qsb);g.k=Vsb.prototype;g.k.subscribe=function(a,b,c){return this.C.subscribe(a,b,c)};
-g.k.unsubscribe=function(a,b,c){return this.C.unsubscribe(a,b,c)};
-g.k.uh=function(a){return this.C.uh(a)};
-g.k.publish=function(a,b){return this.C.publish.apply(this.C,arguments)};
-g.k.dispose=function(){this.qa||(this.qa=!0,g.fb(this.C),this.disconnect(),g.fb(this.B),this.B=null,this.ra=function(){return""})};
-g.k.La=function(){return this.qa};
-g.k.connect=function(a,b,c){if(!this.j||this.j.getState()!=2){this.Y="";this.B.stop();this.K=a||null;this.G=b||0;a=this.Ba+"/test";b=this.Ba+"/bind";var d=new zsb(c?c.firstTestResults:null,c?c.secondTestResults:null,this.Ra),e=this.j;e&&(e.Si=null);d.Si=this;this.j=d;Wsb(this);if(this.j){d=g.pr("ID_TOKEN");var f=this.j.tp||{};d?f["x-youtube-identity-token"]=d:delete f["x-youtube-identity-token"];this.j.tp=f}e?(e.getState()!=3&&Hsb(e)==0||e.getState(),this.j.connect(a,b,this.N,e.D,e.qz)):c?this.j.connect(a,
-b,this.N,c.sessionId,c.arrayId):this.j.connect(a,b,this.N)}};
-g.k.disconnect=function(a){this.Z=a||0;this.B.stop();Wsb(this);this.j&&(this.j.getState()==3&&Ksb(this.j),this.j.disconnect());this.Z=0};
-g.k.sendMessage=function(a,b){a={_sc:a};b&&g.Hc(a,b);this.B.isActive()||(this.j?this.j.getState():0)==2?this.D.push(a):this.LA()&&(Wsb(this),Gsb(this.j,a))};
-g.k.pV=function(){this.B.reset();this.K=null;this.G=0;if(this.D.length){var a=this.D;this.D=[];for(var b=0,c=a.length;b<c;++b)Gsb(this.j,a[b])}this.publish("handlerOpened");pqb(this.Ka,"BROWSER_CHANNEL")};
-g.k.nV=function(a){var b=a==2&&this.j.vp==401;a==4||b||this.B.start();this.publish("handlerError",a,b);vqb(this.Ga,"BROWSER_CHANNEL")};
-g.k.yN=function(a,b){if(!this.B.isActive())this.publish("handlerClosed");else if(b)for(var c=0,d=b.length;c<d;++c){var e=b[c].map;e&&this.D.push(e)}rqb(this.Fa,"BROWSER_CHANNEL");a&&this.Wa.j.AN("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps",a.length);b&&this.Ya.j.AN("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps",b.length)};
-g.k.qV=function(){var a={v:2};this.Y&&(a.gsessionid=this.Y);this.G!=0&&(a.ui=""+this.G);this.Z!=0&&(a.ui=""+this.Z);this.K&&g.Hc(a,this.K);return a};
-g.k.oV=function(a){a[0]=="S"?this.Y=a[1]:a[0]=="gracefulReconnect"?(this.B.start(),this.j.disconnect()):this.publish("handlerMessage",new Usb(a[0],a[1]));tqb(this.Ma,"BROWSER_CHANNEL")};
-g.k.LA=function(){return!!this.j&&this.j.getState()==3};
-g.k.Ks=function(a){(this.N.loungeIdToken=a)||this.B.stop();if(this.Va&&this.j){var b=this.j.tp||{};a?b["X-YouTube-LoungeId-Token"]=a:delete b["X-YouTube-LoungeId-Token"];this.j.tp=b}};
-g.k.getDeviceId=function(){return this.N.id};
-g.k.au=function(){return this.B.isActive()?this.B.B-Date.now():NaN};
-g.k.Dy=function(){var a=this.B;g.hp(a.j);a.start()};
-g.k.Nda=function(){this.B.isActive();Hsb(this.j)==0&&this.connect(this.K,this.G)};$7.prototype.sendRequest=function(a,b,c,d,e,f,h){a={format:f?"RAW":"JSON",method:a,context:this,timeout:5E3,withCredentials:!!h,onSuccess:g.Va(this.D,d,!f),onError:g.Va(this.C,e),onTimeout:g.Va(this.G,e)};c&&(a.postParams=c,a.headers={"Content-Type":"application/x-www-form-urlencoded"});return g.Ur(b,a)};
-$7.prototype.D=function(a,b,c,d){b?a(d):a({text:c.responseText})};
-$7.prototype.C=function(a,b){a(Error("Request error: "+b.status))};
-$7.prototype.G=function(a){a(Error("request timed out"))};g.z(Xsb,g.Vc);g.k=Xsb.prototype;g.k.connect=function(a,b,c){this.Hd.connect(a,b,c)};
-g.k.disconnect=function(a){this.Hd.disconnect(a)};
-g.k.Dy=function(){this.Hd.Dy()};
-g.k.getDeviceId=function(){return this.Hd.getDeviceId()};
-g.k.au=function(){return this.Hd.au()};
-g.k.LA=function(){return this.Hd.LA()};
-g.k.g5=function(){this.dispatchEvent("channelOpened");var a=this.Hd,b=this.j;g.bt("yt-remote-session-browser-channel",{firstTestResults:[""],secondTestResults:!a.j.dN,sessionId:a.j.D,arrayId:a.j.qz});g.bt("yt-remote-session-screen-id",b);a=n7();b=o7();g.Mb(a,b)||a.push(b);Oqb(a);Qqb()};
-g.k.onClosed=function(){this.dispatchEvent("channelClosed")};
-g.k.onMessage=function(a){this.dispatchEvent(new Ssb(a))};
-g.k.onError=function(a){this.dispatchEvent(new Tsb(a?1:0))};
-g.k.sendMessage=function(a,b){this.Hd.sendMessage(a,b)};
-g.k.Ks=function(a){this.Hd.Ks(a)};
-g.k.dispose=function(){this.Hd.dispose()};g.k=Ysb.prototype;
-g.k.connect=function(a,b){a=a===void 0?{}:a;b=b===void 0?0:b;this.K!==2&&(this.C.stop(),this.Z=a,this.N=b,$sb(this),(a=g.pr("ID_TOKEN"))?this.D["x-youtube-identity-token"]=a:delete this.D["x-youtube-identity-token"],this.j&&(this.B.device=this.j.device,this.B.name=this.j.name,this.B.app=this.j.app,this.B.id=this.j.id,this.j.J$&&(this.B.mdxVersion=""+this.j.J$),this.j.theme&&(this.B.theme=this.j.theme),this.j.capabilities&&(this.B.capabilities=this.j.capabilities),this.j.K7&&(this.B.cst=this.j.K7),
-this.j.authuser&&(this.B.authuser=this.j.authuser),this.j.pageId&&(this.B.pageId=this.j.pageId)),this.N!==0?this.B.ui=""+this.N:delete this.B.ui,Object.assign(this.B,this.Z),this.channel=new N7(this.pathPrefix,{Y9:"gsessionid",N$:this.D,O$:this.B}),this.channel.open(),this.K=2,Zsb(this))};
-g.k.disconnect=function(a){this.Y=a===void 0?0:a;this.C.stop();$sb(this);this.channel&&(this.Y!==0?this.B.ui=""+this.Y:delete this.B.ui,this.channel.close());this.Y=0};
-g.k.au=function(){return this.C.isActive()?this.C.B-Date.now():NaN};
-g.k.Dy=function(){var a=this.C;g.hp(a.j);a.start()};
-g.k.sendMessage=function(a,b){this.channel&&($sb(this),a=Object.assign({},{_sc:a},b),this.channel.send(a))};
-g.k.Ks=function(a){a||this.C.stop();a?this.D["X-YouTube-LoungeId-Token"]=a:delete this.D["X-YouTube-LoungeId-Token"]};
-g.k.getDeviceId=function(){return this.j?this.j.id:""};
-g.k.publish=function(a){return this.G.publish.apply(this.G,[a].concat(g.x(g.Ca.apply(1,arguments))))};
-g.k.subscribe=function(a,b,c){return this.G.subscribe(a,b,c)};
-g.k.unsubscribe=function(a,b,c){return this.G.unsubscribe(a,b,c)};
-g.k.uh=function(a){return this.G.uh(a)};
-g.k.dispose=function(){this.qa||(this.qa=!0,g.fb(this.G),this.disconnect(),g.fb(this.C),this.Ba=function(){return""})};
-g.k.La=function(){return this.qa};g.z(atb,g.Vc);g.k=atb.prototype;g.k.connect=function(a,b){this.j.connect(a,b)};
-g.k.disconnect=function(a){this.j.disconnect(a)};
-g.k.Dy=function(){this.j.Dy()};
-g.k.getDeviceId=function(){return this.j.getDeviceId()};
-g.k.au=function(){return this.j.au()};
-g.k.LA=function(){return this.j.K===3};
-g.k.i5=function(){this.dispatchEvent("channelOpened")};
-g.k.onClosed=function(){this.dispatchEvent("channelClosed")};
-g.k.onMessage=function(a){this.dispatchEvent(new Ssb(a))};
-g.k.onError=function(){this.dispatchEvent(new Tsb(this.j.Ag===401?1:0))};
-g.k.sendMessage=function(a,b){this.j.sendMessage(a,b)};
-g.k.Ks=function(a){this.j.Ks(a)};
-g.k.dispose=function(){this.j.dispose()};var itb=Date.now(),b8=null,f8=Array(50),e8=-1,g8=!1;g.Ya(h8,g.Fx);h8.prototype.Dl=function(){return this.screens};
-h8.prototype.contains=function(a){return!!Lqb(this.screens,a)};
-h8.prototype.get=function(a){return a?m7(this.screens,a):null};
-h8.prototype.info=function(a){c8(this.K,a)};g.z(mtb,g.Fx);g.k=mtb.prototype;g.k.start=function(){!this.j&&isNaN(this.ud)&&this.d1()};
-g.k.stop=function(){this.j&&(this.j.abort(),this.j=null);isNaN(this.ud)||(g.Mr(this.ud),this.ud=NaN)};
-g.k.xa=function(){this.stop();g.Fx.prototype.xa.call(this)};
-g.k.d1=function(){this.ud=NaN;this.j=g.Ur(a8(this.C,"/pairing/get_screen"),{method:"POST",postParams:{pairing_code:this.N},timeout:5E3,onSuccess:(0,g.Ua)(this.k5,this),onError:(0,g.Ua)(this.j5,this),onTimeout:(0,g.Ua)(this.l5,this)})};
-g.k.k5=function(a,b){this.j=null;a=b.screen||{};a.dialId=this.D;a.name=this.K;b=-1;this.G&&a.shortLivedLoungeToken&&a.shortLivedLoungeToken.value&&a.shortLivedLoungeToken.refreshIntervalMs&&(a.screenIdType="shortLived",a.loungeToken=a.shortLivedLoungeToken.value,b=a.shortLivedLoungeToken.refreshIntervalMs);this.publish("pairingComplete",new j7(a),b)};
-g.k.j5=function(a){this.j=null;a.status&&a.status==404?this.B>=gvb.length?this.publish("pairingFailed",Error("DIAL polling timed out")):(a=gvb[this.B],this.ud=g.Kr((0,g.Ua)(this.d1,this),a),this.B++):this.publish("pairingFailed",Error("Server error "+a.status))};
-g.k.l5=function(){this.j=null;this.publish("pairingFailed",Error("Server not responding"))};
-var gvb=[2E3,2E3,1E3,1E3,1E3,2E3,2E3,5E3,5E3,1E4];g.Ya(j8,h8);g.k=j8.prototype;g.k.start=function(){i8(this)&&this.publish("screenChange");!g.ct("yt-remote-lounge-token-expiration")&&ntb(this);g.Mr(this.j);this.j=g.Kr((0,g.Ua)(this.start,this),1E4)};
-g.k.add=function(a,b){i8(this);jtb(this,a);k8(this,!1);this.publish("screenChange");b(a);a.token||ntb(this)};
-g.k.remove=function(a,b){var c=i8(this);ltb(this,a)&&(k8(this,!1),c=!0);b(a);c&&this.publish("screenChange")};
-g.k.cN=function(a,b,c,d){var e=i8(this),f=this.get(a.id);f?(f.name!=b&&(f.name=b,k8(this,!1),e=!0),c(a)):d(Error("no such local screen."));e&&this.publish("screenChange")};
-g.k.xa=function(){g.Mr(this.j);j8.Of.xa.call(this)};
-g.k.y9=function(a){i8(this);var b=this.screens.length;a=a&&a.screens||[];for(var c=0,d=a.length;c<d;++c){var e=a[c],f=this.get(e.screenId);f&&(f.token=e.loungeToken,--b)}k8(this,!b);b&&c8(this.K,"Missed "+b+" lounge tokens.")};
-g.k.x9=function(a){c8(this.K,"Requesting lounge tokens failed: "+a)};g.z(ptb,g.Fx);g.k=ptb.prototype;g.k.start=function(){var a=parseInt(g.ct("yt-remote-fast-check-period")||"0",10);(this.D=g.Xa()-144E5<a?0:a)?l8(this):(this.D=g.Xa()+3E5,g.bt("yt-remote-fast-check-period",this.D),this.gT())};
-g.k.isEmpty=function(){return g.Bc(this.j)};
-g.k.update=function(){otb("Updating availability on schedule.");var a=this.K(),b=g.rc(this.j,function(c,d){return c&&!!m7(a,d)},this);
-stb(this,b)};
-g.k.xa=function(){g.Mr(this.C);this.C=NaN;this.B&&(this.B.abort(),this.B=null);g.Fx.prototype.xa.call(this)};
-g.k.gT=function(){g.Mr(this.C);this.C=NaN;this.B&&this.B.abort();var a=ttb(this);if(hqb(a)){var b=a8(this.G,"/pairing/get_screen_availability");this.B=this.G.sendRequest("POST",b,{lounge_token:g.xc(a).join(",")},(0,g.Ua)(this.fca,this,a),(0,g.Ua)(this.eca,this))}else stb(this,{}),l8(this)};
-g.k.fca=function(a,b){this.B=null;var c=g.xc(ttb(this));if(g.ac(c,g.xc(a))){b=b.screens||[];c={};for(var d=b.length,e=0;e<d;++e)c[a[b[e].loungeToken]]=b[e].status=="online";stb(this,c);l8(this)}else this.gg("Changing Screen set during request."),this.gT()};
-g.k.eca=function(a){this.gg("Screen availability failed: "+a);this.B=null;l8(this)};
-g.k.gg=function(a){c8("OnlineScreenService",a)};g.Ya(m8,h8);g.k=m8.prototype;g.k.start=function(){this.B.start();this.j.start();this.screens.length&&(this.publish("screenChange"),this.j.isEmpty()||this.publish("onlineScreenChange"))};
-g.k.add=function(a,b,c){this.B.add(a,b,c)};
-g.k.remove=function(a,b,c){this.B.remove(a,b,c);this.j.update()};
-g.k.cN=function(a,b,c,d){this.B.contains(a)?this.B.cN(a,b,c,d):(a="Updating name of unknown screen: "+a.name,c8(this.K,a),d(Error(a)))};
-g.k.Dl=function(a){return a?this.screens:g.Sb(this.screens,g.kn(this.C,function(b){return!this.contains(b)},this))};
-g.k.rV=function(){return g.kn(this.Dl(!0),function(a){return!!this.j.j[a.id]},this)};
-g.k.sV=function(a,b,c,d,e,f){var h=this;this.info("getDialScreenByPairingCode "+a+" / "+b);var l=new mtb(this.D,a,b,c,d);l.subscribe("pairingComplete",function(m,n){g.fb(l);e(n8(h,m),n)});
-l.subscribe("pairingFailed",function(m){g.fb(l);f(m)});
-l.start();return(0,g.Ua)(l.stop,l)};
-g.k.m5=function(a,b,c,d){g.Ur(a8(this.D,"/pairing/get_screen"),{method:"POST",postParams:{pairing_code:a},timeout:5E3,onSuccess:(0,g.Ua)(function(e,f){e=new j7(f.screen||{});if(!e.name||xtb(this,e.name)){a:{f=e.name;for(var h=2,l=b(f,h);xtb(this,l);){h++;if(h>20)break a;l=b(f,h)}f=l}e.name=f}c(n8(this,e))},this),
-onError:(0,g.Ua)(function(e){d(Error("pairing request failed: "+e.status))},this),
-onTimeout:(0,g.Ua)(function(){d(Error("pairing request timed out."))},this)})};
-g.k.xa=function(){g.fb(this.B);g.fb(this.j);m8.Of.xa.call(this)};
-g.k.I9=function(){ztb(this);this.publish("screenChange");this.j.update()};
-m8.prototype.dispose=m8.prototype.dispose;g.Ya(o8,g.Fx);g.k=o8.prototype;g.k.Kj=function(a){this.La()||(a&&(q8(this,""+a),this.publish("sessionFailed")),this.j=null,this.publish("sessionScreen",null))};
-g.k.info=function(a){c8(this.Ga,a)};
-g.k.tV=function(){return null};
-g.k.yT=function(a){var b=this.B;a?(b.displayStatus=new chrome.cast.ReceiverDisplayStatus(a,[]),b.displayStatus.showStop=!0):b.displayStatus=null;chrome.cast.setReceiverDisplayStatus(b,(0,g.Ua)(function(){this.info("Updated receiver status for "+b.friendlyName+": "+a)},this),(0,g.Ua)(function(){q8(this,"Failed to update receiver status for: "+b.friendlyName)},this))};
-g.k.xa=function(){this.yT("");o8.Of.xa.call(this)};g.z(r8,o8);g.k=r8.prototype;g.k.wT=function(a){if(this.C){if(this.C==a)return;q8(this,"Overriding cast session with new session object");Ltb(this);this.Ba=!1;this.Y="unknown";this.C.removeUpdateListener(this.ra);this.C.removeMessageListener("urn:x-cast:com.google.youtube.mdx",this.Fa)}this.C=a;this.C.addUpdateListener(this.ra);this.C.addMessageListener("urn:x-cast:com.google.youtube.mdx",this.Fa);Gtb(this,"getMdxSessionStatus")};
-g.k.aB=function(a){this.info("launchWithParams no-op for Cast: "+g.Ci(a))};
-g.k.stop=function(){this.C?this.C.stop((0,g.Ua)(function(){this.Kj()},this),(0,g.Ua)(function(){this.Kj(Error("Failed to stop receiver app."))},this)):this.Kj(Error("Stopping cast device without session."))};
-g.k.yT=function(){};
-g.k.xa=function(){this.info("disposeInternal");Ltb(this);this.C&&(this.C.removeUpdateListener(this.ra),this.C.removeMessageListener("urn:x-cast:com.google.youtube.mdx",this.Fa));this.C=null;o8.prototype.xa.call(this)};
-g.k.Kca=function(a,b){if(!this.La())if(b)if(b=e7(b),g.Qa(b))switch(a=""+b.type,b=b.data||{},this.info("onYoutubeMessage_: "+a+" "+g.Ci(b)),a){case "mdxSessionStatus":Dtb(this,b);break;case "loungeToken":Htb(this,b);break;default:q8(this,"Unknown youtube message: "+a)}else q8(this,"Unable to parse message.");else q8(this,"No data in message.")};
-g.k.HY=function(a,b,c,d){g.Mr(this.Z);this.Z=0;wtb(this.D,this.B.label,a,this.B.friendlyName,(0,g.Ua)(function(e){e?b(e):d>=0?(q8(this,"Screen "+a+" appears to be offline. "+d+" retries left."),this.Z=g.Kr((0,g.Ua)(this.HY,this,a,b,c,d-1),300)):c(Error("Unable to fetch screen."))},this),c)};
-g.k.tV=function(){return this.C};
-g.k.n5=function(a){this.La()||a||(q8(this,"Cast session died."),this.Kj())};g.z(s8,o8);g.k=s8.prototype;g.k.wT=function(a){this.C=a;this.C.addUpdateListener(this.Ma)};
-g.k.aB=function(a){this.Ka=a;this.qa()};
-g.k.stop=function(){Ttb(this);this.C?this.C.stop((0,g.Ua)(this.Kj,this,null),(0,g.Ua)(this.Kj,this,"Failed to stop DIAL device.")):this.Kj()};
-g.k.xa=function(){Ttb(this);this.C&&this.C.removeUpdateListener(this.Ma);this.C=null;o8.prototype.xa.call(this)};
-g.k.o5=function(a){this.La()||a||(q8(this,"DIAL session died."),this.G(),this.G=function(){},this.Kj())};g.z(v8,o8);v8.prototype.stop=function(){this.Kj()};
-v8.prototype.wT=function(){};
-v8.prototype.aB=function(){g.Mr(this.C);this.C=NaN;var a=m7(this.D.Dl(),this.B.label);a?p8(this,a):this.Kj(Error("No such screen"))};
-v8.prototype.xa=function(){g.Mr(this.C);this.C=NaN;o8.prototype.xa.call(this)};g.z(w8,g.Fx);g.k=w8.prototype;
-g.k.init=function(a,b){chrome.cast.timeout.requestSession=3E4;var c=new chrome.cast.SessionRequest(this.Z,[chrome.cast.Capability.AUDIO_OUT]);g.Pr("desktop_enable_cast_connect")&&(c.androidReceiverCompatible=!0);this.Y||(c.dialRequest=new chrome.cast.DialRequest("YouTube"));var d=chrome.cast.AutoJoinPolicy.TAB_AND_ORIGIN_SCOPED;a=a||this.K?chrome.cast.DefaultActionPolicy.CAST_THIS_TAB:chrome.cast.DefaultActionPolicy.CREATE_SESSION;var e=(0,g.Ua)(this.Nba,this);c=new chrome.cast.ApiConfig(c,(0,g.Ua)(this.B0,
-this),e,d,a);c.customDialLaunchCallback=(0,g.Ua)(this.Gaa,this);chrome.cast.initialize(c,(0,g.Ua)(function(){this.La()||(chrome.cast.addReceiverActionListener(this.G),ftb(),this.B.subscribe("onlineScreenChange",(0,g.Ua)(this.uV,this)),this.C=Wtb(this),chrome.cast.setCustomReceivers(this.C,function(){},(0,g.Ua)(function(f){this.gg("Failed to set initial custom receivers: "+g.Ci(f))},this)),this.publish("yt-remote-cast2-availability-change",y8(this)),b(!0))},this),(0,g.Ua)(function(f){this.gg("Failed to initialize API: "+
-g.Ci(f));
-b(!1)},this))};
-g.k.Zda=function(a,b){x8("Setting connected screen ID: "+a+" -> "+b);if(this.j){var c=this.j.j;if(!a||c&&c.id!=a)x8("Unsetting old screen status: "+this.j.B.friendlyName),z8(this,null)}if(a&&b){if(!this.j){a=m7(this.B.Dl(),a);if(!a){x8("setConnectedScreenStatus: Unknown screen.");return}if(a.idType=="shortLived"){x8("setConnectedScreenStatus: Screen with id type to be short lived.");return}c=Utb(this,a);c||(x8("setConnectedScreenStatus: Connected receiver not custom..."),c=new chrome.cast.Receiver(a.uuid?
-a.uuid:a.id,a.name),c.receiverType=chrome.cast.ReceiverType.CUSTOM,this.C.push(c),chrome.cast.setCustomReceivers(this.C,function(){},(0,g.Ua)(function(d){this.gg("Failed to set initial custom receivers: "+g.Ci(d))},this)));
-x8("setConnectedScreenStatus: new active receiver: "+c.friendlyName);z8(this,new v8(this.B,c),!0)}this.j.yT(b)}else x8("setConnectedScreenStatus: no screen.")};
-g.k.cea=function(a){this.La()?this.gg("Setting connection data on disposed cast v2"):this.j?this.j.aB(a):this.gg("Setting connection data without a session")};
-g.k.q5=function(){this.La()?this.gg("Stopping session on disposed cast v2"):this.j?(this.j.stop(),z8(this,null)):x8("Stopping non-existing session")};
-g.k.requestSession=function(){chrome.cast.requestSession((0,g.Ua)(this.B0,this),(0,g.Ua)(this.ica,this))};
-g.k.xa=function(){this.B.unsubscribe("onlineScreenChange",(0,g.Ua)(this.uV,this));window.chrome&&chrome.cast&&chrome.cast.removeReceiverActionListener(this.G);var a=ctb,b=g.La("yt.mdx.remote.debug.handlers_");g.Pb(b||[],a);g.fb(this.j);g.Fx.prototype.xa.call(this)};
-g.k.gg=function(a){c8("Controller",a)};
-g.k.D0=function(a,b){this.j==a&&(b||z8(this,null),this.publish("yt-remote-cast2-session-change",b))};
-g.k.Kba=function(a,b){if(!this.La())if(a)switch(a.friendlyName=chrome.cast.unescape(a.friendlyName),x8("onReceiverAction_ "+a.label+" / "+a.friendlyName+"-- "+b),b){case chrome.cast.ReceiverAction.CAST:if(this.j)if(this.j.B.label!=a.label)x8("onReceiverAction_: Stopping active receiver: "+this.j.B.friendlyName),this.j.stop();else{x8("onReceiverAction_: Casting to active receiver.");this.j.j&&this.publish("yt-remote-cast2-session-change",this.j.j);break}switch(a.receiverType){case chrome.cast.ReceiverType.CUSTOM:z8(this,
-new v8(this.B,a));break;case chrome.cast.ReceiverType.DIAL:z8(this,new s8(this.B,a,this.D,this.config_));break;case chrome.cast.ReceiverType.CAST:z8(this,new r8(this.B,a,this.config_));break;default:this.gg("Unknown receiver type: "+a.receiverType)}break;case chrome.cast.ReceiverAction.STOP:this.j&&this.j.B.label==a.label?this.j.stop():this.gg("Stopping receiver w/o session: "+a.friendlyName)}else this.gg("onReceiverAction_ called without receiver.")};
-g.k.Gaa=function(a){if(this.La())return Promise.reject(Error("disposed"));var b=a.receiver;b.receiverType!=chrome.cast.ReceiverType.DIAL&&(this.gg("Not DIAL receiver: "+b.friendlyName),b.receiverType=chrome.cast.ReceiverType.DIAL);var c=this.j?this.j.B:null;if(!c||c.label!=b.label)return this.gg("Receiving DIAL launch request for non-clicked DIAL receiver: "+b.friendlyName),Promise.reject(Error("illegal DIAL launch"));if(c&&c.label==b.label&&c.receiverType!=chrome.cast.ReceiverType.DIAL){if(this.j.j)return x8("Reselecting dial screen."),
-this.publish("yt-remote-cast2-session-change",this.j.j),Promise.resolve(new chrome.cast.DialLaunchResponse(!1));this.gg('Changing CAST intent from "'+c.receiverType+'" to "dial" for '+b.friendlyName);z8(this,new s8(this.B,b,this.D,this.config_))}b=this.j;b.Z=a;b.Z.appState==chrome.cast.DialAppState.RUNNING?(a=b.Z.extraData||{},c=a.screenId||null,t8(b)&&a.loungeToken?a.loungeTokenRefreshIntervalMs?a=Qtb(b,{name:b.B.friendlyName,screenId:a.screenId,loungeToken:a.loungeToken,dialId:b.Z.receiver.label,
-screenIdType:"shortLived"},a.loungeTokenRefreshIntervalMs):(g.sr(Error("No loungeTokenRefreshIntervalMs presents in additionalData: "+JSON.stringify(a)+".")),a=Rtb(b,c)):a=Rtb(b,c)):a=Otb(b);return a};
-g.k.B0=function(a){var b=this;if(!this.La()&&!this.K){x8("New cast session ID: "+a.sessionId);var c=a.receiver;if(c.receiverType!=chrome.cast.ReceiverType.CUSTOM){if(!this.j)if(c.receiverType==chrome.cast.ReceiverType.CAST)x8("Got resumed cast session before resumed mdx connection."),c.friendlyName=chrome.cast.unescape(c.friendlyName),z8(this,new r8(this.B,c,this.config_),!0);else{this.gg("Got non-cast session without previous mdx receiver event, or mdx resume.");return}var d=this.j.B,e=m7(this.B.Dl(),
-d.label);e&&k7(e,c.label)&&d.receiverType!=chrome.cast.ReceiverType.CAST&&c.receiverType==chrome.cast.ReceiverType.CAST&&(x8("onSessionEstablished_: manual to cast session change "+c.friendlyName),g.fb(this.j),this.j=new r8(this.B,c,this.config_),this.j.subscribe("sessionScreen",(0,g.Ua)(this.D0,this,this.j)),this.j.subscribe("sessionFailed",function(){return Vtb(b,b.j)}),this.j.aB(null));
-this.j.wT(a)}}};
-g.k.p5=function(){return this.j?this.j.tV():null};
-g.k.ica=function(a){this.La()||(this.gg("Failed to estabilish a session: "+g.Ci(a)),a.code!=chrome.cast.ErrorCode.CANCEL&&z8(this,null),this.publish("yt-remote-cast2-session-failed"))};
-g.k.Nba=function(a){x8("Receiver availability updated: "+a);if(!this.La()){var b=y8(this);this.N=a==chrome.cast.ReceiverAvailability.AVAILABLE;y8(this)!=b&&this.publish("yt-remote-cast2-availability-change",y8(this))}};
-g.k.uV=function(){this.La()||(this.C=Wtb(this),x8("Updating custom receivers: "+g.Ci(this.C)),chrome.cast.setCustomReceivers(this.C,function(){},(0,g.Ua)(function(){this.gg("Failed to set custom receivers.")},this)),this.publish("yt-remote-cast2-availability-change",y8(this)))};
-w8.prototype.setLaunchParams=w8.prototype.cea;w8.prototype.setConnectedScreenStatus=w8.prototype.Zda;w8.prototype.stopSession=w8.prototype.q5;w8.prototype.getCastSession=w8.prototype.p5;w8.prototype.requestSession=w8.prototype.requestSession;w8.prototype.init=w8.prototype.init;w8.prototype.dispose=w8.prototype.dispose;var eub=[];g.k=G8.prototype;
-g.k.reset=function(a){this.listId="";this.index=-1;this.videoId="";kub(this);this.volume=-1;this.muted=!1;a&&(this.index=a.index,this.listId=a.listId,this.videoId=a.videoId,this.playerState=a.playerState,this.volume=a.volume,this.muted=a.muted,this.audioTrackId=a.audioTrackId,this.trackData=a.trackData,this.Yp=a.hasPrevious,this.Gl=a.hasNext,this.N=a.playerTime,this.K=a.playerTimeAt,this.D=a.seekableStart,this.j=a.seekableEnd,this.G=a.duration,this.Z=a.loadedTime,this.C=a.liveIngestionTime,this.B=
-!isNaN(this.C))};
-g.k.isPlaying=function(){return this.playerState==1};
-g.k.isBuffering=function(){return this.playerState==3};
-g.k.Hl=function(){return this.playerState==1081};
-g.k.Xo=function(a){this.G=isNaN(a)?0:a};
-g.k.getDuration=function(){return this.B?this.G+H8(this):this.G};
-g.k.clone=function(){return new G8(lub(this))};g.z(M8,g.Fx);g.k=M8.prototype;g.k.getState=function(){return this.C};
-g.k.au=function(){return this.D.getReconnectTimeout()};
-g.k.Dy=function(){this.D.reconnect()};
-g.k.play=function(){O8(this)?(this.j?this.j.play(null,g.Zc,S8(this,"play")):R8(this,"play"),oub(this,1,J8(N8(this))),this.publish("remotePlayerChange")):P8(this,this.play)};
-g.k.pause=function(){O8(this)?(this.j?this.j.pause(null,g.Zc,S8(this,"pause")):R8(this,"pause"),oub(this,2,J8(N8(this))),this.publish("remotePlayerChange")):P8(this,this.pause)};
-g.k.seekTo=function(a){if(O8(this)){if(this.j){var b=N8(this),c=new chrome.cast.media.SeekRequest;c.currentTime=a;b.isPlaying()||b.isBuffering()?c.resumeState=chrome.cast.media.ResumeState.PLAYBACK_START:c.resumeState=chrome.cast.media.ResumeState.PLAYBACK_PAUSE;this.j.seek(c,g.Zc,S8(this,"seekTo",{newTime:a}))}else R8(this,"seekTo",{newTime:a});oub(this,3,a);this.publish("remotePlayerChange")}else P8(this,g.Va(this.seekTo,a))};
-g.k.stop=function(){if(O8(this)){this.j?this.j.stop(null,g.Zc,S8(this,"stopVideo")):R8(this,"stopVideo");var a=N8(this);a.index=-1;a.videoId="";kub(a);Q8(this,a);this.publish("remotePlayerChange")}else P8(this,this.stop)};
-g.k.setVolume=function(a,b){if(O8(this)){var c=N8(this);if(this.B){if(c.volume!=a){var d=Math.round(a)/100;this.B.setReceiverVolumeLevel(d,(0,g.Ua)(function(){d8("set receiver volume: "+d)},this),(0,g.Ua)(function(){this.gg("failed to set receiver volume.")},this))}c.muted!=b&&this.B.setReceiverMuted(b,(0,g.Ua)(function(){d8("set receiver muted: "+b)},this),(0,g.Ua)(function(){this.gg("failed to set receiver muted.")},this))}else{var e={volume:a,
-muted:b};c.volume!=-1&&(e.delta=a-c.volume);R8(this,"setVolume",e)}c.muted=b;c.volume=a;Q8(this,c)}else P8(this,g.Va(this.setVolume,a,b))};
-g.k.vV=function(a,b){if(O8(this)){var c=N8(this);a={videoId:a};b&&(c.trackData={trackName:b.name,languageCode:b.languageCode,sourceLanguageCode:b.translationLanguage?b.translationLanguage.languageCode:"",languageName:b.languageName,kind:b.kind},a.style=g.Ci(b.style),g.Hc(a,c.trackData));R8(this,"setSubtitlesTrack",a);Q8(this,c)}else P8(this,g.Va(this.vV,a,b))};
-g.k.setAudioTrack=function(a,b){O8(this)?(b=b.getLanguageInfo().getId(),R8(this,"setAudioTrack",{videoId:a,audioTrackId:b}),a=N8(this),a.audioTrackId=b,Q8(this,a)):P8(this,g.Va(this.setAudioTrack,a,b))};
-g.k.playVideo=function(a,b,c,d,e,f,h){d=d===void 0?null:d;e=e===void 0?null:e;f=f===void 0?null:f;h=h===void 0?null:h;var l=N8(this),m={videoId:a};c!==void 0&&(m.currentIndex=c);K8(l,a,c||0);b!==void 0&&(I8(l,b),m.currentTime=b);d&&(m.listId=d);e&&(m.playerParams=e);f&&(m.clickTrackingParams=f);h&&(m.locationInfo=g.Ci(h));R8(this,"setPlaylist",m);d||Q8(this,l)};
-g.k.bM=function(a,b){if(O8(this)){if(a&&b){var c=N8(this);K8(c,a,b);Q8(this,c)}R8(this,"previous")}else P8(this,g.Va(this.bM,a,b))};
-g.k.nextVideo=function(a,b){if(O8(this)){if(a&&b){var c=N8(this);K8(c,a,b);Q8(this,c)}R8(this,"next")}else P8(this,g.Va(this.nextVideo,a,b))};
-g.k.SO=function(){if(O8(this)){R8(this,"clearPlaylist");var a=N8(this);a.reset();Q8(this,a);this.publish("remotePlayerChange")}else P8(this,this.SO)};
-g.k.PX=function(){O8(this)?R8(this,"dismissAutoplay"):P8(this,this.PX)};
-g.k.dispose=function(){if(this.C!=3){var a=this.C;this.C=3;this.publish("proxyStateChange",a,this.C)}g.Fx.prototype.dispose.call(this)};
-g.k.xa=function(){nub(this);this.D=null;this.G.clear();L8(this,null);g.Fx.prototype.xa.call(this)};
-g.k.CT=function(a){if((a!=this.C||a==2)&&this.C!=3&&a!=0){var b=this.C;this.C=a;this.publish("proxyStateChange",b,a);if(a==1)for(;!this.G.isEmpty();)b=a=this.G,b.j.length===0&&(b.j=b.B,b.j.reverse(),b.B=[]),a.j.pop().apply(this);else a==3&&this.dispose()}};
-g.k.Iba=function(a,b){this.publish(a,b)};
-g.k.xaa=function(a){if(!a)this.uG(null),L8(this,null);else if(this.B.receiver.volume){a=this.B.receiver.volume;var b=N8(this),c=Math.round(100*a.level||0);if(b.volume!=c||b.muted!=a.muted)d8("Cast volume update: "+a.level+(a.muted?" muted":"")),b.volume=c,b.muted=!!a.muted,Q8(this,b)}};
-g.k.uG=function(a){d8("Cast media: "+!!a);this.j&&this.j.removeUpdateListener(this.Z);if(this.j=a)this.j.addUpdateListener(this.Z),pub(this),this.publish("remotePlayerChange")};
-g.k.waa=function(a){a?(pub(this),this.publish("remotePlayerChange")):this.uG(null)};
-g.k.iU=function(){R8(this,"sendDebugCommand",{debugCommand:"stats4nerds "})};
-g.k.zaa=function(){var a=hub();a&&L8(this,a)};
-g.k.gg=function(a){c8("CP",a)};g.z(V8,g.Fx);g.k=V8.prototype;
-g.k.connect=function(a,b){if(b){var c=b.listId,d=b.videoId,e=b.videoIds,f=b.playerParams,h=b.clickTrackingParams,l=b.index,m={videoId:d},n=b.currentTime,p=b.locationInfo;b=b.loopMode;n!==void 0&&(m.currentTime=n<=5?0:n);f&&(m.playerParams=f);p&&(m.locationInfo=p);h&&(m.clickTrackingParams=h);c&&(m.listId=c);e&&e.length>0&&(m.videoIds=e.join(","));l!==void 0&&(m.currentIndex=l);this.Ma&&(m.loopMode=b||"LOOP_MODE_OFF");c&&(this.j.listId=c);this.j.videoId=d;this.j.index=l||0;this.j.state=3;I8(this.j,
-n);this.G="UNSUPPORTED";c=this.Ma?"setInitialState":"setPlaylist";T8("Connecting with "+c+" and params: "+g.Ci(m));this.B.connect({method:c,params:g.Ci(m)},a,Rqb())}else T8("Connecting without params"),this.B.connect({},a,Rqb());tub(this)};
-g.k.Ks=function(a){this.B.Ks(a)};
-g.k.dispose=function(){this.La()||(g.Ka("yt.mdx.remote.remoteClient_",null),this.publish("beforeDispose"),U8(this,3));g.Fx.prototype.dispose.call(this)};
-g.k.xa=function(){uub(this);wub(this);vub(this);g.Mr(this.Z);this.Z=NaN;g.Mr(this.Y);this.Y=NaN;this.D=null;g.Ss(this.qa);this.qa.length=0;this.B.dispose();g.Fx.prototype.xa.call(this);this.G=this.N=this.C=this.j=this.B=null};
-g.k.IZ=function(a){if(!this.C||this.C.length===0)return!1;for(var b=g.w(this.C),c=b.next();!c.done;c=b.next())if(!c.value.capabilities.has(a))return!1;return!0};
-g.k.f9=function(){var a=3;this.La()||(a=0,isNaN(this.pF())?this.B.LA()&&isNaN(this.K)&&(a=1):a=2);return a};
-g.k.aA=function(a){T8("Disconnecting with "+a);g.Ka("yt.mdx.remote.remoteClient_",null);uub(this);this.publish("beforeDisconnect",a);a==1&&p7();this.B.disconnect(a);this.dispose()};
-g.k.Z8=function(){var a=this.j;this.D&&(a=this.j.clone(),K8(a,this.D,a.index));return lub(a)};
-g.k.fea=function(a){var b=this,c=new G8(a);c.videoId&&c.videoId!=this.j.videoId&&(this.D=c.videoId,g.Mr(this.Z),this.Z=g.Kr(function(){if(b.D){var e=b.D;b.D=null;b.j.videoId!=e&&W8(b,"getNowPlaying")}},5E3));
-var d=[];this.j.listId==c.listId&&this.j.videoId==c.videoId&&this.j.index==c.index||d.push("remoteQueueChange");this.j.playerState==c.playerState&&this.j.volume==c.volume&&this.j.muted==c.muted&&J8(this.j)==J8(c)&&g.Ci(this.j.trackData)==g.Ci(c.trackData)||d.push("remotePlayerChange");this.j.reset(a);g.cc(d,function(e){this.publish(e)},this)};
-g.k.CY=function(){var a=this.B.getDeviceId(),b=g.Kb(this.C,function(c){return c.type=="REMOTE_CONTROL"&&c.id!=a});
-return b?b.id:""};
-g.k.pF=function(){return this.B.au()};
-g.k.I8=function(){return this.G||"UNSUPPORTED"};
-g.k.J8=function(){return this.N||""};
-g.k.r5=function(){!isNaN(this.pF())&&this.B.Dy()};
-g.k.Wda=function(a,b){W8(this,a,b);yub(this)};
-g.k.wV=function(){var a=g.es("SAPISID","")||g.es("__Secure-1PAPISID")||"",b=g.es("__Secure-3PAPISID","")||"";if(!a&&!b)return"";a=g.Te(g.Se(a),2);b=g.Te(g.Se(b),2);return g.Te(g.Se(","+a+","+b),2)};
-V8.prototype.subscribe=V8.prototype.subscribe;V8.prototype.unsubscribeByKey=V8.prototype.uh;V8.prototype.getProxyState=V8.prototype.f9;V8.prototype.disconnect=V8.prototype.aA;V8.prototype.getPlayerContextData=V8.prototype.Z8;V8.prototype.setPlayerContextData=V8.prototype.fea;V8.prototype.getOtherConnectedRemoteId=V8.prototype.CY;V8.prototype.getReconnectTimeout=V8.prototype.pF;V8.prototype.getAutoplayMode=V8.prototype.I8;V8.prototype.getAutoplayVideoId=V8.prototype.J8;V8.prototype.reconnect=V8.prototype.r5;
-V8.prototype.sendMessage=V8.prototype.Wda;V8.prototype.getXsrfToken=V8.prototype.wV;V8.prototype.isCapabilitySupportedOnConnectedDevices=V8.prototype.IZ;g.z(Kub,h8);g.k=Kub.prototype;g.k.Dl=function(a){return this.ih.$_gs(a)};
-g.k.contains=function(a){return!!this.ih.$_c(a)};
-g.k.get=function(a){return this.ih.$_g(a)};
-g.k.start=function(){this.ih.$_st()};
-g.k.add=function(a,b,c){this.ih.$_a(a,b,c)};
-g.k.remove=function(a,b,c){this.ih.$_r(a,b,c)};
-g.k.cN=function(a,b,c,d){this.ih.$_un(a,b,c,d)};
-g.k.xa=function(){for(var a=0,b=this.j.length;a<b;++a)this.ih.$_ubk(this.j[a]);this.j.length=0;this.ih=null;h8.prototype.xa.call(this)};
-g.k.s5=function(){this.publish("screenChange")};
-g.k.qba=function(){this.publish("onlineScreenChange")};
-m8.prototype.$_st=m8.prototype.start;m8.prototype.$_gspc=m8.prototype.m5;m8.prototype.$_gsppc=m8.prototype.sV;m8.prototype.$_c=m8.prototype.contains;m8.prototype.$_g=m8.prototype.get;m8.prototype.$_a=m8.prototype.add;m8.prototype.$_un=m8.prototype.cN;m8.prototype.$_r=m8.prototype.remove;m8.prototype.$_gs=m8.prototype.Dl;m8.prototype.$_gos=m8.prototype.rV;m8.prototype.$_s=m8.prototype.subscribe;m8.prototype.$_ubk=m8.prototype.uh;var g9=null,j9=!1,X8=null,Y8=null,Vub=null,b9=[];g.z($ub,g.O);g.k=$ub.prototype;g.k.xa=function(){g.O.prototype.xa.call(this);this.j.stop();this.B.stop();this.N.stop();var a=this.Ic;a.unsubscribe("proxyStateChange",this.z0,this);a.unsubscribe("remotePlayerChange",this.EG,this);a.unsubscribe("remoteQueueChange",this.IL,this);a.unsubscribe("previousNextChange",this.w0,this);a.unsubscribe("nowAutoplaying",this.s0,this);a.unsubscribe("autoplayDismissed",this.X_,this);this.Ic=this.module=null};
-g.k.Fl=function(a){var b=g.Ca.apply(1,arguments);if(this.Ic.C!=2)if(k9(this)){if(!N8(this.Ic).Hl()||a!=="control_seek")switch(a){case "control_toggle_play_pause":N8(this.Ic).isPlaying()?this.Ic.pause():this.Ic.play();break;case "control_play":this.Ic.play();break;case "control_pause":this.Ic.pause();break;case "control_seek":this.K.pN(b[0],b[1]);break;case "control_subtitles_set_track":bvb(this,b[0]);break;case "control_set_audio_track":this.setAudioTrack(b[0])}}else switch(a){case "control_toggle_play_pause":case "control_play":case "control_pause":b=
-this.J.getCurrentTime();l9(this,b===0?void 0:b);break;case "control_seek":l9(this,b[0]);break;case "control_subtitles_set_track":bvb(this,b[0]);break;case "control_set_audio_track":this.setAudioTrack(b[0])}};
-g.k.uaa=function(a){this.N.V4(a)};
-g.k.ffa=function(a){this.Fl("control_subtitles_set_track",g.Bc(a)?null:a)};
-g.k.M2=function(){var a=this.J.getOption("captions","track");g.Bc(a)||bvb(this,a)};
-g.k.Tc=function(a){this.module.Tc(a,this.J.getVideoData().lengthSeconds)};
-g.k.Zaa=function(){g.Bc(this.C)||cvb(this,this.C);this.D=!1};
-g.k.z0=function(a,b){this.B.stop();b===2&&this.F2()};
-g.k.EG=function(){if(k9(this)){this.j.stop();var a=N8(this.Ic);switch(a.playerState){case 1080:case 1081:case 1084:case 1085:this.module.wi=1;break;case 1082:case 1083:this.module.wi=0;break;default:this.module.wi=-1}switch(a.playerState){case 1081:case 1:this.Ec(new g.LF(8));this.E2();break;case 1085:case 3:this.Ec(new g.LF(9));break;case 1083:case 0:this.Ec(new g.LF(2));this.K.stop();this.Tc(this.J.getVideoData().lengthSeconds);break;case 1084:this.Ec(new g.LF(4));break;case 2:this.Ec(new g.LF(4));
-this.Tc(J8(a));break;case -1:this.Ec(new g.LF(64));break;case -1E3:this.Ec(new g.LF(128,{errorCode:"mdx.remoteerror",errorMessage:"Dieses Video ist nicht f\u00fcr die Remote-Wiedergabe verf\u00fcgbar.",cA:2}))}a=N8(this.Ic).trackData;var b=this.C;(a||b?a&&b&&a.trackName==b.trackName&&a.languageCode==b.languageCode&&a.languageName==b.languageName&&a.kind==b.kind:1)||(this.C=a,cvb(this,a));a=N8(this.Ic);a.volume===-1||Math.round(this.J.getVolume())===a.volume&&this.J.isMuted()===a.muted||this.Z.isActive()||
-this.C3()}else avb(this)};
-g.k.w0=function(){this.J.publish("mdxpreviousnextchange")};
-g.k.IL=function(){k9(this)||avb(this)};
-g.k.s0=function(a){isNaN(a)||this.J.publish("mdxnowautoplaying",a)};
-g.k.X_=function(){this.J.publish("mdxautoplaycanceled")};
-g.k.setAudioTrack=function(a){k9(this)&&this.Ic.setAudioTrack(this.J.getVideoData(1).videoId,a)};
-g.k.seekTo=function(a,b){N8(this.Ic).playerState===-1?l9(this,a):b&&this.Ic.seekTo(a)};
-g.k.C3=function(){var a=this;if(k9(this)){var b=N8(this.Ic);this.events.Oc(this.Y);b.muted?this.J.mute():this.J.unMute();this.J.setVolume(b.volume);this.Y=this.events.T(this.J,"onVolumeChange",function(c){Yub(a,c)})}};
-g.k.E2=function(){this.j.stop();if(!this.Ic.La()){var a=N8(this.Ic);a.isPlaying()&&this.Ec(new g.LF(8));this.Tc(J8(a));this.j.start()}};
-g.k.F2=function(){this.B.stop();this.j.stop();var a=this.Ic.au();this.Ic.C==2&&!isNaN(a)&&this.B.start()};
-g.k.Ec=function(a){this.B.stop();var b=this.G;if(!g.RF(b,a)){var c=g.U(a,2);c!==g.U(this.G,2)&&this.J.rC(c);this.G=a;evb(this.module,b,a)}};g.z(m9,g.T);m9.prototype.pd=function(){this.j.show()};
-m9.prototype.Nb=function(){this.j.hide()};
-m9.prototype.B=function(){r7("mdx-privacy-popup-cancel");this.Nb()};
-m9.prototype.C=function(){r7("mdx-privacy-popup-confirm");this.Nb()};g.z(n9,g.T);n9.prototype.onStateChange=function(a){this.zd(a.state)};
-n9.prototype.zd=function(a){if(this.api.getPresentingPlayerType()===3){var b={RECEIVER_NAME:this.api.getOption("remote","currentReceiver").name};a=g.U(a,128)?g.DD("Fehler auf $RECEIVER_NAME",b):a.isPlaying()||a.isPaused()?g.DD("Wiedergabe \u00fcber $RECEIVER_NAME",b):g.DD("Verbunden mit $RECEIVER_NAME",b);this.updateValue("statustext",a);this.j.show()}else this.j.hide()};g.z(o9,g.oT);o9.prototype.D=function(){var a=this.J.getOption("remote","receivers");a&&a.length>1&&!this.J.getOption("remote","quickCast")?(this.bv=g.dc(a,this.j,this),g.pT(this,g.Al(a,this.j)),a=this.J.getOption("remote","currentReceiver"),a=this.j(a),this.options[a]&&this.Ti(a),this.enable(!0)):this.enable(!1)};
-o9.prototype.j=function(a){return a.key};
-o9.prototype.ll=function(a){return a==="cast-selector-receiver"?"Streamen\u2026":this.bv[a].name};
-o9.prototype.Hg=function(a){g.oT.prototype.Hg.call(this,a);this.J.setOption("remote","currentReceiver",this.bv[a]);this.Fb.Nb()};g.z(dvb,g.XT);g.k=dvb.prototype;
-g.k.create=function(){var a=this.player.U(),b=g.OO(a);a={device:"Desktop",app:"youtube-desktop",loadCastApiSetupScript:a.L("mdx_load_cast_api_bootstrap_script"),enableDialLoungeToken:a.L("enable_dial_short_lived_lounge_token"),enableCastLoungeToken:a.L("enable_cast_short_lived_lounge_token")};Pub(b,a);this.subscriptions.push(g.Gv("yt-remote-before-disconnect",this.saa,this));this.subscriptions.push(g.Gv("yt-remote-connection-change",this.Oba,this));this.subscriptions.push(g.Gv("yt-remote-receiver-availability-change",this.y0,
-this));this.subscriptions.push(g.Gv("yt-remote-auto-connect",this.Mba,this));this.subscriptions.push(g.Gv("yt-remote-receiver-resumed",this.Lba,this));this.subscriptions.push(g.Gv("mdx-privacy-popup-confirm",this.ida,this));this.subscriptions.push(g.Gv("mdx-privacy-popup-cancel",this.hda,this));this.y0()};
-g.k.load=function(){this.player.cancelPlayback();g.XT.prototype.load.call(this);this.ym=new $ub(this,this.player,this.Ic);var a=(a=Xub())?a.currentTime:0;var b=Uub()?new M8(f9(),void 0):null;a==0&&b&&(a=J8(N8(b)));a!==0&&this.Tc(a);evb(this,this.Ee,this.Ee);this.player.Mq(6)};
-g.k.unload=function(){this.player.publish("mdxautoplaycanceled");this.Mt=this.mq;g.gb(this.ym,this.Ic);this.Ic=this.ym=null;g.XT.prototype.unload.call(this);this.player.Mq(5);n$(this)};
-g.k.xa=function(){g.Hv(this.subscriptions);g.XT.prototype.xa.call(this)};
-g.k.zG=function(a){var b=g.Ca.apply(1,arguments);this.loaded&&this.ym.Fl.apply(this.ym,[a].concat(g.x(b)))};
-g.k.getAdState=function(){return this.wi};
-g.k.Yp=function(){return this.Ic?N8(this.Ic).Yp:!1};
-g.k.Gl=function(){return this.Ic?N8(this.Ic).Gl:!1};
-g.k.Tc=function(a,b){this.WZ=a||0;this.player.publish("progresssync",a,b);this.player.Hc("onVideoProgress",a||0)};
-g.k.getCurrentTime=function(){return this.WZ};
-g.k.getProgressState=function(){var a=N8(this.Ic),b=this.player.getVideoData();return{airingStart:0,airingEnd:0,allowSeeking:!a.Hl()&&this.player.Jh(),clipEnd:b.clipEnd,clipStart:b.clipStart,current:this.getCurrentTime(),displayedStart:-1,duration:a.getDuration(),ingestionTime:a.B?a.C+H8(a):a.C,isAtLiveHead:(a.B?a.j+H8(a):a.j)-this.getCurrentTime()<=1,loaded:a.Z,seekableEnd:a.B?a.j+H8(a):a.j,seekableStart:a.D>0?a.D+H8(a):a.D,offset:0,viewerLivestreamJoinMediaTime:0}};
-g.k.nextVideo=function(){this.Ic&&this.Ic.nextVideo()};
-g.k.bM=function(){this.Ic&&this.Ic.bM()};
-g.k.saa=function(a){a===1&&(this.LS=this.Ic?N8(this.Ic):null)};
-g.k.Oba=function(){var a=Uub()?new M8(f9(),void 0):null;if(a){var b=this.Mt;this.loaded&&this.unload();this.Ic=a;this.LS=null;b.key!==this.mq.key&&(this.Mt=b,this.load())}else g.fb(this.Ic),this.Ic=null,this.loaded&&(this.unload(),(a=this.LS)&&a.videoId===this.player.getVideoData().videoId&&this.player.cueVideoById(a.videoId,J8(a)));this.player.publish("videodatachange","newdata",this.player.getVideoData(),3)};
-g.k.y0=function(){var a=[this.mq],b=a.concat,c=Qub();D8()&&g.ct("yt-remote-cast-available")&&c.push({key:"cast-selector-receiver",name:"Cast..."});this.bv=b.call(a,c);a=Sub()||this.mq;p$(this,a);this.player.Hc("onMdxReceiversChange")};
-g.k.Mba=function(){var a=Sub();p$(this,a)};
-g.k.Lba=function(){this.Mt=Sub()};
-g.k.ida=function(){this.XG=!0;n$(this);j9=!1;g9&&i9(g9,1);g9=null};
-g.k.hda=function(){this.XG=!1;n$(this);p$(this,this.mq);this.Mt=this.mq;j9=!1;g9=null;this.player.playVideo()};
-g.k.Uh=function(a,b){switch(a){case "casting":return this.loaded;case "receivers":return this.bv;case "currentReceiver":return b&&(b.key==="cast-selector-receiver"?iub():p$(this,b)),this.loaded?this.Mt:this.mq;case "quickCast":return this.bv.length===2&&this.bv[1].key==="cast-selector-receiver"?(b&&iub(),!0):!1}};
-g.k.iU=function(){this.Ic.iU()};
-g.k.jn=function(){return!1};
-g.k.getOptions=function(){return["casting","receivers","currentReceiver","quickCast"]};
-g.k.isLoggedIn=function(){var a,b;return((a=g.pr("PLAYER_CONFIG"))==null?void 0:(b=a.args)==null?void 0:b.authuser)!==void 0?!0:!(!g.pr("SESSION_INDEX")&&!g.pr("LOGGED_IN"))};g.WT("remote",dvb);})(_yt_player);
+(function(g) {
+    var window = this;
+    'use strict';
+    var Kyd = function(a) {
+        if (a instanceof g.Pf)
+            return a;
+        if (typeof a.NU == "function")
+            return a.NU(!1);
+        if (g.af(a)) {
+            var I = 0
+              , U = new g.Pf;
+            U.next = function() {
+                for (; ; ) {
+                    if (I >= a.length)
+                        return g.Ty;
+                    if (I in a)
+                        return g.pf(a[I++]);
+                    I++
+                }
+            }
+            ;
+            return U
+        }
+        throw Error("Not implemented");
+    }
+      , bjd = function(a, I, U) {
+        if (g.af(a))
+            g.Gm(a, I, U);
+        else
+            for (a = Kyd(a); ; ) {
+                var e = a.next();
+                if (e.done)
+                    break;
+                I.call(U, e.value, void 0, a)
+            }
+    }
+      , DA = function(a) {
+        g.bv(a, "zx", Math.floor(Math.random() * 2147483648).toString(36) + Math.abs(Math.floor(Math.random() * 2147483648) ^ g.rd()).toString(36));
+        return a
+    }
+      , vv = function(a, I, U) {
+        Array.isArray(U) || (U = [String(U)]);
+        g.OWc(a.J, I, U)
+    }
+      , JbI = function(a, I) {
+        var U = [];
+        bjd(I, function(e) {
+            try {
+                var T = g.fC.prototype.L.call(this, e, !0)
+            } catch (C) {
+                if (C == "Storage: Invalid value was encountered")
+                    return;
+                throw C;
+            }
+            T === void 0 ? U.push(e) : g.QIg(T) && U.push(e)
+        }, a);
+        return U
+    }
+      , ua8 = function(a, I) {
+        JbI(a, I).forEach(function(U) {
+            g.fC.prototype.remove.call(this, U)
+        }, a)
+    }
+      , kv4 = function(a) {
+        if (a.Va) {
+            if (a.Va.locationOverrideToken)
+                return {
+                    locationOverrideToken: a.Va.locationOverrideToken
+                };
+            if (a.Va.latitudeE7 != null && a.Va.longitudeE7 != null)
+                return {
+                    latitudeE7: a.Va.latitudeE7,
+                    longitudeE7: a.Va.longitudeE7
+                }
+        }
+        return null
+    }
+      , V18 = function(a, I) {
+        g.kJ(a, I) || a.push(I)
+    }
+      , Abz = function(a) {
+        var I = 0, U;
+        for (U in a)
+            I++;
+        return I
+    }
+      , M1m = function(a, I) {
+        return g.of(a, I)
+    }
+      , j0I = function(a) {
+        try {
+            return g.zs.JSON.parse(a)
+        } catch (I) {}
+        a = String(a);
+        if (/^\s*$/.test(a) ? 0 : /^[\],:{}\s\u2028\u2029]*$/.test(a.replace(/\\["\\\/bfnrtu]/g, "@").replace(/(?:"[^"\\\n\r\u2028\u2029\x00-\x08\x0a-\x1f]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)[\s\u2028\u2029]*(?=:|,|]|}|$)/g, "]").replace(/(?:^|:|,)(?:[\s\u2028\u2029]*\[)+/g, "")))
+            try {
+                return eval("(" + a + ")")
+            } catch (I) {}
+        throw Error("Invalid JSON string: " + a);
+    }
+      , aZ = function(a) {
+        if (g.zs.JSON)
+            try {
+                return g.zs.JSON.parse(a)
+            } catch (I) {}
+        return j0I(a)
+    }
+      , $6Q = function() {
+        var a = IZ();
+        this.V = a;
+        a.MU("/client_streamz/youtube/living_room/mdx/channel/opened", g.bP("channel_type"))
+    }
+      , ijf = function() {
+        var a = IZ();
+        this.V = a;
+        a.MU("/client_streamz/youtube/living_room/mdx/channel/closed", g.bP("channel_type"))
+    }
+      , Lyz = function() {
+        var a = IZ();
+        this.V = a;
+        a.MU("/client_streamz/youtube/living_room/mdx/channel/message_received", g.bP("channel_type"))
+    }
+      , gk4 = function() {
+        var a = IZ();
+        this.V = a;
+        a.MU("/client_streamz/youtube/living_room/mdx/channel/success")
+    }
+      , cbo = function() {
+        var a = IZ();
+        this.V = a;
+        a.MU("/client_streamz/youtube/living_room/mdx/channel/error", g.bP("channel_type"))
+    }
+      , WyG = function() {
+        var a = IZ();
+        this.V = a;
+        a.MU("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps")
+    }
+      , lld = function() {
+        var a = IZ();
+        this.V = a;
+        a.MU("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps")
+    }
+      , B9m = function(a) {
+        if (a.ZK && typeof a.ZK == "function")
+            return a.ZK();
+        if (typeof Map !== "undefined" && a instanceof Map || typeof Set !== "undefined" && a instanceof Set)
+            return Array.from(a.values());
+        if (typeof a === "string")
+            return a.split("");
+        if (g.af(a)) {
+            for (var I = [], U = a.length, e = 0; e < U; e++)
+                I.push(a[e]);
+            return I
+        }
+        return g.QG(a)
+    }
+      , XIo = function(a) {
+        if (a.Vq && typeof a.Vq == "function")
+            return a.Vq();
+        if (!a.ZK || typeof a.ZK != "function") {
+            if (typeof Map !== "undefined" && a instanceof Map)
+                return Array.from(a.keys());
+            if (!(typeof Set !== "undefined" && a instanceof Set)) {
+                if (g.af(a) || typeof a === "string") {
+                    var I = [];
+                    a = a.length;
+                    for (var U = 0; U < a; U++)
+                        I.push(U);
+                    return I
+                }
+                return g.zm(a)
+            }
+        }
+    }
+      , Pkf = function(a, I) {
+        if (a.forEach && typeof a.forEach == "function")
+            a.forEach(I, void 0);
+        else if (g.af(a) || typeof a === "string")
+            Array.prototype.forEach.call(a, I, void 0);
+        else
+            for (var U = XIo(a), e = B9m(a), T = e.length, C = 0; C < T; C++)
+                I.call(void 0, e[C], U && U[C], a)
+    }
+      , pIJ = function(a, I, U, e) {
+        var T = new g.rv(null);
+        a && g.H7(T, a);
+        I && g.q8(T, I);
+        U && g.xu(T, U);
+        e && (T.L = e);
+        return T
+    }
+      , flG = function(a, I) {
+        return new g.CC(a,I)
+    }
+      , sQ = function(a, I) {
+        return Object.prototype.hasOwnProperty.call(a, I)
+    }
+      , YT8 = function(a, I) {
+        return a === I
+    }
+      , UQ = function(a, I) {
+        this.L = {};
+        this.V = [];
+        this.XZ = this.size = 0;
+        var U = arguments.length;
+        if (U > 1) {
+            if (U % 2)
+                throw Error("Uneven number of arguments");
+            for (var e = 0; e < U; e += 2)
+                this.set(arguments[e], arguments[e + 1])
+        } else if (a)
+            if (a instanceof UQ)
+                for (U = a.Vq(),
+                e = 0; e < U.length; e++)
+                    this.set(U[e], a.get(U[e]));
+            else
+                for (e in a)
+                    this.set(e, a[e])
+    }
+      , et = function(a) {
+        if (a.size != a.V.length) {
+            for (var I = 0, U = 0; I < a.V.length; ) {
+                var e = a.V[I];
+                sQ(a.L, e) && (a.V[U++] = e);
+                I++
+            }
+            a.V.length = U
+        }
+        if (a.size != a.V.length) {
+            I = {};
+            for (e = U = 0; U < a.V.length; ) {
+                var T = a.V[U];
+                sQ(I, T) || (a.V[e++] = T,
+                I[T] = 1);
+                U++
+            }
+            a.V.length = e
+        }
+    }
+      , TZ = function(a) {
+        this.name = this.id = "";
+        this.clientName = "UNKNOWN_INTERFACE";
+        this.app = "";
+        this.type = "REMOTE_CONTROL";
+        this.ownerObfuscatedGaiaId = this.obfuscatedGaiaId = this.avatar = this.username = "";
+        this.capabilities = new Set;
+        this.compatibleSenderThemes = new Set;
+        this.experiments = new Set;
+        this.theme = "u";
+        new UQ;
+        this.model = this.brand = "";
+        this.year = 0;
+        this.chipset = this.osVersion = this.os = "";
+        this.mdxDialServerType = "MDX_DIAL_SERVER_TYPE_UNKNOWN";
+        a && (this.id = a.id || a.name,
+        this.name = a.name,
+        this.clientName = a.clientName ? a.clientName.toUpperCase() : "UNKNOWN_INTERFACE",
+        this.app = a.app,
+        this.type = a.type || "REMOTE_CONTROL",
+        this.username = a.user || "",
+        this.avatar = a.userAvatarUri || "",
+        this.obfuscatedGaiaId = a.obfuscatedGaiaId || "",
+        this.ownerObfuscatedGaiaId = a.ownerObfuscatedGaiaId || "",
+        this.theme = a.theme || "u",
+        Ojz(this, a.capabilities || ""),
+        STd(this, a.compatibleSenderThemes || ""),
+        Gv8(this, a.experiments || ""),
+        this.brand = a.brand || "",
+        this.model = a.model || "",
+        this.year = a.year || 0,
+        this.os = a.os || "",
+        this.osVersion = a.osVersion || "",
+        this.chipset = a.chipset || "",
+        this.mdxDialServerType = a.mdxDialServerType || "MDX_DIAL_SERVER_TYPE_UNKNOWN",
+        a = a.deviceInfo) && (a = JSON.parse(a),
+        this.brand = a.brand || "",
+        this.model = a.model || "",
+        this.year = a.year || 0,
+        this.os = a.os || "",
+        this.osVersion = a.osVersion || "",
+        this.chipset = a.chipset || "",
+        this.clientName = a.clientName ? a.clientName.toUpperCase() : "UNKNOWN_INTERFACE",
+        this.mdxDialServerType = a.mdxDialServerType || "MDX_DIAL_SERVER_TYPE_UNKNOWN")
+    }
+      , Ojz = function(a, I) {
+        a.capabilities.clear();
+        g.Sa(I.split(","), g.Co(M1m, e7m)).forEach(function(U) {
+            a.capabilities.add(U)
+        })
+    }
+      , STd = function(a, I) {
+        a.compatibleSenderThemes.clear();
+        g.Sa(I.split(","), g.Co(M1m, TaI)).forEach(function(U) {
+            a.compatibleSenderThemes.add(U)
+        })
+    }
+      , Gv8 = function(a, I) {
+        a.experiments.clear();
+        I.split(",").forEach(function(U) {
+            a.experiments.add(U)
+        })
+    }
+      , Cw = function(a) {
+        a = a || {};
+        this.name = a.name || "";
+        this.id = a.id || a.screenId || "";
+        this.token = a.token || a.loungeToken || "";
+        this.uuid = a.uuid || a.dialId || "";
+        this.idType = a.screenIdType || "normal"
+    }
+      , ro = function(a, I) {
+        return !!I && (a.id == I || a.uuid == I)
+    }
+      , CRz = function(a) {
+        return {
+            name: a.name,
+            screenId: a.id,
+            loungeToken: a.token,
+            dialId: a.uuid,
+            screenIdType: a.idType
+        }
+    }
+      , rTG = function(a) {
+        return new Cw(a)
+    }
+      , HdI = function(a) {
+        return Array.isArray(a) ? g.FX(a, rTG) : []
+    }
+      , HH = function(a) {
+        return a ? '{name:"' + a.name + '",id:' + a.id.substr(0, 6) + "..,token:" + ((a.token ? ".." + a.token.slice(-6) : "-") + ",uuid:" + (a.uuid ? ".." + a.uuid.slice(-6) : "-") + ",idType:" + a.idType + "}") : "null"
+    }
+      , qVo = function(a) {
+        return Array.isArray(a) ? "[" + g.FX(a, HH).join(",") + "]" : "null"
+    }
+      , xt4 = function() {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(a) {
+            var I = Math.random() * 16 | 0;
+            return (a == "x" ? I : I & 3 | 8).toString(16)
+        })
+    }
+      , Zdd = function(a) {
+        return g.FX(a, function(I) {
+            return {
+                key: I.id,
+                name: I.name
+            }
+        })
+    }
+      , tRm = function(a, I) {
+        return g.Jz(a, function(U) {
+            return U || I ? !U != !I ? !1 : U.id == I.id : !0
+        })
+    }
+      , qV = function(a, I) {
+        return g.Jz(a, function(U) {
+            return ro(U, I)
+        })
+    }
+      , n3J = function() {
+        var a = (0,
+        g.SR)();
+        a && ua8(a, a.V.NU(!0))
+    }
+      , xZ = function() {
+        var a = g.EV("yt-remote-connected-devices") || [];
+        g.fo(a);
+        return a
+    }
+      , K0d = function(a) {
+        if (a.length == 0)
+            return [];
+        var I = a[0].indexOf("#")
+          , U = I == -1 ? a[0] : a[0].substring(0, I);
+        return g.FX(a, function(e, T) {
+            return T == 0 ? e : e.substring(U.length)
+        })
+    }
+      , bdG = function(a) {
+        g.yy("yt-remote-connected-devices", a, 86400)
+    }
+      , Zv = function() {
+        if (JTI)
+            return JTI;
+        var a = g.EV("yt-remote-device-id");
+        a || (a = xt4(),
+        g.yy("yt-remote-device-id", a, 31536E3));
+        for (var I = xZ(), U = 1, e = a; g.kJ(I, e); )
+            U++,
+            e = a + "#" + U;
+        return JTI = e
+    }
+      , uUd = function() {
+        var a = xZ()
+          , I = Zv();
+        g.R$() && g.S8(a, I);
+        a = K0d(a);
+        if (a.length == 0)
+            try {
+                g.d9("remote_sid")
+            } catch (U) {}
+        else
+            try {
+                g.yz("remote_sid", a.join(","), -1)
+            } catch (U) {}
+    }
+      , k8d = function() {
+        return g.EV("yt-remote-session-browser-channel")
+    }
+      , VRG = function() {
+        return g.EV("yt-remote-local-screens") || []
+    }
+      , ATo = function() {
+        g.yy("yt-remote-lounge-token-expiration", !0, 86400)
+    }
+      , MRo = function(a) {
+        a.length > 5 && (a = a.slice(a.length - 5));
+        var I = g.FX(VRG(), function(e) {
+            return e.loungeToken
+        })
+          , U = g.FX(a, function(e) {
+            return e.loungeToken
+        });
+        g.mm(U, function(e) {
+            return !g.kJ(I, e)
+        }) && ATo();
+        g.yy("yt-remote-local-screens", a, 31536E3)
+    }
+      , ti = function(a) {
+        a || (g.da("yt-remote-session-screen-id"),
+        g.da("yt-remote-session-video-id"));
+        uUd();
+        a = xZ();
+        g.Az(a, Zv());
+        bdG(a)
+    }
+      , j$I = function() {
+        if (!nw) {
+            var a = g.Eb();
+            a && (nw = new g.Xz(a))
+        }
+    }
+      , $t4 = function() {
+        j$I();
+        return nw ? !!nw.get("yt-remote-use-staging-server") : !1
+    }
+      , Kw = function(a, I) {
+        g.qN[a] = !0;
+        var U = g.rq();
+        U && U.publish.apply(U, arguments);
+        g.qN[a] = !1
+    }
+      , ido = function() {}
+      , IZ = function() {
+        if (!bb) {
+            bb = new g.wJ(new ido);
+            var a = g.Lj("client_streamz_web_flush_count", -1);
+            a !== -1 && (bb.B = a)
+        }
+        return bb
+    }
+      , L0z = function() {
+        var a = window.navigator.userAgent.match(/Chrome\/([0-9]+)/);
+        return a ? parseInt(a[1], 10) : 0
+    }
+      , g38 = function(a) {
+        return !!document.currentScript && (document.currentScript.src.indexOf("?" + a) != -1 || document.currentScript.src.indexOf("&" + a) != -1)
+    }
+      , cTJ = function() {
+        return typeof window.__onGCastApiAvailable == "function" ? window.__onGCastApiAvailable : null
+    }
+      , Ji = function(a) {
+        a.length ? W0D(a.shift(), function() {
+            Ji(a)
+        }) : l9d()
+    }
+      , Bad = function(a) {
+        return "chrome-extension://" + a + "/cast_sender.js"
+    }
+      , W0D = function(a, I, U) {
+        var e = document.createElement("script");
+        e.onerror = I;
+        U && (e.onload = U);
+        g.q9(e, g.WB(a));
+        (document.head || document.documentElement).appendChild(e)
+    }
+      , Xkm = function() {
+        var a = L0z()
+          , I = [];
+        if (a > 1) {
+            var U = a - 1;
+            I.push("//www.gstatic.com/eureka/clank/" + a + "/cast_sender.js");
+            I.push("//www.gstatic.com/eureka/clank/" + U + "/cast_sender.js")
+        }
+        return I
+    }
+      , l9d = function() {
+        var a = cTJ();
+        a && a(!1, "No cast extension found")
+    }
+      , pkQ = function() {
+        if (PRm) {
+            var a = 2
+              , I = cTJ()
+              , U = function() {
+                a--;
+                a == 0 && I && I(!0)
+            };
+            window.__onGCastApiAvailable = U;
+            W0D("//www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js", l9d, U)
+        }
+    }
+      , f9z = function() {
+        pkQ();
+        var a = Xkm();
+        a.push("//www.gstatic.com/eureka/clank/cast_sender.js");
+        Ji(a)
+    }
+      , OdD = function() {
+        pkQ();
+        var a = Xkm();
+        a.push.apply(a, g.A(YVz.map(Bad)));
+        a.push("//www.gstatic.com/eureka/clank/cast_sender.js");
+        Ji(a)
+    }
+      , ub = function(a, I, U) {
+        g.S.call(this);
+        this.Y = U != null ? (0,
+        g.e8)(a, U) : a;
+        this.g6 = I;
+        this.U = (0,
+        g.e8)(this.tp, this);
+        this.V = !1;
+        this.L = 0;
+        this.B = this.ZN = null;
+        this.J = []
+    }
+      , kZ = function() {}
+      , SVD = function() {
+        g.aI.call(this, "p")
+    }
+      , G8Q = function() {
+        g.aI.call(this, "o")
+    }
+      , E3o = function() {
+        return yTJ = yTJ || new g.u7
+    }
+      , dtD = function(a) {
+        g.aI.call(this, "serverreachability", a)
+    }
+      , Vg = function(a) {
+        var I = E3o();
+        I.dispatchEvent(new dtD(I,a))
+    }
+      , R78 = function(a) {
+        g.aI.call(this, "statevent", a)
+    }
+      , Ai = function(a) {
+        var I = E3o();
+        I.dispatchEvent(new R78(I,a))
+    }
+      , wko = function(a, I, U, e) {
+        g.aI.call(this, "timingevent", a);
+        this.size = I;
+        this.rtt = U;
+        this.retries = e
+    }
+      , MV = function(a, I) {
+        if (typeof a !== "function")
+            throw Error("Fn must not be null and must be a function");
+        return g.zs.setTimeout(function() {
+            a()
+        }, I)
+    }
+      , jt = function() {}
+      , $Z = function(a, I, U, e) {
+        this.B = a;
+        this.J = I;
+        this.rF = U;
+        this.EB = e || 1;
+        this.E7 = new g.A7(this);
+        this.xa = 45E3;
+        this.zt = null;
+        this.Y = !1;
+        this.j = this.Z6 = this.D = this.CO = this.e8 = this.i5 = this.Va = null;
+        this.gw = [];
+        this.V = null;
+        this.C = 0;
+        this.U = this.tU = null;
+        this.Vo = -1;
+        this.Ux = !1;
+        this.XX = 0;
+        this.fO = null;
+        this.hN = this.a$ = this.B8 = this.dw = !1;
+        this.L = new F04
+    }
+      , F04 = function() {
+        this.B = null;
+        this.V = "";
+        this.L = !1
+    }
+      , Q$J = function(a, I, U) {
+        a.CO = 1;
+        a.D = DA(I.clone());
+        a.j = U;
+        a.dw = !0;
+        mtI(a, null)
+    }
+      , mtI = function(a, I) {
+        a.e8 = Date.now();
+        ib(a);
+        a.Z6 = a.D.clone();
+        vv(a.Z6, "t", a.EB);
+        a.C = 0;
+        var U = a.B.CO;
+        a.L = new F04;
+        a.V = z78(a.B, U ? I : null, !a.j);
+        a.XX > 0 && (a.fO = new g.e_((0,
+        g.e8)(a.Q9, a, a.V),a.XX));
+        a.E7.listen(a.V, "readystatechange", a.o2);
+        I = a.zt ? g.sG(a.zt) : {};
+        a.j ? (a.tU || (a.tU = "POST"),
+        I["Content-Type"] = "application/x-www-form-urlencoded",
+        a.V.send(a.Z6, a.tU, a.j, I)) : (a.tU = "GET",
+        a.V.send(a.Z6, a.tU, null, I));
+        Vg(1)
+    }
+      , Nam = function(a) {
+        if (!h7J(a))
+            return g.aM(a.V);
+        var I = g.IM(a.V);
+        if (I === "")
+            return "";
+        var U = ""
+          , e = I.length
+          , T = g.Dj(a.V) == 4;
+        if (!a.L.B) {
+            if (typeof TextDecoder === "undefined")
+                return Lw(a),
+                go(a),
+                "";
+            a.L.B = new g.zs.TextDecoder
+        }
+        for (var C = 0; C < e; C++)
+            a.L.L = !0,
+            U += a.L.B.decode(I[C], {
+                stream: !(T && C == e - 1)
+            });
+        I.length = 0;
+        a.L.V += U;
+        a.C = 0;
+        return a.L.V
+    }
+      , h7J = function(a) {
+        return a.V ? a.tU == "GET" && a.CO != 2 && a.B.dA : !1
+    }
+      , v3z = function(a, I) {
+        var U = a.C
+          , e = I.indexOf("\n", U);
+        if (e == -1)
+            return o3m;
+        U = Number(I.substring(U, e));
+        if (isNaN(U))
+            return Dtf;
+        e += 1;
+        if (e + U > I.length)
+            return o3m;
+        I = I.slice(e, e + U);
+        a.C = e + U;
+        return I
+    }
+      , ib = function(a) {
+        a.i5 = Date.now() + a.xa;
+        and(a, a.xa)
+    }
+      , and = function(a, I) {
+        if (a.Va != null)
+            throw Error("WatchDog timer not null");
+        a.Va = MV((0,
+        g.e8)(a.KV, a), I)
+    }
+      , Inf = function(a) {
+        a.Va && (g.zs.clearTimeout(a.Va),
+        a.Va = null)
+    }
+      , go = function(a) {
+        a.B.AS() || a.Ux || sBI(a.B, a)
+    }
+      , Lw = function(a) {
+        Inf(a);
+        g.Kf(a.fO);
+        a.fO = null;
+        a.E7.removeAll();
+        if (a.V) {
+            var I = a.V;
+            a.V = null;
+            I.abort();
+            I.dispose()
+        }
+    }
+      , xko = function(a, I) {
+        try {
+            var U = a.B;
+            if (U.R9 != 0 && (U.V == a || Ukd(U.L, a)))
+                if (!a.a$ && Ukd(U.L, a) && U.R9 == 3) {
+                    try {
+                        var e = U.vZ.V.parse(I)
+                    } catch (V) {
+                        e = null
+                    }
+                    if (Array.isArray(e) && e.length == 3) {
+                        var T = e;
+                        if (T[0] == 0)
+                            a: {
+                                if (!U.D) {
+                                    if (U.V)
+                                        if (U.V.e8 + 3E3 < a.e8)
+                                            cH(U),
+                                            WH(U);
+                                        else
+                                            break a;
+                                    eSG(U);
+                                    Ai(18)
+                                }
+                            }
+                        else
+                            U.uj = T[1],
+                            0 < U.uj - U.fO && T[2] < 37500 && U.a$ && U.gw == 0 && !U.Va && (U.Va = MV((0,
+                            g.e8)(U.Ym, U), 6E3));
+                        if (Tzd(U.L) <= 1 && U.ij) {
+                            try {
+                                U.ij()
+                            } catch (V) {}
+                            U.ij = void 0
+                        }
+                    } else
+                        lb(U, 11)
+                } else if ((a.a$ || U.V == a) && cH(U),
+                !g.ur(I))
+                    for (T = U.vZ.V.parse(I),
+                    I = 0; I < T.length; I++) {
+                        var C = T[I];
+                        U.fO = C[0];
+                        C = C[1];
+                        if (U.R9 == 2)
+                            if (C[0] == "c") {
+                                U.J = C[1];
+                                U.EB = C[2];
+                                var r = C[3];
+                                r != null && (U.fA = r);
+                                var q = C[5];
+                                q != null && typeof q === "number" && q > 0 && (U.XX = 1.5 * q);
+                                e = U;
+                                var x = a.CB();
+                                if (x) {
+                                    var Z = g.sy(x, "X-Client-Wire-Protocol");
+                                    if (Z) {
+                                        var t = e.L;
+                                        !t.V && (g.VK(Z, "spdy") || g.VK(Z, "quic") || g.VK(Z, "h2")) && (t.J = t.U,
+                                        t.V = new Set,
+                                        t.L && (C_D(t, t.L),
+                                        t.L = null))
+                                    }
+                                    if (e.dw) {
+                                        var n = g.sy(x, "X-HTTP-Session-Id");
+                                        n && (e.BE = n,
+                                        g.bv(e.zt, e.dw, n))
+                                    }
+                                }
+                                U.R9 = 3;
+                                U.U && U.U.Pf();
+                                U.IF && (U.wL = Date.now() - a.e8);
+                                e = U;
+                                var K = a;
+                                e.yx = rLj(e, e.CO ? e.EB : null, e.rF);
+                                if (K.a$) {
+                                    HGo(e.L, K);
+                                    var b = K
+                                      , J = e.XX;
+                                    J && b.setTimeout(J);
+                                    b.Va && (Inf(b),
+                                    ib(b));
+                                    e.V = K
+                                } else
+                                    qvf(e);
+                                U.B.length > 0 && BH(U)
+                            } else
+                                C[0] != "stop" && C[0] != "close" || lb(U, 7);
+                        else
+                            U.R9 == 3 && (C[0] == "stop" || C[0] == "close" ? C[0] == "stop" ? lb(U, 7) : U.disconnect() : C[0] != "noop" && U.U && U.U.XA(C),
+                            U.gw = 0)
+                    }
+            Vg(4)
+        } catch (V) {}
+    }
+      , ZGo = function(a, I) {
+        this.V = a;
+        this.map = I;
+        this.context = null
+    }
+      , tNG = function(a) {
+        this.U = a || 10;
+        g.zs.PerformanceNavigationTiming ? (a = g.zs.performance.getEntriesByType("navigation"),
+        a = a.length > 0 && (a[0].nextHopProtocol == "hq" || a[0].nextHopProtocol == "h2")) : a = !!(g.zs.chrome && g.zs.chrome.loadTimes && g.zs.chrome.loadTimes() && g.zs.chrome.loadTimes().wasFetchedViaSpdy);
+        this.J = a ? this.U : 1;
+        this.V = null;
+        this.J > 1 && (this.V = new Set);
+        this.L = null;
+        this.B = []
+    }
+      , nGz = function(a) {
+        return a.L ? !0 : a.V ? a.V.size >= a.J : !1
+    }
+      , Tzd = function(a) {
+        return a.L ? 1 : a.V ? a.V.size : 0
+    }
+      , Ukd = function(a, I) {
+        return a.L ? a.L == I : a.V ? a.V.has(I) : !1
+    }
+      , C_D = function(a, I) {
+        a.V ? a.V.add(I) : a.L = I
+    }
+      , HGo = function(a, I) {
+        a.L && a.L == I ? a.L = null : a.V && a.V.has(I) && a.V.delete(I)
+    }
+      , Kf4 = function(a) {
+        if (a.L != null)
+            return a.B.concat(a.L.gw);
+        if (a.V != null && a.V.size !== 0) {
+            var I = a.B;
+            a = g.k(a.V.values());
+            for (var U = a.next(); !U.done; U = a.next())
+                I = I.concat(U.value.gw);
+            return I
+        }
+        return g.iI(a.B)
+    }
+      , bGf = function(a, I) {
+        var U = new jt;
+        if (g.zs.Image) {
+            var e = new Image;
+            e.onload = g.Co(Xx, U, "TestLoadImage: loaded", !0, I, e);
+            e.onerror = g.Co(Xx, U, "TestLoadImage: error", !1, I, e);
+            e.onabort = g.Co(Xx, U, "TestLoadImage: abort", !1, I, e);
+            e.ontimeout = g.Co(Xx, U, "TestLoadImage: timeout", !1, I, e);
+            g.zs.setTimeout(function() {
+                if (e.ontimeout)
+                    e.ontimeout()
+            }, 1E4);
+            e.src = a
+        } else
+            I(!1)
+    }
+      , JLj = function(a, I) {
+        var U = new jt
+          , e = new AbortController
+          , T = setTimeout(function() {
+            e.abort();
+            Xx(U, "TestPingServer: timeout", !1, I)
+        }, 1E4);
+        fetch(a, {
+            signal: e.signal
+        }).then(function(C) {
+            clearTimeout(T);
+            C.ok ? Xx(U, "TestPingServer: ok", !0, I) : Xx(U, "TestPingServer: server error", !1, I)
+        }).catch(function() {
+            clearTimeout(T);
+            Xx(U, "TestPingServer: error", !1, I)
+        })
+    }
+      , Xx = function(a, I, U, e, T) {
+        try {
+            T && (T.onload = null,
+            T.onerror = null,
+            T.onabort = null,
+            T.ontimeout = null),
+            e(U)
+        } catch (C) {}
+    }
+      , u1d = function() {
+        this.V = new kZ
+    }
+      , kM4 = function(a, I, U) {
+        var e = U || "";
+        try {
+            Pkf(a, function(T, C) {
+                var r = T;
+                g.If(T) && (r = g.m4(T));
+                I.push(e + C + "=" + encodeURIComponent(r))
+            })
+        } catch (T) {
+            throw I.push(e + "type=" + encodeURIComponent("_badmap")),
+            T;
+        }
+    }
+      , PH = function(a, I, U) {
+        return U && U.mnX ? U.mnX[a] || I : I
+    }
+      , VNo = function(a) {
+        this.B = [];
+        this.EB = this.yx = this.zt = this.rF = this.V = this.BE = this.dw = this.Ux = this.C = this.Vo = this.j = null;
+        this.q2 = this.Z6 = 0;
+        this.N2 = PH("failFast", !1, a);
+        this.a$ = this.Va = this.D = this.Y = this.U = null;
+        this.F1 = !0;
+        this.uj = this.fO = -1;
+        this.hN = this.gw = this.e8 = 0;
+        this.vL = PH("baseRetryDelayMs", 5E3, a);
+        this.DU = PH("retryDelaySeedMs", 1E4, a);
+        this.yd = PH("forwardChannelMaxRetries", 2, a);
+        this.bl = PH("forwardChannelRequestTimeoutMs", 2E4, a);
+        this.L4 = a && a.HRw || void 0;
+        this.PL = a && a.OjU || void 0;
+        this.dA = a && a.Max || !1;
+        this.XX = void 0;
+        this.CO = a && a.ltt || !1;
+        this.J = "";
+        this.L = new tNG(a && a.Lpa);
+        this.vZ = new u1d;
+        this.E7 = a && a.TP8 || !1;
+        this.i5 = a && a.wug || !1;
+        this.E7 && this.i5 && (this.i5 = !1);
+        this.XY = a && a.nGK || !1;
+        a && a.H7a && (this.F1 = !1);
+        this.IF = !this.E7 && this.F1 && a && a.esa || !1;
+        this.TC = void 0;
+        a && a.bx && a.bx > 0 && (this.TC = a.bx);
+        this.ij = void 0;
+        this.wL = 0;
+        this.xa = !1;
+        this.B8 = this.tU = null
+    }
+      , WH = function(a) {
+        a.V && (ALf(a),
+        a.V.cancel(),
+        a.V = null)
+    }
+      , MNd = function(a) {
+        WH(a);
+        a.D && (g.zs.clearTimeout(a.D),
+        a.D = null);
+        cH(a);
+        a.L.cancel();
+        a.Y && (typeof a.Y === "number" && g.zs.clearTimeout(a.Y),
+        a.Y = null)
+    }
+      , BH = function(a) {
+        nGz(a.L) || a.Y || (a.Y = !0,
+        g.ch(a.y9, a),
+        a.e8 = 0)
+    }
+      , $km = function(a, I) {
+        if (Tzd(a.L) >= a.L.J - (a.Y ? 1 : 0))
+            return !1;
+        if (a.Y)
+            return a.B = I.gw.concat(a.B),
+            !0;
+        if (a.R9 == 1 || a.R9 == 2 || a.e8 >= (a.N2 ? 0 : a.yd))
+            return !1;
+        a.Y = MV((0,
+        g.e8)(a.y9, a, I), jBz(a, a.e8));
+        a.e8++;
+        return !0
+    }
+      , LfI = function(a, I) {
+        var U;
+        I ? U = I.rF : U = a.Z6++;
+        var e = a.zt.clone();
+        g.bv(e, "SID", a.J);
+        g.bv(e, "RID", U);
+        g.bv(e, "AID", a.fO);
+        pw(a, e);
+        a.C && a.j && g.VT(e, a.C, a.j);
+        U = new $Z(a,a.J,U,a.e8 + 1);
+        a.C === null && (U.zt = a.j);
+        I && (a.B = I.gw.concat(a.B));
+        I = iGG(a, U, 1E3);
+        U.setTimeout(Math.round(a.bl * .5) + Math.round(a.bl * .5 * Math.random()));
+        C_D(a.L, U);
+        Q$J(U, e, I)
+    }
+      , pw = function(a, I) {
+        a.Ux && g.dd(a.Ux, function(U, e) {
+            g.bv(I, e, U)
+        });
+        a.U && Pkf({}, function(U, e) {
+            g.bv(I, e, U)
+        })
+    }
+      , iGG = function(a, I, U) {
+        U = Math.min(a.B.length, U);
+        var e = a.U ? (0,
+        g.e8)(a.U.b1, a.U, a) : null;
+        a: {
+            for (var T = a.B, C = -1; ; ) {
+                var r = ["count=" + U];
+                C == -1 ? U > 0 ? (C = T[0].V,
+                r.push("ofs=" + C)) : C = 0 : r.push("ofs=" + C);
+                for (var q = !0, x = 0; x < U; x++) {
+                    var Z = T[x].V
+                      , t = T[x].map;
+                    Z -= C;
+                    if (Z < 0)
+                        C = Math.max(0, T[x].V - 100),
+                        q = !1;
+                    else
+                        try {
+                            kM4(t, r, "req" + Z + "_")
+                        } catch (n) {
+                            e && e(t)
+                        }
+                }
+                if (q) {
+                    e = r.join("&");
+                    break a
+                }
+            }
+            e = void 0
+        }
+        a = a.B.splice(0, U);
+        I.gw = a;
+        return e
+    }
+      , qvf = function(a) {
+        a.V || a.D || (a.hN = 1,
+        g.ch(a.rj, a),
+        a.gw = 0)
+    }
+      , eSG = function(a) {
+        if (a.V || a.D || a.gw >= 3)
+            return !1;
+        a.hN++;
+        a.D = MV((0,
+        g.e8)(a.rj, a), jBz(a, a.gw));
+        a.gw++;
+        return !0
+    }
+      , ALf = function(a) {
+        a.tU != null && (g.zs.clearTimeout(a.tU),
+        a.tU = null)
+    }
+      , gGd = function(a) {
+        a.V = new $Z(a,a.J,"rpc",a.hN);
+        a.C === null && (a.V.zt = a.j);
+        a.V.XX = 0;
+        var I = a.yx.clone();
+        g.bv(I, "RID", "rpc");
+        g.bv(I, "SID", a.J);
+        g.bv(I, "AID", a.fO);
+        g.bv(I, "CI", a.a$ ? "0" : "1");
+        !a.a$ && a.TC && g.bv(I, "TO", a.TC);
+        g.bv(I, "TYPE", "xmlhttp");
+        pw(a, I);
+        a.C && a.j && g.VT(I, a.C, a.j);
+        a.XX && a.V.setTimeout(a.XX);
+        var U = a.V;
+        a = a.EB;
+        U.CO = 1;
+        U.D = DA(I.clone());
+        U.j = null;
+        U.dw = !0;
+        mtI(U, a)
+    }
+      , cH = function(a) {
+        a.Va != null && (g.zs.clearTimeout(a.Va),
+        a.Va = null)
+    }
+      , sBI = function(a, I) {
+        var U = null;
+        if (a.V == I) {
+            cH(a);
+            ALf(a);
+            a.V = null;
+            var e = 2
+        } else if (Ukd(a.L, I))
+            U = I.gw,
+            HGo(a.L, I),
+            e = 1;
+        else
+            return;
+        if (a.R9 != 0)
+            if (I.Y)
+                if (e == 1) {
+                    U = I.j ? I.j.length : 0;
+                    I = Date.now() - I.e8;
+                    var T = a.e8;
+                    e = E3o();
+                    e.dispatchEvent(new wko(e,U,I,T));
+                    BH(a)
+                } else
+                    qvf(a);
+            else {
+                var C = I.Vo;
+                T = I.getLastError();
+                if (T == 3 || T == 0 && C > 0 || !(e == 1 && $km(a, I) || e == 2 && eSG(a)))
+                    switch (U && U.length > 0 && (I = a.L,
+                    I.B = I.B.concat(U)),
+                    T) {
+                    case 1:
+                        lb(a, 5);
+                        break;
+                    case 4:
+                        lb(a, 10);
+                        break;
+                    case 3:
+                        lb(a, 6);
+                        break;
+                    default:
+                        lb(a, 2)
+                    }
+            }
+    }
+      , jBz = function(a, I) {
+        var U = a.vL + Math.floor(Math.random() * a.DU);
+        a.isActive() || (U *= 2);
+        return U * I
+    }
+      , lb = function(a, I) {
+        if (I == 2) {
+            var U = (0,
+            g.e8)(a.s9$, a)
+              , e = a.PL
+              , T = !e;
+            e = new g.rv(e || "//www.google.com/images/cleardot.gif");
+            g.zs.location && g.zs.location.protocol == "http" || g.H7(e, "https");
+            DA(e);
+            T ? bGf(e.toString(), U) : JLj(e.toString(), U)
+        } else
+            Ai(2);
+        a.R9 = 0;
+        a.U && a.U.De(I);
+        cLd(a);
+        MNd(a)
+    }
+      , cLd = function(a) {
+        a.R9 = 0;
+        a.B8 = [];
+        if (a.U) {
+            var I = Kf4(a.L);
+            if (I.length != 0 || a.B.length != 0)
+                g.gd(a.B8, I),
+                g.gd(a.B8, a.B),
+                a.L.B.length = 0,
+                g.iI(a.B),
+                a.B.length = 0;
+            a.U.qd()
+        }
+    }
+      , Wfz = function(a) {
+        if (a.R9 == 0)
+            return a.B8;
+        var I = [];
+        g.gd(I, Kf4(a.L));
+        g.gd(I, a.B);
+        return I
+    }
+      , rLj = function(a, I, U) {
+        var e = g.J7(U);
+        e.V != "" ? (I && g.q8(e, I + "." + e.V),
+        g.xu(e, e.B)) : (e = g.zs.location,
+        e = pIJ(e.protocol, I ? I + "." + e.hostname : e.hostname, +e.port, U));
+        I = a.dw;
+        U = a.BE;
+        I && U && g.bv(e, I, U);
+        g.bv(e, "VER", a.fA);
+        pw(a, e);
+        return e
+    }
+      , z78 = function(a, I, U) {
+        if (I && !a.CO)
+            throw Error("Can't create secondary domain capable XhrIo object.");
+        I = a.dA && !a.L4 ? new g.hM(new g.Uz({
+            MB: U
+        })) : new g.hM(a.L4);
+        I.C = a.CO;
+        return I
+    }
+      , lno = function() {}
+      , Bzz = function() {}
+      , YZ = function(a, I) {
+        g.u7.call(this);
+        this.V = new VNo(I);
+        this.U = a;
+        this.L = I && I.yN8 || null;
+        a = I && I.rNg || null;
+        I && I.VBa && (a ? a["X-Client-Protocol"] = "webchannel" : a = {
+            "X-Client-Protocol": "webchannel"
+        });
+        this.V.j = a;
+        a = I && I.c28 || null;
+        I && I.Tf && (a ? a["X-WebChannel-Content-Type"] = I.Tf : a = {
+            "X-WebChannel-Content-Type": I.Tf
+        });
+        I && I.JV && (a ? a["X-WebChannel-Client-Profile"] = I.JV : a = {
+            "X-WebChannel-Client-Profile": I.JV
+        });
+        this.V.Vo = a;
+        (a = I && I.jRs) && !g.ur(a) && (this.V.C = a);
+        this.Y = I && I.ltt || !1;
+        this.J = I && I.xy$ || !1;
+        (I = I && I.Pgg) && !g.ur(I) && (this.V.dw = I,
+        g.Nd(this.L, I) && (a = this.L,
+        I in a && delete a[I]));
+        this.B = new fw(this)
+    }
+      , XzQ = function(a) {
+        SVD.call(this);
+        a.__headers__ && (this.headers = a.__headers__,
+        this.statusCode = a.__status__,
+        delete a.__headers__,
+        delete a.__status__);
+        var I = a.__sm__;
+        I ? this.data = (this.V = g.mz(I)) ? g.ax(I, this.V) : I : this.data = a
+    }
+      , P_z = function(a) {
+        G8Q.call(this);
+        this.status = 1;
+        this.errorCode = a
+    }
+      , fw = function(a) {
+        this.V = a
+    }
+      , pzQ = function(a, I) {
+        this.L = a;
+        this.V = I
+    }
+      , fnG = function(a) {
+        return Wfz(a.V).map(function(I) {
+            var U = a.L;
+            I = I.map;
+            "__data__"in I ? (I = I.__data__,
+            U = U.J ? j0I(I) : I) : U = I;
+            return U
+        })
+    }
+      , OQ = function(a, I) {
+        if (typeof a !== "function")
+            throw Error("Fn must not be null and must be a function");
+        return g.zs.setTimeout(function() {
+            a()
+        }, I)
+    }
+      , GZ = function(a) {
+        St.dispatchEvent(new Yvo(St,a))
+    }
+      , Yvo = function(a) {
+        g.aI.call(this, "statevent", a)
+    }
+      , yg = function(a, I, U, e) {
+        this.V = a;
+        this.J = I;
+        this.C = U;
+        this.Y = e || 1;
+        this.L = 45E3;
+        this.B = new g.A7(this);
+        this.U = new g.Em;
+        this.U.setInterval(250)
+    }
+      , Svo = function(a, I, U) {
+        a.Ek = 1;
+        a.ph = DA(I.clone());
+        a.c6 = U;
+        a.dw = !0;
+        OGI(a, null)
+    }
+      , GMo = function(a, I, U, e, T) {
+        a.Ek = 1;
+        a.ph = DA(I.clone());
+        a.c6 = null;
+        a.dw = U;
+        T && (a.n8 = !1);
+        OGI(a, e)
+    }
+      , OGI = function(a, I) {
+        a.vR = Date.now();
+        yLD(a);
+        a.jk = a.ph.clone();
+        vv(a.jk, "t", a.Y);
+        a.Rb = 0;
+        a.UM = a.V.GU(a.V.Np() ? I : null);
+        a.Mf > 0 && (a.nK = new g.e_((0,
+        g.e8)(a.Ze, a, a.UM),a.Mf));
+        a.B.listen(a.UM, "readystatechange", a.pV);
+        I = a.nG ? g.sG(a.nG) : {};
+        a.c6 ? (a.iT = "POST",
+        I["Content-Type"] = "application/x-www-form-urlencoded",
+        a.UM.send(a.jk, a.iT, a.c6, I)) : (a.iT = "GET",
+        a.n8 && !g.hl && (I.Connection = "close"),
+        a.UM.send(a.jk, a.iT, null, I));
+        a.V.QT(1)
+    }
+      , RSf = function(a, I) {
+        var U = a.Rb
+          , e = I.indexOf("\n", U);
+        if (e == -1)
+            return EGf;
+        U = Number(I.substring(U, e));
+        if (isNaN(U))
+            return dko;
+        e += 1;
+        if (e + U > I.length)
+            return EGf;
+        I = I.slice(e, e + U);
+        a.Rb = e + U;
+        return I
+    }
+      , yLD = function(a) {
+        a.TU = Date.now() + a.L;
+        wzd(a, a.L)
+    }
+      , wzd = function(a, I) {
+        if (a.Km != null)
+            throw Error("WatchDog timer not null");
+        a.Km = OQ((0,
+        g.e8)(a.z$, a), I)
+    }
+      , Fff = function(a) {
+        a.Km && (g.zs.clearTimeout(a.Km),
+        a.Km = null)
+    }
+      , mkQ = function(a) {
+        a.V.AS() || a.U2 || a.V.Qu(a)
+    }
+      , EQ = function(a) {
+        Fff(a);
+        g.Kf(a.nK);
+        a.nK = null;
+        a.U.stop();
+        a.B.removeAll();
+        if (a.UM) {
+            var I = a.UM;
+            a.UM = null;
+            I.abort();
+            I.dispose()
+        }
+        a.xp && (a.xp = null)
+    }
+      , QBd = function(a, I) {
+        try {
+            a.V.Sy(a, I),
+            a.V.QT(4)
+        } catch (U) {}
+    }
+      , hSD = function(a, I, U, e, T) {
+        if (e == 0)
+            U(!1);
+        else {
+            var C = T || 0;
+            e--;
+            zSJ(a, I, function(r) {
+                r ? U(!0) : g.zs.setTimeout(function() {
+                    hSD(a, I, U, e, C)
+                }, C)
+            })
+        }
+    }
+      , zSJ = function(a, I, U) {
+        var e = new Image;
+        e.onload = function() {
+            try {
+                RZ(e),
+                U(!0)
+            } catch (T) {}
+        }
+        ;
+        e.onerror = function() {
+            try {
+                RZ(e),
+                U(!1)
+            } catch (T) {}
+        }
+        ;
+        e.onabort = function() {
+            try {
+                RZ(e),
+                U(!1)
+            } catch (T) {}
+        }
+        ;
+        e.ontimeout = function() {
+            try {
+                RZ(e),
+                U(!1)
+            } catch (T) {}
+        }
+        ;
+        g.zs.setTimeout(function() {
+            if (e.ontimeout)
+                e.ontimeout()
+        }, I);
+        e.src = a
+    }
+      , RZ = function(a) {
+        a.onload = null;
+        a.onerror = null;
+        a.onabort = null;
+        a.ontimeout = null
+    }
+      , Nzd = function(a) {
+        this.V = a;
+        this.L = new kZ
+    }
+      , oGj = function(a) {
+        var I = wo(a.V, a.QI, "/mail/images/cleardot.gif");
+        DA(I);
+        hSD(I.toString(), 5E3, (0,
+        g.e8)(a.c_, a), 3, 2E3);
+        a.QT(1)
+    }
+      , Dko = function(a) {
+        var I = a.V.Y;
+        I != null ? (GZ(5),
+        I ? (GZ(11),
+        Fx(a.V, a, !1)) : (GZ(12),
+        Fx(a.V, a, !0))) : (a.vG = new yg(a),
+        a.vG.nG = a.H9,
+        I = a.V,
+        I = wo(I, I.Np() ? a.VJ : null, a.f9),
+        GZ(5),
+        vv(I, "TYPE", "xmlhttp"),
+        GMo(a.vG, I, !1, a.VJ, !1))
+    }
+      , vG8 = function(a, I, U) {
+        this.V = 1;
+        this.L = [];
+        this.B = [];
+        this.U = new kZ;
+        this.j = a || null;
+        this.Y = I != null ? I : null;
+        this.D = U || !1
+    }
+      , aeQ = function(a, I) {
+        this.V = a;
+        this.map = I;
+        this.context = null
+    }
+      , Iej = function(a, I, U, e) {
+        g.aI.call(this, "timingevent", a);
+        this.size = I;
+        this.rtt = U;
+        this.retries = e
+    }
+      , s7d = function(a) {
+        g.aI.call(this, "serverreachability", a)
+    }
+      , emz = function(a) {
+        a.U5(1, 0);
+        a.gG = wo(a, null, a.yu);
+        UOz(a)
+    }
+      , TGQ = function(a) {
+        a.yO && (a.yO.abort(),
+        a.yO = null);
+        a.dV && (a.dV.cancel(),
+        a.dV = null);
+        a.SB && (g.zs.clearTimeout(a.SB),
+        a.SB = null);
+        mr(a);
+        a.H1 && (a.H1.cancel(),
+        a.H1 = null);
+        a.z0 && (g.zs.clearTimeout(a.z0),
+        a.z0 = null)
+    }
+      , Czo = function(a, I) {
+        if (a.V == 0)
+            throw Error("Invalid operation: sending map when state is closed");
+        a.L.push(new aeQ(a.O5++,I));
+        a.V != 2 && a.V != 3 || UOz(a)
+    }
+      , rPQ = function(a) {
+        var I = 0;
+        a.dV && I++;
+        a.H1 && I++;
+        return I
+    }
+      , UOz = function(a) {
+        a.H1 || a.z0 || (a.z0 = OQ((0,
+        g.e8)(a.uq, a), 0),
+        a.ol = 0)
+    }
+      , xOz = function(a, I) {
+        if (a.V == 1) {
+            if (!I) {
+                a.Mp = Math.floor(Math.random() * 1E5);
+                I = a.Mp++;
+                var U = new yg(a,"",I);
+                U.nG = a.bQ;
+                var e = HOd(a)
+                  , T = a.gG.clone();
+                g.bv(T, "RID", I);
+                g.bv(T, "CVER", "1");
+                Qg(a, T);
+                Svo(U, T, e);
+                a.H1 = U;
+                a.V = 2
+            }
+        } else
+            a.V == 3 && (I ? qXz(a, I) : a.L.length == 0 || a.H1 || qXz(a))
+    }
+      , qXz = function(a, I) {
+        if (I)
+            if (a.Es > 6) {
+                a.L = a.B.concat(a.L);
+                a.B.length = 0;
+                var U = a.Mp - 1;
+                I = HOd(a)
+            } else
+                U = I.C,
+                I = I.c6;
+        else
+            U = a.Mp++,
+            I = HOd(a);
+        var e = a.gG.clone();
+        g.bv(e, "SID", a.J);
+        g.bv(e, "RID", U);
+        g.bv(e, "AID", a.Yx);
+        Qg(a, e);
+        U = new yg(a,a.J,U,a.ol + 1);
+        U.nG = a.bQ;
+        U.setTimeout(1E4 + Math.round(1E4 * Math.random()));
+        a.H1 = U;
+        Svo(U, e, I)
+    }
+      , Qg = function(a, I) {
+        a.Vt && (a = a.Vt.E8()) && g.dd(a, function(U, e) {
+            g.bv(I, e, U)
+        })
+    }
+      , HOd = function(a) {
+        var I = Math.min(a.L.length, 1E3)
+          , U = ["count=" + I];
+        if (a.Es > 6 && I > 0) {
+            var e = a.L[0].V;
+            U.push("ofs=" + e)
+        } else
+            e = 0;
+        for (var T = {}, C = 0; C < I; T = {
+            HY: void 0
+        },
+        C++) {
+            T.HY = a.L[C].V;
+            var r = a.L[C].map;
+            T.HY = a.Es <= 6 ? C : T.HY - e;
+            try {
+                g.dd(r, function(q) {
+                    return function(x, Z) {
+                        U.push("req" + q.HY + "_" + Z + "=" + encodeURIComponent(x))
+                    }
+                }(T))
+            } catch (q) {
+                U.push("req" + T.HY + "_type=" + encodeURIComponent("_badmap"))
+            }
+        }
+        a.B = a.B.concat(a.L.splice(0, I));
+        return U.join("&")
+    }
+      , ZOD = function(a) {
+        a.dV || a.SB || (a.C = 1,
+        a.SB = OQ((0,
+        g.e8)(a.mx, a), 0),
+        a.dn = 0)
+    }
+      , nd4 = function(a) {
+        if (a.dV || a.SB || a.dn >= 3)
+            return !1;
+        a.C++;
+        a.SB = OQ((0,
+        g.e8)(a.mx, a), tX8(a, a.dn));
+        a.dn++;
+        return !0
+    }
+      , Fx = function(a, I, U) {
+        a.L9 = a.Y == null ? U : !a.Y;
+        a.EU = I.Zq;
+        a.D || emz(a)
+    }
+      , mr = function(a) {
+        a.ib != null && (g.zs.clearTimeout(a.ib),
+        a.ib = null)
+    }
+      , tX8 = function(a, I) {
+        var U = 5E3 + Math.floor(Math.random() * 1E4);
+        a.isActive() || (U *= 2);
+        return U * I
+    }
+      , zZ = function(a, I) {
+        if (I == 2 || I == 9) {
+            var U = null;
+            a.Vt && (U = null);
+            var e = (0,
+            g.e8)(a.inx, a);
+            U || (U = new g.rv("//www.google.com/images/cleardot.gif"),
+            DA(U));
+            zSJ(U.toString(), 1E4, e)
+        } else
+            GZ(2);
+        KhJ(a, I)
+    }
+      , KhJ = function(a, I) {
+        a.V = 0;
+        a.Vt && a.Vt.lq(I);
+        bOf(a);
+        TGQ(a)
+    }
+      , bOf = function(a) {
+        a.V = 0;
+        a.EU = -1;
+        if (a.Vt)
+            if (a.B.length == 0 && a.L.length == 0)
+                a.Vt.qf();
+            else {
+                var I = g.iI(a.B)
+                  , U = g.iI(a.L);
+                a.B.length = 0;
+                a.L.length = 0;
+                a.Vt.qf(I, U)
+            }
+    }
+      , wo = function(a, I, U) {
+        var e = g.J7(U);
+        if (e.V != "")
+            I && g.q8(e, I + "." + e.V),
+            g.xu(e, e.B);
+        else {
+            var T = window.location;
+            e = pIJ(T.protocol, I ? I + "." + T.hostname : T.hostname, +T.port, U)
+        }
+        a.Ch && g.dd(a.Ch, function(C, r) {
+            g.bv(e, r, C)
+        });
+        g.bv(e, "VER", a.Es);
+        Qg(a, e);
+        return e
+    }
+      , JP4 = function() {}
+      , udo = function() {
+        this.V = [];
+        this.L = []
+    }
+      , k1z = function(a) {
+        g.aI.call(this, "channelMessage");
+        this.message = a
+    }
+      , VXJ = function(a) {
+        g.aI.call(this, "channelError");
+        this.error = a
+    }
+      , APJ = function(a, I) {
+        this.action = a;
+        this.params = I || {}
+    }
+      , hi = function(a, I) {
+        g.S.call(this);
+        this.V = new g.Dy(this.fUt,0,this);
+        g.E(this, this.V);
+        this.g6 = 5E3;
+        this.L = 0;
+        if (typeof a === "function")
+            I && (a = (0,
+            g.e8)(a, I));
+        else if (a && typeof a.handleEvent === "function")
+            a = (0,
+            g.e8)(a.handleEvent, a);
+        else
+            throw Error("Invalid listener argument");
+        this.B = a
+    }
+      , MXz = function(a, I, U, e, T, C, r, q, x, Z, t, n, K, b) {
+        U = U === void 0 ? !1 : U;
+        e = e === void 0 ? function() {
+            return ""
+        }
+        : e;
+        T = T === void 0 ? !1 : T;
+        C = C === void 0 ? !1 : C;
+        r = r === void 0 ? !1 : r;
+        q = q === void 0 ? function() {
+            return g.XG({})
+        }
+        : q;
+        x = x === void 0 ? !1 : x;
+        t = t === void 0 ? !1 : t;
+        n = n === void 0 ? !1 : n;
+        K = K === void 0 ? !1 : K;
+        b = b === void 0 ? !1 : b;
+        this.CO = a;
+        this.Va = I;
+        this.Y = new g.B1;
+        this.L = new hi(this.icw,this);
+        this.V = null;
+        this.C = !1;
+        this.j = null;
+        this.e8 = "";
+        this.gw = this.D = 0;
+        this.B = [];
+        this.hN = U;
+        this.dw = e;
+        this.U = C;
+        this.zt = q;
+        this.Ux = Z;
+        this.EB = r;
+        this.tU = null;
+        this.J = g.XG();
+        this.rF = T;
+        this.B8 = x;
+        this.E7 = t;
+        this.i5 = n;
+        this.F1 = K;
+        this.Vo = b;
+        this.XX = new $6Q;
+        this.a$ = new ijf;
+        this.xa = new gk4;
+        this.Z6 = new Lyz;
+        this.fO = new cbo;
+        this.IF = new WyG;
+        this.ij = new lld
+    }
+      , iOD = function(a, I, U, e, T) {
+        j7G(a);
+        if (a.V) {
+            var C = g.D5("ID_TOKEN")
+              , r = a.V.bQ || {};
+            C ? r["x-youtube-identity-token"] = C : delete r["x-youtube-identity-token"];
+            a.V.bQ = r
+        }
+        $Oo(a);
+        e ? (e.getState() != 3 && rPQ(e) == 0 || e.getState(),
+        a.V.connect(I, U, a.Va, e.J, e.Yx)) : T ? a.V.connect(I, U, a.Va, T.sessionId, T.arrayId) : a.V.connect(I, U, a.Va)
+    }
+      , Who = function(a, I) {
+        return a.F1 ? !0 : a.i5 ? Object.values(Lho).includes(I) : a.E7 ? !Object.values(gdo).includes(I) : a.Vo ? Object.values(cPm).includes(I) : !1
+    }
+      , X2d = function(a) {
+        var I, U;
+        g.f(function(e) {
+            if (e.L == 1)
+                return g.iF(e, 2),
+                g.l(e, lez(a), 2);
+            g.XY(e);
+            I = a.B;
+            a.B = [];
+            U = I.length;
+            BG4(a, I, U);
+            NV(a);
+            return g.Pw(e, 0)
+        })
+    }
+      , BG4 = function(a, I, U) {
+        for (var e = 0; e < U; ++e)
+            Czo(a.V, I[e]);
+        NV(a)
+    }
+      , NV = function(a) {
+        a.publish("handlerOpened");
+        a.XX.Id("BROWSER_CHANNEL")
+    }
+      , j7G = function(a) {
+        if (a.V) {
+            var I = a.dw()
+              , U = a.V.bQ || {};
+            I ? U["x-youtube-lounge-xsrf-token"] = I : delete U["x-youtube-lounge-xsrf-token"];
+            a.V.bQ = U
+        }
+    }
+      , lez = function(a) {
+        if (a.B8)
+            return g.XG();
+        if (!a.EB)
+            return Pzz(a);
+        a.tU === null && (a.tU = Pzz(a));
+        return a.tU
+    }
+      , Pzz = function(a) {
+        return g.G0(a.zt().then(function(I) {
+            p2G(a, I)
+        }).L$(function() {}), function() {
+            a.tU = null
+        })
+    }
+      , p2G = function(a, I) {
+        if (a.V) {
+            var U = a.V.bQ || {};
+            I && Object.keys(I).length > 0 ? U = Object.assign({}, U, I) : delete U.Authorization;
+            a.V.bQ = U
+        }
+    }
+      , $Oo = function(a) {
+        a.Ux && !a.U && p2G(a, a.Ux())
+    }
+      , oZ = function(a) {
+        this.scheme = "https";
+        this.port = this.domain = "";
+        this.V = "/api/lounge";
+        this.L = !0;
+        a = a || document.location.href;
+        var I = Number(g.LM(a)[4] || null) || "";
+        I && (this.port = ":" + I);
+        this.domain = g.gs(a) || "";
+        a = g.gO();
+        a.search("MSIE") >= 0 && (a = a.match(/MSIE ([\d.]+)/)[1],
+        g.Lk(a, "10.0") < 0 && (this.L = !1))
+    }
+      , Dv = function(a, I) {
+        var U = a.V;
+        a.L && (U = a.scheme + "://" + a.domain + a.port + a.V);
+        return g.pM(U + I, {})
+    }
+      , fem = function(a, I) {
+        g.u7.call(this);
+        var U = this;
+        this.A4 = a();
+        this.A4.subscribe("handlerOpened", this.NN, this);
+        this.A4.subscribe("handlerClosed", this.onClosed, this);
+        this.A4.subscribe("handlerError", function(e, T) {
+            U.onError(T)
+        });
+        this.A4.subscribe("handlerMessage", this.onMessage, this);
+        this.V = I
+    }
+      , YX4 = function(a, I, U) {
+        var e = this;
+        U = U === void 0 ? function() {
+            return ""
+        }
+        : U;
+        var T = T === void 0 ? new Bzz : T;
+        var C = C === void 0 ? new g.B1 : C;
+        this.pathPrefix = a;
+        this.V = I;
+        this.e8 = U;
+        this.U = C;
+        this.D = null;
+        this.j = this.C = 0;
+        this.channel = null;
+        this.Y = 0;
+        this.B = new hi(function() {
+            e.B.isActive();
+            var r;
+            ((r = e.channel) == null ? void 0 : Tzd((new pzQ(r,r.V)).V.L)) === 0 && e.connect(e.D, e.C)
+        }
+        );
+        this.J = {};
+        this.L = {};
+        this.Va = !1;
+        this.logger = null;
+        this.gw = [];
+        this.ZC = void 0;
+        this.zt = new $6Q;
+        this.tU = new ijf;
+        this.Ux = new Lyz;
+        this.dw = new cbo
+    }
+      , OOo = function(a) {
+        g.Hh(a.channel, "m", function() {
+            a.Y = 3;
+            a.B.reset();
+            a.D = null;
+            a.C = 0;
+            for (var I = g.k(a.gw), U = I.next(); !U.done; U = I.next())
+                U = U.value,
+                a.channel && a.channel.send(U);
+            a.gw = [];
+            a.publish("webChannelOpened");
+            a.zt.Id("WEB_CHANNEL")
+        });
+        g.Hh(a.channel, "n", function() {
+            a.Y = 0;
+            a.B.isActive() || a.publish("webChannelClosed");
+            var I, U = (I = a.channel) == null ? void 0 : fnG(new pzQ(I,I.V));
+            U && (a.gw = [].concat(g.A(U)));
+            a.tU.Id("WEB_CHANNEL")
+        });
+        g.Hh(a.channel, "p", function(I) {
+            var U = I.data;
+            U[0] === "gracefulReconnect" ? (a.B.start(),
+            a.channel && a.channel.close()) : a.publish("webChannelMessage", new APJ(U[0],U[1]));
+            a.ZC = I.statusCode;
+            a.Ux.Id("WEB_CHANNEL")
+        });
+        g.Hh(a.channel, "o", function() {
+            a.ZC === 401 || a.B.start();
+            a.publish("webChannelError");
+            a.dw.Id("WEB_CHANNEL")
+        })
+    }
+      , SXj = function(a) {
+        var I = a.e8();
+        I ? a.J["x-youtube-lounge-xsrf-token"] = I : delete a.J["x-youtube-lounge-xsrf-token"]
+    }
+      , G1z = function(a) {
+        g.u7.call(this);
+        this.V = a();
+        this.V.subscribe("webChannelOpened", this.CV, this);
+        this.V.subscribe("webChannelClosed", this.onClosed, this);
+        this.V.subscribe("webChannelError", this.onError, this);
+        this.V.subscribe("webChannelMessage", this.onMessage, this)
+    }
+      , yPG = function(a, I, U, e, T) {
+        function C() {
+            return new MXz(Dv(a, "/bc"),I,!1,U,e)
+        }
+        U = U === void 0 ? function() {
+            return ""
+        }
+        : U;
+        return g.ik("enable_mdx_web_channel_desktop") ? new G1z(function() {
+            return new YX4(Dv(a, "/wc"),I,U)
+        }
+        ) : new fem(C,T)
+    }
+      , w2J = function() {
+        var a = Edz;
+        dOG();
+        vH.push(a);
+        RmG()
+    }
+      , ap = function(a, I) {
+        dOG();
+        var U = Fhd(a, String(I));
+        vH.length == 0 ? mOo(U) : (RmG(),
+        g.Gm(vH, function(e) {
+            e(U)
+        }))
+    }
+      , Ip = function(a) {
+        ap("CP", a)
+    }
+      , dOG = function() {
+        vH || (vH = g.NL("yt.mdx.remote.debug.handlers_") || [],
+        g.hj("yt.mdx.remote.debug.handlers_", vH))
+    }
+      , mOo = function(a) {
+        var I = (s1 + 1) % 50;
+        s1 = I;
+        U1[I] = a;
+        es || (es = I == 49)
+    }
+      , RmG = function() {
+        var a = vH;
+        if (U1[0]) {
+            var I = es ? s1 : -1
+              , U = {};
+            do
+                U = {
+                    NI: void 0
+                },
+                I = (I + 1) % 50,
+                U.NI = U1[I],
+                g.Gm(a, function(e) {
+                    return function(T) {
+                        T(e.NI)
+                    }
+                }(U));
+            while (I != s1);
+            U1 = Array(50);
+            s1 = -1;
+            es = !1
+        }
+    }
+      , Fhd = function(a, I) {
+        var U = (Date.now() - Q7J) / 1E3;
+        U.toFixed && (U = U.toFixed(3));
+        var e = [];
+        e.push("[", U + "s", "] ");
+        e.push("[", "yt.mdx.remote", "] ");
+        e.push(a + ": " + I, "\n");
+        return e.join("")
+    }
+      , TO = function(a) {
+        g.J_.call(this);
+        this.Y = a;
+        this.screens = []
+    }
+      , zmd = function(a, I) {
+        var U = a.get(I.uuid) || a.get(I.id);
+        if (U)
+            return a = U.name,
+            U.id = I.id || U.id,
+            U.name = I.name,
+            U.token = I.token,
+            U.uuid = I.uuid || U.uuid,
+            U.name != a;
+        a.screens.push(I);
+        return !0
+    }
+      , hmz = function(a, I) {
+        var U = a.screens.length != I.length;
+        a.screens = g.Sa(a.screens, function(C) {
+            return !!tRm(I, C)
+        });
+        for (var e = I.length, T = 0; T < e; T++)
+            U = zmd(a, I[T]) || U;
+        return U
+    }
+      , NGj = function(a, I) {
+        var U = a.screens.length;
+        a.screens = g.Sa(a.screens, function(e) {
+            return !(e || I ? !e != !I ? 0 : e.id == I.id : 1)
+        });
+        return a.screens.length < U
+    }
+      , odo = function(a, I, U, e, T) {
+        g.J_.call(this);
+        this.B = a;
+        this.C = I;
+        this.J = U;
+        this.Y = e;
+        this.U = T;
+        this.L = 0;
+        this.V = null;
+        this.ZN = NaN
+    }
+      , ri = function(a) {
+        TO.call(this, "LocalScreenService");
+        this.L = a;
+        this.V = NaN;
+        Cv(this);
+        this.info("Initializing with " + qVo(this.screens))
+    }
+      , DOd = function(a) {
+        if (a.screens.length) {
+            var I = g.FX(a.screens, function(e) {
+                return e.id
+            })
+              , U = Dv(a.L, "/pairing/get_lounge_token_batch");
+            a.L.sendRequest("POST", U, {
+                screen_ids: I.join(",")
+            }, (0,
+            g.e8)(a.KKO, a), (0,
+            g.e8)(a.t8X, a))
+        }
+    }
+      , Cv = function(a) {
+        if (g.ik("deprecate_pair_servlet_enabled"))
+            return hmz(a, []);
+        var I = HdI(VRG());
+        I = g.Sa(I, function(U) {
+            return !U.uuid
+        });
+        return hmz(a, I)
+    }
+      , Hu = function(a, I) {
+        MRo(g.FX(a.screens, CRz));
+        I && ATo()
+    }
+      , aM8 = function(a, I) {
+        g.J_.call(this);
+        this.Y = I;
+        I = (I = g.EV("yt-remote-online-screen-ids") || "") ? I.split(",") : [];
+        for (var U = {}, e = this.Y(), T = e.length, C = 0; C < T; ++C) {
+            var r = e[C].id;
+            U[r] = g.kJ(I, r)
+        }
+        this.V = U;
+        this.U = a;
+        this.B = this.J = NaN;
+        this.L = null;
+        vdm("Initialized with " + g.m4(this.V))
+    }
+      , IMJ = function(a, I, U) {
+        var e = Dv(a.U, "/pairing/get_screen_availability");
+        a.U.sendRequest("POST", e, {
+            lounge_token: I.token
+        }, (0,
+        g.e8)(function(T) {
+            T = T.screens || [];
+            for (var C = T.length, r = 0; r < C; ++r)
+                if (T[r].loungeToken == I.token) {
+                    U(T[r].status == "online");
+                    return
+                }
+            U(!1)
+        }, a), (0,
+        g.e8)(function() {
+            U(!1)
+        }, a))
+    }
+      , UNQ = function(a, I) {
+        a: if (Abz(I) != Abz(a.V))
+            var U = !1;
+        else {
+            U = g.zm(I);
+            for (var e = U.length, T = 0; T < e; ++T)
+                if (!a.V[U[T]]) {
+                    U = !1;
+                    break a
+                }
+            U = !0
+        }
+        U || (vdm("Updated online screens: " + g.m4(a.V)),
+        a.V = I,
+        a.publish("screenChange"));
+        sbd(a)
+    }
+      , qi = function(a) {
+        isNaN(a.B) || g.M6(a.B);
+        a.B = g.Vz((0,
+        g.e8)(a.Ml, a), a.J > 0 && a.J < g.rd() ? 2E4 : 1E4)
+    }
+      , vdm = function(a) {
+        ap("OnlineScreenService", a)
+    }
+      , eTQ = function(a) {
+        var I = {};
+        g.Gm(a.Y(), function(U) {
+            U.token ? I[U.token] = U.id : this.O1("Requesting availability of screen w/o lounge token.")
+        });
+        return I
+    }
+      , sbd = function(a) {
+        a = g.zm(g.Rf(a.V, function(I) {
+            return I
+        }));
+        g.fo(a);
+        a.length ? g.yy("yt-remote-online-screen-ids", a.join(","), 60) : g.da("yt-remote-online-screen-ids")
+    }
+      , Zh = function(a, I) {
+        I = I === void 0 ? !1 : I;
+        TO.call(this, "ScreenService");
+        this.J = a;
+        this.C = I;
+        this.V = this.L = null;
+        this.B = [];
+        this.U = {};
+        Tqo(this)
+    }
+      , rkG = function(a, I, U, e, T, C) {
+        a.info("getAutomaticScreenByIds " + U + " / " + I);
+        U || (U = a.U[I]);
+        var r = a.m$()
+          , q = U ? qV(r, U) : null;
+        U && (a.C || q) || (q = qV(r, I));
+        if (q) {
+            q.uuid = I;
+            var x = tZ(a, q);
+            IMJ(a.V, x, function(Z) {
+                T(Z ? x : null)
+            })
+        } else
+            U ? Cim(a, U, (0,
+            g.e8)(function(Z) {
+                var t = tZ(this, new Cw({
+                    name: e,
+                    screenId: U,
+                    loungeToken: Z,
+                    dialId: I || ""
+                }));
+                IMJ(this.V, t, function(n) {
+                    T(n ? t : null)
+                })
+            }, a), C) : T(null)
+    }
+      , H5I = function(a, I) {
+        for (var U = a.screens.length, e = 0; e < U; ++e)
+            if (a.screens[e].name == I)
+                return a.screens[e];
+        return null
+    }
+      , qPd = function(a, I, U) {
+        IMJ(a.V, I, U)
+    }
+      , Cim = function(a, I, U, e) {
+        a.info("requestLoungeToken_ for " + I);
+        var T = {
+            postParams: {
+                screen_ids: I
+            },
+            method: "POST",
+            context: a,
+            onSuccess: function(C, r) {
+                C = r && r.screens || [];
+                C[0] && C[0].screenId == I ? U(C[0].loungeToken) : e(Error("Missing lounge token in token response"))
+            },
+            onError: function() {
+                e(Error("Request screen lounge token failed"))
+            }
+        };
+        g.lk(Dv(a.J, "/pairing/get_lounge_token_batch"), T)
+    }
+      , xNo = function(a) {
+        a.screens = a.L.m$();
+        var I = a.U, U = {}, e;
+        for (e in I)
+            U[I[e]] = e;
+        I = a.screens.length;
+        for (e = 0; e < I; ++e) {
+            var T = a.screens[e];
+            T.uuid = U[T.id] || ""
+        }
+        a.info("Updated manual screens: " + qVo(a.screens))
+    }
+      , Tqo = function(a) {
+        Z5f(a);
+        a.L = new ri(a.J);
+        a.L.subscribe("screenChange", (0,
+        g.e8)(a.vaa, a));
+        xNo(a);
+        a.C || (a.B = HdI(g.EV("yt-remote-automatic-screen-cache") || []));
+        Z5f(a);
+        a.info("Initializing automatic screens: " + qVo(a.B));
+        a.V = new aM8(a.J,(0,
+        g.e8)(a.m$, a, !0));
+        a.V.subscribe("screenChange", (0,
+        g.e8)(function() {
+            this.publish("onlineScreenChange")
+        }, a))
+    }
+      , tZ = function(a, I) {
+        var U = a.get(I.id);
+        U ? (U.uuid = I.uuid,
+        I = U) : ((U = qV(a.B, I.uuid)) ? (U.id = I.id,
+        U.token = I.token,
+        I = U) : a.B.push(I),
+        a.C || teo(a));
+        Z5f(a);
+        a.U[I.uuid] = I.id;
+        g.yy("yt-remote-device-id-map", a.U, 31536E3);
+        return I
+    }
+      , teo = function(a) {
+        a = g.Sa(a.B, function(I) {
+            return I.idType != "shortLived"
+        });
+        g.yy("yt-remote-automatic-screen-cache", g.FX(a, CRz))
+    }
+      , Z5f = function(a) {
+        a.U = g.EV("yt-remote-device-id-map") || {}
+    }
+      , nv = function(a, I, U) {
+        g.J_.call(this);
+        this.dw = U;
+        this.J = a;
+        this.L = I;
+        this.V = null
+    }
+      , Kv = function(a, I) {
+        a.V = I;
+        a.publish("sessionScreen", a.V)
+    }
+      , nLz = function(a, I) {
+        a.V && (a.V.token = I,
+        tZ(a.J, a.V));
+        a.publish("sessionScreen", a.V)
+    }
+      , bn = function(a, I) {
+        ap(a.dw, I)
+    }
+      , JZ = function(a, I, U) {
+        nv.call(this, a, I, "CastSession");
+        var e = this;
+        this.config_ = U;
+        this.B = null;
+        this.gw = (0,
+        g.e8)(this.Qc, this);
+        this.tU = (0,
+        g.e8)(this.x2x, this);
+        this.Va = g.Vz(function() {
+            KYI(e, null)
+        }, 12E4);
+        this.C = this.U = this.Y = this.D = 0;
+        this.e8 = !1;
+        this.j = "unknown"
+    }
+      , Jkf = function(a, I) {
+        g.M6(a.C);
+        a.C = 0;
+        I == 0 ? b5o(a) : a.C = g.Vz(function() {
+            b5o(a)
+        }, I)
+    }
+      , b5o = function(a) {
+        uMo(a, "getLoungeToken");
+        g.M6(a.U);
+        a.U = g.Vz(function() {
+            kt8(a, null)
+        }, 3E4)
+    }
+      , uMo = function(a, I) {
+        a.info("sendYoutubeMessage_: " + I + " " + g.m4());
+        var U = {};
+        U.type = I;
+        a.B ? a.B.sendMessage("urn:x-cast:com.google.youtube.mdx", U, function() {}, (0,
+        g.e8)(function() {
+            bn(this, "Failed to send message: " + I + ".")
+        }, a)) : bn(a, "Sending yt message without session: " + g.m4(U))
+    }
+      , Vej = function(a, I) {
+        I ? (a.info("onConnectedScreenId_: Received screenId: " + I),
+        a.V && a.V.id == I || a.fZ(I, function(U) {
+            Kv(a, U)
+        }, function() {
+            return a.Im()
+        }, 5)) : a.Im(Error("Waiting for session status timed out."))
+    }
+      , Me8 = function(a, I, U) {
+        a.info("onConnectedScreenData_: Received screenData: " + JSON.stringify(I));
+        var e = new Cw(I);
+        Ak4(a, e, function(T) {
+            T ? (a.e8 = !0,
+            tZ(a.J, e),
+            Kv(a, e),
+            a.j = "unknown",
+            Jkf(a, U)) : (g.I0(Error("CastSession, RemoteScreen from screenData: " + JSON.stringify(I) + " is not online.")),
+            a.Im())
+        }, 5)
+    }
+      , KYI = function(a, I) {
+        g.M6(a.Va);
+        a.Va = 0;
+        I ? a.config_.enableCastLoungeToken && I.loungeToken ? I.deviceId ? a.V && a.V.uuid == I.deviceId || (I.loungeTokenRefreshIntervalMs ? Me8(a, {
+            name: a.L.friendlyName,
+            screenId: I.screenId,
+            loungeToken: I.loungeToken,
+            dialId: I.deviceId,
+            screenIdType: "shortLived"
+        }, I.loungeTokenRefreshIntervalMs) : (g.I0(Error("No loungeTokenRefreshIntervalMs presents in mdxSessionStatusData: " + JSON.stringify(I) + ".")),
+        Vej(a, I.screenId))) : (g.I0(Error("No device id presents in mdxSessionStatusData: " + JSON.stringify(I) + ".")),
+        Vej(a, I.screenId)) : Vej(a, I.screenId) : a.Im(Error("Waiting for session status timed out."))
+    }
+      , kt8 = function(a, I) {
+        g.M6(a.U);
+        a.U = 0;
+        var U = null;
+        if (I)
+            if (I.loungeToken) {
+                var e;
+                ((e = a.V) == null ? void 0 : e.token) == I.loungeToken && (U = "staleLoungeToken")
+            } else
+                U = "missingLoungeToken";
+        else
+            U = "noLoungeTokenResponse";
+        U ? (a.info("Did not receive a new lounge token in onLoungeToken_ with data: " + (JSON.stringify(I) + ", error: " + U)),
+        a.j = U,
+        Jkf(a, 3E4)) : (nLz(a, I.loungeToken),
+        a.e8 = !1,
+        a.j = "unknown",
+        Jkf(a, I.loungeTokenRefreshIntervalMs))
+    }
+      , Ak4 = function(a, I, U, e) {
+        g.M6(a.Y);
+        a.Y = 0;
+        qPd(a.J, I, function(T) {
+            T || e < 0 ? U(T) : a.Y = g.Vz(function() {
+                Ak4(a, I, U, e - 1)
+            }, 300)
+        })
+    }
+      , jbJ = function(a) {
+        g.M6(a.D);
+        a.D = 0;
+        g.M6(a.Y);
+        a.Y = 0;
+        g.M6(a.Va);
+        a.Va = 0;
+        g.M6(a.U);
+        a.U = 0;
+        g.M6(a.C);
+        a.C = 0
+    }
+      , un = function(a, I, U, e) {
+        nv.call(this, a, I, "DialSession");
+        this.config_ = e;
+        this.B = this.D = null;
+        this.tU = "";
+        this.CO = U;
+        this.zt = null;
+        this.Va = function() {}
+        ;
+        this.j = NaN;
+        this.Ux = (0,
+        g.e8)(this.fV, this);
+        this.U = function() {}
+        ;
+        this.C = this.Y = 0;
+        this.gw = !1;
+        this.e8 = "unknown"
+    }
+      , ky = function(a) {
+        var I;
+        return !!(a.config_.enableDialLoungeToken && ((I = a.B) == null ? 0 : I.getDialAppInfo))
+    }
+      , $NG = function(a) {
+        a.U = a.J.s8(a.tU, a.L.label, a.L.friendlyName, ky(a), function(I, U) {
+            a.U = function() {}
+            ;
+            a.gw = !0;
+            Kv(a, I);
+            I.idType == "shortLived" && U > 0 && Vm(a, U)
+        }, function(I) {
+            a.U = function() {}
+            ;
+            a.Im(I)
+        })
+    }
+      , i5Q = function(a) {
+        var I = {};
+        I.pairingCode = a.tU;
+        I.theme = a.CO;
+        $t4() && (I.env_useStageMdx = 1);
+        return g.PY(I)
+    }
+      , LYJ = function(a) {
+        return new Promise(function(I) {
+            a.tU = xt4();
+            if (a.zt) {
+                var U = new chrome.cast.DialLaunchResponse(!0,i5Q(a));
+                I(U);
+                $NG(a)
+            } else
+                a.Va = function() {
+                    g.M6(a.j);
+                    a.Va = function() {}
+                    ;
+                    a.j = NaN;
+                    var e = new chrome.cast.DialLaunchResponse(!0,i5Q(a));
+                    I(e);
+                    $NG(a)
+                }
+                ,
+                a.j = g.Vz(function() {
+                    a.Va()
+                }, 100)
+        }
+        )
+    }
+      , ckG = function(a, I, U) {
+        a.info("initOnConnectedScreenDataPromise_: Received screenData: " + JSON.stringify(I));
+        var e = new Cw(I);
+        return (new Promise(function(T) {
+            gLo(a, e, function(C) {
+                C ? (a.gw = !0,
+                tZ(a.J, e),
+                Kv(a, e),
+                Vm(a, U)) : g.I0(Error("DialSession, RemoteScreen from screenData: " + JSON.stringify(I) + " is not online."));
+                T(C)
+            }, 5)
+        }
+        )).then(function(T) {
+            return T ? new chrome.cast.DialLaunchResponse(!1) : LYJ(a)
+        })
+    }
+      , WYQ = function(a, I) {
+        var U = a.D.receiver.label
+          , e = a.L.friendlyName;
+        return (new Promise(function(T) {
+            rkG(a.J, U, I, e, function(C) {
+                C && C.token && Kv(a, C);
+                T(C)
+            }, function(C) {
+                bn(a, "Failed to get DIAL screen: " + C);
+                T(null)
+            })
+        }
+        )).then(function(T) {
+            return T && T.token ? new chrome.cast.DialLaunchResponse(!1) : LYJ(a)
+        })
+    }
+      , gLo = function(a, I, U, e) {
+        g.M6(a.Y);
+        a.Y = 0;
+        qPd(a.J, I, function(T) {
+            T || e < 0 ? U(T) : a.Y = g.Vz(function() {
+                gLo(a, I, U, e - 1)
+            }, 300)
+        })
+    }
+      , Vm = function(a, I) {
+        a.info("getDialAppInfoWithTimeout_ " + I);
+        ky(a) && (g.M6(a.C),
+        a.C = 0,
+        I == 0 ? lM8(a) : a.C = g.Vz(function() {
+            lM8(a)
+        }, I))
+    }
+      , lM8 = function(a) {
+        ky(a) && a.B.getDialAppInfo(function(I) {
+            a.info("getDialAppInfo dialLaunchData: " + JSON.stringify(I));
+            I = I.extraData || {};
+            var U = null;
+            if (I.loungeToken) {
+                var e;
+                ((e = a.V) == null ? void 0 : e.token) == I.loungeToken && (U = "staleLoungeToken")
+            } else
+                U = "missingLoungeToken";
+            U ? (a.e8 = U,
+            Vm(a, 3E4)) : (a.gw = !1,
+            a.e8 = "unknown",
+            nLz(a, I.loungeToken),
+            Vm(a, I.loungeTokenRefreshIntervalMs))
+        }, function(I) {
+            a.info("getDialAppInfo error: " + I);
+            a.e8 = "noLoungeTokenResponse";
+            Vm(a, 3E4)
+        })
+    }
+      , Bqd = function(a) {
+        g.M6(a.Y);
+        a.Y = 0;
+        g.M6(a.C);
+        a.C = 0;
+        a.U();
+        a.U = function() {}
+        ;
+        g.M6(a.j)
+    }
+      , AZ = function(a, I) {
+        nv.call(this, a, I, "ManualSession");
+        this.B = g.Vz((0,
+        g.e8)(this.hJ, this, null), 150)
+    }
+      , Mi = function(a, I) {
+        g.J_.call(this);
+        this.config_ = I;
+        this.L = a;
+        this.D = I.appId || "233637DE";
+        this.J = I.theme || "cl";
+        this.j = I.disableCastApi || !1;
+        this.Y = I.forceMirroring || !1;
+        this.V = null;
+        this.C = !1;
+        this.B = [];
+        this.U = (0,
+        g.e8)(this.jss, this)
+    }
+      , XG8 = function(a, I) {
+        return I ? g.Jz(a.B, function(U) {
+            return ro(I, U.label)
+        }, a) : null
+    }
+      , js = function(a) {
+        ap("Controller", a)
+    }
+      , Edz = function(a) {
+        window.chrome && chrome.cast && chrome.cast.logMessage && chrome.cast.logMessage(a)
+    }
+      , $y = function(a) {
+        return a.C || !!a.B.length || !!a.V
+    }
+      , Lv = function(a, I, U) {
+        I != a.V && (g.Kf(a.V),
+        (a.V = I) ? (U ? a.publish("yt-remote-cast2-receiver-resumed", I.L) : a.publish("yt-remote-cast2-receiver-selected", I.L),
+        I.subscribe("sessionScreen", (0,
+        g.e8)(a.rW, a, I)),
+        I.subscribe("sessionFailed", function() {
+            return PiD(a, I)
+        }),
+        I.V ? a.publish("yt-remote-cast2-session-change", I.V) : U && a.V.hJ(null)) : a.publish("yt-remote-cast2-session-change", null))
+    }
+      , PiD = function(a, I) {
+        a.V == I && a.publish("yt-remote-cast2-session-failed")
+    }
+      , pGD = function(a) {
+        var I = a.L.iX()
+          , U = a.V && a.V.L;
+        a = g.FX(I, function(e) {
+            U && ro(e, U.label) && (U = null);
+            var T = e.uuid ? e.uuid : e.id
+              , C = XG8(this, e);
+            C ? (C.label = T,
+            C.friendlyName = e.name) : (C = new chrome.cast.Receiver(T,e.name),
+            C.receiverType = chrome.cast.ReceiverType.CUSTOM);
+            return C
+        }, a);
+        U && (U.receiverType != chrome.cast.ReceiverType.CUSTOM && (U = new chrome.cast.Receiver(U.label,U.friendlyName),
+        U.receiverType = chrome.cast.ReceiverType.CUSTOM),
+        a.push(U));
+        return a
+    }
+      , ELQ = function(a, I, U, e) {
+        e.disableCastApi ? gi("Cannot initialize because disabled by Mdx config.") : fMD() ? YP4(I, e) && (O5o(!0),
+        window.chrome && chrome.cast && chrome.cast.isAvailable ? SP4(a, U) : (window.__onGCastApiAvailable = function(T, C) {
+            T ? SP4(a, U) : (cu("Failed to load cast API: " + C),
+            Gtd(!1),
+            O5o(!1),
+            g.da("yt-remote-cast-available"),
+            g.da("yt-remote-cast-receiver"),
+            ykd(),
+            U(!1))
+        }
+        ,
+        e.loadCastApiSetupScript ? g.K5("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js") : window.navigator.userAgent.indexOf("Android") >= 0 && window.navigator.userAgent.indexOf("Chrome/") >= 0 && window.navigator.presentation ? L0z() >= 60 && f9z() : !window.chrome || !window.navigator.presentation || window.navigator.userAgent.indexOf("Edge") >= 0 ? l9d() : L0z() >= 89 ? OdD() : (pkQ(),
+        Ji(YVz.map(Bad))))) : gi("Cannot initialize because not running Chrome")
+    }
+      , ykd = function() {
+        gi("dispose");
+        var a = Wu();
+        a && a.dispose();
+        g.hj("yt.mdx.remote.cloudview.instance_", null);
+        dNQ(!1);
+        g.tk(RTQ);
+        RTQ.length = 0
+    }
+      , ln = function() {
+        return !!g.EV("yt-remote-cast-installed")
+    }
+      , wGD = function() {
+        var a = g.EV("yt-remote-cast-receiver");
+        return a ? a.friendlyName : null
+    }
+      , FYf = function() {
+        gi("clearCurrentReceiver");
+        g.da("yt-remote-cast-receiver")
+    }
+      , mNd = function() {
+        return ln() ? Wu() ? Wu().getCastSession() : (cu("getCastSelector: Cast is not initialized."),
+        null) : (cu("getCastSelector: Cast API is not installed!"),
+        null)
+    }
+      , Qbj = function() {
+        ln() ? Wu() ? Bu() ? (gi("Requesting cast selector."),
+        Wu().requestSession()) : (gi("Wait for cast API to be ready to request the session."),
+        RTQ.push(g.ZM("yt-remote-cast2-api-ready", Qbj))) : cu("requestCastSelector: Cast is not initialized.") : cu("requestCastSelector: Cast API is not installed!")
+    }
+      , XC = function(a, I) {
+        Bu() ? Wu().setConnectedScreenStatus(a, I) : cu("setConnectedScreenStatus called before ready.")
+    }
+      , fMD = function() {
+        var a = g.gO().search(/ (CrMo|Chrome|CriOS)\//) >= 0;
+        return g.GK || a
+    }
+      , zTG = function(a, I) {
+        Wu().init(a, I)
+    }
+      , YP4 = function(a, I) {
+        var U = !1;
+        Wu() || (a = new Mi(a,I),
+        a.subscribe("yt-remote-cast2-availability-change", function(e) {
+            g.yy("yt-remote-cast-available", e);
+            Kw("yt-remote-cast2-availability-change", e)
+        }),
+        a.subscribe("yt-remote-cast2-receiver-selected", function(e) {
+            gi("onReceiverSelected: " + e.friendlyName);
+            g.yy("yt-remote-cast-receiver", e);
+            Kw("yt-remote-cast2-receiver-selected", e)
+        }),
+        a.subscribe("yt-remote-cast2-receiver-resumed", function(e) {
+            gi("onReceiverResumed: " + e.friendlyName);
+            g.yy("yt-remote-cast-receiver", e);
+            Kw("yt-remote-cast2-receiver-resumed", e)
+        }),
+        a.subscribe("yt-remote-cast2-session-change", function(e) {
+            gi("onSessionChange: " + HH(e));
+            e || g.da("yt-remote-cast-receiver");
+            Kw("yt-remote-cast2-session-change", e)
+        }),
+        g.hj("yt.mdx.remote.cloudview.instance_", a),
+        U = !0);
+        gi("cloudview.createSingleton_: " + U);
+        return U
+    }
+      , Wu = function() {
+        return g.NL("yt.mdx.remote.cloudview.instance_")
+    }
+      , SP4 = function(a, I) {
+        Gtd(!0);
+        O5o(!1);
+        zTG(a, function(U) {
+            U ? (dNQ(!0),
+            g.n5("yt-remote-cast2-api-ready")) : (cu("Failed to initialize cast API."),
+            Gtd(!1),
+            g.da("yt-remote-cast-available"),
+            g.da("yt-remote-cast-receiver"),
+            ykd());
+            I(U)
+        })
+    }
+      , gi = function(a) {
+        ap("cloudview", a)
+    }
+      , cu = function(a) {
+        ap("cloudview", a)
+    }
+      , Gtd = function(a) {
+        gi("setCastInstalled_ " + a);
+        g.yy("yt-remote-cast-installed", a)
+    }
+      , Bu = function() {
+        return !!g.NL("yt.mdx.remote.cloudview.apiReady_")
+    }
+      , dNQ = function(a) {
+        gi("setApiReady_ " + a);
+        g.hj("yt.mdx.remote.cloudview.apiReady_", a)
+    }
+      , O5o = function(a) {
+        g.hj("yt.mdx.remote.cloudview.initializing_", a)
+    }
+      , Pu = function(a) {
+        this.index = -1;
+        this.videoId = this.listId = "";
+        this.volume = this.playerState = -1;
+        this.muted = !1;
+        this.audioTrackId = null;
+        this.Y = this.C = 0;
+        this.trackData = null;
+        this.n1 = this.Mk = !1;
+        this.D = this.U = this.V = this.J = 0;
+        this.B = NaN;
+        this.L = !1;
+        this.reset(a)
+    }
+      , hTz = function(a) {
+        a.audioTrackId = null;
+        a.trackData = null;
+        a.playerState = -1;
+        a.Mk = !1;
+        a.n1 = !1;
+        a.C = 0;
+        a.Y = g.rd();
+        a.J = 0;
+        a.V = 0;
+        a.U = 0;
+        a.D = 0;
+        a.B = NaN;
+        a.L = !1
+    }
+      , pv = function(a) {
+        return a.isPlaying() ? (g.rd() - a.Y) / 1E3 : 0
+    }
+      , fv = function(a, I) {
+        a.C = I;
+        a.Y = g.rd()
+    }
+      , Yy = function(a) {
+        switch (a.playerState) {
+        case 1:
+        case 1081:
+            return (g.rd() - a.Y) / 1E3 + a.C;
+        case -1E3:
+            return 0
+        }
+        return a.C
+    }
+      , O1 = function(a, I, U) {
+        var e = a.videoId;
+        a.videoId = I;
+        a.index = U;
+        I != e && hTz(a)
+    }
+      , Nqf = function(a) {
+        var I = {};
+        I.index = a.index;
+        I.listId = a.listId;
+        I.videoId = a.videoId;
+        I.playerState = a.playerState;
+        I.volume = a.volume;
+        I.muted = a.muted;
+        I.audioTrackId = a.audioTrackId;
+        I.trackData = g.UG(a.trackData);
+        I.hasPrevious = a.Mk;
+        I.hasNext = a.n1;
+        I.playerTime = a.C;
+        I.playerTimeAt = a.Y;
+        I.seekableStart = a.J;
+        I.seekableEnd = a.V;
+        I.duration = a.U;
+        I.loadedTime = a.D;
+        I.liveIngestionTime = a.B;
+        return I
+    }
+      , GO = function(a, I) {
+        g.J_.call(this);
+        var U = this;
+        this.B = 0;
+        this.J = a;
+        this.Y = [];
+        this.U = new udo;
+        this.L = this.V = null;
+        this.j = (0,
+        g.e8)(this.KnO, this);
+        this.C = (0,
+        g.e8)(this.lO, this);
+        this.D = (0,
+        g.e8)(this.tMX, this);
+        this.Va = (0,
+        g.e8)(this.oYm, this);
+        var e = 0;
+        a ? (e = a.getProxyState(),
+        e != 3 && (a.subscribe("proxyStateChange", this.iM, this),
+        oLf(this))) : e = 3;
+        e != 0 && (I ? this.iM(e) : g.Vz(function() {
+            U.iM(e)
+        }, 0));
+        (a = mNd()) && Ss(this, a);
+        this.subscribe("yt-remote-cast2-session-change", this.Va)
+    }
+      , ym = function(a) {
+        return new Pu(a.J.getPlayerContextData())
+    }
+      , oLf = function(a) {
+        g.Gm("nowAutoplaying autoplayDismissed remotePlayerChange remoteQueueChange autoplayModeChange autoplayUpNext previousNextChange multiStateLoopEnabled loopModeChange".split(" "), function(I) {
+            this.Y.push(this.J.subscribe(I, g.Co(this.lcw, I), this))
+        }, a)
+    }
+      , DND = function(a) {
+        g.Gm(a.Y, function(I) {
+            this.J.unsubscribeByKey(I)
+        }, a);
+        a.Y.length = 0
+    }
+      , E1 = function(a) {
+        return a.getState() == 1
+    }
+      , di = function(a, I) {
+        var U = a.U;
+        U.V.length + U.L.length < 50 && a.U.enqueue(I)
+    }
+      , vLz = function(a, I, U) {
+        var e = ym(a);
+        fv(e, U);
+        e.playerState != -1E3 && (e.playerState = I);
+        Rp(a, e)
+    }
+      , wi = function(a, I, U) {
+        a.J.sendMessage(I, U)
+    }
+      , Rp = function(a, I) {
+        DND(a);
+        a.J.setPlayerContextData(Nqf(I));
+        oLf(a)
+    }
+      , Ss = function(a, I) {
+        a.L && (a.L.removeUpdateListener(a.j),
+        a.L.removeMediaListener(a.C),
+        a.lO(null));
+        a.L = I;
+        a.L && (Ip("Setting cast session: " + a.L.sessionId),
+        a.L.addUpdateListener(a.j),
+        a.L.addMediaListener(a.C),
+        a.L.media.length && a.lO(a.L.media[0]))
+    }
+      , awz = function(a) {
+        var I = a.V.media
+          , U = a.V.customData;
+        if (I && U) {
+            var e = ym(a);
+            I.contentId != e.videoId && Ip("Cast changing video to: " + I.contentId);
+            e.videoId = I.contentId;
+            e.playerState = U.playerState;
+            fv(e, a.V.getEstimatedTime());
+            Rp(a, e)
+        } else
+            Ip("No cast media video. Ignoring state update.")
+    }
+      , FC = function(a, I, U) {
+        return (0,
+        g.e8)(function(e) {
+            this.O1("Failed to " + I + " with cast v2 channel. Error code: " + e.code);
+            e.code != chrome.cast.ErrorCode.TIMEOUT && (this.O1("Retrying " + I + " using MDx browser channel."),
+            wi(this, I, U))
+        }, a)
+    }
+      , zO = function(a, I, U, e) {
+        e = e === void 0 ? !1 : e;
+        g.J_.call(this);
+        var T = this;
+        this.Y = NaN;
+        this.tU = !1;
+        this.j = this.D = this.gw = this.e8 = NaN;
+        this.Va = [];
+        this.U = this.C = this.J = this.V = this.L = null;
+        this.zt = a;
+        this.Ux = e;
+        this.Va.push(g.Wk(window, "beforeunload", function() {
+            T.VZ(2)
+        }));
+        this.B = [];
+        this.V = new Pu;
+        this.CO = I.id;
+        this.dw = I.idType;
+        this.L = yPG(this.zt, U, this.Bd, this.dw == "shortLived", this.CO);
+        this.L.listen("channelOpened", function() {
+            IwI(T)
+        });
+        this.L.listen("channelClosed", function() {
+            mE("Channel closed");
+            isNaN(T.Y) ? ti(!0) : ti();
+            T.dispose()
+        });
+        this.L.listen("channelError", function(C) {
+            ti();
+            isNaN(T.P7()) ? (C == 1 && T.dw == "shortLived" && T.publish("browserChannelAuthError", C),
+            mE("Channel error: " + C + " without reconnection"),
+            T.dispose()) : (T.tU = !0,
+            mE("Channel error: " + C + " with reconnection in " + T.P7() + " ms"),
+            Qm(T, 2))
+        });
+        this.L.listen("channelMessage", function(C) {
+            sSj(T, C)
+        });
+        this.L.VO(I.token);
+        this.subscribe("remoteQueueChange", function() {
+            var C = T.V.videoId;
+            g.R$() && g.yy("yt-remote-session-video-id", C)
+        })
+    }
+      , UJd = function(a) {
+        return g.Jz(a.B, function(I) {
+            return I.type == "LOUNGE_SCREEN"
+        })
+    }
+      , mE = function(a) {
+        ap("conn", a)
+    }
+      , Qm = function(a, I) {
+        a.publish("proxyStateChange", I)
+    }
+      , enz = function(a) {
+        a.Y = g.Vz(function() {
+            mE("Connecting timeout");
+            a.VZ(1)
+        }, 2E4)
+    }
+      , T1o = function(a) {
+        g.M6(a.Y);
+        a.Y = NaN
+    }
+      , CfD = function(a) {
+        g.M6(a.e8);
+        a.e8 = NaN
+    }
+      , HFo = function(a) {
+        rEz(a);
+        a.gw = g.Vz(function() {
+            hZ(a, "getNowPlaying")
+        }, 2E4)
+    }
+      , rEz = function(a) {
+        g.M6(a.gw);
+        a.gw = NaN
+    }
+      , IwI = function(a) {
+        mE("Channel opened");
+        a.tU && (a.tU = !1,
+        CfD(a),
+        a.e8 = g.Vz(function() {
+            mE("Timing out waiting for a screen.");
+            a.VZ(1)
+        }, 15E3))
+    }
+      , xJm = function(a, I) {
+        var U = null;
+        if (I) {
+            var e = UJd(a);
+            e && (U = {
+                clientName: e.clientName,
+                deviceMake: e.brand,
+                deviceModel: e.model,
+                osVersion: e.osVersion
+            })
+        }
+        g.hj("yt.mdx.remote.remoteClient_", U);
+        I && (T1o(a),
+        CfD(a));
+        U = a.L.oP() && isNaN(a.Y);
+        I == U ? I && (Qm(a, 1),
+        hZ(a, "getSubtitlesTrack")) : I ? (a.Mq() && a.V.reset(),
+        Qm(a, 1),
+        hZ(a, "getNowPlaying"),
+        q0m(a)) : a.VZ(1)
+    }
+      , ZFo = function(a, I) {
+        var U = I.params.videoId;
+        delete I.params.videoId;
+        U == a.V.videoId && (g.vo(I.params) ? a.V.trackData = null : a.V.trackData = I.params,
+        a.publish("remotePlayerChange"))
+    }
+      , tdG = function(a, I, U) {
+        var e = I.params.videoId || I.params.video_id
+          , T = parseInt(I.params.currentIndex, 10);
+        a.V.listId = I.params.listId || a.V.listId;
+        O1(a.V, e, T);
+        a.publish("remoteQueueChange", U)
+    }
+      , Kx8 = function(a, I) {
+        I.params = I.params || {};
+        tdG(a, I, "NOW_PLAYING_MAY_CHANGE");
+        nbI(a, I);
+        a.publish("autoplayDismissed")
+    }
+      , nbI = function(a, I) {
+        var U = parseInt(I.params.currentTime || I.params.current_time, 10);
+        fv(a.V, isNaN(U) ? 0 : U);
+        U = parseInt(I.params.state, 10);
+        U = isNaN(U) ? -1 : U;
+        U == -1 && a.V.playerState == -1E3 && (U = -1E3);
+        a.V.playerState = U;
+        U = Number(I.params.loadedTime);
+        a.V.D = isNaN(U) ? 0 : U;
+        a.V.oE(Number(I.params.duration));
+        U = a.V;
+        var e = Number(I.params.liveIngestionTime);
+        U.B = e;
+        U.L = isNaN(e) ? !1 : !0;
+        U = a.V;
+        e = Number(I.params.seekableStartTime);
+        I = Number(I.params.seekableEndTime);
+        U.J = isNaN(e) ? 0 : e;
+        U.V = isNaN(I) ? 0 : I;
+        a.V.playerState == 1 ? HFo(a) : rEz(a);
+        a.publish("remotePlayerChange")
+    }
+      , bFG = function(a, I) {
+        if (a.V.playerState != -1E3) {
+            var U = 1085;
+            switch (parseInt(I.params.adState, 10)) {
+            case 1:
+                U = 1081;
+                break;
+            case 2:
+                U = 1084;
+                break;
+            case 0:
+                U = 1083
+            }
+            a.V.playerState = U;
+            I = parseInt(I.params.currentTime, 10);
+            fv(a.V, isNaN(I) ? 0 : I);
+            a.publish("remotePlayerChange")
+        }
+    }
+      , JEm = function(a, I) {
+        var U = I.params.muted == "true";
+        a.V.volume = parseInt(I.params.volume, 10);
+        a.V.muted = U;
+        a.publish("remotePlayerChange")
+    }
+      , uf4 = function(a, I) {
+        a.C = I.params.videoId;
+        a.publish("nowAutoplaying", parseInt(I.params.timeout, 10))
+    }
+      , k9z = function(a, I) {
+        a.C = I.params.videoId || null;
+        a.publish("autoplayUpNext", a.C)
+    }
+      , Vdo = function(a, I) {
+        a.U = I.params.autoplayMode;
+        a.publish("autoplayModeChange", a.U);
+        a.U == "DISABLED" && a.publish("autoplayDismissed")
+    }
+      , AEd = function(a, I) {
+        var U = I.params.hasNext == "true";
+        a.V.Mk = I.params.hasPrevious == "true";
+        a.V.n1 = U;
+        a.publish("previousNextChange")
+    }
+      , sSj = function(a, I) {
+        I = I.message;
+        I.params ? mE("Received: action=" + I.action + ", params=" + g.m4(I.params)) : mE("Received: action=" + I.action + " {}");
+        switch (I.action) {
+        case "loungeStatus":
+            I = aZ(I.params.devices);
+            a.B = g.FX(I, function(e) {
+                return new TZ(e)
+            });
+            I = !!g.Jz(a.B, function(e) {
+                return e.type == "LOUNGE_SCREEN"
+            });
+            xJm(a, I);
+            I = a.qZ("mlm");
+            a.publish("multiStateLoopEnabled", I);
+            break;
+        case "loungeScreenDisconnected":
+            g.Md(a.B, function(e) {
+                return e.type == "LOUNGE_SCREEN"
+            });
+            xJm(a, !1);
+            break;
+        case "remoteConnected":
+            var U = new TZ(aZ(I.params.device));
+            g.Jz(a.B, function(e) {
+                return e.NF(U)
+            }) || V18(a.B, U);
+            break;
+        case "remoteDisconnected":
+            U = new TZ(aZ(I.params.device));
+            g.Md(a.B, function(e) {
+                return e.NF(U)
+            });
+            break;
+        case "gracefulDisconnect":
+            break;
+        case "playlistModified":
+            tdG(a, I, "QUEUE_MODIFIED");
+            break;
+        case "nowPlaying":
+            Kx8(a, I);
+            break;
+        case "onStateChange":
+            nbI(a, I);
+            break;
+        case "onAdStateChange":
+            bFG(a, I);
+            break;
+        case "onVolumeChanged":
+            JEm(a, I);
+            break;
+        case "onSubtitlesTrackChanged":
+            ZFo(a, I);
+            break;
+        case "nowAutoplaying":
+            uf4(a, I);
+            break;
+        case "autoplayDismissed":
+            a.publish("autoplayDismissed");
+            break;
+        case "autoplayUpNext":
+            k9z(a, I);
+            break;
+        case "onAutoplayModeChanged":
+            Vdo(a, I);
+            break;
+        case "onHasPreviousNextChanged":
+            AEd(a, I);
+            break;
+        case "requestAssistedSignIn":
+            a.publish("assistedSignInRequested", I.params.authCode);
+            break;
+        case "onLoopModeChanged":
+            a.publish("loopModeChange", I.params.loopMode);
+            break;
+        default:
+            mE("Unrecognized action: " + I.action)
+        }
+    }
+      , q0m = function(a) {
+        g.M6(a.j);
+        a.j = g.Vz(function() {
+            a.VZ(1)
+        }, 864E5)
+    }
+      , hZ = function(a, I, U) {
+        U ? mE("Sending: action=" + I + ", params=" + g.m4(U)) : mE("Sending: action=" + I);
+        a.L.sendMessage(I, U)
+    }
+      , MdG = function(a) {
+        TO.call(this, "ScreenServiceProxy");
+        this.vX = a;
+        this.V = [];
+        this.V.push(this.vX.$_s("screenChange", (0,
+        g.e8)(this.Dp, this)));
+        this.V.push(this.vX.$_s("onlineScreenChange", (0,
+        g.e8)(this.gw8, this)))
+    }
+      , gb8 = function(a, I) {
+        j$I();
+        if (!nw || !nw.get("yt-remote-disable-remote-module-for-dev")) {
+            I = g.D5("MDX_CONFIG") || I;
+            n3J();
+            uUd();
+            Ni || (Ni = new oZ(I ? I.loungeApiHost : void 0),
+            $t4() && (Ni.V = "/api/loungedev"));
+            op || (op = g.NL("yt.mdx.remote.deferredProxies_") || [],
+            g.hj("yt.mdx.remote.deferredProxies_", op));
+            jSo();
+            var U = Dh();
+            if (!U) {
+                var e = new Zh(Ni,I ? I.disableAutomaticScreenCache || !1 : !1);
+                g.hj("yt.mdx.remote.screenService_", e);
+                U = Dh();
+                var T = {};
+                I && (T = {
+                    appId: I.appId,
+                    disableDial: I.disableDial,
+                    theme: I.theme,
+                    loadCastApiSetupScript: I.loadCastApiSetupScript,
+                    disableCastApi: I.disableCastApi,
+                    enableDialLoungeToken: I.enableDialLoungeToken,
+                    enableCastLoungeToken: I.enableCastLoungeToken,
+                    forceMirroring: I.forceMirroring
+                });
+                g.hj("yt.mdx.remote.enableConnectWithInitialState_", I ? I.enableConnectWithInitialState || !1 : !1);
+                ELQ(a, e, function(C) {
+                    C ? vu() && XC(vu(), "YouTube TV") : e.subscribe("onlineScreenChange", function() {
+                        Kw("yt-remote-receiver-availability-change")
+                    })
+                }, T)
+            }
+            I && !g.NL("yt.mdx.remote.initialized_") && (g.hj("yt.mdx.remote.initialized_", !0),
+            aG("Initializing: " + g.m4(I)),
+            IG.push(g.ZM("yt-remote-cast2-api-ready", function() {
+                Kw("yt-remote-api-ready")
+            })),
+            IG.push(g.ZM("yt-remote-cast2-availability-change", function() {
+                Kw("yt-remote-receiver-availability-change")
+            })),
+            IG.push(g.ZM("yt-remote-cast2-receiver-selected", function() {
+                sI(null);
+                Kw("yt-remote-auto-connect", "cast-selector-receiver")
+            })),
+            IG.push(g.ZM("yt-remote-cast2-receiver-resumed", function() {
+                Kw("yt-remote-receiver-resumed", "cast-selector-receiver")
+            })),
+            IG.push(g.ZM("yt-remote-cast2-session-change", $Jz)),
+            IG.push(g.ZM("yt-remote-connection-change", function(C) {
+                C ? XC(vu(), "YouTube TV") : UI() || (XC(null, null),
+                FYf())
+            })),
+            IG.push(g.ZM("yt-remote-cast2-session-failed", function() {
+                Kw("yt-remote-connection-failed")
+            })),
+            a = iF8(),
+            I.isAuto && (a.id += "#dial"),
+            T = I.capabilities || [],
+            g.ik("desktop_enable_autoplay") && T.push("atp"),
+            T.length > 0 && (a.capabilities = T),
+            a.name = I.device,
+            a.app = I.app,
+            (I = I.theme) && (a.theme = I),
+            aG(" -- with channel params: " + g.m4(a)),
+            a ? (g.yy("yt-remote-session-app", a.app),
+            g.yy("yt-remote-session-name", a.name)) : (g.da("yt-remote-session-app"),
+            g.da("yt-remote-session-name")),
+            g.hj("yt.mdx.remote.channelParams_", a),
+            U.start(),
+            vu() || Lxd())
+        }
+    }
+      , cEd = function() {
+        var a = Dh().vX.$_gos();
+        var I = eE();
+        I && T2() && (tRm(a, I) || a.push(I));
+        return Zdd(a)
+    }
+      , lwo = function() {
+        var a = WxQ();
+        !a && ln() && wGD() && (a = {
+            key: "cast-selector-receiver",
+            name: wGD()
+        });
+        return a
+    }
+      , WxQ = function() {
+        var a = cEd()
+          , I = eE();
+        I || (I = UI());
+        return g.Jz(a, function(U) {
+            return I && ro(I, U.key) ? !0 : !1
+        })
+    }
+      , eE = function() {
+        var a = vu();
+        if (!a)
+            return null;
+        var I = Dh().m$();
+        return qV(I, a)
+    }
+      , $Jz = function(a) {
+        aG("remote.onCastSessionChange_: " + HH(a));
+        if (a) {
+            var I = eE();
+            if (I && I.id == a.id) {
+                if (XC(I.id, "YouTube TV"),
+                a.idType == "shortLived" && (a = a.token))
+                    Cy && (Cy.token = a),
+                    (I = T2()) && I.VO(a)
+            } else
+                I && r7(),
+                H9(a, 1)
+        } else
+            T2() && r7()
+    }
+      , r7 = function() {
+        Bu() ? Wu().stopSession() : cu("stopSession called before API ready.");
+        var a = T2();
+        a && (a.disconnect(1),
+        B1J(null))
+    }
+      , X$J = function() {
+        var a = T2();
+        return !!a && a.getProxyState() != 3
+    }
+      , aG = function(a) {
+        ap("remote", a)
+    }
+      , Dh = function() {
+        if (!PfJ) {
+            var a = g.NL("yt.mdx.remote.screenService_");
+            PfJ = a ? new MdG(a) : null
+        }
+        return PfJ
+    }
+      , vu = function() {
+        return g.NL("yt.mdx.remote.currentScreenId_")
+    }
+      , p$8 = function(a) {
+        g.hj("yt.mdx.remote.currentScreenId_", a)
+    }
+      , fwG = function() {
+        return g.NL("yt.mdx.remote.connectData_")
+    }
+      , sI = function(a) {
+        g.hj("yt.mdx.remote.connectData_", a)
+    }
+      , T2 = function() {
+        return g.NL("yt.mdx.remote.connection_")
+    }
+      , B1J = function(a) {
+        var I = T2();
+        sI(null);
+        a || p$8("");
+        g.hj("yt.mdx.remote.connection_", a);
+        op && (g.Gm(op, function(U) {
+            U(a)
+        }),
+        op.length = 0);
+        I && !a ? Kw("yt-remote-connection-change", !1) : !I && a && Kw("yt-remote-connection-change", !0)
+    }
+      , UI = function() {
+        var a = g.R$();
+        if (!a)
+            return null;
+        var I = Dh();
+        if (!I)
+            return null;
+        I = I.m$();
+        return qV(I, a)
+    }
+      , H9 = function(a, I) {
+        vu();
+        eE() && eE();
+        if (q2)
+            Cy = a;
+        else {
+            p$8(a.id);
+            var U = g.NL("yt.mdx.remote.enableConnectWithInitialState_") || !1;
+            a = new zO(Ni,a,iF8(),U);
+            a.connect(I, fwG());
+            a.subscribe("beforeDisconnect", function(e) {
+                Kw("yt-remote-before-disconnect", e)
+            });
+            a.subscribe("beforeDispose", function() {
+                T2() && (T2(),
+                B1J(null))
+            });
+            a.subscribe("browserChannelAuthError", function() {
+                var e = eE();
+                e && e.idType == "shortLived" && (Bu() ? Wu().handleBrowserChannelAuthError() : cu("refreshLoungeToken called before API ready."))
+            });
+            B1J(a)
+        }
+    }
+      , Lxd = function() {
+        var a = UI();
+        a ? (aG("Resume connection to: " + HH(a)),
+        H9(a, 0)) : (ti(),
+        FYf(),
+        aG("Skipping connecting because no session screen found."))
+    }
+      , jSo = function() {
+        var a = iF8();
+        if (g.vo(a)) {
+            a = Zv();
+            var I = g.EV("yt-remote-session-name") || ""
+              , U = g.EV("yt-remote-session-app") || "";
+            a = {
+                device: "REMOTE_CONTROL",
+                id: a,
+                name: I,
+                app: U,
+                mdxVersion: 3
+            };
+            a.authuser = String(g.D5("SESSION_INDEX", "0"));
+            (I = g.D5("DELEGATED_SESSION_ID")) && (a.pageId = String(I));
+            g.hj("yt.mdx.remote.channelParams_", a)
+        }
+    }
+      , iF8 = function() {
+        return g.NL("yt.mdx.remote.channelParams_") || {}
+    }
+      , S0j = function(a, I, U) {
+        g.S.call(this);
+        var e = this;
+        this.V = a;
+        this.K = I;
+        this.dL = U;
+        this.events = new g.Ru(this);
+        this.U = !1;
+        this.Y = new g.xP(64);
+        this.L = new g.Dy(this.z_,500,this);
+        this.B = new g.Dy(this.Uz,1E3,this);
+        this.D = new ub(this.ULa,0,this);
+        this.J = {};
+        this.j = new g.Dy(this.zV,1E3,this);
+        this.C = new g.e_(this.seekTo,1E3,this);
+        this.Va = this.events.G(this.K, "onVolumeChange", function(T) {
+            Y08(e, T)
+        });
+        g.E(this, this.events);
+        this.events.G(I, "onCaptionsTrackListChanged", this.Fns);
+        this.events.G(I, "captionschanged", this.hIg);
+        this.events.G(I, "captionssettingschanged", this.Ho);
+        this.events.G(I, "videoplayerreset", this.g0);
+        this.events.G(I, "mdxautoplaycancel", function() {
+            e.dL.Hn()
+        });
+        I.N("enable_mdx_video_play_directly") && this.events.G(I, "videodatachange", function() {
+            OFf(e.V) || x0(e) || Zr(e, 0)
+        });
+        a = this.dL;
+        a.Ox();
+        a.subscribe("proxyStateChange", this.GY, this);
+        a.subscribe("remotePlayerChange", this.sj, this);
+        a.subscribe("remoteQueueChange", this.g0, this);
+        a.subscribe("previousNextChange", this.NG, this);
+        a.subscribe("nowAutoplaying", this.wW, this);
+        a.subscribe("autoplayDismissed", this.RH, this);
+        g.E(this, this.L);
+        g.E(this, this.B);
+        g.E(this, this.D);
+        g.E(this, this.j);
+        g.E(this, this.C);
+        this.Ho();
+        this.g0();
+        this.sj()
+    }
+      , Y08 = function(a, I) {
+        if (x0(a)) {
+            a.dL.unsubscribe("remotePlayerChange", a.sj, a);
+            var U = Math.round(I.volume);
+            I = !!I.muted;
+            var e = ym(a.dL);
+            if (U !== e.volume || I !== e.muted)
+                a.dL.setVolume(U, I),
+                a.j.start();
+            a.dL.subscribe("remotePlayerChange", a.sj, a)
+        }
+    }
+      , G9j = function(a) {
+        a.Cv(0);
+        a.L.stop();
+        a.eM(new g.xP(64))
+    }
+      , yEJ = function(a, I) {
+        if (x0(a) && !a.U) {
+            var U = null;
+            I && (U = {
+                style: a.K.getSubtitlesUserSettings()
+            },
+            Object.assign(U, I));
+            a.dL.gY(a.K.getVideoData(1).videoId, U);
+            a.J = g.O(ym(a.dL).trackData)
+        }
+    }
+      , Zr = function(a, I) {
+        var U = a.K.getPlaylist();
+        if (U == null ? 0 : U.listId) {
+            var e = U.index;
+            var T = U.listId.toString()
+        }
+        U = a.K.getVideoData(1);
+        a.dL.playVideo(U.videoId, I, e, T, U.playerParams, U.Ux, kv4(U));
+        a.eM(new g.xP(1))
+    }
+      , EbJ = function(a, I) {
+        if (I) {
+            var U = a.K.getOption("captions", "tracklist", {
+                U0: 1
+            });
+            U && U.length ? (a.K.setOption("captions", "track", I),
+            a.U = !1) : (a.K.loadModule("captions"),
+            a.U = !0)
+        } else
+            a.K.setOption("captions", "track", {})
+    }
+      , x0 = function(a) {
+        return ym(a.dL).videoId === a.K.getVideoData(1).videoId
+    }
+      , dJ8 = function(a) {
+        this.V = a
+    }
+      , tx = function() {
+        g.F.call(this, {
+            W: "div",
+            T: "ytp-mdx-popup-dialog",
+            S: {
+                role: "dialog"
+            },
+            Z: [{
+                W: "div",
+                T: "ytp-mdx-popup-dialog-inner-content",
+                Z: [{
+                    W: "div",
+                    T: "ytp-mdx-popup-title",
+                    AU: "Du bist nicht angemeldet"
+                }, {
+                    W: "div",
+                    T: "ytp-mdx-popup-description",
+                    AU: "Videos, die du dir ansiehst, werden m\u00f6glicherweise zum TV-Wiedergabeverlauf hinzugef\u00fcgt und k\u00f6nnen sich damit auf deine TV-Empfehlungen auswirken. Melde dich auf einem Computer in YouTube an, um das zu vermeiden."
+                }, {
+                    W: "div",
+                    T: "ytp-mdx-privacy-popup-buttons",
+                    Z: [{
+                        W: "button",
+                        ww: ["ytp-button", "ytp-mdx-privacy-popup-cancel"],
+                        AU: "Abbrechen"
+                    }, {
+                        W: "button",
+                        ww: ["ytp-button", "ytp-mdx-privacy-popup-confirm"],
+                        AU: "Best\u00e4tigen"
+                    }]
+                }]
+            }]
+        });
+        this.fade = new g.qq(this,250);
+        this.cancelButton = this.Ws("ytp-mdx-privacy-popup-cancel");
+        this.confirmButton = this.Ws("ytp-mdx-privacy-popup-confirm");
+        g.E(this, this.fade);
+        this.G(this.cancelButton, "click", this.V);
+        this.G(this.confirmButton, "click", this.L)
+    }
+      , ny = function(a) {
+        g.F.call(this, {
+            W: "div",
+            T: "ytp-remote",
+            Z: [{
+                W: "div",
+                T: "ytp-remote-display-status",
+                Z: [{
+                    W: "div",
+                    T: "ytp-remote-display-status-icon",
+                    Z: [g.ZGw()]
+                }, {
+                    W: "div",
+                    T: "ytp-remote-display-status-text",
+                    AU: "{{statustext}}"
+                }]
+            }]
+        });
+        this.api = a;
+        this.fade = new g.qq(this,250);
+        g.E(this, this.fade);
+        this.G(a, "presentingplayerstatechange", this.onStateChange);
+        this.FQ(a.getPlayerStateObject())
+    }
+      , Ky = function(a, I) {
+        g.p4.call(this, "Wiedergeben auf", 1, a, I);
+        this.K = a;
+        this.sF = {};
+        this.G(a, "onMdxReceiversChange", this.J);
+        this.G(a, "presentingplayerstatechange", this.J);
+        this.J()
+    }
+      , Rnz = function(a) {
+        g.nu.call(this, a);
+        this.Sr = {
+            key: xt4(),
+            name: "Dieser Computer"
+        };
+        this.C3 = null;
+        this.subscriptions = [];
+        this.AP = this.dL = null;
+        this.sF = [this.Sr];
+        this.DT = this.Sr;
+        this.Gn = new g.xP(64);
+        this.xK = 0;
+        this.b7 = -1;
+        this.wZ = !1;
+        this.m9 = this.Y7 = this.jT = null;
+        if (!g.Rd(this.player.X()) && !g.FT(this.player.X())) {
+            a = this.player;
+            var I = g.Lh(a);
+            I && (I = I.uZ()) && (I = new Ky(a,I),
+            g.E(this, I));
+            I = new ny(a);
+            g.E(this, I);
+            g.w4(a, I.element, 4);
+            this.jT = new tx;
+            g.E(this, this.jT);
+            g.w4(a, this.jT.element, 4);
+            this.wZ = !!UI()
+        }
+    }
+      , b0 = function(a) {
+        a.Y7 && (a.player.removeEventListener("presentingplayerstatechange", a.Y7),
+        a.Y7 = null)
+    }
+      , w$m = function(a, I, U) {
+        a.Gn = U;
+        a.player.publish("presentingplayerstatechange", new g.AV(U,I))
+    }
+      , Jx = function(a, I) {
+        if (I.key !== a.DT.key)
+            if (I.key === a.Sr.key)
+                r7();
+            else if (OFf(a) && FxD(a),
+            a.DT = I,
+            !a.player.X().N("disable_mdx_connection_in_mdx_module_for_music_web") || !g.FT(a.player.X())) {
+                var U = a.player.getPlaylistId();
+                var e = a.player.getVideoData(1);
+                var T = e.videoId;
+                if (!U && !T || (a.player.getAppState() === 2 || a.player.getAppState() === 1) && a.player.X().N("should_clear_video_data_on_player_cued_unstarted"))
+                    e = null;
+                else {
+                    var C = a.player.getPlaylist();
+                    if (C) {
+                        var r = [];
+                        for (var q = 0; q < C.getLength(); q++)
+                            r[q] = g.xW(C, q).videoId
+                    } else
+                        r = [T];
+                    C = a.player.getCurrentTime(1);
+                    a = {
+                        videoIds: r,
+                        listId: U,
+                        videoId: T,
+                        playerParams: e.playerParams,
+                        clickTrackingParams: e.Ux,
+                        index: Math.max(a.player.getPlaylistIndex(), 0),
+                        currentTime: C === 0 ? void 0 : C
+                    };
+                    (e = kv4(e)) && (a.locationInfo = e);
+                    e = a
+                }
+                aG("Connecting to: " + g.m4(I));
+                I.key == "cast-selector-receiver" ? (sI(e || null),
+                I = e || null,
+                Bu() ? Wu().setLaunchParams(I) : cu("setLaunchParams called before ready.")) : !e && X$J() && vu() == I.key ? Kw("yt-remote-connection-change", !0) : (r7(),
+                sI(e || null),
+                e = Dh().m$(),
+                (I = qV(e, I.key)) && H9(I, 1))
+            }
+    }
+      , OFf = function(a) {
+        var I = a.player.X();
+        return !I.N("mdx_enable_privacy_disclosure_ui") || a.isLoggedIn() || a.wZ || !a.jT ? !1 : g.eI(I) || g.CP(I)
+    }
+      , FxD = function(a) {
+        a.player.getPlayerStateObject().isPlaying() ? a.player.pauseVideo() : (a.Y7 = function(I) {
+            !a.wZ && g.jz(I, 8) && (a.player.pauseVideo(),
+            b0(a))
+        }
+        ,
+        a.player.addEventListener("presentingplayerstatechange", a.Y7));
+        a.jT && a.jT.P5();
+        T2() || (q2 = !0)
+    };
+    g.Y8.prototype.fq = g.Cc(55, function() {
+        this.app.k0().fq()
+    });
+    g.Y_.prototype.fq = g.Cc(54, function() {
+        this.m9 = null
+    });
+    g.Y8.prototype.iD = g.Cc(53, function(a) {
+        this.app.k0().iD(a)
+    });
+    g.Y_.prototype.iD = g.Cc(52, function(a) {
+        this.m9 = a
+    });
+    $6Q.prototype.Id = function(a) {
+        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/opened", a)
+    }
+    ;
+    ijf.prototype.Id = function(a) {
+        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/closed", a)
+    }
+    ;
+    Lyz.prototype.Id = function(a) {
+        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/message_received", a)
+    }
+    ;
+    gk4.prototype.Id = function() {
+        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/success")
+    }
+    ;
+    cbo.prototype.Id = function(a) {
+        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/error", a)
+    }
+    ;
+    WyG.prototype.Id = function() {
+        this.V.UV("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps")
+    }
+    ;
+    lld.prototype.Id = function() {
+        this.V.UV("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps")
+    }
+    ;
+    g.H = UQ.prototype;
+    g.H.ZK = function() {
+        et(this);
+        for (var a = [], I = 0; I < this.V.length; I++)
+            a.push(this.L[this.V[I]]);
+        return a
+    }
+    ;
+    g.H.Vq = function() {
+        et(this);
+        return this.V.concat()
+    }
+    ;
+    g.H.has = function(a) {
+        return sQ(this.L, a)
+    }
+    ;
+    g.H.NF = function(a, I) {
+        if (this === a)
+            return !0;
+        if (this.size != a.size)
+            return !1;
+        I = I || YT8;
+        et(this);
+        for (var U, e = 0; U = this.V[e]; e++)
+            if (!I(this.get(U), a.get(U)))
+                return !1;
+        return !0
+    }
+    ;
+    g.H.isEmpty = function() {
+        return this.size == 0
+    }
+    ;
+    g.H.clear = function() {
+        this.L = {};
+        this.XZ = this.size = this.V.length = 0
+    }
+    ;
+    g.H.remove = function(a) {
+        return this.delete(a)
+    }
+    ;
+    g.H.delete = function(a) {
+        return sQ(this.L, a) ? (delete this.L[a],
+        --this.size,
+        this.XZ++,
+        this.V.length > 2 * this.size && et(this),
+        !0) : !1
+    }
+    ;
+    g.H.get = function(a, I) {
+        return sQ(this.L, a) ? this.L[a] : I
+    }
+    ;
+    g.H.set = function(a, I) {
+        sQ(this.L, a) || (this.size += 1,
+        this.V.push(a),
+        this.XZ++);
+        this.L[a] = I
+    }
+    ;
+    g.H.forEach = function(a, I) {
+        for (var U = this.Vq(), e = 0; e < U.length; e++) {
+            var T = U[e]
+              , C = this.get(T);
+            a.call(I, C, T, this)
+        }
+    }
+    ;
+    g.H.clone = function() {
+        return new UQ(this)
+    }
+    ;
+    g.H.keys = function() {
+        return g.il(this.NU(!0)).V()
+    }
+    ;
+    g.H.values = function() {
+        return g.il(this.NU(!1)).V()
+    }
+    ;
+    g.H.entries = function() {
+        var a = this;
+        return flG(this.keys(), function(I) {
+            return [I, a.get(I)]
+        })
+    }
+    ;
+    g.H.NU = function(a) {
+        et(this);
+        var I = 0
+          , U = this.XZ
+          , e = this
+          , T = new g.Pf;
+        T.next = function() {
+            if (U != e.XZ)
+                throw Error("The map has changed since the iterator was created");
+            if (I >= e.V.length)
+                return g.Ty;
+            var C = e.V[I++];
+            return g.pf(a ? C : e.L[C])
+        }
+        ;
+        return T
+    }
+    ;
+    var e7m = {
+        yaa: "atp",
+        eQa: "ska",
+        GR$: "que",
+        SV6: "mus",
+        Ana: "sus",
+        wG6: "dsp",
+        uta: "seq",
+        QVX: "mic",
+        H$X: "dpa",
+        FtX: "cds",
+        PQw: "mlm",
+        TKx: "dsdtr",
+        n2x: "ntb",
+        n0g: "vsp",
+        IHU: "scn",
+        QM8: "rpe",
+        NKg: "dcn",
+        CWU: "dcp",
+        WrX: "pas",
+        aH8: "drq",
+        RLO: "opf",
+        F98: "els",
+        Smm: "isg",
+        cjg: "svq",
+        Z3U: "mvp",
+        SK$: "ads",
+        wFs: "stcp",
+        saU: "sads",
+        MlX: "dloc"
+    }
+      , TaI = {
+        l4a: "u",
+        i$K: "cl",
+        e5$: "k",
+        yiO: "i",
+        oka: "cr",
+        F6X: "m",
+        L$a: "g",
+        o3: "up"
+    }
+      , Lho = {
+        I8: "adPlaying",
+        gt: "onAdStateChange"
+    }
+      , gdo = {
+        Eba: "nowPlaying",
+        gb8: "onStateChange",
+        I8: "adPlaying",
+        gt: "onAdStateChange",
+        R3: "nowPlayingShorts",
+        L6: "onShortsStateChange"
+    }
+      , cPm = {
+        R3: "nowPlayingShorts",
+        L6: "onShortsStateChange"
+    };
+    TZ.prototype.NF = function(a) {
+        return a ? this.id == a.id : !1
+    }
+    ;
+    var JTI = ""
+      , nw = null;
+    ido.prototype.flush = function(a, I) {
+        a = a === void 0 ? [] : a;
+        I = I === void 0 ? !1 : I;
+        if (g.ik("enable_client_streamz_web")) {
+            a = g.k(a);
+            for (var U = a.next(); !U.done; U = a.next())
+                U = g.NUb(U.value),
+                U = {
+                    serializedIncrementBatch: g.Iq(U.L())
+                },
+                g.JL("streamzIncremented", U, {
+                    sendIsolatedPayload: I
+                })
+        }
+    }
+    ;
+    var bb, PRm = g38("loadCastFramework") || g38("loadCastApplicationFramework"), YVz = ["pkedcjkdefgpdelpbcmbmeomcjbeemfm", "enhhojjnijigcajfphajepfemndkmdlo"];
+    g.qd(ub, g.S);
+    g.H = ub.prototype;
+    g.H.Wy = function(a) {
+        this.J = arguments;
+        this.V = !1;
+        this.ZN ? this.B = g.rd() + this.g6 : this.ZN = g.dJ(this.U, this.g6)
+    }
+    ;
+    g.H.stop = function() {
+        this.ZN && (g.zs.clearTimeout(this.ZN),
+        this.ZN = null);
+        this.B = null;
+        this.V = !1;
+        this.J = []
+    }
+    ;
+    g.H.pause = function() {
+        ++this.L
+    }
+    ;
+    g.H.resume = function() {
+        this.L && (--this.L,
+        !this.L && this.V && (this.V = !1,
+        this.Y.apply(null, this.J)))
+    }
+    ;
+    g.H.Bs = function() {
+        this.stop();
+        ub.tT.Bs.call(this)
+    }
+    ;
+    g.H.tp = function() {
+        this.ZN && (g.zs.clearTimeout(this.ZN),
+        this.ZN = null);
+        this.B ? (this.ZN = g.dJ(this.U, this.B - g.rd()),
+        this.B = null) : this.L ? this.V = !0 : (this.V = !1,
+        this.Y.apply(null, this.J))
+    }
+    ;
+    kZ.prototype.stringify = function(a) {
+        return g.zs.JSON.stringify(a, void 0)
+    }
+    ;
+    kZ.prototype.parse = function(a) {
+        return g.zs.JSON.parse(a, void 0)
+    }
+    ;
+    g.qd(SVD, g.aI);
+    g.qd(G8Q, g.aI);
+    var yTJ = null;
+    g.qd(dtD, g.aI);
+    g.qd(R78, g.aI);
+    g.qd(wko, g.aI);
+    jt.prototype.debug = function() {}
+    ;
+    jt.prototype.info = function() {}
+    ;
+    jt.prototype.warning = function() {}
+    ;
+    var Dtf = {}
+      , o3m = {};
+    g.H = $Z.prototype;
+    g.H.setTimeout = function(a) {
+        this.xa = a
+    }
+    ;
+    g.H.o2 = function(a) {
+        a = a.target;
+        var I = this.fO;
+        I && g.Dj(a) == 3 ? I.A5() : this.Q9(a)
+    }
+    ;
+    g.H.Q9 = function(a) {
+        try {
+            if (a == this.V)
+                a: {
+                    var I = g.Dj(this.V)
+                      , U = this.V.L
+                      , e = this.V.getStatus();
+                    if (!(I < 3) && (I != 3 || this.V && (this.L.L || g.aM(this.V) || g.IM(this.V)))) {
+                        this.Ux || I != 4 || U == 7 || (U == 8 || e <= 0 ? Vg(3) : Vg(2));
+                        Inf(this);
+                        var T = this.V.getStatus();
+                        this.Vo = T;
+                        var C = Nam(this);
+                        if (this.Y = T == 200) {
+                            if (this.B8 && !this.a$) {
+                                b: {
+                                    if (this.V) {
+                                        var r = g.sy(this.V, "X-HTTP-Initial-Response");
+                                        if (r && !g.ur(r)) {
+                                            var q = r;
+                                            break b
+                                        }
+                                    }
+                                    q = null
+                                }
+                                if (a = q)
+                                    this.a$ = !0,
+                                    xko(this, a);
+                                else {
+                                    this.Y = !1;
+                                    this.U = 3;
+                                    Ai(12);
+                                    Lw(this);
+                                    go(this);
+                                    break a
+                                }
+                            }
+                            if (this.dw) {
+                                a = !0;
+                                for (var x; !this.Ux && this.C < C.length; )
+                                    if (x = v3z(this, C),
+                                    x == o3m) {
+                                        I == 4 && (this.U = 4,
+                                        Ai(14),
+                                        a = !1);
+                                        break
+                                    } else if (x == Dtf) {
+                                        this.U = 4;
+                                        Ai(15);
+                                        a = !1;
+                                        break
+                                    } else
+                                        xko(this, x);
+                                h7J(this) && this.C != 0 && (this.L.V = this.L.V.slice(this.C),
+                                this.C = 0);
+                                I != 4 || C.length != 0 || this.L.L || (this.U = 1,
+                                Ai(16),
+                                a = !1);
+                                this.Y = this.Y && a;
+                                a ? C.length > 0 && !this.hN && (this.hN = !0,
+                                this.B.dI(this)) : (Lw(this),
+                                go(this))
+                            } else
+                                xko(this, C);
+                            I == 4 && Lw(this);
+                            this.Y && !this.Ux && (I == 4 ? sBI(this.B, this) : (this.Y = !1,
+                            ib(this)))
+                        } else
+                            g.A3q(this.V),
+                            T == 400 && C.indexOf("Unknown SID") > 0 ? (this.U = 3,
+                            Ai(12)) : (this.U = 0,
+                            Ai(13)),
+                            Lw(this),
+                            go(this)
+                    }
+                }
+        } catch (Z) {} finally {}
+    }
+    ;
+    g.H.cancel = function() {
+        this.Ux = !0;
+        Lw(this)
+    }
+    ;
+    g.H.KV = function() {
+        this.Va = null;
+        var a = Date.now();
+        a - this.i5 >= 0 ? (this.CO != 2 && (Vg(3),
+        Ai(17)),
+        Lw(this),
+        this.U = 2,
+        go(this)) : and(this, this.i5 - a)
+    }
+    ;
+    g.H.getLastError = function() {
+        return this.U
+    }
+    ;
+    g.H.CB = function() {
+        return this.V
+    }
+    ;
+    tNG.prototype.cancel = function() {
+        this.B = Kf4(this);
+        if (this.L)
+            this.L.cancel(),
+            this.L = null;
+        else if (this.V && this.V.size !== 0) {
+            for (var a = g.k(this.V.values()), I = a.next(); !I.done; I = a.next())
+                I.value.cancel();
+            this.V.clear()
+        }
+    }
+    ;
+    g.H = VNo.prototype;
+    g.H.fA = 8;
+    g.H.R9 = 1;
+    g.H.connect = function(a, I, U, e) {
+        Ai(0);
+        this.rF = a;
+        this.Ux = I || {};
+        U && e !== void 0 && (this.Ux.OSID = U,
+        this.Ux.OAID = e);
+        this.a$ = this.F1;
+        this.zt = rLj(this, null, this.rF);
+        BH(this)
+    }
+    ;
+    g.H.disconnect = function() {
+        MNd(this);
+        if (this.R9 == 3) {
+            var a = this.Z6++
+              , I = this.zt.clone();
+            g.bv(I, "SID", this.J);
+            g.bv(I, "RID", a);
+            g.bv(I, "TYPE", "terminate");
+            pw(this, I);
+            a = new $Z(this,this.J,a);
+            a.CO = 2;
+            a.D = DA(I.clone());
+            I = !1;
+            if (g.zs.navigator && g.zs.navigator.sendBeacon)
+                try {
+                    I = g.zs.navigator.sendBeacon(a.D.toString(), "")
+                } catch (U) {}
+            !I && g.zs.Image && ((new Image).src = a.D,
+            I = !0);
+            I || (a.V = z78(a.B, null),
+            a.V.send(a.D));
+            a.e8 = Date.now();
+            ib(a)
+        }
+        cLd(this)
+    }
+    ;
+    g.H.AS = function() {
+        return this.R9 == 0
+    }
+    ;
+    g.H.getState = function() {
+        return this.R9
+    }
+    ;
+    g.H.y9 = function(a) {
+        if (this.Y)
+            if (this.Y = null,
+            this.R9 == 1) {
+                if (!a) {
+                    this.Z6 = Math.floor(Math.random() * 1E5);
+                    a = this.Z6++;
+                    var I = new $Z(this,"",a)
+                      , U = this.j;
+                    this.Vo && (U ? (U = g.sG(U),
+                    g.ep(U, this.Vo)) : U = this.Vo);
+                    this.C !== null || this.i5 || (I.zt = U,
+                    U = null);
+                    var e;
+                    if (this.E7)
+                        a: {
+                            for (var T = e = 0; T < this.B.length; T++) {
+                                b: {
+                                    var C = this.B[T];
+                                    if ("__data__"in C.map && (C = C.map.__data__,
+                                    typeof C === "string")) {
+                                        C = C.length;
+                                        break b
+                                    }
+                                    C = void 0
+                                }
+                                if (C === void 0)
+                                    break;
+                                e += C;
+                                if (e > 4096) {
+                                    e = T;
+                                    break a
+                                }
+                                if (e === 4096 || T === this.B.length - 1) {
+                                    e = T + 1;
+                                    break a
+                                }
+                            }
+                            e = 1E3
+                        }
+                    else
+                        e = 1E3;
+                    e = iGG(this, I, e);
+                    T = this.zt.clone();
+                    g.bv(T, "RID", a);
+                    g.bv(T, "CVER", 22);
+                    this.dw && g.bv(T, "X-HTTP-Session-Id", this.dw);
+                    pw(this, T);
+                    U && (this.i5 ? e = "headers=" + g.b9(g.S2s(U)) + "&" + e : this.C && g.VT(T, this.C, U));
+                    C_D(this.L, I);
+                    this.XY && g.bv(T, "TYPE", "init");
+                    this.E7 ? (g.bv(T, "$req", e),
+                    g.bv(T, "SID", "null"),
+                    I.B8 = !0,
+                    Q$J(I, T, null)) : Q$J(I, T, e);
+                    this.R9 = 2
+                }
+            } else
+                this.R9 == 3 && (a ? LfI(this, a) : this.B.length == 0 || nGz(this.L) || LfI(this))
+    }
+    ;
+    g.H.rj = function() {
+        this.D = null;
+        gGd(this);
+        if (this.IF && !(this.xa || this.V == null || this.wL <= 0)) {
+            var a = 2 * this.wL;
+            this.tU = MV((0,
+            g.e8)(this.eIO, this), a)
+        }
+    }
+    ;
+    g.H.eIO = function() {
+        this.tU && (this.tU = null,
+        this.a$ = !1,
+        this.xa = !0,
+        Ai(10),
+        WH(this),
+        gGd(this))
+    }
+    ;
+    g.H.dI = function(a) {
+        this.V == a && this.IF && !this.xa && (ALf(this),
+        this.xa = !0,
+        Ai(11))
+    }
+    ;
+    g.H.Ym = function() {
+        this.Va != null && (this.Va = null,
+        WH(this),
+        eSG(this),
+        Ai(19))
+    }
+    ;
+    g.H.s9$ = function(a) {
+        a ? Ai(2) : Ai(1)
+    }
+    ;
+    g.H.isActive = function() {
+        return !!this.U && this.U.isActive(this)
+    }
+    ;
+    g.H = lno.prototype;
+    g.H.Pf = function() {}
+    ;
+    g.H.XA = function() {}
+    ;
+    g.H.De = function() {}
+    ;
+    g.H.qd = function() {}
+    ;
+    g.H.isActive = function() {
+        return !0
+    }
+    ;
+    g.H.b1 = function() {}
+    ;
+    g.qd(YZ, g.u7);
+    YZ.prototype.open = function() {
+        this.V.U = this.B;
+        this.Y && (this.V.CO = !0);
+        this.V.connect(this.U, this.L || void 0)
+    }
+    ;
+    YZ.prototype.close = function() {
+        this.V.disconnect()
+    }
+    ;
+    YZ.prototype.send = function(a) {
+        var I = this.V;
+        if (typeof a === "string") {
+            var U = {};
+            U.__data__ = a;
+            a = U
+        } else
+            this.J && (U = {},
+            U.__data__ = g.m4(a),
+            a = U);
+        I.B.push(new ZGo(I.q2++,a));
+        I.R9 == 3 && BH(I)
+    }
+    ;
+    YZ.prototype.Bs = function() {
+        this.V.U = null;
+        delete this.B;
+        this.V.disconnect();
+        delete this.V;
+        YZ.tT.Bs.call(this)
+    }
+    ;
+    g.qd(XzQ, SVD);
+    g.qd(P_z, G8Q);
+    g.qd(fw, lno);
+    fw.prototype.Pf = function() {
+        this.V.dispatchEvent("m")
+    }
+    ;
+    fw.prototype.XA = function(a) {
+        this.V.dispatchEvent(new XzQ(a))
+    }
+    ;
+    fw.prototype.De = function(a) {
+        this.V.dispatchEvent(new P_z(a))
+    }
+    ;
+    fw.prototype.qd = function() {
+        this.V.dispatchEvent("n")
+    }
+    ;
+    var St = new g.u7;
+    g.u(Yvo, g.aI);
+    g.H = yg.prototype;
+    g.H.nG = null;
+    g.H.bG = !1;
+    g.H.Km = null;
+    g.H.TU = null;
+    g.H.vR = null;
+    g.H.Ek = null;
+    g.H.ph = null;
+    g.H.jk = null;
+    g.H.c6 = null;
+    g.H.UM = null;
+    g.H.Rb = 0;
+    g.H.xp = null;
+    g.H.iT = null;
+    g.H.jE = null;
+    g.H.O2 = -1;
+    g.H.n8 = !0;
+    g.H.U2 = !1;
+    g.H.Mf = 0;
+    g.H.nK = null;
+    var dko = {}
+      , EGf = {};
+    g.H = yg.prototype;
+    g.H.setTimeout = function(a) {
+        this.L = a
+    }
+    ;
+    g.H.pV = function(a) {
+        a = a.target;
+        var I = this.nK;
+        I && g.Dj(a) == 3 ? I.A5() : this.Ze(a)
+    }
+    ;
+    g.H.Ze = function(a) {
+        try {
+            if (a == this.UM)
+                a: {
+                    var I = g.Dj(this.UM)
+                      , U = this.UM.L
+                      , e = this.UM.getStatus();
+                    if (g.hl && !g.cA("420+")) {
+                        if (I < 4)
+                            break a
+                    } else if (I < 3 || I == 3 && !g.aM(this.UM))
+                        break a;
+                    this.U2 || I != 4 || U == 7 || (U == 8 || e <= 0 ? this.V.QT(3) : this.V.QT(2));
+                    Fff(this);
+                    var T = this.UM.getStatus();
+                    this.O2 = T;
+                    var C = g.aM(this.UM);
+                    if (this.bG = T == 200) {
+                        I == 4 && EQ(this);
+                        if (this.dw) {
+                            for (a = !0; !this.U2 && this.Rb < C.length; ) {
+                                var r = RSf(this, C);
+                                if (r == EGf) {
+                                    I == 4 && (this.jE = 4,
+                                    GZ(15),
+                                    a = !1);
+                                    break
+                                } else if (r == dko) {
+                                    this.jE = 4;
+                                    GZ(16);
+                                    a = !1;
+                                    break
+                                } else
+                                    QBd(this, r)
+                            }
+                            I == 4 && C.length == 0 && (this.jE = 1,
+                            GZ(17),
+                            a = !1);
+                            this.bG = this.bG && a;
+                            a || (EQ(this),
+                            mkQ(this))
+                        } else
+                            QBd(this, C);
+                        this.bG && !this.U2 && (I == 4 ? this.V.Qu(this) : (this.bG = !1,
+                        yLD(this)))
+                    } else
+                        T == 400 && C.indexOf("Unknown SID") > 0 ? (this.jE = 3,
+                        GZ(13)) : (this.jE = 0,
+                        GZ(14)),
+                        EQ(this),
+                        mkQ(this)
+                }
+        } catch (q) {} finally {}
+    }
+    ;
+    g.H.cancel = function() {
+        this.U2 = !0;
+        EQ(this)
+    }
+    ;
+    g.H.z$ = function() {
+        this.Km = null;
+        var a = Date.now();
+        a - this.TU >= 0 ? (this.Ek != 2 && this.V.QT(3),
+        EQ(this),
+        this.jE = 2,
+        GZ(18),
+        mkQ(this)) : wzd(this, this.TU - a)
+    }
+    ;
+    g.H.getLastError = function() {
+        return this.jE
+    }
+    ;
+    g.H = Nzd.prototype;
+    g.H.H9 = null;
+    g.H.vG = null;
+    g.H.r0 = !1;
+    g.H.f9 = null;
+    g.H.wU = null;
+    g.H.Zq = -1;
+    g.H.VJ = null;
+    g.H.QI = null;
+    g.H.connect = function(a) {
+        this.f9 = a;
+        a = wo(this.V, null, this.f9);
+        GZ(3);
+        Date.now();
+        var I = this.V.j;
+        I != null ? (this.VJ = I[0],
+        (this.QI = I[1]) ? (this.wU = 1,
+        oGj(this)) : (this.wU = 2,
+        Dko(this))) : (vv(a, "MODE", "init"),
+        this.vG = new yg(this),
+        this.vG.nG = this.H9,
+        GMo(this.vG, a, !1, null, !0),
+        this.wU = 0)
+    }
+    ;
+    g.H.c_ = function(a) {
+        if (a)
+            this.wU = 2,
+            Dko(this);
+        else {
+            GZ(4);
+            var I = this.V;
+            I.EU = I.yO.Zq;
+            zZ(I, 9)
+        }
+        a && this.QT(2)
+    }
+    ;
+    g.H.GU = function(a) {
+        return this.V.GU(a)
+    }
+    ;
+    g.H.abort = function() {
+        this.vG && (this.vG.cancel(),
+        this.vG = null);
+        this.Zq = -1
+    }
+    ;
+    g.H.AS = function() {
+        return !1
+    }
+    ;
+    g.H.Sy = function(a, I) {
+        this.Zq = a.O2;
+        if (this.wU == 0)
+            if (I) {
+                try {
+                    var U = this.L.parse(I)
+                } catch (e) {
+                    a = this.V;
+                    a.EU = this.Zq;
+                    zZ(a, 2);
+                    return
+                }
+                this.VJ = U[0];
+                this.QI = U[1]
+            } else
+                a = this.V,
+                a.EU = this.Zq,
+                zZ(a, 2);
+        else
+            this.wU == 2 && (this.r0 ? (GZ(7),
+            Date.now()) : I == "11111" ? (GZ(6),
+            this.r0 = !0,
+            Date.now(),
+            this.Zq = 200,
+            this.vG.cancel(),
+            GZ(12),
+            Fx(this.V, this, !0)) : (GZ(8),
+            Date.now(),
+            this.r0 = !1))
+    }
+    ;
+    g.H.Qu = function() {
+        this.Zq = this.vG.O2;
+        if (this.vG.bG)
+            this.wU == 0 ? this.QI ? (this.wU = 1,
+            oGj(this)) : (this.wU = 2,
+            Dko(this)) : this.wU == 2 && (this.r0 ? (GZ(12),
+            Fx(this.V, this, !0)) : (GZ(11),
+            Fx(this.V, this, !1)));
+        else {
+            this.wU == 0 ? GZ(9) : this.wU == 2 && GZ(10);
+            var a = this.V;
+            this.vG.getLastError();
+            a.EU = this.Zq;
+            zZ(a, 2)
+        }
+    }
+    ;
+    g.H.Np = function() {
+        return this.V.Np()
+    }
+    ;
+    g.H.isActive = function() {
+        return this.V.isActive()
+    }
+    ;
+    g.H.QT = function(a) {
+        this.V.QT(a)
+    }
+    ;
+    g.H = vG8.prototype;
+    g.H.bQ = null;
+    g.H.Ch = null;
+    g.H.H1 = null;
+    g.H.dV = null;
+    g.H.yu = null;
+    g.H.gG = null;
+    g.H.FA = null;
+    g.H.rN = null;
+    g.H.Mp = 0;
+    g.H.O5 = 0;
+    g.H.Vt = null;
+    g.H.z0 = null;
+    g.H.SB = null;
+    g.H.ib = null;
+    g.H.yO = null;
+    g.H.L9 = null;
+    g.H.Yx = -1;
+    g.H.Io = -1;
+    g.H.EU = -1;
+    g.H.ol = 0;
+    g.H.dn = 0;
+    g.H.Es = 8;
+    g.qd(Iej, g.aI);
+    g.qd(s7d, g.aI);
+    g.H = vG8.prototype;
+    g.H.connect = function(a, I, U, e, T) {
+        GZ(0);
+        this.yu = I;
+        this.Ch = U || {};
+        e && T !== void 0 && (this.Ch.OSID = e,
+        this.Ch.OAID = T);
+        this.D ? (OQ((0,
+        g.e8)(this.hV, this, a), 100),
+        emz(this)) : this.hV(a)
+    }
+    ;
+    g.H.disconnect = function() {
+        TGQ(this);
+        if (this.V == 3) {
+            var a = this.Mp++
+              , I = this.gG.clone();
+            g.bv(I, "SID", this.J);
+            g.bv(I, "RID", a);
+            g.bv(I, "TYPE", "terminate");
+            Qg(this, I);
+            a = new yg(this,this.J,a);
+            a.Ek = 2;
+            a.ph = DA(I.clone());
+            (new Image).src = a.ph.toString();
+            a.vR = Date.now();
+            yLD(a)
+        }
+        bOf(this)
+    }
+    ;
+    g.H.hV = function(a) {
+        this.yO = new Nzd(this);
+        this.yO.H9 = this.bQ;
+        this.yO.L = this.U;
+        this.yO.connect(a)
+    }
+    ;
+    g.H.AS = function() {
+        return this.V == 0
+    }
+    ;
+    g.H.getState = function() {
+        return this.V
+    }
+    ;
+    g.H.uq = function(a) {
+        this.z0 = null;
+        xOz(this, a)
+    }
+    ;
+    g.H.mx = function() {
+        this.SB = null;
+        this.dV = new yg(this,this.J,"rpc",this.C);
+        this.dV.nG = this.bQ;
+        this.dV.Mf = 0;
+        var a = this.FA.clone();
+        g.bv(a, "RID", "rpc");
+        g.bv(a, "SID", this.J);
+        g.bv(a, "CI", this.L9 ? "0" : "1");
+        g.bv(a, "AID", this.Yx);
+        Qg(this, a);
+        g.bv(a, "TYPE", "xmlhttp");
+        GMo(this.dV, a, !0, this.rN, !1)
+    }
+    ;
+    g.H.Sy = function(a, I) {
+        if (this.V != 0 && (this.dV == a || this.H1 == a))
+            if (this.EU = a.O2,
+            this.H1 == a && this.V == 3)
+                if (this.Es > 7) {
+                    try {
+                        var U = this.U.parse(I)
+                    } catch (e) {
+                        U = null
+                    }
+                    if (Array.isArray(U) && U.length == 3)
+                        if (a = U,
+                        a[0] == 0)
+                            a: {
+                                if (!this.SB) {
+                                    if (this.dV)
+                                        if (this.dV.vR + 3E3 < this.H1.vR)
+                                            mr(this),
+                                            this.dV.cancel(),
+                                            this.dV = null;
+                                        else
+                                            break a;
+                                    nd4(this);
+                                    GZ(19)
+                                }
+                            }
+                        else
+                            this.Io = a[1],
+                            0 < this.Io - this.Yx && a[2] < 37500 && this.L9 && this.dn == 0 && !this.ib && (this.ib = OQ((0,
+                            g.e8)(this.vy, this), 6E3));
+                    else
+                        zZ(this, 11)
+                } else
+                    I != "y2f%" && zZ(this, 11);
+            else if (this.dV == a && mr(this),
+            !g.ur(I))
+                for (a = this.U.parse(I),
+                I = 0; I < a.length; I++)
+                    U = a[I],
+                    this.Yx = U[0],
+                    U = U[1],
+                    this.V == 2 ? U[0] == "c" ? (this.J = U[1],
+                    this.rN = U[2],
+                    U = U[3],
+                    U != null ? this.Es = U : this.Es = 6,
+                    this.V = 3,
+                    this.Vt && this.Vt.nA(),
+                    this.FA = wo(this, this.Np() ? this.rN : null, this.yu),
+                    ZOD(this)) : U[0] == "stop" && zZ(this, 7) : this.V == 3 && (U[0] == "stop" ? zZ(this, 7) : U[0] != "noop" && this.Vt && this.Vt.xF(U),
+                    this.dn = 0)
+    }
+    ;
+    g.H.vy = function() {
+        this.ib != null && (this.ib = null,
+        this.dV.cancel(),
+        this.dV = null,
+        nd4(this),
+        GZ(20))
+    }
+    ;
+    g.H.Qu = function(a) {
+        if (this.dV == a) {
+            mr(this);
+            this.dV = null;
+            var I = 2
+        } else if (this.H1 == a)
+            this.H1 = null,
+            I = 1;
+        else
+            return;
+        this.EU = a.O2;
+        if (this.V != 0)
+            if (a.bG)
+                if (I == 1) {
+                    I = a.c6 ? a.c6.length : 0;
+                    a = Date.now() - a.vR;
+                    var U = St;
+                    U.dispatchEvent(new Iej(U,I,a,this.ol));
+                    UOz(this);
+                    this.Vt && this.Vt.jy(this, this.B);
+                    this.B.length = 0
+                } else
+                    ZOD(this);
+            else {
+                U = a.getLastError();
+                var e;
+                if (!(e = U == 3 || U == 7 || U == 0 && this.EU > 0)) {
+                    if (e = I == 1)
+                        this.H1 || this.z0 || this.V == 1 || this.ol >= 2 ? e = !1 : (this.z0 = OQ((0,
+                        g.e8)(this.uq, this, a), tX8(this, this.ol)),
+                        this.ol++,
+                        e = !0);
+                    e = !(e || I == 2 && nd4(this))
+                }
+                if (e)
+                    switch (U) {
+                    case 1:
+                        zZ(this, 5);
+                        break;
+                    case 4:
+                        zZ(this, 10);
+                        break;
+                    case 3:
+                        zZ(this, 6);
+                        break;
+                    case 7:
+                        zZ(this, 12);
+                        break;
+                    default:
+                        zZ(this, 2)
+                    }
+            }
+    }
+    ;
+    g.H.U5 = function(a) {
+        if (!g.kJ(arguments, this.V))
+            throw Error("Unexpected channel state: " + this.V);
+    }
+    ;
+    g.H.inx = function(a) {
+        a ? GZ(2) : (GZ(1),
+        KhJ(this, 8))
+    }
+    ;
+    g.H.GU = function(a) {
+        if (a)
+            throw Error("Can't create secondary domain capable XhrIo object.");
+        a = new g.hM;
+        a.C = !1;
+        return a
+    }
+    ;
+    g.H.isActive = function() {
+        return !!this.Vt && this.Vt.isActive(this)
+    }
+    ;
+    g.H.QT = function(a) {
+        var I = St;
+        I.dispatchEvent(new s7d(I,a))
+    }
+    ;
+    g.H.Np = function() {
+        return !1
+    }
+    ;
+    g.H = JP4.prototype;
+    g.H.nA = function() {}
+    ;
+    g.H.xF = function() {}
+    ;
+    g.H.jy = function() {}
+    ;
+    g.H.lq = function() {}
+    ;
+    g.H.qf = function() {}
+    ;
+    g.H.E8 = function() {
+        return {}
+    }
+    ;
+    g.H.isActive = function() {
+        return !0
+    }
+    ;
+    g.H = udo.prototype;
+    g.H.enqueue = function(a) {
+        this.L.push(a)
+    }
+    ;
+    g.H.isEmpty = function() {
+        return this.V.length === 0 && this.L.length === 0
+    }
+    ;
+    g.H.clear = function() {
+        this.V = [];
+        this.L = []
+    }
+    ;
+    g.H.contains = function(a) {
+        return g.kJ(this.V, a) || g.kJ(this.L, a)
+    }
+    ;
+    g.H.remove = function(a) {
+        var I = this.V;
+        var U = (0,
+        g.TdG)(I, a);
+        U >= 0 ? (g.VG(I, U),
+        I = !0) : I = !1;
+        return I || g.Az(this.L, a)
+    }
+    ;
+    g.H.ZK = function() {
+        for (var a = [], I = this.V.length - 1; I >= 0; --I)
+            a.push(this.V[I]);
+        I = this.L.length;
+        for (var U = 0; U < I; ++U)
+            a.push(this.L[U]);
+        return a
+    }
+    ;
+    g.u(k1z, g.aI);
+    g.u(VXJ, g.aI);
+    g.qd(hi, g.S);
+    g.H = hi.prototype;
+    g.H.fUt = function() {
+        this.g6 = Math.min(3E5, this.g6 * 2);
+        this.B();
+        this.L && this.start()
+    }
+    ;
+    g.H.start = function() {
+        var a = this.g6 + 15E3 * Math.random();
+        g.Ik(this.V, a);
+        this.L = Date.now() + a
+    }
+    ;
+    g.H.stop = function() {
+        this.V.stop();
+        this.L = 0
+    }
+    ;
+    g.H.isActive = function() {
+        return this.V.isActive()
+    }
+    ;
+    g.H.reset = function() {
+        this.V.stop();
+        this.g6 = 5E3
+    }
+    ;
+    g.qd(MXz, JP4);
+    g.H = MXz.prototype;
+    g.H.subscribe = function(a, I, U) {
+        return this.Y.subscribe(a, I, U)
+    }
+    ;
+    g.H.unsubscribe = function(a, I, U) {
+        return this.Y.unsubscribe(a, I, U)
+    }
+    ;
+    g.H.sK = function(a) {
+        return this.Y.sK(a)
+    }
+    ;
+    g.H.publish = function(a, I) {
+        return this.Y.publish.apply(this.Y, arguments)
+    }
+    ;
+    g.H.dispose = function() {
+        this.C || (this.C = !0,
+        g.Kf(this.Y),
+        this.disconnect(),
+        g.Kf(this.L),
+        this.L = null,
+        this.dw = function() {
+            return ""
+        }
+        ,
+        this.zt = function() {
+            return g.XG({})
+        }
+        )
+    }
+    ;
+    g.H.Ox = function() {
+        return this.C
+    }
+    ;
+    g.H.connect = function(a, I, U) {
+        var e = this, T, C, r, q;
+        return g.f(function(x) {
+            if (x.L == 1)
+                return g.iF(x, 2),
+                e.U ? g.l(x, e.J, 2) : x.o$(2);
+            g.XY(x);
+            if (e.C || e.V && e.V.getState() == 2)
+                return x.return();
+            e.e8 = "";
+            e.L.stop();
+            e.j = a || null;
+            e.D = I || 0;
+            T = e.CO + "/test";
+            C = e.CO + "/bind";
+            r = new vG8(U ? U.firstTestResults : null,U ? U.secondTestResults : null,e.hN);
+            if (q = e.V)
+                q.Vt = null;
+            r.Vt = e;
+            e.V = r;
+            if (e.U)
+                return e.J = lez(e).then(function() {
+                    return iOD(e, T, C, q, U)
+                }),
+                x.return(e.J.then(function() {
+                    e.J = g.XG()
+                }));
+            iOD(e, T, C, q, U);
+            return g.Pw(x, 0)
+        })
+    }
+    ;
+    g.H.disconnect = function(a) {
+        try {
+            this.U && (this.J.cancel(),
+            this.J = g.XG())
+        } finally {
+            this.gw = a || 0,
+            this.L && this.L.stop(),
+            j7G(this),
+            this.V && (this.V.getState() == 3 && xOz(this.V),
+            this.V.disconnect()),
+            this.gw = 0
+        }
+    }
+    ;
+    g.H.sendMessage = function(a, I) {
+        var U = this, e;
+        return g.f(function(T) {
+            switch (T.L) {
+            case 1:
+                g.iF(T, 2);
+                if (!U.U) {
+                    T.o$(2);
+                    break
+                }
+                return g.l(T, U.J, 2);
+            case 2:
+                g.XY(T);
+                if (U.C)
+                    return T.return();
+                e = {
+                    _sc: a
+                };
+                I && g.ep(e, I);
+                if (U.L.isActive() || (U.V ? U.V.getState() : 0) == 2) {
+                    U.B.push(e);
+                    T.o$(6);
+                    break
+                }
+                if (!U.oP()) {
+                    T.o$(6);
+                    break
+                }
+                g.iF(T, 8);
+                if (!U.U || Who(U, a)) {
+                    T.o$(8);
+                    break
+                }
+                return g.l(T, lez(U), 8);
+            case 8:
+                g.XY(T, 0, 0, 1);
+                U.oP() && (Who(U, a) || $Oo(U),
+                j7G(U),
+                Czo(U.V, e));
+                g.Pw(T, 6, 1);
+                break;
+            case 6:
+                g.Pw(T, 0)
+            }
+        })
+    }
+    ;
+    g.H.nA = function() {
+        this.L.reset();
+        this.j = null;
+        this.D = 0;
+        if (this.B.length)
+            if (this.U)
+                X2d(this);
+            else {
+                var a = this.B;
+                this.B = [];
+                var I = a.length;
+                $Oo(this);
+                BG4(this, a, I);
+                NV(this)
+            }
+        else
+            NV(this)
+    }
+    ;
+    g.H.lq = function(a) {
+        var I = a == 2 && this.V.EU == 401;
+        a == 4 || I || this.L.start();
+        this.publish("handlerError", a, I);
+        this.fO.Id("BROWSER_CHANNEL")
+    }
+    ;
+    g.H.qf = function(a, I) {
+        if (!this.L.isActive())
+            this.publish("handlerClosed");
+        else if (I)
+            for (var U = I.length, e = 0; e < U; ++e) {
+                var T = I[e].map;
+                T && this.B.push(T)
+            }
+        this.a$.Id("BROWSER_CHANNEL");
+        a && this.IF.V.Xl("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps", a.length);
+        I && this.ij.V.Xl("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps", I.length)
+    }
+    ;
+    g.H.jy = function(a, I) {
+        I != null && a != null && this.xa.Id()
+    }
+    ;
+    g.H.E8 = function() {
+        var a = {
+            v: 2
+        };
+        this.e8 && (a.gsessionid = this.e8);
+        this.D != 0 && (a.ui = "" + this.D);
+        this.gw != 0 && (a.ui = "" + this.gw);
+        this.j && g.ep(a, this.j);
+        return a
+    }
+    ;
+    g.H.xF = function(a) {
+        a[0] == "S" ? this.e8 = a[1] : a[0] == "gracefulReconnect" ? (this.L.start(),
+        this.V.disconnect()) : this.publish("handlerMessage", new APJ(a[0],a[1]));
+        this.Z6.Id("BROWSER_CHANNEL")
+    }
+    ;
+    g.H.oP = function() {
+        return !!this.V && this.V.getState() == 3
+    }
+    ;
+    g.H.VO = function(a) {
+        (this.Va.loungeIdToken = a) || this.L.stop();
+        if (this.rF && this.V) {
+            var I = this.V.bQ || {};
+            a ? I["X-YouTube-LoungeId-Token"] = a : delete I["X-YouTube-LoungeId-Token"];
+            this.V.bQ = I
+        }
+    }
+    ;
+    g.H.getDeviceId = function() {
+        return this.Va.id
+    }
+    ;
+    g.H.gy = function() {
+        return this.L.isActive() ? this.L.L - Date.now() : NaN
+    }
+    ;
+    g.H.pk = function() {
+        var a = this.L;
+        g.sb(a.V);
+        a.start()
+    }
+    ;
+    g.H.icw = function() {
+        this.L.isActive();
+        rPQ(this.V) == 0 && this.connect(this.j, this.D)
+    }
+    ;
+    oZ.prototype.sendRequest = function(a, I, U, e, T, C, r) {
+        a = {
+            format: C ? "RAW" : "JSON",
+            method: a,
+            context: this,
+            timeout: 5E3,
+            withCredentials: !!r,
+            onSuccess: g.Co(this.J, e, !C),
+            onError: g.Co(this.B, T),
+            onTimeout: g.Co(this.U, T)
+        };
+        U && (a.postParams = U,
+        a.headers = {
+            "Content-Type": "application/x-www-form-urlencoded"
+        });
+        return g.lk(I, a)
+    }
+    ;
+    oZ.prototype.J = function(a, I, U, e) {
+        I ? a(e) : a({
+            text: U.responseText
+        })
+    }
+    ;
+    oZ.prototype.B = function(a, I) {
+        a(Error("Request error: " + I.status))
+    }
+    ;
+    oZ.prototype.U = function(a) {
+        a(Error("request timed out"))
+    }
+    ;
+    g.u(fem, g.u7);
+    g.H = fem.prototype;
+    g.H.connect = function(a, I, U) {
+        this.A4.connect(a, I, U)
+    }
+    ;
+    g.H.disconnect = function(a) {
+        this.A4.disconnect(a)
+    }
+    ;
+    g.H.pk = function() {
+        this.A4.pk()
+    }
+    ;
+    g.H.getDeviceId = function() {
+        return this.A4.getDeviceId()
+    }
+    ;
+    g.H.gy = function() {
+        return this.A4.gy()
+    }
+    ;
+    g.H.oP = function() {
+        return this.A4.oP()
+    }
+    ;
+    g.H.NN = function() {
+        this.dispatchEvent("channelOpened");
+        var a = this.A4
+          , I = this.V;
+        g.yy("yt-remote-session-browser-channel", {
+            firstTestResults: [""],
+            secondTestResults: !a.V.L9,
+            sessionId: a.V.J,
+            arrayId: a.V.Yx
+        });
+        g.yy("yt-remote-session-screen-id", I);
+        a = xZ();
+        I = Zv();
+        g.kJ(a, I) || a.push(I);
+        bdG(a);
+        uUd()
+    }
+    ;
+    g.H.onClosed = function() {
+        this.dispatchEvent("channelClosed")
+    }
+    ;
+    g.H.onMessage = function(a) {
+        this.dispatchEvent(new k1z(a))
+    }
+    ;
+    g.H.onError = function(a) {
+        this.dispatchEvent(new VXJ(a ? 1 : 0))
+    }
+    ;
+    g.H.sendMessage = function(a, I) {
+        this.A4.sendMessage(a, I)
+    }
+    ;
+    g.H.VO = function(a) {
+        this.A4.VO(a)
+    }
+    ;
+    g.H.dispose = function() {
+        this.A4.dispose()
+    }
+    ;
+    g.H = YX4.prototype;
+    g.H.connect = function(a, I) {
+        a = a === void 0 ? {} : a;
+        I = I === void 0 ? 0 : I;
+        this.Y !== 2 && (this.B.stop(),
+        this.D = a,
+        this.C = I,
+        SXj(this),
+        (a = g.D5("ID_TOKEN")) ? this.J["x-youtube-identity-token"] = a : delete this.J["x-youtube-identity-token"],
+        this.V && (this.L.device = this.V.device,
+        this.L.name = this.V.name,
+        this.L.app = this.V.app,
+        this.L.id = this.V.id,
+        this.V.GI$ && (this.L.mdxVersion = "" + this.V.GI$),
+        this.V.theme && (this.L.theme = this.V.theme),
+        this.V.capabilities && (this.L.capabilities = this.V.capabilities),
+        this.V.oS && (this.L.cst = this.V.oS),
+        this.V.authuser && (this.L.authuser = this.V.authuser),
+        this.V.pageId && (this.L.pageId = this.V.pageId)),
+        this.C !== 0 ? this.L.ui = "" + this.C : delete this.L.ui,
+        Object.assign(this.L, this.D),
+        this.channel = new YZ(this.pathPrefix,{
+            Pgg: "gsessionid",
+            rNg: this.J,
+            yN8: this.L
+        }),
+        this.channel.open(),
+        this.Y = 2,
+        OOo(this))
+    }
+    ;
+    g.H.disconnect = function(a) {
+        this.j = a === void 0 ? 0 : a;
+        this.B.stop();
+        SXj(this);
+        this.channel && (this.j !== 0 ? this.L.ui = "" + this.j : delete this.L.ui,
+        this.channel.close());
+        this.j = 0
+    }
+    ;
+    g.H.gy = function() {
+        return this.B.isActive() ? this.B.L - Date.now() : NaN
+    }
+    ;
+    g.H.pk = function() {
+        var a = this.B;
+        g.sb(a.V);
+        a.start()
+    }
+    ;
+    g.H.sendMessage = function(a, I) {
+        this.channel && (SXj(this),
+        a = Object.assign({}, {
+            _sc: a
+        }, I),
+        this.channel.send(a))
+    }
+    ;
+    g.H.VO = function(a) {
+        a || this.B.stop();
+        a ? this.J["X-YouTube-LoungeId-Token"] = a : delete this.J["X-YouTube-LoungeId-Token"]
+    }
+    ;
+    g.H.getDeviceId = function() {
+        return this.V ? this.V.id : ""
+    }
+    ;
+    g.H.publish = function(a) {
+        return this.U.publish.apply(this.U, [a].concat(g.A(g.OS.apply(1, arguments))))
+    }
+    ;
+    g.H.subscribe = function(a, I, U) {
+        return this.U.subscribe(a, I, U)
+    }
+    ;
+    g.H.unsubscribe = function(a, I, U) {
+        return this.U.unsubscribe(a, I, U)
+    }
+    ;
+    g.H.sK = function(a) {
+        return this.U.sK(a)
+    }
+    ;
+    g.H.dispose = function() {
+        this.Va || (this.Va = !0,
+        g.Kf(this.U),
+        this.disconnect(),
+        g.Kf(this.B),
+        this.e8 = function() {
+            return ""
+        }
+        )
+    }
+    ;
+    g.H.Ox = function() {
+        return this.Va
+    }
+    ;
+    g.u(G1z, g.u7);
+    g.H = G1z.prototype;
+    g.H.connect = function(a, I) {
+        this.V.connect(a, I)
+    }
+    ;
+    g.H.disconnect = function(a) {
+        this.V.disconnect(a)
+    }
+    ;
+    g.H.pk = function() {
+        this.V.pk()
+    }
+    ;
+    g.H.getDeviceId = function() {
+        return this.V.getDeviceId()
+    }
+    ;
+    g.H.gy = function() {
+        return this.V.gy()
+    }
+    ;
+    g.H.oP = function() {
+        return this.V.Y === 3
+    }
+    ;
+    g.H.CV = function() {
+        this.dispatchEvent("channelOpened")
+    }
+    ;
+    g.H.onClosed = function() {
+        this.dispatchEvent("channelClosed")
+    }
+    ;
+    g.H.onMessage = function(a) {
+        this.dispatchEvent(new k1z(a))
+    }
+    ;
+    g.H.onError = function() {
+        this.dispatchEvent(new VXJ(this.V.ZC === 401 ? 1 : 0))
+    }
+    ;
+    g.H.sendMessage = function(a, I) {
+        this.V.sendMessage(a, I)
+    }
+    ;
+    g.H.VO = function(a) {
+        this.V.VO(a)
+    }
+    ;
+    g.H.dispose = function() {
+        this.V.dispose()
+    }
+    ;
+    var Q7J = Date.now()
+      , vH = null
+      , U1 = Array(50)
+      , s1 = -1
+      , es = !1;
+    g.qd(TO, g.J_);
+    TO.prototype.m$ = function() {
+        return this.screens
+    }
+    ;
+    TO.prototype.contains = function(a) {
+        return !!tRm(this.screens, a)
+    }
+    ;
+    TO.prototype.get = function(a) {
+        return a ? qV(this.screens, a) : null
+    }
+    ;
+    TO.prototype.info = function(a) {
+        ap(this.Y, a)
+    }
+    ;
+    g.u(odo, g.J_);
+    g.H = odo.prototype;
+    g.H.start = function() {
+        !this.V && isNaN(this.ZN) && this.K8()
+    }
+    ;
+    g.H.stop = function() {
+        this.V && (this.V.abort(),
+        this.V = null);
+        isNaN(this.ZN) || (g.M6(this.ZN),
+        this.ZN = NaN)
+    }
+    ;
+    g.H.Bs = function() {
+        this.stop();
+        g.J_.prototype.Bs.call(this)
+    }
+    ;
+    g.H.K8 = function() {
+        this.ZN = NaN;
+        this.V = g.lk(Dv(this.B, "/pairing/get_screen"), {
+            method: "POST",
+            postParams: {
+                pairing_code: this.C
+            },
+            timeout: 5E3,
+            onSuccess: (0,
+            g.e8)(this.T$, this),
+            onError: (0,
+            g.e8)(this.MN, this),
+            onTimeout: (0,
+            g.e8)(this.G$, this)
+        })
+    }
+    ;
+    g.H.T$ = function(a, I) {
+        this.V = null;
+        a = I.screen || {};
+        a.dialId = this.J;
+        a.name = this.Y;
+        I = -1;
+        this.U && a.shortLivedLoungeToken && a.shortLivedLoungeToken.value && a.shortLivedLoungeToken.refreshIntervalMs && (a.screenIdType = "shortLived",
+        a.loungeToken = a.shortLivedLoungeToken.value,
+        I = a.shortLivedLoungeToken.refreshIntervalMs);
+        this.publish("pairingComplete", new Cw(a), I)
+    }
+    ;
+    g.H.MN = function(a) {
+        this.V = null;
+        a.status && a.status == 404 ? this.L >= mJm.length ? this.publish("pairingFailed", Error("DIAL polling timed out")) : (a = mJm[this.L],
+        this.ZN = g.Vz((0,
+        g.e8)(this.K8, this), a),
+        this.L++) : this.publish("pairingFailed", Error("Server error " + a.status))
+    }
+    ;
+    g.H.G$ = function() {
+        this.V = null;
+        this.publish("pairingFailed", Error("Server not responding"))
+    }
+    ;
+    var mJm = [2E3, 2E3, 1E3, 1E3, 1E3, 2E3, 2E3, 5E3, 5E3, 1E4];
+    g.qd(ri, TO);
+    g.H = ri.prototype;
+    g.H.start = function() {
+        Cv(this) && this.publish("screenChange");
+        !g.EV("yt-remote-lounge-token-expiration") && DOd(this);
+        g.M6(this.V);
+        this.V = g.Vz((0,
+        g.e8)(this.start, this), 1E4)
+    }
+    ;
+    g.H.add = function(a, I) {
+        Cv(this);
+        zmd(this, a);
+        Hu(this, !1);
+        this.publish("screenChange");
+        I(a);
+        a.token || DOd(this)
+    }
+    ;
+    g.H.remove = function(a, I) {
+        var U = Cv(this);
+        NGj(this, a) && (Hu(this, !1),
+        U = !0);
+        I(a);
+        U && this.publish("screenChange")
+    }
+    ;
+    g.H.Vu = function(a, I, U, e) {
+        var T = Cv(this)
+          , C = this.get(a.id);
+        C ? (C.name != I && (C.name = I,
+        Hu(this, !1),
+        T = !0),
+        U(a)) : e(Error("no such local screen."));
+        T && this.publish("screenChange")
+    }
+    ;
+    g.H.Bs = function() {
+        g.M6(this.V);
+        ri.tT.Bs.call(this)
+    }
+    ;
+    g.H.KKO = function(a) {
+        Cv(this);
+        var I = this.screens.length;
+        a = a && a.screens || [];
+        for (var U = a.length, e = 0; e < U; ++e) {
+            var T = a[e]
+              , C = this.get(T.screenId);
+            C && (C.token = T.loungeToken,
+            --I)
+        }
+        Hu(this, !I);
+        I && ap(this.Y, "Missed " + I + " lounge tokens.")
+    }
+    ;
+    g.H.t8X = function(a) {
+        ap(this.Y, "Requesting lounge tokens failed: " + a)
+    }
+    ;
+    g.u(aM8, g.J_);
+    g.H = aM8.prototype;
+    g.H.start = function() {
+        var a = parseInt(g.EV("yt-remote-fast-check-period") || "0", 10);
+        (this.J = g.rd() - 144E5 < a ? 0 : a) ? qi(this) : (this.J = g.rd() + 3E5,
+        g.yy("yt-remote-fast-check-period", this.J),
+        this.Ml())
+    }
+    ;
+    g.H.isEmpty = function() {
+        return g.vo(this.V)
+    }
+    ;
+    g.H.update = function() {
+        vdm("Updating availability on schedule.");
+        var a = this.Y()
+          , I = g.Rf(this.V, function(U, e) {
+            return U && !!qV(a, e)
+        }, this);
+        UNQ(this, I)
+    }
+    ;
+    g.H.Bs = function() {
+        g.M6(this.B);
+        this.B = NaN;
+        this.L && (this.L.abort(),
+        this.L = null);
+        g.J_.prototype.Bs.call(this)
+    }
+    ;
+    g.H.Ml = function() {
+        g.M6(this.B);
+        this.B = NaN;
+        this.L && this.L.abort();
+        var a = eTQ(this);
+        if (Abz(a)) {
+            var I = Dv(this.U, "/pairing/get_screen_availability");
+            this.L = this.U.sendRequest("POST", I, {
+                lounge_token: g.zm(a).join(",")
+            }, (0,
+            g.e8)(this.wL8, this, a), (0,
+            g.e8)(this.Ya8, this))
+        } else
+            UNQ(this, {}),
+            qi(this)
+    }
+    ;
+    g.H.wL8 = function(a, I) {
+        this.L = null;
+        var U = g.zm(eTQ(this));
+        if (g.YJ(U, g.zm(a))) {
+            I = I.screens || [];
+            U = {};
+            for (var e = I.length, T = 0; T < e; ++T)
+                U[a[I[T].loungeToken]] = I[T].status == "online";
+            UNQ(this, U);
+            qi(this)
+        } else
+            this.O1("Changing Screen set during request."),
+            this.Ml()
+    }
+    ;
+    g.H.Ya8 = function(a) {
+        this.O1("Screen availability failed: " + a);
+        this.L = null;
+        qi(this)
+    }
+    ;
+    g.H.O1 = function(a) {
+        ap("OnlineScreenService", a)
+    }
+    ;
+    g.qd(Zh, TO);
+    g.H = Zh.prototype;
+    g.H.start = function() {
+        this.L.start();
+        this.V.start();
+        this.screens.length && (this.publish("screenChange"),
+        this.V.isEmpty() || this.publish("onlineScreenChange"))
+    }
+    ;
+    g.H.add = function(a, I, U) {
+        this.L.add(a, I, U)
+    }
+    ;
+    g.H.remove = function(a, I, U) {
+        this.L.remove(a, I, U);
+        this.V.update()
+    }
+    ;
+    g.H.Vu = function(a, I, U, e) {
+        this.L.contains(a) ? this.L.Vu(a, I, U, e) : (a = "Updating name of unknown screen: " + a.name,
+        ap(this.Y, a),
+        e(Error(a)))
+    }
+    ;
+    g.H.m$ = function(a) {
+        return a ? this.screens : g.j8(this.screens, g.Sa(this.B, function(I) {
+            return !this.contains(I)
+        }, this))
+    }
+    ;
+    g.H.iX = function() {
+        return g.Sa(this.m$(!0), function(a) {
+            return !!this.V.V[a.id]
+        }, this)
+    }
+    ;
+    g.H.s8 = function(a, I, U, e, T, C) {
+        var r = this;
+        this.info("getDialScreenByPairingCode " + a + " / " + I);
+        var q = new odo(this.J,a,I,U,e);
+        q.subscribe("pairingComplete", function(x, Z) {
+            g.Kf(q);
+            T(tZ(r, x), Z)
+        });
+        q.subscribe("pairingFailed", function(x) {
+            g.Kf(q);
+            C(x)
+        });
+        q.start();
+        return (0,
+        g.e8)(q.stop, q)
+    }
+    ;
+    g.H.Hy = function(a, I, U, e) {
+        g.lk(Dv(this.J, "/pairing/get_screen"), {
+            method: "POST",
+            postParams: {
+                pairing_code: a
+            },
+            timeout: 5E3,
+            onSuccess: (0,
+            g.e8)(function(T, C) {
+                T = new Cw(C.screen || {});
+                if (!T.name || H5I(this, T.name)) {
+                    a: {
+                        C = T.name;
+                        for (var r = 2, q = I(C, r); H5I(this, q); ) {
+                            r++;
+                            if (r > 20)
+                                break a;
+                            q = I(C, r)
+                        }
+                        C = q
+                    }
+                    T.name = C
+                }
+                U(tZ(this, T))
+            }, this),
+            onError: (0,
+            g.e8)(function(T) {
+                e(Error("pairing request failed: " + T.status))
+            }, this),
+            onTimeout: (0,
+            g.e8)(function() {
+                e(Error("pairing request timed out."))
+            }, this)
+        })
+    }
+    ;
+    g.H.Bs = function() {
+        g.Kf(this.L);
+        g.Kf(this.V);
+        Zh.tT.Bs.call(this)
+    }
+    ;
+    g.H.vaa = function() {
+        xNo(this);
+        this.publish("screenChange");
+        this.V.update()
+    }
+    ;
+    Zh.prototype.dispose = Zh.prototype.dispose;
+    g.qd(nv, g.J_);
+    g.H = nv.prototype;
+    g.H.Im = function(a) {
+        this.Ox() || (a && (bn(this, "" + a),
+        this.publish("sessionFailed")),
+        this.V = null,
+        this.publish("sessionScreen", null))
+    }
+    ;
+    g.H.info = function(a) {
+        ap(this.dw, a)
+    }
+    ;
+    g.H.RY = function() {
+        return null
+    }
+    ;
+    g.H.nf = function(a) {
+        var I = this.L;
+        a ? (I.displayStatus = new chrome.cast.ReceiverDisplayStatus(a,[]),
+        I.displayStatus.showStop = !0) : I.displayStatus = null;
+        chrome.cast.setReceiverDisplayStatus(I, (0,
+        g.e8)(function() {
+            this.info("Updated receiver status for " + I.friendlyName + ": " + a)
+        }, this), (0,
+        g.e8)(function() {
+            bn(this, "Failed to update receiver status for: " + I.friendlyName)
+        }, this))
+    }
+    ;
+    g.H.Bs = function() {
+        this.nf("");
+        nv.tT.Bs.call(this)
+    }
+    ;
+    g.u(JZ, nv);
+    g.H = JZ.prototype;
+    g.H.l9 = function(a) {
+        if (this.B) {
+            if (this.B == a)
+                return;
+            bn(this, "Overriding cast session with new session object");
+            jbJ(this);
+            this.e8 = !1;
+            this.j = "unknown";
+            this.B.removeUpdateListener(this.gw);
+            this.B.removeMessageListener("urn:x-cast:com.google.youtube.mdx", this.tU)
+        }
+        this.B = a;
+        this.B.addUpdateListener(this.gw);
+        this.B.addMessageListener("urn:x-cast:com.google.youtube.mdx", this.tU);
+        uMo(this, "getMdxSessionStatus")
+    }
+    ;
+    g.H.hJ = function(a) {
+        this.info("launchWithParams no-op for Cast: " + g.m4(a))
+    }
+    ;
+    g.H.stop = function() {
+        this.B ? this.B.stop((0,
+        g.e8)(function() {
+            this.Im()
+        }, this), (0,
+        g.e8)(function() {
+            this.Im(Error("Failed to stop receiver app."))
+        }, this)) : this.Im(Error("Stopping cast device without session."))
+    }
+    ;
+    g.H.nf = function() {}
+    ;
+    g.H.Bs = function() {
+        this.info("disposeInternal");
+        jbJ(this);
+        this.B && (this.B.removeUpdateListener(this.gw),
+        this.B.removeMessageListener("urn:x-cast:com.google.youtube.mdx", this.tU));
+        this.B = null;
+        nv.prototype.Bs.call(this)
+    }
+    ;
+    g.H.x2x = function(a, I) {
+        if (!this.Ox())
+            if (I)
+                if (I = aZ(I),
+                g.If(I))
+                    switch (a = "" + I.type,
+                    I = I.data || {},
+                    this.info("onYoutubeMessage_: " + a + " " + g.m4(I)),
+                    a) {
+                    case "mdxSessionStatus":
+                        KYI(this, I);
+                        break;
+                    case "loungeToken":
+                        kt8(this, I);
+                        break;
+                    default:
+                        bn(this, "Unknown youtube message: " + a)
+                    }
+                else
+                    bn(this, "Unable to parse message.");
+            else
+                bn(this, "No data in message.")
+    }
+    ;
+    g.H.fZ = function(a, I, U, e) {
+        g.M6(this.D);
+        this.D = 0;
+        rkG(this.J, this.L.label, a, this.L.friendlyName, (0,
+        g.e8)(function(T) {
+            T ? I(T) : e >= 0 ? (bn(this, "Screen " + a + " appears to be offline. " + e + " retries left."),
+            this.D = g.Vz((0,
+            g.e8)(this.fZ, this, a, I, U, e - 1), 300)) : U(Error("Unable to fetch screen."))
+        }, this), U)
+    }
+    ;
+    g.H.RY = function() {
+        return this.B
+    }
+    ;
+    g.H.Qc = function(a) {
+        this.Ox() || a || (bn(this, "Cast session died."),
+        this.Im())
+    }
+    ;
+    g.u(un, nv);
+    g.H = un.prototype;
+    g.H.l9 = function(a) {
+        this.B = a;
+        this.B.addUpdateListener(this.Ux)
+    }
+    ;
+    g.H.hJ = function(a) {
+        this.zt = a;
+        this.Va()
+    }
+    ;
+    g.H.stop = function() {
+        Bqd(this);
+        this.B ? this.B.stop((0,
+        g.e8)(this.Im, this, null), (0,
+        g.e8)(this.Im, this, "Failed to stop DIAL device.")) : this.Im()
+    }
+    ;
+    g.H.Bs = function() {
+        Bqd(this);
+        this.B && this.B.removeUpdateListener(this.Ux);
+        this.B = null;
+        nv.prototype.Bs.call(this)
+    }
+    ;
+    g.H.fV = function(a) {
+        this.Ox() || a || (bn(this, "DIAL session died."),
+        this.U(),
+        this.U = function() {}
+        ,
+        this.Im())
+    }
+    ;
+    g.u(AZ, nv);
+    AZ.prototype.stop = function() {
+        this.Im()
+    }
+    ;
+    AZ.prototype.l9 = function() {}
+    ;
+    AZ.prototype.hJ = function() {
+        g.M6(this.B);
+        this.B = NaN;
+        var a = qV(this.J.m$(), this.L.label);
+        a ? Kv(this, a) : this.Im(Error("No such screen"))
+    }
+    ;
+    AZ.prototype.Bs = function() {
+        g.M6(this.B);
+        this.B = NaN;
+        nv.prototype.Bs.call(this)
+    }
+    ;
+    g.u(Mi, g.J_);
+    g.H = Mi.prototype;
+    g.H.init = function(a, I) {
+        chrome.cast.timeout.requestSession = 3E4;
+        var U = new chrome.cast.SessionRequest(this.D,[chrome.cast.Capability.AUDIO_OUT]);
+        g.ik("desktop_enable_cast_connect") && (U.androidReceiverCompatible = !0);
+        this.j || (U.dialRequest = new chrome.cast.DialRequest("YouTube"));
+        var e = chrome.cast.AutoJoinPolicy.TAB_AND_ORIGIN_SCOPED;
+        a = a || this.Y ? chrome.cast.DefaultActionPolicy.CAST_THIS_TAB : chrome.cast.DefaultActionPolicy.CREATE_SESSION;
+        var T = (0,
+        g.e8)(this.iF8, this);
+        U = new chrome.cast.ApiConfig(U,(0,
+        g.e8)(this.Q2, this),T,e,a);
+        U.customDialLaunchCallback = (0,
+        g.e8)(this.vYa, this);
+        chrome.cast.initialize(U, (0,
+        g.e8)(function() {
+            this.Ox() || (chrome.cast.addReceiverActionListener(this.U),
+            w2J(),
+            this.L.subscribe("onlineScreenChange", (0,
+            g.e8)(this.V6, this)),
+            this.B = pGD(this),
+            chrome.cast.setCustomReceivers(this.B, function() {}, (0,
+            g.e8)(function(C) {
+                this.O1("Failed to set initial custom receivers: " + g.m4(C))
+            }, this)),
+            this.publish("yt-remote-cast2-availability-change", $y(this)),
+            I(!0))
+        }, this), (0,
+        g.e8)(function(C) {
+            this.O1("Failed to initialize API: " + g.m4(C));
+            I(!1)
+        }, this))
+    }
+    ;
+    g.H.WZm = function(a, I) {
+        js("Setting connected screen ID: " + a + " -> " + I);
+        if (this.V) {
+            var U = this.V.V;
+            if (!a || U && U.id != a)
+                js("Unsetting old screen status: " + this.V.L.friendlyName),
+                Lv(this, null)
+        }
+        if (a && I) {
+            if (!this.V) {
+                a = qV(this.L.m$(), a);
+                if (!a) {
+                    js("setConnectedScreenStatus: Unknown screen.");
+                    return
+                }
+                if (a.idType == "shortLived") {
+                    js("setConnectedScreenStatus: Screen with id type to be short lived.");
+                    return
+                }
+                U = XG8(this, a);
+                U || (js("setConnectedScreenStatus: Connected receiver not custom..."),
+                U = new chrome.cast.Receiver(a.uuid ? a.uuid : a.id,a.name),
+                U.receiverType = chrome.cast.ReceiverType.CUSTOM,
+                this.B.push(U),
+                chrome.cast.setCustomReceivers(this.B, function() {}, (0,
+                g.e8)(function(e) {
+                    this.O1("Failed to set initial custom receivers: " + g.m4(e))
+                }, this)));
+                js("setConnectedScreenStatus: new active receiver: " + U.friendlyName);
+                Lv(this, new AZ(this.L,U), !0)
+            }
+            this.V.nf(I)
+        } else
+            js("setConnectedScreenStatus: no screen.")
+    }
+    ;
+    g.H.oL$ = function(a) {
+        this.Ox() ? this.O1("Setting connection data on disposed cast v2") : this.V ? this.V.hJ(a) : this.O1("Setting connection data without a session")
+    }
+    ;
+    g.H.yc = function() {
+        this.Ox() ? this.O1("Stopping session on disposed cast v2") : this.V ? (this.V.stop(),
+        Lv(this, null)) : js("Stopping non-existing session")
+    }
+    ;
+    g.H.requestSession = function() {
+        chrome.cast.requestSession((0,
+        g.e8)(this.Q2, this), (0,
+        g.e8)(this.z3O, this))
+    }
+    ;
+    g.H.Bs = function() {
+        this.L.unsubscribe("onlineScreenChange", (0,
+        g.e8)(this.V6, this));
+        window.chrome && chrome.cast && chrome.cast.removeReceiverActionListener(this.U);
+        var a = Edz
+          , I = g.NL("yt.mdx.remote.debug.handlers_");
+        g.Az(I || [], a);
+        g.Kf(this.V);
+        g.J_.prototype.Bs.call(this)
+    }
+    ;
+    g.H.O1 = function(a) {
+        ap("Controller", a)
+    }
+    ;
+    g.H.rW = function(a, I) {
+        this.V == a && (I || Lv(this, null),
+        this.publish("yt-remote-cast2-session-change", I))
+    }
+    ;
+    g.H.jss = function(a, I) {
+        if (!this.Ox())
+            if (a)
+                switch (a.friendlyName = chrome.cast.unescape(a.friendlyName),
+                js("onReceiverAction_ " + a.label + " / " + a.friendlyName + "-- " + I),
+                I) {
+                case chrome.cast.ReceiverAction.CAST:
+                    if (this.V)
+                        if (this.V.L.label != a.label)
+                            js("onReceiverAction_: Stopping active receiver: " + this.V.L.friendlyName),
+                            this.V.stop();
+                        else {
+                            js("onReceiverAction_: Casting to active receiver.");
+                            this.V.V && this.publish("yt-remote-cast2-session-change", this.V.V);
+                            break
+                        }
+                    switch (a.receiverType) {
+                    case chrome.cast.ReceiverType.CUSTOM:
+                        Lv(this, new AZ(this.L,a));
+                        break;
+                    case chrome.cast.ReceiverType.DIAL:
+                        Lv(this, new un(this.L,a,this.J,this.config_));
+                        break;
+                    case chrome.cast.ReceiverType.CAST:
+                        Lv(this, new JZ(this.L,a,this.config_));
+                        break;
+                    default:
+                        this.O1("Unknown receiver type: " + a.receiverType)
+                    }
+                    break;
+                case chrome.cast.ReceiverAction.STOP:
+                    this.V && this.V.L.label == a.label ? this.V.stop() : this.O1("Stopping receiver w/o session: " + a.friendlyName)
+                }
+            else
+                this.O1("onReceiverAction_ called without receiver.")
+    }
+    ;
+    g.H.vYa = function(a) {
+        if (this.Ox())
+            return Promise.reject(Error("disposed"));
+        var I = a.receiver;
+        I.receiverType != chrome.cast.ReceiverType.DIAL && (this.O1("Not DIAL receiver: " + I.friendlyName),
+        I.receiverType = chrome.cast.ReceiverType.DIAL);
+        var U = this.V ? this.V.L : null;
+        if (!U || U.label != I.label)
+            return this.O1("Receiving DIAL launch request for non-clicked DIAL receiver: " + I.friendlyName),
+            Promise.reject(Error("illegal DIAL launch"));
+        if (U && U.label == I.label && U.receiverType != chrome.cast.ReceiverType.DIAL) {
+            if (this.V.V)
+                return js("Reselecting dial screen."),
+                this.publish("yt-remote-cast2-session-change", this.V.V),
+                Promise.resolve(new chrome.cast.DialLaunchResponse(!1));
+            this.O1('Changing CAST intent from "' + U.receiverType + '" to "dial" for ' + I.friendlyName);
+            Lv(this, new un(this.L,I,this.J,this.config_))
+        }
+        I = this.V;
+        I.D = a;
+        I.D.appState == chrome.cast.DialAppState.RUNNING ? (a = I.D.extraData || {},
+        U = a.screenId || null,
+        ky(I) && a.loungeToken ? a.loungeTokenRefreshIntervalMs ? a = ckG(I, {
+            name: I.L.friendlyName,
+            screenId: a.screenId,
+            loungeToken: a.loungeToken,
+            dialId: I.D.receiver.label,
+            screenIdType: "shortLived"
+        }, a.loungeTokenRefreshIntervalMs) : (g.I0(Error("No loungeTokenRefreshIntervalMs presents in additionalData: " + JSON.stringify(a) + ".")),
+        a = WYQ(I, U)) : a = WYQ(I, U)) : a = LYJ(I);
+        return a
+    }
+    ;
+    g.H.Q2 = function(a) {
+        var I = this;
+        if (!this.Ox() && !this.Y) {
+            js("New cast session ID: " + a.sessionId);
+            var U = a.receiver;
+            if (U.receiverType != chrome.cast.ReceiverType.CUSTOM) {
+                if (!this.V)
+                    if (U.receiverType == chrome.cast.ReceiverType.CAST)
+                        js("Got resumed cast session before resumed mdx connection."),
+                        U.friendlyName = chrome.cast.unescape(U.friendlyName),
+                        Lv(this, new JZ(this.L,U,this.config_), !0);
+                    else {
+                        this.O1("Got non-cast session without previous mdx receiver event, or mdx resume.");
+                        return
+                    }
+                var e = this.V.L
+                  , T = qV(this.L.m$(), e.label);
+                T && ro(T, U.label) && e.receiverType != chrome.cast.ReceiverType.CAST && U.receiverType == chrome.cast.ReceiverType.CAST && (js("onSessionEstablished_: manual to cast session change " + U.friendlyName),
+                g.Kf(this.V),
+                this.V = new JZ(this.L,U,this.config_),
+                this.V.subscribe("sessionScreen", (0,
+                g.e8)(this.rW, this, this.V)),
+                this.V.subscribe("sessionFailed", function() {
+                    return PiD(I, I.V)
+                }),
+                this.V.hJ(null));
+                this.V.l9(a)
+            }
+        }
+    }
+    ;
+    g.H.ra = function() {
+        return this.V ? this.V.RY() : null
+    }
+    ;
+    g.H.z3O = function(a) {
+        this.Ox() || (this.O1("Failed to estabilish a session: " + g.m4(a)),
+        a.code != chrome.cast.ErrorCode.CANCEL && Lv(this, null),
+        this.publish("yt-remote-cast2-session-failed"))
+    }
+    ;
+    g.H.iF8 = function(a) {
+        js("Receiver availability updated: " + a);
+        if (!this.Ox()) {
+            var I = $y(this);
+            this.C = a == chrome.cast.ReceiverAvailability.AVAILABLE;
+            $y(this) != I && this.publish("yt-remote-cast2-availability-change", $y(this))
+        }
+    }
+    ;
+    g.H.V6 = function() {
+        this.Ox() || (this.B = pGD(this),
+        js("Updating custom receivers: " + g.m4(this.B)),
+        chrome.cast.setCustomReceivers(this.B, function() {}, (0,
+        g.e8)(function() {
+            this.O1("Failed to set custom receivers.")
+        }, this)),
+        this.publish("yt-remote-cast2-availability-change", $y(this)))
+    }
+    ;
+    Mi.prototype.setLaunchParams = Mi.prototype.oL$;
+    Mi.prototype.setConnectedScreenStatus = Mi.prototype.WZm;
+    Mi.prototype.stopSession = Mi.prototype.yc;
+    Mi.prototype.getCastSession = Mi.prototype.ra;
+    Mi.prototype.requestSession = Mi.prototype.requestSession;
+    Mi.prototype.init = Mi.prototype.init;
+    Mi.prototype.dispose = Mi.prototype.dispose;
+    var RTQ = [];
+    g.H = Pu.prototype;
+    g.H.reset = function(a) {
+        this.listId = "";
+        this.index = -1;
+        this.videoId = "";
+        hTz(this);
+        this.volume = -1;
+        this.muted = !1;
+        a && (this.index = a.index,
+        this.listId = a.listId,
+        this.videoId = a.videoId,
+        this.playerState = a.playerState,
+        this.volume = a.volume,
+        this.muted = a.muted,
+        this.audioTrackId = a.audioTrackId,
+        this.trackData = a.trackData,
+        this.Mk = a.hasPrevious,
+        this.n1 = a.hasNext,
+        this.C = a.playerTime,
+        this.Y = a.playerTimeAt,
+        this.J = a.seekableStart,
+        this.V = a.seekableEnd,
+        this.U = a.duration,
+        this.D = a.loadedTime,
+        this.B = a.liveIngestionTime,
+        this.L = !isNaN(this.B))
+    }
+    ;
+    g.H.isPlaying = function() {
+        return this.playerState == 1
+    }
+    ;
+    g.H.isBuffering = function() {
+        return this.playerState == 3
+    }
+    ;
+    g.H.jp = function() {
+        return this.playerState == 1081
+    }
+    ;
+    g.H.oE = function(a) {
+        this.U = isNaN(a) ? 0 : a
+    }
+    ;
+    g.H.getDuration = function() {
+        return this.L ? this.U + pv(this) : this.U
+    }
+    ;
+    g.H.clone = function() {
+        return new Pu(Nqf(this))
+    }
+    ;
+    g.u(GO, g.J_);
+    g.H = GO.prototype;
+    g.H.getState = function() {
+        return this.B
+    }
+    ;
+    g.H.gy = function() {
+        return this.J.getReconnectTimeout()
+    }
+    ;
+    g.H.pk = function() {
+        this.J.reconnect()
+    }
+    ;
+    g.H.play = function() {
+        E1(this) ? (this.V ? this.V.play(null, g.KM, FC(this, "play")) : wi(this, "play"),
+        vLz(this, 1, Yy(ym(this))),
+        this.publish("remotePlayerChange")) : di(this, this.play)
+    }
+    ;
+    g.H.pause = function() {
+        E1(this) ? (this.V ? this.V.pause(null, g.KM, FC(this, "pause")) : wi(this, "pause"),
+        vLz(this, 2, Yy(ym(this))),
+        this.publish("remotePlayerChange")) : di(this, this.pause)
+    }
+    ;
+    g.H.seekTo = function(a) {
+        if (E1(this)) {
+            if (this.V) {
+                var I = ym(this)
+                  , U = new chrome.cast.media.SeekRequest;
+                U.currentTime = a;
+                I.isPlaying() || I.isBuffering() ? U.resumeState = chrome.cast.media.ResumeState.PLAYBACK_START : U.resumeState = chrome.cast.media.ResumeState.PLAYBACK_PAUSE;
+                this.V.seek(U, g.KM, FC(this, "seekTo", {
+                    newTime: a
+                }))
+            } else
+                wi(this, "seekTo", {
+                    newTime: a
+                });
+            vLz(this, 3, a);
+            this.publish("remotePlayerChange")
+        } else
+            di(this, g.Co(this.seekTo, a))
+    }
+    ;
+    g.H.stop = function() {
+        if (E1(this)) {
+            this.V ? this.V.stop(null, g.KM, FC(this, "stopVideo")) : wi(this, "stopVideo");
+            var a = ym(this);
+            a.index = -1;
+            a.videoId = "";
+            hTz(a);
+            Rp(this, a);
+            this.publish("remotePlayerChange")
+        } else
+            di(this, this.stop)
+    }
+    ;
+    g.H.setVolume = function(a, I) {
+        if (E1(this)) {
+            var U = ym(this);
+            if (this.L) {
+                if (U.volume != a) {
+                    var e = Math.round(a) / 100;
+                    this.L.setReceiverVolumeLevel(e, (0,
+                    g.e8)(function() {
+                        Ip("set receiver volume: " + e)
+                    }, this), (0,
+                    g.e8)(function() {
+                        this.O1("failed to set receiver volume.")
+                    }, this))
+                }
+                U.muted != I && this.L.setReceiverMuted(I, (0,
+                g.e8)(function() {
+                    Ip("set receiver muted: " + I)
+                }, this), (0,
+                g.e8)(function() {
+                    this.O1("failed to set receiver muted.")
+                }, this))
+            } else {
+                var T = {
+                    volume: a,
+                    muted: I
+                };
+                U.volume != -1 && (T.delta = a - U.volume);
+                wi(this, "setVolume", T)
+            }
+            U.muted = I;
+            U.volume = a;
+            Rp(this, U)
+        } else
+            di(this, g.Co(this.setVolume, a, I))
+    }
+    ;
+    g.H.gY = function(a, I) {
+        if (E1(this)) {
+            var U = ym(this);
+            a = {
+                videoId: a
+            };
+            I && (U.trackData = {
+                trackName: I.name,
+                languageCode: I.languageCode,
+                sourceLanguageCode: I.translationLanguage ? I.translationLanguage.languageCode : "",
+                languageName: I.languageName,
+                kind: I.kind
+            },
+            a.style = g.m4(I.style),
+            g.ep(a, U.trackData));
+            wi(this, "setSubtitlesTrack", a);
+            Rp(this, U)
+        } else
+            di(this, g.Co(this.gY, a, I))
+    }
+    ;
+    g.H.setAudioTrack = function(a, I) {
+        E1(this) ? (I = I.getLanguageInfo().getId(),
+        wi(this, "setAudioTrack", {
+            videoId: a,
+            audioTrackId: I
+        }),
+        a = ym(this),
+        a.audioTrackId = I,
+        Rp(this, a)) : di(this, g.Co(this.setAudioTrack, a, I))
+    }
+    ;
+    g.H.playVideo = function(a, I, U, e, T, C, r) {
+        e = e === void 0 ? null : e;
+        T = T === void 0 ? null : T;
+        C = C === void 0 ? null : C;
+        r = r === void 0 ? null : r;
+        var q = ym(this)
+          , x = {
+            videoId: a
+        };
+        U !== void 0 && (x.currentIndex = U);
+        O1(q, a, U || 0);
+        I !== void 0 && (fv(q, I),
+        x.currentTime = I);
+        e && (x.listId = e);
+        T && (x.playerParams = T);
+        C && (x.clickTrackingParams = C);
+        r && (x.locationInfo = g.m4(r));
+        wi(this, "setPlaylist", x);
+        e || Rp(this, q)
+    }
+    ;
+    g.H.M_ = function(a, I) {
+        if (E1(this)) {
+            if (a && I) {
+                var U = ym(this);
+                O1(U, a, I);
+                Rp(this, U)
+            }
+            wi(this, "previous")
+        } else
+            di(this, g.Co(this.M_, a, I))
+    }
+    ;
+    g.H.nextVideo = function(a, I) {
+        if (E1(this)) {
+            if (a && I) {
+                var U = ym(this);
+                O1(U, a, I);
+                Rp(this, U)
+            }
+            wi(this, "next")
+        } else
+            di(this, g.Co(this.nextVideo, a, I))
+    }
+    ;
+    g.H.mw = function() {
+        if (E1(this)) {
+            wi(this, "clearPlaylist");
+            var a = ym(this);
+            a.reset();
+            Rp(this, a);
+            this.publish("remotePlayerChange")
+        } else
+            di(this, this.mw)
+    }
+    ;
+    g.H.Hn = function() {
+        E1(this) ? wi(this, "dismissAutoplay") : di(this, this.Hn)
+    }
+    ;
+    g.H.dispose = function() {
+        if (this.B != 3) {
+            var a = this.B;
+            this.B = 3;
+            this.publish("proxyStateChange", a, this.B)
+        }
+        g.J_.prototype.dispose.call(this)
+    }
+    ;
+    g.H.Bs = function() {
+        DND(this);
+        this.J = null;
+        this.U.clear();
+        Ss(this, null);
+        g.J_.prototype.Bs.call(this)
+    }
+    ;
+    g.H.iM = function(a) {
+        if ((a != this.B || a == 2) && this.B != 3 && a != 0) {
+            var I = this.B;
+            this.B = a;
+            this.publish("proxyStateChange", I, a);
+            if (a == 1)
+                for (; !this.U.isEmpty(); )
+                    I = a = this.U,
+                    I.V.length === 0 && (I.V = I.L,
+                    I.V.reverse(),
+                    I.L = []),
+                    a.V.pop().apply(this);
+            else
+                a == 3 && this.dispose()
+        }
+    }
+    ;
+    g.H.lcw = function(a, I) {
+        this.publish(a, I)
+    }
+    ;
+    g.H.KnO = function(a) {
+        if (!a)
+            this.lO(null),
+            Ss(this, null);
+        else if (this.L.receiver.volume) {
+            a = this.L.receiver.volume;
+            var I = ym(this)
+              , U = Math.round(100 * a.level || 0);
+            if (I.volume != U || I.muted != a.muted)
+                Ip("Cast volume update: " + a.level + (a.muted ? " muted" : "")),
+                I.volume = U,
+                I.muted = !!a.muted,
+                Rp(this, I)
+        }
+    }
+    ;
+    g.H.lO = function(a) {
+        Ip("Cast media: " + !!a);
+        this.V && this.V.removeUpdateListener(this.D);
+        if (this.V = a)
+            this.V.addUpdateListener(this.D),
+            awz(this),
+            this.publish("remotePlayerChange")
+    }
+    ;
+    g.H.tMX = function(a) {
+        a ? (awz(this),
+        this.publish("remotePlayerChange")) : this.lO(null)
+    }
+    ;
+    g.H.GJ = function() {
+        wi(this, "sendDebugCommand", {
+            debugCommand: "stats4nerds "
+        })
+    }
+    ;
+    g.H.oYm = function() {
+        var a = mNd();
+        a && Ss(this, a)
+    }
+    ;
+    g.H.O1 = function(a) {
+        ap("CP", a)
+    }
+    ;
+    g.u(zO, g.J_);
+    g.H = zO.prototype;
+    g.H.connect = function(a, I) {
+        if (I) {
+            var U = I.listId
+              , e = I.videoId
+              , T = I.videoIds
+              , C = I.playerParams
+              , r = I.clickTrackingParams
+              , q = I.index
+              , x = {
+                videoId: e
+            }
+              , Z = I.currentTime
+              , t = I.locationInfo;
+            I = I.loopMode;
+            Z !== void 0 && (x.currentTime = Z <= 5 ? 0 : Z);
+            C && (x.playerParams = C);
+            t && (x.locationInfo = t);
+            r && (x.clickTrackingParams = r);
+            U && (x.listId = U);
+            T && T.length > 0 && (x.videoIds = T.join(","));
+            q !== void 0 && (x.currentIndex = q);
+            this.Ux && (x.loopMode = I || "LOOP_MODE_OFF");
+            U && (this.V.listId = U);
+            this.V.videoId = e;
+            this.V.index = q || 0;
+            this.V.state = 3;
+            fv(this.V, Z);
+            this.U = "UNSUPPORTED";
+            U = this.Ux ? "setInitialState" : "setPlaylist";
+            mE("Connecting with " + U + " and params: " + g.m4(x));
+            this.L.connect({
+                method: U,
+                params: g.m4(x)
+            }, a, k8d())
+        } else
+            mE("Connecting without params"),
+            this.L.connect({}, a, k8d());
+        enz(this)
+    }
+    ;
+    g.H.VO = function(a) {
+        this.L.VO(a)
+    }
+    ;
+    g.H.dispose = function() {
+        this.Ox() || (g.hj("yt.mdx.remote.remoteClient_", null),
+        this.publish("beforeDispose"),
+        Qm(this, 3));
+        g.J_.prototype.dispose.call(this)
+    }
+    ;
+    g.H.Bs = function() {
+        T1o(this);
+        rEz(this);
+        CfD(this);
+        g.M6(this.D);
+        this.D = NaN;
+        g.M6(this.j);
+        this.j = NaN;
+        this.J = null;
+        g.lR(this.Va);
+        this.Va.length = 0;
+        this.L.dispose();
+        g.J_.prototype.Bs.call(this);
+        this.U = this.C = this.B = this.V = this.L = null
+    }
+    ;
+    g.H.qZ = function(a) {
+        if (!this.B || this.B.length === 0)
+            return !1;
+        for (var I = g.k(this.B), U = I.next(); !U.done; U = I.next())
+            if (!U.value.capabilities.has(a))
+                return !1;
+        return !0
+    }
+    ;
+    g.H.l8 = function() {
+        var a = 3;
+        this.Ox() || (a = 0,
+        isNaN(this.P7()) ? this.L.oP() && isNaN(this.Y) && (a = 1) : a = 2);
+        return a
+    }
+    ;
+    g.H.VZ = function(a) {
+        mE("Disconnecting with " + a);
+        g.hj("yt.mdx.remote.remoteClient_", null);
+        T1o(this);
+        this.publish("beforeDisconnect", a);
+        a == 1 && ti();
+        this.L.disconnect(a);
+        this.dispose()
+    }
+    ;
+    g.H.Z3 = function() {
+        var a = this.V;
+        this.J && (a = this.V.clone(),
+        O1(a, this.J, a.index));
+        return Nqf(a)
+    }
+    ;
+    g.H.bcK = function(a) {
+        var I = this
+          , U = new Pu(a);
+        U.videoId && U.videoId != this.V.videoId && (this.J = U.videoId,
+        g.M6(this.D),
+        this.D = g.Vz(function() {
+            if (I.J) {
+                var T = I.J;
+                I.J = null;
+                I.V.videoId != T && hZ(I, "getNowPlaying")
+            }
+        }, 5E3));
+        var e = [];
+        this.V.listId == U.listId && this.V.videoId == U.videoId && this.V.index == U.index || e.push("remoteQueueChange");
+        this.V.playerState == U.playerState && this.V.volume == U.volume && this.V.muted == U.muted && Yy(this.V) == Yy(U) && g.m4(this.V.trackData) == g.m4(U.trackData) || e.push("remotePlayerChange");
+        this.V.reset(a);
+        g.Gm(e, function(T) {
+            this.publish(T)
+        }, this)
+    }
+    ;
+    g.H.Mq = function() {
+        var a = this.L.getDeviceId()
+          , I = g.Jz(this.B, function(U) {
+            return U.type == "REMOTE_CONTROL" && U.id != a
+        });
+        return I ? I.id : ""
+    }
+    ;
+    g.H.P7 = function() {
+        return this.L.gy()
+    }
+    ;
+    g.H.OI = function() {
+        return this.U || "UNSUPPORTED"
+    }
+    ;
+    g.H.vQ = function() {
+        return this.C || ""
+    }
+    ;
+    g.H.qN = function() {
+        !isNaN(this.P7()) && this.L.pk()
+    }
+    ;
+    g.H.JSw = function(a, I) {
+        hZ(this, a, I);
+        q0m(this)
+    }
+    ;
+    g.H.Bd = function() {
+        var a = g.ET("SAPISID", "") || g.ET("__Secure-1PAPISID") || ""
+          , I = g.ET("__Secure-3PAPISID", "") || "";
+        if (!a && !I)
+            return "";
+        a = g.Iq(g.aq(a), 2);
+        I = g.Iq(g.aq(I), 2);
+        return g.Iq(g.aq("," + a + "," + I), 2)
+    }
+    ;
+    zO.prototype.subscribe = zO.prototype.subscribe;
+    zO.prototype.unsubscribeByKey = zO.prototype.sK;
+    zO.prototype.getProxyState = zO.prototype.l8;
+    zO.prototype.disconnect = zO.prototype.VZ;
+    zO.prototype.getPlayerContextData = zO.prototype.Z3;
+    zO.prototype.setPlayerContextData = zO.prototype.bcK;
+    zO.prototype.getOtherConnectedRemoteId = zO.prototype.Mq;
+    zO.prototype.getReconnectTimeout = zO.prototype.P7;
+    zO.prototype.getAutoplayMode = zO.prototype.OI;
+    zO.prototype.getAutoplayVideoId = zO.prototype.vQ;
+    zO.prototype.reconnect = zO.prototype.qN;
+    zO.prototype.sendMessage = zO.prototype.JSw;
+    zO.prototype.getXsrfToken = zO.prototype.Bd;
+    zO.prototype.isCapabilitySupportedOnConnectedDevices = zO.prototype.qZ;
+    g.u(MdG, TO);
+    g.H = MdG.prototype;
+    g.H.m$ = function(a) {
+        return this.vX.$_gs(a)
+    }
+    ;
+    g.H.contains = function(a) {
+        return !!this.vX.$_c(a)
+    }
+    ;
+    g.H.get = function(a) {
+        return this.vX.$_g(a)
+    }
+    ;
+    g.H.start = function() {
+        this.vX.$_st()
+    }
+    ;
+    g.H.add = function(a, I, U) {
+        this.vX.$_a(a, I, U)
+    }
+    ;
+    g.H.remove = function(a, I, U) {
+        this.vX.$_r(a, I, U)
+    }
+    ;
+    g.H.Vu = function(a, I, U, e) {
+        this.vX.$_un(a, I, U, e)
+    }
+    ;
+    g.H.Bs = function() {
+        for (var a = this.V.length, I = 0; I < a; ++I)
+            this.vX.$_ubk(this.V[I]);
+        this.V.length = 0;
+        this.vX = null;
+        TO.prototype.Bs.call(this)
+    }
+    ;
+    g.H.Dp = function() {
+        this.publish("screenChange")
+    }
+    ;
+    g.H.gw8 = function() {
+        this.publish("onlineScreenChange")
+    }
+    ;
+    Zh.prototype.$_st = Zh.prototype.start;
+    Zh.prototype.$_gspc = Zh.prototype.Hy;
+    Zh.prototype.$_gsppc = Zh.prototype.s8;
+    Zh.prototype.$_c = Zh.prototype.contains;
+    Zh.prototype.$_g = Zh.prototype.get;
+    Zh.prototype.$_a = Zh.prototype.add;
+    Zh.prototype.$_un = Zh.prototype.Vu;
+    Zh.prototype.$_r = Zh.prototype.remove;
+    Zh.prototype.$_gs = Zh.prototype.m$;
+    Zh.prototype.$_gos = Zh.prototype.iX;
+    Zh.prototype.$_s = Zh.prototype.subscribe;
+    Zh.prototype.$_ubk = Zh.prototype.sK;
+    var Cy = null
+      , q2 = !1
+      , Ni = null
+      , op = null
+      , PfJ = null
+      , IG = [];
+    g.u(S0j, g.S);
+    g.H = S0j.prototype;
+    g.H.Bs = function() {
+        g.S.prototype.Bs.call(this);
+        this.L.stop();
+        this.B.stop();
+        this.D.stop();
+        var a = this.dL;
+        a.unsubscribe("proxyStateChange", this.GY, this);
+        a.unsubscribe("remotePlayerChange", this.sj, this);
+        a.unsubscribe("remoteQueueChange", this.g0, this);
+        a.unsubscribe("previousNextChange", this.NG, this);
+        a.unsubscribe("nowAutoplaying", this.wW, this);
+        a.unsubscribe("autoplayDismissed", this.RH, this);
+        this.dL = this.V = null
+    }
+    ;
+    g.H.rK = function(a) {
+        var I = g.OS.apply(1, arguments);
+        if (this.dL.B != 2)
+            if (x0(this)) {
+                if (!ym(this.dL).jp() || a !== "control_seek")
+                    switch (a) {
+                    case "control_toggle_play_pause":
+                        ym(this.dL).isPlaying() ? this.dL.pause() : this.dL.play();
+                        break;
+                    case "control_play":
+                        this.dL.play();
+                        break;
+                    case "control_pause":
+                        this.dL.pause();
+                        break;
+                    case "control_seek":
+                        this.C.A5(I[0], I[1]);
+                        break;
+                    case "control_subtitles_set_track":
+                        yEJ(this, I[0]);
+                        break;
+                    case "control_set_audio_track":
+                        this.setAudioTrack(I[0])
+                    }
+            } else
+                switch (a) {
+                case "control_toggle_play_pause":
+                case "control_play":
+                case "control_pause":
+                    I = this.K.getCurrentTime();
+                    Zr(this, I === 0 ? void 0 : I);
+                    break;
+                case "control_seek":
+                    Zr(this, I[0]);
+                    break;
+                case "control_subtitles_set_track":
+                    yEJ(this, I[0]);
+                    break;
+                case "control_set_audio_track":
+                    this.setAudioTrack(I[0])
+                }
+    }
+    ;
+    g.H.hIg = function(a) {
+        this.D.Wy(a)
+    }
+    ;
+    g.H.ULa = function(a) {
+        this.rK("control_subtitles_set_track", g.vo(a) ? null : a)
+    }
+    ;
+    g.H.Ho = function() {
+        var a = this.K.getOption("captions", "track");
+        g.vo(a) || yEJ(this, a)
+    }
+    ;
+    g.H.Cv = function(a) {
+        this.V.Cv(a, this.K.getVideoData().lengthSeconds)
+    }
+    ;
+    g.H.Fns = function() {
+        g.vo(this.J) || EbJ(this, this.J);
+        this.U = !1
+    }
+    ;
+    g.H.GY = function(a, I) {
+        this.B.stop();
+        I === 2 && this.Uz()
+    }
+    ;
+    g.H.sj = function() {
+        if (x0(this)) {
+            this.L.stop();
+            var a = ym(this.dL);
+            switch (a.playerState) {
+            case 1080:
+            case 1081:
+            case 1084:
+            case 1085:
+                this.V.b7 = 1;
+                break;
+            case 1082:
+            case 1083:
+                this.V.b7 = 0;
+                break;
+            default:
+                this.V.b7 = -1
+            }
+            switch (a.playerState) {
+            case 1081:
+            case 1:
+                this.eM(new g.xP(8));
+                this.z_();
+                break;
+            case 1085:
+            case 3:
+                this.eM(new g.xP(9));
+                break;
+            case 1083:
+            case 0:
+                this.eM(new g.xP(2));
+                this.C.stop();
+                this.Cv(this.K.getVideoData().lengthSeconds);
+                break;
+            case 1084:
+                this.eM(new g.xP(4));
+                break;
+            case 2:
+                this.eM(new g.xP(4));
+                this.Cv(Yy(a));
+                break;
+            case -1:
+                this.eM(new g.xP(64));
+                break;
+            case -1E3:
+                this.eM(new g.xP(128,{
+                    errorCode: "mdx.remoteerror",
+                    errorMessage: "Dieses Video ist nicht f\u00fcr die Remote-Wiedergabe verf\u00fcgbar.",
+                    dB: 2
+                }))
+            }
+            a = ym(this.dL).trackData;
+            var I = this.J;
+            (a || I ? a && I && a.trackName == I.trackName && a.languageCode == I.languageCode && a.languageName == I.languageName && a.kind == I.kind : 1) || (this.J = a,
+            EbJ(this, a));
+            a = ym(this.dL);
+            a.volume === -1 || Math.round(this.K.getVolume()) === a.volume && this.K.isMuted() === a.muted || this.j.isActive() || this.zV()
+        } else
+            G9j(this)
+    }
+    ;
+    g.H.NG = function() {
+        this.K.publish("mdxpreviousnextchange")
+    }
+    ;
+    g.H.g0 = function() {
+        x0(this) || G9j(this)
+    }
+    ;
+    g.H.wW = function(a) {
+        isNaN(a) || this.K.publish("mdxnowautoplaying", a)
+    }
+    ;
+    g.H.RH = function() {
+        this.K.publish("mdxautoplaycanceled")
+    }
+    ;
+    g.H.setAudioTrack = function(a) {
+        x0(this) && this.dL.setAudioTrack(this.K.getVideoData(1).videoId, a)
+    }
+    ;
+    g.H.seekTo = function(a, I) {
+        ym(this.dL).playerState === -1 ? Zr(this, a) : I && this.dL.seekTo(a)
+    }
+    ;
+    g.H.zV = function() {
+        var a = this;
+        if (x0(this)) {
+            var I = ym(this.dL);
+            this.events.YY(this.Va);
+            I.muted ? this.K.mute() : this.K.unMute();
+            this.K.setVolume(I.volume);
+            this.Va = this.events.G(this.K, "onVolumeChange", function(U) {
+                Y08(a, U)
+            })
+        }
+    }
+    ;
+    g.H.z_ = function() {
+        this.L.stop();
+        if (!this.dL.Ox()) {
+            var a = ym(this.dL);
+            a.isPlaying() && this.eM(new g.xP(8));
+            this.Cv(Yy(a));
+            this.L.start()
+        }
+    }
+    ;
+    g.H.Uz = function() {
+        this.B.stop();
+        this.L.stop();
+        var a = this.dL.gy();
+        this.dL.B == 2 && !isNaN(a) && this.B.start()
+    }
+    ;
+    g.H.eM = function(a) {
+        this.B.stop();
+        var I = this.Y;
+        if (!g.JG(I, a)) {
+            var U = g.Q(a, 2);
+            U !== g.Q(this.Y, 2) && this.K.vD(U);
+            this.Y = a;
+            w$m(this.V, I, a)
+        }
+    }
+    ;
+    g.H = dJ8.prototype;
+    g.H.getCurrentTime = function() {
+        return this.V.getCurrentTime()
+    }
+    ;
+    g.H.getPlayerState = function() {
+        return this.V.Gn
+    }
+    ;
+    g.H.pauseVideo = function() {
+        this.V.DD("control_pause")
+    }
+    ;
+    g.H.playVideo = function() {
+        var a = this;
+        return g.f(function(I) {
+            a.V.DD("control_play");
+            return I.return()
+        })
+    }
+    ;
+    g.H.seekTo = function(a, I) {
+        this.V.DD("control_seek", a, !(I == null ? 0 : I.uw))
+    }
+    ;
+    g.H.lw = function(a) {
+        this.V.DD("control_set_audio_track", a);
+        return !0
+    }
+    ;
+    g.u(tx, g.F);
+    tx.prototype.P5 = function() {
+        this.fade.show()
+    }
+    ;
+    tx.prototype.v8 = function() {
+        this.fade.hide()
+    }
+    ;
+    tx.prototype.V = function() {
+        Kw("mdx-privacy-popup-cancel");
+        this.v8()
+    }
+    ;
+    tx.prototype.L = function() {
+        Kw("mdx-privacy-popup-confirm");
+        this.v8()
+    }
+    ;
+    g.u(ny, g.F);
+    ny.prototype.onStateChange = function(a) {
+        this.FQ(a.state)
+    }
+    ;
+    ny.prototype.FQ = function(a) {
+        if (this.api.getPresentingPlayerType() === 3) {
+            var I = {
+                RECEIVER_NAME: this.api.getOption("remote", "currentReceiver").name
+            };
+            a = g.Q(a, 128) ? g.ji("Fehler auf $RECEIVER_NAME", I) : a.isPlaying() || a.isPaused() ? g.ji("Wiedergabe \u00fcber $RECEIVER_NAME", I) : g.ji("Verbunden mit $RECEIVER_NAME", I);
+            this.updateValue("statustext", a);
+            this.fade.show()
+        } else
+            this.fade.hide()
+    }
+    ;
+    g.u(Ky, g.p4);
+    Ky.prototype.J = function() {
+        var a = this.K.getOption("remote", "receivers");
+        a && a.length > 1 && !this.K.getOption("remote", "quickCast") ? (this.sF = g.yG(a, this.V, this),
+        this.Mx(g.FX(a, this.V)),
+        a = g.O(this.K.getOption("remote", "currentReceiver")),
+        a = this.V(a),
+        this.options[a] && this.Ln(a),
+        this.enable(!0)) : this.enable(!1)
+    }
+    ;
+    Ky.prototype.V = function(a) {
+        return a.key
+    }
+    ;
+    Ky.prototype.C1 = function(a) {
+        return a === "cast-selector-receiver" ? "Streamen\u2026" : this.sF[a].name
+    }
+    ;
+    Ky.prototype.o1 = function(a) {
+        g.p4.prototype.o1.call(this, a);
+        this.K.setOption("remote", "currentReceiver", this.sF[a]);
+        this.tN.v8()
+    }
+    ;
+    g.u(Rnz, g.nu);
+    g.H = Rnz.prototype;
+    g.H.create = function() {
+        var a = this.player.X()
+          , I = g.dV(a);
+        a = {
+            device: "Desktop",
+            app: "youtube-desktop",
+            loadCastApiSetupScript: a.N("mdx_load_cast_api_bootstrap_script"),
+            enableDialLoungeToken: a.N("enable_dial_short_lived_lounge_token"),
+            enableCastLoungeToken: a.N("enable_cast_short_lived_lounge_token")
+        };
+        gb8(I, a);
+        this.subscriptions.push(g.ZM("yt-remote-before-disconnect", this.Jhw, this));
+        this.subscriptions.push(g.ZM("yt-remote-connection-change", this.sdU, this));
+        this.subscriptions.push(g.ZM("yt-remote-receiver-availability-change", this.TY, this));
+        this.subscriptions.push(g.ZM("yt-remote-auto-connect", this.ElU, this));
+        this.subscriptions.push(g.ZM("yt-remote-receiver-resumed", this.c48, this));
+        this.subscriptions.push(g.ZM("mdx-privacy-popup-confirm", this.pZx, this));
+        this.subscriptions.push(g.ZM("mdx-privacy-popup-cancel", this.z1O, this));
+        this.TY()
+    }
+    ;
+    g.H.load = function() {
+        this.player.cancelPlayback();
+        g.nu.prototype.load.call(this);
+        this.m9 = new dJ8(this);
+        this.player.iD(this.m9);
+        this.C3 = new S0j(this,this.player,this.dL);
+        var a = (a = fwG()) ? a.currentTime : 0;
+        var I = X$J() ? new GO(g.O(T2()),void 0) : null;
+        a == 0 && I && (a = Yy(ym(I)));
+        a !== 0 && this.Cv(a);
+        w$m(this, this.Gn, this.Gn);
+        this.player.dP(6)
+    }
+    ;
+    g.H.unload = function() {
+        this.player.publish("mdxautoplaycanceled");
+        this.player.fq();
+        this.DT = this.Sr;
+        g.bH(this.C3, this.dL);
+        this.dL = this.m9 = this.C3 = null;
+        g.nu.prototype.unload.call(this);
+        this.player.dP(5);
+        b0(this)
+    }
+    ;
+    g.H.Bs = function() {
+        g.tk(this.subscriptions);
+        g.nu.prototype.Bs.call(this)
+    }
+    ;
+    g.H.DD = function(a) {
+        var I = g.OS.apply(1, arguments);
+        this.loaded && this.C3.rK.apply(this.C3, [a].concat(g.A(I)))
+    }
+    ;
+    g.H.getAdState = function() {
+        return this.b7
+    }
+    ;
+    g.H.Mk = function() {
+        return this.dL ? ym(this.dL).Mk : !1
+    }
+    ;
+    g.H.n1 = function() {
+        return this.dL ? ym(this.dL).n1 : !1
+    }
+    ;
+    g.H.Cv = function(a, I) {
+        this.xK = a || 0;
+        this.player.publish("progresssync", a, I);
+        this.player.s9("onVideoProgress", a || 0)
+    }
+    ;
+    g.H.getCurrentTime = function() {
+        return this.xK
+    }
+    ;
+    g.H.getProgressState = function() {
+        var a = ym(this.dL)
+          , I = this.player.getVideoData();
+        return {
+            airingStart: 0,
+            airingEnd: 0,
+            allowSeeking: !a.jp() && this.player.MV(),
+            clipEnd: I.clipEnd,
+            clipStart: I.clipStart,
+            current: this.getCurrentTime(),
+            displayedStart: -1,
+            duration: a.getDuration(),
+            ingestionTime: a.L ? a.B + pv(a) : a.B,
+            isAtLiveHead: (a.L ? a.V + pv(a) : a.V) - this.getCurrentTime() <= 1,
+            loaded: a.D,
+            seekableEnd: a.L ? a.V + pv(a) : a.V,
+            seekableStart: a.J > 0 ? a.J + pv(a) : a.J,
+            offset: 0,
+            viewerLivestreamJoinMediaTime: 0
+        }
+    }
+    ;
+    g.H.nextVideo = function() {
+        this.dL && this.dL.nextVideo()
+    }
+    ;
+    g.H.M_ = function() {
+        this.dL && this.dL.M_()
+    }
+    ;
+    g.H.Jhw = function(a) {
+        a === 1 && (this.AP = this.dL ? ym(this.dL) : null)
+    }
+    ;
+    g.H.sdU = function() {
+        var a = X$J() ? new GO(g.O(T2()),void 0) : null;
+        if (a) {
+            var I = this.DT;
+            this.loaded && this.unload();
+            this.dL = a;
+            this.AP = null;
+            I.key !== this.Sr.key && (this.DT = I,
+            this.load())
+        } else
+            g.Kf(this.dL),
+            this.dL = null,
+            this.loaded && (this.unload(),
+            (a = this.AP) && a.videoId === this.player.getVideoData().videoId && this.player.cueVideoById(a.videoId, Yy(a)));
+        this.player.publish("videodatachange", "newdata", this.player.getVideoData(), 3)
+    }
+    ;
+    g.H.TY = function() {
+        var a = [this.Sr]
+          , I = a.concat
+          , U = cEd();
+        ln() && g.EV("yt-remote-cast-available") && U.push({
+            key: "cast-selector-receiver",
+            name: "Cast..."
+        });
+        this.sF = I.call(a, U);
+        a = lwo() || this.Sr;
+        Jx(this, a);
+        this.player.s9("onMdxReceiversChange")
+    }
+    ;
+    g.H.ElU = function() {
+        var a = g.O(lwo());
+        Jx(this, a)
+    }
+    ;
+    g.H.c48 = function() {
+        this.DT = g.O(lwo())
+    }
+    ;
+    g.H.pZx = function() {
+        this.wZ = !0;
+        b0(this);
+        q2 = !1;
+        Cy && H9(Cy, 1);
+        Cy = null
+    }
+    ;
+    g.H.z1O = function() {
+        this.wZ = !1;
+        b0(this);
+        Jx(this, this.Sr);
+        this.DT = this.Sr;
+        q2 = !1;
+        Cy = null;
+        this.player.playVideo()
+    }
+    ;
+    g.H.BB = function(a, I) {
+        switch (a) {
+        case "casting":
+            return this.loaded;
+        case "receivers":
+            return this.sF;
+        case "currentReceiver":
+            return I && (I.key === "cast-selector-receiver" ? Qbj() : Jx(this, I)),
+            this.loaded ? this.DT : this.Sr;
+        case "quickCast":
+            return this.sF.length === 2 && this.sF[1].key === "cast-selector-receiver" ? (I && Qbj(),
+            !0) : !1
+        }
+    }
+    ;
+    g.H.GJ = function() {
+        this.dL.GJ()
+    }
+    ;
+    g.H.hj = function() {
+        return !1
+    }
+    ;
+    g.H.getOptions = function() {
+        return ["casting", "receivers", "currentReceiver", "quickCast"]
+    }
+    ;
+    g.H.isLoggedIn = function() {
+        var a, I;
+        return ((a = g.D5("PLAYER_CONFIG")) == null ? void 0 : (I = a.args) == null ? void 0 : I.authuser) !== void 0 ? !0 : !(!g.D5("SESSION_INDEX") && !g.D5("LOGGED_IN"))
+    }
+    ;
+    g.th("remote", Rnz);
+}
+)(_yt_player);
