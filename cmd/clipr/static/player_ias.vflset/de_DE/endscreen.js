@@ -1,401 +1,358 @@
 (function(g) {
     var window = this;
     'use strict';
-    var yez = function(a) {
-        a.publish("autonavvisibility")
+    var iWN = function(e) {
+        e.publish("autonavvisibility")
     }
-      , Ezz = function(a, I) {
-        a.I$("onAutonavCoundownStarted", I)
+      , GEN = function(e, L) {
+        e.fS("onAutonavCoundownStarted", L)
     }
-      , dfJ = function(a) {
-        var I, U, e;
-        return a == null ? void 0 : (I = a.playerOverlays) == null ? void 0 : (U = I.playerOverlayRenderer) == null ? void 0 : (e = U.autoplay) == null ? void 0 : e.playerOverlayAutoplayRenderer
+      , gWZ = function(e) {
+        var L, c, I;
+        return e == null ? void 0 : (L = e.playerOverlays) == null ? void 0 : (c = L.playerOverlayRenderer) == null ? void 0 : (I = c.autoplay) == null ? void 0 : I.playerOverlayAutoplayRenderer
     }
-      , It = function(a, I, U) {
-        g.KC(a.element, "ytp-suggestion-set", !!I.videoId);
-        var e = I.playlistId;
-        U = I.Ub(U ? U : "mqdefault.jpg");
-        var T = null
-          , C = null;
-        I instanceof g.Px && (I.lengthText ? (T = I.lengthText || null,
-        C = I.Hl || null) : I.lengthSeconds && (T = g.XT(I.lengthSeconds),
-        C = g.XT(I.lengthSeconds, !0)));
-        var r = !!e;
-        e = r && g.Bx(e).type === "RD";
-        var q = I instanceof g.Px ? I.isLivePlayback : null
-          , x = I instanceof g.Px ? I.isUpcoming : null
-          , Z = I.author
-          , t = I.shortViewCount
-          , n = I.publishedTimeText
-          , K = []
-          , b = [];
-        Z && K.push(Z);
-        t && (K.push(t),
-        b.push(t));
-        n && b.push(n);
-        U = {
-            title: I.title,
-            author: Z,
-            author_and_views: K.join(" \u2022 "),
-            aria_label: I.ariaLabel || g.ji("$TITLE ansehen", {
-                TITLE: I.title
-            }),
-            duration: T,
-            timestamp: C,
-            url: I.ys(),
-            is_live: q,
-            is_upcoming: x,
-            is_list: r,
-            is_mix: e,
-            background: U ? "background-image: url(" + U + ")" : "",
-            views_and_publish_time: b.join(" \u2022 "),
-            autoplayAlternativeHeader: I.My
-        };
-        I instanceof g.Xk && (U.playlist_length = I.playlistLength);
-        a.update(U)
-    }
-      , sA = function(a) {
-        var I = a.X()
-          , U = I.J;
-        g.F.call(this, {
-            W: "a",
-            T: "ytp-autonav-suggestion-card",
-            S: {
+      , r6 = function(e) {
+        var L = e.S()
+          , c = L.G;
+        g.U.call(this, {
+            U: "a",
+            W: "ytp-autonav-suggestion-card",
+            N: {
                 href: "{{url}}",
-                target: U ? I.j : "",
+                target: c ? L.D : "",
                 "aria-label": "{{aria_label}}",
                 "data-is-live": "{{is_live}}",
                 "data-is-list": "{{is_list}}",
                 "data-is-mix": "{{is_mix}}",
                 "data-is-upcoming": "{{is_upcoming}}"
             },
-            Z: [{
-                W: "div",
-                ww: ["ytp-autonav-endscreen-upnext-thumbnail", "ytp-autonav-thumbnail-small"],
-                S: {
+            L: [{
+                U: "div",
+                Rq: ["ytp-autonav-endscreen-upnext-thumbnail", "ytp-autonav-thumbnail-small"],
+                N: {
                     style: "{{background}}"
                 },
-                Z: [{
-                    W: "div",
-                    S: {
+                L: [{
+                    U: "div",
+                    N: {
                         "aria-label": "{{timestamp}}"
                     },
-                    ww: ["ytp-autonav-timestamp"],
-                    AU: "{{duration}}"
+                    Rq: ["ytp-autonav-timestamp"],
+                    aq: "{{duration}}"
                 }, {
-                    W: "div",
-                    ww: ["ytp-autonav-live-stamp"],
-                    AU: "Live"
+                    U: "div",
+                    Rq: ["ytp-autonav-live-stamp"],
+                    aq: "Live"
                 }, {
-                    W: "div",
-                    ww: ["ytp-autonav-upcoming-stamp"],
-                    AU: "Demn\u00e4chst"
+                    U: "div",
+                    Rq: ["ytp-autonav-upcoming-stamp"],
+                    aq: "Demn\u00e4chst"
                 }, {
-                    W: "div",
-                    T: "ytp-autonav-list-overlay",
-                    Z: [{
-                        W: "div",
-                        T: "ytp-autonav-mix-text",
-                        AU: "Mix"
+                    U: "div",
+                    W: "ytp-autonav-list-overlay",
+                    L: [{
+                        U: "div",
+                        W: "ytp-autonav-mix-text",
+                        aq: "Mix"
                     }, {
-                        W: "div",
-                        T: "ytp-autonav-mix-icon"
+                        U: "div",
+                        W: "ytp-autonav-mix-icon"
                     }]
                 }]
             }, {
-                W: "div",
-                ww: ["ytp-autonav-endscreen-upnext-title", "ytp-autonav-title-card"],
-                AU: "{{title}}"
+                U: "div",
+                Rq: ["ytp-autonav-endscreen-upnext-title", "ytp-autonav-title-card"],
+                aq: "{{title}}"
             }, {
-                W: "div",
-                ww: ["ytp-autonav-endscreen-upnext-author", "ytp-autonav-author-card"],
-                AU: "{{author}}"
+                U: "div",
+                Rq: ["ytp-autonav-endscreen-upnext-author", "ytp-autonav-author-card"],
+                aq: "{{author}}"
             }, {
-                W: "div",
-                ww: ["ytp-autonav-endscreen-upnext-author", "ytp-autonav-view-and-date-card"],
-                AU: "{{views_and_publish_time}}"
+                U: "div",
+                Rq: ["ytp-autonav-endscreen-upnext-author", "ytp-autonav-view-and-date-card"],
+                aq: "{{views_and_publish_time}}"
             }]
         });
-        this.K = a;
+        this.V = e;
         this.suggestion = null;
-        this.V = U;
+        this.X = c;
         this.listen("click", this.onClick);
         this.listen("keypress", this.onKeyPress)
     }
-      , UA = function(a, I) {
-        I = I === void 0 ? !1 : I;
-        g.F.call(this, {
-            W: "div",
-            T: "ytp-autonav-endscreen-countdown-overlay"
+      , hX = function(e, L) {
+        L = L === void 0 ? !1 : L;
+        g.U.call(this, {
+            U: "div",
+            W: "ytp-autonav-endscreen-countdown-overlay"
         });
-        var U = this;
-        this.C = I;
-        this.cancelCommand = this.Y = void 0;
-        this.B = 0;
-        this.container = new g.F({
-            W: "div",
-            T: "ytp-autonav-endscreen-countdown-container"
+        var c = this;
+        this.T = L;
+        this.cancelCommand = this.j = void 0;
+        this.Z = 0;
+        this.container = new g.U({
+            U: "div",
+            W: "ytp-autonav-endscreen-countdown-container"
         });
-        g.E(this, this.container);
-        this.container.KO(this.element);
-        I = a.X();
-        var e = I.J;
-        this.K = a;
+        g.l(this, this.container);
+        this.container.jl(this.element);
+        L = e.S();
+        var I = L.G;
+        this.V = e;
         this.suggestion = null;
-        this.onVideoDataChange("newdata", g.O(this.K.getVideoData()));
-        this.G(a, "videodatachange", this.onVideoDataChange);
-        this.V = new g.F({
-            W: "div",
-            T: "ytp-autonav-endscreen-upnext-container",
-            S: {
+        this.onVideoDataChange("newdata", this.V.getVideoData());
+        this.C(e, "videodatachange", this.onVideoDataChange);
+        this.X = new g.U({
+            U: "div",
+            W: "ytp-autonav-endscreen-upnext-container",
+            N: {
                 "aria-label": "{{aria_label}}",
                 "data-is-live": "{{is_live}}",
                 "data-is-list": "{{is_list}}",
                 "data-is-mix": "{{is_mix}}",
                 "data-is-upcoming": "{{is_upcoming}}"
             },
-            Z: [{
-                W: "div",
-                T: "ytp-autonav-endscreen-upnext-header"
+            L: [{
+                U: "div",
+                W: "ytp-autonav-endscreen-upnext-header"
             }, {
-                W: "div",
-                T: "ytp-autonav-endscreen-upnext-alternative-header",
-                AU: "{{autoplayAlternativeHeader}}"
+                U: "div",
+                W: "ytp-autonav-endscreen-upnext-alternative-header",
+                aq: "{{autoplayAlternativeHeader}}"
             }, {
-                W: "a",
-                T: "ytp-autonav-endscreen-link-container",
-                S: {
+                U: "a",
+                W: "ytp-autonav-endscreen-link-container",
+                N: {
                     href: "{{url}}",
-                    target: e ? I.j : ""
+                    target: I ? L.D : ""
                 },
-                Z: [{
-                    W: "div",
-                    T: "ytp-autonav-endscreen-upnext-thumbnail",
-                    S: {
+                L: [{
+                    U: "div",
+                    W: "ytp-autonav-endscreen-upnext-thumbnail",
+                    N: {
                         style: "{{background}}"
                     },
-                    Z: [{
-                        W: "div",
-                        S: {
+                    L: [{
+                        U: "div",
+                        N: {
                             "aria-label": "{{timestamp}}"
                         },
-                        ww: ["ytp-autonav-timestamp"],
-                        AU: "{{duration}}"
+                        Rq: ["ytp-autonav-timestamp"],
+                        aq: "{{duration}}"
                     }, {
-                        W: "div",
-                        ww: ["ytp-autonav-live-stamp"],
-                        AU: "Live"
+                        U: "div",
+                        Rq: ["ytp-autonav-live-stamp"],
+                        aq: "Live"
                     }, {
-                        W: "div",
-                        ww: ["ytp-autonav-upcoming-stamp"],
-                        AU: "Demn\u00e4chst"
+                        U: "div",
+                        Rq: ["ytp-autonav-upcoming-stamp"],
+                        aq: "Demn\u00e4chst"
                     }]
                 }, {
-                    W: "div",
-                    T: "ytp-autonav-endscreen-video-info",
-                    Z: [{
-                        W: "div",
-                        T: "ytp-autonav-endscreen-premium-badge"
+                    U: "div",
+                    W: "ytp-autonav-endscreen-video-info",
+                    L: [{
+                        U: "div",
+                        W: "ytp-autonav-endscreen-premium-badge"
                     }, {
-                        W: "div",
-                        T: "ytp-autonav-endscreen-upnext-title",
-                        AU: "{{title}}"
+                        U: "div",
+                        W: "ytp-autonav-endscreen-upnext-title",
+                        aq: "{{title}}"
                     }, {
-                        W: "div",
-                        T: "ytp-autonav-endscreen-upnext-author",
-                        AU: "{{author}}"
+                        U: "div",
+                        W: "ytp-autonav-endscreen-upnext-author",
+                        aq: "{{author}}"
                     }, {
-                        W: "div",
-                        T: "ytp-autonav-view-and-date",
-                        AU: "{{views_and_publish_time}}"
+                        U: "div",
+                        W: "ytp-autonav-view-and-date",
+                        aq: "{{views_and_publish_time}}"
                     }, {
-                        W: "div",
-                        T: "ytp-autonav-author-and-view",
-                        AU: "{{author_and_views}}"
+                        U: "div",
+                        W: "ytp-autonav-author-and-view",
+                        aq: "{{author_and_views}}"
                     }]
                 }]
             }]
         });
-        g.E(this, this.V);
-        this.V.KO(this.container.element);
-        e || this.G(this.V.Ws("ytp-autonav-endscreen-link-container"), "click", this.CA);
-        this.K.createClientVe(this.container.element, this, 115127);
-        this.K.createClientVe(this.V.Ws("ytp-autonav-endscreen-link-container"), this, 115128);
-        this.overlay = new g.F({
-            W: "div",
-            T: "ytp-autonav-overlay"
+        g.l(this, this.X);
+        this.X.jl(this.container.element);
+        I || this.C(this.X.q0("ytp-autonav-endscreen-link-container"), "click", this.Du);
+        this.V.createClientVe(this.container.element, this, 115127);
+        this.V.createClientVe(this.X.q0("ytp-autonav-endscreen-link-container"), this, 115128);
+        this.overlay = new g.U({
+            U: "div",
+            W: "ytp-autonav-overlay"
         });
-        g.E(this, this.overlay);
-        this.overlay.KO(this.container.element);
-        this.L = new g.F({
-            W: "div",
-            T: "ytp-autonav-endscreen-button-container"
+        g.l(this, this.overlay);
+        this.overlay.jl(this.container.element);
+        this.K = new g.U({
+            U: "div",
+            W: "ytp-autonav-endscreen-button-container"
         });
-        g.E(this, this.L);
-        this.L.KO(this.container.element);
-        this.cancelButton = new g.F({
-            W: "button",
-            ww: ["ytp-autonav-endscreen-upnext-button", "ytp-autonav-endscreen-upnext-cancel-button", I.N("web_modern_buttons") ? "ytp-autonav-endscreen-upnext-button-rounded" : ""],
-            S: {
+        g.l(this, this.K);
+        this.K.jl(this.container.element);
+        this.cancelButton = new g.U({
+            U: "button",
+            Rq: ["ytp-autonav-endscreen-upnext-button", "ytp-autonav-endscreen-upnext-cancel-button", L.Y("web_modern_buttons") ? "ytp-autonav-endscreen-upnext-button-rounded" : ""],
+            N: {
                 "aria-label": "Autoplay abbrechen"
             },
-            AU: "Abbrechen"
+            aq: "Abbrechen"
         });
-        g.E(this, this.cancelButton);
-        this.cancelButton.KO(this.L.element);
-        this.cancelButton.listen("click", this.Zs, this);
-        this.K.createClientVe(this.cancelButton.element, this, 115129);
-        this.playButton = new g.F({
-            W: "a",
-            ww: ["ytp-autonav-endscreen-upnext-button", "ytp-autonav-endscreen-upnext-play-button", I.N("web_modern_buttons") ? "ytp-autonav-endscreen-upnext-button-rounded" : ""],
-            S: {
+        g.l(this, this.cancelButton);
+        this.cancelButton.jl(this.K.element);
+        this.cancelButton.listen("click", this.Mg, this);
+        this.V.createClientVe(this.cancelButton.element, this, 115129);
+        this.playButton = new g.U({
+            U: "a",
+            Rq: ["ytp-autonav-endscreen-upnext-button", "ytp-autonav-endscreen-upnext-play-button", L.Y("web_modern_buttons") ? "ytp-autonav-endscreen-upnext-button-rounded" : ""],
+            N: {
                 href: "{{url}}",
                 role: "button",
                 "aria-label": "N\u00e4chstes Video starten"
             },
-            AU: "Jetzt spielen"
+            aq: "Jetzt abspielen"
         });
-        g.E(this, this.playButton);
-        this.playButton.KO(this.L.element);
-        this.playButton.listen("click", this.CA, this);
-        this.K.createServerVe(this.playButton.element, this.playButton, !0);
-        (I = this.K.getVideoData()) && RPz(this, I);
-        this.J = new g.Dy(function() {
-            wfJ(U)
+        g.l(this, this.playButton);
+        this.playButton.jl(this.K.element);
+        this.playButton.listen("click", this.Du, this);
+        this.V.createServerVe(this.playButton.element, this.playButton, !0);
+        (L = this.V.getVideoData()) && kEw(this, L);
+        this.G = new g.j9(function() {
+            D3J(c)
         }
         ,500);
-        g.E(this, this.J);
-        this.Nd();
-        this.G(a, "autonavvisibility", this.Nd);
-        this.K.N("web_autonav_color_transition") && (this.G(a, "autonavchange", this.PN),
-        this.G(a, "onAutonavCoundownStarted", this.Aha))
+        g.l(this, this.G);
+        this.Eb();
+        this.C(e, "autonavvisibility", this.Eb);
+        this.V.Y("web_autonav_color_transition") && (this.C(e, "autonavchange", this.oz),
+        this.C(e, "onAutonavCoundownStarted", this.T_q))
     }
-      , ey = function(a) {
-        var I = a.K.lZ(!0, a.K.isFullscreen());
-        g.KC(a.container.element, "ytp-autonav-endscreen-small-mode", a.JS(I));
-        g.KC(a.container.element, "ytp-autonav-endscreen-is-premium", !!a.suggestion && !!a.suggestion.NV6);
-        g.KC(a.K.getRootNode(), "ytp-autonav-endscreen-cancelled-state", !a.K.Go());
-        g.KC(a.K.getRootNode(), "countdown-running", a.P1());
-        g.KC(a.container.element, "ytp-player-content", a.K.Go());
-        g.Gr(a.overlay.element, {
-            width: I.width + "px"
+      , RE = function(e) {
+        var L = e.V.CB(!0, e.V.isFullscreen());
+        g.cY(e.container.element, "ytp-autonav-endscreen-small-mode", e.ge(L));
+        g.cY(e.container.element, "ytp-autonav-endscreen-is-premium", !!e.suggestion && !!e.suggestion.lml);
+        g.cY(e.V.getRootNode(), "ytp-autonav-endscreen-cancelled-state", !e.V.Va());
+        g.cY(e.V.getRootNode(), "countdown-running", e.wp());
+        g.cY(e.container.element, "ytp-player-content", e.V.Va());
+        g.l3(e.overlay.element, {
+            width: L.width + "px"
         });
-        if (!a.P1()) {
-            a.K.Go() ? FB8(a, Math.round(mfz(a) / 1E3)) : FB8(a);
-            I = !!a.suggestion && !!a.suggestion.My;
-            var U = a.K.Go() || !I;
-            g.KC(a.container.element, "ytp-autonav-endscreen-upnext-alternative-header-only", !U && I);
-            g.KC(a.container.element, "ytp-autonav-endscreen-upnext-no-alternative-header", U && !I);
-            a.L.Vx(a.K.Go());
-            g.KC(a.element, "ytp-enable-w2w-color-transitions", QR4(a))
+        if (!e.wp()) {
+            e.V.Va() ? wOU(e, Math.round(Jpe(e) / 1E3)) : wOU(e);
+            L = !!e.suggestion && !!e.suggestion.Lw;
+            var c = e.V.Va() || !L;
+            g.cY(e.container.element, "ytp-autonav-endscreen-upnext-alternative-header-only", !c && L);
+            g.cY(e.container.element, "ytp-autonav-endscreen-upnext-no-alternative-header", c && !L);
+            e.K.i5(e.V.Va());
+            g.cY(e.element, "ytp-enable-w2w-color-transitions", VW7(e))
         }
     }
-      , wfJ = function(a) {
-        var I = mfz(a)
-          , U = Math
-          , e = U.min;
-        var T = a.B ? Date.now() - a.B : 0;
-        U = e.call(U, T, I);
-        FB8(a, Math.ceil((I - U) / 1E3));
-        I - U <= 500 && a.P1() ? a.select(!0) : a.P1() && a.J.start()
+      , D3J = function(e) {
+        var L = Jpe(e)
+          , c = Math
+          , I = c.min;
+        var B = e.Z ? Date.now() - e.Z : 0;
+        c = I.call(c, B, L);
+        wOU(e, Math.ceil((L - c) / 1E3));
+        L - c <= 500 && e.wp() ? e.select(!0) : e.wp() && e.G.start()
     }
-      , mfz = function(a) {
-        if (a.K.isFullscreen()) {
-            var I;
-            a = (I = a.K.getVideoData()) == null ? void 0 : I.Rw;
-            return a === -1 || a === void 0 ? 8E3 : a
+      , Jpe = function(e) {
+        if (e.V.isFullscreen()) {
+            var L;
+            e = (L = e.V.getVideoData()) == null ? void 0 : L.q3;
+            return e === -1 || e === void 0 ? 8E3 : e
         }
-        return a.K.xq() >= 0 ? a.K.xq() : g.ki(a.K.X().experiments, "autoplay_time") || 1E4
+        return e.V.VE() >= 0 ? e.V.VE() : g.X3(e.V.S().experiments, "autoplay_time") || 1E4
     }
-      , RPz = function(a, I) {
-        I = I.getWatchNextResponse();
-        var U, e;
-        I = (U = dfJ(I)) == null ? void 0 : (e = U.nextButton) == null ? void 0 : e.buttonRenderer;
-        a.Y = I == null ? void 0 : I.navigationEndpoint;
-        U = I == null ? void 0 : I.trackingParams;
-        a.playButton && U && a.K.setTrackingParams(a.playButton.element, U)
+      , kEw = function(e, L) {
+        L = L.getWatchNextResponse();
+        var c, I;
+        L = (c = gWZ(L)) == null ? void 0 : (I = c.nextButton) == null ? void 0 : I.buttonRenderer;
+        e.j = L == null ? void 0 : L.navigationEndpoint;
+        c = L == null ? void 0 : L.trackingParams;
+        e.playButton && c && e.V.setTrackingParams(e.playButton.element, c)
     }
-      , QR4 = function(a) {
-        var I;
-        return !((I = a.K.getVideoData()) == null || !I.watchToWatchTransitionRenderer)
+      , VW7 = function(e) {
+        var L;
+        return !((L = e.V.getVideoData()) == null || !L.watchToWatchTransitionRenderer)
     }
-      , FB8 = function(a, I) {
-        I = I === void 0 ? -1 : I;
-        a = a.V.Ws("ytp-autonav-endscreen-upnext-header");
-        g.sJ(a);
-        if (I >= 0) {
-            I = String(I);
-            var U = "N\u00e4chstes Video in $SECONDS".match(RegExp("\\$SECONDS", "gi"))[0]
-              , e = "N\u00e4chstes Video in $SECONDS".indexOf(U);
-            if (e >= 0) {
-                a.appendChild(g.aA("N\u00e4chstes Video in $SECONDS".slice(0, e)));
-                var T = g.vA("span");
-                g.H1(T, "ytp-autonav-endscreen-upnext-header-countdown-number");
-                g.CM(T, I);
-                a.appendChild(T);
-                a.appendChild(g.aA("N\u00e4chstes Video in $SECONDS".slice(e + U.length)));
+      , wOU = function(e, L) {
+        L = L === void 0 ? -1 : L;
+        e = e.X.q0("ytp-autonav-endscreen-upnext-header");
+        g.Ml(e);
+        if (L >= 0) {
+            L = String(L);
+            var c = "N\u00e4chstes Video in $SECONDS".match(RegExp("\\$SECONDS", "gi"))[0]
+              , I = "N\u00e4chstes Video in $SECONDS".indexOf(c);
+            if (I >= 0) {
+                e.appendChild(g.T$("N\u00e4chstes Video in $SECONDS".slice(0, I)));
+                var B = g.ql("span");
+                g.XV(B, "ytp-autonav-endscreen-upnext-header-countdown-number");
+                g.fU(B, L);
+                e.appendChild(B);
+                e.appendChild(g.T$("N\u00e4chstes Video in $SECONDS".slice(I + c.length)));
                 return
             }
         }
-        g.CM(a, "N\u00e4chstes Video")
+        g.fU(e, "N\u00e4chstes Video")
     }
-      , Tz = function(a, I) {
-        g.F.call(this, {
-            W: "div",
-            ww: ["html5-endscreen", "ytp-player-content", I || "base-endscreen"]
+      , u9 = function(e, L) {
+        g.U.call(this, {
+            U: "div",
+            Rq: ["html5-endscreen", "ytp-player-content", L || "base-endscreen"]
         });
         this.created = !1;
-        this.player = a
+        this.player = e
     }
-      , CR = function(a) {
-        g.F.call(this, {
-            W: "div",
-            ww: ["ytp-upnext", "ytp-player-content"],
-            S: {
+      , tX = function(e) {
+        g.U.call(this, {
+            U: "div",
+            Rq: ["ytp-upnext", "ytp-player-content"],
+            N: {
                 "aria-label": "{{aria_label}}"
             },
-            Z: [{
-                W: "div",
-                T: "ytp-cued-thumbnail-overlay-image",
-                S: {
+            L: [{
+                U: "div",
+                W: "ytp-cued-thumbnail-overlay-image",
+                N: {
                     style: "{{background}}"
                 }
             }, {
-                W: "span",
-                T: "ytp-upnext-top",
-                Z: [{
-                    W: "span",
-                    T: "ytp-upnext-header",
-                    AU: "N\u00e4chstes Video"
+                U: "span",
+                W: "ytp-upnext-top",
+                L: [{
+                    U: "span",
+                    W: "ytp-upnext-header",
+                    aq: "N\u00e4chstes Video"
                 }, {
-                    W: "span",
-                    T: "ytp-upnext-title",
-                    AU: "{{title}}"
+                    U: "span",
+                    W: "ytp-upnext-title",
+                    aq: "{{title}}"
                 }, {
-                    W: "span",
-                    T: "ytp-upnext-author",
-                    AU: "{{author}}"
+                    U: "span",
+                    W: "ytp-upnext-author",
+                    aq: "{{author}}"
                 }]
             }, {
-                W: "a",
-                T: "ytp-upnext-autoplay-icon",
-                S: {
+                U: "a",
+                W: "ytp-upnext-autoplay-icon",
+                N: {
                     role: "button",
                     href: "{{url}}",
                     "aria-label": "N\u00e4chstes Video starten"
                 },
-                Z: [{
-                    W: "svg",
-                    S: {
+                L: [{
+                    U: "svg",
+                    N: {
                         height: "100%",
                         version: "1.1",
                         viewBox: "0 0 72 72",
                         width: "100%"
                     },
-                    Z: [{
-                        W: "circle",
-                        T: "ytp-svg-autoplay-circle",
-                        S: {
+                    L: [{
+                        U: "circle",
+                        W: "ytp-svg-autoplay-circle",
+                        N: {
                             cx: "36",
                             cy: "36",
                             fill: "#fff",
@@ -403,9 +360,9 @@
                             r: "31.5"
                         }
                     }, {
-                        W: "circle",
-                        T: "ytp-svg-autoplay-ring",
-                        S: {
+                        U: "circle",
+                        W: "ytp-svg-autoplay-ring",
+                        N: {
                             cx: "-36",
                             cy: "36",
                             "fill-opacity": "0",
@@ -417,1535 +374,1329 @@
                             transform: "rotate(-90)"
                         }
                     }, {
-                        W: "path",
-                        T: "ytp-svg-fill",
-                        S: {
+                        U: "path",
+                        W: "ytp-svg-fill",
+                        N: {
                             d: "M 24,48 41,36 24,24 V 48 z M 44,24 v 24 h 4 V 24 h -4 z"
                         }
                     }]
                 }]
             }, {
-                W: "span",
-                T: "ytp-upnext-bottom",
-                Z: [{
-                    W: "span",
-                    T: "ytp-upnext-cancel"
+                U: "span",
+                W: "ytp-upnext-bottom",
+                L: [{
+                    U: "span",
+                    W: "ytp-upnext-cancel"
                 }, {
-                    W: "span",
-                    T: "ytp-upnext-paused",
-                    AU: "Autoplay ist pausiert"
+                    U: "span",
+                    W: "ytp-upnext-paused",
+                    aq: "Autoplay ist pausiert"
                 }]
             }]
         });
-        this.api = a;
+        this.api = e;
         this.cancelButton = null;
-        this.Y = this.Ws("ytp-svg-autoplay-ring");
-        this.B = this.notification = this.V = this.suggestion = null;
-        this.J = new g.Dy(this.FU,5E3,this);
-        this.L = 0;
-        var I = this.Ws("ytp-upnext-cancel");
-        this.cancelButton = new g.F({
-            W: "button",
-            ww: ["ytp-upnext-cancel-button", "ytp-button"],
-            S: {
+        this.j = this.q0("ytp-svg-autoplay-ring");
+        this.Z = this.notification = this.X = this.suggestion = null;
+        this.G = new g.j9(this.aG,5E3,this);
+        this.K = 0;
+        var L = this.q0("ytp-upnext-cancel");
+        this.cancelButton = new g.U({
+            U: "button",
+            Rq: ["ytp-upnext-cancel-button", "ytp-button"],
+            N: {
                 tabindex: "0",
                 "aria-label": "Autoplay abbrechen"
             },
-            AU: "Abbrechen"
+            aq: "Abbrechen"
         });
-        g.E(this, this.cancelButton);
-        this.cancelButton.listen("click", this.SR, this);
-        this.cancelButton.KO(I);
+        g.l(this, this.cancelButton);
+        this.cancelButton.listen("click", this.Ps, this);
+        this.cancelButton.jl(L);
         this.cancelButton && this.api.createClientVe(this.cancelButton.element, this, 115129);
-        g.E(this, this.J);
+        g.l(this, this.G);
         this.api.createClientVe(this.element, this, 18788);
-        I = this.Ws("ytp-upnext-autoplay-icon");
-        this.G(I, "click", this.Fa);
-        this.api.createClientVe(I, this, 115130);
-        this.Md();
-        this.G(a, "autonavvisibility", this.Md);
-        this.G(a, "mdxnowautoplaying", this.lNg);
-        this.G(a, "mdxautoplaycanceled", this.xDs);
-        g.KC(this.element, "ytp-upnext-mobile", this.api.X().L)
+        L = this.q0("ytp-upnext-autoplay-icon");
+        this.C(L, "click", this.Cc);
+        this.api.createClientVe(L, this, 115130);
+        this.XZ();
+        this.C(e, "autonavvisibility", this.XZ);
+        this.C(e, "mdxnowautoplaying", this.ZfW);
+        this.C(e, "mdxautoplaycanceled", this.e$d);
+        g.cY(this.element, "ytp-upnext-mobile", this.api.S().K)
     }
-      , zP8 = function(a, I) {
-        if (I)
-            return I;
-        if (a.api.isFullscreen()) {
-            var U;
-            a = (U = a.api.getVideoData()) == null ? void 0 : U.Rw;
-            return a === -1 || a === void 0 ? 8E3 : a
+      , CT9 = function(e, L) {
+        if (L)
+            return L;
+        if (e.api.isFullscreen()) {
+            var c;
+            e = (c = e.api.getVideoData()) == null ? void 0 : c.q3;
+            return e === -1 || e === void 0 ? 8E3 : e
         }
-        return a.api.xq() >= 0 ? a.api.xq() : g.ki(a.api.X().experiments, "autoplay_time") || 1E4
+        return e.api.VE() >= 0 ? e.api.VE() : g.X3(e.api.S().experiments, "autoplay_time") || 1E4
     }
-      , hPG = function(a, I) {
-        I = zP8(a, I);
-        var U = Math
-          , e = U.min;
-        var T = (0,
-        g.w)() - a.L;
-        U = e.call(U, T, I);
-        I = I === 0 ? 1 : Math.min(U / I, 1);
-        a.Y.setAttribute("stroke-dashoffset", "" + -211 * (I + 1));
-        I >= 1 && a.P1() && a.api.getPresentingPlayerType() !== 3 ? a.select(!0) : a.P1() && a.V.start()
+      , ang = function(e, L) {
+        L = CT9(e, L);
+        var c = Math
+          , I = c.min;
+        var B = (0,
+        g.zI)() - e.K;
+        c = I.call(c, B, L);
+        L = L === 0 ? 1 : Math.min(c / L, 1);
+        e.j.setAttribute("stroke-dashoffset", "" + -211 * (L + 1));
+        L >= 1 && e.wp() && e.api.getPresentingPlayerType() !== 3 ? e.select(!0) : e.wp() && e.X.start()
     }
-      , r_ = function(a) {
-        Tz.call(this, a, "autonav-endscreen");
+      , O0 = function(e) {
+        u9.call(this, e, "autonav-endscreen");
         this.overlay = this.videoData = null;
-        this.table = new g.F({
-            W: "div",
-            T: "ytp-suggestion-panel",
-            Z: [{
-                W: "div",
-                ww: ["ytp-autonav-endscreen-upnext-header", "ytp-autonav-endscreen-more-videos"],
-                AU: "Weitere Videos"
+        this.table = new g.U({
+            U: "div",
+            W: "ytp-suggestion-panel",
+            L: [{
+                U: "div",
+                Rq: ["ytp-autonav-endscreen-upnext-header", "ytp-autonav-endscreen-more-videos"],
+                aq: "Weitere Videos"
             }]
         });
-        this.D = new g.F({
-            W: "div",
-            T: "ytp-suggestions-container"
+        this.J = new g.U({
+            U: "div",
+            W: "ytp-suggestions-container"
         });
         this.videos = [];
-        this.B = null;
-        this.Y = this.C = !1;
-        this.L = new UA(this.player);
-        g.E(this, this.L);
-        this.L.KO(this.element);
-        a.getVideoData().dA ? this.V = this.L : (this.V = new CR(a),
-        g.w4(this.player, this.V.element, 4),
-        g.E(this, this.V));
-        this.overlay = new g.F({
-            W: "div",
-            T: "ytp-autonav-overlay-cancelled-state"
+        this.Z = null;
+        this.j = this.T = !1;
+        this.K = new hX(this.player);
+        g.l(this, this.K);
+        this.K.jl(this.element);
+        e.getVideoData().f9 ? this.X = this.K : (this.X = new tX(e),
+        g.Uq(this.player, this.X.element, 4),
+        g.l(this, this.X));
+        this.overlay = new g.U({
+            U: "div",
+            W: "ytp-autonav-overlay-cancelled-state"
         });
-        g.E(this, this.overlay);
-        this.overlay.KO(this.element);
-        this.J = new g.Ru(this);
-        g.E(this, this.J);
-        g.E(this, this.table);
-        this.table.KO(this.element);
+        g.l(this, this.overlay);
+        this.overlay.jl(this.element);
+        this.G = new g.zn(this);
+        g.l(this, this.G);
+        g.l(this, this.table);
+        this.table.jl(this.element);
         this.table.show();
-        g.E(this, this.D);
-        this.D.KO(this.table.element);
+        g.l(this, this.J);
+        this.J.jl(this.table.element);
         this.hide()
     }
-      , Hp = function(a) {
-        var I = a.Go();
-        I !== a.Y && (a.Y = I,
-        yez(a.player),
-        a.Y ? (a.L !== a.V && a.L.hide(),
-        a.table.hide()) : (a.L !== a.V && a.L.show(),
-        a.table.show()))
+      , qa = function(e) {
+        var L = e.Va();
+        L !== e.j && (e.j = L,
+        iWN(e.player),
+        e.j ? (e.K !== e.X && e.K.hide(),
+        e.table.hide()) : (e.K !== e.X && e.K.show(),
+        e.table.show()))
     }
-      , qs = function(a, I) {
-        g.F.call(this, {
-            W: "button",
-            ww: ["ytp-watch-on-youtube-button", "ytp-button"],
-            AU: "{{content}}"
-        });
-        this.K = a;
-        this.buttonType = this.buttonType = I;
-        this.e$();
-        this.buttonType === 2 && g.x5(this.element, "ytp-continue-watching-button");
-        this.listen("click", this.onClick);
-        this.listen("videodatachange", this.e$);
-        this.Vx(!0)
-    }
-      , xA = function(a, I) {
-        Tz.call(this, a, "embeds-lite-endscreen");
-        this.K = a;
-        this.V = I;
-        this.K.createClientVe(this.element, this, 156943);
-        this.watchButton = new qs(a,2);
-        g.E(this, this.watchButton);
-        this.watchButton.KO(this.element);
-        this.hide()
-    }
-      , Z8 = function(a) {
-        var I = a.X()
-          , U = g.GK || g.pg ? {
-            style: "will-change: opacity"
-        } : void 0
-          , e = I.J
-          , T = ["ytp-modern-videowall-still"];
-        I.L && T.push("ytp-videowall-show-text");
-        g.F.call(this, {
-            W: "a",
-            ww: T,
-            S: {
-                href: "{{url}}",
-                target: e ? I.j : "",
-                "aria-label": "{{aria_label}}",
-                "data-is-live": "{{is_live}}",
-                "data-is-list": "{{is_list}}",
-                "data-is-mix": "{{is_mix}}"
-            },
-            Z: [{
-                W: "div",
-                T: "ytp-modern-videowall-still-image",
-                S: {
-                    style: "{{background}}"
-                },
-                Z: [{
-                    W: "span",
-                    T: "ytp-modern-videowall-still-info-duration",
-                    AU: "{{duration}}"
-                }]
-            }, {
-                W: "span",
-                T: "ytp-modern-videowall-still-info",
-                S: {
-                    "aria-hidden": "true"
-                },
-                Z: [{
-                    W: "span",
-                    T: "ytp-modern-videowall-still-info-bg",
-                    Z: [{
-                        W: "span",
-                        T: "ytp-modern-videowall-still-info-content",
-                        S: U,
-                        Z: [{
-                            W: "span",
-                            T: "ytp-modern-videowall-still-info-title",
-                            AU: "{{title}}"
-                        }, {
-                            W: "span",
-                            T: "ytp-modern-videowall-still-info-author",
-                            AU: "{{author_and_views}}"
-                        }, {
-                            W: "span",
-                            T: "ytp-modern-videowall-still-info-live",
-                            AU: "Live"
-                        }]
-                    }]
-                }]
-            }, {
-                W: "span",
-                ww: ["ytp-modern-videowall-still-listlabel-regular", "ytp-modern-videowall-still-listlabel"],
-                S: {
-                    "aria-hidden": "true"
-                },
-                Z: [{
-                    W: "span",
-                    T: "ytp-modern-videowall-still-listlabel-icon"
-                }, "Playlist", {
-                    W: "span",
-                    T: "ytp-modern-videowall-still-listlabel-length",
-                    Z: [" (", {
-                        W: "span",
-                        AU: "{{playlist_length}}"
-                    }, ")"]
-                }]
-            }, {
-                W: "span",
-                ww: ["ytp-modern-videowall-still-listlabel-mix", "ytp-modern-videowall-still-listlabel"],
-                S: {
-                    "aria-hidden": "true"
-                },
-                Z: [{
-                    W: "span",
-                    T: "ytp-modern-videowall-still-listlabel-mix-icon"
-                }, "Mix", {
-                    W: "span",
-                    T: "ytp-modern-videowall-still-listlabel-length",
-                    AU: " (50+)"
-                }]
-            }]
-        });
-        this.suggestion = null;
-        this.L = e;
-        this.api = a;
-        this.V = new g.Ru(this);
-        g.E(this, this.V);
-        this.listen("click", this.onClick);
-        this.listen("keypress", this.onKeyPress);
-        this.V.G(a, "videodatachange", this.onVideoDataChange);
-        a.createServerVe(this.element, this);
-        this.onVideoDataChange()
-    }
-      , NeJ = function(a) {
-        Tz.call(this, a, "videowall-endscreen");
-        var I = this;
-        this.K = a;
+      , NjZ = function(e) {
+        u9.call(this, e, "videowall-endscreen");
+        var L = this;
+        this.V = e;
         this.stills = [];
-        this.B = this.videoData = null;
-        this.J = this.C = !1;
-        this.D = null;
-        g.x5(this.element, "modern-videowall-endscreen");
-        this.L = new g.Ru(this);
-        g.E(this, this.L);
-        this.Y = new g.Dy(function() {
-            g.x5(I.element, "ytp-show-tiles")
+        this.Z = this.videoData = null;
+        this.G = this.T = !1;
+        this.J = null;
+        g.Y4(this.element, "modern-videowall-endscreen");
+        this.K = new g.zn(this);
+        g.l(this, this.K);
+        this.j = new g.j9(function() {
+            g.Y4(L.element, "ytp-show-tiles")
         }
         ,0);
-        g.E(this, this.Y);
-        this.table = new g.kp({
-            W: "div",
-            T: "ytp-modern-endscreen-content"
+        g.l(this, this.j);
+        this.table = new g.eH({
+            U: "div",
+            W: "ytp-modern-endscreen-content"
         });
-        g.E(this, this.table);
-        this.table.KO(this.element);
-        a.getVideoData().dA ? this.V = new UA(a,!0) : this.V = new CR(a);
-        g.E(this, this.V);
-        g.w4(this.player, this.V.element, 4);
-        a.createClientVe(this.element, this, 158789);
+        g.l(this, this.table);
+        this.table.jl(this.element);
+        e.getVideoData().f9 ? this.X = new hX(e,!0) : this.X = new tX(e);
+        g.l(this, this.X);
+        g.Uq(this.player, this.X.element, 4);
+        e.createClientVe(this.element, this, 158789);
         this.hide()
     }
-      , t8 = function(a) {
-        return g.FW(a.player) && a.NH() && !a.B
+      , Ts = function(e) {
+        return g.Eq(e.player) && e.HK() && !e.Z
     }
-      , nR = function(a) {
-        var I = a.Go();
-        I !== a.C && (a.C = I,
-        yez(a.player))
+      , WV = function(e) {
+        var L = e.Va();
+        L !== e.T && (e.T = L,
+        iWN(e.player))
     }
-      , oz4 = function(a) {
-        Tz.call(this, a, "subscribecard-endscreen");
-        this.V = new g.F({
-            W: "div",
-            T: "ytp-subscribe-card",
-            Z: [{
-                W: "img",
-                T: "ytp-author-image",
-                S: {
+      , m39 = function(e) {
+        u9.call(this, e, "subscribecard-endscreen");
+        this.X = new g.U({
+            U: "div",
+            W: "ytp-subscribe-card",
+            L: [{
+                U: "img",
+                W: "ytp-author-image",
+                N: {
                     src: "{{profilePicture}}"
                 }
             }, {
-                W: "div",
-                T: "ytp-subscribe-card-right",
-                Z: [{
-                    W: "div",
-                    T: "ytp-author-name",
-                    AU: "{{author}}"
+                U: "div",
+                W: "ytp-subscribe-card-right",
+                L: [{
+                    U: "div",
+                    W: "ytp-author-name",
+                    aq: "{{author}}"
                 }, {
-                    W: "div",
-                    T: "html5-subscribe-button-container"
+                    U: "div",
+                    W: "html5-subscribe-button-container"
                 }]
             }]
         });
-        g.E(this, this.V);
-        this.V.KO(this.element);
-        var I = a.getVideoData();
-        this.subscribeButton = new g.QL("Abonnieren",null,"Abo beenden",null,!0,!1,I.Y2,I.subscribed,"trailer-endscreen",null,a,!1);
-        g.E(this, this.subscribeButton);
-        this.subscribeButton.KO(this.V.Ws("html5-subscribe-button-container"));
-        this.G(a, "videodatachange", this.Qa);
-        this.Qa();
+        g.l(this, this.X);
+        this.X.jl(this.element);
+        var L = e.getVideoData();
+        this.subscribeButton = new g.uo("Abonnieren",null,"Abo beenden",null,!0,!1,L.hR,L.subscribed,"trailer-endscreen",null,e,!1);
+        g.l(this, this.subscribeButton);
+        this.subscribeButton.jl(this.X.q0("html5-subscribe-button-container"));
+        this.C(e, "videodatachange", this.OW);
+        this.OW();
         this.hide()
     }
-      , KR = function(a) {
-        var I = a.X()
-          , U = g.GK || g.pg ? {
+      , Ma = function(e) {
+        var L = e.S()
+          , c = g.q8 || g.QG ? {
             style: "will-change: opacity"
         } : void 0
-          , e = I.J
-          , T = ["ytp-videowall-still"];
-        I.L && T.push("ytp-videowall-show-text");
-        g.F.call(this, {
-            W: "a",
-            ww: T,
-            S: {
+          , I = L.G
+          , B = ["ytp-videowall-still"];
+        L.K && B.push("ytp-videowall-show-text");
+        g.U.call(this, {
+            U: "a",
+            Rq: B,
+            N: {
                 href: "{{url}}",
-                target: e ? I.j : "",
+                target: I ? L.D : "",
                 "aria-label": "{{aria_label}}",
                 "data-is-live": "{{is_live}}",
                 "data-is-list": "{{is_list}}",
                 "data-is-mix": "{{is_mix}}"
             },
-            Z: [{
-                W: "div",
-                T: "ytp-videowall-still-image",
-                S: {
+            L: [{
+                U: "div",
+                W: "ytp-videowall-still-image",
+                N: {
                     style: "{{background}}"
                 }
             }, {
-                W: "span",
-                T: "ytp-videowall-still-info",
-                S: {
+                U: "span",
+                W: "ytp-videowall-still-info",
+                N: {
                     "aria-hidden": "true"
                 },
-                Z: [{
-                    W: "span",
-                    T: "ytp-videowall-still-info-bg",
-                    Z: [{
-                        W: "span",
-                        T: "ytp-videowall-still-info-content",
-                        S: U,
-                        Z: [{
-                            W: "span",
-                            T: "ytp-videowall-still-info-title",
-                            AU: "{{title}}"
+                L: [{
+                    U: "span",
+                    W: "ytp-videowall-still-info-bg",
+                    L: [{
+                        U: "span",
+                        W: "ytp-videowall-still-info-content",
+                        N: c,
+                        L: [{
+                            U: "span",
+                            W: "ytp-videowall-still-info-title",
+                            aq: "{{title}}"
                         }, {
-                            W: "span",
-                            T: "ytp-videowall-still-info-author",
-                            AU: "{{author_and_views}}"
+                            U: "span",
+                            W: "ytp-videowall-still-info-author",
+                            aq: "{{author_and_views}}"
                         }, {
-                            W: "span",
-                            T: "ytp-videowall-still-info-live",
-                            AU: "Live"
+                            U: "span",
+                            W: "ytp-videowall-still-info-live",
+                            aq: "Live"
                         }, {
-                            W: "span",
-                            T: "ytp-videowall-still-info-duration",
-                            AU: "{{duration}}"
+                            U: "span",
+                            W: "ytp-videowall-still-info-duration",
+                            aq: "{{duration}}"
                         }]
                     }]
                 }]
             }, {
-                W: "span",
-                ww: ["ytp-videowall-still-listlabel-regular", "ytp-videowall-still-listlabel"],
-                S: {
+                U: "span",
+                Rq: ["ytp-videowall-still-listlabel-regular", "ytp-videowall-still-listlabel"],
+                N: {
                     "aria-hidden": "true"
                 },
-                Z: [{
-                    W: "span",
-                    T: "ytp-videowall-still-listlabel-icon"
+                L: [{
+                    U: "span",
+                    W: "ytp-videowall-still-listlabel-icon"
                 }, "Playlist", {
-                    W: "span",
-                    T: "ytp-videowall-still-listlabel-length",
-                    Z: [" (", {
-                        W: "span",
-                        AU: "{{playlist_length}}"
+                    U: "span",
+                    W: "ytp-videowall-still-listlabel-length",
+                    L: [" (", {
+                        U: "span",
+                        aq: "{{playlist_length}}"
                     }, ")"]
                 }]
             }, {
-                W: "span",
-                ww: ["ytp-videowall-still-listlabel-mix", "ytp-videowall-still-listlabel"],
-                S: {
+                U: "span",
+                Rq: ["ytp-videowall-still-listlabel-mix", "ytp-videowall-still-listlabel"],
+                N: {
                     "aria-hidden": "true"
                 },
-                Z: [{
-                    W: "span",
-                    T: "ytp-videowall-still-listlabel-mix-icon"
+                L: [{
+                    U: "span",
+                    W: "ytp-videowall-still-listlabel-mix-icon"
                 }, "Mix", {
-                    W: "span",
-                    T: "ytp-videowall-still-listlabel-length",
-                    AU: " (50+)"
+                    U: "span",
+                    W: "ytp-videowall-still-listlabel-length",
+                    aq: " (50+)"
                 }]
             }]
         });
         this.suggestion = null;
-        this.L = e;
-        this.api = a;
-        this.V = new g.Ru(this);
-        g.E(this, this.V);
+        this.K = I;
+        this.api = e;
+        this.X = new g.zn(this);
+        g.l(this, this.X);
         this.listen("click", this.onClick);
         this.listen("keypress", this.onKeyPress);
-        this.V.G(a, "videodatachange", this.onVideoDataChange);
-        a.createServerVe(this.element, this);
+        this.X.C(e, "videodatachange", this.onVideoDataChange);
+        e.createServerVe(this.element, this);
         this.onVideoDataChange()
     }
-      , bt = function(a) {
-        Tz.call(this, a, "videowall-endscreen");
-        var I = this;
-        this.K = a;
-        this.B = 0;
+      , zs = function(e) {
+        u9.call(this, e, "videowall-endscreen");
+        var L = this;
+        this.V = e;
+        this.Z = 0;
         this.stills = [];
-        this.J = this.videoData = null;
-        this.Y = this.D = !1;
-        this.j = null;
-        this.L = new g.Ru(this);
-        g.E(this, this.L);
-        this.C = new g.Dy(function() {
-            g.x5(I.element, "ytp-show-tiles")
+        this.G = this.videoData = null;
+        this.j = this.J = !1;
+        this.D = null;
+        this.K = new g.zn(this);
+        g.l(this, this.K);
+        this.T = new g.j9(function() {
+            g.Y4(L.element, "ytp-show-tiles")
         }
         ,0);
-        g.E(this, this.C);
-        var U = new g.F({
-            W: "button",
-            ww: ["ytp-button", "ytp-endscreen-previous"],
-            S: {
+        g.l(this, this.T);
+        var c = new g.U({
+            U: "button",
+            Rq: ["ytp-button", "ytp-endscreen-previous"],
+            N: {
                 "aria-label": "Vorheriges"
             },
-            Z: [g.cE()]
+            L: [g.hm()]
         });
-        g.E(this, U);
-        U.KO(this.element);
-        U.listen("click", this.E5, this);
-        this.table = new g.kp({
-            W: "div",
-            T: "ytp-endscreen-content"
+        g.l(this, c);
+        c.jl(this.element);
+        c.listen("click", this.Qf, this);
+        this.table = new g.eH({
+            U: "div",
+            W: "ytp-endscreen-content"
         });
-        g.E(this, this.table);
-        this.table.KO(this.element);
-        U = new g.F({
-            W: "button",
-            ww: ["ytp-button", "ytp-endscreen-next"],
-            S: {
+        g.l(this, this.table);
+        this.table.jl(this.element);
+        c = new g.U({
+            U: "button",
+            Rq: ["ytp-button", "ytp-endscreen-next"],
+            N: {
                 "aria-label": "Weiter"
             },
-            Z: [g.WE()]
+            L: [g.R9()]
         });
-        g.E(this, U);
-        U.KO(this.element);
-        U.listen("click", this.cN, this);
-        a.getVideoData().dA ? this.V = new UA(a,!0) : this.V = new CR(a);
-        g.E(this, this.V);
-        g.w4(this.player, this.V.element, 4);
-        a.createClientVe(this.element, this, 158789);
+        g.l(this, c);
+        c.jl(this.element);
+        c.listen("click", this.AG, this);
+        e.getVideoData().f9 ? this.X = new hX(e,!0) : this.X = new tX(e);
+        g.l(this, this.X);
+        g.Uq(this.player, this.X.element, 4);
+        e.createClientVe(this.element, this, 158789);
         this.hide()
     }
-      , J8 = function(a) {
-        return g.FW(a.player) && a.NH() && !a.J
+      , s0 = function(e) {
+        return g.Eq(e.player) && e.HK() && !e.G
     }
-      , ut = function(a) {
-        var I = a.Go();
-        I !== a.D && (a.D = I,
-        yez(a.player))
+      , vV = function(e) {
+        var L = e.Va();
+        L !== e.J && (e.J = L,
+        iWN(e.player))
     }
-      , kA = function(a) {
-        Tz.call(this, a, "watch-again-on-youtube-endscreen");
-        this.watchButton = new qs(a,1);
-        g.E(this, this.watchButton);
-        this.watchButton.KO(this.element);
-        g.zd8(a) && (this.V = new g.hJ(a),
-        g.E(this, this.V),
-        this.L = new g.F({
-            W: "div",
-            ww: ["ytp-watch-again-on-youtube-endscreen-more-videos-container"],
-            S: {
+      , ypL = function(e, L) {
+        g.U.call(this, {
+            U: "button",
+            Rq: ["ytp-watch-on-youtube-button", "ytp-button"],
+            aq: "{{content}}"
+        });
+        this.V = e;
+        this.buttonType = this.buttonType = L;
+        this.EG();
+        this.buttonType === 2 && g.Y4(this.element, "ytp-continue-watching-button");
+        this.listen("click", this.onClick);
+        this.listen("videodatachange", this.EG);
+        this.i5(!0)
+    }
+      , f9 = function(e) {
+        u9.call(this, e, "watch-again-on-youtube-endscreen");
+        this.watchButton = new ypL(e,1);
+        g.l(this, this.watchButton);
+        this.watchButton.jl(this.element);
+        g.gnU(e) && (this.X = new g.xx(e),
+        g.l(this, this.X),
+        this.K = new g.U({
+            U: "div",
+            Rq: ["ytp-watch-again-on-youtube-endscreen-more-videos-container"],
+            N: {
                 tabIndex: "-1"
             },
-            Z: [this.V]
+            L: [this.X]
         }),
-        g.E(this, this.L),
-        this.V.KO(this.L.element),
-        this.L.KO(this.element));
-        a.createClientVe(this.element, this, 156914);
+        g.l(this, this.K),
+        this.X.jl(this.K.element),
+        this.K.jl(this.element));
+        e.createClientVe(this.element, this, 156914);
         this.hide()
     }
-      , IBd = function(a) {
-        g.nu.call(this, a);
-        var I = this;
+      , jXL = function(e) {
+        g.Vk.call(this, e);
+        var L = this;
         this.endScreen = null;
-        this.L = this.V = this.B = this.J = !1;
-        this.listeners = new g.Ru(this);
-        g.E(this, this.listeners);
-        var U = a.X()
-          , e = a.getVideoData();
-        e = e && e.limitedPlaybackDurationInSeconds !== 0;
-        g.bR(g.Fw(U)) && e && !g.y7(a) ? (this.L = !0,
-        this.endScreen = new xA(a,g.Lh(a))) : a.isEmbedsShortsMode() ? this.endScreen = new kA(a) : Dfz(a) ? (this.J = !0,
-        vzI(this),
-        this.V ? this.endScreen = new r_(a) : U.N("delhi_modern_endscreen") ? this.endScreen = new NeJ(a) : this.endScreen = new bt(a)) : U.ym ? this.endScreen = new oz4(a) : this.endScreen = new Tz(a);
-        g.E(this, this.endScreen);
-        g.w4(a, this.endScreen.element, 4);
-        aBz(this);
-        this.listeners.G(a, "videodatachange", this.onVideoDataChange, this);
-        this.listeners.G(a, g.ZW("endscreen"), function(T) {
-            I.onCueRangeEnter(T)
+        this.X = this.K = this.Z = !1;
+        this.listeners = new g.zn(this);
+        g.l(this, this.listeners);
+        var c = e.S();
+        e.isEmbedsShortsMode() ? this.endScreen = new f9(e) : ZWN(e) ? (this.Z = !0,
+        pOg(this),
+        this.X ? this.endScreen = new O0(e) : c.Y("delhi_modern_endscreen") ? this.endScreen = new NjZ(e) : this.endScreen = new zs(e)) : c.sK ? this.endScreen = new m39(e) : this.endScreen = new u9(e);
+        g.l(this, this.endScreen);
+        g.Uq(e, this.endScreen.element, 4);
+        $37(this);
+        this.listeners.C(e, "videodatachange", this.onVideoDataChange, this);
+        this.listeners.C(e, g.jh("endscreen"), function(I) {
+            L.onCueRangeEnter(I)
         });
-        this.listeners.G(a, g.tS("endscreen"), function(T) {
-            I.onCueRangeExit(T)
+        this.listeners.C(e, g.Hq("endscreen"), function(I) {
+            L.onCueRangeExit(I)
         })
     }
-      , vzI = function(a) {
-        var I = a.player.getVideoData();
-        if (!I || a.V === I.T9 && a.B === I.dA)
+      , pOg = function(e) {
+        var L = e.player.getVideoData();
+        if (!L || e.X === L.sC && e.K === L.f9)
             return !1;
-        a.V = I.T9;
-        a.B = I.dA;
+        e.X = L.sC;
+        e.K = L.f9;
         return !0
     }
-      , Dfz = function(a) {
-        a = a.X();
-        return a.uj && !a.ym && !a.disableOrganicUi
+      , ZWN = function(e) {
+        e = e.S();
+        return e.m1 && !e.sK && !e.disableOrganicUi
     }
-      , aBz = function(a) {
-        a.player.HE("endscreen");
-        var I = a.player.getVideoData();
-        I = new g.qA(Math.max((I.lengthSeconds - 10) * 1E3, 0),0x8000000000000,{
+      , $37 = function(e) {
+        e.player.RU("endscreen");
+        var L = e.player.getVideoData();
+        L = new g.pC(Math.max((L.lengthSeconds - 10) * 1E3, 0),0x8000000000000,{
             id: "preload",
             namespace: "endscreen"
         });
-        var U = new g.qA(0x8000000000000,0x8000000000000,{
+        var c = new g.pC(0x8000000000000,0x8000000000000,{
             id: "load",
             priority: 8,
             namespace: "endscreen"
         });
-        a.player.xw([I, U])
+        e.player.Lb([L, c])
     };
-    g.Y8.prototype.xq = g.Cc(14, function() {
-        return this.app.xq()
+    g.p2.prototype.VE = g.xn(6, function() {
+        return this.app.VE()
     });
-    g.K7.prototype.xq = g.Cc(13, function() {
-        return this.getVideoData().Hw
+    g.FH.prototype.VE = g.xn(5, function() {
+        return this.getVideoData().Ix
     });
-    g.XW.prototype.gp = g.Cc(12, function(a) {
-        this.Dg().gp(a)
+    g.NU.prototype.uj = g.xn(4, function(e) {
+        this.Wv().uj(e)
     });
-    g.rj.prototype.gp = g.Cc(11, function(a) {
-        this.V !== a && (this.V = a,
-        this.Qa())
+    g.BP.prototype.uj = g.xn(3, function(e) {
+        this.Ba !== e && (this.Ba = e,
+        this.N2())
     });
-    g.LS.prototype.gp = g.Cc(10, function(a) {
-        this.overflowButton && this.overflowButton.gp(a)
-    });
-    g.XW.prototype.Lj = g.Cc(9, function(a) {
-        this.Dg().Lj(a)
-    });
-    g.nA.prototype.Lj = g.Cc(8, function(a) {
-        this.L !== a && (this.L = a,
-        this.Qa())
-    });
-    g.LS.prototype.Lj = g.Cc(7, function(a) {
-        this.shareButton && this.shareButton.Lj(a)
-    });
-    g.XW.prototype.O_ = g.Cc(6, function(a) {
-        this.Dg().O_(a)
-    });
-    g.yL.prototype.O_ = g.Cc(5, function(a) {
-        this.cj !== a && (this.cj = a,
-        this.aE())
-    });
-    g.XW.prototype.U_ = g.Cc(4, function(a) {
-        this.Dg().U_(a)
-    });
-    g.LS.prototype.U_ = g.Cc(3, function(a) {
-        this.jf !== a && (this.jf = a,
-        this.Na())
-    });
-    g.u(sA, g.F);
-    sA.prototype.select = function() {
-        this.K.pT(this.suggestion.videoId, this.suggestion.sessionData, this.suggestion.playlistId, void 0, void 0, this.suggestion.LC || void 0) && this.K.logClick(this.element)
+    g.z(r6, g.U);
+    r6.prototype.select = function() {
+        this.V.zF(this.suggestion.videoId, this.suggestion.sessionData, this.suggestion.playlistId, void 0, void 0, this.suggestion.Yp || void 0) && this.V.logClick(this.element)
     }
     ;
-    sA.prototype.onClick = function(a) {
-        g.bV(a, this.K, this.V, this.suggestion.sessionData || void 0) && this.select()
+    r6.prototype.onClick = function(e) {
+        g.s4(e, this.V, this.X, this.suggestion.sessionData || void 0) && this.select()
     }
     ;
-    sA.prototype.onKeyPress = function(a) {
-        switch (a.keyCode) {
+    r6.prototype.onKeyPress = function(e) {
+        switch (e.keyCode) {
         case 13:
         case 32:
-            a.defaultPrevented || (this.select(),
-            a.preventDefault())
+            e.defaultPrevented || (this.select(),
+            e.preventDefault())
         }
     }
     ;
-    g.u(UA, g.F);
-    g.H = UA.prototype;
-    g.H.z4 = function(a) {
-        this.suggestion !== a && (this.suggestion = a,
-        It(this.V, a),
-        this.playButton.updateValue("url", this.suggestion.ys()),
-        ey(this))
+    g.z(hX, g.U);
+    g.M = hX.prototype;
+    g.M.yw = function(e) {
+        this.suggestion !== e && (this.suggestion = e,
+        g.Mr(this.X, e),
+        this.playButton.updateValue("url", this.suggestion.Pv()),
+        RE(this))
     }
     ;
-    g.H.P1 = function() {
-        return this.B > 0
+    g.M.wp = function() {
+        return this.Z > 0
     }
     ;
-    g.H.NT = function() {
-        this.P1() || (this.B = Date.now(),
-        wfJ(this),
-        Ezz(this.K, mfz(this)),
-        g.KC(this.K.getRootNode(), "countdown-running", this.P1()))
+    g.M.lG = function() {
+        this.wp() || (this.Z = Date.now(),
+        D3J(this),
+        GEN(this.V, Jpe(this)),
+        g.cY(this.V.getRootNode(), "countdown-running", this.wp()))
     }
     ;
-    g.H.EJ = function() {
-        this.D4();
-        wfJ(this);
-        var a = this.V.Ws("ytp-autonav-endscreen-upnext-header");
-        a && g.CM(a, "N\u00e4chstes Video")
+    g.M.TA = function() {
+        this.GS();
+        D3J(this);
+        var e = this.X.q0("ytp-autonav-endscreen-upnext-header");
+        e && g.fU(e, "N\u00e4chstes Video")
     }
     ;
-    g.H.D4 = function() {
-        this.P1() && (this.J.stop(),
-        this.B = 0)
+    g.M.GS = function() {
+        this.wp() && (this.G.stop(),
+        this.Z = 0)
     }
     ;
-    g.H.select = function(a) {
-        this.K.nextVideo(!1, a === void 0 ? !1 : a);
-        this.D4()
+    g.M.select = function(e) {
+        this.V.nextVideo(!1, e === void 0 ? !1 : e);
+        this.GS()
     }
     ;
-    g.H.CA = function(a) {
-        g.bV(a, this.K) && (a.currentTarget === this.playButton.element ? this.K.logClick(this.playButton.element) : a.currentTarget === this.V.Ws("ytp-autonav-endscreen-link-container") && (a = this.V.Ws("ytp-autonav-endscreen-link-container"),
-        this.K.logVisibility(a, !0),
-        this.K.logClick(a)),
-        this.Y ? (this.K.I$("innertubeCommand", this.Y),
-        this.D4()) : this.select())
+    g.M.Du = function(e) {
+        g.s4(e, this.V) && (e.currentTarget === this.playButton.element ? this.V.logClick(this.playButton.element) : e.currentTarget === this.X.q0("ytp-autonav-endscreen-link-container") && (e = this.X.q0("ytp-autonav-endscreen-link-container"),
+        this.V.logVisibility(e, !0),
+        this.V.logClick(e)),
+        this.j ? (this.V.fS("innertubeCommand", this.j),
+        this.GS()) : this.select())
     }
     ;
-    g.H.Zs = function() {
-        this.K.logClick(this.cancelButton.element);
-        g.SB(this.K, !0);
-        this.cancelCommand && this.K.I$("innertubeCommand", this.cancelCommand)
+    g.M.Mg = function() {
+        this.V.logClick(this.cancelButton.element);
+        g.jD(this.V, !0);
+        this.cancelCommand && this.V.fS("innertubeCommand", this.cancelCommand)
     }
     ;
-    g.H.onVideoDataChange = function(a, I) {
-        RPz(this, I);
-        a = I.getWatchNextResponse();
-        var U, e;
-        a = (U = dfJ(a)) == null ? void 0 : (e = U.cancelButton) == null ? void 0 : e.buttonRenderer;
-        this.cancelCommand = a == null ? void 0 : a.command
+    g.M.onVideoDataChange = function(e, L) {
+        kEw(this, L);
+        e = L.getWatchNextResponse();
+        var c, I;
+        e = (c = gWZ(e)) == null ? void 0 : (I = c.cancelButton) == null ? void 0 : I.buttonRenderer;
+        this.cancelCommand = e == null ? void 0 : e.command
     }
     ;
-    g.H.Aha = function(a) {
-        if (QR4(this)) {
-            var I = this.K.getVideoData().watchToWatchTransitionRenderer
-              , U = I == null ? void 0 : I.fromColorPaletteDark;
-            I = I == null ? void 0 : I.toColorPaletteDark;
-            if (U && I) {
-                var e = this.element;
-                e.style.setProperty("--w2w-start-background-color", g.Q$(U.surgeColor));
-                e.style.setProperty("--w2w-start-primary-text-color", g.Q$(U.primaryTitleColor));
-                e.style.setProperty("--w2w-start-secondary-text-color", g.Q$(U.secondaryTitleColor));
-                e.style.setProperty("--w2w-end-background-color", g.Q$(I.surgeColor));
-                e.style.setProperty("--w2w-end-primary-text-color", g.Q$(I.primaryTitleColor));
-                e.style.setProperty("--w2w-end-secondary-text-color", g.Q$(I.secondaryTitleColor));
-                e.style.setProperty("--w2w-animation-duration", a + "ms")
+    g.M.T_q = function(e) {
+        if (VW7(this)) {
+            var L = this.V.getVideoData().watchToWatchTransitionRenderer
+              , c = L == null ? void 0 : L.fromColorPaletteDark;
+            L = L == null ? void 0 : L.toColorPaletteDark;
+            if (c && L) {
+                var I = this.element;
+                I.style.setProperty("--w2w-start-background-color", g.w9(c.surgeColor));
+                I.style.setProperty("--w2w-start-primary-text-color", g.w9(c.primaryTitleColor));
+                I.style.setProperty("--w2w-start-secondary-text-color", g.w9(c.secondaryTitleColor));
+                I.style.setProperty("--w2w-end-background-color", g.w9(L.surgeColor));
+                I.style.setProperty("--w2w-end-primary-text-color", g.w9(L.primaryTitleColor));
+                I.style.setProperty("--w2w-end-secondary-text-color", g.w9(L.secondaryTitleColor));
+                I.style.setProperty("--w2w-animation-duration", e + "ms")
             }
-            g.KC(this.element, "ytp-w2w-animate", !0)
+            g.cY(this.element, "ytp-w2w-animate", !0)
         }
     }
     ;
-    g.H.PN = function(a) {
-        this.K.N("web_autonav_color_transition") && a !== 2 && g.KC(this.element, "ytp-w2w-animate", !1)
+    g.M.oz = function(e) {
+        this.V.Y("web_autonav_color_transition") && e !== 2 && g.cY(this.element, "ytp-w2w-animate", !1)
     }
     ;
-    g.H.Nd = function() {
-        var a = this.K.Go();
-        this.C && this.gF !== a && this.Vx(a);
-        ey(this);
-        this.K.logVisibility(this.container.element, a);
-        this.K.logVisibility(this.cancelButton.element, a);
-        this.K.logVisibility(this.V.Ws("ytp-autonav-endscreen-link-container"), a);
-        this.K.logVisibility(this.playButton.element, a)
+    g.M.Eb = function() {
+        var e = this.V.Va();
+        this.T && this.z_ !== e && this.i5(e);
+        RE(this);
+        this.V.logVisibility(this.container.element, e);
+        this.V.logVisibility(this.cancelButton.element, e);
+        this.V.logVisibility(this.X.q0("ytp-autonav-endscreen-link-container"), e);
+        this.V.logVisibility(this.playButton.element, e)
     }
     ;
-    g.H.JS = function(a) {
-        return a.width < 400 || a.height < 459
+    g.M.ge = function(e) {
+        return e.width < 400 || e.height < 459
     }
     ;
-    g.u(Tz, g.F);
-    g.H = Tz.prototype;
-    g.H.create = function() {
+    g.z(u9, g.U);
+    g.M = u9.prototype;
+    g.M.create = function() {
         this.created = !0
     }
     ;
-    g.H.destroy = function() {
+    g.M.destroy = function() {
         this.created = !1
     }
     ;
-    g.H.NH = function() {
+    g.M.HK = function() {
         return !1
     }
     ;
-    g.H.Go = function() {
+    g.M.Va = function() {
         return !1
     }
     ;
-    g.H.bY = function() {
+    g.M.di = function() {
         return !1
     }
     ;
-    g.u(CR, g.F);
-    g.H = CR.prototype;
-    g.H.FU = function() {
-        this.notification && (this.J.stop(),
-        this.YY(this.B),
-        this.B = null,
+    g.z(tX, g.U);
+    g.M = tX.prototype;
+    g.M.aG = function() {
+        this.notification && (this.G.stop(),
+        this.j6(this.Z),
+        this.Z = null,
         this.notification.close(),
         this.notification = null)
     }
     ;
-    g.H.z4 = function(a) {
-        this.suggestion = a;
-        It(this, a, "hqdefault.jpg")
+    g.M.yw = function(e) {
+        this.suggestion = e;
+        g.Mr(this, e, "hqdefault.jpg")
     }
     ;
-    g.H.Md = function() {
-        this.Vx(this.api.Go());
-        this.api.logVisibility(this.element, this.api.Go());
-        this.api.logVisibility(this.Ws("ytp-upnext-autoplay-icon"), this.api.Go());
-        this.cancelButton && this.api.logVisibility(this.cancelButton.element, this.api.Go())
+    g.M.XZ = function() {
+        this.i5(this.api.Va());
+        this.api.logVisibility(this.element, this.api.Va());
+        this.api.logVisibility(this.q0("ytp-upnext-autoplay-icon"), this.api.Va());
+        this.cancelButton && this.api.logVisibility(this.cancelButton.element, this.api.Va())
     }
     ;
-    g.H.RC8 = function() {
+    g.M.k_7 = function() {
         window.focus();
-        this.FU()
+        this.aG()
     }
     ;
-    g.H.NT = function(a) {
-        var I = this;
-        this.P1() || (g.n5("a11y-announce", "N\u00e4chstes Video " + this.suggestion.title),
-        this.L = (0,
-        g.w)(),
-        this.V = new g.Dy(function() {
-            hPG(I, a)
+    g.M.lG = function(e) {
+        var L = this;
+        this.wp() || (g.Ux("a11y-announce", "N\u00e4chstes Video " + this.suggestion.title),
+        this.K = (0,
+        g.zI)(),
+        this.X = new g.j9(function() {
+            ang(L, e)
         }
         ,25),
-        hPG(this, a),
-        Ezz(this.api, zP8(this, a)));
-        g.ta(this.element, "ytp-upnext-autoplay-paused")
+        ang(this, e),
+        GEN(this.api, CT9(this, e)));
+        g.eZ(this.element, "ytp-upnext-autoplay-paused")
     }
     ;
-    g.H.hide = function() {
-        g.F.prototype.hide.call(this)
+    g.M.hide = function() {
+        g.U.prototype.hide.call(this)
     }
     ;
-    g.H.P1 = function() {
-        return !!this.V
+    g.M.wp = function() {
+        return !!this.X
     }
     ;
-    g.H.EJ = function() {
-        this.D4();
-        this.L = (0,
-        g.w)();
-        hPG(this);
-        g.x5(this.element, "ytp-upnext-autoplay-paused")
+    g.M.TA = function() {
+        this.GS();
+        this.K = (0,
+        g.zI)();
+        ang(this);
+        g.Y4(this.element, "ytp-upnext-autoplay-paused")
     }
     ;
-    g.H.D4 = function() {
-        this.P1() && (this.V.dispose(),
-        this.V = null)
+    g.M.GS = function() {
+        this.wp() && (this.X.dispose(),
+        this.X = null)
     }
     ;
-    g.H.select = function(a) {
-        a = a === void 0 ? !1 : a;
-        if (this.api.X().N("autonav_notifications") && a && window.Notification && typeof document.hasFocus === "function") {
-            var I = Notification.permission;
-            I === "default" ? Notification.requestPermission() : I !== "granted" || document.hasFocus() || (this.FU(),
+    g.M.select = function(e) {
+        e = e === void 0 ? !1 : e;
+        if (this.api.S().Y("autonav_notifications") && e && window.Notification && typeof document.hasFocus === "function") {
+            var L = Notification.permission;
+            L === "default" ? Notification.requestPermission() : L !== "granted" || document.hasFocus() || (this.aG(),
             this.notification = new Notification("N\u00e4chstes Video",{
                 body: this.suggestion.title,
-                icon: this.suggestion.Ub()
+                icon: this.suggestion.j9()
             }),
-            this.B = this.G(this.notification, "click", this.RC8),
-            this.J.start())
+            this.Z = this.C(this.notification, "click", this.k_7),
+            this.G.start())
         }
-        this.D4();
-        this.api.nextVideo(!1, a)
+        this.GS();
+        this.api.nextVideo(!1, e)
     }
     ;
-    g.H.Fa = function(a) {
-        !g.Ti(this.cancelButton.element, a.target) && g.bV(a, this.api) && (this.api.Go() && this.api.logClick(this.Ws("ytp-upnext-autoplay-icon")),
+    g.M.Cc = function(e) {
+        !g.vz(this.cancelButton.element, e.target) && g.s4(e, this.api) && (this.api.Va() && this.api.logClick(this.q0("ytp-upnext-autoplay-icon")),
         this.select())
     }
     ;
-    g.H.SR = function() {
-        this.api.Go() && this.cancelButton && this.api.logClick(this.cancelButton.element);
-        g.SB(this.api, !0)
+    g.M.Ps = function() {
+        this.api.Va() && this.cancelButton && this.api.logClick(this.cancelButton.element);
+        g.jD(this.api, !0)
     }
     ;
-    g.H.lNg = function(a) {
+    g.M.ZfW = function(e) {
         this.api.getPresentingPlayerType();
         this.show();
-        this.NT(a)
+        this.lG(e)
     }
     ;
-    g.H.xDs = function() {
+    g.M.e$d = function() {
         this.api.getPresentingPlayerType();
-        this.D4();
+        this.GS();
         this.hide()
     }
     ;
-    g.H.Bs = function() {
-        this.D4();
-        this.FU();
-        g.F.prototype.Bs.call(this)
+    g.M.KS = function() {
+        this.GS();
+        this.aG();
+        g.U.prototype.KS.call(this)
     }
     ;
-    g.u(r_, Tz);
-    g.H = r_.prototype;
-    g.H.create = function() {
-        Tz.prototype.create.call(this);
-        this.J.G(this.player, "appresize", this.wv);
-        this.J.G(this.player, "onVideoAreaChange", this.wv);
-        this.J.G(this.player, "videodatachange", this.onVideoDataChange);
-        this.J.G(this.player, "autonavchange", this.ao);
-        this.J.G(this.player, "onAutonavCancelled", this.Ig);
+    g.z(O0, u9);
+    g.M = O0.prototype;
+    g.M.create = function() {
+        u9.prototype.create.call(this);
+        this.G.C(this.player, "appresize", this.TT);
+        this.G.C(this.player, "onVideoAreaChange", this.TT);
+        this.G.C(this.player, "videodatachange", this.onVideoDataChange);
+        this.G.C(this.player, "autonavchange", this.zO);
+        this.G.C(this.player, "onAutonavCancelled", this.Op);
         this.onVideoDataChange()
     }
     ;
-    g.H.show = function() {
-        Tz.prototype.show.call(this);
-        (this.C || this.B && this.B !== this.videoData.clientPlaybackNonce) && g.SB(this.player, !1);
-        g.FW(this.player) && this.NH() && !this.B ? (Hp(this),
-        this.videoData.autonavState === 2 ? this.player.getVisibilityState() === 3 ? this.V.select(!0) : this.V.NT() : this.videoData.autonavState === 3 && this.V.EJ()) : (g.SB(this.player, !0),
-        Hp(this));
-        this.wv()
+    g.M.show = function() {
+        u9.prototype.show.call(this);
+        (this.T || this.Z && this.Z !== this.videoData.clientPlaybackNonce) && g.jD(this.player, !1);
+        g.Eq(this.player) && this.HK() && !this.Z ? (qa(this),
+        this.videoData.autonavState === 2 ? this.player.getVisibilityState() === 3 ? this.X.select(!0) : this.X.lG() : this.videoData.autonavState === 3 && this.X.TA()) : (g.jD(this.player, !0),
+        qa(this));
+        this.TT()
     }
     ;
-    g.H.hide = function() {
-        Tz.prototype.hide.call(this);
-        this.V.EJ();
-        Hp(this)
+    g.M.hide = function() {
+        u9.prototype.hide.call(this);
+        this.X.TA();
+        qa(this)
     }
     ;
-    g.H.wv = function() {
-        var a = this.player.lZ(!0, this.player.isFullscreen());
-        Hp(this);
-        ey(this.L);
-        g.KC(this.element, "ytp-autonav-cancelled-small-mode", this.JS(a));
-        g.KC(this.element, "ytp-autonav-cancelled-tiny-mode", this.rk(a));
-        g.KC(this.element, "ytp-autonav-cancelled-mini-mode", a.width <= 400 || a.height <= 360);
-        this.overlay && g.Gr(this.overlay.element, {
-            width: a.width + "px"
+    g.M.TT = function() {
+        var e = this.player.CB(!0, this.player.isFullscreen());
+        qa(this);
+        RE(this.K);
+        g.cY(this.element, "ytp-autonav-cancelled-small-mode", this.ge(e));
+        g.cY(this.element, "ytp-autonav-cancelled-tiny-mode", this.nP(e));
+        g.cY(this.element, "ytp-autonav-cancelled-mini-mode", e.width <= 400 || e.height <= 360);
+        this.overlay && g.l3(this.overlay.element, {
+            width: e.width + "px"
         });
-        if (!this.Y)
-            for (a = 0; a < this.videos.length; a++)
-                g.KC(this.videos[a].element, "ytp-suggestion-card-with-margin", a % 2 === 1)
+        if (!this.j)
+            for (e = 0; e < this.videos.length; e++)
+                g.cY(this.videos[e].element, "ytp-suggestion-card-with-margin", e % 2 === 1)
     }
     ;
-    g.H.onVideoDataChange = function() {
-        var a = this.player.getVideoData();
-        if (this.videoData !== a && a) {
-            this.videoData = a;
-            if ((a = this.videoData.suggestions) && a.length || this.player.N("web_player_autonav_empty_suggestions_fix")) {
-                var I = g.rN(this.videoData);
-                I && (this.V.z4(I),
-                this.V !== this.L && this.L.z4(I))
+    g.M.onVideoDataChange = function() {
+        var e = this.player.getVideoData();
+        if (this.videoData !== e && e) {
+            this.videoData = e;
+            if ((e = this.videoData.suggestions) && e.length || this.player.Y("web_player_autonav_empty_suggestions_fix")) {
+                var L = g.zN(this.videoData);
+                L && (this.X.yw(L),
+                this.X !== this.K && this.K.yw(L))
             }
-            if (a && a.length)
-                for (I = 0; I < slJ.length; ++I) {
-                    var U = slJ[I];
-                    if (a && a[U]) {
-                        this.videos[I] = new sA(this.player);
-                        var e = this.videos[I];
-                        U = a[U];
-                        e.suggestion !== U && (e.suggestion = U,
-                        It(e, U));
-                        g.E(this, this.videos[I]);
-                        this.videos[I].KO(this.D.element)
+            if (e && e.length)
+                for (L = 0; L < HWZ.length; ++L) {
+                    var c = HWZ[L];
+                    if (e && e[c]) {
+                        this.videos[L] = new r6(this.player);
+                        var I = this.videos[L];
+                        c = e[c];
+                        I.suggestion !== c && (I.suggestion = c,
+                        g.Mr(I, c));
+                        g.l(this, this.videos[L]);
+                        this.videos[L].jl(this.J.element)
                     }
                 }
-            this.wv()
+            this.TT()
         }
     }
     ;
-    g.H.ao = function(a) {
-        a === 1 ? (this.C = !1,
-        this.B = this.videoData.clientPlaybackNonce,
-        this.V.D4(),
-        this.gF && this.wv()) : (this.C = !0,
-        this.Go() && (a === 2 ? this.V.NT() : a === 3 && this.V.EJ()))
+    g.M.zO = function(e) {
+        e === 1 ? (this.T = !1,
+        this.Z = this.videoData.clientPlaybackNonce,
+        this.X.GS(),
+        this.z_ && this.TT()) : (this.T = !0,
+        this.Va() && (e === 2 ? this.X.lG() : e === 3 && this.X.TA()))
     }
     ;
-    g.H.Ig = function(a) {
-        a ? this.ao(1) : (this.B = null,
-        this.C = !1)
+    g.M.Op = function(e) {
+        e ? this.zO(1) : (this.Z = null,
+        this.T = !1)
     }
     ;
-    g.H.NH = function() {
+    g.M.HK = function() {
         return this.videoData.autonavState !== 1
     }
     ;
-    g.H.JS = function(a) {
-        return (a.width < 910 || a.height < 459) && !this.rk(a) && !(a.width <= 400 || a.height <= 360)
+    g.M.ge = function(e) {
+        return (e.width < 910 || e.height < 459) && !this.nP(e) && !(e.width <= 400 || e.height <= 360)
     }
     ;
-    g.H.rk = function(a) {
-        return a.width < 800 && !(a.width <= 400 || a.height <= 360)
+    g.M.nP = function(e) {
+        return e.width < 800 && !(e.width <= 400 || e.height <= 360)
     }
     ;
-    g.H.Go = function() {
-        return this.gF && g.FW(this.player) && this.NH() && !this.B
+    g.M.Va = function() {
+        return this.z_ && g.Eq(this.player) && this.HK() && !this.Z
     }
     ;
-    var slJ = [1, 3, 2, 4];
-    g.u(qs, g.F);
-    g.H = qs.prototype;
-    g.H.e$ = function() {
-        switch (this.buttonType) {
-        case 1:
-            var a = "Noch einmal auf YouTube ansehen";
-            var I = 156915;
-            break;
-        case 2:
-            a = "Weiter auf YouTube ansehen";
-            I = 156942;
-            break;
-        default:
-            a = "Weiter auf YouTube ansehen",
-            I = 156942
+    var HWZ = [1, 3, 2, 4];
+    g.z(NjZ, u9);
+    g.M = NjZ.prototype;
+    g.M.create = function() {
+        u9.prototype.create.call(this);
+        var e = this.player.getVideoData();
+        e && (this.videoData = e);
+        this.eZ();
+        this.K.C(this.player, "appresize", this.eZ);
+        this.K.C(this.player, "onVideoAreaChange", this.eZ);
+        this.K.C(this.player, "videodatachange", this.onVideoDataChange);
+        this.K.C(this.player, "autonavchange", this.nZ);
+        this.K.C(this.player, "onAutonavCancelled", this.gO);
+        e = this.videoData.autonavState;
+        e !== this.J && this.nZ(e);
+        this.K.C(this.element, "transitionend", this.Fx)
+    }
+    ;
+    g.M.destroy = function() {
+        g.fv(this.K);
+        g.cs(this.stills);
+        this.stills = [];
+        u9.prototype.destroy.call(this);
+        g.eZ(this.element, "ytp-show-tiles");
+        this.j.stop();
+        this.J = this.videoData.autonavState
+    }
+    ;
+    g.M.HK = function() {
+        return this.videoData.autonavState !== 1
+    }
+    ;
+    g.M.show = function() {
+        var e = this.z_;
+        u9.prototype.show.call(this);
+        g.eZ(this.element, "ytp-show-tiles");
+        this.player.S().K ? g.lB(this.j) : this.j.start();
+        (this.G || this.Z && this.Z !== this.videoData.clientPlaybackNonce) && g.jD(this.player, !1);
+        Ts(this) ? (WV(this),
+        this.videoData.autonavState === 2 ? this.player.getVisibilityState() === 3 ? this.X.select(!0) : this.X.lG() : this.videoData.autonavState === 3 && this.X.TA()) : (g.jD(this.player, !0),
+        WV(this));
+        e !== this.z_ && this.player.logVisibility(this.element, !0)
+    }
+    ;
+    g.M.hide = function() {
+        var e = this.z_;
+        u9.prototype.hide.call(this);
+        this.X.TA();
+        WV(this);
+        e !== this.z_ && this.player.logVisibility(this.element, !1)
+    }
+    ;
+    g.M.Fx = function(e) {
+        e.target === this.element && this.eZ()
+    }
+    ;
+    g.M.eZ = function() {
+        var e, L, c, I;
+        var B = ((e = this.videoData) == null ? 0 : (L = e.suggestions) == null ? 0 : L.length) ? (c = this.videoData) == null ? void 0 : c.suggestions : [(I = this.videoData) == null ? void 0 : g.zN(I)];
+        if (B.length) {
+            L = this.V.CB(!0, this.V.isFullscreen());
+            e = Math.floor((L.width - 64 + 16) / (g.j5(L.width * .27, 250, 450) + 16));
+            L = Math.min(3, Math.floor((L.height - 64) / ((L.width - 64 - (e - 1) * 16) / e * .5625 + 70)));
+            g.L1(this.element, ["ytp-modern-endscreen-limit-rows-1", "ytp-modern-endscreen-limit-rows-2", "ytp-modern-endscreen-limit-rows-3"]);
+            g.Y4(this.element, "ytp-modern-endscreen-limit-rows-" + L);
+            g.cY(this.element, "ytp-modern-endscreen-single-item", e === 1);
+            g.cY(this.element, "ytp-modern-endscreen-row-0", L === 0);
+            e = this.table.element;
+            e.ariaLive = "polite";
+            this.X.yw(g.zN(this.videoData));
+            this.X instanceof hX && RE(this.X);
+            g.cY(this.element, "ytp-endscreen-takeover", Ts(this));
+            WV(this);
+            L = 0;
+            e.ariaBusy = "true";
+            c = B.length;
+            for (I = 0; I < c; I++) {
+                var x = I % c
+                  , S = this.stills[I];
+                S || (S = new g.zb(this.player),
+                this.stills[I] = S,
+                e.appendChild(S.element));
+                g.jUv(S, B[x]);
+                L++
+            }
+            this.stills.length = L
         }
-        this.update({
-            content: a
-        });
-        this.K.hasVe(this.element) && this.K.destroyVe(this.element);
-        this.K.createClientVe(this.element, this, I)
     }
     ;
-    g.H.onClick = function(a) {
-        this.K.N("web_player_log_click_before_generating_ve_conversion_params") && this.K.logClick(this.element);
-        g.Jw(this.getVideoUrl(), this.K, a);
-        this.K.N("web_player_log_click_before_generating_ve_conversion_params") || this.K.logClick(this.element)
+    g.M.onVideoDataChange = function() {
+        var e = this.player.getVideoData(1);
+        this.videoData !== e && (e != null && g.zN(e) ? (this.videoData = e,
+        this.eZ()) : this.player.sW("missg", {
+            vid: (e == null ? void 0 : e.videoId) || "",
+            cpn: (e == null ? void 0 : e.clientPlaybackNonce) || ""
+        }))
     }
     ;
-    g.H.getVideoUrl = function() {
-        var a = !0;
-        switch (this.buttonType) {
-        case 1:
-            a = !0;
-            break;
-        case 2:
-            a = !1
-        }
-        a = this.K.getVideoUrl(a, !1, !1, !0);
-        var I = this.K.X();
-        if (g.YH(I)) {
-            var U = {};
-            g.YH(I) && g.AU(this.K, "addEmbedsConversionTrackingParams", [U]);
-            a = g.pM(a, U)
-        }
-        return a
+    g.M.di = function() {
+        return this.X.wp()
     }
     ;
-    g.H.logVisibility = function() {
-        this.K.logVisibility(this.element, this.gF && this.U)
+    g.M.nZ = function(e) {
+        e === 1 ? (this.G = !1,
+        this.Z = this.videoData.clientPlaybackNonce,
+        this.X.GS(),
+        this.z_ && this.eZ()) : (this.G = !0,
+        this.z_ && Ts(this) && (e === 2 ? this.X.lG() : e === 3 && this.X.TA()))
     }
     ;
-    g.H.show = function() {
-        g.F.prototype.show.call(this);
-        this.logVisibility()
-    }
-    ;
-    g.H.hide = function() {
-        g.F.prototype.hide.call(this);
-        this.logVisibility()
-    }
-    ;
-    g.H.qY = function(a) {
-        g.F.prototype.qY.call(this, a);
-        this.logVisibility()
-    }
-    ;
-    g.u(xA, Tz);
-    xA.prototype.show = function() {
-        this.player.getPlayerState() !== 3 && (Tz.prototype.show.call(this),
-        this.V.U_(!0),
-        this.V.Lj(!0),
-        this.K.X().vZ || this.V.gp(!0),
-        this.K.logVisibility(this.element, !0),
-        this.watchButton.qY(!0))
-    }
-    ;
-    xA.prototype.hide = function() {
-        Tz.prototype.hide.call(this);
-        this.V.U_(!1);
-        this.V.Lj(!1);
-        this.V.gp(!1);
-        this.K.logVisibility(this.element, !1);
-        this.watchButton.qY(!1)
-    }
-    ;
-    g.u(Z8, g.F);
-    Z8.prototype.select = function() {
-        this.api.pT(this.suggestion.videoId, this.suggestion.sessionData, this.suggestion.playlistId, void 0, void 0, this.suggestion.LC || void 0) && this.api.logClick(this.element)
-    }
-    ;
-    Z8.prototype.onClick = function(a) {
-        if (g.YH(this.api.X()) && this.api.N("web_player_log_click_before_generating_ve_conversion_params")) {
-            this.api.logClick(this.element);
-            var I = this.suggestion.ys()
-              , U = {};
-            g.EK(this.api, U);
-            I = g.pM(I, U);
-            g.Jw(I, this.api, a)
+    g.M.gO = function(e) {
+        if (e) {
+            for (e = 0; e < this.stills.length; e++)
+                this.V.logVisibility(this.stills[e].element, !0);
+            this.nZ(1)
         } else
-            g.bV(a, this.api, this.L, this.suggestion.sessionData || void 0) && this.select()
+            this.Z = null,
+            this.G = !1;
+        this.eZ()
     }
     ;
-    Z8.prototype.onKeyPress = function(a) {
-        switch (a.keyCode) {
+    g.M.Va = function() {
+        return this.z_ && Ts(this)
+    }
+    ;
+    g.z(m39, u9);
+    m39.prototype.OW = function() {
+        var e = this.player.getVideoData();
+        this.X.update({
+            profilePicture: e.profilePicture,
+            author: e.author
+        });
+        this.subscribeButton.channelId = e.hR;
+        var L = this.subscribeButton;
+        e.subscribed ? L.X() : L.K()
+    }
+    ;
+    g.z(Ma, g.U);
+    Ma.prototype.select = function() {
+        this.api.zF(this.suggestion.videoId, this.suggestion.sessionData, this.suggestion.playlistId, void 0, void 0, this.suggestion.Yp || void 0) && this.api.logClick(this.element)
+    }
+    ;
+    Ma.prototype.onClick = function(e) {
+        if (g.Uh(this.api.S()) && this.api.Y("web_player_log_click_before_generating_ve_conversion_params")) {
+            this.api.logClick(this.element);
+            var L = this.suggestion.Pv()
+              , c = {};
+            g.PS(this.api, c);
+            L = g.WO(L, c);
+            g.v8(L, this.api, e)
+        } else
+            g.s4(e, this.api, this.K, this.suggestion.sessionData || void 0) && this.select()
+    }
+    ;
+    Ma.prototype.onKeyPress = function(e) {
+        switch (e.keyCode) {
         case 13:
         case 32:
-            a.defaultPrevented || (this.select(),
-            a.preventDefault())
+            e.defaultPrevented || (this.select(),
+            e.preventDefault())
         }
     }
     ;
-    Z8.prototype.onVideoDataChange = function() {
-        var a = this.api.getVideoData()
-          , I = this.api.X();
-        this.L = a.uc ? !1 : I.J
+    Ma.prototype.onVideoDataChange = function() {
+        var e = this.api.getVideoData()
+          , L = this.api.S();
+        this.K = e.xx ? !1 : L.G
     }
     ;
-    g.u(NeJ, Tz);
-    g.H = NeJ.prototype;
-    g.H.create = function() {
-        Tz.prototype.create.call(this);
-        var a = this.player.getVideoData();
-        a && (this.videoData = a);
-        this.un();
-        this.L.G(this.player, "appresize", this.un);
-        this.L.G(this.player, "onVideoAreaChange", this.un);
-        this.L.G(this.player, "videodatachange", this.onVideoDataChange);
-        this.L.G(this.player, "autonavchange", this.v9);
-        this.L.G(this.player, "onAutonavCancelled", this.uy);
-        a = this.videoData.autonavState;
-        a !== this.D && this.v9(a);
-        this.L.G(this.element, "transitionend", this.ly)
+    g.z(zs, u9);
+    g.M = zs.prototype;
+    g.M.create = function() {
+        u9.prototype.create.call(this);
+        var e = this.player.getVideoData();
+        e && (this.videoData = e);
+        this.pG();
+        this.K.C(this.player, "appresize", this.pG);
+        this.K.C(this.player, "onVideoAreaChange", this.pG);
+        this.K.C(this.player, "videodatachange", this.onVideoDataChange);
+        this.K.C(this.player, "autonavchange", this.H2);
+        this.K.C(this.player, "onAutonavCancelled", this.JG);
+        e = this.videoData.autonavState;
+        e !== this.D && this.H2(e);
+        this.K.C(this.element, "transitionend", this.dO)
     }
     ;
-    g.H.destroy = function() {
-        g.Y3(this.L);
-        g.bH(this.stills);
+    g.M.destroy = function() {
+        g.fv(this.K);
+        g.cs(this.stills);
         this.stills = [];
-        Tz.prototype.destroy.call(this);
-        g.ta(this.element, "ytp-show-tiles");
-        this.Y.stop();
+        u9.prototype.destroy.call(this);
+        g.eZ(this.element, "ytp-show-tiles");
+        this.T.stop();
         this.D = this.videoData.autonavState
     }
     ;
-    g.H.NH = function() {
+    g.M.HK = function() {
         return this.videoData.autonavState !== 1
     }
     ;
-    g.H.show = function() {
-        var a = this.gF;
-        Tz.prototype.show.call(this);
-        g.ta(this.element, "ytp-show-tiles");
-        this.player.X().L ? g.sb(this.Y) : this.Y.start();
-        (this.J || this.B && this.B !== this.videoData.clientPlaybackNonce) && g.SB(this.player, !1);
-        t8(this) ? (nR(this),
-        this.videoData.autonavState === 2 ? this.player.getVisibilityState() === 3 ? this.V.select(!0) : this.V.NT() : this.videoData.autonavState === 3 && this.V.EJ()) : (g.SB(this.player, !0),
-        nR(this));
-        a !== this.gF && this.player.logVisibility(this.element, !0)
+    g.M.show = function() {
+        var e = this.z_;
+        u9.prototype.show.call(this);
+        g.eZ(this.element, "ytp-show-tiles");
+        this.player.S().K ? g.lB(this.T) : this.T.start();
+        (this.j || this.G && this.G !== this.videoData.clientPlaybackNonce) && g.jD(this.player, !1);
+        s0(this) ? (vV(this),
+        this.videoData.autonavState === 2 ? this.player.getVisibilityState() === 3 ? this.X.select(!0) : this.X.lG() : this.videoData.autonavState === 3 && this.X.TA()) : (g.jD(this.player, !0),
+        vV(this));
+        e !== this.z_ && this.player.logVisibility(this.element, !0)
     }
     ;
-    g.H.hide = function() {
-        var a = this.gF;
-        Tz.prototype.hide.call(this);
-        this.V.EJ();
-        nR(this);
-        a !== this.gF && this.player.logVisibility(this.element, !1)
+    g.M.hide = function() {
+        var e = this.z_;
+        u9.prototype.hide.call(this);
+        this.X.TA();
+        vV(this);
+        e !== this.z_ && this.player.logVisibility(this.element, !1)
     }
     ;
-    g.H.ly = function(a) {
-        a.target === this.element && this.un()
+    g.M.dO = function(e) {
+        e.target === this.element && this.pG()
     }
     ;
-    g.H.un = function() {
-        var a, I, U, e;
-        var T = ((a = this.videoData) == null ? 0 : (I = a.suggestions) == null ? 0 : I.length) ? (U = this.videoData) == null ? void 0 : U.suggestions : [(e = this.videoData) == null ? void 0 : g.rN(e)];
-        if (T.length) {
-            I = this.K.lZ(!0, this.K.isFullscreen());
-            a = Math.floor((I.width - 64 + 16) / (g.WA(I.width * .27, 250, 450) + 16));
-            I = Math.min(3, Math.floor((I.height - 64) / ((I.width - 64 - (a - 1) * 16) / a * .5625 + 70)));
-            g.nC(this.element, ["ytp-modern-endscreen-limit-rows-1", "ytp-modern-endscreen-limit-rows-2", "ytp-modern-endscreen-limit-rows-3"]);
-            g.x5(this.element, "ytp-modern-endscreen-limit-rows-" + I);
-            g.KC(this.element, "ytp-modern-endscreen-single-item", a === 1);
-            g.KC(this.element, "ytp-modern-endscreen-row-0", I === 0);
-            a = this.table.element;
-            a.ariaLive = "polite";
-            this.V.z4(g.rN(this.videoData));
-            this.V instanceof UA && ey(this.V);
-            g.KC(this.element, "ytp-endscreen-takeover", t8(this));
-            nR(this);
-            I = 0;
-            a.ariaBusy = "true";
-            U = T.length;
-            for (e = 0; e < U; e++) {
-                var C = e % U
-                  , r = this.stills[e];
-                r || (r = new Z8(this.player),
-                this.stills[e] = r,
-                a.appendChild(r.element));
-                C = T[C];
-                if (r.suggestion !== C) {
-                    r.suggestion = C;
-                    var q = r.api.X();
-                    It(r, C, "hqdefault.jpg");
-                    if (g.YH(q) && !r.api.N("web_player_log_click_before_generating_ve_conversion_params")) {
-                        q = C.ys();
-                        var x = {};
-                        g.AU(r.api, "addEmbedsConversionTrackingParams", [x]);
-                        q = g.pM(q, x);
-                        r.updateValue("url", q)
-                    }
-                    (C = (C = C.sessionData) && C.itct) && r.api.setTrackingParams(r.element, C)
-                }
-                I++
-            }
-            this.stills.length = I
-        }
-    }
-    ;
-    g.H.onVideoDataChange = function() {
-        var a = this.player.getVideoData(1);
-        this.videoData !== a && (a != null && g.rN(a) ? (this.videoData = a,
-        this.un()) : this.player.R$("missg", {
-            vid: (a == null ? void 0 : a.videoId) || "",
-            cpn: (a == null ? void 0 : a.clientPlaybackNonce) || ""
-        }))
-    }
-    ;
-    g.H.bY = function() {
-        return this.V.P1()
-    }
-    ;
-    g.H.v9 = function(a) {
-        a === 1 ? (this.J = !1,
-        this.B = this.videoData.clientPlaybackNonce,
-        this.V.D4(),
-        this.gF && this.un()) : (this.J = !0,
-        this.gF && t8(this) && (a === 2 ? this.V.NT() : a === 3 && this.V.EJ()))
-    }
-    ;
-    g.H.uy = function(a) {
-        if (a) {
-            for (a = 0; a < this.stills.length; a++)
-                this.K.logVisibility(this.stills[a].element, !0);
-            this.v9(1)
-        } else
-            this.B = null,
-            this.J = !1;
-        this.un()
-    }
-    ;
-    g.H.Go = function() {
-        return this.gF && t8(this)
-    }
-    ;
-    g.u(oz4, Tz);
-    oz4.prototype.Qa = function() {
-        var a = this.player.getVideoData();
-        this.V.update({
-            profilePicture: a.profilePicture,
-            author: a.author
-        });
-        this.subscribeButton.channelId = a.Y2;
-        var I = this.subscribeButton;
-        a.subscribed ? I.V() : I.L()
-    }
-    ;
-    g.u(KR, g.F);
-    KR.prototype.select = function() {
-        this.api.pT(this.suggestion.videoId, this.suggestion.sessionData, this.suggestion.playlistId, void 0, void 0, this.suggestion.LC || void 0) && this.api.logClick(this.element)
-    }
-    ;
-    KR.prototype.onClick = function(a) {
-        if (g.YH(this.api.X()) && this.api.N("web_player_log_click_before_generating_ve_conversion_params")) {
-            this.api.logClick(this.element);
-            var I = this.suggestion.ys()
-              , U = {};
-            g.EK(this.api, U);
-            I = g.pM(I, U);
-            g.Jw(I, this.api, a)
-        } else
-            g.bV(a, this.api, this.L, this.suggestion.sessionData || void 0) && this.select()
-    }
-    ;
-    KR.prototype.onKeyPress = function(a) {
-        switch (a.keyCode) {
-        case 13:
-        case 32:
-            a.defaultPrevented || (this.select(),
-            a.preventDefault())
-        }
-    }
-    ;
-    KR.prototype.onVideoDataChange = function() {
-        var a = this.api.getVideoData()
-          , I = this.api.X();
-        this.L = a.uc ? !1 : I.J
-    }
-    ;
-    g.u(bt, Tz);
-    g.H = bt.prototype;
-    g.H.create = function() {
-        Tz.prototype.create.call(this);
-        var a = this.player.getVideoData();
-        a && (this.videoData = a);
-        this.Pu();
-        this.L.G(this.player, "appresize", this.Pu);
-        this.L.G(this.player, "onVideoAreaChange", this.Pu);
-        this.L.G(this.player, "videodatachange", this.onVideoDataChange);
-        this.L.G(this.player, "autonavchange", this.Nf);
-        this.L.G(this.player, "onAutonavCancelled", this.jR);
-        a = this.videoData.autonavState;
-        a !== this.j && this.Nf(a);
-        this.L.G(this.element, "transitionend", this.s5)
-    }
-    ;
-    g.H.destroy = function() {
-        g.Y3(this.L);
-        g.bH(this.stills);
-        this.stills = [];
-        Tz.prototype.destroy.call(this);
-        g.ta(this.element, "ytp-show-tiles");
-        this.C.stop();
-        this.j = this.videoData.autonavState
-    }
-    ;
-    g.H.NH = function() {
-        return this.videoData.autonavState !== 1
-    }
-    ;
-    g.H.show = function() {
-        var a = this.gF;
-        Tz.prototype.show.call(this);
-        g.ta(this.element, "ytp-show-tiles");
-        this.player.X().L ? g.sb(this.C) : this.C.start();
-        (this.Y || this.J && this.J !== this.videoData.clientPlaybackNonce) && g.SB(this.player, !1);
-        J8(this) ? (ut(this),
-        this.videoData.autonavState === 2 ? this.player.getVisibilityState() === 3 ? this.V.select(!0) : this.V.NT() : this.videoData.autonavState === 3 && this.V.EJ()) : (g.SB(this.player, !0),
-        ut(this));
-        a !== this.gF && this.player.logVisibility(this.element, !0)
-    }
-    ;
-    g.H.hide = function() {
-        var a = this.gF;
-        Tz.prototype.hide.call(this);
-        this.V.EJ();
-        ut(this);
-        a !== this.gF && this.player.logVisibility(this.element, !1)
-    }
-    ;
-    g.H.s5 = function(a) {
-        a.target === this.element && this.Pu()
-    }
-    ;
-    g.H.Pu = function() {
-        var a, I, U, e;
-        var T = ((a = this.videoData) == null ? 0 : (I = a.suggestions) == null ? 0 : I.length) ? (U = this.videoData) == null ? void 0 : U.suggestions : [(e = this.videoData) == null ? void 0 : g.rN(e)];
-        if (T.length) {
-            g.x5(this.element, "ytp-endscreen-paginate");
-            var C = this.K.lZ(!0, this.K.isFullscreen());
-            if (a = g.Lh(this.K))
-                a = a.NV() ? 48 : 32,
-                C.width -= a * 2;
-            var r = C.width / C.height;
-            e = 96 / 54;
-            I = a = 2;
-            var q = Math.max(C.width / 96, 2)
-              , x = Math.max(C.height / 54, 2);
-            U = T.length;
-            var Z = U * 4;
-            for (Z -= 4; Z > 0 && (a < q || I < x); ) {
-                var t = a / 2
-                  , n = I / 2
-                  , K = a <= q - 2 && Z >= n * 4
-                  , b = I <= x - 2 && Z >= t * 4;
-                if ((t + 1) / n * e / r > r / (t / (n + 1) * e) && b)
-                    Z -= t * 4,
-                    I += 2;
-                else if (K)
-                    Z -= n * 4,
-                    a += 2;
-                else if (b)
-                    Z -= t * 4,
-                    I += 2;
+    g.M.pG = function() {
+        var e, L, c, I;
+        var B = ((e = this.videoData) == null ? 0 : (L = e.suggestions) == null ? 0 : L.length) ? (c = this.videoData) == null ? void 0 : c.suggestions : [(I = this.videoData) == null ? void 0 : g.zN(I)];
+        if (B.length) {
+            g.Y4(this.element, "ytp-endscreen-paginate");
+            var x = this.V.CB(!0, this.V.isFullscreen());
+            if (e = g.Db(this.V))
+                e = e.TV() ? 48 : 32,
+                x.width -= e * 2;
+            var S = x.width / x.height;
+            I = 96 / 54;
+            L = e = 2;
+            var h = Math.max(x.width / 96, 2)
+              , R = Math.max(x.height / 54, 2);
+            c = B.length;
+            var u = c * 4;
+            for (u -= 4; u > 0 && (e < h || L < R); ) {
+                var t = e / 2
+                  , O = L / 2
+                  , q = e <= h - 2 && u >= O * 4
+                  , T = L <= R - 2 && u >= t * 4;
+                if ((t + 1) / O * I / S > S / (t / (O + 1) * I) && T)
+                    u -= t * 4,
+                    L += 2;
+                else if (q)
+                    u -= O * 4,
+                    e += 2;
+                else if (T)
+                    u -= t * 4,
+                    L += 2;
                 else
                     break
             }
-            e = !1;
-            Z >= 12 && U * 4 - Z <= 6 && (I >= 4 || a >= 4) && (e = !0);
-            Z = a * 96;
-            q = I * 54;
-            r = Z / q < r ? C.height / q : C.width / Z;
-            r = Math.min(r, 2);
-            Z = Math.floor(Math.min(C.width, Z * r));
-            q = Math.floor(Math.min(C.height, q * r));
-            C = this.table.element;
-            C.ariaLive = "polite";
-            g.N1(C, Z, q);
-            g.Gr(C, {
-                marginLeft: Z / -2 + "px",
-                marginTop: q / -2 + "px"
+            I = !1;
+            u >= 12 && c * 4 - u <= 6 && (L >= 4 || e >= 4) && (I = !0);
+            u = e * 96;
+            h = L * 54;
+            S = u / h < S ? x.height / h : x.width / u;
+            S = Math.min(S, 2);
+            u = Math.floor(Math.min(x.width, u * S));
+            h = Math.floor(Math.min(x.height, h * S));
+            x = this.table.element;
+            x.ariaLive = "polite";
+            g.e_(x, u, h);
+            g.l3(x, {
+                marginLeft: u / -2 + "px",
+                marginTop: h / -2 + "px"
             });
-            this.V.z4(g.rN(this.videoData));
-            this.V instanceof UA && ey(this.V);
-            g.KC(this.element, "ytp-endscreen-takeover", J8(this));
-            ut(this);
-            Z += 4;
-            q += 4;
-            r = 0;
-            C.ariaBusy = "true";
-            for (x = 0; x < a; x++)
-                for (t = 0; t < I; t++)
-                    if (n = r,
-                    b = 0,
-                    e && x >= a - 2 && t >= I - 2 ? b = 1 : t % 2 === 0 && x % 2 === 0 && (t < 2 && x < 2 ? t === 0 && x === 0 && (b = 2) : b = 2),
-                    n = g.l9(n + this.B, U),
-                    b !== 0) {
-                        K = this.stills[r];
-                        K || (K = new KR(this.player),
-                        this.stills[r] = K,
-                        C.appendChild(K.element));
-                        var J = Math.floor(q * t / I)
-                          , V = Math.floor(Z * x / a)
-                          , M = Math.floor(q * (t + b) / I) - J - 4
-                          , c = Math.floor(Z * (x + b) / a) - V - 4;
-                        g.mL(K.element, V, J);
-                        g.N1(K.element, c, M);
-                        g.Gr(K.element, "transitionDelay", (t + x) / 20 + "s");
-                        g.KC(K.element, "ytp-videowall-still-mini", b === 1);
-                        g.KC(K.element, "ytp-videowall-still-large", b > 2);
-                        b = Math.max(c, M);
-                        g.KC(K.element, "ytp-videowall-still-round-large", b >= 256);
-                        g.KC(K.element, "ytp-videowall-still-round-medium", b > 96 && b < 256);
-                        g.KC(K.element, "ytp-videowall-still-round-small", b <= 96);
-                        n = T[n];
-                        K.suggestion !== n && (K.suggestion = n,
-                        b = K.api.X(),
-                        J = g.qI(K.element, "ytp-videowall-still-large") ? "hqdefault.jpg" : "mqdefault.jpg",
-                        It(K, n, J),
-                        g.YH(b) && !K.api.N("web_player_log_click_before_generating_ve_conversion_params") && (b = n.ys(),
-                        J = {},
-                        g.AU(K.api, "addEmbedsConversionTrackingParams", [J]),
-                        b = g.pM(b, J),
-                        K.updateValue("url", b)),
-                        (n = (n = n.sessionData) && n.itct) && K.api.setTrackingParams(K.element, n));
-                        r++
+            this.X.yw(g.zN(this.videoData));
+            this.X instanceof hX && RE(this.X);
+            g.cY(this.element, "ytp-endscreen-takeover", s0(this));
+            vV(this);
+            u += 4;
+            h += 4;
+            S = 0;
+            x.ariaBusy = "true";
+            for (R = 0; R < e; R++)
+                for (t = 0; t < L; t++)
+                    if (O = S,
+                    T = 0,
+                    I && R >= e - 2 && t >= L - 2 ? T = 1 : t % 2 === 0 && R % 2 === 0 && (t < 2 && R < 2 ? t === 0 && R === 0 && (T = 2) : T = 2),
+                    O = g.Ha(O + this.Z, c),
+                    T !== 0) {
+                        q = this.stills[S];
+                        q || (q = new Ma(this.player),
+                        this.stills[S] = q,
+                        x.appendChild(q.element));
+                        var W = Math.floor(h * t / L)
+                          , A = Math.floor(u * R / e)
+                          , b = Math.floor(h * (t + T) / L) - W - 4
+                          , J = Math.floor(u * (R + T) / e) - A - 4;
+                        g.Xt(q.element, A, W);
+                        g.e_(q.element, J, b);
+                        g.l3(q.element, "transitionDelay", (t + R) / 20 + "s");
+                        g.cY(q.element, "ytp-videowall-still-mini", T === 1);
+                        g.cY(q.element, "ytp-videowall-still-large", T > 2);
+                        T = Math.max(J, b);
+                        g.cY(q.element, "ytp-videowall-still-round-large", T >= 256);
+                        g.cY(q.element, "ytp-videowall-still-round-medium", T > 96 && T < 256);
+                        g.cY(q.element, "ytp-videowall-still-round-small", T <= 96);
+                        O = B[O];
+                        q.suggestion !== O && (q.suggestion = O,
+                        T = q.api.S(),
+                        W = g.Ks(q.element, "ytp-videowall-still-large") ? "hqdefault.jpg" : "mqdefault.jpg",
+                        g.Mr(q, O, W),
+                        g.Uh(T) && !q.api.Y("web_player_log_click_before_generating_ve_conversion_params") && (T = O.Pv(),
+                        W = {},
+                        g.Fl(q.api, "addEmbedsConversionTrackingParams", [W]),
+                        T = g.WO(T, W),
+                        q.updateValue("url", T)),
+                        (O = (O = O.sessionData) && O.itct) && q.api.setTrackingParams(q.element, O));
+                        S++
                     }
-            C.ariaBusy = "false";
-            g.KC(this.element, "ytp-endscreen-paginate", r < U);
-            for (T = this.stills.length - 1; T >= r; T--)
-                a = this.stills[T],
-                g.ec(a.element),
-                g.Kf(a);
-            this.stills.length = r
+            x.ariaBusy = "false";
+            g.cY(this.element, "ytp-endscreen-paginate", S < c);
+            for (B = this.stills.length - 1; B >= S; B--)
+                e = this.stills[B],
+                g.s_(e.element),
+                g.L0(e);
+            this.stills.length = S
         }
     }
     ;
-    g.H.onVideoDataChange = function() {
-        var a = this.player.getVideoData(1);
-        this.videoData !== a && (a != null && g.rN(a) ? (this.B = 0,
-        this.videoData = a,
-        this.Pu()) : this.player.R$("missg", {
-            vid: (a == null ? void 0 : a.videoId) || "",
-            cpn: (a == null ? void 0 : a.clientPlaybackNonce) || ""
+    g.M.onVideoDataChange = function() {
+        var e = this.player.getVideoData(1);
+        this.videoData !== e && (e != null && g.zN(e) ? (this.Z = 0,
+        this.videoData = e,
+        this.pG()) : this.player.sW("missg", {
+            vid: (e == null ? void 0 : e.videoId) || "",
+            cpn: (e == null ? void 0 : e.clientPlaybackNonce) || ""
         }))
     }
     ;
-    g.H.cN = function() {
-        this.B += this.stills.length;
-        this.Pu()
+    g.M.AG = function() {
+        this.Z += this.stills.length;
+        this.pG()
     }
     ;
-    g.H.E5 = function() {
-        this.B -= this.stills.length;
-        this.Pu()
+    g.M.Qf = function() {
+        this.Z -= this.stills.length;
+        this.pG()
     }
     ;
-    g.H.bY = function() {
-        return this.V.P1()
+    g.M.di = function() {
+        return this.X.wp()
     }
     ;
-    g.H.Nf = function(a) {
-        a === 1 ? (this.Y = !1,
-        this.J = this.videoData.clientPlaybackNonce,
-        this.V.D4(),
-        this.gF && this.Pu()) : (this.Y = !0,
-        this.gF && J8(this) && (a === 2 ? this.V.NT() : a === 3 && this.V.EJ()))
+    g.M.H2 = function(e) {
+        e === 1 ? (this.j = !1,
+        this.G = this.videoData.clientPlaybackNonce,
+        this.X.GS(),
+        this.z_ && this.pG()) : (this.j = !0,
+        this.z_ && s0(this) && (e === 2 ? this.X.lG() : e === 3 && this.X.TA()))
     }
     ;
-    g.H.jR = function(a) {
-        if (a) {
-            for (a = 0; a < this.stills.length; a++)
-                this.K.logVisibility(this.stills[a].element, !0);
-            this.Nf(1)
+    g.M.JG = function(e) {
+        if (e) {
+            for (e = 0; e < this.stills.length; e++)
+                this.V.logVisibility(this.stills[e].element, !0);
+            this.H2(1)
         } else
-            this.J = null,
-            this.Y = !1;
-        this.Pu()
+            this.G = null,
+            this.j = !1;
+        this.pG()
     }
     ;
-    g.H.Go = function() {
-        return this.gF && J8(this)
+    g.M.Va = function() {
+        return this.z_ && s0(this)
     }
     ;
-    g.u(kA, Tz);
-    kA.prototype.hasSuggestions = function() {
-        var a;
-        return (a = this.V) == null ? void 0 : a.hasSuggestions()
+    g.z(ypL, g.U);
+    g.M = ypL.prototype;
+    g.M.EG = function() {
+        switch (this.buttonType) {
+        case 1:
+            var e = "Noch einmal auf YouTube ansehen";
+            var L = 156915;
+            break;
+        case 2:
+            e = "Weiter auf YouTube ansehen";
+            L = 156942;
+            break;
+        default:
+            e = "Weiter auf YouTube ansehen",
+            L = 156942
+        }
+        this.update({
+            content: e
+        });
+        this.V.hasVe(this.element) && this.V.destroyVe(this.element);
+        this.V.createClientVe(this.element, this, L)
     }
     ;
-    kA.prototype.show = function() {
+    g.M.onClick = function(e) {
+        this.V.Y("web_player_log_click_before_generating_ve_conversion_params") && this.V.logClick(this.element);
+        g.v8(this.getVideoUrl(), this.V, e);
+        this.V.Y("web_player_log_click_before_generating_ve_conversion_params") || this.V.logClick(this.element)
+    }
+    ;
+    g.M.getVideoUrl = function() {
+        var e = !0;
+        switch (this.buttonType) {
+        case 1:
+            e = !0;
+            break;
+        case 2:
+            e = !1
+        }
+        e = this.V.getVideoUrl(e, !1, !1, !0);
+        var L = this.V.S();
+        if (g.Uh(L)) {
+            var c = {};
+            g.Uh(L) && g.Fl(this.V, "addEmbedsConversionTrackingParams", [c]);
+            e = g.WO(e, c)
+        }
+        return e
+    }
+    ;
+    g.M.logVisibility = function() {
+        this.V.logVisibility(this.element, this.z_ && this.B)
+    }
+    ;
+    g.M.show = function() {
+        g.U.prototype.show.call(this);
+        this.logVisibility()
+    }
+    ;
+    g.M.hide = function() {
+        g.U.prototype.hide.call(this);
+        this.logVisibility()
+    }
+    ;
+    g.M.vy = function(e) {
+        g.U.prototype.vy.call(this, e);
+        this.logVisibility()
+    }
+    ;
+    g.z(f9, u9);
+    f9.prototype.hasSuggestions = function() {
+        var e;
+        return (e = this.X) == null ? void 0 : e.hasSuggestions()
+    }
+    ;
+    f9.prototype.show = function() {
         if (this.player.getPlayerState() !== 3) {
-            Tz.prototype.show.call(this);
-            var a = this.L;
-            if (a) {
-                var I = this.V.hasSuggestions();
-                g.KC(this.element, "ytp-shorts-branded-ui", I);
-                I ? a.show() : a.hide()
+            u9.prototype.show.call(this);
+            var e = this.K;
+            if (e) {
+                var L = this.X.hasSuggestions();
+                g.cY(this.element, "ytp-shorts-branded-ui", L);
+                L ? e.show() : e.hide()
             }
-            var U;
-            (U = g.Lh(this.player)) == null || U.O_(!0);
+            var c;
+            (c = g.Db(this.player)) == null || c.uj(!0);
             this.player.logVisibility(this.element, !0);
-            this.watchButton.qY(!0)
+            this.watchButton.vy(!0)
         }
     }
     ;
-    kA.prototype.hide = function() {
-        Tz.prototype.hide.call(this);
-        var a;
-        (a = g.Lh(this.player)) == null || a.O_(!1);
+    f9.prototype.hide = function() {
+        u9.prototype.hide.call(this);
+        var e;
+        (e = g.Db(this.player)) == null || e.uj(!1);
         this.player.logVisibility(this.element, !1);
-        this.watchButton.qY(!1)
+        this.watchButton.vy(!1)
     }
     ;
-    g.u(IBd, g.nu);
-    g.H = IBd.prototype;
-    g.H.zZ = function() {
-        var a = this.player.getVideoData()
-          , I = a.mutedAutoplay && (a.limitedPlaybackDurationInSeconds > 0 || a.endSeconds > 0 || a.mutedAutoplayDurationMode !== 2);
-        if ((this.player.isEmbedsShortsMode() || this.L) && !I)
+    g.z(jXL, g.Vk);
+    g.M = jXL.prototype;
+    g.M.Ai = function() {
+        var e = this.player.getVideoData()
+          , L = e.mutedAutoplay && (e.limitedPlaybackDurationInSeconds > 0 || e.endSeconds > 0 || e.mutedAutoplayDurationMode !== 2);
+        if (this.player.isEmbedsShortsMode() && !L)
             return !0;
-        var U;
-        var e = !!((a == null ? 0 : g.rN(a)) || (a == null ? 0 : (U = a.suggestions) == null ? 0 : U.length));
-        e = !Dfz(this.player) || e;
-        a = a.B1;
-        U = this.player.Cg();
-        return e && !a && !U && !I
+        var c;
+        var I = !!((e == null ? 0 : g.zN(e)) || (e == null ? 0 : (c = e.suggestions) == null ? 0 : c.length));
+        I = !ZWN(this.player) || I;
+        e = e.Sn;
+        c = this.player.eb();
+        return I && !e && !c && !L
     }
     ;
-    g.H.Go = function() {
-        return this.endScreen.Go()
+    g.M.Va = function() {
+        return this.endScreen.Va()
     }
     ;
-    g.H.xna = function() {
-        return this.Go() ? this.endScreen.bY() : !1
+    g.M.zq = function() {
+        return this.Va() ? this.endScreen.di() : !1
     }
     ;
-    g.H.Bs = function() {
-        this.player.HE("endscreen");
-        g.nu.prototype.Bs.call(this)
+    g.M.KS = function() {
+        this.player.RU("endscreen");
+        g.Vk.prototype.KS.call(this)
     }
     ;
-    g.H.load = function() {
-        var a = this.player.getVideoData();
-        var I = a.transitionEndpointAtEndOfStream;
-        if (I && I.videoId) {
-            var U = this.player.Ky().gA.get("heartbeat")
-              , e = g.rN(a);
-            !e || I.videoId !== e.videoId || a.WC ? (this.player.pT(I.videoId, void 0, void 0, !0, !0, I),
-            U && U.cq("HEARTBEAT_ACTION_TRIGGER_AT_STREAM_END", "HEARTBEAT_ACTION_TRANSITION_REASON_HAS_NEW_STREAM_TRANSITION_ENDPOINT"),
-            a = !0) : a = !1
+    g.M.load = function() {
+        var e = this.player.getVideoData();
+        var L = e.transitionEndpointAtEndOfStream;
+        if (L && L.videoId) {
+            var c = this.player.qx().Xt.get("heartbeat")
+              , I = g.zN(e);
+            !I || L.videoId !== I.videoId || e.Fs ? (this.player.zF(L.videoId, void 0, void 0, !0, !0, L),
+            c && c.DQ("HEARTBEAT_ACTION_TRIGGER_AT_STREAM_END", "HEARTBEAT_ACTION_TRANSITION_REASON_HAS_NEW_STREAM_TRANSITION_ENDPOINT"),
+            e = !0) : e = !1
         } else
-            a = !1;
-        a || (g.nu.prototype.load.call(this),
+            e = !1;
+        e || (g.Vk.prototype.load.call(this),
         this.endScreen.show())
     }
     ;
-    g.H.unload = function() {
-        g.nu.prototype.unload.call(this);
+    g.M.unload = function() {
+        g.Vk.prototype.unload.call(this);
         this.endScreen.hide();
         this.endScreen.destroy()
     }
     ;
-    g.H.onCueRangeEnter = function(a) {
-        this.zZ() && (this.endScreen.created || this.endScreen.create(),
-        a.getId() === "load" && this.load())
+    g.M.onCueRangeEnter = function(e) {
+        this.Ai() && (this.endScreen.created || this.endScreen.create(),
+        e.getId() === "load" && this.load())
     }
     ;
-    g.H.onCueRangeExit = function(a) {
-        a.getId() === "load" && this.loaded && this.unload()
+    g.M.onCueRangeExit = function(e) {
+        e.getId() === "load" && this.loaded && this.unload()
     }
     ;
-    g.H.onVideoDataChange = function() {
-        aBz(this);
-        this.J && vzI(this) && (this.endScreen && (this.endScreen.hide(),
+    g.M.onVideoDataChange = function() {
+        $37(this);
+        this.Z && pOg(this) && (this.endScreen && (this.endScreen.hide(),
         this.endScreen.created && this.endScreen.destroy(),
         this.endScreen.dispose()),
-        this.V ? this.endScreen = new r_(this.player) : this.endScreen = new bt(this.player),
-        g.E(this, this.endScreen),
-        g.w4(this.player, this.endScreen.element, 4))
+        this.X ? this.endScreen = new O0(this.player) : this.endScreen = new zs(this.player),
+        g.l(this, this.endScreen),
+        g.Uq(this.player, this.endScreen.element, 4))
     }
     ;
-    g.th("endscreen", IBd);
+    g.JK("endscreen", jXL);
 }
 )(_yt_player);

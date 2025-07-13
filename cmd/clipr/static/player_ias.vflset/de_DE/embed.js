@@ -1,76 +1,73 @@
 (function(g) {
     var window = this;
     'use strict';
-    var KB4 = function(a) {
-        return a
+    var L_g = function(e) {
+        e.mutedAutoplay = !1;
+        e.endSeconds = NaN;
+        e.limitedPlaybackDurationInSeconds = NaN;
+        g.OF(e)
     }
-      , bfI = function(a) {
-        a.mutedAutoplay = !1;
-        a.endSeconds = NaN;
-        a.limitedPlaybackDurationInSeconds = NaN;
-        g.IE(a)
-    }
-      , JeD = function() {
+      , cpZ = function() {
         return {
-            W: "svg",
-            S: {
+            U: "svg",
+            N: {
                 height: "100%",
                 version: "1.1",
                 viewBox: "0 0 110 26",
                 width: "100%"
             },
-            Z: [{
-                W: "path",
-                kY: !0,
-                T: "ytp-svg-fill",
-                S: {
+            L: [{
+                U: "path",
+                zy: !0,
+                W: "ytp-svg-fill",
+                N: {
                     d: "M 16.68,.99 C 13.55,1.03 7.02,1.16 4.99,1.68 c -1.49,.4 -2.59,1.6 -2.99,3 -0.69,2.7 -0.68,8.31 -0.68,8.31 0,0 -0.01,5.61 .68,8.31 .39,1.5 1.59,2.6 2.99,3 2.69,.7 13.40,.68 13.40,.68 0,0 10.70,.01 13.40,-0.68 1.5,-0.4 2.59,-1.6 2.99,-3 .69,-2.7 .68,-8.31 .68,-8.31 0,0 .11,-5.61 -0.68,-8.31 -0.4,-1.5 -1.59,-2.6 -2.99,-3 C 29.11,.98 18.40,.99 18.40,.99 c 0,0 -0.67,-0.01 -1.71,0 z m 72.21,.90 0,21.28 2.78,0 .31,-1.37 .09,0 c .3,.5 .71,.88 1.21,1.18 .5,.3 1.08,.40 1.68,.40 1.1,0 1.99,-0.49 2.49,-1.59 .5,-1.1 .81,-2.70 .81,-4.90 l 0,-2.40 c 0,-1.6 -0.11,-2.90 -0.31,-3.90 -0.2,-0.89 -0.5,-1.59 -1,-2.09 -0.5,-0.4 -1.10,-0.59 -1.90,-0.59 -0.59,0 -1.18,.19 -1.68,.49 -0.49,.3 -1.01,.80 -1.21,1.40 l 0,-7.90 -3.28,0 z m -49.99,.78 3.90,13.90 .18,6.71 3.31,0 0,-6.71 3.87,-13.90 -3.37,0 -1.40,6.31 c -0.4,1.89 -0.71,3.19 -0.81,3.99 l -0.09,0 c -0.2,-1.1 -0.51,-2.4 -0.81,-3.99 l -1.37,-6.31 -3.40,0 z m 29.59,0 0,2.71 3.40,0 0,17.90 3.28,0 0,-17.90 3.40,0 c 0,0 .00,-2.71 -0.09,-2.71 l -9.99,0 z m -53.49,5.12 8.90,5.18 -8.90,5.09 0,-10.28 z m 89.40,.09 c -1.7,0 -2.89,.59 -3.59,1.59 -0.69,.99 -0.99,2.60 -0.99,4.90 l 0,2.59 c 0,2.2 .30,3.90 .99,4.90 .7,1.1 1.8,1.59 3.5,1.59 1.4,0 2.38,-0.3 3.18,-1 .7,-0.7 1.09,-1.69 1.09,-3.09 l 0,-0.5 -2.90,-0.21 c 0,1 -0.08,1.6 -0.28,2 -0.1,.4 -0.5,.62 -1,.62 -0.3,0 -0.61,-0.11 -0.81,-0.31 -0.2,-0.3 -0.30,-0.59 -0.40,-1.09 -0.1,-0.5 -0.09,-1.21 -0.09,-2.21 l 0,-0.78 5.71,-0.09 0,-2.62 c 0,-1.6 -0.10,-2.78 -0.40,-3.68 -0.2,-0.89 -0.71,-1.59 -1.31,-1.99 -0.7,-0.4 -1.48,-0.59 -2.68,-0.59 z m -50.49,.09 c -1.09,0 -2.01,.18 -2.71,.68 -0.7,.4 -1.2,1.12 -1.49,2.12 -0.3,1 -0.5,2.27 -0.5,3.87 l 0,2.21 c 0,1.5 .10,2.78 .40,3.78 .2,.9 .70,1.62 1.40,2.12 .69,.5 1.71,.68 2.81,.78 1.19,0 2.08,-0.28 2.78,-0.68 .69,-0.4 1.09,-1.09 1.49,-2.09 .39,-1 .49,-2.30 .49,-3.90 l 0,-2.21 c 0,-1.6 -0.2,-2.87 -0.49,-3.87 -0.3,-0.89 -0.8,-1.62 -1.49,-2.12 -0.7,-0.5 -1.58,-0.68 -2.68,-0.68 z m 12.18,.09 0,11.90 c -0.1,.3 -0.29,.48 -0.59,.68 -0.2,.2 -0.51,.31 -0.81,.31 -0.3,0 -0.58,-0.10 -0.68,-0.40 -0.1,-0.3 -0.18,-0.70 -0.18,-1.40 l 0,-10.99 -3.40,0 0,11.21 c 0,1.4 .18,2.39 .68,3.09 .49,.7 1.21,1 2.21,1 1.4,0 2.48,-0.69 3.18,-2.09 l .09,0 .31,1.78 2.59,0 0,-14.99 c 0,0 -3.40,.00 -3.40,-0.09 z m 17.31,0 0,11.90 c -0.1,.3 -0.29,.48 -0.59,.68 -0.2,.2 -0.51,.31 -0.81,.31 -0.3,0 -0.58,-0.10 -0.68,-0.40 -0.1,-0.3 -0.21,-0.70 -0.21,-1.40 l 0,-10.99 -3.40,0 0,11.21 c 0,1.4 .21,2.39 .71,3.09 .5,.7 1.18,1 2.18,1 1.39,0 2.51,-0.69 3.21,-2.09 l .09,0 .28,1.78 2.62,0 0,-14.99 c 0,0 -3.40,.00 -3.40,-0.09 z m 20.90,2.09 c .4,0 .58,.11 .78,.31 .2,.3 .30,.59 .40,1.09 .1,.5 .09,1.21 .09,2.21 l 0,1.09 -2.5,0 0,-1.09 c 0,-1 -0.00,-1.71 .09,-2.21 0,-0.4 .11,-0.8 .31,-1 .2,-0.3 .51,-0.40 .81,-0.40 z m -50.49,.12 c .5,0 .8,.18 1,.68 .19,.5 .28,1.30 .28,2.40 l 0,4.68 c 0,1.1 -0.08,1.90 -0.28,2.40 -0.2,.5 -0.5,.68 -1,.68 -0.5,0 -0.79,-0.18 -0.99,-0.68 -0.2,-0.5 -0.31,-1.30 -0.31,-2.40 l 0,-4.68 c 0,-1.1 .11,-1.90 .31,-2.40 .2,-0.5 .49,-0.68 .99,-0.68 z m 39.68,.09 c .3,0 .61,.10 .81,.40 .2,.3 .27,.67 .37,1.37 .1,.6 .12,1.51 .12,2.71 l .09,1.90 c 0,1.1 .00,1.99 -0.09,2.59 -0.1,.6 -0.19,1.08 -0.49,1.28 -0.2,.3 -0.50,.40 -0.90,.40 -0.3,0 -0.51,-0.08 -0.81,-0.18 -0.2,-0.1 -0.39,-0.29 -0.59,-0.59 l 0,-8.5 c .1,-0.4 .29,-0.7 .59,-1 .3,-0.3 .60,-0.40 .90,-0.40 z"
                 }
             }]
         }
     }
-      , usz = function() {
+      , InL = function() {
         return {
-            W: "svg",
-            S: {
+            U: "svg",
+            N: {
                 fill: "none",
                 height: "100%",
                 viewBox: "0 0 143 51",
                 width: "100%"
             },
-            Z: [{
-                W: "path",
-                S: {
+            L: [{
+                U: "path",
+                N: {
                     d: "M58.37 41.39H62.79V27.23C62.79 23.03 62.69 18.69 62.43 13.59H62.93L63.69 16.89L68.67 41.39H73.17L78.07 16.89L78.89 13.59H79.37C79.15 18.45 79.03 22.89 79.03 27.23V41.39H83.45V8.79H75.95L73.41 20.81C72.35 25.85 71.51 32.01 71.01 35.19H70.73C70.33 31.95 69.49 25.81 68.41 20.85L65.81 8.79H58.37V41.39Z",
                     fill: "white"
                 }
             }, {
-                W: "path",
-                S: {
+                U: "path",
+                N: {
                     d: "M91.45 41.73C93.91 41.73 95.83 40.59 97.17 38.13H97.35L97.69 41.39H101.43V17.73H96.47V36.61C95.91 37.67 94.81 38.29 93.73 38.29C92.33 38.29 91.89 37.17 91.89 35.13V17.73H86.93V35.43C86.93 39.49 88.19 41.73 91.45 41.73Z",
                     fill: "white"
                 }
             }, {
-                W: "path",
-                S: {
+                U: "path",
+                N: {
                     d: "M110.79 41.89C115.15 41.89 117.75 39.83 117.75 35.65C117.75 31.79 115.93 30.39 111.85 27.47C109.67 25.91 108.39 25.09 108.39 22.95C108.39 21.47 109.27 20.61 110.89 20.61C112.69 20.61 113.33 21.81 113.33 25.29L117.45 25.07C117.77 19.57 115.71 17.23 110.97 17.23C106.57 17.23 104.17 19.27 104.17 23.45C104.17 27.25 105.97 28.83 108.93 31.03C111.89 33.23 113.55 34.53 113.55 36.23C113.55 37.75 112.51 38.61 111.01 38.61C109.13 38.61 108.11 36.97 108.29 34.41L104.21 34.49C103.51 39.25 105.89 41.89 110.79 41.89Z",
                     fill: "white"
                 }
             }, {
-                W: "path",
-                S: {
+                U: "path",
+                N: {
                     d: "M122.5 14.59C124.22 14.59 125.04 13.99 125.04 11.59C125.04 9.33 124.16 8.65 122.5 8.65C120.84 8.65 119.94 9.27 119.94 11.59C119.94 13.99 120.82 14.59 122.5 14.59ZM120.2 41.39H125V17.73H120.2V41.39Z",
                     fill: "white"
                 }
             }, {
-                W: "path",
-                S: {
+                U: "path",
+                N: {
                     d: "M134.95 41.79C137.31 41.79 138.63 41.49 139.71 40.47C141.31 39.01 141.97 36.63 141.85 33.11L137.41 32.87C137.41 36.87 136.81 38.45 135.03 38.45C133.13 38.45 132.77 36.45 132.77 31.97V27.21C132.77 22.41 133.23 20.51 135.07 20.51C136.67 20.51 137.29 22.01 137.29 26.47L141.65 26.15C141.97 22.93 141.59 20.29 140.09 18.83C139.01 17.77 137.37 17.29 135.15 17.29C129.65 17.29 127.75 20.73 127.75 28.03V31.17C127.75 38.47 129.23 41.79 134.95 41.79Z",
                     fill: "white"
                 }
             }, {
-                W: "path",
-                S: {
+                U: "path",
+                N: {
                     "clip-rule": "evenodd",
                     d: "M24.99 49C29.74 49.00 34.38 47.59 38.32 44.95C42.27 42.32 45.35 38.57 47.17 34.18C48.98 29.80 49.46 24.97 48.53 20.32C47.61 15.66 45.32 11.38 41.97 8.03C38.61 4.67 34.33 2.38 29.68 1.46C25.02 .53 20.20 1.01 15.81 2.82C11.43 4.64 7.68 7.71 5.04 11.66C2.40 15.61 1 20.25 1 25C0.99 28.15 1.61 31.27 2.82 34.18C4.03 37.09 5.79 39.74 8.02 41.97C10.25 44.19 12.89 45.96 15.81 47.17C18.72 48.37 21.84 49 24.99 49ZM24.99 12.36C27.49 12.36 29.94 13.10 32.02 14.48C34.10 15.87 35.72 17.84 36.68 20.15C37.64 22.46 37.89 25.01 37.41 27.46C36.92 29.91 35.72 32.17 33.95 33.94C32.18 35.70 29.93 36.91 27.48 37.40C25.02 37.89 22.48 37.64 20.17 36.68C17.86 35.72 15.88 34.10 14.50 32.02C13.11 29.94 12.37 27.50 12.37 25C12.37 21.65 13.70 18.44 16.07 16.07C18.43 13.70 21.64 12.37 24.99 12.36ZM24.99 10.43C22.11 10.43 19.29 11.28 16.89 12.88C14.50 14.48 12.63 16.76 11.53 19.42C10.42 22.09 10.13 25.02 10.70 27.85C11.26 30.67 12.65 33.27 14.69 35.31C16.73 37.35 19.32 38.73 22.15 39.30C24.98 39.86 27.91 39.57 30.57 38.46C33.23 37.36 35.51 35.49 37.11 33.09C38.71 30.70 39.57 27.88 39.56 25C39.56 23.08 39.19 21.19 38.46 19.42C37.72 17.65 36.65 16.04 35.30 14.69C33.94 13.34 32.34 12.27 30.57 11.53C28.80 10.80 26.90 10.43 24.99 10.43ZM32.63 24.99L20.36 32.09V17.91L32.63 24.99Z",
                     fill: "white",
@@ -79,465 +76,469 @@
             }]
         }
     }
-      , kAd = function(a) {
-        g.F.call(this, {
-            W: "div",
-            T: "ytp-related-on-error-overlay"
+      , Bje = function(e) {
+        g.U.call(this, {
+            U: "div",
+            W: "ytp-related-on-error-overlay"
         });
-        var I = this;
-        this.api = a;
-        this.Y = this.L = 0;
-        this.J = new g.Ru(this);
-        this.V = [];
+        var L = this;
+        this.api = e;
+        this.j = this.K = 0;
+        this.G = new g.zn(this);
+        this.X = [];
         this.suggestionData = [];
         this.columns = this.containerWidth = 0;
-        this.title = new g.F({
-            W: "h2",
-            T: "ytp-related-title",
-            AU: "{{title}}"
+        this.title = new g.U({
+            U: "h2",
+            W: "ytp-related-title",
+            aq: "{{title}}"
         });
-        this.previous = new g.F({
-            W: "button",
-            ww: ["ytp-button", "ytp-previous"],
-            S: {
+        this.previous = new g.U({
+            U: "button",
+            Rq: ["ytp-button", "ytp-previous"],
+            N: {
                 "aria-label": "Vorherige vorgeschlagene Videos anzeigen"
             },
-            Z: [g.cE()]
+            L: [g.hm()]
         });
-        this.j = new g.zo(function(C) {
-            I.suggestions.element.scrollLeft = -C
+        this.D = new g.Bj(function(x) {
+            L.suggestions.element.scrollLeft = -x
         }
         );
-        this.B = this.scrollPosition = 0;
-        this.C = !0;
-        this.next = new g.F({
-            W: "button",
-            ww: ["ytp-button", "ytp-next"],
-            S: {
+        this.Z = this.scrollPosition = 0;
+        this.T = !0;
+        this.next = new g.U({
+            U: "button",
+            Rq: ["ytp-button", "ytp-next"],
+            N: {
                 "aria-label": "Weitere vorgeschlagene Videos anzeigen"
             },
-            Z: [g.WE()]
+            L: [g.R9()]
         });
-        g.E(this, this.J);
-        a = a.X();
-        this.api.N("embeds_web_enable_pause_overlay_rounding") && g.x5(this.element, "ytp-error-overlay-round-corners");
-        this.D = a.J;
-        g.E(this, this.title);
-        this.title.KO(this.element);
-        this.suggestions = new g.F({
-            W: "div",
-            T: "ytp-suggestions"
+        g.l(this, this.G);
+        e = e.S();
+        this.api.Y("embeds_web_enable_pause_overlay_rounding") && g.Y4(this.element, "ytp-error-overlay-round-corners");
+        this.J = e.G;
+        g.l(this, this.title);
+        this.title.jl(this.element);
+        this.suggestions = new g.U({
+            U: "div",
+            W: "ytp-suggestions"
         });
-        g.E(this, this.suggestions);
-        this.suggestions.KO(this.element);
-        g.E(this, this.previous);
-        this.previous.KO(this.element);
-        this.previous.listen("click", this.Xa, this);
-        g.E(this, this.j);
-        for (var U = {
-            XK: 0
-        }; U.XK < 16; U = {
-            XK: U.XK
+        g.l(this, this.suggestions);
+        this.suggestions.jl(this.element);
+        g.l(this, this.previous);
+        this.previous.jl(this.element);
+        this.previous.listen("click", this.wO, this);
+        g.l(this, this.D);
+        for (var c = {
+            D3: 0
+        }; c.D3 < 16; c = {
+            D3: c.D3
         },
-        U.XK++) {
-            var e = new g.F({
-                W: "a",
-                T: "ytp-suggestion-link",
-                S: {
+        c.D3++) {
+            var I = new g.U({
+                U: "a",
+                W: "ytp-suggestion-link",
+                N: {
                     href: "{{link}}",
-                    target: a.j,
+                    target: e.D,
                     "aria-label": "{{aria_label}}"
                 },
-                Z: [{
-                    W: "div",
-                    T: "ytp-suggestion-image",
-                    Z: [{
-                        W: "div",
-                        S: {
+                L: [{
+                    U: "div",
+                    W: "ytp-suggestion-image",
+                    L: [{
+                        U: "div",
+                        N: {
                             "data-is-live": "{{is_live}}"
                         },
-                        T: "ytp-suggestion-duration",
-                        AU: "{{duration}}"
+                        W: "ytp-suggestion-duration",
+                        aq: "{{duration}}"
                     }]
                 }, {
-                    W: "div",
-                    T: "ytp-suggestion-title",
-                    S: {
+                    U: "div",
+                    W: "ytp-suggestion-title",
+                    N: {
                         title: "{{hover_title}}"
                     },
-                    AU: "{{title}}"
+                    aq: "{{title}}"
                 }, {
-                    W: "div",
-                    T: "ytp-suggestion-author",
-                    AU: "{{views_or_author}}"
+                    U: "div",
+                    W: "ytp-suggestion-author",
+                    aq: "{{views_or_author}}"
                 }]
             });
-            g.E(this, e);
-            e.KO(this.suggestions.element);
-            var T = e.Ws("ytp-suggestion-link");
-            g.Gr(T, "transitionDelay", U.XK / 20 + "s");
-            this.J.G(T, "click", function(C) {
-                return function(r) {
-                    var q = C.XK
-                      , x = I.suggestionData[q]
-                      , Z = x.sessionData;
-                    g.YH(I.api.X()) && I.api.N("web_player_log_click_before_generating_ve_conversion_params") ? (I.api.logClick(I.V[q].element),
-                    q = x.ys(),
-                    x = {},
-                    g.EK(I.api, x),
-                    q = g.pM(q, x),
-                    g.Jw(q, I.api, r)) : g.bV(r, I.api, I.D, Z || void 0) && I.api.pT(x.videoId, Z, x.playlistId)
+            g.l(this, I);
+            I.jl(this.suggestions.element);
+            var B = I.q0("ytp-suggestion-link");
+            g.l3(B, "transitionDelay", c.D3 / 20 + "s");
+            this.G.C(B, "click", function(x) {
+                return function(S) {
+                    var h = x.D3
+                      , R = L.suggestionData[h]
+                      , u = R.sessionData;
+                    g.Uh(L.api.S()) && L.api.Y("web_player_log_click_before_generating_ve_conversion_params") ? (L.api.logClick(L.X[h].element),
+                    h = R.Pv(),
+                    R = {},
+                    g.PS(L.api, R),
+                    h = g.WO(h, R),
+                    g.v8(h, L.api, S)) : g.s4(S, L.api, L.J, u || void 0) && L.api.zF(R.videoId, u, R.playlistId)
                 }
-            }(U));
-            this.V.push(e)
+            }(c));
+            this.X.push(I)
         }
-        g.E(this, this.next);
-        this.next.KO(this.element);
-        this.next.listen("click", this.Ds, this);
-        this.J.G(this.api, "videodatachange", this.onVideoDataChange);
-        this.resize(this.api.j8().getPlayerSize());
+        g.l(this, this.next);
+        this.next.jl(this.element);
+        this.next.listen("click", this.tG, this);
+        this.G.C(this.api, "videodatachange", this.onVideoDataChange);
+        this.resize(this.api.LS().getPlayerSize());
         this.onVideoDataChange();
         this.show()
     }
-      , VaI = function(a, I) {
-        if (a.api.X().N("web_player_log_click_before_generating_ve_conversion_params"))
-            for (var U = Math.floor(-a.scrollPosition / (a.B + a.L)), e = Math.min(U + a.columns, a.suggestionData.length) - 1; U <= e; U++)
-                a.api.logVisibility(a.V[U].element, I)
+      , x3L = function(e, L) {
+        if (e.api.S().Y("web_player_log_click_before_generating_ve_conversion_params"))
+            for (var c = Math.floor(-e.scrollPosition / (e.Z + e.K)), I = Math.min(c + e.columns, e.suggestionData.length) - 1; c <= I; c++)
+                e.api.logVisibility(e.X[c].element, L)
     }
-      , Aeo = function(a) {
-        a.next.element.style.bottom = a.Y + "px";
-        a.previous.element.style.bottom = a.Y + "px";
-        var I = a.scrollPosition
-          , U = a.containerWidth - a.suggestionData.length * (a.B + a.L);
-        g.KC(a.element, "ytp-scroll-min", I >= 0);
-        g.KC(a.element, "ytp-scroll-max", I <= U)
+      , oWN = function(e) {
+        e.next.element.style.bottom = e.j + "px";
+        e.previous.element.style.bottom = e.j + "px";
+        var L = e.scrollPosition
+          , c = e.containerWidth - e.suggestionData.length * (e.Z + e.K);
+        g.cY(e.element, "ytp-scroll-min", L >= 0);
+        g.cY(e.element, "ytp-scroll-max", L <= c)
     }
-      , Maj = function(a) {
-        for (var I = 0; I < a.suggestionData.length; I++) {
-            var U = a.suggestionData[I]
-              , e = a.V[I]
-              , T = U.shortViewCount ? U.shortViewCount : U.author
-              , C = U.ys()
-              , r = a.api.X();
-            if (g.YH(r) && !r.N("web_player_log_click_before_generating_ve_conversion_params")) {
-                var q = {};
-                g.AU(a.api, "addEmbedsConversionTrackingParams", [q]);
-                C = g.pM(C, q)
+      , SON = function(e) {
+        for (var L = 0; L < e.suggestionData.length; L++) {
+            var c = e.suggestionData[L]
+              , I = e.X[L]
+              , B = c.shortViewCount ? c.shortViewCount : c.author
+              , x = c.Pv()
+              , S = e.api.S();
+            if (g.Uh(S) && !S.Y("web_player_log_click_before_generating_ve_conversion_params")) {
+                var h = {};
+                g.Fl(e.api, "addEmbedsConversionTrackingParams", [h]);
+                x = g.WO(x, h)
             }
-            e.element.style.display = "";
-            q = e.Ws("ytp-suggestion-title");
-            g.Vl.test(U.title) ? q.dir = "rtl" : g.Xrf.test(U.title) && (q.dir = "ltr");
-            q = e.Ws("ytp-suggestion-author");
-            g.Vl.test(T) ? q.dir = "rtl" : g.Xrf.test(T) && (q.dir = "ltr");
-            e.update({
-                views_or_author: T,
-                duration: U.isLivePlayback ? "Live" : U.lengthSeconds ? g.XT(U.lengthSeconds) : "",
-                link: C,
-                hover_title: U.title,
-                title: U.title,
-                aria_label: U.ariaLabel || null,
-                is_live: U.isLivePlayback
+            I.element.style.display = "";
+            h = I.q0("ytp-suggestion-title");
+            g.SZ.test(c.title) ? h.dir = "rtl" : g.vLN.test(c.title) && (h.dir = "ltr");
+            h = I.q0("ytp-suggestion-author");
+            g.SZ.test(B) ? h.dir = "rtl" : g.vLN.test(B) && (h.dir = "ltr");
+            I.update({
+                views_or_author: B,
+                duration: c.isLivePlayback ? "Live" : c.lengthSeconds ? g.Te(c.lengthSeconds) : "",
+                link: x,
+                hover_title: c.title,
+                title: c.title,
+                aria_label: c.ariaLabel || null,
+                is_live: c.isLivePlayback
             });
-            T = U.Ub();
-            e.Ws("ytp-suggestion-image").style.backgroundImage = T ? "url(" + T + ")" : "";
-            r.N("web_player_log_click_before_generating_ve_conversion_params") && (a.api.createServerVe(e.element, e),
-            (U = (U = U.sessionData) && U.itct) && a.api.setTrackingParams(e.element, U))
+            B = c.j9();
+            I.q0("ytp-suggestion-image").style.backgroundImage = B ? "url(" + B + ")" : "";
+            S.Y("web_player_log_click_before_generating_ve_conversion_params") && (e.api.createServerVe(I.element, I),
+            (c = (c = c.sessionData) && c.itct) && e.api.setTrackingParams(I.element, c))
         }
-        for (; I < a.V.length; I++)
-            a.V[I].element.style.display = "none";
-        Aeo(a)
+        for (; L < e.X.length; L++)
+            e.X[L].element.style.display = "none";
+        oWN(e)
     }
-      , zN = function(a) {
-        g.pu.call(this, a);
-        var I = this;
-        this.V = null;
-        var U = a.X()
-          , e = {
-            target: U.j
+      , L9 = function(e) {
+        g.Km.call(this, e);
+        var L = this;
+        this.X = null;
+        var c = e.S()
+          , I = {
+            target: c.D
         }
-          , T = ["ytp-small-redirect"];
-        U.B ? T.push("no-link") : (U = g.Zq(U),
-        e.href = U,
-        e["aria-label"] = "Auf YouTube nach weiteren Videos suchen");
-        var C = new g.F({
-            W: "a",
-            ww: T,
-            S: e,
-            Z: [{
-                W: "svg",
-                S: {
+          , B = ["ytp-small-redirect"];
+        if (c.Z)
+            B.push("no-link");
+        else {
+            var x = g.FM(c);
+            I.href = x;
+            I["aria-label"] = "Auf YouTube nach weiteren Videos suchen"
+        }
+        var S = new g.U({
+            U: "a",
+            Rq: B,
+            N: I,
+            L: [{
+                U: "svg",
+                N: {
                     fill: "#fff",
                     height: "100%",
                     viewBox: "0 0 24 24",
                     width: "100%"
                 },
-                Z: [{
-                    W: "path",
-                    S: {
+                L: [{
+                    U: "path",
+                    N: {
                         d: "M0 0h24v24H0V0z",
                         fill: "none"
                     }
                 }, {
-                    W: "path",
-                    S: {
+                    U: "path",
+                    N: {
                         d: "M21.58 7.19c-.23-.86-.91-1.54-1.77-1.77C18.25 5 12 5 12 5s-6.25 0-7.81.42c-.86.23-1.54.91-1.77 1.77C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.91 1.54 1.77 1.77C5.75 19 12 19 12 19s6.25 0 7.81-.42c.86-.23 1.54-.91 1.77-1.77C22 15.25 22 12 22 12s0-3.25-.42-4.81zM10 15V9l5.2 3-5.2 3z"
                     }
                 }]
             }]
         });
-        C.KO(this.element);
-        a.createClientVe(C.element, this, 178053);
-        this.G(C.element, "click", function(r) {
-            jRo(I, r, C.element)
+        S.jl(this.element);
+        e.createClientVe(S.element, this, 178053);
+        this.C(S.element, "click", function(h) {
+            rpZ(L, h, S.element)
         });
-        g.E(this, C);
-        a.X().B || (this.V = new kAd(a),
-        this.V.KO(this.element),
-        g.E(this, this.V));
-        this.G(a, "videodatachange", function() {
-            I.show()
+        g.l(this, S);
+        c.Z || c.disableOrganicUi || (this.X = new Bje(e),
+        this.X.jl(this.element),
+        g.l(this, this.X));
+        this.C(e, "videodatachange", function() {
+            L.show()
         });
-        this.resize(this.api.j8().getPlayerSize())
+        this.resize(this.api.LS().getPlayerSize())
     }
-      , jRo = function(a, I, U) {
-        I.preventDefault();
-        a.api.logClick(U);
-        I = U.getAttribute("href");
-        U = {};
-        g.AU(a.api, "addEmbedsConversionTrackingParams", [U]);
-        I = g.vo(U) ? I : g.pM(I, U);
-        g.Ue(window, I)
+      , rpZ = function(e, L, c) {
+        L.preventDefault();
+        e.api.logClick(c);
+        L = c.getAttribute("href");
+        c = {};
+        g.Fl(e.api, "addEmbedsConversionTrackingParams", [c]);
+        L = g.qQ(c) ? L : g.WO(L, c);
+        g.Wa(window, L)
     }
-      , $fz = function(a, I) {
-        a.Ws("ytp-error-content").style.paddingTop = "0px";
-        var U = a.Ws("ytp-error-content")
-          , e = U.clientHeight;
-        a.V && a.V.resize(I, I.height - e);
-        U.style.paddingTop = (I.height - (a.V ? a.V.element.clientHeight : 0)) / 2 - e / 2 + "px"
+      , hMg = function(e, L) {
+        e.q0("ytp-error-content").style.paddingTop = "0px";
+        var c = e.q0("ytp-error-content")
+          , I = c.clientHeight;
+        e.X && e.X.resize(L, L.height - I);
+        c.style.paddingTop = (L.height - (e.X ? e.X.element.clientHeight : 0)) / 2 - I / 2 + "px"
     }
-      , gz4 = function(a, I) {
-        var U = a.api.X(), e;
-        I.reason && (iff(I.reason) ? e = KB4(g.Lb(I.reason)) : e = g.fu(g.id(I.reason)),
-        a.E9(e, "content"));
-        var T;
-        I.subreason && (iff(I.subreason) ? T = KB4(g.Lb(I.subreason)) : T = g.fu(g.id(I.subreason)),
-        a.E9(T, "subreason"));
-        if (I.proceedButton && I.proceedButton.buttonRenderer) {
-            e = a.Ws("ytp-error-content-wrap-subreason");
-            I = I.proceedButton.buttonRenderer;
-            var C = g.vA("A");
-            if (I.text && I.text.simpleText && (T = I.text.simpleText,
-            C.textContent = T,
-            !LB8(e, T) && (!U.B || U.embedsErrorLinks))) {
-                var r;
-                U = (r = g.d(I == null ? void 0 : I.navigationEndpoint, g.Fl)) == null ? void 0 : r.url;
-                var q;
-                r = (q = g.d(I == null ? void 0 : I.navigationEndpoint, g.Fl)) == null ? void 0 : q.target;
-                U && (C.setAttribute("href", U),
-                a.api.createClientVe(C, a, 178424),
-                a.G(C, "click", function(x) {
-                    jRo(a, x, C)
+      , tW9 = function(e, L) {
+        var c = e.api.S(), I;
+        L.reason && (RML(L.reason) ? I = g.SH(L.reason) : I = g.Ye(g.o9(L.reason)),
+        e.Hw(I, "content"));
+        var B;
+        L.subreason && (RML(L.subreason) ? B = g.SH(L.subreason) : B = g.Ye(g.o9(L.subreason)),
+        e.Hw(B, "subreason"));
+        if (L.proceedButton && L.proceedButton.buttonRenderer) {
+            I = e.q0("ytp-error-content-wrap-subreason");
+            L = L.proceedButton.buttonRenderer;
+            var x = g.ql("A");
+            if (L.text && L.text.simpleText && (B = L.text.simpleText,
+            x.textContent = B,
+            !uY7(I, B) && (!c.Z || c.embedsErrorLinks))) {
+                var S;
+                c = (S = g.Q(L == null ? void 0 : L.navigationEndpoint, g.ku)) == null ? void 0 : S.url;
+                var h;
+                S = (h = g.Q(L == null ? void 0 : L.navigationEndpoint, g.ku)) == null ? void 0 : h.target;
+                c && (x.setAttribute("href", c),
+                e.api.createClientVe(x, e, 178424),
+                e.C(x, "click", function(R) {
+                    rpZ(e, R, x)
                 }));
-                r && C.setAttribute("target", r);
-                q = g.vA("DIV");
-                q.appendChild(C);
-                e.appendChild(q)
+                S && x.setAttribute("target", S);
+                h = g.ql("DIV");
+                h.appendChild(x);
+                I.appendChild(h)
             }
         }
     }
-      , iff = function(a) {
-        if (a.runs)
-            for (var I = 0; I < a.runs.length; I++)
-                if (a.runs[I].navigationEndpoint)
+      , RML = function(e) {
+        if (e.runs)
+            for (var L = 0; L < e.runs.length; L++)
+                if (e.runs[L].navigationEndpoint)
                     return !0;
         return !1
     }
-      , LB8 = function(a, I) {
-        a = g.wr("A", a);
-        for (var U = 0; U < a.length; U++)
-            if (a[U].textContent === I)
+      , uY7 = function(e, L) {
+        e = g.xr("A", e);
+        for (var c = 0; c < e.length; c++)
+            if (e[c].textContent === L)
                 return !0;
         return !1
     }
-      , cem = function(a, I) {
-        g.F.call(this, {
-            W: "a",
-            ww: ["ytp-impression-link"],
-            S: {
+      , OWZ = function(e, L) {
+        g.U.call(this, {
+            U: "a",
+            Rq: ["ytp-impression-link"],
+            N: {
                 target: "{{target}}",
                 href: "{{url}}",
                 "aria-label": "Auf YouTube ansehen"
             },
-            Z: [{
-                W: "div",
-                T: "ytp-impression-link-content",
-                S: {
+            L: [{
+                U: "div",
+                W: "ytp-impression-link-content",
+                N: {
                     "aria-hidden": "true"
                 },
-                Z: [{
-                    W: "div",
-                    T: "ytp-impression-link-text",
-                    AU: "Ansehen auf"
+                L: [{
+                    U: "div",
+                    W: "ytp-impression-link-text",
+                    aq: "Ansehen auf"
                 }, {
-                    W: "div",
-                    T: "ytp-impression-link-logo",
-                    AU: "{{logoSvg}}"
+                    U: "div",
+                    W: "ytp-impression-link-logo",
+                    aq: "{{logoSvg}}"
                 }]
             }]
         });
-        this.api = a;
-        this.V = I;
-        this.updateValue("target", a.X().j);
-        this.G(a, "videodatachange", this.onVideoDataChange);
-        this.G(this.api, "presentingplayerstatechange", this.UK);
-        this.G(this.api, "videoplayerreset", this.Oi);
-        this.G(this.element, "click", this.onClick);
+        this.api = e;
+        this.X = L;
+        this.updateValue("target", e.S().D);
+        this.C(e, "videodatachange", this.onVideoDataChange);
+        this.C(this.api, "presentingplayerstatechange", this.X7);
+        this.C(this.api, "videoplayerreset", this.iR);
+        this.C(this.element, "click", this.onClick);
         this.onVideoDataChange();
-        this.Oi()
+        this.iR()
     }
-      , WBG = function(a) {
-        var I = {};
-        g.AU(a.api, "addEmbedsConversionTrackingParams", [I]);
-        a = a.api.getVideoUrl();
-        return a = g.pM(a, I)
+      , qOg = function(e) {
+        var L = {};
+        g.Fl(e.api, "addEmbedsConversionTrackingParams", [L]);
+        e = e.api.getVideoUrl();
+        return e = g.WO(e, L)
     }
-      , hI = function(a) {
-        g.F.call(this, {
-            W: "div",
-            ww: ["ytp-mobile-a11y-hidden-seek-button"],
-            Z: [{
-                W: "button",
-                ww: ["ytp-mobile-a11y-hidden-seek-button-rewind", "ytp-button"],
-                S: {
+      , cV = function(e) {
+        g.U.call(this, {
+            U: "div",
+            Rq: ["ytp-mobile-a11y-hidden-seek-button"],
+            L: [{
+                U: "button",
+                Rq: ["ytp-mobile-a11y-hidden-seek-button-rewind", "ytp-button"],
+                N: {
                     "aria-label": "10\u00a0Sekunden zur\u00fcckspulen",
                     "aria-hidden": "false"
                 }
             }, {
-                W: "button",
-                ww: ["ytp-mobile-a11y-hidden-seek-button-forward", "ytp-button"],
-                S: {
+                U: "button",
+                Rq: ["ytp-mobile-a11y-hidden-seek-button-forward", "ytp-button"],
+                N: {
                     "aria-label": "10\u00a0Sekunden vorspulen",
                     "aria-hidden": "false"
                 }
             }]
         });
-        this.api = a;
-        this.V = this.Ws("ytp-mobile-a11y-hidden-seek-button-rewind");
-        this.forwardButton = this.Ws("ytp-mobile-a11y-hidden-seek-button-forward");
-        this.api.createClientVe(this.V, this, 141902);
+        this.api = e;
+        this.X = this.q0("ytp-mobile-a11y-hidden-seek-button-rewind");
+        this.forwardButton = this.q0("ytp-mobile-a11y-hidden-seek-button-forward");
+        this.api.createClientVe(this.X, this, 141902);
         this.api.createClientVe(this.forwardButton, this, 141903);
-        this.G(this.api, "presentingplayerstatechange", this.UK);
-        this.G(this.V, "click", this.L);
-        this.G(this.forwardButton, "click", this.B);
-        this.UK()
+        this.C(this.api, "presentingplayerstatechange", this.X7);
+        this.C(this.X, "click", this.K);
+        this.C(this.forwardButton, "click", this.Z);
+        this.X7()
     }
-      , Np = function(a) {
-        g.F.call(this, {
-            W: "div",
-            T: "ytp-muted-autoplay-endscreen-overlay",
-            Z: [{
-                W: "div",
-                T: "ytp-muted-autoplay-end-panel",
-                Z: [{
-                    W: "button",
-                    ww: ["ytp-muted-autoplay-end-text", "ytp-button"],
-                    AU: "{{text}}"
+      , IE = function(e) {
+        g.U.call(this, {
+            U: "div",
+            W: "ytp-muted-autoplay-endscreen-overlay",
+            L: [{
+                U: "div",
+                W: "ytp-muted-autoplay-end-panel",
+                L: [{
+                    U: "button",
+                    Rq: ["ytp-muted-autoplay-end-text", "ytp-button"],
+                    aq: "{{text}}"
                 }]
             }]
         });
-        this.api = a;
-        this.J = this.Ws("ytp-muted-autoplay-end-panel");
-        this.L = !1;
+        this.api = e;
+        this.G = this.q0("ytp-muted-autoplay-end-panel");
+        this.K = !1;
         this.api.createClientVe(this.element, this, 52428);
-        this.G(this.api, "presentingplayerstatechange", this.B);
-        this.G(a, "onMutedAutoplayStarts", this.onMutedAutoplayStarts);
+        this.C(this.api, "presentingplayerstatechange", this.Z);
+        this.C(e, "onMutedAutoplayStarts", this.onMutedAutoplayStarts);
         this.listen("click", this.onClick);
         this.hide()
     }
-      , oz = function(a) {
-        var I = a.X();
-        g.F.call(this, {
-            W: "a",
-            ww: ["ytp-watermark", "yt-uix-sessionlink"],
-            S: {
-                target: I.j,
+      , BV = function(e) {
+        var L = e.S();
+        g.U.call(this, {
+            U: "a",
+            Rq: ["ytp-watermark", "yt-uix-sessionlink"],
+            N: {
+                target: L.D,
                 href: "{{url}}",
-                "aria-label": g.ji("Auf $WEBSITE ansehen", {
-                    WEBSITE: g.DX(I)
+                "aria-label": g.nC("Auf $WEBSITE ansehen", {
+                    WEBSITE: g.RD(L)
                 }),
                 "data-sessionlink": "feature=player-watermark"
             },
-            AU: "{{logoSvg}}"
+            aq: "{{logoSvg}}"
         });
-        this.api = a;
-        this.V = null;
-        this.L = !1;
-        this.state = a.getPlayerStateObject();
-        this.G(a, "videodatachange", this.onVideoDataChange);
-        this.G(a, "presentingplayerstatechange", this.onStateChange);
-        this.G(a, "appresize", this.jj);
+        this.api = e;
+        this.X = null;
+        this.K = !1;
+        this.state = e.getPlayerStateObject();
+        this.C(e, "videodatachange", this.onVideoDataChange);
+        this.C(e, "presentingplayerstatechange", this.onStateChange);
+        this.C(e, "appresize", this.Nx);
         this.onVideoDataChange();
-        this.FQ(this.state);
-        this.jj(a.j8().getPlayerSize())
+        this.Oq(this.state);
+        this.Nx(e.LS().getPlayerSize())
     }
-      , lkJ = function(a) {
-        var I = g.O(a.api.getVideoData())
-          , U = a.api.X();
-        U = U.L4 && !g.Q(a.state, 2) && !g.TJ(g.O(a.api.getVideoData(1))) && !(U.N("embeds_enable_emc3ds_woyt_counterfactual") && a.api.getPlayerStateObject().isCued());
-        I.mutedAutoplay || a.Vx(U);
-        a.api.logVisibility(a.element, U)
+      , TjL = function(e) {
+        var L = e.api.getVideoData()
+          , c = e.api.S();
+        c = c.f9 && !g.E(e.state, 2) && !e.api.getVideoData(1).xx && !(c.Y("embeds_enable_emc3ds_woyt_counterfactual") && e.api.getPlayerStateObject().isCued());
+        L.mutedAutoplay || e.i5(c);
+        e.api.logVisibility(e.element, c)
     }
-      , PHG = function(a) {
-        g.F.call(this, {
-            W: "div",
-            T: "ytp-muted-autoplay-overlay",
-            Z: [{
-                W: "div",
-                T: "ytp-muted-autoplay-bottom-buttons",
-                Z: [{
-                    W: "button",
-                    ww: ["ytp-muted-autoplay-equalizer", "ytp-button"],
-                    S: {
+      , zMN = function(e) {
+        g.U.call(this, {
+            U: "div",
+            W: "ytp-muted-autoplay-overlay",
+            L: [{
+                U: "div",
+                W: "ytp-muted-autoplay-bottom-buttons",
+                L: [{
+                    U: "button",
+                    Rq: ["ytp-muted-autoplay-equalizer", "ytp-button"],
+                    N: {
                         "aria-label": "Anzeige f\u00fcr stumme Wiedergabe"
                     },
-                    Z: [{
-                        W: "div",
-                        ww: ["ytp-muted-autoplay-equalizer-icon"],
-                        Z: [{
-                            W: "svg",
-                            S: {
+                    L: [{
+                        U: "div",
+                        Rq: ["ytp-muted-autoplay-equalizer-icon"],
+                        L: [{
+                            U: "svg",
+                            N: {
                                 height: "100%",
                                 version: "1.1",
                                 viewBox: "-4 -4 24 24",
                                 width: "100%"
                             },
-                            Z: [{
-                                W: "g",
-                                S: {
+                            L: [{
+                                U: "g",
+                                N: {
                                     fill: "#fff"
                                 },
-                                Z: [{
-                                    W: "rect",
-                                    T: "ytp-equalizer-bar-left",
-                                    S: {
+                                L: [{
+                                    U: "rect",
+                                    W: "ytp-equalizer-bar-left",
+                                    N: {
                                         height: "9",
                                         width: "4",
                                         x: "1",
                                         y: "7"
                                     }
                                 }, {
-                                    W: "rect",
-                                    T: "ytp-equalizer-bar-middle",
-                                    S: {
+                                    U: "rect",
+                                    W: "ytp-equalizer-bar-middle",
+                                    N: {
                                         height: "14",
                                         width: "4",
                                         x: "6",
                                         y: "2"
                                     }
                                 }, {
-                                    W: "rect",
-                                    T: "ytp-equalizer-bar-right",
-                                    S: {
+                                    U: "rect",
+                                    W: "ytp-equalizer-bar-right",
+                                    N: {
                                         height: "12",
                                         width: "4",
                                         x: "11",
@@ -550,114 +551,114 @@
                 }]
             }]
         });
-        var I = this;
-        this.api = a;
-        this.bottomButtons = this.Ws("ytp-muted-autoplay-bottom-buttons");
-        this.B = new g.Dy(this.Dnm,4E3,this);
-        this.L = !1;
-        a.createClientVe(this.element, this, 39306);
-        this.G(a, "presentingplayerstatechange", this.Oc);
-        this.G(a, "onMutedAutoplayStarts", function() {
-            Bez(I);
-            I.Oc();
-            Xfz(I);
-            I.L = !1
+        var L = this;
+        this.api = e;
+        this.bottomButtons = this.q0("ytp-muted-autoplay-bottom-buttons");
+        this.Z = new g.j9(this.vC,4E3,this);
+        this.K = !1;
+        e.createClientVe(this.element, this, 39306);
+        this.C(e, "presentingplayerstatechange", this.lc);
+        this.C(e, "onMutedAutoplayStarts", function() {
+            W_L(L);
+            L.lc();
+            MW9(L);
+            L.K = !1
         });
-        this.G(a, "onAutoplayBlocked", this.onAutoplayBlocked);
+        this.C(e, "onAutoplayBlocked", this.onAutoplayBlocked);
         this.listen("click", this.onClick);
-        this.G(a, "onMutedAutoplayEnds", this.onMutedAutoplayEnds);
+        this.C(e, "onMutedAutoplayEnds", this.onMutedAutoplayEnds);
         this.hide();
-        a.isMutedByEmbedsMutedAutoplay() && (Bez(this),
-        this.Oc(),
-        Xfz(this));
-        g.E(this, this.B)
+        e.isMutedByEmbedsMutedAutoplay() && (W_L(this),
+        this.lc(),
+        MW9(this));
+        g.l(this, this.Z)
     }
-      , Xfz = function(a) {
-        a.gF && a.V && (a.V.show(),
-        a.B.start())
+      , MW9 = function(e) {
+        e.z_ && e.X && (e.X.show(),
+        e.Z.start())
     }
-      , Bez = function(a) {
-        a.watermark || (a.watermark = new oz(a.api),
-        g.E(a, a.watermark),
-        a.watermark.KO(a.bottomButtons, 0),
-        g.KC(a.watermark.element, "ytp-muted-autoplay-watermark", !0),
-        a.V = new g.qq(a.watermark,0,!0,100),
-        g.E(a, a.V))
+      , W_L = function(e) {
+        e.watermark || (e.watermark = new BV(e.api),
+        g.l(e, e.watermark),
+        e.watermark.jl(e.bottomButtons, 0),
+        g.cY(e.watermark.element, "ytp-muted-autoplay-watermark", !0),
+        e.X = new g.dJ(e.watermark,0,!0,100),
+        g.l(e, e.X))
     }
-      , Dd = function(a) {
-        g.F.call(this, {
-            W: "div",
-            T: "ytp-pause-overlay",
-            S: {
+      , xU = function(e) {
+        g.U.call(this, {
+            U: "div",
+            W: "ytp-pause-overlay",
+            N: {
                 tabIndex: "-1"
             }
         });
-        var I = this;
-        this.api = a;
-        this.B = new g.Ru(this);
-        this.fade = new g.qq(this,1E3,!1,100,function() {
-            I.V.L = !1
+        var L = this;
+        this.api = e;
+        this.Z = new g.zn(this);
+        this.fade = new g.dJ(this,1E3,!1,100,function() {
+            L.X.K = !1
         }
         ,function() {
-            I.V.L = !0
+            L.X.K = !0
         }
         );
-        this.L = !1;
-        this.expandButton = new g.F({
-            W: "button",
-            ww: ["ytp-button", "ytp-expand"],
-            AU: this.api.isEmbedsShortsMode() ? "Weitere Shorts" : "Weitere Videos"
+        this.K = !1;
+        this.expandButton = new g.U({
+            U: "button",
+            Rq: ["ytp-button", "ytp-expand"],
+            aq: this.api.isEmbedsShortsMode() ? "Weitere Shorts" : "Weitere Videos"
         });
-        a.X().controlsType === "0" && g.x5(a.getRootNode(), "ytp-pause-overlay-controls-hidden");
-        this.api.N("embeds_web_enable_pause_overlay_rounding") && g.x5(this.element, "ytp-pause-overlay-round-corners");
-        g.E(this, this.B);
-        g.E(this, this.fade);
-        var U = new g.F({
-            W: "button",
-            ww: ["ytp-button", "ytp-collapse"],
-            S: {
+        e.S().controlsType === "0" && g.Y4(e.getRootNode(), "ytp-pause-overlay-controls-hidden");
+        this.api.Y("embeds_web_enable_pause_overlay_rounding") && g.Y4(this.element, "ytp-pause-overlay-round-corners");
+        g.l(this, this.Z);
+        g.l(this, this.fade);
+        var c = new g.U({
+            U: "button",
+            Rq: ["ytp-button", "ytp-collapse"],
+            N: {
                 "aria-label": this.api.isEmbedsShortsMode() ? "Weitere Shorts ausblenden" : '"Weitere Videos" ausblenden'
             },
-            Z: [{
-                W: "div",
-                T: "ytp-collapse-icon",
-                Z: [g.SS()]
+            L: [{
+                U: "div",
+                W: "ytp-collapse-icon",
+                L: [g.fN()]
             }]
         });
-        g.E(this, U);
-        U.KO(this.element);
-        U.listen("click", this.J, this);
-        g.E(this, this.expandButton);
-        this.expandButton.KO(this.element);
-        this.expandButton.listen("click", this.Y, this);
-        this.V = new g.hJ(a);
-        g.E(this, this.V);
-        this.V.L = !1;
-        this.V.KO(this.element);
+        g.l(this, c);
+        c.jl(this.element);
+        c.listen("click", this.G, this);
+        g.l(this, this.expandButton);
+        this.expandButton.jl(this.element);
+        this.expandButton.listen("click", this.j, this);
+        this.X = new g.xx(e);
+        g.l(this, this.X);
+        this.X.K = !1;
+        this.X.jl(this.element);
         this.api.isEmbedsShortsMode() ? this.api.createClientVe(this.element, this, 157212) : this.api.createClientVe(this.element, this, 172777);
-        this.B.G(this.api, "presentingplayerstatechange", this.Qa);
-        this.B.G(this.api, "videodatachange", this.Qa);
+        this.Z.C(this.api, "presentingplayerstatechange", this.OW);
+        this.Z.C(this.api, "videodatachange", this.OW);
         this.hide()
     }
-      , vs = function(a) {
-        g.F.call(this, {
-            W: "div",
-            ww: ["ytp-player-content", "ytp-iv-player-content"],
-            Z: [{
-                W: "div",
-                T: "ytp-countdown-timer",
-                Z: [{
-                    W: "svg",
-                    S: {
+      , oE = function(e) {
+        g.U.call(this, {
+            U: "div",
+            Rq: ["ytp-player-content", "ytp-iv-player-content"],
+            L: [{
+                U: "div",
+                W: "ytp-countdown-timer",
+                L: [{
+                    U: "svg",
+                    N: {
                         height: "100%",
                         version: "1.1",
                         viewBox: "0 0 72 72",
                         width: "100%"
                     },
-                    Z: [{
-                        W: "circle",
-                        T: "ytp-svg-countdown-timer-ring",
-                        S: {
+                    L: [{
+                        U: "circle",
+                        W: "ytp-svg-countdown-timer-ring",
+                        N: {
                             cx: "-36",
                             cy: "36",
                             "fill-opacity": "0",
@@ -669,9 +670,9 @@
                             transform: "rotate(-90)"
                         }
                     }, {
-                        W: "circle",
-                        T: "ytp-svg-countdown-timer-background",
-                        S: {
+                        U: "circle",
+                        W: "ytp-svg-countdown-timer-background",
+                        N: {
                             cx: "-36",
                             cy: "36",
                             "fill-opacity": "0",
@@ -683,638 +684,638 @@
                         }
                     }]
                 }, {
-                    W: "span",
-                    T: "ytp-countdown-timer-time",
-                    AU: "{{duration}}"
+                    U: "span",
+                    W: "ytp-countdown-timer-time",
+                    aq: "{{duration}}"
                 }]
             }]
         });
-        this.api = a;
-        this.C = this.Ws("ytp-svg-countdown-timer-ring");
-        this.V = null;
-        this.J = this.B = 0;
-        this.L = !1;
-        this.Y = 0;
+        this.api = e;
+        this.T = this.q0("ytp-svg-countdown-timer-ring");
+        this.X = null;
+        this.G = this.Z = 0;
+        this.K = !1;
+        this.j = 0;
         this.api.createClientVe(this.element, this, 159628)
     }
-      , fkj = function(a) {
-        a.V || (a.B = 5E3,
-        a.J = (0,
-        g.w)(),
-        a.V = new g.oj(function() {
-            pff(a)
+      , vWJ = function(e) {
+        e.X || (e.Z = 5E3,
+        e.G = (0,
+        g.zI)(),
+        e.X = new g.$4(function() {
+            sX9(e)
         }
         ,null),
-        pff(a))
+        sX9(e))
     }
-      , pff = function(a) {
-        if (!a.L) {
-            var I = Math.min((0,
-            g.w)() - a.J, a.B);
-            var U = a.B - I;
-            I = a.B === 0 ? 0 : Math.max(U / a.B, 0);
-            U = Math.round(U / 1E3);
-            a.C.setAttribute("stroke-dashoffset", "" + -211 * (I + 1));
-            a.updateValue("duration", U);
-            I <= 0 && a.V ? a.stopTimer() : a.V && a.V.start()
+      , sX9 = function(e) {
+        if (!e.K) {
+            var L = Math.min((0,
+            g.zI)() - e.G, e.Z);
+            var c = e.Z - L;
+            L = e.Z === 0 ? 0 : Math.max(c / e.Z, 0);
+            c = Math.round(c / 1E3);
+            e.T.setAttribute("stroke-dashoffset", "" + -211 * (L + 1));
+            e.updateValue("duration", c);
+            L <= 0 && e.X ? e.stopTimer() : e.X && e.X.start()
         }
     }
-      , Ofo = function(a) {
-        g.nu.call(this, a);
-        this.K = a;
-        this.V = new g.Ru(this);
-        this.L = null;
-        this.C = !1;
+      , ApM = function(e) {
+        g.Vk.call(this, e);
+        this.V = e;
+        this.X = new g.zn(this);
+        this.K = null;
+        this.T = !1;
         this.countdownTimer = null;
-        this.j = !1;
-        YRj(this);
-        g.E(this, this.V);
+        this.D = !1;
+        fnM(this);
+        g.l(this, this.X);
         this.load()
     }
-      , GAz = function(a) {
-        var I = g.zd8(a.K);
-        I !== a.j && (a.j = I,
-        a.U && (a.U.dispose(),
-        a.U = null),
-        a.B && (a.B.dispose(),
-        a.B = null),
-        a.J && (a.J.dispose(),
-        a.J = null),
-        a.L && (a.L.stop(),
-        a.L.dispose(),
-        a.L = null),
-        I && (I = g.O(g.Lh(a.K)),
-        a.K.isEmbedsShortsMode() && (a.J = new g.F({
-            W: "div",
-            T: "ytp-pause-overlay-backdrop",
-            S: {
+      , bWU = function(e) {
+        var L = g.gnU(e.V);
+        L !== e.D && (e.D = L,
+        e.B && (e.B.dispose(),
+        e.B = null),
+        e.Z && (e.Z.dispose(),
+        e.Z = null),
+        e.G && (e.G.dispose(),
+        e.G = null),
+        e.K && (e.K.stop(),
+        e.K.dispose(),
+        e.K = null),
+        L && (L = g.Db(e.V),
+        e.V.isEmbedsShortsMode() && (e.G = new g.U({
+            U: "div",
+            W: "ytp-pause-overlay-backdrop",
+            N: {
                 tabIndex: "-1"
             }
         }),
-        g.E(a, a.J),
-        g.w4(a.K, a.J.element, 4),
-        a.L = new g.qq(a.J,1E3,!1,100),
-        g.E(a, a.L),
-        a.J.hide()),
-        a.U = new g.F({
-            W: "div",
-            T: "ytp-pause-overlay-container",
-            S: {
+        g.l(e, e.G),
+        g.Uq(e.V, e.G.element, 4),
+        e.K = new g.dJ(e.G,1E3,!1,100),
+        g.l(e, e.K),
+        e.G.hide()),
+        e.B = new g.U({
+            U: "div",
+            W: "ytp-pause-overlay-container",
+            N: {
                 tabIndex: "-1"
             }
         }),
-        g.E(a, a.U),
-        a.B = new Dd(a.K,I),
-        g.E(a, a.B),
-        a.B.KO(a.U.element),
-        g.w4(a.K, a.U.element, 4),
-        SRo(a, a.K.getPlayerStateObject())))
+        g.l(e, e.B),
+        e.Z = new xU(e.V,L),
+        g.l(e, e.Z),
+        e.Z.jl(e.B.element),
+        g.Uq(e.V, e.B.element, 4),
+        F_e(e, e.V.getPlayerStateObject())))
     }
-      , SRo = function(a, I) {
-        a.L && (!g.Q(I, 4) && !g.Q(I, 2) || g.Q(I, 1024) ? a.L.hide() : a.L.show())
+      , F_e = function(e, L) {
+        e.K && (!g.E(L, 4) && !g.E(L, 2) || g.E(L, 1024) ? e.K.hide() : e.K.show())
     }
-      , YRj = function(a) {
-        var I = a.K;
-        a = !!I.isEmbedsShortsMode();
-        g.KC(I.getRootNode(), "ytp-shorts-mode", a);
-        if (I = I.getVideoData())
-            I.FO = a
+      , fnM = function(e) {
+        var L = e.V;
+        e = !!L.isEmbedsShortsMode();
+        g.cY(L.getRootNode(), "ytp-shorts-mode", e);
+        if (L = L.getVideoData())
+            L.dK = e
     }
-      , at = function(a, I) {
-        var U = a.K.X();
-        a = {
+      , S7 = function(e, L) {
+        var c = e.V.S();
+        e = {
             adSource: "EMBEDS_AD_SOURCE_YOUTUBE",
-            breakType: a.K.getCurrentTime() === 0 ? "EMBEDS_AD_BREAK_TYPE_PRE_ROLL" : a.K.getPlayerState() === 0 ? "EMBEDS_AD_BREAK_TYPE_POST_ROLL" : "EMBEDS_AD_BREAK_TYPE_MID_ROLL",
-            embedUrl: g.Ndg(a.K.X().loaderUrl),
-            eventType: I,
-            youtubeHost: g.gs(a.K.X().Zt) || ""
+            breakType: e.V.getCurrentTime() === 0 ? "EMBEDS_AD_BREAK_TYPE_PRE_ROLL" : e.V.getPlayerState() === 0 ? "EMBEDS_AD_BREAK_TYPE_POST_ROLL" : "EMBEDS_AD_BREAK_TYPE_MID_ROLL",
+            embedUrl: g.jFT(e.V.S().loaderUrl),
+            eventType: L,
+            youtubeHost: g.hp(e.V.S().PU) || ""
         };
-        a.embeddedPlayerMode = U.tU;
-        g.JL("embedsAdEvent", a)
+        e.embeddedPlayerMode = c.k9;
+        g.et("embedsAdEvent", e)
     };
-    g.u(kAd, g.F);
-    g.H = kAd.prototype;
-    g.H.hide = function() {
-        this.C = !0;
-        g.F.prototype.hide.call(this);
-        VaI(this, !1)
+    g.z(Bje, g.U);
+    g.M = Bje.prototype;
+    g.M.hide = function() {
+        this.T = !0;
+        g.U.prototype.hide.call(this);
+        x3L(this, !1)
     }
     ;
-    g.H.show = function() {
-        this.C = !1;
-        g.F.prototype.show.call(this);
-        VaI(this, !0)
+    g.M.show = function() {
+        this.T = !1;
+        g.U.prototype.show.call(this);
+        x3L(this, !0)
     }
     ;
-    g.H.isHidden = function() {
-        return this.C
+    g.M.isHidden = function() {
+        return this.T
     }
     ;
-    g.H.Ds = function() {
+    g.M.tG = function() {
         this.scrollTo(this.scrollPosition - this.containerWidth)
     }
     ;
-    g.H.Xa = function() {
+    g.M.wO = function() {
         this.scrollTo(this.scrollPosition + this.containerWidth)
     }
     ;
-    g.H.resize = function(a, I) {
-        var U = this.api.X()
-          , e = 16 / 9
-          , T = a.width >= 650
-          , C = a.width < 480 || a.height < 290
-          , r = Math.min(this.suggestionData.length, this.V.length);
-        if (Math.min(a.width, a.height) <= 150 || r === 0 || !U.uj)
+    g.M.resize = function(e, L) {
+        var c = this.api.S()
+          , I = 16 / 9
+          , B = e.width >= 650
+          , x = e.width < 480 || e.height < 290
+          , S = Math.min(this.suggestionData.length, this.X.length);
+        if (Math.min(e.width, e.height) <= 150 || S === 0 || !c.m1)
             this.hide();
         else {
-            var q;
-            if (T) {
-                var x = q = 28;
-                this.L = 16
+            var h;
+            if (B) {
+                var R = h = 28;
+                this.K = 16
             } else
-                this.L = x = q = 8;
-            if (C) {
-                var Z = 6;
-                T = 14;
+                this.K = R = h = 8;
+            if (x) {
+                var u = 6;
+                B = 14;
                 var t = 12;
-                C = 24;
-                U = 12
+                x = 24;
+                c = 12
             } else
-                Z = 8,
-                T = 18,
+                u = 8,
+                B = 18,
                 t = 16,
-                C = 36,
-                U = 16;
-            a = a.width - (48 + q + x);
-            q = Math.ceil(a / 150);
-            q = Math.min(3, q);
-            x = a / q - this.L;
-            var n = Math.floor(x / e);
-            I && n + 100 > I && x > 50 && (n = Math.max(I, 50 / e),
-            q = Math.ceil(a / (e * (n - 100) + this.L)),
-            x = a / q - this.L,
-            n = Math.floor(x / e));
-            x < 50 || g.y7(this.api) ? this.hide() : this.show();
-            for (I = 0; I < r; I++) {
-                e = this.V[I];
-                var K = e.Ws("ytp-suggestion-image");
-                K.style.width = x + "px";
-                K.style.height = n + "px";
-                e.Ws("ytp-suggestion-title").style.width = x + "px";
-                e.Ws("ytp-suggestion-author").style.width = x + "px";
-                e = e.Ws("ytp-suggestion-duration");
-                e.style.display = e && x < 100 ? "none" : ""
+                x = 36,
+                c = 16;
+            e = e.width - (48 + h + R);
+            h = Math.ceil(e / 150);
+            h = Math.min(3, h);
+            R = e / h - this.K;
+            var O = Math.floor(R / I);
+            L && O + 100 > L && R > 50 && (O = Math.max(L, 50 / I),
+            h = Math.ceil(e / (I * (O - 100) + this.K)),
+            R = e / h - this.K,
+            O = Math.floor(R / I));
+            R < 50 || g.lf(this.api) ? this.hide() : this.show();
+            for (L = 0; L < S; L++) {
+                I = this.X[L];
+                var q = I.q0("ytp-suggestion-image");
+                q.style.width = R + "px";
+                q.style.height = O + "px";
+                I.q0("ytp-suggestion-title").style.width = R + "px";
+                I.q0("ytp-suggestion-author").style.width = R + "px";
+                I = I.q0("ytp-suggestion-duration");
+                I.style.display = I && R < 100 ? "none" : ""
             }
-            r = T + Z + t + 4;
-            this.Y = r + U + (n - C) / 2;
-            this.suggestions.element.style.height = n + r + "px";
-            this.B = x;
-            this.containerWidth = a;
-            this.columns = q;
+            S = B + u + t + 4;
+            this.j = S + c + (O - x) / 2;
+            this.suggestions.element.style.height = O + S + "px";
+            this.Z = R;
+            this.containerWidth = e;
+            this.columns = h;
             this.scrollPosition = 0;
             this.suggestions.element.scrollLeft = -0;
-            Aeo(this)
+            oWN(this)
         }
     }
     ;
-    g.H.onVideoDataChange = function() {
-        var a = g.O(this.api.getVideoData())
-          , I = this.api.X();
-        this.D = a.uc ? !1 : I.J;
-        a.suggestions ? this.suggestionData = g.Sa(a.suggestions, function(U) {
-            return U && !U.playlistId
+    g.M.onVideoDataChange = function() {
+        var e = this.api.getVideoData()
+          , L = this.api.S();
+        this.J = e.xx ? !1 : L.G;
+        e.suggestions ? this.suggestionData = g.ig(e.suggestions, function(c) {
+            return c && !c.playlistId
         }) : this.suggestionData.length = 0;
-        Maj(this);
-        a.uc ? this.title.update({
-            title: g.ji("Mehr Videos von $DNI_RELATED_CHANNEL", {
-                DNI_RELATED_CHANNEL: a.author
+        SON(this);
+        e.xx ? this.title.update({
+            title: g.nC("Mehr Videos von $DNI_RELATED_CHANNEL", {
+                DNI_RELATED_CHANNEL: e.author
             })
         }) : this.title.update({
             title: "Mehr Videos auf YouTube"
         })
     }
     ;
-    g.H.scrollTo = function(a) {
-        a = g.WA(a, this.containerWidth - this.suggestionData.length * (this.B + this.L), 0);
-        this.j.start(this.scrollPosition, a, 1E3);
-        this.scrollPosition = a;
-        Aeo(this);
-        VaI(this, !0)
+    g.M.scrollTo = function(e) {
+        e = g.j5(e, this.containerWidth - this.suggestionData.length * (this.Z + this.K), 0);
+        this.D.start(this.scrollPosition, e, 1E3);
+        this.scrollPosition = e;
+        oWN(this);
+        x3L(this, !0)
     }
     ;
-    g.u(zN, g.pu);
-    zN.prototype.show = function() {
-        g.pu.prototype.show.call(this);
-        $fz(this, this.api.j8().getPlayerSize())
+    g.z(L9, g.Km);
+    L9.prototype.show = function() {
+        g.Km.prototype.show.call(this);
+        hMg(this, this.api.LS().getPlayerSize())
     }
     ;
-    zN.prototype.resize = function(a) {
-        g.pu.prototype.resize.call(this, a);
-        this.V && ($fz(this, a),
-        g.KC(this.element, "related-on-error-overlay-visible", !this.V.isHidden()))
+    L9.prototype.resize = function(e) {
+        g.Km.prototype.resize.call(this, e);
+        this.X && (hMg(this, e),
+        g.cY(this.element, "related-on-error-overlay-visible", !this.X.isHidden()))
     }
     ;
-    zN.prototype.L = function(a) {
-        g.pu.prototype.L.call(this, a);
-        var I = g.O(this.api.getVideoData());
-        if (I.zW || I.playerErrorMessageRenderer)
-            (a = I.zW) ? gz4(this, a) : I.playerErrorMessageRenderer && gz4(this, I.playerErrorMessageRenderer);
+    L9.prototype.K = function(e) {
+        g.Km.prototype.K.call(this, e);
+        var L = this.api.getVideoData();
+        if (L.i7 || L.playerErrorMessageRenderer)
+            (e = L.i7) ? tW9(this, e) : L.playerErrorMessageRenderer && tW9(this, L.playerErrorMessageRenderer);
         else {
-            var U;
-            a.IM && (I.a_ ? iff(I.a_) ? U = g.Lb(I.a_) : U = g.fu(g.id(I.a_)) : U = g.fu(a.IM),
-            this.E9(U, "subreason"))
+            var c;
+            e.ol && (L.t$ ? RML(L.t$) ? c = g.SH(L.t$) : c = g.Ye(g.o9(L.t$)) : c = g.Ye(e.ol),
+            this.Hw(c, "subreason"))
         }
     }
     ;
-    g.u(cem, g.F);
-    g.H = cem.prototype;
-    g.H.onVideoDataChange = function() {
-        var a = g.O(this.api.getVideoData())
-          , I = JeD()
-          , U = 96714;
-        g.r4(a) ? (I = usz(),
-        U = 216165,
-        g.x5(this.element, "ytp-music-impression-link")) : g.ta(this.element, "ytp-music-impression-link");
-        this.api.X().N("embeds_enable_emc3ds_woyt_counterfactual") && g.x5(this.element, "ytp-woyt-emc3ds-cf");
-        this.updateValue("logoSvg", I);
+    g.z(OWZ, g.U);
+    g.M = OWZ.prototype;
+    g.M.onVideoDataChange = function() {
+        var e = this.api.getVideoData()
+          , L = cpZ()
+          , c = 96714;
+        g.TC(e) ? (L = InL(),
+        c = 216165,
+        g.Y4(this.element, "ytp-music-impression-link")) : g.eZ(this.element, "ytp-music-impression-link");
+        this.api.S().Y("embeds_enable_emc3ds_woyt_counterfactual") && g.Y4(this.element, "ytp-woyt-emc3ds-cf");
+        this.updateValue("logoSvg", L);
         this.api.hasVe(this.element) && this.api.destroyVe(this.element);
-        this.api.createClientVe(this.element, this, U)
+        this.api.createClientVe(this.element, this, c)
     }
     ;
-    g.H.UK = function() {
+    g.M.X7 = function() {
         this.api.getPlayerStateObject().isCued() || (this.hide(),
         this.api.logVisibility(this.element, !1))
     }
     ;
-    g.H.Oi = function() {
-        var a = g.O(this.api.getVideoData())
-          , I = this.api.X()
-          , U = g.O(this.api.getVideoData()).uc
-          , e = I.L4 && !I.N("embeds_enable_emc3ds_woyt_counterfactual")
-          , T = !I.uj
-          , C = this.V.JS() && !I.N("embeds_enable_emc3ds_woyt_counterfactual");
-        I = I.B;
-        e || C || U || T || I || this.api.isEmbedsShortsMode() || !a.videoId ? (this.hide(),
-        this.api.logVisibility(this.element, !1)) : (a = WBG(this),
-        this.updateValue("url", a),
+    g.M.iR = function() {
+        var e = this.api.getVideoData()
+          , L = this.api.S()
+          , c = this.api.getVideoData().xx
+          , I = L.f9 && !L.Y("embeds_enable_emc3ds_woyt_counterfactual")
+          , B = !L.m1
+          , x = this.X.ge() && !L.Y("embeds_enable_emc3ds_woyt_counterfactual");
+        L = L.Z;
+        I || x || c || B || L || this.api.isEmbedsShortsMode() || !e.videoId ? (this.hide(),
+        this.api.logVisibility(this.element, !1)) : (e = qOg(this),
+        this.updateValue("url", e),
         this.show())
     }
     ;
-    g.H.onClick = function(a) {
-        this.api.N("web_player_log_click_before_generating_ve_conversion_params") && this.api.logClick(this.element);
-        var I = WBG(this);
-        g.Jw(I, this.api, a);
-        this.api.N("web_player_log_click_before_generating_ve_conversion_params") || this.api.logClick(this.element)
+    g.M.onClick = function(e) {
+        this.api.Y("web_player_log_click_before_generating_ve_conversion_params") && this.api.logClick(this.element);
+        var L = qOg(this);
+        g.v8(L, this.api, e);
+        this.api.Y("web_player_log_click_before_generating_ve_conversion_params") || this.api.logClick(this.element)
     }
     ;
-    g.H.show = function() {
-        this.api.getPlayerStateObject().isCued() && (g.F.prototype.show.call(this),
+    g.M.show = function() {
+        this.api.getPlayerStateObject().isCued() && (g.U.prototype.show.call(this),
         this.api.hasVe(this.element) && this.api.logVisibility(this.element, !0))
     }
     ;
-    g.u(hI, g.F);
-    hI.prototype.UK = function() {
-        var a = this.api.getPlayerStateObject();
-        !this.api.MV() || g.Q(a, 2) && g.OK(this.api) || g.Q(a, 64) ? (this.api.logVisibility(this.V, !1),
+    g.z(cV, g.U);
+    cV.prototype.X7 = function() {
+        var e = this.api.getPlayerStateObject();
+        !this.api.Xk() || g.E(e, 2) && g.$b(this.api) || g.E(e, 64) ? (this.api.logVisibility(this.X, !1),
         this.api.logVisibility(this.forwardButton, !1),
         this.hide()) : (this.show(),
-        this.api.logVisibility(this.V, !0),
+        this.api.logVisibility(this.X, !0),
         this.api.logVisibility(this.forwardButton, !0))
     }
     ;
-    hI.prototype.L = function() {
+    cV.prototype.K = function() {
         this.api.seekBy(-10 * this.api.getPlaybackRate(), void 0, void 0, 83);
-        this.api.logClick(this.V)
+        this.api.logClick(this.X)
     }
     ;
-    hI.prototype.B = function() {
+    cV.prototype.Z = function() {
         this.api.seekBy(10 * this.api.getPlaybackRate(), void 0, void 0, 82);
         this.api.logClick(this.forwardButton)
     }
     ;
-    g.u(Np, g.F);
-    Np.prototype.B = function() {
-        var a = this.api.getPlayerStateObject()
-          , I = g.O(this.api.getVideoData());
-        this.api.X().N("embeds_enable_muted_autoplay_shorts_endscreen_fix") && g.KC(this.element, "ytp-shorts-mode", this.api.isEmbedsShortsMode());
-        !I.mutedAutoplay || I.limitedPlaybackDurationInSeconds === 0 && I.endSeconds === 0 && I.mutedAutoplayDurationMode === 2 || (g.Q(a, 2) && !this.gF ? (this.show(),
-        this.V || (this.V = new g.X6(this.api),
-        g.E(this, this.V),
-        this.V.KO(this.J, 0),
-        this.V.show()),
-        a = g.O(this.api.getVideoData()),
-        this.updateValue("text", a.RB),
-        g.KC(this.element, "ytp-muted-autoplay-show-end-panel", !0),
-        this.api.logVisibility(this.element, this.gF),
-        this.api.s9("onMutedAutoplayEnds")) : this.hide())
+    g.z(IE, g.U);
+    IE.prototype.Z = function() {
+        var e = this.api.getPlayerStateObject()
+          , L = this.api.getVideoData();
+        g.cY(this.element, "ytp-shorts-mode", this.api.isEmbedsShortsMode());
+        !L.mutedAutoplay || L.limitedPlaybackDurationInSeconds === 0 && L.endSeconds === 0 && L.mutedAutoplayDurationMode === 2 || (g.E(e, 2) && !this.z_ ? (this.show(),
+        this.X || (this.X = new g.EV(this.api),
+        g.l(this, this.X),
+        this.X.jl(this.G, 0),
+        this.X.show()),
+        e = this.api.getVideoData(),
+        this.updateValue("text", e.J6),
+        g.cY(this.element, "ytp-muted-autoplay-show-end-panel", !0),
+        this.api.logVisibility(this.element, this.z_),
+        this.api.Kb("onMutedAutoplayEnds")) : this.hide())
     }
     ;
-    Np.prototype.onClick = function() {
-        if (!this.L) {
-            this.V && (this.V.Bs(),
-            this.V = null);
-            g.KC(this.api.getRootNode(), "ytp-muted-autoplay", !1);
-            var a = g.O(this.api.getVideoData())
-              , I = this.api.getCurrentTime();
-            bfI(a);
-            this.api.loadVideoById(a.videoId, I);
-            this.api.wu();
+    IE.prototype.onClick = function() {
+        if (!this.K) {
+            this.X && (this.X.KS(),
+            this.X = null);
+            g.cY(this.api.getRootNode(), "ytp-muted-autoplay", !1);
+            var e = this.api.getVideoData()
+              , L = this.api.getCurrentTime();
+            L_g(e);
+            this.api.loadVideoById(e.videoId, L);
+            this.api.tS();
             this.api.logClick(this.element);
             this.hide();
-            this.L = !0
+            this.K = !0
         }
     }
     ;
-    Np.prototype.onMutedAutoplayStarts = function() {
-        this.L = !1;
-        this.V && (this.V.Bs(),
-        this.V = null)
+    IE.prototype.onMutedAutoplayStarts = function() {
+        this.K = !1;
+        this.X && (this.X.KS(),
+        this.X = null)
     }
     ;
-    g.u(oz, g.F);
-    g.H = oz.prototype;
-    g.H.onStateChange = function(a) {
-        this.FQ(a.state)
+    g.z(BV, g.U);
+    g.M = BV.prototype;
+    g.M.onStateChange = function(e) {
+        this.Oq(e.state)
     }
     ;
-    g.H.FQ = function(a) {
-        this.state !== a && (this.state = a);
-        lkJ(this)
+    g.M.Oq = function(e) {
+        this.state !== e && (this.state = e);
+        TjL(this)
     }
     ;
-    g.H.onVideoDataChange = function() {
-        var a = this.api.X();
-        a.B && g.x5(this.element, "ytp-no-hover");
-        var I = g.O(this.api.getVideoData());
-        I.videoId && !a.B ? (a = this.api.getVideoUrl(!0, !1, !1, !0),
-        this.updateValue("url", a),
-        this.V || (this.V = this.listen("click", this.onClick))) : this.V && (this.updateValue("url", null),
-        this.YY(this.V),
-        this.V = null);
-        a = JeD();
-        var U = 76758;
-        g.r4(I) && (a = usz(),
-        U = 216164);
-        this.updateValue("logoSvg", a);
+    g.M.onVideoDataChange = function() {
+        var e = this.api.S();
+        e.Z && g.Y4(this.element, "ytp-no-hover");
+        var L = this.api.getVideoData();
+        L.videoId && !e.Z ? (e = this.api.getVideoUrl(!0, !1, !1, !0),
+        this.updateValue("url", e),
+        this.X || (this.X = this.listen("click", this.onClick))) : this.X && (this.updateValue("url", null),
+        this.j6(this.X),
+        this.X = null);
+        e = cpZ();
+        var c = 76758;
+        g.TC(L) && (e = InL(),
+        c = 216164);
+        this.updateValue("logoSvg", e);
         this.api.hasVe(this.element) && this.api.destroyVe(this.element);
-        this.api.createClientVe(this.element, this, U);
-        lkJ(this)
+        this.api.createClientVe(this.element, this, c);
+        TjL(this)
     }
     ;
-    g.H.onClick = function(a) {
-        this.api.N("web_player_log_click_before_generating_ve_conversion_params") && this.api.logClick(this.element);
-        var I = this.api.getVideoUrl(!g.PK(a), !1, !0, !0);
-        if (this.api.N("web_player_log_click_before_generating_ve_conversion_params")) {
-            var U = {};
-            g.AU(this.api, "addEmbedsConversionTrackingParams", [U]);
-            I = g.pM(I, U)
+    g.M.onClick = function(e) {
+        this.api.Y("web_player_log_click_before_generating_ve_conversion_params") && this.api.logClick(this.element);
+        var L = this.api.getVideoUrl(!g.WZ(e), !1, !0, !0);
+        if (this.api.Y("web_player_log_click_before_generating_ve_conversion_params")) {
+            var c = {};
+            g.Fl(this.api, "addEmbedsConversionTrackingParams", [c]);
+            L = g.WO(L, c)
         }
-        g.Jw(I, this.api, a);
-        this.api.N("web_player_log_click_before_generating_ve_conversion_params") || this.api.logClick(this.element)
+        g.v8(L, this.api, e);
+        this.api.Y("web_player_log_click_before_generating_ve_conversion_params") || this.api.logClick(this.element)
     }
     ;
-    g.H.jj = function(a) {
-        if ((a = a.width < 480) && !this.L || !a && this.L) {
-            var I = new g.F(JeD())
-              , U = this.Ws("ytp-watermark");
-            g.KC(U, "ytp-watermark-small", a);
-            g.sJ(U);
-            I.KO(U);
-            this.L = a
+    g.M.Nx = function(e) {
+        if ((e = e.width < 480) && !this.K || !e && this.K) {
+            var L = new g.U(cpZ())
+              , c = this.q0("ytp-watermark");
+            g.cY(c, "ytp-watermark-small", e);
+            g.Ml(c);
+            L.jl(c);
+            this.K = e
         }
     }
     ;
-    g.u(PHG, g.F);
-    g.H = PHG.prototype;
-    g.H.Oc = function() {
-        var a = this.api.getPlayerStateObject();
-        !g.O(this.api.getVideoData()).mutedAutoplay || g.Q(a, 2) ? this.hide() : this.gF || (g.F.prototype.show.call(this),
-        this.api.logVisibility(this.element, this.gF))
+    g.z(zMN, g.U);
+    g.M = zMN.prototype;
+    g.M.lc = function() {
+        var e = this.api.getPlayerStateObject();
+        !this.api.getVideoData().mutedAutoplay || g.E(e, 2) ? this.hide() : this.z_ || (g.U.prototype.show.call(this),
+        this.api.logVisibility(this.element, this.z_))
     }
     ;
-    g.H.Dnm = function() {
-        this.V && this.V.hide()
+    g.M.vC = function() {
+        this.X && this.X.hide()
     }
     ;
-    g.H.onAutoplayBlocked = function() {
+    g.M.onAutoplayBlocked = function() {
         this.hide();
-        bfI(g.O(this.api.getVideoData()))
+        L_g(this.api.getVideoData())
     }
     ;
-    g.H.onClick = function() {
-        if (!this.L) {
-            g.KC(this.api.getRootNode(), "ytp-muted-autoplay", !1);
-            var a = g.O(this.api.getVideoData())
-              , I = this.api.getCurrentTime();
-            bfI(a);
-            this.api.loadVideoById(a.videoId, I);
-            this.api.wu();
+    g.M.onClick = function() {
+        if (!this.K) {
+            g.cY(this.api.getRootNode(), "ytp-muted-autoplay", !1);
+            var e = this.api.getVideoData()
+              , L = this.api.getCurrentTime();
+            L_g(e);
+            this.api.loadVideoById(e.videoId, L);
+            this.api.tS();
             this.api.logClick(this.element);
-            this.api.s9("onMutedAutoplayEnds");
-            this.L = !0
+            this.api.Kb("onMutedAutoplayEnds");
+            this.K = !0
         }
     }
     ;
-    g.H.onMutedAutoplayEnds = function() {
-        this.watermark && (this.watermark.Bs(),
+    g.M.onMutedAutoplayEnds = function() {
+        this.watermark && (this.watermark.KS(),
         this.watermark = null)
     }
     ;
-    g.u(Dd, g.F);
-    Dd.prototype.hide = function() {
-        g.ta(this.api.getRootNode(), "ytp-expand-pause-overlay");
-        g.F.prototype.hide.call(this)
+    g.z(xU, g.U);
+    xU.prototype.hide = function() {
+        g.eZ(this.api.getRootNode(), "ytp-expand-pause-overlay");
+        g.U.prototype.hide.call(this)
     }
     ;
-    Dd.prototype.J = function() {
-        this.L = !0;
-        g.ta(this.api.getRootNode(), "ytp-expand-pause-overlay");
+    xU.prototype.G = function() {
+        this.K = !0;
+        g.eZ(this.api.getRootNode(), "ytp-expand-pause-overlay");
         this.api.isEmbedsShortsMode() && this.api.logVisibility(this.element, !1);
         this.expandButton.focus()
     }
     ;
-    Dd.prototype.Y = function() {
-        this.L = !1;
-        g.x5(this.api.getRootNode(), "ytp-expand-pause-overlay");
+    xU.prototype.j = function() {
+        this.K = !1;
+        g.Y4(this.api.getRootNode(), "ytp-expand-pause-overlay");
         this.api.isEmbedsShortsMode() && this.api.logVisibility(this.element, !0);
         this.focus()
     }
     ;
-    Dd.prototype.Qa = function() {
-        var a = this.api.getPlayerStateObject();
-        g.Q(a, 1) || g.Q(a, 16) || g.Q(a, 32) || (!g.Q(a, 4) || g.Q(a, 2) || g.Q(a, 1024) ? (this.L || this.api.logVisibility(this.element, !1),
-        this.fade.hide()) : this.V.hasSuggestions() && (this.L || (g.x5(this.api.getRootNode(), "ytp-expand-pause-overlay"),
-        g.N0(this.V),
-        this.V.show(),
+    xU.prototype.OW = function() {
+        var e = this.api.getPlayerStateObject();
+        g.E(e, 1) || g.E(e, 16) || g.E(e, 32) || (!g.E(e, 4) || g.E(e, 2) || g.E(e, 1024) ? (this.K || this.api.logVisibility(this.element, !1),
+        this.fade.hide()) : this.X.hasSuggestions() && (this.K || (g.Y4(this.api.getRootNode(), "ytp-expand-pause-overlay"),
+        g.o_(this.X),
+        this.X.show(),
         this.api.logVisibility(this.element, !0)),
         this.fade.show()))
     }
     ;
-    g.u(vs, g.F);
-    vs.prototype.show = function() {
-        g.F.prototype.show.call(this);
+    g.z(oE, g.U);
+    oE.prototype.show = function() {
+        g.U.prototype.show.call(this);
         this.api.logVisibility(this.element, !0)
     }
     ;
-    vs.prototype.stopTimer = function() {
-        this.V && (this.V.dispose(),
-        this.V = null,
-        this.L = !1)
+    oE.prototype.stopTimer = function() {
+        this.X && (this.X.dispose(),
+        this.X = null,
+        this.K = !1)
     }
     ;
-    vs.prototype.Bs = function() {
+    oE.prototype.KS = function() {
         this.stopTimer();
-        g.F.prototype.Bs.call(this)
+        g.U.prototype.KS.call(this)
     }
     ;
-    g.u(Ofo, g.nu);
-    g.H = Ofo.prototype;
-    g.H.hj = function() {
+    g.z(ApM, g.Vk);
+    g.M = ApM.prototype;
+    g.M.bC = function() {
         return !1
     }
     ;
-    g.H.create = function() {
-        var a = this.K.X(), I = g.Lh(this.K), U, e = (U = this.K.getVideoData()) == null ? void 0 : U.clientPlaybackNonce;
-        e && g.z5({
-            clientPlaybackNonce: e
+    g.M.create = function() {
+        var e = this.V.S(), L = g.Db(this.V), c, I = (c = this.V.getVideoData()) == null ? void 0 : c.clientPlaybackNonce;
+        I && g.FT({
+            clientPlaybackNonce: I
         });
-        a.i5 && !a.disableOrganicUi && GAz(this);
-        var T;
-        (T = a.getWebPlayerContextConfig()) != null && T.embedsEnableEmc3ds || (this.D = new PHG(this.K),
-        g.E(this, this.D),
-        g.w4(this.K, this.D.element, 4),
-        this.gw = new Np(this.K),
-        g.E(this, this.gw),
-        g.w4(this.K, this.gw.element, 4));
-        a.L4 && (this.watermark = new oz(this.K),
-        g.E(this, this.watermark),
-        g.w4(this.K, this.watermark.element, 8));
-        I && !a.disableOrganicUi && (this.Y = new cem(this.K,I),
-        g.E(this, this.Y),
-        g.w4(this.K, this.Y.element, 8),
-        this.K.isMutedByEmbedsMutedAutoplay() && (this.onMutedAutoplayStarts(),
-        this.Y.hide()));
-        a.L && !a.disableOrganicUi && (this.Va = new hI(this.K),
-        g.E(this, this.Va),
-        g.w4(this.K, this.Va.element, 4));
-        this.V.G(this.K, "appresize", this.jj);
-        this.V.G(this.K, "presentingplayerstatechange", this.UK);
-        this.V.G(this.K, "videodatachange", this.onVideoDataChange);
-        this.V.G(this.K, "videoplayerreset", this.onReset);
-        this.V.G(this.K, "onMutedAutoplayStarts", this.onMutedAutoplayStarts);
-        this.V.G(this.K, "onAdStart", this.onAdStart);
-        this.V.G(this.K, "onAdComplete", this.onAdComplete);
-        this.V.G(this.K, "onAdSkip", this.onAdSkip);
-        this.V.G(this.K, "onAdStateChange", this.onAdStateChange);
-        if (this.C = g.bR(g.Fw(a)))
-            this.countdownTimer = new vs(this.K),
-            g.E(this, this.countdownTimer),
-            g.w4(this.K, this.countdownTimer.element, 4),
+        e.m$ && !e.disableOrganicUi && bWU(this);
+        var B;
+        (B = e.getWebPlayerContextConfig()) != null && B.embedsEnableEmc3ds || (this.J = new zMN(this.V),
+        g.l(this, this.J),
+        g.Uq(this.V, this.J.element, 4),
+        this.h7 = new IE(this.V),
+        g.l(this, this.h7),
+        g.Uq(this.V, this.h7.element, 4));
+        e.f9 && (this.watermark = new BV(this.V),
+        g.l(this, this.watermark),
+        g.Uq(this.V, this.watermark.element, 8));
+        L && !e.disableOrganicUi && (this.j = new OWZ(this.V,L),
+        g.l(this, this.j),
+        g.Uq(this.V, this.j.element, 8),
+        this.V.isMutedByEmbedsMutedAutoplay() && (this.onMutedAutoplayStarts(),
+        this.j.hide()));
+        e.K && !e.disableOrganicUi && (this.pS = new cV(this.V),
+        g.l(this, this.pS),
+        g.Uq(this.V, this.pS.element, 4));
+        this.X.C(this.V, "appresize", this.Nx);
+        this.X.C(this.V, "presentingplayerstatechange", this.X7);
+        this.X.C(this.V, "videodatachange", this.onVideoDataChange);
+        this.X.C(this.V, "videoplayerreset", this.onReset);
+        this.X.C(this.V, "onMutedAutoplayStarts", this.onMutedAutoplayStarts);
+        this.X.C(this.V, "onAdStart", this.onAdStart);
+        this.X.C(this.V, "onAdComplete", this.onAdComplete);
+        this.X.C(this.V, "onAdSkip", this.onAdSkip);
+        this.X.C(this.V, "onAdStateChange", this.onAdStateChange);
+        if (this.T = g.cI(g.ID(e)))
+            this.countdownTimer = new oE(this.V),
+            g.l(this, this.countdownTimer),
+            g.Uq(this.V, this.countdownTimer.element, 4),
             this.countdownTimer.hide(),
-            this.V.G(this.K, g.ZW("embeds"), this.onCueRangeEnter),
-            this.V.G(this.K, g.tS("embeds"), this.onCueRangeExit);
-        this.eM(this.K.getPlayerStateObject());
-        this.player.WZ("embed");
-        var C, r;
-        ((C = this.K.X().getWebPlayerContextConfig()) == null ? 0 : (r = C.embedsHostFlags) == null ? 0 : r.allowOverridingVisitorDataPlayerVars) && (a = g.D5("IDENTITY_MEMENTO")) && this.K.rA("onMementoChange", a)
+            this.X.C(this.V, g.jh("embeds"), this.onCueRangeEnter),
+            this.X.C(this.V, g.Hq("embeds"), this.onCueRangeExit);
+        this.Xp(this.V.getPlayerStateObject());
+        this.player.pu("embed");
+        var x, S;
+        ((x = this.V.S().getWebPlayerContextConfig()) == null ? 0 : (S = x.embedsHostFlags) == null ? 0 : S.allowOverridingVisitorDataPlayerVars) && (e = g.Zu("IDENTITY_MEMENTO")) && this.V.oy("onMementoChange", e)
     }
     ;
-    g.H.onCueRangeEnter = function(a) {
-        a.getId() === "countdown timer" && this.countdownTimer && (this.countdownTimer.show(),
-        fkj(this.countdownTimer))
+    g.M.onCueRangeEnter = function(e) {
+        e.getId() === "countdown timer" && this.countdownTimer && (this.countdownTimer.show(),
+        vWJ(this.countdownTimer))
     }
     ;
-    g.H.onCueRangeExit = function(a) {
-        a.getId() === "countdown timer" && this.countdownTimer && (this.countdownTimer.stopTimer(),
+    g.M.onCueRangeExit = function(e) {
+        e.getId() === "countdown timer" && this.countdownTimer && (this.countdownTimer.stopTimer(),
         this.countdownTimer.hide())
     }
     ;
-    g.H.jj = function() {
-        var a = this.K.j8().getPlayerSize();
-        this.Xf && this.Xf.resize(a)
+    g.M.Nx = function() {
+        var e = this.V.LS().getPlayerSize();
+        this.Ml && this.Ml.resize(e)
     }
     ;
-    g.H.onReset = function() {
-        YRj(this)
+    g.M.onReset = function() {
+        fnM(this)
     }
     ;
-    g.H.UK = function(a) {
-        this.eM(a.state)
+    g.M.X7 = function(e) {
+        this.Xp(e.state)
     }
     ;
-    g.H.eM = function(a) {
-        g.Q(a, 128) ? (this.Xf || (this.Xf = new zN(this.K),
-        g.E(this, this.Xf),
-        g.w4(this.K, this.Xf.element, 4)),
-        this.Xf.L(a.VR),
-        this.Xf.show(),
-        g.x5(this.K.getRootNode(), "ytp-embed-error")) : this.Xf && (this.Xf.dispose(),
-        this.Xf = null,
-        g.ta(this.K.getRootNode(), "ytp-embed-error"));
-        if (this.countdownTimer && this.countdownTimer.V)
-            if (g.Q(a, 64))
+    g.M.Xp = function(e) {
+        g.E(e, 128) ? (this.Ml || (this.Ml = new L9(this.V),
+        g.l(this, this.Ml),
+        g.Uq(this.V, this.Ml.element, 4)),
+        this.Ml.K(e.lz),
+        this.Ml.show(),
+        g.Y4(this.V.getRootNode(), "ytp-embed-error")) : this.Ml && (this.Ml.dispose(),
+        this.Ml = null,
+        g.eZ(this.V.getRootNode(), "ytp-embed-error"));
+        if (this.countdownTimer && this.countdownTimer.X)
+            if (g.E(e, 64))
                 this.countdownTimer.hide(),
                 this.countdownTimer.stopTimer();
-            else if (a.isPaused()) {
-                var I = this.countdownTimer;
-                I.L || (I.L = !0,
-                I.Y = (0,
-                g.w)())
+            else if (e.isPaused()) {
+                var L = this.countdownTimer;
+                L.K || (L.K = !0,
+                L.j = (0,
+                g.zI)())
             } else
-                a.isPlaying() && this.countdownTimer.L && (I = this.countdownTimer,
-                I.L && (I.J += (0,
-                g.w)() - I.Y,
-                I.L = !1,
-                pff(I)));
-        SRo(this, a)
+                e.isPlaying() && this.countdownTimer.K && (L = this.countdownTimer,
+                L.K && (L.G += (0,
+                g.zI)() - L.j,
+                L.K = !1,
+                sX9(L)));
+        F_e(this, e)
     }
     ;
-    g.H.onMutedAutoplayStarts = function() {
-        g.O(this.K.getVideoData()).mutedAutoplay && this.D && g.KC(this.K.getRootNode(), "ytp-muted-autoplay", !0)
+    g.M.onMutedAutoplayStarts = function() {
+        this.V.getVideoData().mutedAutoplay && this.J && g.cY(this.V.getRootNode(), "ytp-muted-autoplay", !0)
     }
     ;
-    g.H.onVideoDataChange = function(a, I) {
-        var U = this.pL !== I.videoId;
-        a = !U && a === "dataloaded";
-        var e = {
-            isShortsModeEnabled: !!this.K.isEmbedsShortsMode()
+    g.M.onVideoDataChange = function(e, L) {
+        var c = this.DE !== L.videoId;
+        e = !c && e === "dataloaded";
+        var I = {
+            isShortsModeEnabled: !!this.V.isEmbedsShortsMode()
         };
-        g.JL("embedsVideoDataDidChange", {
-            clientPlaybackNonce: I.clientPlaybackNonce,
-            isReload: a,
-            runtimeEnabledFeatures: e
+        g.et("embedsVideoDataDidChange", {
+            clientPlaybackNonce: L.clientPlaybackNonce,
+            isReload: e,
+            runtimeEnabledFeatures: I
         });
-        U && (this.pL = I.videoId,
+        c && (this.DE = L.videoId,
         this.countdownTimer && (this.countdownTimer.show(),
         this.countdownTimer.hide()),
-        this.C && (this.K.HE("embeds"),
-        I.isAd() || I.limitedPlaybackDurationInSeconds < 5 || g.y7(this.K) || (I = Math.max((I.startSeconds + I.limitedPlaybackDurationInSeconds - 5) * 1E3, 0),
-        I = new g.qA(I,I + 5E3,{
+        this.T && (this.V.RU("embeds"),
+        L.isAd() || L.limitedPlaybackDurationInSeconds < 5 || g.lf(this.V) || (L = Math.max((L.startSeconds + L.limitedPlaybackDurationInSeconds - 5) * 1E3, 0),
+        L = new g.pC(L,L + 5E3,{
             id: "countdown timer",
             namespace: "embeds"
         }),
-        this.K.xw([I]))),
-        this.K.X().i5 && !this.K.X().disableOrganicUi && (YRj(this),
-        GAz(this)));
-        this.K.X().B && this.B && this.B.detach()
+        this.V.Lb([L]))),
+        this.V.S().m$ && !this.V.S().disableOrganicUi && (fnM(this),
+        bWU(this)));
+        this.V.S().Z && this.Z && this.Z.detach()
     }
     ;
-    g.H.onAdStart = function() {
-        at(this, "EMBEDS_AD_EVENT_TYPE_AD_STARTED")
+    g.M.onAdStart = function() {
+        S7(this, "EMBEDS_AD_EVENT_TYPE_AD_STARTED")
     }
     ;
-    g.H.onAdComplete = function() {
-        at(this, "EMBEDS_AD_EVENT_TYPE_AD_COMPLETED")
+    g.M.onAdComplete = function() {
+        S7(this, "EMBEDS_AD_EVENT_TYPE_AD_COMPLETED")
     }
     ;
-    g.H.onAdSkip = function() {
-        at(this, "EMBEDS_AD_EVENT_TYPE_AD_SKIPPED")
+    g.M.onAdSkip = function() {
+        S7(this, "EMBEDS_AD_EVENT_TYPE_AD_SKIPPED")
     }
     ;
-    g.H.onAdStateChange = function(a) {
-        a === 2 && at(this, "EMBEDS_AD_EVENT_TYPE_AD_PAUSED")
+    g.M.onAdStateChange = function(e) {
+        e === 2 && S7(this, "EMBEDS_AD_EVENT_TYPE_AD_PAUSED")
     }
     ;
-    g.th("embed", Ofo);
+    g.JK("embed", ApM);
 }
 )(_yt_player);

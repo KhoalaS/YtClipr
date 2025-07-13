@@ -1,243 +1,202 @@
 (function(g) {
     var window = this;
     'use strict';
-    var Kyd = function(a) {
-        if (a instanceof g.Pf)
-            return a;
-        if (typeof a.NU == "function")
-            return a.NU(!1);
-        if (g.af(a)) {
-            var I = 0
-              , U = new g.Pf;
-            U.next = function() {
+    var IuL = function(e) {
+        if (e instanceof g.vs)
+            return e;
+        if (typeof e.qZ == "function")
+            return e.qZ(!1);
+        if (g.oL(e)) {
+            var L = 0
+              , c = new g.vs;
+            c.next = function() {
                 for (; ; ) {
-                    if (I >= a.length)
-                        return g.Ty;
-                    if (I in a)
-                        return g.pf(a[I++]);
-                    I++
+                    if (L >= e.length)
+                        return g.T8;
+                    if (L in e)
+                        return g.f0(e[L++]);
+                    L++
                 }
             }
             ;
-            return U
+            return c
         }
         throw Error("Not implemented");
     }
-      , bjd = function(a, I, U) {
-        if (g.af(a))
-            g.Gm(a, I, U);
+      , BWM = function(e, L, c) {
+        if (g.oL(e))
+            g.KZ(e, L, c);
         else
-            for (a = Kyd(a); ; ) {
-                var e = a.next();
-                if (e.done)
+            for (e = IuL(e); ; ) {
+                var I = e.next();
+                if (I.done)
                     break;
-                I.call(U, e.value, void 0, a)
+                L.call(c, I.value, void 0, e)
             }
     }
-      , DA = function(a) {
-        g.bv(a, "zx", Math.floor(Math.random() * 2147483648).toString(36) + Math.abs(Math.floor(Math.random() * 2147483648) ^ g.rd()).toString(36));
-        return a
+      , eU = function(e) {
+        g.ob(e, "zx", Math.floor(Math.random() * 2147483648).toString(36) + Math.abs(Math.floor(Math.random() * 2147483648) ^ g.O9()).toString(36));
+        return e
     }
-      , vv = function(a, I, U) {
-        Array.isArray(U) || (U = [String(U)]);
-        g.OWc(a.J, I, U)
+      , LV = function(e, L, c) {
+        Array.isArray(c) || (c = [String(c)]);
+        g.jjn(e.G, L, c)
     }
-      , JbI = function(a, I) {
-        var U = [];
-        bjd(I, function(e) {
+      , xNZ = function(e, L) {
+        var c = [];
+        BWM(L, function(I) {
             try {
-                var T = g.fC.prototype.L.call(this, e, !0)
-            } catch (C) {
-                if (C == "Storage: Invalid value was encountered")
+                var B = g.AL.prototype.K.call(this, I, !0)
+            } catch (x) {
+                if (x == "Storage: Invalid value was encountered")
                     return;
-                throw C;
+                throw x;
             }
-            T === void 0 ? U.push(e) : g.QIg(T) && U.push(e)
-        }, a);
-        return U
+            B === void 0 ? c.push(I) : g.Xkc(B) && c.push(I)
+        }, e);
+        return c
     }
-      , ua8 = function(a, I) {
-        JbI(a, I).forEach(function(U) {
-            g.fC.prototype.remove.call(this, U)
-        }, a)
+      , oJe = function(e, L) {
+        xNZ(e, L).forEach(function(c) {
+            g.AL.prototype.remove.call(this, c)
+        }, e)
     }
-      , kv4 = function(a) {
-        if (a.Va) {
-            if (a.Va.locationOverrideToken)
+      , SeJ = function(e) {
+        if (e.IU) {
+            if (e.IU.locationOverrideToken)
                 return {
-                    locationOverrideToken: a.Va.locationOverrideToken
+                    locationOverrideToken: e.IU.locationOverrideToken
                 };
-            if (a.Va.latitudeE7 != null && a.Va.longitudeE7 != null)
+            if (e.IU.latitudeE7 != null && e.IU.longitudeE7 != null)
                 return {
-                    latitudeE7: a.Va.latitudeE7,
-                    longitudeE7: a.Va.longitudeE7
+                    latitudeE7: e.IU.latitudeE7,
+                    longitudeE7: e.IU.longitudeE7
                 }
         }
         return null
     }
-      , V18 = function(a, I) {
-        g.kJ(a, I) || a.push(I)
+      , rGN = function(e, L) {
+        g.Fh(e, L) || e.push(L)
     }
-      , Abz = function(a) {
-        var I = 0, U;
-        for (U in a)
-            I++;
-        return I
+      , ha9 = function(e) {
+        var L = 0, c;
+        for (c in e)
+            L++;
+        return L
     }
-      , M1m = function(a, I) {
-        return g.of(a, I)
+      , RaN = function(e, L) {
+        return g.t_(e, L)
     }
-      , j0I = function(a) {
+      , u$M = function(e) {
         try {
-            return g.zs.JSON.parse(a)
-        } catch (I) {}
-        a = String(a);
-        if (/^\s*$/.test(a) ? 0 : /^[\],:{}\s\u2028\u2029]*$/.test(a.replace(/\\["\\\/bfnrtu]/g, "@").replace(/(?:"[^"\\\n\r\u2028\u2029\x00-\x08\x0a-\x1f]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)[\s\u2028\u2029]*(?=:|,|]|}|$)/g, "]").replace(/(?:^|:|,)(?:[\s\u2028\u2029]*\[)+/g, "")))
+            return g.LZ.JSON.parse(e)
+        } catch (L) {}
+        e = String(e);
+        if (/^\s*$/.test(e) ? 0 : /^[\],:{}\s\u2028\u2029]*$/.test(e.replace(/\\["\\\/bfnrtu]/g, "@").replace(/(?:"[^"\\\n\r\u2028\u2029\x00-\x08\x0a-\x1f]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)[\s\u2028\u2029]*(?=:|,|]|}|$)/g, "]").replace(/(?:^|:|,)(?:[\s\u2028\u2029]*\[)+/g, "")))
             try {
-                return eval("(" + a + ")")
-            } catch (I) {}
-        throw Error("Invalid JSON string: " + a);
+                return eval("(" + e + ")")
+            } catch (L) {}
+        throw Error("Invalid JSON string: " + e);
     }
-      , aZ = function(a) {
-        if (g.zs.JSON)
+      , cp = function(e) {
+        if (g.LZ.JSON)
             try {
-                return g.zs.JSON.parse(a)
-            } catch (I) {}
-        return j0I(a)
+                return g.LZ.JSON.parse(e)
+            } catch (L) {}
+        return u$M(e)
     }
-      , $6Q = function() {
-        var a = IZ();
-        this.V = a;
-        a.MU("/client_streamz/youtube/living_room/mdx/channel/opened", g.bP("channel_type"))
+      , tMh = function() {
+        var e = It();
+        this.X = e;
+        e.Io("/client_streamz/youtube/living_room/mdx/channel/opened", g.LM("channel_type"))
     }
-      , ijf = function() {
-        var a = IZ();
-        this.V = a;
-        a.MU("/client_streamz/youtube/living_room/mdx/channel/closed", g.bP("channel_type"))
+      , OTL = function() {
+        var e = It();
+        this.X = e;
+        e.Io("/client_streamz/youtube/living_room/mdx/channel/closed", g.LM("channel_type"))
     }
-      , Lyz = function() {
-        var a = IZ();
-        this.V = a;
-        a.MU("/client_streamz/youtube/living_room/mdx/channel/message_received", g.bP("channel_type"))
+      , qeg = function() {
+        var e = It();
+        this.X = e;
+        e.Io("/client_streamz/youtube/living_room/mdx/channel/message_received", g.LM("channel_type"))
     }
-      , gk4 = function() {
-        var a = IZ();
-        this.V = a;
-        a.MU("/client_streamz/youtube/living_room/mdx/channel/success")
+      , TWN = function() {
+        var e = It();
+        this.X = e;
+        e.Io("/client_streamz/youtube/living_room/mdx/channel/success")
     }
-      , cbo = function() {
-        var a = IZ();
-        this.V = a;
-        a.MU("/client_streamz/youtube/living_room/mdx/channel/error", g.bP("channel_type"))
+      , WHN = function() {
+        var e = It();
+        this.X = e;
+        e.Io("/client_streamz/youtube/living_room/mdx/channel/error", g.LM("channel_type"), g.LM("error_type"))
     }
-      , WyG = function() {
-        var a = IZ();
-        this.V = a;
-        a.MU("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps")
+      , MMM = function() {
+        var e = It();
+        this.X = e;
+        e.Io("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps")
     }
-      , lld = function() {
-        var a = IZ();
-        this.V = a;
-        a.MU("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps")
+      , zaw = function() {
+        var e = It();
+        this.X = e;
+        e.Io("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps")
     }
-      , B9m = function(a) {
-        if (a.ZK && typeof a.ZK == "function")
-            return a.ZK();
-        if (typeof Map !== "undefined" && a instanceof Map || typeof Set !== "undefined" && a instanceof Set)
-            return Array.from(a.values());
-        if (typeof a === "string")
-            return a.split("");
-        if (g.af(a)) {
-            for (var I = [], U = a.length, e = 0; e < U; e++)
-                I.push(a[e]);
-            return I
-        }
-        return g.QG(a)
+      , s6N = function(e, L, c, I) {
+        var B = new g.Yd(null);
+        e && g.na(B, e);
+        L && g.e9(B, L);
+        c && g.Ls(B, c);
+        I && (B.K = I);
+        return B
     }
-      , XIo = function(a) {
-        if (a.Vq && typeof a.Vq == "function")
-            return a.Vq();
-        if (!a.ZK || typeof a.ZK != "function") {
-            if (typeof Map !== "undefined" && a instanceof Map)
-                return Array.from(a.keys());
-            if (!(typeof Set !== "undefined" && a instanceof Set)) {
-                if (g.af(a) || typeof a === "string") {
-                    var I = [];
-                    a = a.length;
-                    for (var U = 0; U < a; U++)
-                        I.push(U);
-                    return I
-                }
-                return g.zm(a)
-            }
-        }
+      , vJL = function(e, L) {
+        return new g.U1(e,L)
     }
-      , Pkf = function(a, I) {
-        if (a.forEach && typeof a.forEach == "function")
-            a.forEach(I, void 0);
-        else if (g.af(a) || typeof a === "string")
-            Array.prototype.forEach.call(a, I, void 0);
-        else
-            for (var U = XIo(a), e = B9m(a), T = e.length, C = 0; C < T; C++)
-                I.call(void 0, e[C], U && U[C], a)
+      , Bp = function(e, L) {
+        return Object.prototype.hasOwnProperty.call(e, L)
     }
-      , pIJ = function(a, I, U, e) {
-        var T = new g.rv(null);
-        a && g.H7(T, a);
-        I && g.q8(T, I);
-        U && g.xu(T, U);
-        e && (T.L = e);
-        return T
+      , fuN = function(e, L) {
+        return e === L
     }
-      , flG = function(a, I) {
-        return new g.CC(a,I)
-    }
-      , sQ = function(a, I) {
-        return Object.prototype.hasOwnProperty.call(a, I)
-    }
-      , YT8 = function(a, I) {
-        return a === I
-    }
-      , UQ = function(a, I) {
-        this.L = {};
-        this.V = [];
-        this.XZ = this.size = 0;
-        var U = arguments.length;
-        if (U > 1) {
-            if (U % 2)
+      , x3 = function(e, L) {
+        this.K = {};
+        this.X = [];
+        this.zf = this.size = 0;
+        var c = arguments.length;
+        if (c > 1) {
+            if (c % 2)
                 throw Error("Uneven number of arguments");
-            for (var e = 0; e < U; e += 2)
-                this.set(arguments[e], arguments[e + 1])
-        } else if (a)
-            if (a instanceof UQ)
-                for (U = a.Vq(),
-                e = 0; e < U.length; e++)
-                    this.set(U[e], a.get(U[e]));
+            for (var I = 0; I < c; I += 2)
+                this.set(arguments[I], arguments[I + 1])
+        } else if (e)
+            if (e instanceof x3)
+                for (c = e.N4(),
+                I = 0; I < c.length; I++)
+                    this.set(c[I], e.get(c[I]));
             else
-                for (e in a)
-                    this.set(e, a[e])
+                for (I in e)
+                    this.set(I, e[I])
     }
-      , et = function(a) {
-        if (a.size != a.V.length) {
-            for (var I = 0, U = 0; I < a.V.length; ) {
-                var e = a.V[I];
-                sQ(a.L, e) && (a.V[U++] = e);
-                I++
+      , ot = function(e) {
+        if (e.size != e.X.length) {
+            for (var L = 0, c = 0; L < e.X.length; ) {
+                var I = e.X[L];
+                Bp(e.K, I) && (e.X[c++] = I);
+                L++
             }
-            a.V.length = U
+            e.X.length = c
         }
-        if (a.size != a.V.length) {
-            I = {};
-            for (e = U = 0; U < a.V.length; ) {
-                var T = a.V[U];
-                sQ(I, T) || (a.V[e++] = T,
-                I[T] = 1);
-                U++
+        if (e.size != e.X.length) {
+            L = {};
+            for (I = c = 0; c < e.X.length; ) {
+                var B = e.X[c];
+                Bp(L, B) || (e.X[I++] = B,
+                L[B] = 1);
+                c++
             }
-            a.V.length = e
+            e.X.length = I
         }
     }
-      , TZ = function(a) {
+      , SU = function(e) {
         this.name = this.id = "";
         this.clientName = "UNKNOWN_INTERFACE";
         this.app = "";
@@ -247,6847 +206,6905 @@
         this.compatibleSenderThemes = new Set;
         this.experiments = new Set;
         this.theme = "u";
-        new UQ;
+        new x3;
         this.model = this.brand = "";
         this.year = 0;
         this.chipset = this.osVersion = this.os = "";
         this.mdxDialServerType = "MDX_DIAL_SERVER_TYPE_UNKNOWN";
-        a && (this.id = a.id || a.name,
-        this.name = a.name,
-        this.clientName = a.clientName ? a.clientName.toUpperCase() : "UNKNOWN_INTERFACE",
-        this.app = a.app,
-        this.type = a.type || "REMOTE_CONTROL",
-        this.username = a.user || "",
-        this.avatar = a.userAvatarUri || "",
-        this.obfuscatedGaiaId = a.obfuscatedGaiaId || "",
-        this.ownerObfuscatedGaiaId = a.ownerObfuscatedGaiaId || "",
-        this.theme = a.theme || "u",
-        Ojz(this, a.capabilities || ""),
-        STd(this, a.compatibleSenderThemes || ""),
-        Gv8(this, a.experiments || ""),
-        this.brand = a.brand || "",
-        this.model = a.model || "",
-        this.year = a.year || 0,
-        this.os = a.os || "",
-        this.osVersion = a.osVersion || "",
-        this.chipset = a.chipset || "",
-        this.mdxDialServerType = a.mdxDialServerType || "MDX_DIAL_SERVER_TYPE_UNKNOWN",
-        a = a.deviceInfo) && (a = JSON.parse(a),
-        this.brand = a.brand || "",
-        this.model = a.model || "",
-        this.year = a.year || 0,
-        this.os = a.os || "",
-        this.osVersion = a.osVersion || "",
-        this.chipset = a.chipset || "",
-        this.clientName = a.clientName ? a.clientName.toUpperCase() : "UNKNOWN_INTERFACE",
-        this.mdxDialServerType = a.mdxDialServerType || "MDX_DIAL_SERVER_TYPE_UNKNOWN")
+        e && (this.id = e.id || e.name,
+        this.name = e.name,
+        this.clientName = e.clientName ? e.clientName.toUpperCase() : "UNKNOWN_INTERFACE",
+        this.app = e.app,
+        this.type = e.type || "REMOTE_CONTROL",
+        this.username = e.user || "",
+        this.avatar = e.userAvatarUri || "",
+        this.obfuscatedGaiaId = e.obfuscatedGaiaId || "",
+        this.ownerObfuscatedGaiaId = e.ownerObfuscatedGaiaId || "",
+        this.theme = e.theme || "u",
+        AGh(this, e.capabilities || ""),
+        FH9(this, e.compatibleSenderThemes || ""),
+        bT9(this, e.experiments || ""),
+        this.brand = e.brand || "",
+        this.model = e.model || "",
+        this.year = e.year || 0,
+        this.os = e.os || "",
+        this.osVersion = e.osVersion || "",
+        this.chipset = e.chipset || "",
+        this.mdxDialServerType = e.mdxDialServerType || "MDX_DIAL_SERVER_TYPE_UNKNOWN",
+        e = e.deviceInfo) && (e = JSON.parse(e),
+        this.brand = e.brand || "",
+        this.model = e.model || "",
+        this.year = e.year || 0,
+        this.os = e.os || "",
+        this.osVersion = e.osVersion || "",
+        this.chipset = e.chipset || "",
+        this.clientName = e.clientName ? e.clientName.toUpperCase() : "UNKNOWN_INTERFACE",
+        this.mdxDialServerType = e.mdxDialServerType || "MDX_DIAL_SERVER_TYPE_UNKNOWN")
     }
-      , Ojz = function(a, I) {
-        a.capabilities.clear();
-        g.Sa(I.split(","), g.Co(M1m, e7m)).forEach(function(U) {
-            a.capabilities.add(U)
+      , AGh = function(e, L) {
+        e.capabilities.clear();
+        g.ig(L.split(","), g.u7(RaN, iT7)).forEach(function(c) {
+            e.capabilities.add(c)
         })
     }
-      , STd = function(a, I) {
-        a.compatibleSenderThemes.clear();
-        g.Sa(I.split(","), g.Co(M1m, TaI)).forEach(function(U) {
-            a.compatibleSenderThemes.add(U)
+      , FH9 = function(e, L) {
+        e.compatibleSenderThemes.clear();
+        g.ig(L.split(","), g.u7(RaN, Gwe)).forEach(function(c) {
+            e.compatibleSenderThemes.add(c)
         })
     }
-      , Gv8 = function(a, I) {
-        a.experiments.clear();
-        I.split(",").forEach(function(U) {
-            a.experiments.add(U)
+      , bT9 = function(e, L) {
+        e.experiments.clear();
+        L.split(",").forEach(function(c) {
+            e.experiments.add(c)
         })
     }
-      , Cw = function(a) {
-        a = a || {};
-        this.name = a.name || "";
-        this.id = a.id || a.screenId || "";
-        this.token = a.token || a.loungeToken || "";
-        this.uuid = a.uuid || a.dialId || "";
-        this.idType = a.screenIdType || "normal"
+      , rX = function(e) {
+        e = e || {};
+        this.name = e.name || "";
+        this.id = e.id || e.screenId || "";
+        this.token = e.token || e.loungeToken || "";
+        this.uuid = e.uuid || e.dialId || "";
+        this.idType = e.screenIdType || "normal"
     }
-      , ro = function(a, I) {
-        return !!I && (a.id == I || a.uuid == I)
+      , hd = function(e, L) {
+        return !!L && (e.id == L || e.uuid == L)
     }
-      , CRz = function(a) {
+      , gJJ = function(e) {
         return {
-            name: a.name,
-            screenId: a.id,
-            loungeToken: a.token,
-            dialId: a.uuid,
-            screenIdType: a.idType
+            name: e.name,
+            screenId: e.id,
+            loungeToken: e.token,
+            dialId: e.uuid,
+            screenIdType: e.idType
         }
     }
-      , rTG = function(a) {
-        return new Cw(a)
+      , kw9 = function(e) {
+        return new rX(e)
     }
-      , HdI = function(a) {
-        return Array.isArray(a) ? g.FX(a, rTG) : []
+      , UNh = function(e) {
+        return Array.isArray(e) ? g.Mt(e, kw9) : []
     }
-      , HH = function(a) {
-        return a ? '{name:"' + a.name + '",id:' + a.id.substr(0, 6) + "..,token:" + ((a.token ? ".." + a.token.slice(-6) : "-") + ",uuid:" + (a.uuid ? ".." + a.uuid.slice(-6) : "-") + ",idType:" + a.idType + "}") : "null"
+      , Rt = function(e) {
+        return e ? '{name:"' + e.name + '",id:' + e.id.substr(0, 6) + "..,token:" + ((e.token ? ".." + e.token.slice(-6) : "-") + ",uuid:" + (e.uuid ? ".." + e.uuid.slice(-6) : "-") + ",idType:" + e.idType + "}") : "null"
     }
-      , qVo = function(a) {
-        return Array.isArray(a) ? "[" + g.FX(a, HH).join(",") + "]" : "null"
+      , EJe = function(e) {
+        return Array.isArray(e) ? "[" + g.Mt(e, Rt).join(",") + "]" : "null"
     }
-      , xt4 = function() {
-        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(a) {
-            var I = Math.random() * 16 | 0;
-            return (a == "x" ? I : I & 3 | 8).toString(16)
+      , XuM = function() {
+        return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(e) {
+            var L = Math.random() * 16 | 0;
+            return (e == "x" ? L : L & 3 | 8).toString(16)
         })
     }
-      , Zdd = function(a) {
-        return g.FX(a, function(I) {
+      , KHN = function(e) {
+        return g.Mt(e, function(L) {
             return {
-                key: I.id,
-                name: I.name
+                key: L.id,
+                name: L.name
             }
         })
     }
-      , tRm = function(a, I) {
-        return g.Jz(a, function(U) {
-            return U || I ? !U != !I ? !1 : U.id == I.id : !0
+      , Yew = function(e, L) {
+        return g.vU(e, function(c) {
+            return c || L ? !c != !L ? !1 : c.id == L.id : !0
         })
     }
-      , qV = function(a, I) {
-        return g.Jz(a, function(U) {
-            return ro(U, I)
+      , uu = function(e, L) {
+        return g.vU(e, function(c) {
+            return hd(c, L)
         })
     }
-      , n3J = function() {
-        var a = (0,
-        g.SR)();
-        a && ua8(a, a.V.NU(!0))
+      , nJw = function() {
+        var e = (0,
+        g.A7)();
+        e && oJe(e, e.X.qZ(!0))
     }
-      , xZ = function() {
-        var a = g.EV("yt-remote-connected-devices") || [];
-        g.fo(a);
-        return a
+      , td = function() {
+        var e = g.iS("yt-remote-connected-devices") || [];
+        g.U9(e);
+        return e
     }
-      , K0d = function(a) {
-        if (a.length == 0)
+      , eIZ = function(e) {
+        if (e.length == 0)
             return [];
-        var I = a[0].indexOf("#")
-          , U = I == -1 ? a[0] : a[0].substring(0, I);
-        return g.FX(a, function(e, T) {
-            return T == 0 ? e : e.substring(U.length)
+        var L = e[0].indexOf("#")
+          , c = L == -1 ? e[0] : e[0].substring(0, L);
+        return g.Mt(e, function(I, B) {
+            return B == 0 ? I : I.substring(c.length)
         })
     }
-      , bdG = function(a) {
-        g.yy("yt-remote-connected-devices", a, 86400)
+      , L2e = function(e) {
+        g.bS("yt-remote-connected-devices", e, 86400)
     }
-      , Zv = function() {
-        if (JTI)
-            return JTI;
-        var a = g.EV("yt-remote-device-id");
-        a || (a = xt4(),
-        g.yy("yt-remote-device-id", a, 31536E3));
-        for (var I = xZ(), U = 1, e = a; g.kJ(I, e); )
-            U++,
-            e = a + "#" + U;
-        return JTI = e
+      , O8 = function() {
+        if (cFU)
+            return cFU;
+        var e = g.iS("yt-remote-device-id");
+        e || (e = XuM(),
+        g.bS("yt-remote-device-id", e, 31536E3));
+        for (var L = td(), c = 1, I = e; g.Fh(L, I); )
+            c++,
+            I = e + "#" + c;
+        return cFU = I
     }
-      , uUd = function() {
-        var a = xZ()
-          , I = Zv();
-        g.R$() && g.S8(a, I);
-        a = K0d(a);
-        if (a.length == 0)
+      , IMN = function() {
+        var e = td()
+          , L = O8();
+        g.gs() && g.Xh(e, L);
+        e = eIZ(e);
+        if (e.length == 0)
             try {
-                g.d9("remote_sid")
-            } catch (U) {}
+                g.DM("remote_sid")
+            } catch (c) {}
         else
             try {
-                g.yz("remote_sid", a.join(","), -1)
-            } catch (U) {}
+                g.GZ("remote_sid", e.join(","), -1)
+            } catch (c) {}
     }
-      , k8d = function() {
-        return g.EV("yt-remote-session-browser-channel")
+      , Bag = function() {
+        return g.iS("yt-remote-session-browser-channel")
     }
-      , VRG = function() {
-        return g.EV("yt-remote-local-screens") || []
+      , xLZ = function() {
+        return g.iS("yt-remote-local-screens") || []
     }
-      , ATo = function() {
-        g.yy("yt-remote-lounge-token-expiration", !0, 86400)
+      , oaZ = function() {
+        g.bS("yt-remote-lounge-token-expiration", !0, 86400)
     }
-      , MRo = function(a) {
-        a.length > 5 && (a = a.slice(a.length - 5));
-        var I = g.FX(VRG(), function(e) {
-            return e.loungeToken
+      , SN7 = function(e) {
+        e.length > 5 && (e = e.slice(e.length - 5));
+        var L = g.Mt(xLZ(), function(I) {
+            return I.loungeToken
         })
-          , U = g.FX(a, function(e) {
-            return e.loungeToken
+          , c = g.Mt(e, function(I) {
+            return I.loungeToken
         });
-        g.mm(U, function(e) {
-            return !g.kJ(I, e)
-        }) && ATo();
-        g.yy("yt-remote-local-screens", a, 31536E3)
+        g.zM(c, function(I) {
+            return !g.Fh(L, I)
+        }) && oaZ();
+        g.bS("yt-remote-local-screens", e, 31536E3)
     }
-      , ti = function(a) {
-        a || (g.da("yt-remote-session-screen-id"),
-        g.da("yt-remote-session-video-id"));
-        uUd();
-        a = xZ();
-        g.Az(a, Zv());
-        bdG(a)
+      , qn = function(e) {
+        e || (g.Gx("yt-remote-session-screen-id"),
+        g.Gx("yt-remote-session-video-id"));
+        IMN();
+        e = td();
+        g.i7(e, O8());
+        L2e(e)
     }
-      , j$I = function() {
-        if (!nw) {
-            var a = g.Eb();
-            a && (nw = new g.Xz(a))
+      , rFZ = function() {
+        if (!TS) {
+            var e = g.k2();
+            e && (TS = new g.sm(e))
         }
     }
-      , $t4 = function() {
-        j$I();
-        return nw ? !!nw.get("yt-remote-use-staging-server") : !1
+      , hI7 = function() {
+        rFZ();
+        return TS ? !!TS.get("yt-remote-use-staging-server") : !1
     }
-      , Kw = function(a, I) {
-        g.qN[a] = !0;
-        var U = g.rq();
-        U && U.publish.apply(U, arguments);
-        g.qN[a] = !1
+      , Wp = function(e, L) {
+        g.lM[e] = !0;
+        var c = g.j4();
+        c && c.publish.apply(c, arguments);
+        g.lM[e] = !1
     }
-      , ido = function() {}
-      , IZ = function() {
-        if (!bb) {
-            bb = new g.wJ(new ido);
-            var a = g.Lj("client_streamz_web_flush_count", -1);
-            a !== -1 && (bb.B = a)
+      , RIe = function() {}
+      , It = function() {
+        if (!Mn) {
+            Mn = new g.Nq(new RIe);
+            var e = g.tF("client_streamz_web_flush_count", -1);
+            e !== -1 && (Mn.Z = e)
         }
-        return bb
+        return Mn
     }
-      , L0z = function() {
-        var a = window.navigator.userAgent.match(/Chrome\/([0-9]+)/);
-        return a ? parseInt(a[1], 10) : 0
+      , u1M = function() {
+        var e = window.navigator.userAgent.match(/Chrome\/([0-9]+)/);
+        return e ? parseInt(e[1], 10) : 0
     }
-      , g38 = function(a) {
-        return !!document.currentScript && (document.currentScript.src.indexOf("?" + a) != -1 || document.currentScript.src.indexOf("&" + a) != -1)
+      , tGZ = function(e) {
+        return !!document.currentScript && (document.currentScript.src.indexOf("?" + e) != -1 || document.currentScript.src.indexOf("&" + e) != -1)
     }
-      , cTJ = function() {
+      , OQL = function() {
         return typeof window.__onGCastApiAvailable == "function" ? window.__onGCastApiAvailable : null
     }
-      , Ji = function(a) {
-        a.length ? W0D(a.shift(), function() {
-            Ji(a)
-        }) : l9d()
+      , zS = function(e) {
+        e.length ? qNU(e.shift(), function() {
+            zS(e)
+        }) : Ta7()
     }
-      , Bad = function(a) {
-        return "chrome-extension://" + a + "/cast_sender.js"
+      , W29 = function(e) {
+        return "chrome-extension://" + e + "/cast_sender.js"
     }
-      , W0D = function(a, I, U) {
-        var e = document.createElement("script");
-        e.onerror = I;
-        U && (e.onload = U);
-        g.q9(e, g.WB(a));
-        (document.head || document.documentElement).appendChild(e)
+      , qNU = function(e, L, c) {
+        var I = document.createElement("script");
+        I.onerror = L;
+        c && (I.onload = c);
+        g.fo(I, g.Wu(e));
+        (document.head || document.documentElement).appendChild(I)
     }
-      , Xkm = function() {
-        var a = L0z()
-          , I = [];
-        if (a > 1) {
-            var U = a - 1;
-            I.push("//www.gstatic.com/eureka/clank/" + a + "/cast_sender.js");
-            I.push("//www.gstatic.com/eureka/clank/" + U + "/cast_sender.js")
+      , MGN = function() {
+        var e = u1M()
+          , L = [];
+        if (e > 1) {
+            var c = e - 1;
+            L.push("//www.gstatic.com/eureka/clank/" + e + "/cast_sender.js");
+            L.push("//www.gstatic.com/eureka/clank/" + c + "/cast_sender.js")
         }
-        return I
+        return L
     }
-      , l9d = function() {
-        var a = cTJ();
-        a && a(!1, "No cast extension found")
+      , Ta7 = function() {
+        var e = OQL();
+        e && e(!1, "No cast extension found")
     }
-      , pkQ = function() {
-        if (PRm) {
-            var a = 2
-              , I = cTJ()
-              , U = function() {
-                a--;
-                a == 0 && I && I(!0)
+      , sCh = function() {
+        if (zIg) {
+            var e = 2
+              , L = OQL()
+              , c = function() {
+                e--;
+                e == 0 && L && L(!0)
             };
-            window.__onGCastApiAvailable = U;
-            W0D("//www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js", l9d, U)
+            window.__onGCastApiAvailable = c;
+            qNU("//www.gstatic.com/cast/sdk/libs/sender/1.0/cast_framework.js", Ta7, c)
         }
     }
-      , f9z = function() {
-        pkQ();
-        var a = Xkm();
-        a.push("//www.gstatic.com/eureka/clank/cast_sender.js");
-        Ji(a)
+      , vaN = function() {
+        sCh();
+        var e = MGN();
+        e.push("//www.gstatic.com/eureka/clank/cast_sender.js");
+        zS(e)
     }
-      , OdD = function() {
-        pkQ();
-        var a = Xkm();
-        a.push.apply(a, g.A(YVz.map(Bad)));
-        a.push("//www.gstatic.com/eureka/clank/cast_sender.js");
-        Ji(a)
+      , AFU = function() {
+        sCh();
+        var e = MGN();
+        e.push.apply(e, g.V(fMJ.map(W29)));
+        e.push("//www.gstatic.com/eureka/clank/cast_sender.js");
+        zS(e)
     }
-      , ub = function(a, I, U) {
-        g.S.call(this);
-        this.Y = U != null ? (0,
-        g.e8)(a, U) : a;
-        this.g6 = I;
-        this.U = (0,
-        g.e8)(this.tp, this);
-        this.V = !1;
-        this.L = 0;
-        this.B = this.ZN = null;
-        this.J = []
+      , s8 = function(e, L, c) {
+        g.p.call(this);
+        this.j = c != null ? (0,
+        g.RL)(e, c) : e;
+        this.Lp = L;
+        this.B = (0,
+        g.RL)(this.xJ, this);
+        this.X = !1;
+        this.K = 0;
+        this.Z = this.Jw = null;
+        this.G = []
     }
-      , kZ = function() {}
-      , SVD = function() {
-        g.aI.call(this, "p")
+      , vp = function() {}
+      , F2U = function() {
+        g.Hk.call(this, "p")
     }
-      , G8Q = function() {
-        g.aI.call(this, "o")
+      , bQg = function() {
+        g.Hk.call(this, "o")
     }
-      , E3o = function() {
-        return yTJ = yTJ || new g.u7
+      , GZ7 = function() {
+        return iQN = iQN || new g.hi
     }
-      , dtD = function(a) {
-        g.aI.call(this, "serverreachability", a)
+      , gaN = function(e) {
+        g.Hk.call(this, "serverreachability", e)
     }
-      , Vg = function(a) {
-        var I = E3o();
-        I.dispatchEvent(new dtD(I,a))
+      , fV = function(e) {
+        var L = GZ7();
+        L.dispatchEvent(new gaN(L,e))
     }
-      , R78 = function(a) {
-        g.aI.call(this, "statevent", a)
+      , kZM = function(e) {
+        g.Hk.call(this, "statevent", e)
     }
-      , Ai = function(a) {
-        var I = E3o();
-        I.dispatchEvent(new R78(I,a))
+      , Ad = function(e) {
+        var L = GZ7();
+        L.dispatchEvent(new kZM(L,e))
     }
-      , wko = function(a, I, U, e) {
-        g.aI.call(this, "timingevent", a);
-        this.size = I;
-        this.rtt = U;
-        this.retries = e
+      , DLL = function(e, L, c, I) {
+        g.Hk.call(this, "timingevent", e);
+        this.size = L;
+        this.rtt = c;
+        this.retries = I
     }
-      , MV = function(a, I) {
-        if (typeof a !== "function")
+      , FX = function(e, L) {
+        if (typeof e !== "function")
             throw Error("Fn must not be null and must be a function");
-        return g.zs.setTimeout(function() {
-            a()
-        }, I)
+        return g.LZ.setTimeout(function() {
+            e()
+        }, L)
     }
-      , jt = function() {}
-      , $Z = function(a, I, U, e) {
-        this.B = a;
-        this.J = I;
-        this.rF = U;
-        this.EB = e || 1;
-        this.E7 = new g.A7(this);
-        this.xa = 45E3;
-        this.zt = null;
-        this.Y = !1;
-        this.j = this.Z6 = this.D = this.CO = this.e8 = this.i5 = this.Va = null;
-        this.gw = [];
-        this.V = null;
-        this.C = 0;
-        this.U = this.tU = null;
-        this.Vo = -1;
-        this.Ux = !1;
-        this.XX = 0;
-        this.fO = null;
-        this.hN = this.a$ = this.B8 = this.dw = !1;
-        this.L = new F04
+      , bu = function() {}
+      , iu = function(e, L, c, I) {
+        this.Z = e;
+        this.G = L;
+        this.Cf = c;
+        this.gT = I || 1;
+        this.DY = new g.uB(this);
+        this.Sl = 45E3;
+        this.Y9 = null;
+        this.j = !1;
+        this.D = this.m$ = this.J = this.t7 = this.Gm = this.x9 = this.pS = null;
+        this.h7 = [];
+        this.X = null;
+        this.T = 0;
+        this.B = this.k9 = null;
+        this.sY = -1;
+        this.ye = !1;
+        this.d_ = 0;
+        this.He = null;
+        this.RT = this.Pe = this.Kf = this.Ve = !1;
+        this.K = new w3g
     }
-      , F04 = function() {
-        this.B = null;
-        this.V = "";
-        this.L = !1
+      , w3g = function() {
+        this.Z = null;
+        this.X = "";
+        this.K = !1
     }
-      , Q$J = function(a, I, U) {
-        a.CO = 1;
-        a.D = DA(I.clone());
-        a.j = U;
-        a.dw = !0;
-        mtI(a, null)
+      , VGh = function(e, L, c) {
+        e.t7 = 1;
+        e.J = eU(L.clone());
+        e.D = c;
+        e.Ve = !0;
+        JFU(e, null)
     }
-      , mtI = function(a, I) {
-        a.e8 = Date.now();
-        ib(a);
-        a.Z6 = a.D.clone();
-        vv(a.Z6, "t", a.EB);
-        a.C = 0;
-        var U = a.B.CO;
-        a.L = new F04;
-        a.V = z78(a.B, U ? I : null, !a.j);
-        a.XX > 0 && (a.fO = new g.e_((0,
-        g.e8)(a.Q9, a, a.V),a.XX));
-        a.E7.listen(a.V, "readystatechange", a.o2);
-        I = a.zt ? g.sG(a.zt) : {};
-        a.j ? (a.tU || (a.tU = "POST"),
-        I["Content-Type"] = "application/x-www-form-urlencoded",
-        a.V.send(a.Z6, a.tU, a.j, I)) : (a.tU = "GET",
-        a.V.send(a.Z6, a.tU, null, I));
-        Vg(1)
+      , JFU = function(e, L) {
+        e.Gm = Date.now();
+        GS(e);
+        e.m$ = e.J.clone();
+        LV(e.m$, "t", e.gT);
+        e.T = 0;
+        var c = e.Z.t7;
+        e.K = new w3g;
+        e.X = CLg(e.Z, c ? L : null, !e.D);
+        e.d_ > 0 && (e.He = new g.Qw((0,
+        g.RL)(e.Kr, e, e.X),e.d_));
+        e.DY.listen(e.X, "readystatechange", e.DA);
+        L = e.Y9 ? g.MQ(e.Y9) : {};
+        e.D ? (e.k9 || (e.k9 = "POST"),
+        L["Content-Type"] = "application/x-www-form-urlencoded",
+        e.X.send(e.m$, e.k9, e.D, L)) : (e.k9 = "GET",
+        e.X.send(e.m$, e.k9, null, L));
+        fV(1)
     }
-      , Nam = function(a) {
-        if (!h7J(a))
-            return g.aM(a.V);
-        var I = g.IM(a.V);
-        if (I === "")
+      , NaL = function(e) {
+        if (!aMe(e))
+            return g.QH(e.X);
+        var L = g.dT(e.X);
+        if (L === "")
             return "";
-        var U = ""
-          , e = I.length
-          , T = g.Dj(a.V) == 4;
-        if (!a.L.B) {
+        var c = ""
+          , I = L.length
+          , B = g.lq(e.X) == 4;
+        if (!e.K.Z) {
             if (typeof TextDecoder === "undefined")
-                return Lw(a),
-                go(a),
+                return gX(e),
+                k3(e),
                 "";
-            a.L.B = new g.zs.TextDecoder
+            e.K.Z = new g.LZ.TextDecoder
         }
-        for (var C = 0; C < e; C++)
-            a.L.L = !0,
-            U += a.L.B.decode(I[C], {
-                stream: !(T && C == e - 1)
+        for (var x = 0; x < I; x++)
+            e.K.K = !0,
+            c += e.K.Z.decode(L[x], {
+                stream: !(B && x == I - 1)
             });
-        I.length = 0;
-        a.L.V += U;
-        a.C = 0;
-        return a.L.V
+        L.length = 0;
+        e.K.X += c;
+        e.T = 0;
+        return e.K.X
     }
-      , h7J = function(a) {
-        return a.V ? a.tU == "GET" && a.CO != 2 && a.B.dA : !1
+      , aMe = function(e) {
+        return e.X ? e.k9 == "GET" && e.t7 != 2 && e.Z.pj : !1
     }
-      , v3z = function(a, I) {
-        var U = a.C
-          , e = I.indexOf("\n", U);
-        if (e == -1)
-            return o3m;
-        U = Number(I.substring(U, e));
-        if (isNaN(U))
-            return Dtf;
-        e += 1;
-        if (e + U > I.length)
-            return o3m;
-        I = I.slice(e, e + U);
-        a.C = e + U;
-        return I
+      , ZQZ = function(e, L) {
+        var c = e.T
+          , I = L.indexOf("\n", c);
+        if (I == -1)
+            return mLN;
+        c = Number(L.substring(c, I));
+        if (isNaN(c))
+            return yFU;
+        I += 1;
+        if (I + c > L.length)
+            return mLN;
+        L = L.slice(I, I + c);
+        e.T = I + c;
+        return L
     }
-      , ib = function(a) {
-        a.i5 = Date.now() + a.xa;
-        and(a, a.xa)
+      , GS = function(e) {
+        e.x9 = Date.now() + e.Sl;
+        p3e(e, e.Sl)
     }
-      , and = function(a, I) {
-        if (a.Va != null)
+      , p3e = function(e, L) {
+        if (e.pS != null)
             throw Error("WatchDog timer not null");
-        a.Va = MV((0,
-        g.e8)(a.KV, a), I)
+        e.pS = FX((0,
+        g.RL)(e.rO, e), L)
     }
-      , Inf = function(a) {
-        a.Va && (g.zs.clearTimeout(a.Va),
-        a.Va = null)
+      , $LL = function(e) {
+        e.pS && (g.LZ.clearTimeout(e.pS),
+        e.pS = null)
     }
-      , go = function(a) {
-        a.B.AS() || a.Ux || sBI(a.B, a)
+      , k3 = function(e) {
+        e.Z.Dj() || e.ye || jCh(e.Z, e)
     }
-      , Lw = function(a) {
-        Inf(a);
-        g.Kf(a.fO);
-        a.fO = null;
-        a.E7.removeAll();
-        if (a.V) {
-            var I = a.V;
-            a.V = null;
-            I.abort();
-            I.dispose()
+      , gX = function(e) {
+        $LL(e);
+        g.L0(e.He);
+        e.He = null;
+        e.DY.removeAll();
+        if (e.X) {
+            var L = e.X;
+            e.X = null;
+            L.abort();
+            L.dispose()
         }
     }
-      , xko = function(a, I) {
+      , X3N = function(e, L) {
         try {
-            var U = a.B;
-            if (U.R9 != 0 && (U.V == a || Ukd(U.L, a)))
-                if (!a.a$ && Ukd(U.L, a) && U.R9 == 3) {
+            var c = e.Z;
+            if (c.xI != 0 && (c.X == e || HQ9(c.K, e)))
+                if (!e.Pe && HQ9(c.K, e) && c.xI == 3) {
                     try {
-                        var e = U.vZ.V.parse(I)
-                    } catch (V) {
-                        e = null
+                        var I = c.Yf.X.parse(L)
+                    } catch (A) {
+                        I = null
                     }
-                    if (Array.isArray(e) && e.length == 3) {
-                        var T = e;
-                        if (T[0] == 0)
+                    if (Array.isArray(I) && I.length == 3) {
+                        var B = I;
+                        if (B[0] == 0)
                             a: {
-                                if (!U.D) {
-                                    if (U.V)
-                                        if (U.V.e8 + 3E3 < a.e8)
-                                            cH(U),
-                                            WH(U);
+                                if (!c.J) {
+                                    if (c.X)
+                                        if (c.X.Gm + 3E3 < e.Gm)
+                                            Dr(c),
+                                            wX(c);
                                         else
                                             break a;
-                                    eSG(U);
-                                    Ai(18)
+                                    lMe(c);
+                                    Ad(18)
                                 }
                             }
                         else
-                            U.uj = T[1],
-                            0 < U.uj - U.fO && T[2] < 37500 && U.a$ && U.gw == 0 && !U.Va && (U.Va = MV((0,
-                            g.e8)(U.Ym, U), 6E3));
-                        if (Tzd(U.L) <= 1 && U.ij) {
+                            c.XD = B[1],
+                            0 < c.XD - c.He && B[2] < 37500 && c.Pe && c.h7 == 0 && !c.pS && (c.pS = FX((0,
+                            g.RL)(c.XP, c), 6E3));
+                        if (PLM(c.K) <= 1 && c.Bw) {
                             try {
-                                U.ij()
-                            } catch (V) {}
-                            U.ij = void 0
+                                c.Bw()
+                            } catch (A) {}
+                            c.Bw = void 0
                         }
                     } else
-                        lb(U, 11)
-                } else if ((a.a$ || U.V == a) && cH(U),
-                !g.ur(I))
-                    for (T = U.vZ.V.parse(I),
-                    I = 0; I < T.length; I++) {
-                        var C = T[I];
-                        U.fO = C[0];
-                        C = C[1];
-                        if (U.R9 == 2)
-                            if (C[0] == "c") {
-                                U.J = C[1];
-                                U.EB = C[2];
-                                var r = C[3];
-                                r != null && (U.fA = r);
-                                var q = C[5];
-                                q != null && typeof q === "number" && q > 0 && (U.XX = 1.5 * q);
-                                e = U;
-                                var x = a.CB();
-                                if (x) {
-                                    var Z = g.sy(x, "X-Client-Wire-Protocol");
-                                    if (Z) {
-                                        var t = e.L;
-                                        !t.V && (g.VK(Z, "spdy") || g.VK(Z, "quic") || g.VK(Z, "h2")) && (t.J = t.U,
-                                        t.V = new Set,
-                                        t.L && (C_D(t, t.L),
-                                        t.L = null))
+                        Jd(c, 11)
+                } else if ((e.Pe || c.X == e) && Dr(c),
+                !g.J_(L))
+                    for (B = c.Yf.X.parse(L),
+                    L = 0; L < B.length; L++) {
+                        var x = B[L];
+                        c.He = x[0];
+                        x = x[1];
+                        if (c.xI == 2)
+                            if (x[0] == "c") {
+                                c.G = x[1];
+                                c.gT = x[2];
+                                var S = x[3];
+                                S != null && (c.ZP = S);
+                                var h = x[5];
+                                h != null && typeof h === "number" && h > 0 && (c.d_ = 1.5 * h);
+                                I = c;
+                                var R = e.LQ();
+                                if (R) {
+                                    var u = g.Ua(R, "X-Client-Wire-Protocol");
+                                    if (u) {
+                                        var t = I.K;
+                                        !t.X && (g.Vc(u, "spdy") || g.Vc(u, "quic") || g.Vc(u, "h2")) && (t.G = t.B,
+                                        t.X = new Set,
+                                        t.K && (QCg(t, t.K),
+                                        t.K = null))
                                     }
-                                    if (e.dw) {
-                                        var n = g.sy(x, "X-HTTP-Session-Id");
-                                        n && (e.BE = n,
-                                        g.bv(e.zt, e.dw, n))
+                                    if (I.Ve) {
+                                        var O = g.Ua(R, "X-HTTP-Session-Id");
+                                        O && (I.FD = O,
+                                        g.ob(I.Y9, I.Ve, O))
                                     }
                                 }
-                                U.R9 = 3;
-                                U.U && U.U.Pf();
-                                U.IF && (U.wL = Date.now() - a.e8);
-                                e = U;
-                                var K = a;
-                                e.yx = rLj(e, e.CO ? e.EB : null, e.rF);
-                                if (K.a$) {
-                                    HGo(e.L, K);
-                                    var b = K
-                                      , J = e.XX;
-                                    J && b.setTimeout(J);
-                                    b.Va && (Inf(b),
-                                    ib(b));
-                                    e.V = K
+                                c.xI = 3;
+                                c.B && c.B.Vb();
+                                c.xT && (c.RI = Date.now() - e.Gm);
+                                I = c;
+                                var q = e;
+                                I.m1 = dLw(I, I.t7 ? I.gT : null, I.Cf);
+                                if (q.Pe) {
+                                    ULN(I.K, q);
+                                    var T = q
+                                      , W = I.d_;
+                                    W && T.setTimeout(W);
+                                    T.pS && ($LL(T),
+                                    GS(T));
+                                    I.X = q
                                 } else
-                                    qvf(e);
-                                U.B.length > 0 && BH(U)
+                                    EaZ(I);
+                                c.Z.length > 0 && V7(c)
                             } else
-                                C[0] != "stop" && C[0] != "close" || lb(U, 7);
+                                x[0] != "stop" && x[0] != "close" || Jd(c, 7);
                         else
-                            U.R9 == 3 && (C[0] == "stop" || C[0] == "close" ? C[0] == "stop" ? lb(U, 7) : U.disconnect() : C[0] != "noop" && U.U && U.U.XA(C),
-                            U.gw = 0)
+                            c.xI == 3 && (x[0] == "stop" || x[0] == "close" ? x[0] == "stop" ? Jd(c, 7) : c.disconnect() : x[0] != "noop" && c.B && c.B.Ij(x),
+                            c.h7 = 0)
                     }
-            Vg(4)
-        } catch (V) {}
+            fV(4)
+        } catch (A) {}
     }
-      , ZGo = function(a, I) {
-        this.V = a;
-        this.map = I;
+      , K2e = function(e, L) {
+        this.X = e;
+        this.map = L;
         this.context = null
     }
-      , tNG = function(a) {
-        this.U = a || 10;
-        g.zs.PerformanceNavigationTiming ? (a = g.zs.performance.getEntriesByType("navigation"),
-        a = a.length > 0 && (a[0].nextHopProtocol == "hq" || a[0].nextHopProtocol == "h2")) : a = !!(g.zs.chrome && g.zs.chrome.loadTimes && g.zs.chrome.loadTimes() && g.zs.chrome.loadTimes().wasFetchedViaSpdy);
-        this.J = a ? this.U : 1;
-        this.V = null;
-        this.J > 1 && (this.V = new Set);
-        this.L = null;
-        this.B = []
+      , YNU = function(e) {
+        this.B = e || 10;
+        g.LZ.PerformanceNavigationTiming ? (e = g.LZ.performance.getEntriesByType("navigation"),
+        e = e.length > 0 && (e[0].nextHopProtocol == "hq" || e[0].nextHopProtocol == "h2")) : e = !!(g.LZ.chrome && g.LZ.chrome.loadTimes && g.LZ.chrome.loadTimes() && g.LZ.chrome.loadTimes().wasFetchedViaSpdy);
+        this.G = e ? this.B : 1;
+        this.X = null;
+        this.G > 1 && (this.X = new Set);
+        this.K = null;
+        this.Z = []
     }
-      , nGz = function(a) {
-        return a.L ? !0 : a.V ? a.V.size >= a.J : !1
+      , naM = function(e) {
+        return e.K ? !0 : e.X ? e.X.size >= e.G : !1
     }
-      , Tzd = function(a) {
-        return a.L ? 1 : a.V ? a.V.size : 0
+      , PLM = function(e) {
+        return e.K ? 1 : e.X ? e.X.size : 0
     }
-      , Ukd = function(a, I) {
-        return a.L ? a.L == I : a.V ? a.V.has(I) : !1
+      , HQ9 = function(e, L) {
+        return e.K ? e.K == L : e.X ? e.X.has(L) : !1
     }
-      , C_D = function(a, I) {
-        a.V ? a.V.add(I) : a.L = I
+      , QCg = function(e, L) {
+        e.X ? e.X.add(L) : e.K = L
     }
-      , HGo = function(a, I) {
-        a.L && a.L == I ? a.L = null : a.V && a.V.has(I) && a.V.delete(I)
+      , ULN = function(e, L) {
+        e.K && e.K == L ? e.K = null : e.X && e.X.has(L) && e.X.delete(L)
     }
-      , Kf4 = function(a) {
-        if (a.L != null)
-            return a.B.concat(a.L.gw);
-        if (a.V != null && a.V.size !== 0) {
-            var I = a.B;
-            a = g.k(a.V.values());
-            for (var U = a.next(); !U.done; U = a.next())
-                I = I.concat(U.value.gw);
-            return I
+      , evZ = function(e) {
+        if (e.K != null)
+            return e.Z.concat(e.K.h7);
+        if (e.X != null && e.X.size !== 0) {
+            var L = e.Z;
+            e = g.f(e.X.values());
+            for (var c = e.next(); !c.done; c = e.next())
+                L = L.concat(c.value.h7);
+            return L
         }
-        return g.iI(a.B)
+        return g.VM(e.Z)
     }
-      , bGf = function(a, I) {
-        var U = new jt;
-        if (g.zs.Image) {
-            var e = new Image;
-            e.onload = g.Co(Xx, U, "TestLoadImage: loaded", !0, I, e);
-            e.onerror = g.Co(Xx, U, "TestLoadImage: error", !1, I, e);
-            e.onabort = g.Co(Xx, U, "TestLoadImage: abort", !1, I, e);
-            e.ontimeout = g.Co(Xx, U, "TestLoadImage: timeout", !1, I, e);
-            g.zs.setTimeout(function() {
-                if (e.ontimeout)
-                    e.ontimeout()
+      , LPU = function(e, L) {
+        var c = new bu;
+        if (g.LZ.Image) {
+            var I = new Image;
+            I.onload = g.u7(CV, c, "TestLoadImage: loaded", !0, L, I);
+            I.onerror = g.u7(CV, c, "TestLoadImage: error", !1, L, I);
+            I.onabort = g.u7(CV, c, "TestLoadImage: abort", !1, L, I);
+            I.ontimeout = g.u7(CV, c, "TestLoadImage: timeout", !1, L, I);
+            g.LZ.setTimeout(function() {
+                if (I.ontimeout)
+                    I.ontimeout()
             }, 1E4);
-            e.src = a
+            I.src = e
         } else
-            I(!1)
+            L(!1)
     }
-      , JLj = function(a, I) {
-        var U = new jt
-          , e = new AbortController
-          , T = setTimeout(function() {
-            e.abort();
-            Xx(U, "TestPingServer: timeout", !1, I)
+      , c7M = function(e, L) {
+        var c = new bu
+          , I = new AbortController
+          , B = setTimeout(function() {
+            I.abort();
+            CV(c, "TestPingServer: timeout", !1, L)
         }, 1E4);
-        fetch(a, {
-            signal: e.signal
-        }).then(function(C) {
-            clearTimeout(T);
-            C.ok ? Xx(U, "TestPingServer: ok", !0, I) : Xx(U, "TestPingServer: server error", !1, I)
+        fetch(e, {
+            signal: I.signal
+        }).then(function(x) {
+            clearTimeout(B);
+            x.ok ? CV(c, "TestPingServer: ok", !0, L) : CV(c, "TestPingServer: server error", !1, L)
         }).catch(function() {
-            clearTimeout(T);
-            Xx(U, "TestPingServer: error", !1, I)
+            clearTimeout(B);
+            CV(c, "TestPingServer: error", !1, L)
         })
     }
-      , Xx = function(a, I, U, e, T) {
+      , CV = function(e, L, c, I, B) {
         try {
-            T && (T.onload = null,
-            T.onerror = null,
-            T.onabort = null,
-            T.ontimeout = null),
-            e(U)
-        } catch (C) {}
+            B && (B.onload = null,
+            B.onerror = null,
+            B.onabort = null,
+            B.ontimeout = null),
+            I(c)
+        } catch (x) {}
     }
-      , u1d = function() {
-        this.V = new kZ
+      , I8M = function() {
+        this.X = new vp
     }
-      , kM4 = function(a, I, U) {
-        var e = U || "";
-        try {
-            Pkf(a, function(T, C) {
-                var r = T;
-                g.If(T) && (r = g.m4(T));
-                I.push(e + C + "=" + encodeURIComponent(r))
-            })
-        } catch (T) {
-            throw I.push(e + "type=" + encodeURIComponent("_badmap")),
-            T;
-        }
+      , at = function(e, L, c) {
+        return c && c.Ed ? c.Ed[e] || L : L
     }
-      , PH = function(a, I, U) {
-        return U && U.mnX ? U.mnX[a] || I : I
+      , BsZ = function(e) {
+        this.Z = [];
+        this.gT = this.m1 = this.Y9 = this.Cf = this.X = this.FD = this.Ve = this.ye = this.T = this.sY = this.D = null;
+        this.Nl = this.m$ = 0;
+        this.PM = at("failFast", !1, e);
+        this.Pe = this.pS = this.J = this.j = this.B = null;
+        this.Q5 = !0;
+        this.XD = this.He = -1;
+        this.RT = this.h7 = this.Gm = 0;
+        this.Mv = at("baseRetryDelayMs", 5E3, e);
+        this.OF = at("retryDelaySeedMs", 1E4, e);
+        this.Cj = at("forwardChannelMaxRetries", 2, e);
+        this.f9 = at("forwardChannelRequestTimeoutMs", 2E4, e);
+        this.IU = e && e.ZU_ || void 0;
+        this.Ft = e && e.iGe || void 0;
+        this.pj = e && e.zBS || !1;
+        this.d_ = void 0;
+        this.t7 = e && e.hM0 || !1;
+        this.G = "";
+        this.K = new YNU(e && e.yOe);
+        this.Yf = new I8M;
+        this.DY = e && e.x4e || !1;
+        this.x9 = e && e.lB_ || !1;
+        this.DY && this.x9 && (this.x9 = !1);
+        this.gZ = e && e.kSe || !1;
+        e && e.zqW && (this.Q5 = !1);
+        this.xT = !this.DY && this.Q5 && e && e.MTd || !1;
+        this.g0 = void 0;
+        e && e.TX && e.TX > 0 && (this.g0 = e.TX);
+        this.Bw = void 0;
+        this.RI = 0;
+        this.Sl = !1;
+        this.Kf = this.k9 = null
     }
-      , VNo = function(a) {
-        this.B = [];
-        this.EB = this.yx = this.zt = this.rF = this.V = this.BE = this.dw = this.Ux = this.C = this.Vo = this.j = null;
-        this.q2 = this.Z6 = 0;
-        this.N2 = PH("failFast", !1, a);
-        this.a$ = this.Va = this.D = this.Y = this.U = null;
-        this.F1 = !0;
-        this.uj = this.fO = -1;
-        this.hN = this.gw = this.e8 = 0;
-        this.vL = PH("baseRetryDelayMs", 5E3, a);
-        this.DU = PH("retryDelaySeedMs", 1E4, a);
-        this.yd = PH("forwardChannelMaxRetries", 2, a);
-        this.bl = PH("forwardChannelRequestTimeoutMs", 2E4, a);
-        this.L4 = a && a.HRw || void 0;
-        this.PL = a && a.OjU || void 0;
-        this.dA = a && a.Max || !1;
-        this.XX = void 0;
-        this.CO = a && a.ltt || !1;
-        this.J = "";
-        this.L = new tNG(a && a.Lpa);
-        this.vZ = new u1d;
-        this.E7 = a && a.TP8 || !1;
-        this.i5 = a && a.wug || !1;
-        this.E7 && this.i5 && (this.i5 = !1);
-        this.XY = a && a.nGK || !1;
-        a && a.H7a && (this.F1 = !1);
-        this.IF = !this.E7 && this.F1 && a && a.esa || !1;
-        this.TC = void 0;
-        a && a.bx && a.bx > 0 && (this.TC = a.bx);
-        this.ij = void 0;
-        this.wL = 0;
-        this.xa = !1;
-        this.B8 = this.tU = null
+      , wX = function(e) {
+        e.X && (xxM(e),
+        e.X.cancel(),
+        e.X = null)
     }
-      , WH = function(a) {
-        a.V && (ALf(a),
-        a.V.cancel(),
-        a.V = null)
+      , o59 = function(e) {
+        wX(e);
+        e.J && (g.LZ.clearTimeout(e.J),
+        e.J = null);
+        Dr(e);
+        e.K.cancel();
+        e.j && (typeof e.j === "number" && g.LZ.clearTimeout(e.j),
+        e.j = null)
     }
-      , MNd = function(a) {
-        WH(a);
-        a.D && (g.zs.clearTimeout(a.D),
-        a.D = null);
-        cH(a);
-        a.L.cancel();
-        a.Y && (typeof a.Y === "number" && g.zs.clearTimeout(a.Y),
-        a.Y = null)
+      , V7 = function(e) {
+        naM(e.K) || e.j || (e.j = !0,
+        g.F2(e.GO, e),
+        e.Gm = 0)
     }
-      , BH = function(a) {
-        nGz(a.L) || a.Y || (a.Y = !0,
-        g.ch(a.y9, a),
-        a.e8 = 0)
-    }
-      , $km = function(a, I) {
-        if (Tzd(a.L) >= a.L.J - (a.Y ? 1 : 0))
+      , r7h = function(e, L) {
+        if (PLM(e.K) >= e.K.G - (e.j ? 1 : 0))
             return !1;
-        if (a.Y)
-            return a.B = I.gw.concat(a.B),
+        if (e.j)
+            return e.Z = L.h7.concat(e.Z),
             !0;
-        if (a.R9 == 1 || a.R9 == 2 || a.e8 >= (a.N2 ? 0 : a.yd))
+        if (e.xI == 1 || e.xI == 2 || e.Gm >= (e.PM ? 0 : e.Cj))
             return !1;
-        a.Y = MV((0,
-        g.e8)(a.y9, a, I), jBz(a, a.e8));
-        a.e8++;
+        e.j = FX((0,
+        g.RL)(e.GO, e, L), SRZ(e, e.Gm));
+        e.Gm++;
         return !0
     }
-      , LfI = function(a, I) {
-        var U;
-        I ? U = I.rF : U = a.Z6++;
-        var e = a.zt.clone();
-        g.bv(e, "SID", a.J);
-        g.bv(e, "RID", U);
-        g.bv(e, "AID", a.fO);
-        pw(a, e);
-        a.C && a.j && g.VT(e, a.C, a.j);
-        U = new $Z(a,a.J,U,a.e8 + 1);
-        a.C === null && (U.zt = a.j);
-        I && (a.B = I.gw.concat(a.B));
-        I = iGG(a, U, 1E3);
-        U.setTimeout(Math.round(a.bl * .5) + Math.round(a.bl * .5 * Math.random()));
-        C_D(a.L, U);
-        Q$J(U, e, I)
+      , RvU = function(e, L) {
+        var c;
+        L ? c = L.Cf : c = e.m$++;
+        var I = e.Y9.clone();
+        g.ob(I, "SID", e.G);
+        g.ob(I, "RID", c);
+        g.ob(I, "AID", e.He);
+        Nn(e, I);
+        e.T && e.D && g.Rb(I, e.T, e.D);
+        c = new iu(e,e.G,c,e.Gm + 1);
+        e.T === null && (c.Y9 = e.D);
+        L && (e.Z = L.h7.concat(e.Z));
+        L = hvM(e, c, 1E3);
+        c.setTimeout(Math.round(e.f9 * .5) + Math.round(e.f9 * .5 * Math.random()));
+        QCg(e.K, c);
+        VGh(c, I, L)
     }
-      , pw = function(a, I) {
-        a.Ux && g.dd(a.Ux, function(U, e) {
-            g.bv(I, e, U)
+      , Nn = function(e, L) {
+        e.ye && g.Le(e.ye, function(c, I) {
+            g.ob(L, I, c)
         });
-        a.U && Pkf({}, function(U, e) {
-            g.bv(I, e, U)
+        e.B && g.Le({}, function(c, I) {
+            g.ob(L, I, c)
         })
     }
-      , iGG = function(a, I, U) {
-        U = Math.min(a.B.length, U);
-        var e = a.U ? (0,
-        g.e8)(a.U.b1, a.U, a) : null;
+      , hvM = function(e, L, c) {
+        c = Math.min(e.Z.length, c);
+        var I = e.B ? (0,
+        g.RL)(e.B.zv, e.B, e) : null;
         a: {
-            for (var T = a.B, C = -1; ; ) {
-                var r = ["count=" + U];
-                C == -1 ? U > 0 ? (C = T[0].V,
-                r.push("ofs=" + C)) : C = 0 : r.push("ofs=" + C);
-                for (var q = !0, x = 0; x < U; x++) {
-                    var Z = T[x].V
-                      , t = T[x].map;
-                    Z -= C;
-                    if (Z < 0)
-                        C = Math.max(0, T[x].V - 100),
-                        q = !1;
+            for (var B = e.Z, x = -1; ; ) {
+                var S = ["count=" + c];
+                x == -1 ? c > 0 ? (x = B[0].X,
+                S.push("ofs=" + x)) : x = 0 : S.push("ofs=" + x);
+                for (var h = !0, R = 0; R < c; R++) {
+                    var u = B[R].X
+                      , t = B[R].map;
+                    u -= x;
+                    if (u < 0)
+                        x = Math.max(0, B[R].X - 100),
+                        h = !1;
                     else
                         try {
-                            kM4(t, r, "req" + Z + "_")
-                        } catch (n) {
-                            e && e(t)
+                            u = "req" + u + "_" || "";
+                            try {
+                                var O = t instanceof Map ? t : Object.entries(t);
+                                for (var q = g.f(O), T = q.next(); !T.done; T = q.next()) {
+                                    var W = g.f(T.value)
+                                      , A = W.next().value
+                                      , b = W.next().value
+                                      , J = b;
+                                    g.Se(b) && (J = g.yH(b));
+                                    S.push(u + A + "=" + encodeURIComponent(J))
+                                }
+                            } catch (w) {
+                                throw S.push(u + "type=" + encodeURIComponent("_badmap")),
+                                w;
+                            }
+                        } catch (w) {
+                            I && I(t)
                         }
                 }
-                if (q) {
-                    e = r.join("&");
+                if (h) {
+                    O = S.join("&");
                     break a
                 }
             }
-            e = void 0
+            O = void 0
         }
-        a = a.B.splice(0, U);
-        I.gw = a;
-        return e
+        e = e.Z.splice(0, c);
+        L.h7 = e;
+        return O
     }
-      , qvf = function(a) {
-        a.V || a.D || (a.hN = 1,
-        g.ch(a.rj, a),
-        a.gw = 0)
+      , EaZ = function(e) {
+        e.X || e.J || (e.RT = 1,
+        g.F2(e.e1, e),
+        e.h7 = 0)
     }
-      , eSG = function(a) {
-        if (a.V || a.D || a.gw >= 3)
+      , lMe = function(e) {
+        if (e.X || e.J || e.h7 >= 3)
             return !1;
-        a.hN++;
-        a.D = MV((0,
-        g.e8)(a.rj, a), jBz(a, a.gw));
-        a.gw++;
+        e.RT++;
+        e.J = FX((0,
+        g.RL)(e.e1, e), SRZ(e, e.h7));
+        e.h7++;
         return !0
     }
-      , ALf = function(a) {
-        a.tU != null && (g.zs.clearTimeout(a.tU),
-        a.tU = null)
+      , xxM = function(e) {
+        e.k9 != null && (g.LZ.clearTimeout(e.k9),
+        e.k9 = null)
     }
-      , gGd = function(a) {
-        a.V = new $Z(a,a.J,"rpc",a.hN);
-        a.C === null && (a.V.zt = a.j);
-        a.V.XX = 0;
-        var I = a.yx.clone();
-        g.bv(I, "RID", "rpc");
-        g.bv(I, "SID", a.J);
-        g.bv(I, "AID", a.fO);
-        g.bv(I, "CI", a.a$ ? "0" : "1");
-        !a.a$ && a.TC && g.bv(I, "TO", a.TC);
-        g.bv(I, "TYPE", "xmlhttp");
-        pw(a, I);
-        a.C && a.j && g.VT(I, a.C, a.j);
-        a.XX && a.V.setTimeout(a.XX);
-        var U = a.V;
-        a = a.EB;
-        U.CO = 1;
-        U.D = DA(I.clone());
-        U.j = null;
-        U.dw = !0;
-        mtI(U, a)
+      , uFN = function(e) {
+        e.X = new iu(e,e.G,"rpc",e.RT);
+        e.T === null && (e.X.Y9 = e.D);
+        e.X.d_ = 0;
+        var L = e.m1.clone();
+        g.ob(L, "RID", "rpc");
+        g.ob(L, "SID", e.G);
+        g.ob(L, "AID", e.He);
+        g.ob(L, "CI", e.Pe ? "0" : "1");
+        !e.Pe && e.g0 && g.ob(L, "TO", e.g0);
+        g.ob(L, "TYPE", "xmlhttp");
+        Nn(e, L);
+        e.T && e.D && g.Rb(L, e.T, e.D);
+        e.d_ && e.X.setTimeout(e.d_);
+        var c = e.X;
+        e = e.gT;
+        c.t7 = 1;
+        c.J = eU(L.clone());
+        c.D = null;
+        c.Ve = !0;
+        JFU(c, e)
     }
-      , cH = function(a) {
-        a.Va != null && (g.zs.clearTimeout(a.Va),
-        a.Va = null)
+      , Dr = function(e) {
+        e.pS != null && (g.LZ.clearTimeout(e.pS),
+        e.pS = null)
     }
-      , sBI = function(a, I) {
-        var U = null;
-        if (a.V == I) {
-            cH(a);
-            ALf(a);
-            a.V = null;
-            var e = 2
-        } else if (Ukd(a.L, I))
-            U = I.gw,
-            HGo(a.L, I),
-            e = 1;
+      , jCh = function(e, L) {
+        var c = null;
+        if (e.X == L) {
+            Dr(e);
+            xxM(e);
+            e.X = null;
+            var I = 2
+        } else if (HQ9(e.K, L))
+            c = L.h7,
+            ULN(e.K, L),
+            I = 1;
         else
             return;
-        if (a.R9 != 0)
-            if (I.Y)
-                if (e == 1) {
-                    U = I.j ? I.j.length : 0;
-                    I = Date.now() - I.e8;
-                    var T = a.e8;
-                    e = E3o();
-                    e.dispatchEvent(new wko(e,U,I,T));
-                    BH(a)
+        if (e.xI != 0)
+            if (L.j)
+                if (I == 1) {
+                    c = L.D ? L.D.length : 0;
+                    L = Date.now() - L.Gm;
+                    var B = e.Gm;
+                    I = GZ7();
+                    I.dispatchEvent(new DLL(I,c,L,B));
+                    V7(e)
                 } else
-                    qvf(a);
+                    EaZ(e);
             else {
-                var C = I.Vo;
-                T = I.getLastError();
-                if (T == 3 || T == 0 && C > 0 || !(e == 1 && $km(a, I) || e == 2 && eSG(a)))
-                    switch (U && U.length > 0 && (I = a.L,
-                    I.B = I.B.concat(U)),
-                    T) {
+                var x = L.sY;
+                B = L.getLastError();
+                if (B == 3 || B == 0 && x > 0 || !(I == 1 && r7h(e, L) || I == 2 && lMe(e)))
+                    switch (c && c.length > 0 && (L = e.K,
+                    L.Z = L.Z.concat(c)),
+                    B) {
                     case 1:
-                        lb(a, 5);
+                        Jd(e, 5);
                         break;
                     case 4:
-                        lb(a, 10);
+                        Jd(e, 10);
                         break;
                     case 3:
-                        lb(a, 6);
+                        Jd(e, 6);
                         break;
                     default:
-                        lb(a, 2)
+                        Jd(e, 2)
                     }
             }
     }
-      , jBz = function(a, I) {
-        var U = a.vL + Math.floor(Math.random() * a.DU);
-        a.isActive() || (U *= 2);
-        return U * I
+      , SRZ = function(e, L) {
+        var c = e.Mv + Math.floor(Math.random() * e.OF);
+        e.isActive() || (c *= 2);
+        return c * L
     }
-      , lb = function(a, I) {
-        if (I == 2) {
-            var U = (0,
-            g.e8)(a.s9$, a)
-              , e = a.PL
-              , T = !e;
-            e = new g.rv(e || "//www.google.com/images/cleardot.gif");
-            g.zs.location && g.zs.location.protocol == "http" || g.H7(e, "https");
-            DA(e);
-            T ? bGf(e.toString(), U) : JLj(e.toString(), U)
+      , Jd = function(e, L) {
+        if (L == 2) {
+            var c = (0,
+            g.RL)(e.qKW, e)
+              , I = e.Ft
+              , B = !I;
+            I = new g.Yd(I || "//www.google.com/images/cleardot.gif");
+            g.LZ.location && g.LZ.location.protocol == "http" || g.na(I, "https");
+            eU(I);
+            B ? LPU(I.toString(), c) : c7M(I.toString(), c)
         } else
-            Ai(2);
-        a.R9 = 0;
-        a.U && a.U.De(I);
-        cLd(a);
-        MNd(a)
+            Ad(2);
+        e.xI = 0;
+        e.B && e.B.UT(L);
+        tL7(e);
+        o59(e)
     }
-      , cLd = function(a) {
-        a.R9 = 0;
-        a.B8 = [];
-        if (a.U) {
-            var I = Kf4(a.L);
-            if (I.length != 0 || a.B.length != 0)
-                g.gd(a.B8, I),
-                g.gd(a.B8, a.B),
-                a.L.B.length = 0,
-                g.iI(a.B),
-                a.B.length = 0;
-            a.U.qd()
+      , tL7 = function(e) {
+        e.xI = 0;
+        e.Kf = [];
+        if (e.B) {
+            var L = evZ(e.K);
+            if (L.length != 0 || e.Z.length != 0)
+                g.mN(e.Kf, L),
+                g.mN(e.Kf, e.Z),
+                e.K.Z.length = 0,
+                g.VM(e.Z),
+                e.Z.length = 0;
+            e.B.qC()
         }
     }
-      , Wfz = function(a) {
-        if (a.R9 == 0)
-            return a.B8;
-        var I = [];
-        g.gd(I, Kf4(a.L));
-        g.gd(I, a.B);
+      , OvM = function(e) {
+        if (e.xI == 0)
+            return e.Kf;
+        var L = [];
+        g.mN(L, evZ(e.K));
+        g.mN(L, e.Z);
+        return L
+    }
+      , dLw = function(e, L, c) {
+        var I = g.S9(c);
+        I.X != "" ? (L && g.e9(I, L + "." + I.X),
+        g.Ls(I, I.Z)) : (I = g.LZ.location,
+        I = s6N(I.protocol, L ? L + "." + I.hostname : I.hostname, +I.port, c));
+        L = e.Ve;
+        c = e.FD;
+        L && c && g.ob(I, L, c);
+        g.ob(I, "VER", e.ZP);
+        Nn(e, I);
         return I
     }
-      , rLj = function(a, I, U) {
-        var e = g.J7(U);
-        e.V != "" ? (I && g.q8(e, I + "." + e.V),
-        g.xu(e, e.B)) : (e = g.zs.location,
-        e = pIJ(e.protocol, I ? I + "." + e.hostname : e.hostname, +e.port, U));
-        I = a.dw;
-        U = a.BE;
-        I && U && g.bv(e, I, U);
-        g.bv(e, "VER", a.fA);
-        pw(a, e);
-        return e
-    }
-      , z78 = function(a, I, U) {
-        if (I && !a.CO)
+      , CLg = function(e, L, c) {
+        if (L && !e.t7)
             throw Error("Can't create secondary domain capable XhrIo object.");
-        I = a.dA && !a.L4 ? new g.hM(new g.Uz({
-            MB: U
-        })) : new g.hM(a.L4);
-        I.C = a.CO;
-        return I
+        L = e.pj && !e.IU ? new g.$A(new g.UA({
+            YU: c
+        })) : new g.$A(e.IU);
+        L.T = e.t7;
+        return L
     }
-      , lno = function() {}
-      , Bzz = function() {}
-      , YZ = function(a, I) {
-        g.u7.call(this);
-        this.V = new VNo(I);
-        this.U = a;
-        this.L = I && I.yN8 || null;
-        a = I && I.rNg || null;
-        I && I.VBa && (a ? a["X-Client-Protocol"] = "webchannel" : a = {
+      , qRM = function() {}
+      , TsZ = function() {}
+      , y7 = function(e, L) {
+        g.hi.call(this);
+        this.X = new BsZ(L);
+        this.B = e;
+        this.K = L && L.iM || null;
+        e = L && L.bM || null;
+        L && L.cOW && (e ? e["X-Client-Protocol"] = "webchannel" : e = {
             "X-Client-Protocol": "webchannel"
         });
-        this.V.j = a;
-        a = I && I.c28 || null;
-        I && I.Tf && (a ? a["X-WebChannel-Content-Type"] = I.Tf : a = {
-            "X-WebChannel-Content-Type": I.Tf
+        this.X.D = e;
+        e = L && L.R00 || null;
+        L && L.OJ && (e ? e["X-WebChannel-Content-Type"] = L.OJ : e = {
+            "X-WebChannel-Content-Type": L.OJ
         });
-        I && I.JV && (a ? a["X-WebChannel-Client-Profile"] = I.JV : a = {
-            "X-WebChannel-Client-Profile": I.JV
+        L && L.OO && (e ? e["X-WebChannel-Client-Profile"] = L.OO : e = {
+            "X-WebChannel-Client-Profile": L.OO
         });
-        this.V.Vo = a;
-        (a = I && I.jRs) && !g.ur(a) && (this.V.C = a);
-        this.Y = I && I.ltt || !1;
-        this.J = I && I.xy$ || !1;
-        (I = I && I.Pgg) && !g.ur(I) && (this.V.dw = I,
-        g.Nd(this.L, I) && (a = this.L,
-        I in a && delete a[I]));
-        this.B = new fw(this)
+        this.X.sY = e;
+        (e = L && L.Bz7) && !g.J_(e) && (this.X.T = e);
+        this.j = L && L.hM0 || !1;
+        this.G = L && L.WDq || !1;
+        (L = L && L.HC) && !g.J_(L) && (this.X.Ve = L,
+        g.uw(this.K, L) && (e = this.K,
+        L in e && delete e[L]));
+        this.Z = new mx(this)
     }
-      , XzQ = function(a) {
-        SVD.call(this);
-        a.__headers__ && (this.headers = a.__headers__,
-        this.statusCode = a.__status__,
-        delete a.__headers__,
-        delete a.__status__);
-        var I = a.__sm__;
-        I ? this.data = (this.V = g.mz(I)) ? g.ax(I, this.V) : I : this.data = a
+      , WPL = function(e) {
+        F2U.call(this);
+        e.__headers__ && (this.headers = e.__headers__,
+        this.statusCode = e.__status__,
+        delete e.__headers__,
+        delete e.__status__);
+        var L = e.__sm__;
+        L ? this.data = (this.X = g.SR(L)) ? g.TG(L, this.X) : L : this.data = e
     }
-      , P_z = function(a) {
-        G8Q.call(this);
+      , MLL = function(e) {
+        bQg.call(this);
         this.status = 1;
-        this.errorCode = a
+        this.errorCode = e
     }
-      , fw = function(a) {
-        this.V = a
+      , mx = function(e) {
+        this.X = e
     }
-      , pzQ = function(a, I) {
-        this.L = a;
-        this.V = I
+      , zvN = function(e, L) {
+        this.K = e;
+        this.X = L
     }
-      , fnG = function(a) {
-        return Wfz(a.V).map(function(I) {
-            var U = a.L;
-            I = I.map;
-            "__data__"in I ? (I = I.__data__,
-            U = U.J ? j0I(I) : I) : U = I;
-            return U
+      , sGw = function(e) {
+        return OvM(e.X).map(function(L) {
+            var c = e.K;
+            L = L.map;
+            "__data__"in L ? (L = L.__data__,
+            c = c.G ? u$M(L) : L) : c = L;
+            return c
         })
     }
-      , OQ = function(a, I) {
-        if (typeof a !== "function")
+      , Zr = function(e, L) {
+        if (typeof e !== "function")
             throw Error("Fn must not be null and must be a function");
-        return g.zs.setTimeout(function() {
-            a()
-        }, I)
+        return g.LZ.setTimeout(function() {
+            e()
+        }, L)
     }
-      , GZ = function(a) {
-        St.dispatchEvent(new Yvo(St,a))
+      , $3 = function(e) {
+        pV.dispatchEvent(new v5g(pV,e))
     }
-      , Yvo = function(a) {
-        g.aI.call(this, "statevent", a)
+      , v5g = function(e) {
+        g.Hk.call(this, "statevent", e)
     }
-      , yg = function(a, I, U, e) {
-        this.V = a;
-        this.J = I;
-        this.C = U;
-        this.Y = e || 1;
-        this.L = 45E3;
-        this.B = new g.A7(this);
-        this.U = new g.Em;
-        this.U.setInterval(250)
+      , jU = function(e, L, c, I) {
+        this.X = e;
+        this.G = L;
+        this.T = c;
+        this.j = I || 1;
+        this.K = 45E3;
+        this.Z = new g.uB(this);
+        this.B = new g.VH;
+        this.B.setInterval(250)
     }
-      , Svo = function(a, I, U) {
-        a.Ek = 1;
-        a.ph = DA(I.clone());
-        a.c6 = U;
-        a.dw = !0;
-        OGI(a, null)
+      , A77 = function(e, L, c) {
+        e.Qp = 1;
+        e.Wk = eU(L.clone());
+        e.Uf = c;
+        e.Ve = !0;
+        f8L(e, null)
     }
-      , GMo = function(a, I, U, e, T) {
-        a.Ek = 1;
-        a.ph = DA(I.clone());
-        a.c6 = null;
-        a.dw = U;
-        T && (a.n8 = !1);
-        OGI(a, e)
+      , FPU = function(e, L, c, I, B) {
+        e.Qp = 1;
+        e.Wk = eU(L.clone());
+        e.Uf = null;
+        e.Ve = c;
+        B && (e.dj = !1);
+        f8L(e, I)
     }
-      , OGI = function(a, I) {
-        a.vR = Date.now();
-        yLD(a);
-        a.jk = a.ph.clone();
-        vv(a.jk, "t", a.Y);
-        a.Rb = 0;
-        a.UM = a.V.GU(a.V.Np() ? I : null);
-        a.Mf > 0 && (a.nK = new g.e_((0,
-        g.e8)(a.Ze, a, a.UM),a.Mf));
-        a.B.listen(a.UM, "readystatechange", a.pV);
-        I = a.nG ? g.sG(a.nG) : {};
-        a.c6 ? (a.iT = "POST",
-        I["Content-Type"] = "application/x-www-form-urlencoded",
-        a.UM.send(a.jk, a.iT, a.c6, I)) : (a.iT = "GET",
-        a.n8 && !g.hl && (I.Connection = "close"),
-        a.UM.send(a.jk, a.iT, null, I));
-        a.V.QT(1)
+      , f8L = function(e, L) {
+        e.M3 = Date.now();
+        bvM(e);
+        e.Ag = e.Wk.clone();
+        LV(e.Ag, "t", e.j);
+        e.d5 = 0;
+        e.jn = e.X.LZ(e.X.Pk() ? L : null);
+        e.Nc > 0 && (e.Jg = new g.Qw((0,
+        g.RL)(e.j1, e, e.jn),e.Nc));
+        e.Z.listen(e.jn, "readystatechange", e.hv);
+        L = e.Gf ? g.MQ(e.Gf) : {};
+        e.Uf ? (e.vz = "POST",
+        L["Content-Type"] = "application/x-www-form-urlencoded",
+        e.jn.send(e.Ag, e.vz, e.Uf, L)) : (e.vz = "GET",
+        e.dj && !g.RF && (L.Connection = "close"),
+        e.jn.send(e.Ag, e.vz, null, L));
+        e.X.LG(1)
     }
-      , RSf = function(a, I) {
-        var U = a.Rb
-          , e = I.indexOf("\n", U);
-        if (e == -1)
-            return EGf;
-        U = Number(I.substring(U, e));
-        if (isNaN(U))
-            return dko;
-        e += 1;
-        if (e + U > I.length)
-            return EGf;
-        I = I.slice(e, e + U);
-        a.Rb = e + U;
-        return I
+      , g5h = function(e, L) {
+        var c = e.d5
+          , I = L.indexOf("\n", c);
+        if (I == -1)
+            return ivJ;
+        c = Number(L.substring(c, I));
+        if (isNaN(c))
+            return GxZ;
+        I += 1;
+        if (I + c > L.length)
+            return ivJ;
+        L = L.slice(I, I + c);
+        e.d5 = I + c;
+        return L
     }
-      , yLD = function(a) {
-        a.TU = Date.now() + a.L;
-        wzd(a, a.L)
+      , bvM = function(e) {
+        e.SM = Date.now() + e.K;
+        kxh(e, e.K)
     }
-      , wzd = function(a, I) {
-        if (a.Km != null)
+      , kxh = function(e, L) {
+        if (e.AX != null)
             throw Error("WatchDog timer not null");
-        a.Km = OQ((0,
-        g.e8)(a.z$, a), I)
+        e.AX = Zr((0,
+        g.RL)(e.pD, e), L)
     }
-      , Fff = function(a) {
-        a.Km && (g.zs.clearTimeout(a.Km),
-        a.Km = null)
+      , DxN = function(e) {
+        e.AX && (g.LZ.clearTimeout(e.AX),
+        e.AX = null)
     }
-      , mkQ = function(a) {
-        a.V.AS() || a.U2 || a.V.Qu(a)
+      , wIJ = function(e) {
+        e.X.Dj() || e.wf || e.X.x6(e)
     }
-      , EQ = function(a) {
-        Fff(a);
-        g.Kf(a.nK);
-        a.nK = null;
-        a.U.stop();
-        a.B.removeAll();
-        if (a.UM) {
-            var I = a.UM;
-            a.UM = null;
-            I.abort();
-            I.dispose()
+      , Hp = function(e) {
+        DxN(e);
+        g.L0(e.Jg);
+        e.Jg = null;
+        e.B.stop();
+        e.Z.removeAll();
+        if (e.jn) {
+            var L = e.jn;
+            e.jn = null;
+            L.abort();
+            L.dispose()
         }
-        a.xp && (a.xp = null)
+        e.S0 && (e.S0 = null)
     }
-      , QBd = function(a, I) {
+      , J7g = function(e, L) {
         try {
-            a.V.Sy(a, I),
-            a.V.QT(4)
-        } catch (U) {}
+            e.X.BS(e, L),
+            e.X.LG(4)
+        } catch (c) {}
     }
-      , hSD = function(a, I, U, e, T) {
-        if (e == 0)
-            U(!1);
+      , CSM = function(e, L, c, I, B) {
+        if (I == 0)
+            c(!1);
         else {
-            var C = T || 0;
-            e--;
-            zSJ(a, I, function(r) {
-                r ? U(!0) : g.zs.setTimeout(function() {
-                    hSD(a, I, U, e, C)
-                }, C)
+            var x = B || 0;
+            I--;
+            VLe(e, L, function(S) {
+                S ? c(!0) : g.LZ.setTimeout(function() {
+                    CSM(e, L, c, I, x)
+                }, x)
             })
         }
     }
-      , zSJ = function(a, I, U) {
-        var e = new Image;
-        e.onload = function() {
+      , VLe = function(e, L, c) {
+        var I = new Image;
+        I.onload = function() {
             try {
-                RZ(e),
-                U(!0)
-            } catch (T) {}
+                lu(I),
+                c(!0)
+            } catch (B) {}
         }
         ;
-        e.onerror = function() {
+        I.onerror = function() {
             try {
-                RZ(e),
-                U(!1)
-            } catch (T) {}
+                lu(I),
+                c(!1)
+            } catch (B) {}
         }
         ;
-        e.onabort = function() {
+        I.onabort = function() {
             try {
-                RZ(e),
-                U(!1)
-            } catch (T) {}
+                lu(I),
+                c(!1)
+            } catch (B) {}
         }
         ;
-        e.ontimeout = function() {
+        I.ontimeout = function() {
             try {
-                RZ(e),
-                U(!1)
-            } catch (T) {}
+                lu(I),
+                c(!1)
+            } catch (B) {}
         }
         ;
-        g.zs.setTimeout(function() {
-            if (e.ontimeout)
-                e.ontimeout()
-        }, I);
-        e.src = a
+        g.LZ.setTimeout(function() {
+            if (I.ontimeout)
+                I.ontimeout()
+        }, L);
+        I.src = e
     }
-      , RZ = function(a) {
-        a.onload = null;
-        a.onerror = null;
-        a.onabort = null;
-        a.ontimeout = null
+      , lu = function(e) {
+        e.onload = null;
+        e.onerror = null;
+        e.onabort = null;
+        e.ontimeout = null
     }
-      , Nzd = function(a) {
-        this.V = a;
-        this.L = new kZ
+      , a8N = function(e) {
+        this.X = e;
+        this.K = new vp
     }
-      , oGj = function(a) {
-        var I = wo(a.V, a.QI, "/mail/images/cleardot.gif");
-        DA(I);
-        hSD(I.toString(), 5E3, (0,
-        g.e8)(a.c_, a), 3, 2E3);
-        a.QT(1)
+      , NsL = function(e) {
+        var L = Pp(e.X, e.Br, "/mail/images/cleardot.gif");
+        eU(L);
+        CSM(L.toString(), 5E3, (0,
+        g.RL)(e.Qs, e), 3, 2E3);
+        e.LG(1)
     }
-      , Dko = function(a) {
-        var I = a.V.Y;
-        I != null ? (GZ(5),
-        I ? (GZ(11),
-        Fx(a.V, a, !1)) : (GZ(12),
-        Fx(a.V, a, !0))) : (a.vG = new yg(a),
-        a.vG.nG = a.H9,
-        I = a.V,
-        I = wo(I, I.Np() ? a.VJ : null, a.f9),
-        GZ(5),
-        vv(I, "TYPE", "xmlhttp"),
-        GMo(a.vG, I, !1, a.VJ, !1))
+      , mxM = function(e) {
+        var L = e.X.j;
+        L != null ? ($3(5),
+        L ? ($3(11),
+        Q7(e.X, e, !1)) : ($3(12),
+        Q7(e.X, e, !0))) : (e.G6 = new jU(e),
+        e.G6.Gf = e.EZ,
+        L = e.X,
+        L = Pp(L, L.Pk() ? e.l$ : null, e.DX),
+        $3(5),
+        LV(L, "TYPE", "xmlhttp"),
+        FPU(e.G6, L, !1, e.l$, !1))
     }
-      , vG8 = function(a, I, U) {
-        this.V = 1;
-        this.L = [];
-        this.B = [];
-        this.U = new kZ;
-        this.j = a || null;
-        this.Y = I != null ? I : null;
-        this.D = U || !1
+      , y7w = function(e, L, c) {
+        this.X = 1;
+        this.K = [];
+        this.Z = [];
+        this.B = new vp;
+        this.D = e || null;
+        this.j = L != null ? L : null;
+        this.J = c || !1
     }
-      , aeQ = function(a, I) {
-        this.V = a;
-        this.map = I;
+      , Zvh = function(e, L) {
+        this.X = e;
+        this.map = L;
         this.context = null
     }
-      , Iej = function(a, I, U, e) {
-        g.aI.call(this, "timingevent", a);
-        this.size = I;
-        this.rtt = U;
-        this.retries = e
+      , pIN = function(e, L, c, I) {
+        g.Hk.call(this, "timingevent", e);
+        this.size = L;
+        this.rtt = c;
+        this.retries = I
     }
-      , s7d = function(a) {
-        g.aI.call(this, "serverreachability", a)
+      , $xh = function(e) {
+        g.Hk.call(this, "serverreachability", e)
     }
-      , emz = function(a) {
-        a.U5(1, 0);
-        a.gG = wo(a, null, a.yu);
-        UOz(a)
+      , HvJ = function(e) {
+        e.a7(1, 0);
+        e.nL = Pp(e, null, e.zJ);
+        jGU(e)
     }
-      , TGQ = function(a) {
-        a.yO && (a.yO.abort(),
-        a.yO = null);
-        a.dV && (a.dV.cancel(),
-        a.dV = null);
-        a.SB && (g.zs.clearTimeout(a.SB),
-        a.SB = null);
-        mr(a);
-        a.H1 && (a.H1.cancel(),
-        a.H1 = null);
-        a.z0 && (g.zs.clearTimeout(a.z0),
-        a.z0 = null)
+      , l8Z = function(e) {
+        e.pU && (e.pU.abort(),
+        e.pU = null);
+        e.e9 && (e.e9.cancel(),
+        e.e9 = null);
+        e.ag && (g.LZ.clearTimeout(e.ag),
+        e.ag = null);
+        dX(e);
+        e.Bq && (e.Bq.cancel(),
+        e.Bq = null);
+        e.vH && (g.LZ.clearTimeout(e.vH),
+        e.vH = null)
     }
-      , Czo = function(a, I) {
-        if (a.V == 0)
+      , PSN = function(e, L) {
+        if (e.X == 0)
             throw Error("Invalid operation: sending map when state is closed");
-        a.L.push(new aeQ(a.O5++,I));
-        a.V != 2 && a.V != 3 || UOz(a)
+        e.K.push(new Zvh(e.KD++,L));
+        e.X != 2 && e.X != 3 || jGU(e)
     }
-      , rPQ = function(a) {
-        var I = 0;
-        a.dV && I++;
-        a.H1 && I++;
-        return I
+      , QGU = function(e) {
+        var L = 0;
+        e.e9 && L++;
+        e.Bq && L++;
+        return L
     }
-      , UOz = function(a) {
-        a.H1 || a.z0 || (a.z0 = OQ((0,
-        g.e8)(a.uq, a), 0),
-        a.ol = 0)
+      , jGU = function(e) {
+        e.Bq || e.vH || (e.vH = Zr((0,
+        g.RL)(e.TO, e), 0),
+        e.v4 = 0)
     }
-      , xOz = function(a, I) {
-        if (a.V == 1) {
-            if (!I) {
-                a.Mp = Math.floor(Math.random() * 1E5);
-                I = a.Mp++;
-                var U = new yg(a,"",I);
-                U.nG = a.bQ;
-                var e = HOd(a)
-                  , T = a.gG.clone();
-                g.bv(T, "RID", I);
-                g.bv(T, "CVER", "1");
-                Qg(a, T);
-                Svo(U, T, e);
-                a.H1 = U;
-                a.V = 2
+      , E5e = function(e, L) {
+        if (e.X == 1) {
+            if (!L) {
+                e.Oz = Math.floor(Math.random() * 1E5);
+                L = e.Oz++;
+                var c = new jU(e,"",L);
+                c.Gf = e.ao;
+                var I = dxg(e)
+                  , B = e.nL.clone();
+                g.ob(B, "RID", L);
+                g.ob(B, "CVER", "1");
+                U8(e, B);
+                A77(c, B, I);
+                e.Bq = c;
+                e.X = 2
             }
         } else
-            a.V == 3 && (I ? qXz(a, I) : a.L.length == 0 || a.H1 || qXz(a))
+            e.X == 3 && (L ? UxM(e, L) : e.K.length == 0 || e.Bq || UxM(e))
     }
-      , qXz = function(a, I) {
-        if (I)
-            if (a.Es > 6) {
-                a.L = a.B.concat(a.L);
-                a.B.length = 0;
-                var U = a.Mp - 1;
-                I = HOd(a)
+      , UxM = function(e, L) {
+        if (L)
+            if (e.I0 > 6) {
+                e.K = e.Z.concat(e.K);
+                e.Z.length = 0;
+                var c = e.Oz - 1;
+                L = dxg(e)
             } else
-                U = I.C,
-                I = I.c6;
+                c = L.T,
+                L = L.Uf;
         else
-            U = a.Mp++,
-            I = HOd(a);
-        var e = a.gG.clone();
-        g.bv(e, "SID", a.J);
-        g.bv(e, "RID", U);
-        g.bv(e, "AID", a.Yx);
-        Qg(a, e);
-        U = new yg(a,a.J,U,a.ol + 1);
-        U.nG = a.bQ;
-        U.setTimeout(1E4 + Math.round(1E4 * Math.random()));
-        a.H1 = U;
-        Svo(U, e, I)
+            c = e.Oz++,
+            L = dxg(e);
+        var I = e.nL.clone();
+        g.ob(I, "SID", e.G);
+        g.ob(I, "RID", c);
+        g.ob(I, "AID", e.dS);
+        U8(e, I);
+        c = new jU(e,e.G,c,e.v4 + 1);
+        c.Gf = e.ao;
+        c.setTimeout(1E4 + Math.round(1E4 * Math.random()));
+        e.Bq = c;
+        A77(c, I, L)
     }
-      , Qg = function(a, I) {
-        a.Vt && (a = a.Vt.E8()) && g.dd(a, function(U, e) {
-            g.bv(I, e, U)
+      , U8 = function(e, L) {
+        e.rM && (e = e.rM.MC()) && g.Le(e, function(c, I) {
+            g.ob(L, I, c)
         })
     }
-      , HOd = function(a) {
-        var I = Math.min(a.L.length, 1E3)
-          , U = ["count=" + I];
-        if (a.Es > 6 && I > 0) {
-            var e = a.L[0].V;
-            U.push("ofs=" + e)
+      , dxg = function(e) {
+        var L = Math.min(e.K.length, 1E3)
+          , c = ["count=" + L];
+        if (e.I0 > 6 && L > 0) {
+            var I = e.K[0].X;
+            c.push("ofs=" + I)
         } else
-            e = 0;
-        for (var T = {}, C = 0; C < I; T = {
-            HY: void 0
+            I = 0;
+        for (var B = {}, x = 0; x < L; B = {
+            qj: void 0
         },
-        C++) {
-            T.HY = a.L[C].V;
-            var r = a.L[C].map;
-            T.HY = a.Es <= 6 ? C : T.HY - e;
+        x++) {
+            B.qj = e.K[x].X;
+            var S = e.K[x].map;
+            B.qj = e.I0 <= 6 ? x : B.qj - I;
             try {
-                g.dd(r, function(q) {
-                    return function(x, Z) {
-                        U.push("req" + q.HY + "_" + Z + "=" + encodeURIComponent(x))
+                g.Le(S, function(h) {
+                    return function(R, u) {
+                        c.push("req" + h.qj + "_" + u + "=" + encodeURIComponent(R))
                     }
-                }(T))
-            } catch (q) {
-                U.push("req" + T.HY + "_type=" + encodeURIComponent("_badmap"))
+                }(B))
+            } catch (h) {
+                c.push("req" + B.qj + "_type=" + encodeURIComponent("_badmap"))
             }
         }
-        a.B = a.B.concat(a.L.splice(0, I));
-        return U.join("&")
+        e.Z = e.Z.concat(e.K.splice(0, L));
+        return c.join("&")
     }
-      , ZOD = function(a) {
-        a.dV || a.SB || (a.C = 1,
-        a.SB = OQ((0,
-        g.e8)(a.mx, a), 0),
-        a.dn = 0)
+      , XIU = function(e) {
+        e.e9 || e.ag || (e.T = 1,
+        e.ag = Zr((0,
+        g.RL)(e.uu, e), 0),
+        e.QF = 0)
     }
-      , nd4 = function(a) {
-        if (a.dV || a.SB || a.dn >= 3)
+      , YR9 = function(e) {
+        if (e.e9 || e.ag || e.QF >= 3)
             return !1;
-        a.C++;
-        a.SB = OQ((0,
-        g.e8)(a.mx, a), tX8(a, a.dn));
-        a.dn++;
+        e.T++;
+        e.ag = Zr((0,
+        g.RL)(e.uu, e), KP9(e, e.QF));
+        e.QF++;
         return !0
     }
-      , Fx = function(a, I, U) {
-        a.L9 = a.Y == null ? U : !a.Y;
-        a.EU = I.Zq;
-        a.D || emz(a)
+      , Q7 = function(e, L, c) {
+        e.yV = e.j == null ? c : !e.j;
+        e.YY = L.sP;
+        e.J || HvJ(e)
     }
-      , mr = function(a) {
-        a.ib != null && (g.zs.clearTimeout(a.ib),
-        a.ib = null)
+      , dX = function(e) {
+        e.VR != null && (g.LZ.clearTimeout(e.VR),
+        e.VR = null)
     }
-      , tX8 = function(a, I) {
-        var U = 5E3 + Math.floor(Math.random() * 1E4);
-        a.isActive() || (U *= 2);
-        return U * I
+      , KP9 = function(e, L) {
+        var c = 5E3 + Math.floor(Math.random() * 1E4);
+        e.isActive() || (c *= 2);
+        return c * L
     }
-      , zZ = function(a, I) {
-        if (I == 2 || I == 9) {
-            var U = null;
-            a.Vt && (U = null);
-            var e = (0,
-            g.e8)(a.inx, a);
-            U || (U = new g.rv("//www.google.com/images/cleardot.gif"),
-            DA(U));
-            zSJ(U.toString(), 1E4, e)
+      , E8 = function(e, L) {
+        if (L == 2 || L == 9) {
+            var c = null;
+            e.rM && (c = null);
+            var I = (0,
+            g.RL)(e.GrY, e);
+            c || (c = new g.Yd("//www.google.com/images/cleardot.gif"),
+            eU(c));
+            VLe(c.toString(), 1E4, I)
         } else
-            GZ(2);
-        KhJ(a, I)
+            $3(2);
+        n5M(e, L)
     }
-      , KhJ = function(a, I) {
-        a.V = 0;
-        a.Vt && a.Vt.lq(I);
-        bOf(a);
-        TGQ(a)
+      , n5M = function(e, L) {
+        e.X = 0;
+        e.rM && e.rM.cS(L);
+        edN(e);
+        l8Z(e)
     }
-      , bOf = function(a) {
-        a.V = 0;
-        a.EU = -1;
-        if (a.Vt)
-            if (a.B.length == 0 && a.L.length == 0)
-                a.Vt.qf();
+      , edN = function(e) {
+        e.X = 0;
+        e.YY = -1;
+        if (e.rM)
+            if (e.Z.length == 0 && e.K.length == 0)
+                e.rM.hH();
             else {
-                var I = g.iI(a.B)
-                  , U = g.iI(a.L);
-                a.B.length = 0;
-                a.L.length = 0;
-                a.Vt.qf(I, U)
+                var L = g.VM(e.Z)
+                  , c = g.VM(e.K);
+                e.Z.length = 0;
+                e.K.length = 0;
+                e.rM.hH(L, c)
             }
     }
-      , wo = function(a, I, U) {
-        var e = g.J7(U);
-        if (e.V != "")
-            I && g.q8(e, I + "." + e.V),
-            g.xu(e, e.B);
+      , Pp = function(e, L, c) {
+        var I = g.S9(c);
+        if (I.X != "")
+            L && g.e9(I, L + "." + I.X),
+            g.Ls(I, I.Z);
         else {
-            var T = window.location;
-            e = pIJ(T.protocol, I ? I + "." + T.hostname : T.hostname, +T.port, U)
+            var B = window.location;
+            I = s6N(B.protocol, L ? L + "." + B.hostname : B.hostname, +B.port, c)
         }
-        a.Ch && g.dd(a.Ch, function(C, r) {
-            g.bv(e, r, C)
+        e.CI && g.Le(e.CI, function(x, S) {
+            g.ob(I, S, x)
         });
-        g.bv(e, "VER", a.Es);
-        Qg(a, e);
-        return e
+        g.ob(I, "VER", e.I0);
+        U8(e, I);
+        return I
     }
-      , JP4 = function() {}
-      , udo = function() {
-        this.V = [];
-        this.L = []
+      , Ld7 = function() {}
+      , cgh = function() {
+        this.X = [];
+        this.K = []
     }
-      , k1z = function(a) {
-        g.aI.call(this, "channelMessage");
-        this.message = a
+      , IQJ = function(e) {
+        g.Hk.call(this, "channelMessage");
+        this.message = e
     }
-      , VXJ = function(a) {
-        g.aI.call(this, "channelError");
-        this.error = a
+      , BmM = function(e) {
+        g.Hk.call(this, "channelError");
+        this.error = e
     }
-      , APJ = function(a, I) {
-        this.action = a;
-        this.params = I || {}
+      , xOw = function(e, L) {
+        this.action = e;
+        this.params = L || {}
     }
-      , hi = function(a, I) {
-        g.S.call(this);
-        this.V = new g.Dy(this.fUt,0,this);
-        g.E(this, this.V);
-        this.g6 = 5E3;
-        this.L = 0;
-        if (typeof a === "function")
-            I && (a = (0,
-            g.e8)(a, I));
-        else if (a && typeof a.handleEvent === "function")
-            a = (0,
-            g.e8)(a.handleEvent, a);
+      , XX = function(e, L) {
+        g.p.call(this);
+        this.X = new g.j9(this.Ex7,0,this);
+        g.l(this, this.X);
+        this.Lp = 5E3;
+        this.K = 0;
+        if (typeof e === "function")
+            L && (e = (0,
+            g.RL)(e, L));
+        else if (e && typeof e.handleEvent === "function")
+            e = (0,
+            g.RL)(e.handleEvent, e);
         else
             throw Error("Invalid listener argument");
-        this.B = a
+        this.Z = e
     }
-      , MXz = function(a, I, U, e, T, C, r, q, x, Z, t, n, K, b) {
-        U = U === void 0 ? !1 : U;
-        e = e === void 0 ? function() {
+      , oi7 = function(e, L, c, I, B, x, S, h, R, u, t, O, q, T) {
+        c = c === void 0 ? !1 : c;
+        I = I === void 0 ? function() {
             return ""
         }
-        : e;
-        T = T === void 0 ? !1 : T;
-        C = C === void 0 ? !1 : C;
-        r = r === void 0 ? !1 : r;
-        q = q === void 0 ? function() {
-            return g.XG({})
-        }
-        : q;
+        : I;
+        B = B === void 0 ? !1 : B;
         x = x === void 0 ? !1 : x;
+        S = S === void 0 ? !1 : S;
+        h = h === void 0 ? function() {
+            return g.gT({})
+        }
+        : h;
+        R = R === void 0 ? !1 : R;
         t = t === void 0 ? !1 : t;
-        n = n === void 0 ? !1 : n;
-        K = K === void 0 ? !1 : K;
-        b = b === void 0 ? !1 : b;
-        this.CO = a;
-        this.Va = I;
-        this.Y = new g.B1;
-        this.L = new hi(this.icw,this);
-        this.V = null;
-        this.C = !1;
-        this.j = null;
-        this.e8 = "";
-        this.gw = this.D = 0;
-        this.B = [];
-        this.hN = U;
-        this.dw = e;
-        this.U = C;
-        this.zt = q;
-        this.Ux = Z;
-        this.EB = r;
-        this.tU = null;
-        this.J = g.XG();
-        this.rF = T;
-        this.B8 = x;
-        this.E7 = t;
-        this.i5 = n;
-        this.F1 = K;
-        this.Vo = b;
-        this.XX = new $6Q;
-        this.a$ = new ijf;
-        this.xa = new gk4;
-        this.Z6 = new Lyz;
-        this.fO = new cbo;
-        this.IF = new WyG;
-        this.ij = new lld
+        O = O === void 0 ? !1 : O;
+        q = q === void 0 ? !1 : q;
+        T = T === void 0 ? !1 : T;
+        this.t7 = e;
+        this.pS = L;
+        this.j = new g.zl;
+        this.K = new XX(this.Vt0,this);
+        this.X = null;
+        this.T = !1;
+        this.D = null;
+        this.Gm = "";
+        this.h7 = this.J = 0;
+        this.Z = [];
+        this.RT = c;
+        this.Ve = I;
+        this.B = x;
+        this.Y9 = h;
+        this.ye = u;
+        this.gT = S;
+        this.k9 = null;
+        this.G = g.gT();
+        this.Cf = B;
+        this.Kf = R;
+        this.DY = t;
+        this.x9 = O;
+        this.Q5 = q;
+        this.sY = T;
+        this.d_ = new tMh;
+        this.Pe = new OTL;
+        this.Sl = new TWN;
+        this.m$ = new qeg;
+        this.He = new WHN;
+        this.xT = new MMM;
+        this.Bw = new zaw
     }
-      , iOD = function(a, I, U, e, T) {
-        j7G(a);
-        if (a.V) {
-            var C = g.D5("ID_TOKEN")
-              , r = a.V.bQ || {};
-            C ? r["x-youtube-identity-token"] = C : delete r["x-youtube-identity-token"];
-            a.V.bQ = r
+      , hdJ = function(e, L, c, I, B) {
+        SLM(e);
+        if (e.X) {
+            var x = g.Zu("ID_TOKEN")
+              , S = e.X.ao || {};
+            x ? S["x-youtube-identity-token"] = x : delete S["x-youtube-identity-token"];
+            e.X.ao = S
         }
-        $Oo(a);
-        e ? (e.getState() != 3 && rPQ(e) == 0 || e.getState(),
-        a.V.connect(I, U, a.Va, e.J, e.Yx)) : T ? a.V.connect(I, U, a.Va, T.sessionId, T.arrayId) : a.V.connect(I, U, a.Va)
+        rge(e);
+        I ? (I.getState() != 3 && QGU(I) == 0 || I.getState(),
+        e.X.connect(L, c, e.pS, I.G, I.dS)) : B ? e.X.connect(L, c, e.pS, B.sessionId, B.arrayId) : e.X.connect(L, c, e.pS)
     }
-      , Who = function(a, I) {
-        return a.F1 ? !0 : a.i5 ? Object.values(Lho).includes(I) : a.E7 ? !Object.values(gdo).includes(I) : a.Vo ? Object.values(cPm).includes(I) : !1
+      , O$g = function(e, L) {
+        return e.Q5 ? !0 : e.x9 ? Object.values(RdL).includes(L) : e.DY ? !Object.values(u9e).includes(L) : e.sY ? Object.values(tt9).includes(L) : !1
     }
-      , X2d = function(a) {
-        var I, U;
-        g.f(function(e) {
-            if (e.L == 1)
-                return g.iF(e, 2),
-                g.l(e, lez(a), 2);
-            g.XY(e);
-            I = a.B;
-            a.B = [];
-            U = I.length;
-            BG4(a, I, U);
-            NV(a);
-            return g.Pw(e, 0)
+      , Wdw = function(e) {
+        var L, c;
+        g.Z(function(I) {
+            if (I.K == 1)
+                return g.Gc(I, 2),
+                g.a(I, qL9(e), 2);
+            g.NM(I);
+            L = e.Z;
+            e.Z = [];
+            c = L.length;
+            TmM(e, L, c);
+            KV(e);
+            return g.mf(I, 0)
         })
     }
-      , BG4 = function(a, I, U) {
-        for (var e = 0; e < U; ++e)
-            Czo(a.V, I[e]);
-        NV(a)
+      , TmM = function(e, L, c) {
+        for (var I = 0; I < c; ++I)
+            PSN(e.X, L[I]);
+        KV(e)
     }
-      , NV = function(a) {
-        a.publish("handlerOpened");
-        a.XX.Id("BROWSER_CHANNEL")
+      , KV = function(e) {
+        e.publish("handlerOpened");
+        e.d_.Qa("BROWSER_CHANNEL")
     }
-      , j7G = function(a) {
-        if (a.V) {
-            var I = a.dw()
-              , U = a.V.bQ || {};
-            I ? U["x-youtube-lounge-xsrf-token"] = I : delete U["x-youtube-lounge-xsrf-token"];
-            a.V.bQ = U
+      , SLM = function(e) {
+        if (e.X) {
+            var L = e.Ve()
+              , c = e.X.ao || {};
+            L ? c["x-youtube-lounge-xsrf-token"] = L : delete c["x-youtube-lounge-xsrf-token"];
+            e.X.ao = c
         }
     }
-      , lez = function(a) {
-        if (a.B8)
-            return g.XG();
-        if (!a.EB)
-            return Pzz(a);
-        a.tU === null && (a.tU = Pzz(a));
-        return a.tU
+      , qL9 = function(e) {
+        if (e.Kf)
+            return g.gT();
+        if (!e.gT)
+            return MtJ(e);
+        e.k9 === null && (e.k9 = MtJ(e));
+        return e.k9
     }
-      , Pzz = function(a) {
-        return g.G0(a.zt().then(function(I) {
-            p2G(a, I)
-        }).L$(function() {}), function() {
-            a.tU = null
+      , MtJ = function(e) {
+        return g.wT(e.Y9().then(function(L) {
+            zde(e, L)
+        }).XR(function() {}), function() {
+            e.k9 = null
         })
     }
-      , p2G = function(a, I) {
-        if (a.V) {
-            var U = a.V.bQ || {};
-            I && Object.keys(I).length > 0 ? U = Object.assign({}, U, I) : delete U.Authorization;
-            a.V.bQ = U
+      , zde = function(e, L) {
+        if (e.X) {
+            var c = e.X.ao || {};
+            L && Object.keys(L).length > 0 ? c = Object.assign({}, c, L) : delete c.Authorization;
+            e.X.ao = c
         }
     }
-      , $Oo = function(a) {
-        a.Ux && !a.U && p2G(a, a.Ux())
+      , rge = function(e) {
+        e.ye && !e.B && zde(e, e.ye())
     }
-      , oZ = function(a) {
+      , Y3 = function(e) {
         this.scheme = "https";
         this.port = this.domain = "";
-        this.V = "/api/lounge";
-        this.L = !0;
-        a = a || document.location.href;
-        var I = Number(g.LM(a)[4] || null) || "";
-        I && (this.port = ":" + I);
-        this.domain = g.gs(a) || "";
-        a = g.gO();
-        a.search("MSIE") >= 0 && (a = a.match(/MSIE ([\d.]+)/)[1],
-        g.Lk(a, "10.0") < 0 && (this.L = !1))
+        this.X = "/api/lounge";
+        this.K = !0;
+        e = e || document.location.href;
+        var L = Number(g.rj(e)[4] || null) || "";
+        L && (this.port = ":" + L);
+        this.domain = g.hp(e) || "";
+        e = g.yc();
+        e.search("MSIE") >= 0 && (e = e.match(/MSIE ([\d.]+)/)[1],
+        g.mO(e, "10.0") < 0 && (this.K = !1))
     }
-      , Dv = function(a, I) {
-        var U = a.V;
-        a.L && (U = a.scheme + "://" + a.domain + a.port + a.V);
-        return g.pM(U + I, {})
+      , nV = function(e, L) {
+        var c = e.X;
+        e.K && (c = e.scheme + "://" + e.domain + e.port + e.X);
+        return g.WO(c + L, {})
     }
-      , fem = function(a, I) {
-        g.u7.call(this);
-        var U = this;
-        this.A4 = a();
-        this.A4.subscribe("handlerOpened", this.NN, this);
-        this.A4.subscribe("handlerClosed", this.onClosed, this);
-        this.A4.subscribe("handlerError", function(e, T) {
-            U.onError(T)
+      , sMN = function(e, L) {
+        g.hi.call(this);
+        var c = this;
+        this.Eq = e();
+        this.Eq.subscribe("handlerOpened", this.eh, this);
+        this.Eq.subscribe("handlerClosed", this.onClosed, this);
+        this.Eq.subscribe("handlerError", function(I, B) {
+            c.onError(B)
         });
-        this.A4.subscribe("handlerMessage", this.onMessage, this);
-        this.V = I
+        this.Eq.subscribe("handlerMessage", this.onMessage, this);
+        this.X = L
     }
-      , YX4 = function(a, I, U) {
-        var e = this;
-        U = U === void 0 ? function() {
+      , viM = function(e, L, c) {
+        var I = this;
+        c = c === void 0 ? function() {
             return ""
         }
-        : U;
-        var T = T === void 0 ? new Bzz : T;
-        var C = C === void 0 ? new g.B1 : C;
-        this.pathPrefix = a;
-        this.V = I;
-        this.e8 = U;
-        this.U = C;
-        this.D = null;
-        this.j = this.C = 0;
+        : c;
+        var B = B === void 0 ? new TsZ : B;
+        var x = x === void 0 ? new g.zl : x;
+        this.pathPrefix = e;
+        this.X = L;
+        this.Gm = c;
+        this.B = x;
+        this.J = null;
+        this.D = this.T = 0;
         this.channel = null;
-        this.Y = 0;
-        this.B = new hi(function() {
-            e.B.isActive();
-            var r;
-            ((r = e.channel) == null ? void 0 : Tzd((new pzQ(r,r.V)).V.L)) === 0 && e.connect(e.D, e.C)
+        this.j = 0;
+        this.Z = new XX(function() {
+            I.Z.isActive();
+            var S;
+            ((S = I.channel) == null ? void 0 : PLM((new zvN(S,S.X)).X.K)) === 0 && I.connect(I.J, I.T)
         }
         );
-        this.J = {};
-        this.L = {};
-        this.Va = !1;
+        this.G = {};
+        this.K = {};
+        this.pS = !1;
         this.logger = null;
-        this.gw = [];
-        this.ZC = void 0;
-        this.zt = new $6Q;
-        this.tU = new ijf;
-        this.Ux = new Lyz;
-        this.dw = new cbo
+        this.h7 = [];
+        this.Fc = void 0;
+        this.Y9 = new tMh;
+        this.k9 = new OTL;
+        this.ye = new qeg;
+        this.Ve = new WHN
     }
-      , OOo = function(a) {
-        g.Hh(a.channel, "m", function() {
-            a.Y = 3;
-            a.B.reset();
-            a.D = null;
-            a.C = 0;
-            for (var I = g.k(a.gw), U = I.next(); !U.done; U = I.next())
-                U = U.value,
-                a.channel && a.channel.send(U);
-            a.gw = [];
-            a.publish("webChannelOpened");
-            a.zt.Id("WEB_CHANNEL")
+      , fQh = function(e) {
+        g.KM(e.channel, "m", function() {
+            e.j = 3;
+            e.Z.reset();
+            e.J = null;
+            e.T = 0;
+            for (var L = g.f(e.h7), c = L.next(); !c.done; c = L.next())
+                c = c.value,
+                e.channel && e.channel.send(c);
+            e.h7 = [];
+            e.publish("webChannelOpened");
+            e.Y9.Qa("WEB_CHANNEL")
         });
-        g.Hh(a.channel, "n", function() {
-            a.Y = 0;
-            a.B.isActive() || a.publish("webChannelClosed");
-            var I, U = (I = a.channel) == null ? void 0 : fnG(new pzQ(I,I.V));
-            U && (a.gw = [].concat(g.A(U)));
-            a.tU.Id("WEB_CHANNEL")
+        g.KM(e.channel, "n", function() {
+            e.j = 0;
+            e.Z.isActive() || e.publish("webChannelClosed");
+            var L, c = (L = e.channel) == null ? void 0 : sGw(new zvN(L,L.X));
+            c && (e.h7 = [].concat(g.V(c)));
+            e.k9.Qa("WEB_CHANNEL")
         });
-        g.Hh(a.channel, "p", function(I) {
-            var U = I.data;
-            U[0] === "gracefulReconnect" ? (a.B.start(),
-            a.channel && a.channel.close()) : a.publish("webChannelMessage", new APJ(U[0],U[1]));
-            a.ZC = I.statusCode;
-            a.Ux.Id("WEB_CHANNEL")
+        g.KM(e.channel, "p", function(L) {
+            var c = L.data;
+            c[0] === "gracefulReconnect" ? (e.Z.start(),
+            e.channel && e.channel.close()) : e.publish("webChannelMessage", new xOw(c[0],c[1]));
+            e.Fc = L.statusCode;
+            e.ye.Qa("WEB_CHANNEL")
         });
-        g.Hh(a.channel, "o", function() {
-            a.ZC === 401 || a.B.start();
-            a.publish("webChannelError");
-            a.dw.Id("WEB_CHANNEL")
+        g.KM(e.channel, "o", function() {
+            e.Fc === 401 || e.Z.start();
+            e.publish("webChannelError");
+            e.Ve.Qa("WEB_CHANNEL", "")
         })
     }
-      , SXj = function(a) {
-        var I = a.e8();
-        I ? a.J["x-youtube-lounge-xsrf-token"] = I : delete a.J["x-youtube-lounge-xsrf-token"]
+      , AgL = function(e) {
+        var L = e.Gm();
+        L ? e.G["x-youtube-lounge-xsrf-token"] = L : delete e.G["x-youtube-lounge-xsrf-token"]
     }
-      , G1z = function(a) {
-        g.u7.call(this);
-        this.V = a();
-        this.V.subscribe("webChannelOpened", this.CV, this);
-        this.V.subscribe("webChannelClosed", this.onClosed, this);
-        this.V.subscribe("webChannelError", this.onError, this);
-        this.V.subscribe("webChannelMessage", this.onMessage, this)
+      , FdU = function(e) {
+        g.hi.call(this);
+        this.X = e();
+        this.X.subscribe("webChannelOpened", this.Gv, this);
+        this.X.subscribe("webChannelClosed", this.onClosed, this);
+        this.X.subscribe("webChannelError", this.onError, this);
+        this.X.subscribe("webChannelMessage", this.onMessage, this)
     }
-      , yPG = function(a, I, U, e, T) {
-        function C() {
-            return new MXz(Dv(a, "/bc"),I,!1,U,e)
+      , b$L = function(e, L, c, I, B) {
+        function x() {
+            return new oi7(nV(e, "/bc"),L,!1,c,I)
         }
-        U = U === void 0 ? function() {
+        c = c === void 0 ? function() {
             return ""
         }
-        : U;
-        return g.ik("enable_mdx_web_channel_desktop") ? new G1z(function() {
-            return new YX4(Dv(a, "/wc"),I,U)
+        : c;
+        return g.uL("enable_mdx_web_channel_desktop") ? new FdU(function() {
+            return new viM(nV(e, "/wc"),L,c)
         }
-        ) : new fem(C,T)
+        ) : new sMN(x,B)
     }
-      , w2J = function() {
-        var a = Edz;
-        dOG();
-        vH.push(a);
-        RmG()
+      , kIZ = function() {
+        var e = i$N;
+        GIL();
+        eq.push(e);
+        giZ()
     }
-      , ap = function(a, I) {
-        dOG();
-        var U = Fhd(a, String(I));
-        vH.length == 0 ? mOo(U) : (RmG(),
-        g.Gm(vH, function(e) {
-            e(U)
+      , LD = function(e, L) {
+        GIL();
+        var c = DOg(e, String(L));
+        eq.length == 0 ? wKM(c) : (giZ(),
+        g.KZ(eq, function(I) {
+            I(c)
         }))
     }
-      , Ip = function(a) {
-        ap("CP", a)
+      , cW = function(e) {
+        LD("CP", e)
     }
-      , dOG = function() {
-        vH || (vH = g.NL("yt.mdx.remote.debug.handlers_") || [],
-        g.hj("yt.mdx.remote.debug.handlers_", vH))
+      , GIL = function() {
+        eq || (eq = g.BU("yt.mdx.remote.debug.handlers_") || [],
+        g.IL("yt.mdx.remote.debug.handlers_", eq))
     }
-      , mOo = function(a) {
-        var I = (s1 + 1) % 50;
-        s1 = I;
-        U1[I] = a;
-        es || (es = I == 49)
+      , wKM = function(e) {
+        var L = (Ie + 1) % 50;
+        Ie = L;
+        BW[L] = e;
+        xG || (xG = L == 49)
     }
-      , RmG = function() {
-        var a = vH;
-        if (U1[0]) {
-            var I = es ? s1 : -1
-              , U = {};
+      , giZ = function() {
+        var e = eq;
+        if (BW[0]) {
+            var L = xG ? Ie : -1
+              , c = {};
             do
-                U = {
-                    NI: void 0
+                c = {
+                    Id: void 0
                 },
-                I = (I + 1) % 50,
-                U.NI = U1[I],
-                g.Gm(a, function(e) {
-                    return function(T) {
-                        T(e.NI)
+                L = (L + 1) % 50,
+                c.Id = BW[L],
+                g.KZ(e, function(I) {
+                    return function(B) {
+                        B(I.Id)
                     }
-                }(U));
-            while (I != s1);
-            U1 = Array(50);
-            s1 = -1;
-            es = !1
+                }(c));
+            while (L != Ie);
+            BW = Array(50);
+            Ie = -1;
+            xG = !1
         }
     }
-      , Fhd = function(a, I) {
-        var U = (Date.now() - Q7J) / 1E3;
-        U.toFixed && (U = U.toFixed(3));
-        var e = [];
-        e.push("[", U + "s", "] ");
-        e.push("[", "yt.mdx.remote", "] ");
-        e.push(a + ": " + I, "\n");
-        return e.join("")
+      , DOg = function(e, L) {
+        var c = (Date.now() - Jg9) / 1E3;
+        c.toFixed && (c = c.toFixed(3));
+        var I = [];
+        I.push("[", c + "s", "] ");
+        I.push("[", "yt.mdx.remote", "] ");
+        I.push(e + ": " + L, "\n");
+        return I.join("")
     }
-      , TO = function(a) {
-        g.J_.call(this);
-        this.Y = a;
+      , oe = function(e) {
+        g.Yg.call(this);
+        this.j = e;
         this.screens = []
     }
-      , zmd = function(a, I) {
-        var U = a.get(I.uuid) || a.get(I.id);
-        if (U)
-            return a = U.name,
-            U.id = I.id || U.id,
-            U.name = I.name,
-            U.token = I.token,
-            U.uuid = I.uuid || U.uuid,
-            U.name != a;
-        a.screens.push(I);
+      , Vtg = function(e, L) {
+        var c = e.get(L.uuid) || e.get(L.id);
+        if (c)
+            return e = c.name,
+            c.id = L.id || c.id,
+            c.name = L.name,
+            c.token = L.token,
+            c.uuid = L.uuid || c.uuid,
+            c.name != e;
+        e.screens.push(L);
         return !0
     }
-      , hmz = function(a, I) {
-        var U = a.screens.length != I.length;
-        a.screens = g.Sa(a.screens, function(C) {
-            return !!tRm(I, C)
+      , CEe = function(e, L) {
+        var c = e.screens.length != L.length;
+        e.screens = g.ig(e.screens, function(x) {
+            return !!Yew(L, x)
         });
-        for (var e = I.length, T = 0; T < e; T++)
-            U = zmd(a, I[T]) || U;
-        return U
+        for (var I = L.length, B = 0; B < I; B++)
+            c = Vtg(e, L[B]) || c;
+        return c
     }
-      , NGj = function(a, I) {
-        var U = a.screens.length;
-        a.screens = g.Sa(a.screens, function(e) {
-            return !(e || I ? !e != !I ? 0 : e.id == I.id : 1)
+      , aQN = function(e, L) {
+        var c = e.screens.length;
+        e.screens = g.ig(e.screens, function(I) {
+            return !(I || L ? !I != !L ? 0 : I.id == L.id : 1)
         });
-        return a.screens.length < U
+        return e.screens.length < c
     }
-      , odo = function(a, I, U, e, T) {
-        g.J_.call(this);
-        this.B = a;
-        this.C = I;
-        this.J = U;
-        this.Y = e;
-        this.U = T;
-        this.L = 0;
-        this.V = null;
-        this.ZN = NaN
+      , NmZ = function(e, L, c, I, B) {
+        g.Yg.call(this);
+        this.Z = e;
+        this.T = L;
+        this.G = c;
+        this.j = I;
+        this.B = B;
+        this.K = 0;
+        this.X = null;
+        this.Jw = NaN
     }
-      , ri = function(a) {
-        TO.call(this, "LocalScreenService");
-        this.L = a;
-        this.V = NaN;
-        Cv(this);
-        this.info("Initializing with " + qVo(this.screens))
+      , rt = function(e) {
+        oe.call(this, "LocalScreenService");
+        this.K = e;
+        this.X = NaN;
+        Sq(this);
+        this.info("Initializing with " + EJe(this.screens))
     }
-      , DOd = function(a) {
-        if (a.screens.length) {
-            var I = g.FX(a.screens, function(e) {
-                return e.id
+      , mOZ = function(e) {
+        if (e.screens.length) {
+            var L = g.Mt(e.screens, function(I) {
+                return I.id
             })
-              , U = Dv(a.L, "/pairing/get_lounge_token_batch");
-            a.L.sendRequest("POST", U, {
-                screen_ids: I.join(",")
+              , c = nV(e.K, "/pairing/get_lounge_token_batch");
+            e.K.sendRequest("POST", c, {
+                screen_ids: L.join(",")
             }, (0,
-            g.e8)(a.KKO, a), (0,
-            g.e8)(a.t8X, a))
+            g.RL)(e.qt, e), (0,
+            g.RL)(e.G4, e))
         }
     }
-      , Cv = function(a) {
-        if (g.ik("deprecate_pair_servlet_enabled"))
-            return hmz(a, []);
-        var I = HdI(VRG());
-        I = g.Sa(I, function(U) {
-            return !U.uuid
+      , Sq = function(e) {
+        if (g.uL("deprecate_pair_servlet_enabled"))
+            return CEe(e, []);
+        var L = UNh(xLZ());
+        L = g.ig(L, function(c) {
+            return !c.uuid
         });
-        return hmz(a, I)
+        return CEe(e, L)
     }
-      , Hu = function(a, I) {
-        MRo(g.FX(a.screens, CRz));
-        I && ATo()
+      , hC = function(e, L) {
+        SN7(g.Mt(e.screens, gJJ));
+        L && oaZ()
     }
-      , aM8 = function(a, I) {
-        g.J_.call(this);
-        this.Y = I;
-        I = (I = g.EV("yt-remote-online-screen-ids") || "") ? I.split(",") : [];
-        for (var U = {}, e = this.Y(), T = e.length, C = 0; C < T; ++C) {
-            var r = e[C].id;
-            U[r] = g.kJ(I, r)
+      , Z$w = function(e, L) {
+        g.Yg.call(this);
+        this.j = L;
+        L = (L = g.iS("yt-remote-online-screen-ids") || "") ? L.split(",") : [];
+        for (var c = {}, I = this.j(), B = I.length, x = 0; x < B; ++x) {
+            var S = I[x].id;
+            c[S] = g.Fh(L, S)
         }
-        this.V = U;
-        this.U = a;
-        this.B = this.J = NaN;
-        this.L = null;
-        vdm("Initialized with " + g.m4(this.V))
+        this.X = c;
+        this.B = e;
+        this.Z = this.G = NaN;
+        this.K = null;
+        yg9("Initialized with " + g.yH(this.X))
     }
-      , IMJ = function(a, I, U) {
-        var e = Dv(a.U, "/pairing/get_screen_availability");
-        a.U.sendRequest("POST", e, {
-            lounge_token: I.token
+      , pKM = function(e, L, c) {
+        var I = nV(e.B, "/pairing/get_screen_availability");
+        e.B.sendRequest("POST", I, {
+            lounge_token: L.token
         }, (0,
-        g.e8)(function(T) {
-            T = T.screens || [];
-            for (var C = T.length, r = 0; r < C; ++r)
-                if (T[r].loungeToken == I.token) {
-                    U(T[r].status == "online");
+        g.RL)(function(B) {
+            B = B.screens || [];
+            for (var x = B.length, S = 0; S < x; ++S)
+                if (B[S].loungeToken == L.token) {
+                    c(B[S].status == "online");
                     return
                 }
-            U(!1)
-        }, a), (0,
-        g.e8)(function() {
-            U(!1)
-        }, a))
+            c(!1)
+        }, e), (0,
+        g.RL)(function() {
+            c(!1)
+        }, e))
     }
-      , UNQ = function(a, I) {
-        a: if (Abz(I) != Abz(a.V))
-            var U = !1;
+      , jMh = function(e, L) {
+        a: if (ha9(L) != ha9(e.X))
+            var c = !1;
         else {
-            U = g.zm(I);
-            for (var e = U.length, T = 0; T < e; ++T)
-                if (!a.V[U[T]]) {
-                    U = !1;
+            c = g.Rs(L);
+            for (var I = c.length, B = 0; B < I; ++B)
+                if (!e.X[c[B]]) {
+                    c = !1;
                     break a
                 }
-            U = !0
+            c = !0
         }
-        U || (vdm("Updated online screens: " + g.m4(a.V)),
-        a.V = I,
-        a.publish("screenChange"));
-        sbd(a)
+        c || (yg9("Updated online screens: " + g.yH(e.X)),
+        e.X = L,
+        e.publish("screenChange"));
+        $OU(e)
     }
-      , qi = function(a) {
-        isNaN(a.B) || g.M6(a.B);
-        a.B = g.Vz((0,
-        g.e8)(a.Ml, a), a.J > 0 && a.J < g.rd() ? 2E4 : 1E4)
+      , Re = function(e) {
+        isNaN(e.Z) || g.ra(e.Z);
+        e.Z = g.oC((0,
+        g.RL)(e.S8, e), e.G > 0 && e.G < g.O9() ? 2E4 : 1E4)
     }
-      , vdm = function(a) {
-        ap("OnlineScreenService", a)
+      , yg9 = function(e) {
+        LD("OnlineScreenService", e)
     }
-      , eTQ = function(a) {
-        var I = {};
-        g.Gm(a.Y(), function(U) {
-            U.token ? I[U.token] = U.id : this.O1("Requesting availability of screen w/o lounge token.")
+      , H$h = function(e) {
+        var L = {};
+        g.KZ(e.j(), function(c) {
+            c.token ? L[c.token] = c.id : this.VZ("Requesting availability of screen w/o lounge token.")
         });
-        return I
+        return L
     }
-      , sbd = function(a) {
-        a = g.zm(g.Rf(a.V, function(I) {
-            return I
+      , $OU = function(e) {
+        e = g.Rs(g.c2(e.X, function(L) {
+            return L
         }));
-        g.fo(a);
-        a.length ? g.yy("yt-remote-online-screen-ids", a.join(","), 60) : g.da("yt-remote-online-screen-ids")
+        g.U9(e);
+        e.length ? g.bS("yt-remote-online-screen-ids", e.join(","), 60) : g.Gx("yt-remote-online-screen-ids")
     }
-      , Zh = function(a, I) {
-        I = I === void 0 ? !1 : I;
-        TO.call(this, "ScreenService");
-        this.J = a;
-        this.C = I;
-        this.V = this.L = null;
-        this.B = [];
-        this.U = {};
-        Tqo(this)
+      , u0 = function(e, L) {
+        L = L === void 0 ? !1 : L;
+        oe.call(this, "ScreenService");
+        this.G = e;
+        this.T = L;
+        this.X = this.K = null;
+        this.Z = [];
+        this.B = {};
+        lQh(this)
     }
-      , rkG = function(a, I, U, e, T, C) {
-        a.info("getAutomaticScreenByIds " + U + " / " + I);
-        U || (U = a.U[I]);
-        var r = a.m$()
-          , q = U ? qV(r, U) : null;
-        U && (a.C || q) || (q = qV(r, I));
-        if (q) {
-            q.uuid = I;
-            var x = tZ(a, q);
-            IMJ(a.V, x, function(Z) {
-                T(Z ? x : null)
+      , QMe = function(e, L, c, I, B, x) {
+        e.info("getAutomaticScreenByIds " + c + " / " + L);
+        c || (c = e.B[L]);
+        var S = e.Pc()
+          , h = c ? uu(S, c) : null;
+        c && (e.T || h) || (h = uu(S, L));
+        if (h) {
+            h.uuid = L;
+            var R = tC(e, h);
+            pKM(e.X, R, function(u) {
+                B(u ? R : null)
             })
         } else
-            U ? Cim(a, U, (0,
-            g.e8)(function(Z) {
-                var t = tZ(this, new Cw({
-                    name: e,
-                    screenId: U,
-                    loungeToken: Z,
-                    dialId: I || ""
+            c ? PEZ(e, c, (0,
+            g.RL)(function(u) {
+                var t = tC(this, new rX({
+                    name: I,
+                    screenId: c,
+                    loungeToken: u,
+                    dialId: L || ""
                 }));
-                IMJ(this.V, t, function(n) {
-                    T(n ? t : null)
+                pKM(this.X, t, function(O) {
+                    B(O ? t : null)
                 })
-            }, a), C) : T(null)
+            }, e), x) : B(null)
     }
-      , H5I = function(a, I) {
-        for (var U = a.screens.length, e = 0; e < U; ++e)
-            if (a.screens[e].name == I)
-                return a.screens[e];
+      , dOM = function(e, L) {
+        for (var c = e.screens.length, I = 0; I < c; ++I)
+            if (e.screens[I].name == L)
+                return e.screens[I];
         return null
     }
-      , qPd = function(a, I, U) {
-        IMJ(a.V, I, U)
+      , UOw = function(e, L, c) {
+        pKM(e.X, L, c)
     }
-      , Cim = function(a, I, U, e) {
-        a.info("requestLoungeToken_ for " + I);
-        var T = {
+      , PEZ = function(e, L, c, I) {
+        e.info("requestLoungeToken_ for " + L);
+        var B = {
             postParams: {
-                screen_ids: I
+                screen_ids: L
             },
             method: "POST",
-            context: a,
-            onSuccess: function(C, r) {
-                C = r && r.screens || [];
-                C[0] && C[0].screenId == I ? U(C[0].loungeToken) : e(Error("Missing lounge token in token response"))
+            context: e,
+            onSuccess: function(x, S) {
+                x = S && S.screens || [];
+                x[0] && x[0].screenId == L ? c(x[0].loungeToken) : I(Error("Missing lounge token in token response"))
             },
             onError: function() {
-                e(Error("Request screen lounge token failed"))
+                I(Error("Request screen lounge token failed"))
             }
         };
-        g.lk(Dv(a.J, "/pairing/get_lounge_token_batch"), T)
+        g.W3(nV(e.G, "/pairing/get_lounge_token_batch"), B)
     }
-      , xNo = function(a) {
-        a.screens = a.L.m$();
-        var I = a.U, U = {}, e;
-        for (e in I)
-            U[I[e]] = e;
-        I = a.screens.length;
-        for (e = 0; e < I; ++e) {
-            var T = a.screens[e];
-            T.uuid = U[T.id] || ""
+      , EiU = function(e) {
+        e.screens = e.K.Pc();
+        var L = e.B, c = {}, I;
+        for (I in L)
+            c[L[I]] = I;
+        L = e.screens.length;
+        for (I = 0; I < L; ++I) {
+            var B = e.screens[I];
+            B.uuid = c[B.id] || ""
         }
-        a.info("Updated manual screens: " + qVo(a.screens))
+        e.info("Updated manual screens: " + EJe(e.screens))
     }
-      , Tqo = function(a) {
-        Z5f(a);
-        a.L = new ri(a.J);
-        a.L.subscribe("screenChange", (0,
-        g.e8)(a.vaa, a));
-        xNo(a);
-        a.C || (a.B = HdI(g.EV("yt-remote-automatic-screen-cache") || []));
-        Z5f(a);
-        a.info("Initializing automatic screens: " + qVo(a.B));
-        a.V = new aM8(a.J,(0,
-        g.e8)(a.m$, a, !0));
-        a.V.subscribe("screenChange", (0,
-        g.e8)(function() {
+      , lQh = function(e) {
+        XKN(e);
+        e.K = new rt(e.G);
+        e.K.subscribe("screenChange", (0,
+        g.RL)(e.yU, e));
+        EiU(e);
+        e.T || (e.Z = UNh(g.iS("yt-remote-automatic-screen-cache") || []));
+        XKN(e);
+        e.info("Initializing automatic screens: " + EJe(e.Z));
+        e.X = new Z$w(e.G,(0,
+        g.RL)(e.Pc, e, !0));
+        e.X.subscribe("screenChange", (0,
+        g.RL)(function() {
             this.publish("onlineScreenChange")
-        }, a))
+        }, e))
     }
-      , tZ = function(a, I) {
-        var U = a.get(I.id);
-        U ? (U.uuid = I.uuid,
-        I = U) : ((U = qV(a.B, I.uuid)) ? (U.id = I.id,
-        U.token = I.token,
-        I = U) : a.B.push(I),
-        a.C || teo(a));
-        Z5f(a);
-        a.U[I.uuid] = I.id;
-        g.yy("yt-remote-device-id-map", a.U, 31536E3);
-        return I
+      , tC = function(e, L) {
+        var c = e.get(L.id);
+        c ? (c.uuid = L.uuid,
+        L = c) : ((c = uu(e.Z, L.uuid)) ? (c.id = L.id,
+        c.token = L.token,
+        L = c) : e.Z.push(L),
+        e.T || KdN(e));
+        XKN(e);
+        e.B[L.uuid] = L.id;
+        g.bS("yt-remote-device-id-map", e.B, 31536E3);
+        return L
     }
-      , teo = function(a) {
-        a = g.Sa(a.B, function(I) {
-            return I.idType != "shortLived"
+      , KdN = function(e) {
+        e = g.ig(e.Z, function(L) {
+            return L.idType != "shortLived"
         });
-        g.yy("yt-remote-automatic-screen-cache", g.FX(a, CRz))
+        g.bS("yt-remote-automatic-screen-cache", g.Mt(e, gJJ))
     }
-      , Z5f = function(a) {
-        a.U = g.EV("yt-remote-device-id-map") || {}
+      , XKN = function(e) {
+        e.B = g.iS("yt-remote-device-id-map") || {}
     }
-      , nv = function(a, I, U) {
-        g.J_.call(this);
-        this.dw = U;
-        this.J = a;
-        this.L = I;
-        this.V = null
+      , Ob = function(e, L, c) {
+        g.Yg.call(this);
+        this.Ve = c;
+        this.G = e;
+        this.K = L;
+        this.X = null
     }
-      , Kv = function(a, I) {
-        a.V = I;
-        a.publish("sessionScreen", a.V)
+      , qC = function(e, L) {
+        e.X = L;
+        e.publish("sessionScreen", e.X)
     }
-      , nLz = function(a, I) {
-        a.V && (a.V.token = I,
-        tZ(a.J, a.V));
-        a.publish("sessionScreen", a.V)
+      , YLM = function(e, L) {
+        e.X && (e.X.token = L,
+        tC(e.G, e.X));
+        e.publish("sessionScreen", e.X)
     }
-      , bn = function(a, I) {
-        ap(a.dw, I)
+      , Tq = function(e, L) {
+        LD(e.Ve, L)
     }
-      , JZ = function(a, I, U) {
-        nv.call(this, a, I, "CastSession");
-        var e = this;
-        this.config_ = U;
-        this.B = null;
-        this.gw = (0,
-        g.e8)(this.Qc, this);
-        this.tU = (0,
-        g.e8)(this.x2x, this);
-        this.Va = g.Vz(function() {
-            KYI(e, null)
+      , WW = function(e, L, c) {
+        Ob.call(this, e, L, "CastSession");
+        var I = this;
+        this.config_ = c;
+        this.Z = null;
+        this.h7 = (0,
+        g.RL)(this.kS, this);
+        this.k9 = (0,
+        g.RL)(this.GIq, this);
+        this.pS = g.oC(function() {
+            niZ(I, null)
         }, 12E4);
-        this.C = this.U = this.Y = this.D = 0;
-        this.e8 = !1;
-        this.j = "unknown"
+        this.T = this.B = this.j = this.J = 0;
+        this.Gm = !1;
+        this.D = "unknown"
     }
-      , Jkf = function(a, I) {
-        g.M6(a.C);
-        a.C = 0;
-        I == 0 ? b5o(a) : a.C = g.Vz(function() {
-            b5o(a)
-        }, I)
+      , L7w = function(e, L) {
+        g.ra(e.T);
+        e.T = 0;
+        L == 0 ? eqJ(e) : e.T = g.oC(function() {
+            eqJ(e)
+        }, L)
     }
-      , b5o = function(a) {
-        uMo(a, "getLoungeToken");
-        g.M6(a.U);
-        a.U = g.Vz(function() {
-            kt8(a, null)
+      , eqJ = function(e) {
+        cHM(e, "getLoungeToken");
+        g.ra(e.B);
+        e.B = g.oC(function() {
+            IZL(e, null)
         }, 3E4)
     }
-      , uMo = function(a, I) {
-        a.info("sendYoutubeMessage_: " + I + " " + g.m4());
-        var U = {};
-        U.type = I;
-        a.B ? a.B.sendMessage("urn:x-cast:com.google.youtube.mdx", U, function() {}, (0,
-        g.e8)(function() {
-            bn(this, "Failed to send message: " + I + ".")
-        }, a)) : bn(a, "Sending yt message without session: " + g.m4(U))
+      , cHM = function(e, L) {
+        e.info("sendYoutubeMessage_: " + L + " " + g.yH());
+        var c = {};
+        c.type = L;
+        e.Z ? e.Z.sendMessage("urn:x-cast:com.google.youtube.mdx", c, function() {}, (0,
+        g.RL)(function() {
+            Tq(this, "Failed to send message: " + L + ".")
+        }, e)) : Tq(e, "Sending yt message without session: " + g.yH(c))
     }
-      , Vej = function(a, I) {
-        I ? (a.info("onConnectedScreenId_: Received screenId: " + I),
-        a.V && a.V.id == I || a.fZ(I, function(U) {
-            Kv(a, U)
+      , BOM = function(e, L) {
+        L ? (e.info("onConnectedScreenId_: Received screenId: " + L),
+        e.X && e.X.id == L || e.SC(L, function(c) {
+            qC(e, c)
         }, function() {
-            return a.Im()
-        }, 5)) : a.Im(Error("Waiting for session status timed out."))
+            return e.vv()
+        }, 5)) : e.vv(Error("Waiting for session status timed out."))
     }
-      , Me8 = function(a, I, U) {
-        a.info("onConnectedScreenData_: Received screenData: " + JSON.stringify(I));
-        var e = new Cw(I);
-        Ak4(a, e, function(T) {
-            T ? (a.e8 = !0,
-            tZ(a.J, e),
-            Kv(a, e),
-            a.j = "unknown",
-            Jkf(a, U)) : (g.I0(Error("CastSession, RemoteScreen from screenData: " + JSON.stringify(I) + " is not online.")),
-            a.Im())
+      , oRZ = function(e, L, c) {
+        e.info("onConnectedScreenData_: Received screenData: " + JSON.stringify(L));
+        var I = new rX(L);
+        xKJ(e, I, function(B) {
+            B ? (e.Gm = !0,
+            tC(e.G, I),
+            qC(e, I),
+            e.D = "unknown",
+            L7w(e, c)) : (g.jM(Error("CastSession, RemoteScreen from screenData: " + JSON.stringify(L) + " is not online.")),
+            e.vv())
         }, 5)
     }
-      , KYI = function(a, I) {
-        g.M6(a.Va);
-        a.Va = 0;
-        I ? a.config_.enableCastLoungeToken && I.loungeToken ? I.deviceId ? a.V && a.V.uuid == I.deviceId || (I.loungeTokenRefreshIntervalMs ? Me8(a, {
-            name: a.L.friendlyName,
-            screenId: I.screenId,
-            loungeToken: I.loungeToken,
-            dialId: I.deviceId,
+      , niZ = function(e, L) {
+        g.ra(e.pS);
+        e.pS = 0;
+        L ? e.config_.enableCastLoungeToken && L.loungeToken ? L.deviceId ? e.X && e.X.uuid == L.deviceId || (L.loungeTokenRefreshIntervalMs ? oRZ(e, {
+            name: e.K.friendlyName,
+            screenId: L.screenId,
+            loungeToken: L.loungeToken,
+            dialId: L.deviceId,
             screenIdType: "shortLived"
-        }, I.loungeTokenRefreshIntervalMs) : (g.I0(Error("No loungeTokenRefreshIntervalMs presents in mdxSessionStatusData: " + JSON.stringify(I) + ".")),
-        Vej(a, I.screenId))) : (g.I0(Error("No device id presents in mdxSessionStatusData: " + JSON.stringify(I) + ".")),
-        Vej(a, I.screenId)) : Vej(a, I.screenId) : a.Im(Error("Waiting for session status timed out."))
+        }, L.loungeTokenRefreshIntervalMs) : (g.jM(Error("No loungeTokenRefreshIntervalMs presents in mdxSessionStatusData: " + JSON.stringify(L) + ".")),
+        BOM(e, L.screenId))) : (g.jM(Error("No device id presents in mdxSessionStatusData: " + JSON.stringify(L) + ".")),
+        BOM(e, L.screenId)) : BOM(e, L.screenId) : e.vv(Error("Waiting for session status timed out."))
     }
-      , kt8 = function(a, I) {
-        g.M6(a.U);
-        a.U = 0;
-        var U = null;
-        if (I)
-            if (I.loungeToken) {
-                var e;
-                ((e = a.V) == null ? void 0 : e.token) == I.loungeToken && (U = "staleLoungeToken")
+      , IZL = function(e, L) {
+        g.ra(e.B);
+        e.B = 0;
+        var c = null;
+        if (L)
+            if (L.loungeToken) {
+                var I;
+                ((I = e.X) == null ? void 0 : I.token) == L.loungeToken && (c = "staleLoungeToken")
             } else
-                U = "missingLoungeToken";
+                c = "missingLoungeToken";
         else
-            U = "noLoungeTokenResponse";
-        U ? (a.info("Did not receive a new lounge token in onLoungeToken_ with data: " + (JSON.stringify(I) + ", error: " + U)),
-        a.j = U,
-        Jkf(a, 3E4)) : (nLz(a, I.loungeToken),
-        a.e8 = !1,
-        a.j = "unknown",
-        Jkf(a, I.loungeTokenRefreshIntervalMs))
+            c = "noLoungeTokenResponse";
+        c ? (e.info("Did not receive a new lounge token in onLoungeToken_ with data: " + (JSON.stringify(L) + ", error: " + c)),
+        e.D = c,
+        L7w(e, 3E4)) : (YLM(e, L.loungeToken),
+        e.Gm = !1,
+        e.D = "unknown",
+        L7w(e, L.loungeTokenRefreshIntervalMs))
     }
-      , Ak4 = function(a, I, U, e) {
-        g.M6(a.Y);
-        a.Y = 0;
-        qPd(a.J, I, function(T) {
-            T || e < 0 ? U(T) : a.Y = g.Vz(function() {
-                Ak4(a, I, U, e - 1)
+      , xKJ = function(e, L, c, I) {
+        g.ra(e.j);
+        e.j = 0;
+        UOw(e.G, L, function(B) {
+            B || I < 0 ? c(B) : e.j = g.oC(function() {
+                xKJ(e, L, c, I - 1)
             }, 300)
         })
     }
-      , jbJ = function(a) {
-        g.M6(a.D);
-        a.D = 0;
-        g.M6(a.Y);
-        a.Y = 0;
-        g.M6(a.Va);
-        a.Va = 0;
-        g.M6(a.U);
-        a.U = 0;
-        g.M6(a.C);
-        a.C = 0
+      , Sxg = function(e) {
+        g.ra(e.J);
+        e.J = 0;
+        g.ra(e.j);
+        e.j = 0;
+        g.ra(e.pS);
+        e.pS = 0;
+        g.ra(e.B);
+        e.B = 0;
+        g.ra(e.T);
+        e.T = 0
     }
-      , un = function(a, I, U, e) {
-        nv.call(this, a, I, "DialSession");
-        this.config_ = e;
-        this.B = this.D = null;
-        this.tU = "";
-        this.CO = U;
-        this.zt = null;
-        this.Va = function() {}
+      , MC = function(e, L, c, I) {
+        Ob.call(this, e, L, "DialSession");
+        this.config_ = I;
+        this.Z = this.J = null;
+        this.k9 = "";
+        this.t7 = c;
+        this.Y9 = null;
+        this.pS = function() {}
         ;
-        this.j = NaN;
-        this.Ux = (0,
-        g.e8)(this.fV, this);
-        this.U = function() {}
+        this.D = NaN;
+        this.ye = (0,
+        g.RL)(this.jh, this);
+        this.B = function() {}
         ;
-        this.C = this.Y = 0;
-        this.gw = !1;
-        this.e8 = "unknown"
+        this.T = this.j = 0;
+        this.h7 = !1;
+        this.Gm = "unknown"
     }
-      , ky = function(a) {
-        var I;
-        return !!(a.config_.enableDialLoungeToken && ((I = a.B) == null ? 0 : I.getDialAppInfo))
+      , zq = function(e) {
+        var L;
+        return !!(e.config_.enableDialLoungeToken && ((L = e.Z) == null ? 0 : L.getDialAppInfo))
     }
-      , $NG = function(a) {
-        a.U = a.J.s8(a.tU, a.L.label, a.L.friendlyName, ky(a), function(I, U) {
-            a.U = function() {}
+      , rHw = function(e) {
+        e.B = e.G.Cr(e.k9, e.K.label, e.K.friendlyName, zq(e), function(L, c) {
+            e.B = function() {}
             ;
-            a.gw = !0;
-            Kv(a, I);
-            I.idType == "shortLived" && U > 0 && Vm(a, U)
-        }, function(I) {
-            a.U = function() {}
+            e.h7 = !0;
+            qC(e, L);
+            L.idType == "shortLived" && c > 0 && sb(e, c)
+        }, function(L) {
+            e.B = function() {}
             ;
-            a.Im(I)
+            e.vv(L)
         })
     }
-      , i5Q = function(a) {
-        var I = {};
-        I.pairingCode = a.tU;
-        I.theme = a.CO;
-        $t4() && (I.env_useStageMdx = 1);
-        return g.PY(I)
+      , hqh = function(e) {
+        var L = {};
+        L.pairingCode = e.k9;
+        L.theme = e.t7;
+        hI7() && (L.env_useStageMdx = 1);
+        return g.TE(L)
     }
-      , LYJ = function(a) {
-        return new Promise(function(I) {
-            a.tU = xt4();
-            if (a.zt) {
-                var U = new chrome.cast.DialLaunchResponse(!0,i5Q(a));
-                I(U);
-                $NG(a)
+      , RqN = function(e) {
+        return new Promise(function(L) {
+            e.k9 = XuM();
+            if (e.Y9) {
+                var c = new chrome.cast.DialLaunchResponse(!0,hqh(e));
+                L(c);
+                rHw(e)
             } else
-                a.Va = function() {
-                    g.M6(a.j);
-                    a.Va = function() {}
+                e.pS = function() {
+                    g.ra(e.D);
+                    e.pS = function() {}
                     ;
-                    a.j = NaN;
-                    var e = new chrome.cast.DialLaunchResponse(!0,i5Q(a));
-                    I(e);
-                    $NG(a)
+                    e.D = NaN;
+                    var I = new chrome.cast.DialLaunchResponse(!0,hqh(e));
+                    L(I);
+                    rHw(e)
                 }
                 ,
-                a.j = g.Vz(function() {
-                    a.Va()
+                e.D = g.oC(function() {
+                    e.pS()
                 }, 100)
         }
         )
     }
-      , ckG = function(a, I, U) {
-        a.info("initOnConnectedScreenDataPromise_: Received screenData: " + JSON.stringify(I));
-        var e = new Cw(I);
-        return (new Promise(function(T) {
-            gLo(a, e, function(C) {
-                C ? (a.gw = !0,
-                tZ(a.J, e),
-                Kv(a, e),
-                Vm(a, U)) : g.I0(Error("DialSession, RemoteScreen from screenData: " + JSON.stringify(I) + " is not online."));
-                T(C)
+      , t4e = function(e, L, c) {
+        e.info("initOnConnectedScreenDataPromise_: Received screenData: " + JSON.stringify(L));
+        var I = new rX(L);
+        return (new Promise(function(B) {
+            ukh(e, I, function(x) {
+                x ? (e.h7 = !0,
+                tC(e.G, I),
+                qC(e, I),
+                sb(e, c)) : g.jM(Error("DialSession, RemoteScreen from screenData: " + JSON.stringify(L) + " is not online."));
+                B(x)
             }, 5)
         }
-        )).then(function(T) {
-            return T ? new chrome.cast.DialLaunchResponse(!1) : LYJ(a)
+        )).then(function(B) {
+            return B ? new chrome.cast.DialLaunchResponse(!1) : RqN(e)
         })
     }
-      , WYQ = function(a, I) {
-        var U = a.D.receiver.label
-          , e = a.L.friendlyName;
-        return (new Promise(function(T) {
-            rkG(a.J, U, I, e, function(C) {
-                C && C.token && Kv(a, C);
-                T(C)
-            }, function(C) {
-                bn(a, "Failed to get DIAL screen: " + C);
-                T(null)
+      , OFL = function(e, L) {
+        var c = e.J.receiver.label
+          , I = e.K.friendlyName;
+        return (new Promise(function(B) {
+            QMe(e.G, c, L, I, function(x) {
+                x && x.token && qC(e, x);
+                B(x)
+            }, function(x) {
+                Tq(e, "Failed to get DIAL screen: " + x);
+                B(null)
             })
         }
-        )).then(function(T) {
-            return T && T.token ? new chrome.cast.DialLaunchResponse(!1) : LYJ(a)
+        )).then(function(B) {
+            return B && B.token ? new chrome.cast.DialLaunchResponse(!1) : RqN(e)
         })
     }
-      , gLo = function(a, I, U, e) {
-        g.M6(a.Y);
-        a.Y = 0;
-        qPd(a.J, I, function(T) {
-            T || e < 0 ? U(T) : a.Y = g.Vz(function() {
-                gLo(a, I, U, e - 1)
+      , ukh = function(e, L, c, I) {
+        g.ra(e.j);
+        e.j = 0;
+        UOw(e.G, L, function(B) {
+            B || I < 0 ? c(B) : e.j = g.oC(function() {
+                ukh(e, L, c, I - 1)
             }, 300)
         })
     }
-      , Vm = function(a, I) {
-        a.info("getDialAppInfoWithTimeout_ " + I);
-        ky(a) && (g.M6(a.C),
-        a.C = 0,
-        I == 0 ? lM8(a) : a.C = g.Vz(function() {
-            lM8(a)
-        }, I))
+      , sb = function(e, L) {
+        e.info("getDialAppInfoWithTimeout_ " + L);
+        zq(e) && (g.ra(e.T),
+        e.T = 0,
+        L == 0 ? qxh(e) : e.T = g.oC(function() {
+            qxh(e)
+        }, L))
     }
-      , lM8 = function(a) {
-        ky(a) && a.B.getDialAppInfo(function(I) {
-            a.info("getDialAppInfo dialLaunchData: " + JSON.stringify(I));
-            I = I.extraData || {};
-            var U = null;
-            if (I.loungeToken) {
-                var e;
-                ((e = a.V) == null ? void 0 : e.token) == I.loungeToken && (U = "staleLoungeToken")
+      , qxh = function(e) {
+        zq(e) && e.Z.getDialAppInfo(function(L) {
+            e.info("getDialAppInfo dialLaunchData: " + JSON.stringify(L));
+            L = L.extraData || {};
+            var c = null;
+            if (L.loungeToken) {
+                var I;
+                ((I = e.X) == null ? void 0 : I.token) == L.loungeToken && (c = "staleLoungeToken")
             } else
-                U = "missingLoungeToken";
-            U ? (a.e8 = U,
-            Vm(a, 3E4)) : (a.gw = !1,
-            a.e8 = "unknown",
-            nLz(a, I.loungeToken),
-            Vm(a, I.loungeTokenRefreshIntervalMs))
-        }, function(I) {
-            a.info("getDialAppInfo error: " + I);
-            a.e8 = "noLoungeTokenResponse";
-            Vm(a, 3E4)
+                c = "missingLoungeToken";
+            c ? (e.Gm = c,
+            sb(e, 3E4)) : (e.h7 = !1,
+            e.Gm = "unknown",
+            YLM(e, L.loungeToken),
+            sb(e, L.loungeTokenRefreshIntervalMs))
+        }, function(L) {
+            e.info("getDialAppInfo error: " + L);
+            e.Gm = "noLoungeTokenResponse";
+            sb(e, 3E4)
         })
     }
-      , Bqd = function(a) {
-        g.M6(a.Y);
-        a.Y = 0;
-        g.M6(a.C);
-        a.C = 0;
-        a.U();
-        a.U = function() {}
+      , TO9 = function(e) {
+        g.ra(e.j);
+        e.j = 0;
+        g.ra(e.T);
+        e.T = 0;
+        e.B();
+        e.B = function() {}
         ;
-        g.M6(a.j)
+        g.ra(e.D)
     }
-      , AZ = function(a, I) {
-        nv.call(this, a, I, "ManualSession");
-        this.B = g.Vz((0,
-        g.e8)(this.hJ, this, null), 150)
+      , vW = function(e, L) {
+        Ob.call(this, e, L, "ManualSession");
+        this.Z = g.oC((0,
+        g.RL)(this.uJ, this, null), 150)
     }
-      , Mi = function(a, I) {
-        g.J_.call(this);
-        this.config_ = I;
-        this.L = a;
-        this.D = I.appId || "233637DE";
-        this.J = I.theme || "cl";
-        this.j = I.disableCastApi || !1;
-        this.Y = I.forceMirroring || !1;
-        this.V = null;
-        this.C = !1;
-        this.B = [];
-        this.U = (0,
-        g.e8)(this.jss, this)
+      , fD = function(e, L) {
+        g.Yg.call(this);
+        this.config_ = L;
+        this.K = e;
+        this.J = L.appId || "233637DE";
+        this.G = L.theme || "cl";
+        this.D = L.disableCastApi || !1;
+        this.j = L.forceMirroring || !1;
+        this.X = null;
+        this.T = !1;
+        this.Z = [];
+        this.B = (0,
+        g.RL)(this.Ipq, this)
     }
-      , XG8 = function(a, I) {
-        return I ? g.Jz(a.B, function(U) {
-            return ro(I, U.label)
-        }, a) : null
+      , W7e = function(e, L) {
+        return L ? g.vU(e.Z, function(c) {
+            return hd(L, c.label)
+        }, e) : null
     }
-      , js = function(a) {
-        ap("Controller", a)
+      , AC = function(e) {
+        LD("Controller", e)
     }
-      , Edz = function(a) {
-        window.chrome && chrome.cast && chrome.cast.logMessage && chrome.cast.logMessage(a)
+      , i$N = function(e) {
+        window.chrome && chrome.cast && chrome.cast.logMessage && chrome.cast.logMessage(e)
     }
-      , $y = function(a) {
-        return a.C || !!a.B.length || !!a.V
+      , Fp = function(e) {
+        return e.T || !!e.Z.length || !!e.X
     }
-      , Lv = function(a, I, U) {
-        I != a.V && (g.Kf(a.V),
-        (a.V = I) ? (U ? a.publish("yt-remote-cast2-receiver-resumed", I.L) : a.publish("yt-remote-cast2-receiver-selected", I.L),
-        I.subscribe("sessionScreen", (0,
-        g.e8)(a.rW, a, I)),
-        I.subscribe("sessionFailed", function() {
-            return PiD(a, I)
+      , b0 = function(e, L, c) {
+        L != e.X && (g.L0(e.X),
+        (e.X = L) ? (c ? e.publish("yt-remote-cast2-receiver-resumed", L.K) : e.publish("yt-remote-cast2-receiver-selected", L.K),
+        L.subscribe("sessionScreen", (0,
+        g.RL)(e.MB, e, L)),
+        L.subscribe("sessionFailed", function() {
+            return M4N(e, L)
         }),
-        I.V ? a.publish("yt-remote-cast2-session-change", I.V) : U && a.V.hJ(null)) : a.publish("yt-remote-cast2-session-change", null))
+        L.X ? e.publish("yt-remote-cast2-session-change", L.X) : c && e.X.uJ(null)) : e.publish("yt-remote-cast2-session-change", null))
     }
-      , PiD = function(a, I) {
-        a.V == I && a.publish("yt-remote-cast2-session-failed")
+      , M4N = function(e, L) {
+        e.X == L && e.publish("yt-remote-cast2-session-failed")
     }
-      , pGD = function(a) {
-        var I = a.L.iX()
-          , U = a.V && a.V.L;
-        a = g.FX(I, function(e) {
-            U && ro(e, U.label) && (U = null);
-            var T = e.uuid ? e.uuid : e.id
-              , C = XG8(this, e);
-            C ? (C.label = T,
-            C.friendlyName = e.name) : (C = new chrome.cast.Receiver(T,e.name),
-            C.receiverType = chrome.cast.ReceiverType.CUSTOM);
-            return C
-        }, a);
-        U && (U.receiverType != chrome.cast.ReceiverType.CUSTOM && (U = new chrome.cast.Receiver(U.label,U.friendlyName),
-        U.receiverType = chrome.cast.ReceiverType.CUSTOM),
-        a.push(U));
-        return a
+      , zq9 = function(e) {
+        var L = e.K.PS()
+          , c = e.X && e.X.K;
+        e = g.Mt(L, function(I) {
+            c && hd(I, c.label) && (c = null);
+            var B = I.uuid ? I.uuid : I.id
+              , x = W7e(this, I);
+            x ? (x.label = B,
+            x.friendlyName = I.name) : (x = new chrome.cast.Receiver(B,I.name),
+            x.receiverType = chrome.cast.ReceiverType.CUSTOM);
+            return x
+        }, e);
+        c && (c.receiverType != chrome.cast.ReceiverType.CUSTOM && (c = new chrome.cast.Receiver(c.label,c.friendlyName),
+        c.receiverType = chrome.cast.ReceiverType.CUSTOM),
+        e.push(c));
+        return e
     }
-      , ELQ = function(a, I, U, e) {
-        e.disableCastApi ? gi("Cannot initialize because disabled by Mdx config.") : fMD() ? YP4(I, e) && (O5o(!0),
-        window.chrome && chrome.cast && chrome.cast.isAvailable ? SP4(a, U) : (window.__onGCastApiAvailable = function(T, C) {
-            T ? SP4(a, U) : (cu("Failed to load cast API: " + C),
-            Gtd(!1),
-            O5o(!1),
-            g.da("yt-remote-cast-available"),
-            g.da("yt-remote-cast-receiver"),
-            ykd(),
-            U(!1))
+      , iFe = function(e, L, c, I) {
+        I.disableCastApi ? i0("Cannot initialize because disabled by Mdx config.") : sfN() ? vR9(L, I) && (fZL(!0),
+        window.chrome && chrome.cast && chrome.cast.isAvailable ? AHN(e, c) : (window.__onGCastApiAvailable = function(B, x) {
+            B ? AHN(e, c) : (Gq("Failed to load cast API: " + x),
+            F7g(!1),
+            fZL(!1),
+            g.Gx("yt-remote-cast-available"),
+            g.Gx("yt-remote-cast-receiver"),
+            bFM(),
+            c(!1))
         }
         ,
-        e.loadCastApiSetupScript ? g.K5("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js") : window.navigator.userAgent.indexOf("Android") >= 0 && window.navigator.userAgent.indexOf("Chrome/") >= 0 && window.navigator.presentation ? L0z() >= 60 && f9z() : !window.chrome || !window.navigator.presentation || window.navigator.userAgent.indexOf("Edge") >= 0 ? l9d() : L0z() >= 89 ? OdD() : (pkQ(),
-        Ji(YVz.map(Bad))))) : gi("Cannot initialize because not running Chrome")
+        I.loadCastApiSetupScript ? g.Ex("https://www.gstatic.com/cv/js/sender/v1/cast_sender.js") : window.navigator.userAgent.indexOf("Android") >= 0 && window.navigator.userAgent.indexOf("Chrome/") >= 0 && window.navigator.presentation ? u1M() >= 60 && vaN() : !window.chrome || !window.navigator.presentation || window.navigator.userAgent.indexOf("Edge") >= 0 ? Ta7() : u1M() >= 89 ? AFU() : (sCh(),
+        zS(fMJ.map(W29))))) : i0("Cannot initialize because not running Chrome")
     }
-      , ykd = function() {
-        gi("dispose");
-        var a = Wu();
-        a && a.dispose();
-        g.hj("yt.mdx.remote.cloudview.instance_", null);
-        dNQ(!1);
-        g.tk(RTQ);
-        RTQ.length = 0
+      , bFM = function() {
+        i0("dispose");
+        var e = gt();
+        e && e.dispose();
+        g.IL("yt.mdx.remote.cloudview.instance_", null);
+        GWL(!1);
+        g.dO(gRL);
+        gRL.length = 0
     }
-      , ln = function() {
-        return !!g.EV("yt-remote-cast-installed")
+      , kG = function() {
+        return !!g.iS("yt-remote-cast-installed")
     }
-      , wGD = function() {
-        var a = g.EV("yt-remote-cast-receiver");
-        return a ? a.friendlyName : null
+      , kWJ = function() {
+        var e = g.iS("yt-remote-cast-receiver");
+        return e ? e.friendlyName : null
     }
-      , FYf = function() {
-        gi("clearCurrentReceiver");
-        g.da("yt-remote-cast-receiver")
+      , DKM = function() {
+        i0("clearCurrentReceiver");
+        g.Gx("yt-remote-cast-receiver")
     }
-      , mNd = function() {
-        return ln() ? Wu() ? Wu().getCastSession() : (cu("getCastSelector: Cast is not initialized."),
-        null) : (cu("getCastSelector: Cast API is not installed!"),
+      , w4M = function() {
+        return kG() ? gt() ? gt().getCastSession() : (Gq("getCastSelector: Cast is not initialized."),
+        null) : (Gq("getCastSelector: Cast API is not installed!"),
         null)
     }
-      , Qbj = function() {
-        ln() ? Wu() ? Bu() ? (gi("Requesting cast selector."),
-        Wu().requestSession()) : (gi("Wait for cast API to be ready to request the session."),
-        RTQ.push(g.ZM("yt-remote-cast2-api-ready", Qbj))) : cu("requestCastSelector: Cast is not initialized.") : cu("requestCastSelector: Cast API is not installed!")
+      , JHM = function() {
+        kG() ? gt() ? Dv() ? (i0("Requesting cast selector."),
+        gt().requestSession()) : (i0("Wait for cast API to be ready to request the session."),
+        gRL.push(g.Qo("yt-remote-cast2-api-ready", JHM))) : Gq("requestCastSelector: Cast is not initialized.") : Gq("requestCastSelector: Cast API is not installed!")
     }
-      , XC = function(a, I) {
-        Bu() ? Wu().setConnectedScreenStatus(a, I) : cu("setConnectedScreenStatus called before ready.")
+      , wt = function(e, L) {
+        Dv() ? gt().setConnectedScreenStatus(e, L) : Gq("setConnectedScreenStatus called before ready.")
     }
-      , fMD = function() {
-        var a = g.gO().search(/ (CrMo|Chrome|CriOS)\//) >= 0;
-        return g.GK || a
+      , sfN = function() {
+        var e = g.yc().search(/ (CrMo|Chrome|CriOS)\//) >= 0;
+        return g.q8 || e
     }
-      , zTG = function(a, I) {
-        Wu().init(a, I)
+      , V4g = function(e, L) {
+        gt().init(e, L)
     }
-      , YP4 = function(a, I) {
-        var U = !1;
-        Wu() || (a = new Mi(a,I),
-        a.subscribe("yt-remote-cast2-availability-change", function(e) {
-            g.yy("yt-remote-cast-available", e);
-            Kw("yt-remote-cast2-availability-change", e)
+      , vR9 = function(e, L) {
+        var c = !1;
+        gt() || (e = new fD(e,L),
+        e.subscribe("yt-remote-cast2-availability-change", function(I) {
+            g.bS("yt-remote-cast-available", I);
+            Wp("yt-remote-cast2-availability-change", I)
         }),
-        a.subscribe("yt-remote-cast2-receiver-selected", function(e) {
-            gi("onReceiverSelected: " + e.friendlyName);
-            g.yy("yt-remote-cast-receiver", e);
-            Kw("yt-remote-cast2-receiver-selected", e)
+        e.subscribe("yt-remote-cast2-receiver-selected", function(I) {
+            i0("onReceiverSelected: " + I.friendlyName);
+            g.bS("yt-remote-cast-receiver", I);
+            Wp("yt-remote-cast2-receiver-selected", I)
         }),
-        a.subscribe("yt-remote-cast2-receiver-resumed", function(e) {
-            gi("onReceiverResumed: " + e.friendlyName);
-            g.yy("yt-remote-cast-receiver", e);
-            Kw("yt-remote-cast2-receiver-resumed", e)
+        e.subscribe("yt-remote-cast2-receiver-resumed", function(I) {
+            i0("onReceiverResumed: " + I.friendlyName);
+            g.bS("yt-remote-cast-receiver", I);
+            Wp("yt-remote-cast2-receiver-resumed", I)
         }),
-        a.subscribe("yt-remote-cast2-session-change", function(e) {
-            gi("onSessionChange: " + HH(e));
-            e || g.da("yt-remote-cast-receiver");
-            Kw("yt-remote-cast2-session-change", e)
+        e.subscribe("yt-remote-cast2-session-change", function(I) {
+            i0("onSessionChange: " + Rt(I));
+            I || g.Gx("yt-remote-cast-receiver");
+            Wp("yt-remote-cast2-session-change", I)
         }),
-        g.hj("yt.mdx.remote.cloudview.instance_", a),
-        U = !0);
-        gi("cloudview.createSingleton_: " + U);
-        return U
+        g.IL("yt.mdx.remote.cloudview.instance_", e),
+        c = !0);
+        i0("cloudview.createSingleton_: " + c);
+        return c
     }
-      , Wu = function() {
-        return g.NL("yt.mdx.remote.cloudview.instance_")
+      , gt = function() {
+        return g.BU("yt.mdx.remote.cloudview.instance_")
     }
-      , SP4 = function(a, I) {
-        Gtd(!0);
-        O5o(!1);
-        zTG(a, function(U) {
-            U ? (dNQ(!0),
-            g.n5("yt-remote-cast2-api-ready")) : (cu("Failed to initialize cast API."),
-            Gtd(!1),
-            g.da("yt-remote-cast-available"),
-            g.da("yt-remote-cast-receiver"),
-            ykd());
-            I(U)
+      , AHN = function(e, L) {
+        F7g(!0);
+        fZL(!1);
+        V4g(e, function(c) {
+            c ? (GWL(!0),
+            g.Ux("yt-remote-cast2-api-ready")) : (Gq("Failed to initialize cast API."),
+            F7g(!1),
+            g.Gx("yt-remote-cast-available"),
+            g.Gx("yt-remote-cast-receiver"),
+            bFM());
+            L(c)
         })
     }
-      , gi = function(a) {
-        ap("cloudview", a)
+      , i0 = function(e) {
+        LD("cloudview", e)
     }
-      , cu = function(a) {
-        ap("cloudview", a)
+      , Gq = function(e) {
+        LD("cloudview", e)
     }
-      , Gtd = function(a) {
-        gi("setCastInstalled_ " + a);
-        g.yy("yt-remote-cast-installed", a)
+      , F7g = function(e) {
+        i0("setCastInstalled_ " + e);
+        g.bS("yt-remote-cast-installed", e)
     }
-      , Bu = function() {
-        return !!g.NL("yt.mdx.remote.cloudview.apiReady_")
+      , Dv = function() {
+        return !!g.BU("yt.mdx.remote.cloudview.apiReady_")
     }
-      , dNQ = function(a) {
-        gi("setApiReady_ " + a);
-        g.hj("yt.mdx.remote.cloudview.apiReady_", a)
+      , GWL = function(e) {
+        i0("setApiReady_ " + e);
+        g.IL("yt.mdx.remote.cloudview.apiReady_", e)
     }
-      , O5o = function(a) {
-        g.hj("yt.mdx.remote.cloudview.initializing_", a)
+      , fZL = function(e) {
+        g.IL("yt.mdx.remote.cloudview.initializing_", e)
     }
-      , Pu = function(a) {
+      , JC = function(e) {
         this.index = -1;
         this.videoId = this.listId = "";
         this.volume = this.playerState = -1;
         this.muted = !1;
         this.audioTrackId = null;
-        this.Y = this.C = 0;
+        this.B = this.j = 0;
         this.trackData = null;
-        this.n1 = this.Mk = !1;
-        this.D = this.U = this.V = this.J = 0;
-        this.B = NaN;
-        this.L = !1;
-        this.reset(a)
+        this.g$ = this.r9 = !1;
+        this.J = this.Z = this.T = this.K = 0;
+        this.X = NaN;
+        this.G = !1;
+        this.reset(e)
     }
-      , hTz = function(a) {
-        a.audioTrackId = null;
-        a.trackData = null;
-        a.playerState = -1;
-        a.Mk = !1;
-        a.n1 = !1;
-        a.C = 0;
-        a.Y = g.rd();
-        a.J = 0;
-        a.V = 0;
-        a.U = 0;
-        a.D = 0;
-        a.B = NaN;
-        a.L = !1
+      , CM7 = function(e) {
+        e.audioTrackId = null;
+        e.trackData = null;
+        e.playerState = -1;
+        e.r9 = !1;
+        e.g$ = !1;
+        e.j = 0;
+        e.B = g.O9();
+        e.K = 0;
+        e.T = 0;
+        e.Z = 0;
+        e.J = 0;
+        e.X = NaN;
+        e.G = !1
     }
-      , pv = function(a) {
-        return a.isPlaying() ? (g.rd() - a.Y) / 1E3 : 0
+      , V$ = function(e) {
+        return e.isPlaying() ? (g.O9() - e.B) / 1E3 : 0
     }
-      , fv = function(a, I) {
-        a.C = I;
-        a.Y = g.rd()
+      , CD = function(e, L) {
+        e.j = L;
+        e.B = g.O9()
     }
-      , Yy = function(a) {
-        switch (a.playerState) {
+      , ae = function(e) {
+        switch (e.playerState) {
         case 1:
         case 1081:
-            return (g.rd() - a.Y) / 1E3 + a.C;
+            return (g.O9() - e.B) / 1E3 + e.j;
         case -1E3:
             return 0
         }
-        return a.C
+        return e.j
     }
-      , O1 = function(a, I, U) {
-        var e = a.videoId;
-        a.videoId = I;
-        a.index = U;
-        I != e && hTz(a)
+      , aZ7 = function(e) {
+        return e.G ? e.T + V$(e) : e.T
     }
-      , Nqf = function(a) {
-        var I = {};
-        I.index = a.index;
-        I.listId = a.listId;
-        I.videoId = a.videoId;
-        I.playerState = a.playerState;
-        I.volume = a.volume;
-        I.muted = a.muted;
-        I.audioTrackId = a.audioTrackId;
-        I.trackData = g.UG(a.trackData);
-        I.hasPrevious = a.Mk;
-        I.hasNext = a.n1;
-        I.playerTime = a.C;
-        I.playerTimeAt = a.Y;
-        I.seekableStart = a.J;
-        I.seekableEnd = a.V;
-        I.duration = a.U;
-        I.loadedTime = a.D;
-        I.liveIngestionTime = a.B;
-        return I
+      , NC = function(e, L, c) {
+        var I = e.videoId;
+        e.videoId = L;
+        e.index = c;
+        L != I && CM7(e)
     }
-      , GO = function(a, I) {
-        g.J_.call(this);
-        var U = this;
-        this.B = 0;
-        this.J = a;
-        this.Y = [];
-        this.U = new udo;
-        this.L = this.V = null;
-        this.j = (0,
-        g.e8)(this.KnO, this);
-        this.C = (0,
-        g.e8)(this.lO, this);
+      , NON = function(e) {
+        var L = {};
+        L.index = e.index;
+        L.listId = e.listId;
+        L.videoId = e.videoId;
+        L.playerState = e.playerState;
+        L.volume = e.volume;
+        L.muted = e.muted;
+        L.audioTrackId = e.audioTrackId;
+        L.trackData = g.zG(e.trackData);
+        L.hasPrevious = e.r9;
+        L.hasNext = e.g$;
+        L.playerTime = e.j;
+        L.playerTimeAt = e.B;
+        L.seekableStart = e.K;
+        L.seekableEnd = e.T;
+        L.duration = e.Z;
+        L.loadedTime = e.J;
+        L.liveIngestionTime = e.X;
+        return L
+    }
+      , y$ = function(e, L) {
+        g.Yg.call(this);
+        var c = this;
+        this.Z = 0;
+        this.G = e;
+        this.j = [];
+        this.B = new cgh;
+        this.K = this.X = null;
         this.D = (0,
-        g.e8)(this.tMX, this);
-        this.Va = (0,
-        g.e8)(this.oYm, this);
-        var e = 0;
-        a ? (e = a.getProxyState(),
-        e != 3 && (a.subscribe("proxyStateChange", this.iM, this),
-        oLf(this))) : e = 3;
-        e != 0 && (I ? this.iM(e) : g.Vz(function() {
-            U.iM(e)
+        g.RL)(this.o9e, this);
+        this.T = (0,
+        g.RL)(this.oN, this);
+        this.J = (0,
+        g.RL)(this.wel, this);
+        this.pS = (0,
+        g.RL)(this.Pde, this);
+        var I = 0;
+        e ? (I = e.getProxyState(),
+        I != 3 && (e.subscribe("proxyStateChange", this.T3, this),
+        mKe(this))) : I = 3;
+        I != 0 && (L ? this.T3(I) : g.oC(function() {
+            c.T3(I)
         }, 0));
-        (a = mNd()) && Ss(this, a);
-        this.subscribe("yt-remote-cast2-session-change", this.Va)
+        (e = w4M()) && mz(this, e);
+        this.subscribe("yt-remote-cast2-session-change", this.pS)
     }
-      , ym = function(a) {
-        return new Pu(a.J.getPlayerContextData())
+      , Zv = function(e) {
+        return new JC(e.G.getPlayerContextData())
     }
-      , oLf = function(a) {
-        g.Gm("nowAutoplaying autoplayDismissed remotePlayerChange remoteQueueChange autoplayModeChange autoplayUpNext previousNextChange multiStateLoopEnabled loopModeChange".split(" "), function(I) {
-            this.Y.push(this.J.subscribe(I, g.Co(this.lcw, I), this))
-        }, a)
+      , mKe = function(e) {
+        g.KZ("nowAutoplaying autoplayDismissed remotePlayerChange remoteQueueChange autoplayModeChange autoplayUpNext previousNextChange multiStateLoopEnabled loopModeChange".split(" "), function(L) {
+            this.j.push(this.G.subscribe(L, g.u7(this.GyS, L), this))
+        }, e)
     }
-      , DND = function(a) {
-        g.Gm(a.Y, function(I) {
-            this.J.unsubscribeByKey(I)
-        }, a);
-        a.Y.length = 0
+      , yHM = function(e) {
+        g.KZ(e.j, function(L) {
+            this.G.unsubscribeByKey(L)
+        }, e);
+        e.j.length = 0
     }
-      , E1 = function(a) {
-        return a.getState() == 1
+      , pD = function(e) {
+        return e.getState() == 1
     }
-      , di = function(a, I) {
-        var U = a.U;
-        U.V.length + U.L.length < 50 && a.U.enqueue(I)
+      , $G = function(e, L) {
+        var c = e.B;
+        c.X.length + c.K.length < 50 && e.B.enqueue(L)
     }
-      , vLz = function(a, I, U) {
-        var e = ym(a);
-        fv(e, U);
-        e.playerState != -1E3 && (e.playerState = I);
-        Rp(a, e)
+      , ZFZ = function(e, L, c) {
+        var I = Zv(e);
+        CD(I, c);
+        I.playerState != -1E3 && (I.playerState = L);
+        jq(e, I)
     }
-      , wi = function(a, I, U) {
-        a.J.sendMessage(I, U)
+      , HW = function(e, L, c) {
+        e.G.sendMessage(L, c)
     }
-      , Rp = function(a, I) {
-        DND(a);
-        a.J.setPlayerContextData(Nqf(I));
-        oLf(a)
+      , jq = function(e, L) {
+        yHM(e);
+        e.G.setPlayerContextData(NON(L));
+        mKe(e)
     }
-      , Ss = function(a, I) {
-        a.L && (a.L.removeUpdateListener(a.j),
-        a.L.removeMediaListener(a.C),
-        a.lO(null));
-        a.L = I;
-        a.L && (Ip("Setting cast session: " + a.L.sessionId),
-        a.L.addUpdateListener(a.j),
-        a.L.addMediaListener(a.C),
-        a.L.media.length && a.lO(a.L.media[0]))
+      , mz = function(e, L) {
+        e.K && (e.K.removeUpdateListener(e.D),
+        e.K.removeMediaListener(e.T),
+        e.oN(null));
+        e.K = L;
+        e.K && (cW("Setting cast session: " + e.K.sessionId),
+        e.K.addUpdateListener(e.D),
+        e.K.addMediaListener(e.T),
+        e.K.media.length && e.oN(e.K.media[0]))
     }
-      , awz = function(a) {
-        var I = a.V.media
-          , U = a.V.customData;
-        if (I && U) {
-            var e = ym(a);
-            I.contentId != e.videoId && Ip("Cast changing video to: " + I.contentId);
-            e.videoId = I.contentId;
-            e.playerState = U.playerState;
-            fv(e, a.V.getEstimatedTime());
-            Rp(a, e)
+      , p4w = function(e) {
+        var L = e.X.media
+          , c = e.X.customData;
+        if (L && c) {
+            var I = Zv(e);
+            L.contentId != I.videoId && cW("Cast changing video to: " + L.contentId);
+            I.videoId = L.contentId;
+            I.playerState = c.playerState;
+            CD(I, e.X.getEstimatedTime());
+            jq(e, I)
         } else
-            Ip("No cast media video. Ignoring state update.")
+            cW("No cast media video. Ignoring state update.")
     }
-      , FC = function(a, I, U) {
+      , l0 = function(e, L, c) {
         return (0,
-        g.e8)(function(e) {
-            this.O1("Failed to " + I + " with cast v2 channel. Error code: " + e.code);
-            e.code != chrome.cast.ErrorCode.TIMEOUT && (this.O1("Retrying " + I + " using MDx browser channel."),
-            wi(this, I, U))
-        }, a)
+        g.RL)(function(I) {
+            this.VZ("Failed to " + L + " with cast v2 channel. Error code: " + I.code);
+            I.code != chrome.cast.ErrorCode.TIMEOUT && (this.VZ("Retrying " + L + " using MDx browser channel."),
+            HW(this, L, c))
+        }, e)
     }
-      , zO = function(a, I, U, e) {
-        e = e === void 0 ? !1 : e;
-        g.J_.call(this);
-        var T = this;
-        this.Y = NaN;
-        this.tU = !1;
-        this.j = this.D = this.gw = this.e8 = NaN;
-        this.Va = [];
-        this.U = this.C = this.J = this.V = this.L = null;
-        this.zt = a;
-        this.Ux = e;
-        this.Va.push(g.Wk(window, "beforeunload", function() {
-            T.VZ(2)
+      , dt = function(e, L, c, I) {
+        I = I === void 0 ? !1 : I;
+        g.Yg.call(this);
+        var B = this;
+        this.j = NaN;
+        this.k9 = !1;
+        this.D = this.J = this.h7 = this.Gm = NaN;
+        this.pS = [];
+        this.B = this.T = this.G = this.X = this.K = null;
+        this.Y9 = e;
+        this.ye = I;
+        this.pS.push(g.qx(window, "beforeunload", function() {
+            B.Bj(2)
         }));
-        this.B = [];
-        this.V = new Pu;
-        this.CO = I.id;
-        this.dw = I.idType;
-        this.L = yPG(this.zt, U, this.Bd, this.dw == "shortLived", this.CO);
-        this.L.listen("channelOpened", function() {
-            IwI(T)
+        this.Z = [];
+        this.X = new JC;
+        this.t7 = L.id;
+        this.Ve = L.idType;
+        this.K = b$L(this.Y9, c, this.Jx, this.Ve == "shortLived", this.t7);
+        this.K.listen("channelOpened", function() {
+            $KN(B)
         });
-        this.L.listen("channelClosed", function() {
-            mE("Channel closed");
-            isNaN(T.Y) ? ti(!0) : ti();
-            T.dispose()
+        this.K.listen("channelClosed", function() {
+            PW("Channel closed");
+            isNaN(B.j) ? qn(!0) : qn();
+            B.dispose()
         });
-        this.L.listen("channelError", function(C) {
-            ti();
-            isNaN(T.P7()) ? (C == 1 && T.dw == "shortLived" && T.publish("browserChannelAuthError", C),
-            mE("Channel error: " + C + " without reconnection"),
-            T.dispose()) : (T.tU = !0,
-            mE("Channel error: " + C + " with reconnection in " + T.P7() + " ms"),
-            Qm(T, 2))
+        this.K.listen("channelError", function(x) {
+            qn();
+            isNaN(B.cY()) ? (x == 1 && B.Ve == "shortLived" && B.publish("browserChannelAuthError", x),
+            PW("Channel error: " + x + " without reconnection"),
+            B.dispose()) : (B.k9 = !0,
+            PW("Channel error: " + x + " with reconnection in " + B.cY() + " ms"),
+            Q$(B, 2))
         });
-        this.L.listen("channelMessage", function(C) {
-            sSj(T, C)
+        this.K.listen("channelMessage", function(x) {
+            jf9(B, x)
         });
-        this.L.VO(I.token);
+        this.K.BH(L.token);
         this.subscribe("remoteQueueChange", function() {
-            var C = T.V.videoId;
-            g.R$() && g.yy("yt-remote-session-video-id", C)
+            var x = B.X.videoId;
+            g.gs() && g.bS("yt-remote-session-video-id", x)
         })
     }
-      , UJd = function(a) {
-        return g.Jz(a.B, function(I) {
-            return I.type == "LOUNGE_SCREEN"
+      , HFU = function(e) {
+        return g.vU(e.Z, function(L) {
+            return L.type == "LOUNGE_SCREEN"
         })
     }
-      , mE = function(a) {
-        ap("conn", a)
+      , PW = function(e) {
+        LD("conn", e)
     }
-      , Qm = function(a, I) {
-        a.publish("proxyStateChange", I)
+      , Q$ = function(e, L) {
+        e.publish("proxyStateChange", L)
     }
-      , enz = function(a) {
-        a.Y = g.Vz(function() {
-            mE("Connecting timeout");
-            a.VZ(1)
+      , lZw = function(e) {
+        e.j = g.oC(function() {
+            PW("Connecting timeout");
+            e.Bj(1)
         }, 2E4)
     }
-      , T1o = function(a) {
-        g.M6(a.Y);
-        a.Y = NaN
+      , PMM = function(e) {
+        g.ra(e.j);
+        e.j = NaN
     }
-      , CfD = function(a) {
-        g.M6(a.e8);
-        a.e8 = NaN
+      , QfJ = function(e) {
+        g.ra(e.Gm);
+        e.Gm = NaN
     }
-      , HFo = function(a) {
-        rEz(a);
-        a.gw = g.Vz(function() {
-            hZ(a, "getNowPlaying")
+      , UK7 = function(e) {
+        dKL(e);
+        e.h7 = g.oC(function() {
+            Ub(e, "getNowPlaying")
         }, 2E4)
     }
-      , rEz = function(a) {
-        g.M6(a.gw);
-        a.gw = NaN
+      , dKL = function(e) {
+        g.ra(e.h7);
+        e.h7 = NaN
     }
-      , IwI = function(a) {
-        mE("Channel opened");
-        a.tU && (a.tU = !1,
-        CfD(a),
-        a.e8 = g.Vz(function() {
-            mE("Timing out waiting for a screen.");
-            a.VZ(1)
+      , $KN = function(e) {
+        PW("Channel opened");
+        e.k9 && (e.k9 = !1,
+        QfJ(e),
+        e.Gm = g.oC(function() {
+            PW("Timing out waiting for a screen.");
+            e.Bj(1)
         }, 15E3))
     }
-      , xJm = function(a, I) {
-        var U = null;
-        if (I) {
-            var e = UJd(a);
-            e && (U = {
-                clientName: e.clientName,
-                deviceMake: e.brand,
-                deviceModel: e.model,
-                osVersion: e.osVersion
+      , X4U = function(e, L) {
+        var c = null;
+        if (L) {
+            var I = HFU(e);
+            I && (c = {
+                clientName: I.clientName,
+                deviceMake: I.brand,
+                deviceModel: I.model,
+                osVersion: I.osVersion
             })
         }
-        g.hj("yt.mdx.remote.remoteClient_", U);
-        I && (T1o(a),
-        CfD(a));
-        U = a.L.oP() && isNaN(a.Y);
-        I == U ? I && (Qm(a, 1),
-        hZ(a, "getSubtitlesTrack")) : I ? (a.Mq() && a.V.reset(),
-        Qm(a, 1),
-        hZ(a, "getNowPlaying"),
-        q0m(a)) : a.VZ(1)
+        g.IL("yt.mdx.remote.remoteClient_", c);
+        L && (PMM(e),
+        QfJ(e));
+        c = e.K.Hm() && isNaN(e.j);
+        L == c ? L && (Q$(e, 1),
+        Ub(e, "getSubtitlesTrack")) : L ? (e.lU() && e.X.reset(),
+        Q$(e, 1),
+        Ub(e, "getNowPlaying"),
+        ERN(e)) : e.Bj(1)
     }
-      , ZFo = function(a, I) {
-        var U = I.params.videoId;
-        delete I.params.videoId;
-        U == a.V.videoId && (g.vo(I.params) ? a.V.trackData = null : a.V.trackData = I.params,
-        a.publish("remotePlayerChange"))
+      , K7g = function(e, L) {
+        var c = L.params.videoId;
+        delete L.params.videoId;
+        c == e.X.videoId && (g.qQ(L.params) ? e.X.trackData = null : e.X.trackData = L.params,
+        e.publish("remotePlayerChange"))
     }
-      , tdG = function(a, I, U) {
-        var e = I.params.videoId || I.params.video_id
-          , T = parseInt(I.params.currentIndex, 10);
-        a.V.listId = I.params.listId || a.V.listId;
-        O1(a.V, e, T);
-        a.publish("remoteQueueChange", U)
+      , YxM = function(e, L, c) {
+        var I = L.params.videoId || L.params.video_id
+          , B = parseInt(L.params.currentIndex, 10);
+        e.X.listId = L.params.listId || e.X.listId;
+        NC(e.X, I, B);
+        e.publish("remoteQueueChange", c)
     }
-      , Kx8 = function(a, I) {
-        I.params = I.params || {};
-        tdG(a, I, "NOW_PLAYING_MAY_CHANGE");
-        nbI(a, I);
-        a.publish("autoplayDismissed")
+      , e27 = function(e, L) {
+        L.params = L.params || {};
+        YxM(e, L, "NOW_PLAYING_MAY_CHANGE");
+        nRZ(e, L);
+        e.publish("autoplayDismissed")
     }
-      , nbI = function(a, I) {
-        var U = parseInt(I.params.currentTime || I.params.current_time, 10);
-        fv(a.V, isNaN(U) ? 0 : U);
-        U = parseInt(I.params.state, 10);
-        U = isNaN(U) ? -1 : U;
-        U == -1 && a.V.playerState == -1E3 && (U = -1E3);
-        a.V.playerState = U;
-        U = Number(I.params.loadedTime);
-        a.V.D = isNaN(U) ? 0 : U;
-        a.V.oE(Number(I.params.duration));
-        U = a.V;
-        var e = Number(I.params.liveIngestionTime);
-        U.B = e;
-        U.L = isNaN(e) ? !1 : !0;
-        U = a.V;
-        e = Number(I.params.seekableStartTime);
-        I = Number(I.params.seekableEndTime);
-        U.J = isNaN(e) ? 0 : e;
-        U.V = isNaN(I) ? 0 : I;
-        a.V.playerState == 1 ? HFo(a) : rEz(a);
-        a.publish("remotePlayerChange")
+      , nRZ = function(e, L) {
+        var c = parseInt(L.params.currentTime || L.params.current_time, 10);
+        CD(e.X, isNaN(c) ? 0 : c);
+        c = parseInt(L.params.state, 10);
+        c = isNaN(c) ? -1 : c;
+        c == -1 && e.X.playerState == -1E3 && (c = -1E3);
+        e.X.playerState = c;
+        c = Number(L.params.loadedTime);
+        e.X.J = isNaN(c) ? 0 : c;
+        e.X.SF(Number(L.params.duration));
+        c = e.X;
+        var I = Number(L.params.liveIngestionTime);
+        c.X = I;
+        c.G = isNaN(I) ? !1 : !0;
+        c = e.X;
+        I = Number(L.params.seekableStartTime);
+        L = Number(L.params.seekableEndTime);
+        c.K = isNaN(I) ? 0 : I;
+        c.T = isNaN(L) ? 0 : L;
+        e.X.playerState == 1 ? UK7(e) : dKL(e);
+        e.publish("remotePlayerChange")
     }
-      , bFG = function(a, I) {
-        if (a.V.playerState != -1E3) {
-            var U = 1085;
-            switch (parseInt(I.params.adState, 10)) {
+      , L97 = function(e, L) {
+        if (e.X.playerState != -1E3) {
+            var c = 1085;
+            switch (parseInt(L.params.adState, 10)) {
             case 1:
-                U = 1081;
+                c = 1081;
                 break;
             case 2:
-                U = 1084;
+                c = 1084;
                 break;
             case 0:
-                U = 1083
+                c = 1083
             }
-            a.V.playerState = U;
-            I = parseInt(I.params.currentTime, 10);
-            fv(a.V, isNaN(I) ? 0 : I);
-            a.publish("remotePlayerChange")
+            e.X.playerState = c;
+            L = parseInt(L.params.currentTime, 10);
+            CD(e.X, isNaN(L) ? 0 : L);
+            e.publish("remotePlayerChange")
         }
     }
-      , JEm = function(a, I) {
-        var U = I.params.muted == "true";
-        a.V.volume = parseInt(I.params.volume, 10);
-        a.V.muted = U;
-        a.publish("remotePlayerChange")
+      , c$Z = function(e, L) {
+        var c = L.params.muted == "true";
+        e.X.volume = parseInt(L.params.volume, 10);
+        e.X.muted = c;
+        e.publish("remotePlayerChange")
     }
-      , uf4 = function(a, I) {
-        a.C = I.params.videoId;
-        a.publish("nowAutoplaying", parseInt(I.params.timeout, 10))
+      , I0e = function(e, L) {
+        e.T = L.params.videoId;
+        e.publish("nowAutoplaying", parseInt(L.params.timeout, 10))
     }
-      , k9z = function(a, I) {
-        a.C = I.params.videoId || null;
-        a.publish("autoplayUpNext", a.C)
+      , BiM = function(e, L) {
+        e.T = L.params.videoId || null;
+        e.publish("autoplayUpNext", e.T)
     }
-      , Vdo = function(a, I) {
-        a.U = I.params.autoplayMode;
-        a.publish("autoplayModeChange", a.U);
-        a.U == "DISABLED" && a.publish("autoplayDismissed")
+      , xcL = function(e, L) {
+        e.B = L.params.autoplayMode;
+        e.publish("autoplayModeChange", e.B);
+        e.B == "DISABLED" && e.publish("autoplayDismissed")
     }
-      , AEd = function(a, I) {
-        var U = I.params.hasNext == "true";
-        a.V.Mk = I.params.hasPrevious == "true";
-        a.V.n1 = U;
-        a.publish("previousNextChange")
+      , ovZ = function(e, L) {
+        var c = L.params.hasNext == "true";
+        e.X.r9 = L.params.hasPrevious == "true";
+        e.X.g$ = c;
+        e.publish("previousNextChange")
     }
-      , sSj = function(a, I) {
-        I = I.message;
-        I.params ? mE("Received: action=" + I.action + ", params=" + g.m4(I.params)) : mE("Received: action=" + I.action + " {}");
-        switch (I.action) {
+      , jf9 = function(e, L) {
+        L = L.message;
+        L.params ? PW("Received: action=" + L.action + ", params=" + g.yH(L.params)) : PW("Received: action=" + L.action + " {}");
+        switch (L.action) {
         case "loungeStatus":
-            I = aZ(I.params.devices);
-            a.B = g.FX(I, function(e) {
-                return new TZ(e)
+            L = cp(L.params.devices);
+            e.Z = g.Mt(L, function(I) {
+                return new SU(I)
             });
-            I = !!g.Jz(a.B, function(e) {
-                return e.type == "LOUNGE_SCREEN"
+            L = !!g.vU(e.Z, function(I) {
+                return I.type == "LOUNGE_SCREEN"
             });
-            xJm(a, I);
-            I = a.qZ("mlm");
-            a.publish("multiStateLoopEnabled", I);
+            X4U(e, L);
+            L = e.lr("mlm");
+            e.publish("multiStateLoopEnabled", L);
             break;
         case "loungeScreenDisconnected":
-            g.Md(a.B, function(e) {
-                return e.type == "LOUNGE_SCREEN"
+            g.DJ(e.Z, function(I) {
+                return I.type == "LOUNGE_SCREEN"
             });
-            xJm(a, !1);
+            X4U(e, !1);
             break;
         case "remoteConnected":
-            var U = new TZ(aZ(I.params.device));
-            g.Jz(a.B, function(e) {
-                return e.NF(U)
-            }) || V18(a.B, U);
+            var c = new SU(cp(L.params.device));
+            g.vU(e.Z, function(I) {
+                return I.equals(c)
+            }) || rGN(e.Z, c);
             break;
         case "remoteDisconnected":
-            U = new TZ(aZ(I.params.device));
-            g.Md(a.B, function(e) {
-                return e.NF(U)
+            c = new SU(cp(L.params.device));
+            g.DJ(e.Z, function(I) {
+                return I.equals(c)
             });
             break;
         case "gracefulDisconnect":
             break;
         case "playlistModified":
-            tdG(a, I, "QUEUE_MODIFIED");
+            YxM(e, L, "QUEUE_MODIFIED");
             break;
         case "nowPlaying":
-            Kx8(a, I);
+            e27(e, L);
             break;
         case "onStateChange":
-            nbI(a, I);
+            nRZ(e, L);
             break;
         case "onAdStateChange":
-            bFG(a, I);
+            L97(e, L);
             break;
         case "onVolumeChanged":
-            JEm(a, I);
+            c$Z(e, L);
             break;
         case "onSubtitlesTrackChanged":
-            ZFo(a, I);
+            K7g(e, L);
             break;
         case "nowAutoplaying":
-            uf4(a, I);
+            I0e(e, L);
             break;
         case "autoplayDismissed":
-            a.publish("autoplayDismissed");
+            e.publish("autoplayDismissed");
             break;
         case "autoplayUpNext":
-            k9z(a, I);
+            BiM(e, L);
             break;
         case "onAutoplayModeChanged":
-            Vdo(a, I);
+            xcL(e, L);
             break;
         case "onHasPreviousNextChanged":
-            AEd(a, I);
+            ovZ(e, L);
             break;
         case "requestAssistedSignIn":
-            a.publish("assistedSignInRequested", I.params.authCode);
+            e.publish("assistedSignInRequested", L.params.authCode);
             break;
         case "onLoopModeChanged":
-            a.publish("loopModeChange", I.params.loopMode);
+            e.publish("loopModeChange", L.params.loopMode);
             break;
         default:
-            mE("Unrecognized action: " + I.action)
+            PW("Unrecognized action: " + L.action)
         }
     }
-      , q0m = function(a) {
-        g.M6(a.j);
-        a.j = g.Vz(function() {
-            a.VZ(1)
+      , ERN = function(e) {
+        g.ra(e.D);
+        e.D = g.oC(function() {
+            e.Bj(1)
         }, 864E5)
     }
-      , hZ = function(a, I, U) {
-        U ? mE("Sending: action=" + I + ", params=" + g.m4(U)) : mE("Sending: action=" + I);
-        a.L.sendMessage(I, U)
+      , Ub = function(e, L, c) {
+        c ? PW("Sending: action=" + L + ", params=" + g.yH(c)) : PW("Sending: action=" + L);
+        e.K.sendMessage(L, c)
     }
-      , MdG = function(a) {
-        TO.call(this, "ScreenServiceProxy");
-        this.vX = a;
-        this.V = [];
-        this.V.push(this.vX.$_s("screenChange", (0,
-        g.e8)(this.Dp, this)));
-        this.V.push(this.vX.$_s("onlineScreenChange", (0,
-        g.e8)(this.gw8, this)))
+      , Su7 = function(e) {
+        oe.call(this, "ScreenServiceProxy");
+        this.R9 = e;
+        this.X = [];
+        this.X.push(this.R9.$_s("screenChange", (0,
+        g.RL)(this.uF, this)));
+        this.X.push(this.R9.$_s("onlineScreenChange", (0,
+        g.RL)(this.BTS, this)))
     }
-      , gb8 = function(a, I) {
-        j$I();
-        if (!nw || !nw.get("yt-remote-disable-remote-module-for-dev")) {
-            I = g.D5("MDX_CONFIG") || I;
-            n3J();
-            uUd();
-            Ni || (Ni = new oZ(I ? I.loungeApiHost : void 0),
-            $t4() && (Ni.V = "/api/loungedev"));
-            op || (op = g.NL("yt.mdx.remote.deferredProxies_") || [],
-            g.hj("yt.mdx.remote.deferredProxies_", op));
-            jSo();
-            var U = Dh();
-            if (!U) {
-                var e = new Zh(Ni,I ? I.disableAutomaticScreenCache || !1 : !1);
-                g.hj("yt.mdx.remote.screenService_", e);
-                U = Dh();
-                var T = {};
-                I && (T = {
-                    appId: I.appId,
-                    disableDial: I.disableDial,
-                    theme: I.theme,
-                    loadCastApiSetupScript: I.loadCastApiSetupScript,
-                    disableCastApi: I.disableCastApi,
-                    enableDialLoungeToken: I.enableDialLoungeToken,
-                    enableCastLoungeToken: I.enableCastLoungeToken,
-                    forceMirroring: I.forceMirroring
+      , tlJ = function(e, L) {
+        rFZ();
+        if (!TS || !TS.get("yt-remote-disable-remote-module-for-dev")) {
+            L = g.Zu("MDX_CONFIG") || L;
+            nJw();
+            IMN();
+            Eb || (Eb = new Y3(L ? L.loungeApiHost : void 0),
+            hI7() && (Eb.X = "/api/loungedev"));
+            Xp || (Xp = g.BU("yt.mdx.remote.deferredProxies_") || [],
+            g.IL("yt.mdx.remote.deferredProxies_", Xp));
+            r$7();
+            var c = KD();
+            if (!c) {
+                var I = new u0(Eb,L ? L.disableAutomaticScreenCache || !1 : !1);
+                g.IL("yt.mdx.remote.screenService_", I);
+                c = KD();
+                var B = {};
+                L && (B = {
+                    appId: L.appId,
+                    disableDial: L.disableDial,
+                    theme: L.theme,
+                    loadCastApiSetupScript: L.loadCastApiSetupScript,
+                    disableCastApi: L.disableCastApi,
+                    enableDialLoungeToken: L.enableDialLoungeToken,
+                    enableCastLoungeToken: L.enableCastLoungeToken,
+                    forceMirroring: L.forceMirroring
                 });
-                g.hj("yt.mdx.remote.enableConnectWithInitialState_", I ? I.enableConnectWithInitialState || !1 : !1);
-                ELQ(a, e, function(C) {
-                    C ? vu() && XC(vu(), "YouTube TV") : e.subscribe("onlineScreenChange", function() {
-                        Kw("yt-remote-receiver-availability-change")
+                g.IL("yt.mdx.remote.enableConnectWithInitialState_", L ? L.enableConnectWithInitialState || !1 : !1);
+                iFe(e, I, function(x) {
+                    x ? YG() && wt(YG(), "YouTube TV") : I.subscribe("onlineScreenChange", function() {
+                        Wp("yt-remote-receiver-availability-change")
                     })
-                }, T)
+                }, B)
             }
-            I && !g.NL("yt.mdx.remote.initialized_") && (g.hj("yt.mdx.remote.initialized_", !0),
-            aG("Initializing: " + g.m4(I)),
-            IG.push(g.ZM("yt-remote-cast2-api-ready", function() {
-                Kw("yt-remote-api-ready")
+            L && !g.BU("yt.mdx.remote.initialized_") && (g.IL("yt.mdx.remote.initialized_", !0),
+            nD("Initializing: " + g.yH(L)),
+            e$.push(g.Qo("yt-remote-cast2-api-ready", function() {
+                Wp("yt-remote-api-ready")
             })),
-            IG.push(g.ZM("yt-remote-cast2-availability-change", function() {
-                Kw("yt-remote-receiver-availability-change")
+            e$.push(g.Qo("yt-remote-cast2-availability-change", function() {
+                Wp("yt-remote-receiver-availability-change")
             })),
-            IG.push(g.ZM("yt-remote-cast2-receiver-selected", function() {
-                sI(null);
-                Kw("yt-remote-auto-connect", "cast-selector-receiver")
+            e$.push(g.Qo("yt-remote-cast2-receiver-selected", function() {
+                L3(null);
+                Wp("yt-remote-auto-connect", "cast-selector-receiver")
             })),
-            IG.push(g.ZM("yt-remote-cast2-receiver-resumed", function() {
-                Kw("yt-remote-receiver-resumed", "cast-selector-receiver")
+            e$.push(g.Qo("yt-remote-cast2-receiver-resumed", function() {
+                Wp("yt-remote-receiver-resumed", "cast-selector-receiver")
             })),
-            IG.push(g.ZM("yt-remote-cast2-session-change", $Jz)),
-            IG.push(g.ZM("yt-remote-connection-change", function(C) {
-                C ? XC(vu(), "YouTube TV") : UI() || (XC(null, null),
-                FYf())
+            e$.push(g.Qo("yt-remote-cast2-session-change", h2N)),
+            e$.push(g.Qo("yt-remote-connection-change", function(x) {
+                x ? wt(YG(), "YouTube TV") : ch() || (wt(null, null),
+                DKM())
             })),
-            IG.push(g.ZM("yt-remote-cast2-session-failed", function() {
-                Kw("yt-remote-connection-failed")
+            e$.push(g.Qo("yt-remote-cast2-session-failed", function() {
+                Wp("yt-remote-connection-failed")
             })),
-            a = iF8(),
-            I.isAuto && (a.id += "#dial"),
-            T = I.capabilities || [],
-            g.ik("desktop_enable_autoplay") && T.push("atp"),
-            T.length > 0 && (a.capabilities = T),
-            a.name = I.device,
-            a.app = I.app,
-            (I = I.theme) && (a.theme = I),
-            aG(" -- with channel params: " + g.m4(a)),
-            a ? (g.yy("yt-remote-session-app", a.app),
-            g.yy("yt-remote-session-name", a.name)) : (g.da("yt-remote-session-app"),
-            g.da("yt-remote-session-name")),
-            g.hj("yt.mdx.remote.channelParams_", a),
-            U.start(),
-            vu() || Lxd())
+            e = R29(),
+            L.isAuto && (e.id += "#dial"),
+            B = L.capabilities || [],
+            B.length > 0 && (e.capabilities = B),
+            e.name = L.device,
+            e.app = L.app,
+            (L = L.theme) && (e.theme = L),
+            nD(" -- with channel params: " + g.yH(e)),
+            e ? (g.bS("yt-remote-session-app", e.app),
+            g.bS("yt-remote-session-name", e.name)) : (g.Gx("yt-remote-session-app"),
+            g.Gx("yt-remote-session-name")),
+            g.IL("yt.mdx.remote.channelParams_", e),
+            c.start(),
+            YG() || uge())
         }
     }
-      , cEd = function() {
-        var a = Dh().vX.$_gos();
-        var I = eE();
-        I && T2() && (tRm(a, I) || a.push(I));
-        return Zdd(a)
+      , OG7 = function() {
+        var e = KD().R9.$_gos();
+        var L = IO();
+        L && Bh() && (Yew(e, L) || e.push(L));
+        return KHN(e)
     }
-      , lwo = function() {
-        var a = WxQ();
-        !a && ln() && wGD() && (a = {
+      , TiN = function() {
+        var e = quM();
+        !e && kG() && kWJ() && (e = {
             key: "cast-selector-receiver",
-            name: wGD()
+            name: kWJ()
         });
-        return a
+        return e
     }
-      , WxQ = function() {
-        var a = cEd()
-          , I = eE();
-        I || (I = UI());
-        return g.Jz(a, function(U) {
-            return I && ro(I, U.key) ? !0 : !1
+      , quM = function() {
+        var e = OG7()
+          , L = IO();
+        L || (L = ch());
+        return g.vU(e, function(c) {
+            return L && hd(L, c.key) ? !0 : !1
         })
     }
-      , eE = function() {
-        var a = vu();
-        if (!a)
+      , IO = function() {
+        var e = YG();
+        if (!e)
             return null;
-        var I = Dh().m$();
-        return qV(I, a)
+        var L = KD().Pc();
+        return uu(L, e)
     }
-      , $Jz = function(a) {
-        aG("remote.onCastSessionChange_: " + HH(a));
-        if (a) {
-            var I = eE();
-            if (I && I.id == a.id) {
-                if (XC(I.id, "YouTube TV"),
-                a.idType == "shortLived" && (a = a.token))
-                    Cy && (Cy.token = a),
-                    (I = T2()) && I.VO(a)
+      , h2N = function(e) {
+        nD("remote.onCastSessionChange_: " + Rt(e));
+        if (e) {
+            var L = IO();
+            if (L && L.id == e.id) {
+                if (wt(L.id, "YouTube TV"),
+                e.idType == "shortLived" && (e = e.token))
+                    xt && (xt.token = e),
+                    (L = Bh()) && L.BH(e)
             } else
-                I && r7(),
-                H9(a, 1)
+                L && oO(),
+                S$(e, 1)
         } else
-            T2() && r7()
+            Bh() && oO()
     }
-      , r7 = function() {
-        Bu() ? Wu().stopSession() : cu("stopSession called before API ready.");
-        var a = T2();
-        a && (a.disconnect(1),
-        B1J(null))
+      , oO = function() {
+        Dv() ? gt().stopSession() : Gq("stopSession called before API ready.");
+        var e = Bh();
+        e && (e.disconnect(1),
+        W9U(null))
     }
-      , X$J = function() {
-        var a = T2();
-        return !!a && a.getProxyState() != 3
+      , Mlh = function() {
+        var e = Bh();
+        return !!e && e.getProxyState() != 3
     }
-      , aG = function(a) {
-        ap("remote", a)
+      , nD = function(e) {
+        LD("remote", e)
     }
-      , Dh = function() {
-        if (!PfJ) {
-            var a = g.NL("yt.mdx.remote.screenService_");
-            PfJ = a ? new MdG(a) : null
+      , KD = function() {
+        if (!z2e) {
+            var e = g.BU("yt.mdx.remote.screenService_");
+            z2e = e ? new Su7(e) : null
         }
-        return PfJ
+        return z2e
     }
-      , vu = function() {
-        return g.NL("yt.mdx.remote.currentScreenId_")
+      , YG = function() {
+        return g.BU("yt.mdx.remote.currentScreenId_")
     }
-      , p$8 = function(a) {
-        g.hj("yt.mdx.remote.currentScreenId_", a)
+      , spe = function(e) {
+        g.IL("yt.mdx.remote.currentScreenId_", e)
     }
-      , fwG = function() {
-        return g.NL("yt.mdx.remote.connectData_")
+      , vvw = function() {
+        return g.BU("yt.mdx.remote.connectData_")
     }
-      , sI = function(a) {
-        g.hj("yt.mdx.remote.connectData_", a)
+      , L3 = function(e) {
+        g.IL("yt.mdx.remote.connectData_", e)
     }
-      , T2 = function() {
-        return g.NL("yt.mdx.remote.connection_")
+      , Bh = function() {
+        return g.BU("yt.mdx.remote.connection_")
     }
-      , B1J = function(a) {
-        var I = T2();
-        sI(null);
-        a || p$8("");
-        g.hj("yt.mdx.remote.connection_", a);
-        op && (g.Gm(op, function(U) {
-            U(a)
+      , W9U = function(e) {
+        var L = Bh();
+        L3(null);
+        e || spe("");
+        g.IL("yt.mdx.remote.connection_", e);
+        Xp && (g.KZ(Xp, function(c) {
+            c(e)
         }),
-        op.length = 0);
-        I && !a ? Kw("yt-remote-connection-change", !1) : !I && a && Kw("yt-remote-connection-change", !0)
+        Xp.length = 0);
+        L && !e ? Wp("yt-remote-connection-change", !1) : !L && e && Wp("yt-remote-connection-change", !0)
     }
-      , UI = function() {
-        var a = g.R$();
-        if (!a)
+      , ch = function() {
+        var e = g.gs();
+        if (!e)
             return null;
-        var I = Dh();
-        if (!I)
+        var L = KD();
+        if (!L)
             return null;
-        I = I.m$();
-        return qV(I, a)
+        L = L.Pc();
+        return uu(L, e)
     }
-      , H9 = function(a, I) {
-        vu();
-        eE() && eE();
-        if (q2)
-            Cy = a;
+      , S$ = function(e, L) {
+        YG();
+        IO() && IO();
+        if (rg)
+            xt = e;
         else {
-            p$8(a.id);
-            var U = g.NL("yt.mdx.remote.enableConnectWithInitialState_") || !1;
-            a = new zO(Ni,a,iF8(),U);
-            a.connect(I, fwG());
-            a.subscribe("beforeDisconnect", function(e) {
-                Kw("yt-remote-before-disconnect", e)
+            spe(e.id);
+            var c = g.BU("yt.mdx.remote.enableConnectWithInitialState_") || !1;
+            e = new dt(Eb,e,R29(),c);
+            e.connect(L, vvw());
+            e.subscribe("beforeDisconnect", function(I) {
+                Wp("yt-remote-before-disconnect", I)
             });
-            a.subscribe("beforeDispose", function() {
-                T2() && (T2(),
-                B1J(null))
+            e.subscribe("beforeDispose", function() {
+                Bh() && (Bh(),
+                W9U(null))
             });
-            a.subscribe("browserChannelAuthError", function() {
-                var e = eE();
-                e && e.idType == "shortLived" && (Bu() ? Wu().handleBrowserChannelAuthError() : cu("refreshLoungeToken called before API ready."))
+            e.subscribe("browserChannelAuthError", function() {
+                var I = IO();
+                I && I.idType == "shortLived" && (Dv() ? gt().handleBrowserChannelAuthError() : Gq("refreshLoungeToken called before API ready."))
             });
-            B1J(a)
+            W9U(e)
         }
     }
-      , Lxd = function() {
-        var a = UI();
-        a ? (aG("Resume connection to: " + HH(a)),
-        H9(a, 0)) : (ti(),
-        FYf(),
-        aG("Skipping connecting because no session screen found."))
+      , uge = function() {
+        var e = ch();
+        e ? (nD("Resume connection to: " + Rt(e)),
+        S$(e, 0)) : (qn(),
+        DKM(),
+        nD("Skipping connecting because no session screen found."))
     }
-      , jSo = function() {
-        var a = iF8();
-        if (g.vo(a)) {
-            a = Zv();
-            var I = g.EV("yt-remote-session-name") || ""
-              , U = g.EV("yt-remote-session-app") || "";
-            a = {
+      , r$7 = function() {
+        var e = R29();
+        if (g.qQ(e)) {
+            e = O8();
+            var L = g.iS("yt-remote-session-name") || ""
+              , c = g.iS("yt-remote-session-app") || "";
+            e = {
                 device: "REMOTE_CONTROL",
-                id: a,
-                name: I,
-                app: U,
+                id: e,
+                name: L,
+                app: c,
                 mdxVersion: 3
             };
-            a.authuser = String(g.D5("SESSION_INDEX", "0"));
-            (I = g.D5("DELEGATED_SESSION_ID")) && (a.pageId = String(I));
-            g.hj("yt.mdx.remote.channelParams_", a)
+            e.authuser = String(g.Zu("SESSION_INDEX", "0"));
+            (L = g.Zu("DELEGATED_SESSION_ID")) && (e.pageId = String(L));
+            g.IL("yt.mdx.remote.channelParams_", e)
         }
     }
-      , iF8 = function() {
-        return g.NL("yt.mdx.remote.channelParams_") || {}
+      , R29 = function() {
+        return g.BU("yt.mdx.remote.channelParams_") || {}
     }
-      , S0j = function(a, I, U) {
-        g.S.call(this);
-        var e = this;
-        this.V = a;
-        this.K = I;
-        this.dL = U;
-        this.events = new g.Ru(this);
-        this.U = !1;
-        this.Y = new g.xP(64);
-        this.L = new g.Dy(this.z_,500,this);
-        this.B = new g.Dy(this.Uz,1E3,this);
-        this.D = new ub(this.ULa,0,this);
-        this.J = {};
-        this.j = new g.Dy(this.zV,1E3,this);
-        this.C = new g.e_(this.seekTo,1E3,this);
-        this.Va = this.events.G(this.K, "onVolumeChange", function(T) {
-            Y08(e, T)
+      , F9e = function(e, L, c) {
+        g.p.call(this);
+        var I = this;
+        this.X = e;
+        this.V = L;
+        this.Lf = c;
+        this.events = new g.zn(this);
+        this.B = !1;
+        this.j = new g.WX(64);
+        this.K = new g.j9(this.U1,500,this);
+        this.Z = new g.j9(this.IX,1E3,this);
+        this.J = new s8(this.FIY,0,this);
+        this.G = {};
+        this.D = new g.j9(this.Yl,1E3,this);
+        this.T = new g.Qw(this.seekTo,1E3,this);
+        this.pS = this.events.C(this.V, "onVolumeChange", function(B) {
+            f0e(I, B)
         });
-        g.E(this, this.events);
-        this.events.G(I, "onCaptionsTrackListChanged", this.Fns);
-        this.events.G(I, "captionschanged", this.hIg);
-        this.events.G(I, "captionssettingschanged", this.Ho);
-        this.events.G(I, "videoplayerreset", this.g0);
-        this.events.G(I, "mdxautoplaycancel", function() {
-            e.dL.Hn()
+        g.l(this, this.events);
+        this.events.C(L, "onCaptionsTrackListChanged", this.h$$);
+        this.events.C(L, "captionschanged", this.W$e);
+        this.events.C(L, "captionssettingschanged", this.WE);
+        this.events.C(L, "videoplayerreset", this.b8);
+        this.events.C(L, "mdxautoplaycancel", function() {
+            I.Lf.Dk()
         });
-        I.N("enable_mdx_video_play_directly") && this.events.G(I, "videodatachange", function() {
-            OFf(e.V) || x0(e) || Zr(e, 0)
+        L.Y("enable_mdx_video_play_directly") && this.events.C(L, "videodatachange", function() {
+            A$g(I.X) || hZ(I) || RO(I, 0)
         });
-        a = this.dL;
-        a.Ox();
-        a.subscribe("proxyStateChange", this.GY, this);
-        a.subscribe("remotePlayerChange", this.sj, this);
-        a.subscribe("remoteQueueChange", this.g0, this);
-        a.subscribe("previousNextChange", this.NG, this);
-        a.subscribe("nowAutoplaying", this.wW, this);
-        a.subscribe("autoplayDismissed", this.RH, this);
-        g.E(this, this.L);
-        g.E(this, this.B);
-        g.E(this, this.D);
-        g.E(this, this.j);
-        g.E(this, this.C);
-        this.Ho();
-        this.g0();
-        this.sj()
+        e = this.Lf;
+        e.We();
+        e.subscribe("proxyStateChange", this.yq, this);
+        e.subscribe("remotePlayerChange", this.Fg, this);
+        e.subscribe("remoteQueueChange", this.b8, this);
+        e.subscribe("previousNextChange", this.Y5, this);
+        e.subscribe("nowAutoplaying", this.IQ, this);
+        e.subscribe("autoplayDismissed", this.ix, this);
+        g.l(this, this.K);
+        g.l(this, this.Z);
+        g.l(this, this.J);
+        g.l(this, this.D);
+        g.l(this, this.T);
+        this.WE();
+        this.b8();
+        this.Fg()
     }
-      , Y08 = function(a, I) {
-        if (x0(a)) {
-            a.dL.unsubscribe("remotePlayerChange", a.sj, a);
-            var U = Math.round(I.volume);
-            I = !!I.muted;
-            var e = ym(a.dL);
-            if (U !== e.volume || I !== e.muted)
-                a.dL.setVolume(U, I),
-                a.j.start();
-            a.dL.subscribe("remotePlayerChange", a.sj, a)
+      , f0e = function(e, L) {
+        if (hZ(e)) {
+            e.Lf.unsubscribe("remotePlayerChange", e.Fg, e);
+            var c = Math.round(L.volume);
+            L = !!L.muted;
+            var I = Zv(e.Lf);
+            if (c !== I.volume || L !== I.muted)
+                e.Lf.setVolume(c, L),
+                e.D.start();
+            e.Lf.subscribe("remotePlayerChange", e.Fg, e)
         }
     }
-      , G9j = function(a) {
-        a.Cv(0);
-        a.L.stop();
-        a.eM(new g.xP(64))
+      , bGL = function(e) {
+        e.Ty(0);
+        e.K.stop();
+        e.Xp(new g.WX(64))
     }
-      , yEJ = function(a, I) {
-        if (x0(a) && !a.U) {
-            var U = null;
-            I && (U = {
-                style: a.K.getSubtitlesUserSettings()
+      , iGM = function(e, L) {
+        if (hZ(e) && !e.B) {
+            var c = null;
+            L && (c = {
+                style: e.V.getSubtitlesUserSettings()
             },
-            Object.assign(U, I));
-            a.dL.gY(a.K.getVideoData(1).videoId, U);
-            a.J = g.O(ym(a.dL).trackData)
+            Object.assign(c, L));
+            e.Lf.FZ(e.V.getVideoData(1).videoId, c);
+            e.G = Zv(e.Lf).trackData
         }
     }
-      , Zr = function(a, I) {
-        var U = a.K.getPlaylist();
-        if (U == null ? 0 : U.listId) {
-            var e = U.index;
-            var T = U.listId.toString()
+      , RO = function(e, L) {
+        var c = e.V.getPlaylist();
+        if (c == null ? 0 : c.listId) {
+            var I = c.index;
+            var B = c.listId.toString()
         }
-        U = a.K.getVideoData(1);
-        a.dL.playVideo(U.videoId, I, e, T, U.playerParams, U.Ux, kv4(U));
-        a.eM(new g.xP(1))
+        c = e.V.getVideoData(1);
+        e.Lf.playVideo(c.videoId, L, I, B, c.playerParams, c.Y9, SeJ(c));
+        e.Xp(new g.WX(1))
     }
-      , EbJ = function(a, I) {
-        if (I) {
-            var U = a.K.getOption("captions", "tracklist", {
-                U0: 1
+      , GrJ = function(e, L) {
+        if (L) {
+            var c = e.V.getOption("captions", "tracklist", {
+                P8: 1
             });
-            U && U.length ? (a.K.setOption("captions", "track", I),
-            a.U = !1) : (a.K.loadModule("captions"),
-            a.U = !0)
+            c && c.length ? (e.V.setOption("captions", "track", L),
+            e.B = !1) : (e.V.loadModule("captions"),
+            e.B = !0)
         } else
-            a.K.setOption("captions", "track", {})
+            e.V.setOption("captions", "track", {})
     }
-      , x0 = function(a) {
-        return ym(a.dL).videoId === a.K.getVideoData(1).videoId
+      , hZ = function(e) {
+        return Zv(e.Lf).videoId === e.V.getVideoData(1).videoId
     }
-      , dJ8 = function(a) {
-        this.V = a
+      , gv9 = function(e, L) {
+        g.n_.call(this, e);
+        this.X = L
     }
-      , tx = function() {
-        g.F.call(this, {
-            W: "div",
-            T: "ytp-mdx-popup-dialog",
-            S: {
+      , ut = function() {
+        g.U.call(this, {
+            U: "div",
+            W: "ytp-mdx-popup-dialog",
+            N: {
                 role: "dialog"
             },
-            Z: [{
-                W: "div",
-                T: "ytp-mdx-popup-dialog-inner-content",
-                Z: [{
-                    W: "div",
-                    T: "ytp-mdx-popup-title",
-                    AU: "Du bist nicht angemeldet"
+            L: [{
+                U: "div",
+                W: "ytp-mdx-popup-dialog-inner-content",
+                L: [{
+                    U: "div",
+                    W: "ytp-mdx-popup-title",
+                    aq: "Du bist nicht angemeldet"
                 }, {
-                    W: "div",
-                    T: "ytp-mdx-popup-description",
-                    AU: "Videos, die du dir ansiehst, werden m\u00f6glicherweise zum TV-Wiedergabeverlauf hinzugef\u00fcgt und k\u00f6nnen sich damit auf deine TV-Empfehlungen auswirken. Melde dich auf einem Computer in YouTube an, um das zu vermeiden."
+                    U: "div",
+                    W: "ytp-mdx-popup-description",
+                    aq: "Videos, die du dir ansiehst, werden m\u00f6glicherweise zum TV-Wiedergabeverlauf hinzugef\u00fcgt und k\u00f6nnen sich damit auf deine TV-Empfehlungen auswirken. Melde dich auf einem Computer in YouTube an, um das zu vermeiden."
                 }, {
-                    W: "div",
-                    T: "ytp-mdx-privacy-popup-buttons",
-                    Z: [{
-                        W: "button",
-                        ww: ["ytp-button", "ytp-mdx-privacy-popup-cancel"],
-                        AU: "Abbrechen"
+                    U: "div",
+                    W: "ytp-mdx-privacy-popup-buttons",
+                    L: [{
+                        U: "button",
+                        Rq: ["ytp-button", "ytp-mdx-privacy-popup-cancel"],
+                        aq: "Abbrechen"
                     }, {
-                        W: "button",
-                        ww: ["ytp-button", "ytp-mdx-privacy-popup-confirm"],
-                        AU: "Best\u00e4tigen"
+                        U: "button",
+                        Rq: ["ytp-button", "ytp-mdx-privacy-popup-confirm"],
+                        aq: "Best\u00e4tigen"
                     }]
                 }]
             }]
         });
-        this.fade = new g.qq(this,250);
-        this.cancelButton = this.Ws("ytp-mdx-privacy-popup-cancel");
-        this.confirmButton = this.Ws("ytp-mdx-privacy-popup-confirm");
-        g.E(this, this.fade);
-        this.G(this.cancelButton, "click", this.V);
-        this.G(this.confirmButton, "click", this.L)
+        this.fade = new g.dJ(this,250);
+        this.cancelButton = this.q0("ytp-mdx-privacy-popup-cancel");
+        this.confirmButton = this.q0("ytp-mdx-privacy-popup-confirm");
+        g.l(this, this.fade);
+        this.C(this.cancelButton, "click", this.X);
+        this.C(this.confirmButton, "click", this.K)
     }
-      , ny = function(a) {
-        g.F.call(this, {
-            W: "div",
-            T: "ytp-remote",
-            Z: [{
-                W: "div",
-                T: "ytp-remote-display-status",
-                Z: [{
-                    W: "div",
-                    T: "ytp-remote-display-status-icon",
-                    Z: [g.ZGw()]
+      , tZ = function(e) {
+        g.U.call(this, {
+            U: "div",
+            W: "ytp-remote",
+            L: [{
+                U: "div",
+                W: "ytp-remote-display-status",
+                L: [{
+                    U: "div",
+                    W: "ytp-remote-display-status-icon",
+                    L: [g.tLn()]
                 }, {
-                    W: "div",
-                    T: "ytp-remote-display-status-text",
-                    AU: "{{statustext}}"
+                    U: "div",
+                    W: "ytp-remote-display-status-text",
+                    aq: "{{statustext}}"
                 }]
             }]
         });
-        this.api = a;
-        this.fade = new g.qq(this,250);
-        g.E(this, this.fade);
-        this.G(a, "presentingplayerstatechange", this.onStateChange);
-        this.FQ(a.getPlayerStateObject())
+        this.api = e;
+        this.fade = new g.dJ(this,250);
+        g.l(this, this.fade);
+        this.C(e, "presentingplayerstatechange", this.onStateChange);
+        this.Oq(e.getPlayerStateObject())
     }
-      , Ky = function(a, I) {
-        g.p4.call(this, "Wiedergeben auf", 1, a, I);
-        this.K = a;
-        this.sF = {};
-        this.G(a, "onMdxReceiversChange", this.J);
-        this.G(a, "presentingplayerstatechange", this.J);
-        this.J()
+      , O2 = function(e, L) {
+        g.lQ.call(this, "Wiedergeben auf", 1, e, L);
+        this.V = e;
+        this.Tx = {};
+        this.C(e, "onMdxReceiversChange", this.G);
+        this.C(e, "presentingplayerstatechange", this.G);
+        this.G()
     }
-      , Rnz = function(a) {
-        g.nu.call(this, a);
-        this.Sr = {
-            key: xt4(),
+      , krU = function(e) {
+        g.Vk.call(this, e);
+        this.U5 = {
+            key: XuM(),
             name: "Dieser Computer"
         };
-        this.C3 = null;
+        this.UA = null;
         this.subscriptions = [];
-        this.AP = this.dL = null;
-        this.sF = [this.Sr];
-        this.DT = this.Sr;
-        this.Gn = new g.xP(64);
-        this.xK = 0;
-        this.b7 = -1;
-        this.wZ = !1;
-        this.m9 = this.Y7 = this.jT = null;
-        if (!g.Rd(this.player.X()) && !g.FT(this.player.X())) {
-            a = this.player;
-            var I = g.Lh(a);
-            I && (I = I.uZ()) && (I = new Ky(a,I),
-            g.E(this, I));
-            I = new ny(a);
-            g.E(this, I);
-            g.w4(a, I.element, 4);
-            this.jT = new tx;
-            g.E(this, this.jT);
-            g.w4(a, this.jT.element, 4);
-            this.wZ = !!UI()
+        this.MN = this.Lf = null;
+        this.Tx = [this.U5];
+        this.sD = this.U5;
+        this.mZ = new g.WX(64);
+        this.Dr = 0;
+        this.RF = -1;
+        this.El = !1;
+        this.uE = this.iL = this.DT = null;
+        if (!g.L8(this.player.S()) && !g.DF(this.player.S())) {
+            e = this.player;
+            var L = g.Db(e);
+            L && (L = L.T8()) && (L = new O2(e,L),
+            g.l(this, L));
+            L = new tZ(e);
+            g.l(this, L);
+            g.Uq(e, L.element, 4);
+            this.DT = new ut;
+            g.l(this, this.DT);
+            g.Uq(e, this.DT.element, 4);
+            this.El = !!ch()
         }
     }
-      , b0 = function(a) {
-        a.Y7 && (a.player.removeEventListener("presentingplayerstatechange", a.Y7),
-        a.Y7 = null)
+      , qW = function(e) {
+        e.iL && (e.player.removeEventListener("presentingplayerstatechange", e.iL),
+        e.iL = null)
     }
-      , w$m = function(a, I, U) {
-        a.Gn = U;
-        a.player.publish("presentingplayerstatechange", new g.AV(U,I))
+      , DcJ = function(e, L, c) {
+        e.mZ = c;
+        e.player.publish("presentingplayerstatechange", new g.BZ(c,L))
     }
-      , Jx = function(a, I) {
-        if (I.key !== a.DT.key)
-            if (I.key === a.Sr.key)
-                r7();
-            else if (OFf(a) && FxD(a),
-            a.DT = I,
-            !a.player.X().N("disable_mdx_connection_in_mdx_module_for_music_web") || !g.FT(a.player.X())) {
-                var U = a.player.getPlaylistId();
-                var e = a.player.getVideoData(1);
-                var T = e.videoId;
-                if (!U && !T || (a.player.getAppState() === 2 || a.player.getAppState() === 1) && a.player.X().N("should_clear_video_data_on_player_cued_unstarted"))
-                    e = null;
+      , T_ = function(e, L) {
+        if (L.key !== e.sD.key)
+            if (L.key === e.U5.key)
+                oO();
+            else if (A$g(e) && wLe(e),
+            e.sD = L,
+            !e.player.S().Y("disable_mdx_connection_in_mdx_module_for_music_web") || !g.DF(e.player.S())) {
+                var c = e.player.getPlaylistId();
+                var I = e.player.getVideoData(1);
+                var B = I.videoId;
+                if (!c && !B || (e.player.getAppState() === 2 || e.player.getAppState() === 1) && e.player.S().Y("should_clear_video_data_on_player_cued_unstarted"))
+                    I = null;
                 else {
-                    var C = a.player.getPlaylist();
-                    if (C) {
-                        var r = [];
-                        for (var q = 0; q < C.getLength(); q++)
-                            r[q] = g.xW(C, q).videoId
+                    var x = e.player.getPlaylist();
+                    if (x) {
+                        var S = [];
+                        for (var h = 0; h < x.length; h++)
+                            S[h] = g.DP(x, h).videoId
                     } else
-                        r = [T];
-                    C = a.player.getCurrentTime(1);
-                    a = {
-                        videoIds: r,
-                        listId: U,
-                        videoId: T,
-                        playerParams: e.playerParams,
-                        clickTrackingParams: e.Ux,
-                        index: Math.max(a.player.getPlaylistIndex(), 0),
-                        currentTime: C === 0 ? void 0 : C
+                        S = [B];
+                    x = e.player.getCurrentTime(1);
+                    e = {
+                        videoIds: S,
+                        listId: c,
+                        videoId: B,
+                        playerParams: I.playerParams,
+                        clickTrackingParams: I.Y9,
+                        index: Math.max(e.player.getPlaylistIndex(), 0),
+                        currentTime: x === 0 ? void 0 : x
                     };
-                    (e = kv4(e)) && (a.locationInfo = e);
-                    e = a
+                    (I = SeJ(I)) && (e.locationInfo = I);
+                    I = e
                 }
-                aG("Connecting to: " + g.m4(I));
-                I.key == "cast-selector-receiver" ? (sI(e || null),
-                I = e || null,
-                Bu() ? Wu().setLaunchParams(I) : cu("setLaunchParams called before ready.")) : !e && X$J() && vu() == I.key ? Kw("yt-remote-connection-change", !0) : (r7(),
-                sI(e || null),
-                e = Dh().m$(),
-                (I = qV(e, I.key)) && H9(I, 1))
+                nD("Connecting to: " + g.yH(L));
+                L.key == "cast-selector-receiver" ? (L3(I || null),
+                L = I || null,
+                Dv() ? gt().setLaunchParams(L) : Gq("setLaunchParams called before ready.")) : !I && Mlh() && YG() == L.key ? Wp("yt-remote-connection-change", !0) : (oO(),
+                L3(I || null),
+                I = KD().Pc(),
+                (L = uu(I, L.key)) && S$(L, 1))
             }
     }
-      , OFf = function(a) {
-        var I = a.player.X();
-        return !I.N("mdx_enable_privacy_disclosure_ui") || a.isLoggedIn() || a.wZ || !a.jT ? !1 : g.eI(I) || g.CP(I)
+      , A$g = function(e) {
+        var L = e.player.S();
+        return !L.Y("mdx_enable_privacy_disclosure_ui") || e.isLoggedIn() || e.El || !e.DT ? !1 : g.T3(L) || g.z3(L)
     }
-      , FxD = function(a) {
-        a.player.getPlayerStateObject().isPlaying() ? a.player.pauseVideo() : (a.Y7 = function(I) {
-            !a.wZ && g.jz(I, 8) && (a.player.pauseVideo(),
-            b0(a))
+      , wLe = function(e) {
+        e.player.getPlayerStateObject().isPlaying() ? e.player.pauseVideo() : (e.iL = function(L) {
+            !e.El && g.or(L, 8) && (e.player.pauseVideo(),
+            qW(e))
         }
         ,
-        a.player.addEventListener("presentingplayerstatechange", a.Y7));
-        a.jT && a.jT.P5();
-        T2() || (q2 = !0)
+        e.player.addEventListener("presentingplayerstatechange", e.iL));
+        e.DT && e.DT.Fp();
+        Bh() || (rg = !0)
     };
-    g.Y8.prototype.fq = g.Cc(55, function() {
-        this.app.k0().fq()
+    g.p2.prototype.RJ = g.xn(49, function() {
+        this.app.MM().RJ()
     });
-    g.Y_.prototype.fq = g.Cc(54, function() {
-        this.m9 = null
+    g.Bb.prototype.RJ = g.xn(48, function() {
+        this.uE = null
     });
-    g.Y8.prototype.iD = g.Cc(53, function(a) {
-        this.app.k0().iD(a)
+    g.p2.prototype.lD = g.xn(47, function(e) {
+        this.app.MM().lD(e)
     });
-    g.Y_.prototype.iD = g.Cc(52, function(a) {
-        this.m9 = a
+    g.Bb.prototype.lD = g.xn(46, function(e) {
+        this.uE = e
     });
-    $6Q.prototype.Id = function(a) {
-        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/opened", a)
+    tMh.prototype.Qa = function(e) {
+        this.X.Ze("/client_streamz/youtube/living_room/mdx/channel/opened", e)
     }
     ;
-    ijf.prototype.Id = function(a) {
-        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/closed", a)
+    OTL.prototype.Qa = function(e) {
+        this.X.Ze("/client_streamz/youtube/living_room/mdx/channel/closed", e)
     }
     ;
-    Lyz.prototype.Id = function(a) {
-        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/message_received", a)
+    qeg.prototype.Qa = function(e) {
+        this.X.Ze("/client_streamz/youtube/living_room/mdx/channel/message_received", e)
     }
     ;
-    gk4.prototype.Id = function() {
-        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/success")
+    TWN.prototype.Qa = function() {
+        this.X.Ze("/client_streamz/youtube/living_room/mdx/channel/success")
     }
     ;
-    cbo.prototype.Id = function(a) {
-        this.V.UV("/client_streamz/youtube/living_room/mdx/channel/error", a)
+    WHN.prototype.Qa = function(e, L) {
+        this.X.Ze("/client_streamz/youtube/living_room/mdx/channel/error", e, L)
     }
     ;
-    WyG.prototype.Id = function() {
-        this.V.UV("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps")
+    MMM.prototype.Qa = function() {
+        this.X.Ze("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps")
     }
     ;
-    lld.prototype.Id = function() {
-        this.V.UV("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps")
+    zaw.prototype.Qa = function() {
+        this.X.Ze("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps")
     }
     ;
-    g.H = UQ.prototype;
-    g.H.ZK = function() {
-        et(this);
-        for (var a = [], I = 0; I < this.V.length; I++)
-            a.push(this.L[this.V[I]]);
-        return a
+    g.M = x3.prototype;
+    g.M.w7 = function() {
+        ot(this);
+        for (var e = [], L = 0; L < this.X.length; L++)
+            e.push(this.K[this.X[L]]);
+        return e
     }
     ;
-    g.H.Vq = function() {
-        et(this);
-        return this.V.concat()
+    g.M.N4 = function() {
+        ot(this);
+        return this.X.concat()
     }
     ;
-    g.H.has = function(a) {
-        return sQ(this.L, a)
+    g.M.has = function(e) {
+        return Bp(this.K, e)
     }
     ;
-    g.H.NF = function(a, I) {
-        if (this === a)
+    g.M.equals = function(e, L) {
+        if (this === e)
             return !0;
-        if (this.size != a.size)
+        if (this.size != e.size)
             return !1;
-        I = I || YT8;
-        et(this);
-        for (var U, e = 0; U = this.V[e]; e++)
-            if (!I(this.get(U), a.get(U)))
+        L = L || fuN;
+        ot(this);
+        for (var c, I = 0; c = this.X[I]; I++)
+            if (!L(this.get(c), e.get(c)))
                 return !1;
         return !0
     }
     ;
-    g.H.isEmpty = function() {
+    g.M.isEmpty = function() {
         return this.size == 0
     }
     ;
-    g.H.clear = function() {
-        this.L = {};
-        this.XZ = this.size = this.V.length = 0
+    g.M.clear = function() {
+        this.K = {};
+        this.zf = this.size = this.X.length = 0
     }
     ;
-    g.H.remove = function(a) {
-        return this.delete(a)
+    g.M.remove = function(e) {
+        return this.delete(e)
     }
     ;
-    g.H.delete = function(a) {
-        return sQ(this.L, a) ? (delete this.L[a],
+    g.M.delete = function(e) {
+        return Bp(this.K, e) ? (delete this.K[e],
         --this.size,
-        this.XZ++,
-        this.V.length > 2 * this.size && et(this),
+        this.zf++,
+        this.X.length > 2 * this.size && ot(this),
         !0) : !1
     }
     ;
-    g.H.get = function(a, I) {
-        return sQ(this.L, a) ? this.L[a] : I
+    g.M.get = function(e, L) {
+        return Bp(this.K, e) ? this.K[e] : L
     }
     ;
-    g.H.set = function(a, I) {
-        sQ(this.L, a) || (this.size += 1,
-        this.V.push(a),
-        this.XZ++);
-        this.L[a] = I
+    g.M.set = function(e, L) {
+        Bp(this.K, e) || (this.size += 1,
+        this.X.push(e),
+        this.zf++);
+        this.K[e] = L
     }
     ;
-    g.H.forEach = function(a, I) {
-        for (var U = this.Vq(), e = 0; e < U.length; e++) {
-            var T = U[e]
-              , C = this.get(T);
-            a.call(I, C, T, this)
+    g.M.forEach = function(e, L) {
+        for (var c = this.N4(), I = 0; I < c.length; I++) {
+            var B = c[I]
+              , x = this.get(B);
+            e.call(L, x, B, this)
         }
     }
     ;
-    g.H.clone = function() {
-        return new UQ(this)
+    g.M.clone = function() {
+        return new x3(this)
     }
     ;
-    g.H.keys = function() {
-        return g.il(this.NU(!0)).V()
+    g.M.keys = function() {
+        return g.tL(this.qZ(!0)).X()
     }
     ;
-    g.H.values = function() {
-        return g.il(this.NU(!1)).V()
+    g.M.values = function() {
+        return g.tL(this.qZ(!1)).X()
     }
     ;
-    g.H.entries = function() {
-        var a = this;
-        return flG(this.keys(), function(I) {
-            return [I, a.get(I)]
+    g.M.entries = function() {
+        var e = this;
+        return vJL(this.keys(), function(L) {
+            return [L, e.get(L)]
         })
     }
     ;
-    g.H.NU = function(a) {
-        et(this);
-        var I = 0
-          , U = this.XZ
-          , e = this
-          , T = new g.Pf;
-        T.next = function() {
-            if (U != e.XZ)
+    g.M.qZ = function(e) {
+        ot(this);
+        var L = 0
+          , c = this.zf
+          , I = this
+          , B = new g.vs;
+        B.next = function() {
+            if (c != I.zf)
                 throw Error("The map has changed since the iterator was created");
-            if (I >= e.V.length)
-                return g.Ty;
-            var C = e.V[I++];
-            return g.pf(a ? C : e.L[C])
+            if (L >= I.X.length)
+                return g.T8;
+            var x = I.X[L++];
+            return g.f0(e ? x : I.K[x])
         }
         ;
-        return T
+        return B
     }
     ;
-    var e7m = {
-        yaa: "atp",
-        eQa: "ska",
-        GR$: "que",
-        SV6: "mus",
-        Ana: "sus",
-        wG6: "dsp",
-        uta: "seq",
-        QVX: "mic",
-        H$X: "dpa",
-        FtX: "cds",
-        PQw: "mlm",
-        TKx: "dsdtr",
-        n2x: "ntb",
-        n0g: "vsp",
-        IHU: "scn",
-        QM8: "rpe",
-        NKg: "dcn",
-        CWU: "dcp",
-        WrX: "pas",
-        aH8: "drq",
-        RLO: "opf",
-        F98: "els",
-        Smm: "isg",
-        cjg: "svq",
-        Z3U: "mvp",
-        SK$: "ads",
-        wFs: "stcp",
-        saU: "sads",
-        MlX: "dloc"
+    var iT7 = {
+        EIW: "atp",
+        w_w: "ska",
+        SCl: "que",
+        hA0: "mus",
+        Wf$: "sus",
+        J_9: "dsp",
+        eXe: "seq",
+        LAe: "mic",
+        bpw: "dpa",
+        zA9: "mlm",
+        NgW: "dsdtr",
+        UD9: "ntb",
+        I0l: "vsp",
+        KRq: "scn",
+        LVM: "rpe",
+        nN9: "dcn",
+        Hp7: "dcp",
+        ok9: "pas",
+        fVw: "drq",
+        B$d: "opf",
+        aJW: "els",
+        she: "isg",
+        VF$: "svq",
+        pc_: "mvp",
+        XgM: "ads",
+        JRY: "stcp",
+        B7m: "sads",
+        mS0: "dloc",
+        ip_: "dcw",
+        pgq: "asw",
+        zPl: "apw"
     }
-      , TaI = {
-        l4a: "u",
-        i$K: "cl",
-        e5$: "k",
-        yiO: "i",
-        oka: "cr",
-        F6X: "m",
-        L$a: "g",
-        o3: "up"
+      , Gwe = {
+        qh$: "u",
+        jFw: "cl",
+        tXl: "k",
+        xMl: "i",
+        gN_: "cr",
+        spl: "m",
+        TPl: "g",
+        D9: "up"
     }
-      , Lho = {
-        I8: "adPlaying",
-        gt: "onAdStateChange"
+      , RdL = {
+        n_: "adPlaying",
+        ly: "onAdStateChange"
     }
-      , gdo = {
-        Eba: "nowPlaying",
-        gb8: "onStateChange",
-        I8: "adPlaying",
-        gt: "onAdStateChange",
-        R3: "nowPlayingShorts",
-        L6: "onShortsStateChange"
+      , u9e = {
+        VA$: "nowPlaying",
+        YCW: "onStateChange",
+        n_: "adPlaying",
+        ly: "onAdStateChange",
+        Q3: "nowPlayingShorts",
+        nx: "onShortsStateChange"
     }
-      , cPm = {
-        R3: "nowPlayingShorts",
-        L6: "onShortsStateChange"
+      , tt9 = {
+        Q3: "nowPlayingShorts",
+        nx: "onShortsStateChange"
     };
-    TZ.prototype.NF = function(a) {
-        return a ? this.id == a.id : !1
+    SU.prototype.equals = function(e) {
+        return e ? this.id == e.id : !1
     }
     ;
-    var JTI = ""
-      , nw = null;
-    ido.prototype.flush = function(a, I) {
-        a = a === void 0 ? [] : a;
-        I = I === void 0 ? !1 : I;
-        if (g.ik("enable_client_streamz_web")) {
-            a = g.k(a);
-            for (var U = a.next(); !U.done; U = a.next())
-                U = g.NUb(U.value),
-                U = {
-                    serializedIncrementBatch: g.Iq(U.L())
-                },
-                g.JL("streamzIncremented", U, {
-                    sendIsolatedPayload: I
-                })
-        }
+    var cFU = ""
+      , TS = null;
+    g.z(RIe, g.JW);
+    var Mn, zIg = tGZ("loadCastFramework") || tGZ("loadCastApplicationFramework"), fMJ = ["pkedcjkdefgpdelpbcmbmeomcjbeemfm", "enhhojjnijigcajfphajepfemndkmdlo"];
+    g.TL(s8, g.p);
+    g.M = s8.prototype;
+    g.M.Ep = function(e) {
+        this.G = arguments;
+        this.X = !1;
+        this.Jw ? this.Z = g.O9() + this.Lp : this.Jw = g.Cc(this.B, this.Lp)
     }
     ;
-    var bb, PRm = g38("loadCastFramework") || g38("loadCastApplicationFramework"), YVz = ["pkedcjkdefgpdelpbcmbmeomcjbeemfm", "enhhojjnijigcajfphajepfemndkmdlo"];
-    g.qd(ub, g.S);
-    g.H = ub.prototype;
-    g.H.Wy = function(a) {
-        this.J = arguments;
-        this.V = !1;
-        this.ZN ? this.B = g.rd() + this.g6 : this.ZN = g.dJ(this.U, this.g6)
+    g.M.stop = function() {
+        this.Jw && (g.LZ.clearTimeout(this.Jw),
+        this.Jw = null);
+        this.Z = null;
+        this.X = !1;
+        this.G = []
     }
     ;
-    g.H.stop = function() {
-        this.ZN && (g.zs.clearTimeout(this.ZN),
-        this.ZN = null);
-        this.B = null;
-        this.V = !1;
-        this.J = []
+    g.M.pause = function() {
+        ++this.K
     }
     ;
-    g.H.pause = function() {
-        ++this.L
+    g.M.resume = function() {
+        this.K && (--this.K,
+        !this.K && this.X && (this.X = !1,
+        this.j.apply(null, this.G)))
     }
     ;
-    g.H.resume = function() {
-        this.L && (--this.L,
-        !this.L && this.V && (this.V = !1,
-        this.Y.apply(null, this.J)))
-    }
-    ;
-    g.H.Bs = function() {
+    g.M.KS = function() {
         this.stop();
-        ub.tT.Bs.call(this)
+        s8.hj.KS.call(this)
     }
     ;
-    g.H.tp = function() {
-        this.ZN && (g.zs.clearTimeout(this.ZN),
-        this.ZN = null);
-        this.B ? (this.ZN = g.dJ(this.U, this.B - g.rd()),
-        this.B = null) : this.L ? this.V = !0 : (this.V = !1,
-        this.Y.apply(null, this.J))
+    g.M.xJ = function() {
+        this.Jw && (g.LZ.clearTimeout(this.Jw),
+        this.Jw = null);
+        this.Z ? (this.Jw = g.Cc(this.B, this.Z - g.O9()),
+        this.Z = null) : this.K ? this.X = !0 : (this.X = !1,
+        this.j.apply(null, this.G))
     }
     ;
-    kZ.prototype.stringify = function(a) {
-        return g.zs.JSON.stringify(a, void 0)
+    vp.prototype.stringify = function(e) {
+        return g.LZ.JSON.stringify(e, void 0)
     }
     ;
-    kZ.prototype.parse = function(a) {
-        return g.zs.JSON.parse(a, void 0)
+    vp.prototype.parse = function(e) {
+        return g.LZ.JSON.parse(e, void 0)
     }
     ;
-    g.qd(SVD, g.aI);
-    g.qd(G8Q, g.aI);
-    var yTJ = null;
-    g.qd(dtD, g.aI);
-    g.qd(R78, g.aI);
-    g.qd(wko, g.aI);
-    jt.prototype.debug = function() {}
+    g.TL(F2U, g.Hk);
+    g.TL(bQg, g.Hk);
+    var iQN = null;
+    g.TL(gaN, g.Hk);
+    g.TL(kZM, g.Hk);
+    g.TL(DLL, g.Hk);
+    bu.prototype.debug = function() {}
     ;
-    jt.prototype.info = function() {}
+    bu.prototype.info = function() {}
     ;
-    jt.prototype.warning = function() {}
+    bu.prototype.warning = function() {}
     ;
-    var Dtf = {}
-      , o3m = {};
-    g.H = $Z.prototype;
-    g.H.setTimeout = function(a) {
-        this.xa = a
+    var yFU = {}
+      , mLN = {};
+    g.M = iu.prototype;
+    g.M.setTimeout = function(e) {
+        this.Sl = e
     }
     ;
-    g.H.o2 = function(a) {
-        a = a.target;
-        var I = this.fO;
-        I && g.Dj(a) == 3 ? I.A5() : this.Q9(a)
+    g.M.DA = function(e) {
+        e = e.target;
+        var L = this.He;
+        L && g.lq(e) == 3 ? L.SI() : this.Kr(e)
     }
     ;
-    g.H.Q9 = function(a) {
+    g.M.Kr = function(e) {
         try {
-            if (a == this.V)
+            if (e == this.X)
                 a: {
-                    var I = g.Dj(this.V)
-                      , U = this.V.L
-                      , e = this.V.getStatus();
-                    if (!(I < 3) && (I != 3 || this.V && (this.L.L || g.aM(this.V) || g.IM(this.V)))) {
-                        this.Ux || I != 4 || U == 7 || (U == 8 || e <= 0 ? Vg(3) : Vg(2));
-                        Inf(this);
-                        var T = this.V.getStatus();
-                        this.Vo = T;
-                        var C = Nam(this);
-                        if (this.Y = T == 200) {
-                            if (this.B8 && !this.a$) {
+                    var L = g.lq(this.X)
+                      , c = this.X.K
+                      , I = this.X.getStatus();
+                    if (!(L < 3) && (L != 3 || this.X && (this.K.K || g.QH(this.X) || g.dT(this.X)))) {
+                        this.ye || L != 4 || c == 7 || (c == 8 || I <= 0 ? fV(3) : fV(2));
+                        $LL(this);
+                        var B = this.X.getStatus();
+                        this.sY = B;
+                        var x = NaL(this);
+                        if (this.j = B == 200) {
+                            if (this.Kf && !this.Pe) {
                                 b: {
-                                    if (this.V) {
-                                        var r = g.sy(this.V, "X-HTTP-Initial-Response");
-                                        if (r && !g.ur(r)) {
-                                            var q = r;
+                                    if (this.X) {
+                                        var S = g.Ua(this.X, "X-HTTP-Initial-Response");
+                                        if (S && !g.J_(S)) {
+                                            var h = S;
                                             break b
                                         }
                                     }
-                                    q = null
+                                    h = null
                                 }
-                                if (a = q)
-                                    this.a$ = !0,
-                                    xko(this, a);
+                                if (e = h)
+                                    this.Pe = !0,
+                                    X3N(this, e);
                                 else {
-                                    this.Y = !1;
-                                    this.U = 3;
-                                    Ai(12);
-                                    Lw(this);
-                                    go(this);
+                                    this.j = !1;
+                                    this.B = 3;
+                                    Ad(12);
+                                    gX(this);
+                                    k3(this);
                                     break a
                                 }
                             }
-                            if (this.dw) {
-                                a = !0;
-                                for (var x; !this.Ux && this.C < C.length; )
-                                    if (x = v3z(this, C),
-                                    x == o3m) {
-                                        I == 4 && (this.U = 4,
-                                        Ai(14),
-                                        a = !1);
+                            if (this.Ve) {
+                                e = !0;
+                                for (var R; !this.ye && this.T < x.length; )
+                                    if (R = ZQZ(this, x),
+                                    R == mLN) {
+                                        L == 4 && (this.B = 4,
+                                        Ad(14),
+                                        e = !1);
                                         break
-                                    } else if (x == Dtf) {
-                                        this.U = 4;
-                                        Ai(15);
-                                        a = !1;
+                                    } else if (R == yFU) {
+                                        this.B = 4;
+                                        Ad(15);
+                                        e = !1;
                                         break
                                     } else
-                                        xko(this, x);
-                                h7J(this) && this.C != 0 && (this.L.V = this.L.V.slice(this.C),
-                                this.C = 0);
-                                I != 4 || C.length != 0 || this.L.L || (this.U = 1,
-                                Ai(16),
-                                a = !1);
-                                this.Y = this.Y && a;
-                                a ? C.length > 0 && !this.hN && (this.hN = !0,
-                                this.B.dI(this)) : (Lw(this),
-                                go(this))
+                                        X3N(this, R);
+                                aMe(this) && this.T != 0 && (this.K.X = this.K.X.slice(this.T),
+                                this.T = 0);
+                                L != 4 || x.length != 0 || this.K.K || (this.B = 1,
+                                Ad(16),
+                                e = !1);
+                                this.j = this.j && e;
+                                e ? x.length > 0 && !this.RT && (this.RT = !0,
+                                this.Z.At(this)) : (gX(this),
+                                k3(this))
                             } else
-                                xko(this, C);
-                            I == 4 && Lw(this);
-                            this.Y && !this.Ux && (I == 4 ? sBI(this.B, this) : (this.Y = !1,
-                            ib(this)))
+                                X3N(this, x);
+                            L == 4 && gX(this);
+                            this.j && !this.ye && (L == 4 ? jCh(this.Z, this) : (this.j = !1,
+                            GS(this)))
                         } else
-                            g.A3q(this.V),
-                            T == 400 && C.indexOf("Unknown SID") > 0 ? (this.U = 3,
-                            Ai(12)) : (this.U = 0,
-                            Ai(13)),
-                            Lw(this),
-                            go(this)
+                            g.flr(this.X),
+                            B == 400 && x.indexOf("Unknown SID") > 0 ? (this.B = 3,
+                            Ad(12)) : (this.B = 0,
+                            Ad(13)),
+                            gX(this),
+                            k3(this)
                     }
                 }
-        } catch (Z) {} finally {}
+        } catch (u) {} finally {}
     }
     ;
-    g.H.cancel = function() {
-        this.Ux = !0;
-        Lw(this)
+    g.M.cancel = function() {
+        this.ye = !0;
+        gX(this)
     }
     ;
-    g.H.KV = function() {
-        this.Va = null;
-        var a = Date.now();
-        a - this.i5 >= 0 ? (this.CO != 2 && (Vg(3),
-        Ai(17)),
-        Lw(this),
-        this.U = 2,
-        go(this)) : and(this, this.i5 - a)
+    g.M.rO = function() {
+        this.pS = null;
+        var e = Date.now();
+        e - this.x9 >= 0 ? (this.t7 != 2 && (fV(3),
+        Ad(17)),
+        gX(this),
+        this.B = 2,
+        k3(this)) : p3e(this, this.x9 - e)
     }
     ;
-    g.H.getLastError = function() {
-        return this.U
+    g.M.getLastError = function() {
+        return this.B
     }
     ;
-    g.H.CB = function() {
-        return this.V
+    g.M.LQ = function() {
+        return this.X
     }
     ;
-    tNG.prototype.cancel = function() {
-        this.B = Kf4(this);
-        if (this.L)
-            this.L.cancel(),
-            this.L = null;
-        else if (this.V && this.V.size !== 0) {
-            for (var a = g.k(this.V.values()), I = a.next(); !I.done; I = a.next())
-                I.value.cancel();
-            this.V.clear()
+    YNU.prototype.cancel = function() {
+        this.Z = evZ(this);
+        if (this.K)
+            this.K.cancel(),
+            this.K = null;
+        else if (this.X && this.X.size !== 0) {
+            for (var e = g.f(this.X.values()), L = e.next(); !L.done; L = e.next())
+                L.value.cancel();
+            this.X.clear()
         }
     }
     ;
-    g.H = VNo.prototype;
-    g.H.fA = 8;
-    g.H.R9 = 1;
-    g.H.connect = function(a, I, U, e) {
-        Ai(0);
-        this.rF = a;
-        this.Ux = I || {};
-        U && e !== void 0 && (this.Ux.OSID = U,
-        this.Ux.OAID = e);
-        this.a$ = this.F1;
-        this.zt = rLj(this, null, this.rF);
-        BH(this)
+    g.M = BsZ.prototype;
+    g.M.ZP = 8;
+    g.M.xI = 1;
+    g.M.connect = function(e, L, c, I) {
+        Ad(0);
+        this.Cf = e;
+        this.ye = L || {};
+        c && I !== void 0 && (this.ye.OSID = c,
+        this.ye.OAID = I);
+        this.Pe = this.Q5;
+        this.Y9 = dLw(this, null, this.Cf);
+        V7(this)
     }
     ;
-    g.H.disconnect = function() {
-        MNd(this);
-        if (this.R9 == 3) {
-            var a = this.Z6++
-              , I = this.zt.clone();
-            g.bv(I, "SID", this.J);
-            g.bv(I, "RID", a);
-            g.bv(I, "TYPE", "terminate");
-            pw(this, I);
-            a = new $Z(this,this.J,a);
-            a.CO = 2;
-            a.D = DA(I.clone());
-            I = !1;
-            if (g.zs.navigator && g.zs.navigator.sendBeacon)
+    g.M.disconnect = function() {
+        o59(this);
+        if (this.xI == 3) {
+            var e = this.m$++
+              , L = this.Y9.clone();
+            g.ob(L, "SID", this.G);
+            g.ob(L, "RID", e);
+            g.ob(L, "TYPE", "terminate");
+            Nn(this, L);
+            e = new iu(this,this.G,e);
+            e.t7 = 2;
+            e.J = eU(L.clone());
+            L = !1;
+            if (g.LZ.navigator && g.LZ.navigator.sendBeacon)
                 try {
-                    I = g.zs.navigator.sendBeacon(a.D.toString(), "")
-                } catch (U) {}
-            !I && g.zs.Image && ((new Image).src = a.D,
-            I = !0);
-            I || (a.V = z78(a.B, null),
-            a.V.send(a.D));
-            a.e8 = Date.now();
-            ib(a)
+                    L = g.LZ.navigator.sendBeacon(e.J.toString(), "")
+                } catch (c) {}
+            !L && g.LZ.Image && ((new Image).src = e.J,
+            L = !0);
+            L || (e.X = CLg(e.Z, null),
+            e.X.send(e.J));
+            e.Gm = Date.now();
+            GS(e)
         }
-        cLd(this)
+        tL7(this)
     }
     ;
-    g.H.AS = function() {
-        return this.R9 == 0
+    g.M.Dj = function() {
+        return this.xI == 0
     }
     ;
-    g.H.getState = function() {
-        return this.R9
+    g.M.getState = function() {
+        return this.xI
     }
     ;
-    g.H.y9 = function(a) {
-        if (this.Y)
-            if (this.Y = null,
-            this.R9 == 1) {
-                if (!a) {
-                    this.Z6 = Math.floor(Math.random() * 1E5);
-                    a = this.Z6++;
-                    var I = new $Z(this,"",a)
-                      , U = this.j;
-                    this.Vo && (U ? (U = g.sG(U),
-                    g.ep(U, this.Vo)) : U = this.Vo);
-                    this.C !== null || this.i5 || (I.zt = U,
-                    U = null);
-                    var e;
-                    if (this.E7)
+    g.M.GO = function(e) {
+        if (this.j)
+            if (this.j = null,
+            this.xI == 1) {
+                if (!e) {
+                    this.m$ = Math.floor(Math.random() * 1E5);
+                    e = this.m$++;
+                    var L = new iu(this,"",e)
+                      , c = this.D;
+                    this.sY && (c ? (c = g.MQ(c),
+                    g.so(c, this.sY)) : c = this.sY);
+                    this.T !== null || this.x9 || (L.Y9 = c,
+                    c = null);
+                    var I;
+                    if (this.DY)
                         a: {
-                            for (var T = e = 0; T < this.B.length; T++) {
+                            for (var B = I = 0; B < this.Z.length; B++) {
                                 b: {
-                                    var C = this.B[T];
-                                    if ("__data__"in C.map && (C = C.map.__data__,
-                                    typeof C === "string")) {
-                                        C = C.length;
+                                    var x = this.Z[B];
+                                    if ("__data__"in x.map && (x = x.map.__data__,
+                                    typeof x === "string")) {
+                                        x = x.length;
                                         break b
                                     }
-                                    C = void 0
+                                    x = void 0
                                 }
-                                if (C === void 0)
+                                if (x === void 0)
                                     break;
-                                e += C;
-                                if (e > 4096) {
-                                    e = T;
+                                I += x;
+                                if (I > 4096) {
+                                    I = B;
                                     break a
                                 }
-                                if (e === 4096 || T === this.B.length - 1) {
-                                    e = T + 1;
+                                if (I === 4096 || B === this.Z.length - 1) {
+                                    I = B + 1;
                                     break a
                                 }
                             }
-                            e = 1E3
+                            I = 1E3
                         }
                     else
-                        e = 1E3;
-                    e = iGG(this, I, e);
-                    T = this.zt.clone();
-                    g.bv(T, "RID", a);
-                    g.bv(T, "CVER", 22);
-                    this.dw && g.bv(T, "X-HTTP-Session-Id", this.dw);
-                    pw(this, T);
-                    U && (this.i5 ? e = "headers=" + g.b9(g.S2s(U)) + "&" + e : this.C && g.VT(T, this.C, U));
-                    C_D(this.L, I);
-                    this.XY && g.bv(T, "TYPE", "init");
-                    this.E7 ? (g.bv(T, "$req", e),
-                    g.bv(T, "SID", "null"),
-                    I.B8 = !0,
-                    Q$J(I, T, null)) : Q$J(I, T, e);
-                    this.R9 = 2
+                        I = 1E3;
+                    I = hvM(this, L, I);
+                    B = this.Y9.clone();
+                    g.ob(B, "RID", e);
+                    g.ob(B, "CVER", 22);
+                    this.Ve && g.ob(B, "X-HTTP-Session-Id", this.Ve);
+                    Nn(this, B);
+                    c && (this.x9 ? I = "headers=" + g.kC(g.HSH(c)) + "&" + I : this.T && g.Rb(B, this.T, c));
+                    QCg(this.K, L);
+                    this.gZ && g.ob(B, "TYPE", "init");
+                    this.DY ? (g.ob(B, "$req", I),
+                    g.ob(B, "SID", "null"),
+                    L.Kf = !0,
+                    VGh(L, B, null)) : VGh(L, B, I);
+                    this.xI = 2
                 }
             } else
-                this.R9 == 3 && (a ? LfI(this, a) : this.B.length == 0 || nGz(this.L) || LfI(this))
+                this.xI == 3 && (e ? RvU(this, e) : this.Z.length == 0 || naM(this.K) || RvU(this))
     }
     ;
-    g.H.rj = function() {
-        this.D = null;
-        gGd(this);
-        if (this.IF && !(this.xa || this.V == null || this.wL <= 0)) {
-            var a = 2 * this.wL;
-            this.tU = MV((0,
-            g.e8)(this.eIO, this), a)
+    g.M.e1 = function() {
+        this.J = null;
+        uFN(this);
+        if (this.xT && !(this.Sl || this.X == null || this.RI <= 0)) {
+            var e = 2 * this.RI;
+            this.k9 = FX((0,
+            g.RL)(this.y77, this), e)
         }
     }
     ;
-    g.H.eIO = function() {
-        this.tU && (this.tU = null,
-        this.a$ = !1,
-        this.xa = !0,
-        Ai(10),
-        WH(this),
-        gGd(this))
+    g.M.y77 = function() {
+        this.k9 && (this.k9 = null,
+        this.Pe = !1,
+        this.Sl = !0,
+        Ad(10),
+        wX(this),
+        uFN(this))
     }
     ;
-    g.H.dI = function(a) {
-        this.V == a && this.IF && !this.xa && (ALf(this),
-        this.xa = !0,
-        Ai(11))
+    g.M.At = function(e) {
+        this.X == e && this.xT && !this.Sl && (xxM(this),
+        this.Sl = !0,
+        Ad(11))
     }
     ;
-    g.H.Ym = function() {
-        this.Va != null && (this.Va = null,
-        WH(this),
-        eSG(this),
-        Ai(19))
+    g.M.XP = function() {
+        this.pS != null && (this.pS = null,
+        wX(this),
+        lMe(this),
+        Ad(19))
     }
     ;
-    g.H.s9$ = function(a) {
-        a ? Ai(2) : Ai(1)
+    g.M.qKW = function(e) {
+        e ? Ad(2) : Ad(1)
     }
     ;
-    g.H.isActive = function() {
-        return !!this.U && this.U.isActive(this)
+    g.M.isActive = function() {
+        return !!this.B && this.B.isActive(this)
     }
     ;
-    g.H = lno.prototype;
-    g.H.Pf = function() {}
+    g.M = qRM.prototype;
+    g.M.Vb = function() {}
     ;
-    g.H.XA = function() {}
+    g.M.Ij = function() {}
     ;
-    g.H.De = function() {}
+    g.M.UT = function() {}
     ;
-    g.H.qd = function() {}
+    g.M.qC = function() {}
     ;
-    g.H.isActive = function() {
+    g.M.isActive = function() {
         return !0
     }
     ;
-    g.H.b1 = function() {}
+    g.M.zv = function() {}
     ;
-    g.qd(YZ, g.u7);
-    YZ.prototype.open = function() {
-        this.V.U = this.B;
-        this.Y && (this.V.CO = !0);
-        this.V.connect(this.U, this.L || void 0)
+    g.TL(y7, g.hi);
+    y7.prototype.open = function() {
+        this.X.B = this.Z;
+        this.j && (this.X.t7 = !0);
+        this.X.connect(this.B, this.K || void 0)
     }
     ;
-    YZ.prototype.close = function() {
-        this.V.disconnect()
+    y7.prototype.close = function() {
+        this.X.disconnect()
     }
     ;
-    YZ.prototype.send = function(a) {
-        var I = this.V;
-        if (typeof a === "string") {
-            var U = {};
-            U.__data__ = a;
-            a = U
+    y7.prototype.send = function(e) {
+        var L = this.X;
+        if (typeof e === "string") {
+            var c = {};
+            c.__data__ = e;
+            e = c
         } else
-            this.J && (U = {},
-            U.__data__ = g.m4(a),
-            a = U);
-        I.B.push(new ZGo(I.q2++,a));
-        I.R9 == 3 && BH(I)
+            this.G && (c = {},
+            c.__data__ = g.yH(e),
+            e = c);
+        L.Z.push(new K2e(L.Nl++,e));
+        L.xI == 3 && V7(L)
     }
     ;
-    YZ.prototype.Bs = function() {
-        this.V.U = null;
-        delete this.B;
-        this.V.disconnect();
-        delete this.V;
-        YZ.tT.Bs.call(this)
+    y7.prototype.KS = function() {
+        this.X.B = null;
+        delete this.Z;
+        this.X.disconnect();
+        delete this.X;
+        y7.hj.KS.call(this)
     }
     ;
-    g.qd(XzQ, SVD);
-    g.qd(P_z, G8Q);
-    g.qd(fw, lno);
-    fw.prototype.Pf = function() {
-        this.V.dispatchEvent("m")
+    g.TL(WPL, F2U);
+    g.TL(MLL, bQg);
+    g.TL(mx, qRM);
+    mx.prototype.Vb = function() {
+        this.X.dispatchEvent("m")
     }
     ;
-    fw.prototype.XA = function(a) {
-        this.V.dispatchEvent(new XzQ(a))
+    mx.prototype.Ij = function(e) {
+        this.X.dispatchEvent(new WPL(e))
     }
     ;
-    fw.prototype.De = function(a) {
-        this.V.dispatchEvent(new P_z(a))
+    mx.prototype.UT = function(e) {
+        this.X.dispatchEvent(new MLL(e))
     }
     ;
-    fw.prototype.qd = function() {
-        this.V.dispatchEvent("n")
+    mx.prototype.qC = function() {
+        this.X.dispatchEvent("n")
     }
     ;
-    var St = new g.u7;
-    g.u(Yvo, g.aI);
-    g.H = yg.prototype;
-    g.H.nG = null;
-    g.H.bG = !1;
-    g.H.Km = null;
-    g.H.TU = null;
-    g.H.vR = null;
-    g.H.Ek = null;
-    g.H.ph = null;
-    g.H.jk = null;
-    g.H.c6 = null;
-    g.H.UM = null;
-    g.H.Rb = 0;
-    g.H.xp = null;
-    g.H.iT = null;
-    g.H.jE = null;
-    g.H.O2 = -1;
-    g.H.n8 = !0;
-    g.H.U2 = !1;
-    g.H.Mf = 0;
-    g.H.nK = null;
-    var dko = {}
-      , EGf = {};
-    g.H = yg.prototype;
-    g.H.setTimeout = function(a) {
-        this.L = a
+    var pV = new g.hi;
+    g.z(v5g, g.Hk);
+    g.M = jU.prototype;
+    g.M.Gf = null;
+    g.M.QX = !1;
+    g.M.AX = null;
+    g.M.SM = null;
+    g.M.M3 = null;
+    g.M.Qp = null;
+    g.M.Wk = null;
+    g.M.Ag = null;
+    g.M.Uf = null;
+    g.M.jn = null;
+    g.M.d5 = 0;
+    g.M.S0 = null;
+    g.M.vz = null;
+    g.M.qE = null;
+    g.M.oC = -1;
+    g.M.dj = !0;
+    g.M.wf = !1;
+    g.M.Nc = 0;
+    g.M.Jg = null;
+    var GxZ = {}
+      , ivJ = {};
+    g.M = jU.prototype;
+    g.M.setTimeout = function(e) {
+        this.K = e
     }
     ;
-    g.H.pV = function(a) {
-        a = a.target;
-        var I = this.nK;
-        I && g.Dj(a) == 3 ? I.A5() : this.Ze(a)
+    g.M.hv = function(e) {
+        e = e.target;
+        var L = this.Jg;
+        L && g.lq(e) == 3 ? L.SI() : this.j1(e)
     }
     ;
-    g.H.Ze = function(a) {
+    g.M.j1 = function(e) {
         try {
-            if (a == this.UM)
+            if (e == this.jn)
                 a: {
-                    var I = g.Dj(this.UM)
-                      , U = this.UM.L
-                      , e = this.UM.getStatus();
-                    if (g.hl && !g.cA("420+")) {
-                        if (I < 4)
+                    var L = g.lq(this.jn)
+                      , c = this.jn.K
+                      , I = this.jn.getStatus();
+                    if (g.RF && !g.$C("420+")) {
+                        if (L < 4)
                             break a
-                    } else if (I < 3 || I == 3 && !g.aM(this.UM))
+                    } else if (L < 3 || L == 3 && !g.QH(this.jn))
                         break a;
-                    this.U2 || I != 4 || U == 7 || (U == 8 || e <= 0 ? this.V.QT(3) : this.V.QT(2));
-                    Fff(this);
-                    var T = this.UM.getStatus();
-                    this.O2 = T;
-                    var C = g.aM(this.UM);
-                    if (this.bG = T == 200) {
-                        I == 4 && EQ(this);
-                        if (this.dw) {
-                            for (a = !0; !this.U2 && this.Rb < C.length; ) {
-                                var r = RSf(this, C);
-                                if (r == EGf) {
-                                    I == 4 && (this.jE = 4,
-                                    GZ(15),
-                                    a = !1);
+                    this.wf || L != 4 || c == 7 || (c == 8 || I <= 0 ? this.X.LG(3) : this.X.LG(2));
+                    DxN(this);
+                    var B = this.jn.getStatus();
+                    this.oC = B;
+                    var x = g.QH(this.jn);
+                    if (this.QX = B == 200) {
+                        L == 4 && Hp(this);
+                        if (this.Ve) {
+                            for (e = !0; !this.wf && this.d5 < x.length; ) {
+                                var S = g5h(this, x);
+                                if (S == ivJ) {
+                                    L == 4 && (this.qE = 4,
+                                    $3(15),
+                                    e = !1);
                                     break
-                                } else if (r == dko) {
-                                    this.jE = 4;
-                                    GZ(16);
-                                    a = !1;
+                                } else if (S == GxZ) {
+                                    this.qE = 4;
+                                    $3(16);
+                                    e = !1;
                                     break
                                 } else
-                                    QBd(this, r)
+                                    J7g(this, S)
                             }
-                            I == 4 && C.length == 0 && (this.jE = 1,
-                            GZ(17),
-                            a = !1);
-                            this.bG = this.bG && a;
-                            a || (EQ(this),
-                            mkQ(this))
+                            L == 4 && x.length == 0 && (this.qE = 1,
+                            $3(17),
+                            e = !1);
+                            this.QX = this.QX && e;
+                            e || (Hp(this),
+                            wIJ(this))
                         } else
-                            QBd(this, C);
-                        this.bG && !this.U2 && (I == 4 ? this.V.Qu(this) : (this.bG = !1,
-                        yLD(this)))
+                            J7g(this, x);
+                        this.QX && !this.wf && (L == 4 ? this.X.x6(this) : (this.QX = !1,
+                        bvM(this)))
                     } else
-                        T == 400 && C.indexOf("Unknown SID") > 0 ? (this.jE = 3,
-                        GZ(13)) : (this.jE = 0,
-                        GZ(14)),
-                        EQ(this),
-                        mkQ(this)
+                        B == 400 && x.indexOf("Unknown SID") > 0 ? (this.qE = 3,
+                        $3(13)) : (this.qE = 0,
+                        $3(14)),
+                        Hp(this),
+                        wIJ(this)
                 }
-        } catch (q) {} finally {}
+        } catch (h) {} finally {}
     }
     ;
-    g.H.cancel = function() {
-        this.U2 = !0;
-        EQ(this)
+    g.M.cancel = function() {
+        this.wf = !0;
+        Hp(this)
     }
     ;
-    g.H.z$ = function() {
-        this.Km = null;
-        var a = Date.now();
-        a - this.TU >= 0 ? (this.Ek != 2 && this.V.QT(3),
-        EQ(this),
-        this.jE = 2,
-        GZ(18),
-        mkQ(this)) : wzd(this, this.TU - a)
+    g.M.pD = function() {
+        this.AX = null;
+        var e = Date.now();
+        e - this.SM >= 0 ? (this.Qp != 2 && this.X.LG(3),
+        Hp(this),
+        this.qE = 2,
+        $3(18),
+        wIJ(this)) : kxh(this, this.SM - e)
     }
     ;
-    g.H.getLastError = function() {
-        return this.jE
+    g.M.getLastError = function() {
+        return this.qE
     }
     ;
-    g.H = Nzd.prototype;
-    g.H.H9 = null;
-    g.H.vG = null;
-    g.H.r0 = !1;
-    g.H.f9 = null;
-    g.H.wU = null;
-    g.H.Zq = -1;
-    g.H.VJ = null;
-    g.H.QI = null;
-    g.H.connect = function(a) {
-        this.f9 = a;
-        a = wo(this.V, null, this.f9);
-        GZ(3);
+    g.M = a8N.prototype;
+    g.M.EZ = null;
+    g.M.G6 = null;
+    g.M.uT = !1;
+    g.M.DX = null;
+    g.M.sA = null;
+    g.M.sP = -1;
+    g.M.l$ = null;
+    g.M.Br = null;
+    g.M.connect = function(e) {
+        this.DX = e;
+        e = Pp(this.X, null, this.DX);
+        $3(3);
         Date.now();
-        var I = this.V.j;
-        I != null ? (this.VJ = I[0],
-        (this.QI = I[1]) ? (this.wU = 1,
-        oGj(this)) : (this.wU = 2,
-        Dko(this))) : (vv(a, "MODE", "init"),
-        this.vG = new yg(this),
-        this.vG.nG = this.H9,
-        GMo(this.vG, a, !1, null, !0),
-        this.wU = 0)
+        var L = this.X.D;
+        L != null ? (this.l$ = L[0],
+        (this.Br = L[1]) ? (this.sA = 1,
+        NsL(this)) : (this.sA = 2,
+        mxM(this))) : (LV(e, "MODE", "init"),
+        this.G6 = new jU(this),
+        this.G6.Gf = this.EZ,
+        FPU(this.G6, e, !1, null, !0),
+        this.sA = 0)
     }
     ;
-    g.H.c_ = function(a) {
-        if (a)
-            this.wU = 2,
-            Dko(this);
+    g.M.Qs = function(e) {
+        if (e)
+            this.sA = 2,
+            mxM(this);
         else {
-            GZ(4);
-            var I = this.V;
-            I.EU = I.yO.Zq;
-            zZ(I, 9)
+            $3(4);
+            var L = this.X;
+            L.YY = L.pU.sP;
+            E8(L, 9)
         }
-        a && this.QT(2)
+        e && this.LG(2)
     }
     ;
-    g.H.GU = function(a) {
-        return this.V.GU(a)
+    g.M.LZ = function(e) {
+        return this.X.LZ(e)
     }
     ;
-    g.H.abort = function() {
-        this.vG && (this.vG.cancel(),
-        this.vG = null);
-        this.Zq = -1
+    g.M.abort = function() {
+        this.G6 && (this.G6.cancel(),
+        this.G6 = null);
+        this.sP = -1
     }
     ;
-    g.H.AS = function() {
+    g.M.Dj = function() {
         return !1
     }
     ;
-    g.H.Sy = function(a, I) {
-        this.Zq = a.O2;
-        if (this.wU == 0)
-            if (I) {
+    g.M.BS = function(e, L) {
+        this.sP = e.oC;
+        if (this.sA == 0)
+            if (L) {
                 try {
-                    var U = this.L.parse(I)
-                } catch (e) {
-                    a = this.V;
-                    a.EU = this.Zq;
-                    zZ(a, 2);
+                    var c = this.K.parse(L)
+                } catch (I) {
+                    e = this.X;
+                    e.YY = this.sP;
+                    E8(e, 2);
                     return
                 }
-                this.VJ = U[0];
-                this.QI = U[1]
+                this.l$ = c[0];
+                this.Br = c[1]
             } else
-                a = this.V,
-                a.EU = this.Zq,
-                zZ(a, 2);
+                e = this.X,
+                e.YY = this.sP,
+                E8(e, 2);
         else
-            this.wU == 2 && (this.r0 ? (GZ(7),
-            Date.now()) : I == "11111" ? (GZ(6),
-            this.r0 = !0,
+            this.sA == 2 && (this.uT ? ($3(7),
+            Date.now()) : L == "11111" ? ($3(6),
+            this.uT = !0,
             Date.now(),
-            this.Zq = 200,
-            this.vG.cancel(),
-            GZ(12),
-            Fx(this.V, this, !0)) : (GZ(8),
+            this.sP = 200,
+            this.G6.cancel(),
+            $3(12),
+            Q7(this.X, this, !0)) : ($3(8),
             Date.now(),
-            this.r0 = !1))
+            this.uT = !1))
     }
     ;
-    g.H.Qu = function() {
-        this.Zq = this.vG.O2;
-        if (this.vG.bG)
-            this.wU == 0 ? this.QI ? (this.wU = 1,
-            oGj(this)) : (this.wU = 2,
-            Dko(this)) : this.wU == 2 && (this.r0 ? (GZ(12),
-            Fx(this.V, this, !0)) : (GZ(11),
-            Fx(this.V, this, !1)));
+    g.M.x6 = function() {
+        this.sP = this.G6.oC;
+        if (this.G6.QX)
+            this.sA == 0 ? this.Br ? (this.sA = 1,
+            NsL(this)) : (this.sA = 2,
+            mxM(this)) : this.sA == 2 && (this.uT ? ($3(12),
+            Q7(this.X, this, !0)) : ($3(11),
+            Q7(this.X, this, !1)));
         else {
-            this.wU == 0 ? GZ(9) : this.wU == 2 && GZ(10);
-            var a = this.V;
-            this.vG.getLastError();
-            a.EU = this.Zq;
-            zZ(a, 2)
+            this.sA == 0 ? $3(9) : this.sA == 2 && $3(10);
+            var e = this.X;
+            this.G6.getLastError();
+            e.YY = this.sP;
+            E8(e, 2)
         }
     }
     ;
-    g.H.Np = function() {
-        return this.V.Np()
+    g.M.Pk = function() {
+        return this.X.Pk()
     }
     ;
-    g.H.isActive = function() {
-        return this.V.isActive()
+    g.M.isActive = function() {
+        return this.X.isActive()
     }
     ;
-    g.H.QT = function(a) {
-        this.V.QT(a)
+    g.M.LG = function(e) {
+        this.X.LG(e)
     }
     ;
-    g.H = vG8.prototype;
-    g.H.bQ = null;
-    g.H.Ch = null;
-    g.H.H1 = null;
-    g.H.dV = null;
-    g.H.yu = null;
-    g.H.gG = null;
-    g.H.FA = null;
-    g.H.rN = null;
-    g.H.Mp = 0;
-    g.H.O5 = 0;
-    g.H.Vt = null;
-    g.H.z0 = null;
-    g.H.SB = null;
-    g.H.ib = null;
-    g.H.yO = null;
-    g.H.L9 = null;
-    g.H.Yx = -1;
-    g.H.Io = -1;
-    g.H.EU = -1;
-    g.H.ol = 0;
-    g.H.dn = 0;
-    g.H.Es = 8;
-    g.qd(Iej, g.aI);
-    g.qd(s7d, g.aI);
-    g.H = vG8.prototype;
-    g.H.connect = function(a, I, U, e, T) {
-        GZ(0);
-        this.yu = I;
-        this.Ch = U || {};
-        e && T !== void 0 && (this.Ch.OSID = e,
-        this.Ch.OAID = T);
-        this.D ? (OQ((0,
-        g.e8)(this.hV, this, a), 100),
-        emz(this)) : this.hV(a)
+    g.M = y7w.prototype;
+    g.M.ao = null;
+    g.M.CI = null;
+    g.M.Bq = null;
+    g.M.e9 = null;
+    g.M.zJ = null;
+    g.M.nL = null;
+    g.M.Rj = null;
+    g.M.Xr = null;
+    g.M.Oz = 0;
+    g.M.KD = 0;
+    g.M.rM = null;
+    g.M.vH = null;
+    g.M.ag = null;
+    g.M.VR = null;
+    g.M.pU = null;
+    g.M.yV = null;
+    g.M.dS = -1;
+    g.M.Yb = -1;
+    g.M.YY = -1;
+    g.M.v4 = 0;
+    g.M.QF = 0;
+    g.M.I0 = 8;
+    var J$e = {
+        OK: 0,
+        DDe: 2,
+        nzm: 4,
+        k6W: 5,
+        GFq: 6,
+        STOP: 7,
+        A5: 8,
+        XU$: 9,
+        xO7: 10,
+        DO0: 11,
+        hPe: 12
+    };
+    g.TL(pIN, g.Hk);
+    g.TL($xh, g.Hk);
+    g.M = y7w.prototype;
+    g.M.connect = function(e, L, c, I, B) {
+        $3(0);
+        this.zJ = L;
+        this.CI = c || {};
+        I && B !== void 0 && (this.CI.OSID = I,
+        this.CI.OAID = B);
+        this.J ? (Zr((0,
+        g.RL)(this.Fi, this, e), 100),
+        HvJ(this)) : this.Fi(e)
     }
     ;
-    g.H.disconnect = function() {
-        TGQ(this);
-        if (this.V == 3) {
-            var a = this.Mp++
-              , I = this.gG.clone();
-            g.bv(I, "SID", this.J);
-            g.bv(I, "RID", a);
-            g.bv(I, "TYPE", "terminate");
-            Qg(this, I);
-            a = new yg(this,this.J,a);
-            a.Ek = 2;
-            a.ph = DA(I.clone());
-            (new Image).src = a.ph.toString();
-            a.vR = Date.now();
-            yLD(a)
+    g.M.disconnect = function() {
+        l8Z(this);
+        if (this.X == 3) {
+            var e = this.Oz++
+              , L = this.nL.clone();
+            g.ob(L, "SID", this.G);
+            g.ob(L, "RID", e);
+            g.ob(L, "TYPE", "terminate");
+            U8(this, L);
+            e = new jU(this,this.G,e);
+            e.Qp = 2;
+            e.Wk = eU(L.clone());
+            (new Image).src = e.Wk.toString();
+            e.M3 = Date.now();
+            bvM(e)
         }
-        bOf(this)
+        edN(this)
     }
     ;
-    g.H.hV = function(a) {
-        this.yO = new Nzd(this);
-        this.yO.H9 = this.bQ;
-        this.yO.L = this.U;
-        this.yO.connect(a)
+    g.M.Fi = function(e) {
+        this.pU = new a8N(this);
+        this.pU.EZ = this.ao;
+        this.pU.K = this.B;
+        this.pU.connect(e)
     }
     ;
-    g.H.AS = function() {
-        return this.V == 0
+    g.M.Dj = function() {
+        return this.X == 0
     }
     ;
-    g.H.getState = function() {
-        return this.V
+    g.M.getState = function() {
+        return this.X
     }
     ;
-    g.H.uq = function(a) {
-        this.z0 = null;
-        xOz(this, a)
+    g.M.TO = function(e) {
+        this.vH = null;
+        E5e(this, e)
     }
     ;
-    g.H.mx = function() {
-        this.SB = null;
-        this.dV = new yg(this,this.J,"rpc",this.C);
-        this.dV.nG = this.bQ;
-        this.dV.Mf = 0;
-        var a = this.FA.clone();
-        g.bv(a, "RID", "rpc");
-        g.bv(a, "SID", this.J);
-        g.bv(a, "CI", this.L9 ? "0" : "1");
-        g.bv(a, "AID", this.Yx);
-        Qg(this, a);
-        g.bv(a, "TYPE", "xmlhttp");
-        GMo(this.dV, a, !0, this.rN, !1)
+    g.M.uu = function() {
+        this.ag = null;
+        this.e9 = new jU(this,this.G,"rpc",this.T);
+        this.e9.Gf = this.ao;
+        this.e9.Nc = 0;
+        var e = this.Rj.clone();
+        g.ob(e, "RID", "rpc");
+        g.ob(e, "SID", this.G);
+        g.ob(e, "CI", this.yV ? "0" : "1");
+        g.ob(e, "AID", this.dS);
+        U8(this, e);
+        g.ob(e, "TYPE", "xmlhttp");
+        FPU(this.e9, e, !0, this.Xr, !1)
     }
     ;
-    g.H.Sy = function(a, I) {
-        if (this.V != 0 && (this.dV == a || this.H1 == a))
-            if (this.EU = a.O2,
-            this.H1 == a && this.V == 3)
-                if (this.Es > 7) {
+    g.M.BS = function(e, L) {
+        if (this.X != 0 && (this.e9 == e || this.Bq == e))
+            if (this.YY = e.oC,
+            this.Bq == e && this.X == 3)
+                if (this.I0 > 7) {
                     try {
-                        var U = this.U.parse(I)
-                    } catch (e) {
-                        U = null
+                        var c = this.B.parse(L)
+                    } catch (I) {
+                        c = null
                     }
-                    if (Array.isArray(U) && U.length == 3)
-                        if (a = U,
-                        a[0] == 0)
+                    if (Array.isArray(c) && c.length == 3)
+                        if (e = c,
+                        e[0] == 0)
                             a: {
-                                if (!this.SB) {
-                                    if (this.dV)
-                                        if (this.dV.vR + 3E3 < this.H1.vR)
-                                            mr(this),
-                                            this.dV.cancel(),
-                                            this.dV = null;
+                                if (!this.ag) {
+                                    if (this.e9)
+                                        if (this.e9.M3 + 3E3 < this.Bq.M3)
+                                            dX(this),
+                                            this.e9.cancel(),
+                                            this.e9 = null;
                                         else
                                             break a;
-                                    nd4(this);
-                                    GZ(19)
+                                    YR9(this);
+                                    $3(19)
                                 }
                             }
                         else
-                            this.Io = a[1],
-                            0 < this.Io - this.Yx && a[2] < 37500 && this.L9 && this.dn == 0 && !this.ib && (this.ib = OQ((0,
-                            g.e8)(this.vy, this), 6E3));
+                            this.Yb = e[1],
+                            0 < this.Yb - this.dS && e[2] < 37500 && this.yV && this.QF == 0 && !this.VR && (this.VR = Zr((0,
+                            g.RL)(this.Zc, this), 6E3));
                     else
-                        zZ(this, 11)
+                        E8(this, 11)
                 } else
-                    I != "y2f%" && zZ(this, 11);
-            else if (this.dV == a && mr(this),
-            !g.ur(I))
-                for (a = this.U.parse(I),
-                I = 0; I < a.length; I++)
-                    U = a[I],
-                    this.Yx = U[0],
-                    U = U[1],
-                    this.V == 2 ? U[0] == "c" ? (this.J = U[1],
-                    this.rN = U[2],
-                    U = U[3],
-                    U != null ? this.Es = U : this.Es = 6,
-                    this.V = 3,
-                    this.Vt && this.Vt.nA(),
-                    this.FA = wo(this, this.Np() ? this.rN : null, this.yu),
-                    ZOD(this)) : U[0] == "stop" && zZ(this, 7) : this.V == 3 && (U[0] == "stop" ? zZ(this, 7) : U[0] != "noop" && this.Vt && this.Vt.xF(U),
-                    this.dn = 0)
+                    L != "y2f%" && E8(this, 11);
+            else if (this.e9 == e && dX(this),
+            !g.J_(L))
+                for (e = this.B.parse(L),
+                L = 0; L < e.length; L++)
+                    c = e[L],
+                    this.dS = c[0],
+                    c = c[1],
+                    this.X == 2 ? c[0] == "c" ? (this.G = c[1],
+                    this.Xr = c[2],
+                    c = c[3],
+                    c != null ? this.I0 = c : this.I0 = 6,
+                    this.X = 3,
+                    this.rM && this.rM.WS(),
+                    this.Rj = Pp(this, this.Pk() ? this.Xr : null, this.zJ),
+                    XIU(this)) : c[0] == "stop" && E8(this, 7) : this.X == 3 && (c[0] == "stop" ? E8(this, 7) : c[0] != "noop" && this.rM && this.rM.yb(c),
+                    this.QF = 0)
     }
     ;
-    g.H.vy = function() {
-        this.ib != null && (this.ib = null,
-        this.dV.cancel(),
-        this.dV = null,
-        nd4(this),
-        GZ(20))
+    g.M.Zc = function() {
+        this.VR != null && (this.VR = null,
+        this.e9.cancel(),
+        this.e9 = null,
+        YR9(this),
+        $3(20))
     }
     ;
-    g.H.Qu = function(a) {
-        if (this.dV == a) {
-            mr(this);
-            this.dV = null;
-            var I = 2
-        } else if (this.H1 == a)
-            this.H1 = null,
-            I = 1;
+    g.M.x6 = function(e) {
+        if (this.e9 == e) {
+            dX(this);
+            this.e9 = null;
+            var L = 2
+        } else if (this.Bq == e)
+            this.Bq = null,
+            L = 1;
         else
             return;
-        this.EU = a.O2;
-        if (this.V != 0)
-            if (a.bG)
-                if (I == 1) {
-                    I = a.c6 ? a.c6.length : 0;
-                    a = Date.now() - a.vR;
-                    var U = St;
-                    U.dispatchEvent(new Iej(U,I,a,this.ol));
-                    UOz(this);
-                    this.Vt && this.Vt.jy(this, this.B);
-                    this.B.length = 0
+        this.YY = e.oC;
+        if (this.X != 0)
+            if (e.QX)
+                if (L == 1) {
+                    L = e.Uf ? e.Uf.length : 0;
+                    e = Date.now() - e.M3;
+                    var c = pV;
+                    c.dispatchEvent(new pIN(c,L,e,this.v4));
+                    jGU(this);
+                    this.rM && this.rM.wE(this, this.Z);
+                    this.Z.length = 0
                 } else
-                    ZOD(this);
+                    XIU(this);
             else {
-                U = a.getLastError();
-                var e;
-                if (!(e = U == 3 || U == 7 || U == 0 && this.EU > 0)) {
-                    if (e = I == 1)
-                        this.H1 || this.z0 || this.V == 1 || this.ol >= 2 ? e = !1 : (this.z0 = OQ((0,
-                        g.e8)(this.uq, this, a), tX8(this, this.ol)),
-                        this.ol++,
-                        e = !0);
-                    e = !(e || I == 2 && nd4(this))
+                c = e.getLastError();
+                var I;
+                if (!(I = c == 3 || c == 7 || c == 0 && this.YY > 0)) {
+                    if (I = L == 1)
+                        this.Bq || this.vH || this.X == 1 || this.v4 >= 2 ? I = !1 : (this.vH = Zr((0,
+                        g.RL)(this.TO, this, e), KP9(this, this.v4)),
+                        this.v4++,
+                        I = !0);
+                    I = !(I || L == 2 && YR9(this))
                 }
-                if (e)
-                    switch (U) {
+                if (I)
+                    switch (c) {
                     case 1:
-                        zZ(this, 5);
+                        E8(this, 5);
                         break;
                     case 4:
-                        zZ(this, 10);
+                        E8(this, 10);
                         break;
                     case 3:
-                        zZ(this, 6);
+                        E8(this, 6);
                         break;
                     case 7:
-                        zZ(this, 12);
+                        E8(this, 12);
                         break;
                     default:
-                        zZ(this, 2)
+                        E8(this, 2)
                     }
             }
     }
     ;
-    g.H.U5 = function(a) {
-        if (!g.kJ(arguments, this.V))
-            throw Error("Unexpected channel state: " + this.V);
+    g.M.a7 = function(e) {
+        if (!g.Fh(arguments, this.X))
+            throw Error("Unexpected channel state: " + this.X);
     }
     ;
-    g.H.inx = function(a) {
-        a ? GZ(2) : (GZ(1),
-        KhJ(this, 8))
+    g.M.GrY = function(e) {
+        e ? $3(2) : ($3(1),
+        n5M(this, 8))
     }
     ;
-    g.H.GU = function(a) {
-        if (a)
+    g.M.LZ = function(e) {
+        if (e)
             throw Error("Can't create secondary domain capable XhrIo object.");
-        a = new g.hM;
-        a.C = !1;
-        return a
+        e = new g.$A;
+        e.T = !1;
+        return e
     }
     ;
-    g.H.isActive = function() {
-        return !!this.Vt && this.Vt.isActive(this)
+    g.M.isActive = function() {
+        return !!this.rM && this.rM.isActive(this)
     }
     ;
-    g.H.QT = function(a) {
-        var I = St;
-        I.dispatchEvent(new s7d(I,a))
+    g.M.LG = function(e) {
+        var L = pV;
+        L.dispatchEvent(new $xh(L,e))
     }
     ;
-    g.H.Np = function() {
+    g.M.Pk = function() {
         return !1
     }
     ;
-    g.H = JP4.prototype;
-    g.H.nA = function() {}
+    g.M = Ld7.prototype;
+    g.M.WS = function() {}
     ;
-    g.H.xF = function() {}
+    g.M.yb = function() {}
     ;
-    g.H.jy = function() {}
+    g.M.wE = function() {}
     ;
-    g.H.lq = function() {}
+    g.M.cS = function() {}
     ;
-    g.H.qf = function() {}
+    g.M.hH = function() {}
     ;
-    g.H.E8 = function() {
+    g.M.MC = function() {
         return {}
     }
     ;
-    g.H.isActive = function() {
+    g.M.isActive = function() {
         return !0
     }
     ;
-    g.H = udo.prototype;
-    g.H.enqueue = function(a) {
-        this.L.push(a)
+    g.M = cgh.prototype;
+    g.M.enqueue = function(e) {
+        this.K.push(e)
     }
     ;
-    g.H.isEmpty = function() {
-        return this.V.length === 0 && this.L.length === 0
+    g.M.isEmpty = function() {
+        return this.X.length === 0 && this.K.length === 0
     }
     ;
-    g.H.clear = function() {
-        this.V = [];
-        this.L = []
+    g.M.clear = function() {
+        this.X = [];
+        this.K = []
     }
     ;
-    g.H.contains = function(a) {
-        return g.kJ(this.V, a) || g.kJ(this.L, a)
+    g.M.contains = function(e) {
+        return g.Fh(this.X, e) || g.Fh(this.K, e)
     }
     ;
-    g.H.remove = function(a) {
-        var I = this.V;
-        var U = (0,
-        g.TdG)(I, a);
-        U >= 0 ? (g.VG(I, U),
-        I = !0) : I = !1;
-        return I || g.Az(this.L, a)
+    g.M.remove = function(e) {
+        var L = this.X;
+        var c = (0,
+        g.Z6M)(L, e);
+        c >= 0 ? (g.b7(L, c),
+        L = !0) : L = !1;
+        return L || g.i7(this.K, e)
     }
     ;
-    g.H.ZK = function() {
-        for (var a = [], I = this.V.length - 1; I >= 0; --I)
-            a.push(this.V[I]);
-        I = this.L.length;
-        for (var U = 0; U < I; ++U)
-            a.push(this.L[U]);
-        return a
+    g.M.w7 = function() {
+        for (var e = [], L = this.X.length - 1; L >= 0; --L)
+            e.push(this.X[L]);
+        L = this.K.length;
+        for (var c = 0; c < L; ++c)
+            e.push(this.K[c]);
+        return e
     }
     ;
-    g.u(k1z, g.aI);
-    g.u(VXJ, g.aI);
-    g.qd(hi, g.S);
-    g.H = hi.prototype;
-    g.H.fUt = function() {
-        this.g6 = Math.min(3E5, this.g6 * 2);
-        this.B();
-        this.L && this.start()
+    g.z(IQJ, g.Hk);
+    g.z(BmM, g.Hk);
+    g.TL(XX, g.p);
+    g.M = XX.prototype;
+    g.M.Ex7 = function() {
+        this.Lp = Math.min(3E5, this.Lp * 2);
+        this.Z();
+        this.K && this.start()
     }
     ;
-    g.H.start = function() {
-        var a = this.g6 + 15E3 * Math.random();
-        g.Ik(this.V, a);
-        this.L = Date.now() + a
+    g.M.start = function() {
+        var e = this.Lp + 15E3 * Math.random();
+        g.HT(this.X, e);
+        this.K = Date.now() + e
     }
     ;
-    g.H.stop = function() {
-        this.V.stop();
-        this.L = 0
+    g.M.stop = function() {
+        this.X.stop();
+        this.K = 0
     }
     ;
-    g.H.isActive = function() {
-        return this.V.isActive()
+    g.M.isActive = function() {
+        return this.X.isActive()
     }
     ;
-    g.H.reset = function() {
-        this.V.stop();
-        this.g6 = 5E3
+    g.M.reset = function() {
+        this.X.stop();
+        this.Lp = 5E3
     }
     ;
-    g.qd(MXz, JP4);
-    g.H = MXz.prototype;
-    g.H.subscribe = function(a, I, U) {
-        return this.Y.subscribe(a, I, U)
+    g.TL(oi7, Ld7);
+    g.M = oi7.prototype;
+    g.M.subscribe = function(e, L, c) {
+        return this.j.subscribe(e, L, c)
     }
     ;
-    g.H.unsubscribe = function(a, I, U) {
-        return this.Y.unsubscribe(a, I, U)
+    g.M.unsubscribe = function(e, L, c) {
+        return this.j.unsubscribe(e, L, c)
     }
     ;
-    g.H.sK = function(a) {
-        return this.Y.sK(a)
+    g.M.EV = function(e) {
+        return this.j.EV(e)
     }
     ;
-    g.H.publish = function(a, I) {
-        return this.Y.publish.apply(this.Y, arguments)
+    g.M.publish = function(e, L) {
+        return this.j.publish.apply(this.j, arguments)
     }
     ;
-    g.H.dispose = function() {
-        this.C || (this.C = !0,
-        g.Kf(this.Y),
+    g.M.dispose = function() {
+        this.T || (this.T = !0,
+        g.L0(this.j),
         this.disconnect(),
-        g.Kf(this.L),
-        this.L = null,
-        this.dw = function() {
+        g.L0(this.K),
+        this.K = null,
+        this.Ve = function() {
             return ""
         }
         ,
-        this.zt = function() {
-            return g.XG({})
+        this.Y9 = function() {
+            return g.gT({})
         }
         )
     }
     ;
-    g.H.Ox = function() {
-        return this.C
+    g.M.We = function() {
+        return this.T
     }
     ;
-    g.H.connect = function(a, I, U) {
-        var e = this, T, C, r, q;
-        return g.f(function(x) {
-            if (x.L == 1)
-                return g.iF(x, 2),
-                e.U ? g.l(x, e.J, 2) : x.o$(2);
-            g.XY(x);
-            if (e.C || e.V && e.V.getState() == 2)
-                return x.return();
-            e.e8 = "";
-            e.L.stop();
-            e.j = a || null;
-            e.D = I || 0;
-            T = e.CO + "/test";
-            C = e.CO + "/bind";
-            r = new vG8(U ? U.firstTestResults : null,U ? U.secondTestResults : null,e.hN);
-            if (q = e.V)
-                q.Vt = null;
-            r.Vt = e;
-            e.V = r;
-            if (e.U)
-                return e.J = lez(e).then(function() {
-                    return iOD(e, T, C, q, U)
+    g.M.connect = function(e, L, c) {
+        var I = this, B, x, S, h;
+        return g.Z(function(R) {
+            if (R.K == 1)
+                return g.Gc(R, 2),
+                I.B ? g.a(R, I.G, 2) : R.Iq(2);
+            g.NM(R);
+            if (I.T || I.X && I.X.getState() == 2)
+                return R.return();
+            I.Gm = "";
+            I.K.stop();
+            I.D = e || null;
+            I.J = L || 0;
+            B = I.t7 + "/test";
+            x = I.t7 + "/bind";
+            S = new y7w(c ? c.firstTestResults : null,c ? c.secondTestResults : null,I.RT);
+            if (h = I.X)
+                h.rM = null;
+            S.rM = I;
+            I.X = S;
+            if (I.B)
+                return I.G = qL9(I).then(function() {
+                    return hdJ(I, B, x, h, c)
                 }),
-                x.return(e.J.then(function() {
-                    e.J = g.XG()
+                R.return(I.G.then(function() {
+                    I.G = g.gT()
                 }));
-            iOD(e, T, C, q, U);
-            return g.Pw(x, 0)
+            hdJ(I, B, x, h, c);
+            return g.mf(R, 0)
         })
     }
     ;
-    g.H.disconnect = function(a) {
+    g.M.disconnect = function(e) {
         try {
-            this.U && (this.J.cancel(),
-            this.J = g.XG())
+            this.B && (this.G.cancel(),
+            this.G = g.gT())
         } finally {
-            this.gw = a || 0,
-            this.L && this.L.stop(),
-            j7G(this),
-            this.V && (this.V.getState() == 3 && xOz(this.V),
-            this.V.disconnect()),
-            this.gw = 0
+            this.h7 = e || 0,
+            this.K && this.K.stop(),
+            SLM(this),
+            this.X && (this.X.getState() == 3 && E5e(this.X),
+            this.X.disconnect()),
+            this.h7 = 0
         }
     }
     ;
-    g.H.sendMessage = function(a, I) {
-        var U = this, e;
-        return g.f(function(T) {
-            switch (T.L) {
+    g.M.sendMessage = function(e, L) {
+        var c = this, I;
+        return g.Z(function(B) {
+            switch (B.K) {
             case 1:
-                g.iF(T, 2);
-                if (!U.U) {
-                    T.o$(2);
+                g.Gc(B, 2);
+                if (!c.B) {
+                    B.Iq(2);
                     break
                 }
-                return g.l(T, U.J, 2);
+                return g.a(B, c.G, 2);
             case 2:
-                g.XY(T);
-                if (U.C)
-                    return T.return();
-                e = {
-                    _sc: a
+                g.NM(B);
+                if (c.T)
+                    return B.return();
+                I = {
+                    _sc: e
                 };
-                I && g.ep(e, I);
-                if (U.L.isActive() || (U.V ? U.V.getState() : 0) == 2) {
-                    U.B.push(e);
-                    T.o$(6);
+                L && g.so(I, L);
+                if (c.K.isActive() || (c.X ? c.X.getState() : 0) == 2) {
+                    c.Z.push(I);
+                    B.Iq(6);
                     break
                 }
-                if (!U.oP()) {
-                    T.o$(6);
+                if (!c.Hm()) {
+                    B.Iq(6);
                     break
                 }
-                g.iF(T, 8);
-                if (!U.U || Who(U, a)) {
-                    T.o$(8);
+                g.Gc(B, 8);
+                if (!c.B || O$g(c, e)) {
+                    B.Iq(8);
                     break
                 }
-                return g.l(T, lez(U), 8);
+                return g.a(B, qL9(c), 8);
             case 8:
-                g.XY(T, 0, 0, 1);
-                U.oP() && (Who(U, a) || $Oo(U),
-                j7G(U),
-                Czo(U.V, e));
-                g.Pw(T, 6, 1);
+                g.NM(B, 0, 0, 1);
+                c.Hm() && (O$g(c, e) || rge(c),
+                SLM(c),
+                PSN(c.X, I));
+                g.mf(B, 6, 1);
                 break;
             case 6:
-                g.Pw(T, 0)
+                g.mf(B, 0)
             }
         })
     }
     ;
-    g.H.nA = function() {
-        this.L.reset();
-        this.j = null;
-        this.D = 0;
-        if (this.B.length)
-            if (this.U)
-                X2d(this);
+    g.M.WS = function() {
+        this.K.reset();
+        this.D = null;
+        this.J = 0;
+        if (this.Z.length)
+            if (this.B)
+                Wdw(this);
             else {
-                var a = this.B;
-                this.B = [];
-                var I = a.length;
-                $Oo(this);
-                BG4(this, a, I);
-                NV(this)
+                var e = this.Z;
+                this.Z = [];
+                var L = e.length;
+                rge(this);
+                TmM(this, e, L);
+                KV(this)
             }
         else
-            NV(this)
+            KV(this)
     }
     ;
-    g.H.lq = function(a) {
-        var I = a == 2 && this.V.EU == 401;
-        a == 4 || I || this.L.start();
-        this.publish("handlerError", a, I);
-        this.fO.Id("BROWSER_CHANNEL")
+    g.M.cS = function(e) {
+        var L = e == 2 && this.X.YY == 401;
+        e == 4 || L || this.K.start();
+        this.publish("handlerError", e, L);
+        L = Object.keys(J$e).find(function(c) {
+            return J$e[c] === e
+        });
+        this.He.Qa("BROWSER_CHANNEL", L != null ? L : "UNKNOWN")
     }
     ;
-    g.H.qf = function(a, I) {
-        if (!this.L.isActive())
+    g.M.hH = function(e, L) {
+        if (!this.K.isActive())
             this.publish("handlerClosed");
-        else if (I)
-            for (var U = I.length, e = 0; e < U; ++e) {
-                var T = I[e].map;
-                T && this.B.push(T)
+        else if (L)
+            for (var c = L.length, I = 0; I < c; ++I) {
+                var B = L[I].map;
+                B && this.Z.push(B)
             }
-        this.a$.Id("BROWSER_CHANNEL");
-        a && this.IF.V.Xl("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps", a.length);
-        I && this.ij.V.Xl("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps", I.length)
+        this.Pe.Qa("BROWSER_CHANNEL");
+        e && this.xT.X.aM("/client_streamz/youtube/living_room/mdx/browser_channel/pending_maps", e.length);
+        L && this.Bw.X.aM("/client_streamz/youtube/living_room/mdx/browser_channel/undelivered_maps", L.length)
     }
     ;
-    g.H.jy = function(a, I) {
-        I != null && a != null && this.xa.Id()
+    g.M.wE = function(e, L) {
+        L != null && e != null && this.Sl.Qa()
     }
     ;
-    g.H.E8 = function() {
-        var a = {
+    g.M.MC = function() {
+        var e = {
             v: 2
         };
-        this.e8 && (a.gsessionid = this.e8);
-        this.D != 0 && (a.ui = "" + this.D);
-        this.gw != 0 && (a.ui = "" + this.gw);
-        this.j && g.ep(a, this.j);
-        return a
+        this.Gm && (e.gsessionid = this.Gm);
+        this.J != 0 && (e.ui = "" + this.J);
+        this.h7 != 0 && (e.ui = "" + this.h7);
+        this.D && g.so(e, this.D);
+        return e
     }
     ;
-    g.H.xF = function(a) {
-        a[0] == "S" ? this.e8 = a[1] : a[0] == "gracefulReconnect" ? (this.L.start(),
-        this.V.disconnect()) : this.publish("handlerMessage", new APJ(a[0],a[1]));
-        this.Z6.Id("BROWSER_CHANNEL")
+    g.M.yb = function(e) {
+        e[0] == "S" ? this.Gm = e[1] : e[0] == "gracefulReconnect" ? (this.K.start(),
+        this.X.disconnect()) : this.publish("handlerMessage", new xOw(e[0],e[1]));
+        this.m$.Qa("BROWSER_CHANNEL")
     }
     ;
-    g.H.oP = function() {
-        return !!this.V && this.V.getState() == 3
+    g.M.Hm = function() {
+        return !!this.X && this.X.getState() == 3
     }
     ;
-    g.H.VO = function(a) {
-        (this.Va.loungeIdToken = a) || this.L.stop();
-        if (this.rF && this.V) {
-            var I = this.V.bQ || {};
-            a ? I["X-YouTube-LoungeId-Token"] = a : delete I["X-YouTube-LoungeId-Token"];
-            this.V.bQ = I
+    g.M.BH = function(e) {
+        (this.pS.loungeIdToken = e) || this.K.stop();
+        if (this.Cf && this.X) {
+            var L = this.X.ao || {};
+            e ? L["X-YouTube-LoungeId-Token"] = e : delete L["X-YouTube-LoungeId-Token"];
+            this.X.ao = L
         }
     }
     ;
-    g.H.getDeviceId = function() {
-        return this.Va.id
+    g.M.getDeviceId = function() {
+        return this.pS.id
     }
     ;
-    g.H.gy = function() {
-        return this.L.isActive() ? this.L.L - Date.now() : NaN
+    g.M.T0 = function() {
+        return this.K.isActive() ? this.K.K - Date.now() : NaN
     }
     ;
-    g.H.pk = function() {
-        var a = this.L;
-        g.sb(a.V);
-        a.start()
+    g.M.z$ = function() {
+        var e = this.K;
+        g.lB(e.X);
+        e.start()
     }
     ;
-    g.H.icw = function() {
-        this.L.isActive();
-        rPQ(this.V) == 0 && this.connect(this.j, this.D)
+    g.M.Vt0 = function() {
+        this.K.isActive();
+        QGU(this.X) == 0 && this.connect(this.D, this.J)
     }
     ;
-    oZ.prototype.sendRequest = function(a, I, U, e, T, C, r) {
-        a = {
-            format: C ? "RAW" : "JSON",
-            method: a,
+    Y3.prototype.sendRequest = function(e, L, c, I, B, x, S) {
+        e = {
+            format: x ? "RAW" : "JSON",
+            method: e,
             context: this,
             timeout: 5E3,
-            withCredentials: !!r,
-            onSuccess: g.Co(this.J, e, !C),
-            onError: g.Co(this.B, T),
-            onTimeout: g.Co(this.U, T)
+            withCredentials: !!S,
+            onSuccess: g.u7(this.G, I, !x),
+            onError: g.u7(this.Z, B),
+            onTimeout: g.u7(this.B, B)
         };
-        U && (a.postParams = U,
-        a.headers = {
+        c && (e.postParams = c,
+        e.headers = {
             "Content-Type": "application/x-www-form-urlencoded"
         });
-        return g.lk(I, a)
+        return g.W3(L, e)
     }
     ;
-    oZ.prototype.J = function(a, I, U, e) {
-        I ? a(e) : a({
-            text: U.responseText
+    Y3.prototype.G = function(e, L, c, I) {
+        L ? e(I) : e({
+            text: c.responseText
         })
     }
     ;
-    oZ.prototype.B = function(a, I) {
-        a(Error("Request error: " + I.status))
+    Y3.prototype.Z = function(e, L) {
+        e(Error("Request error: " + L.status))
     }
     ;
-    oZ.prototype.U = function(a) {
-        a(Error("request timed out"))
+    Y3.prototype.B = function(e) {
+        e(Error("request timed out"))
     }
     ;
-    g.u(fem, g.u7);
-    g.H = fem.prototype;
-    g.H.connect = function(a, I, U) {
-        this.A4.connect(a, I, U)
+    g.z(sMN, g.hi);
+    g.M = sMN.prototype;
+    g.M.connect = function(e, L, c) {
+        this.Eq.connect(e, L, c)
     }
     ;
-    g.H.disconnect = function(a) {
-        this.A4.disconnect(a)
+    g.M.disconnect = function(e) {
+        this.Eq.disconnect(e)
     }
     ;
-    g.H.pk = function() {
-        this.A4.pk()
+    g.M.z$ = function() {
+        this.Eq.z$()
     }
     ;
-    g.H.getDeviceId = function() {
-        return this.A4.getDeviceId()
+    g.M.getDeviceId = function() {
+        return this.Eq.getDeviceId()
     }
     ;
-    g.H.gy = function() {
-        return this.A4.gy()
+    g.M.T0 = function() {
+        return this.Eq.T0()
     }
     ;
-    g.H.oP = function() {
-        return this.A4.oP()
+    g.M.Hm = function() {
+        return this.Eq.Hm()
     }
     ;
-    g.H.NN = function() {
+    g.M.eh = function() {
         this.dispatchEvent("channelOpened");
-        var a = this.A4
-          , I = this.V;
-        g.yy("yt-remote-session-browser-channel", {
+        var e = this.Eq
+          , L = this.X;
+        g.bS("yt-remote-session-browser-channel", {
             firstTestResults: [""],
-            secondTestResults: !a.V.L9,
-            sessionId: a.V.J,
-            arrayId: a.V.Yx
+            secondTestResults: !e.X.yV,
+            sessionId: e.X.G,
+            arrayId: e.X.dS
         });
-        g.yy("yt-remote-session-screen-id", I);
-        a = xZ();
-        I = Zv();
-        g.kJ(a, I) || a.push(I);
-        bdG(a);
-        uUd()
+        g.bS("yt-remote-session-screen-id", L);
+        e = td();
+        L = O8();
+        g.Fh(e, L) || e.push(L);
+        L2e(e);
+        IMN()
     }
     ;
-    g.H.onClosed = function() {
+    g.M.onClosed = function() {
         this.dispatchEvent("channelClosed")
     }
     ;
-    g.H.onMessage = function(a) {
-        this.dispatchEvent(new k1z(a))
+    g.M.onMessage = function(e) {
+        this.dispatchEvent(new IQJ(e))
     }
     ;
-    g.H.onError = function(a) {
-        this.dispatchEvent(new VXJ(a ? 1 : 0))
+    g.M.onError = function(e) {
+        this.dispatchEvent(new BmM(e ? 1 : 0))
     }
     ;
-    g.H.sendMessage = function(a, I) {
-        this.A4.sendMessage(a, I)
+    g.M.sendMessage = function(e, L) {
+        this.Eq.sendMessage(e, L)
     }
     ;
-    g.H.VO = function(a) {
-        this.A4.VO(a)
+    g.M.BH = function(e) {
+        this.Eq.BH(e)
     }
     ;
-    g.H.dispose = function() {
-        this.A4.dispose()
+    g.M.dispose = function() {
+        this.Eq.dispose()
     }
     ;
-    g.H = YX4.prototype;
-    g.H.connect = function(a, I) {
-        a = a === void 0 ? {} : a;
-        I = I === void 0 ? 0 : I;
-        this.Y !== 2 && (this.B.stop(),
-        this.D = a,
-        this.C = I,
-        SXj(this),
-        (a = g.D5("ID_TOKEN")) ? this.J["x-youtube-identity-token"] = a : delete this.J["x-youtube-identity-token"],
-        this.V && (this.L.device = this.V.device,
-        this.L.name = this.V.name,
-        this.L.app = this.V.app,
-        this.L.id = this.V.id,
-        this.V.GI$ && (this.L.mdxVersion = "" + this.V.GI$),
-        this.V.theme && (this.L.theme = this.V.theme),
-        this.V.capabilities && (this.L.capabilities = this.V.capabilities),
-        this.V.oS && (this.L.cst = this.V.oS),
-        this.V.authuser && (this.L.authuser = this.V.authuser),
-        this.V.pageId && (this.L.pageId = this.V.pageId)),
-        this.C !== 0 ? this.L.ui = "" + this.C : delete this.L.ui,
-        Object.assign(this.L, this.D),
-        this.channel = new YZ(this.pathPrefix,{
-            Pgg: "gsessionid",
-            rNg: this.J,
-            yN8: this.L
+    g.M = viM.prototype;
+    g.M.connect = function(e, L) {
+        e = e === void 0 ? {} : e;
+        L = L === void 0 ? 0 : L;
+        this.j !== 2 && (this.Z.stop(),
+        this.J = e,
+        this.T = L,
+        AgL(this),
+        (e = g.Zu("ID_TOKEN")) ? this.G["x-youtube-identity-token"] = e : delete this.G["x-youtube-identity-token"],
+        this.X && (this.K.device = this.X.device,
+        this.K.name = this.X.name,
+        this.K.app = this.X.app,
+        this.K.id = this.X.id,
+        this.X.mz && (this.K.mdxVersion = "" + this.X.mz),
+        this.X.theme && (this.K.theme = this.X.theme),
+        this.X.capabilities && (this.K.capabilities = this.X.capabilities),
+        this.X.G5 && (this.K.cst = this.X.G5),
+        this.X.authuser && (this.K.authuser = this.X.authuser),
+        this.X.pageId && (this.K.pageId = this.X.pageId)),
+        this.T !== 0 ? this.K.ui = "" + this.T : delete this.K.ui,
+        Object.assign(this.K, this.J),
+        this.channel = new y7(this.pathPrefix,{
+            HC: "gsessionid",
+            bM: this.G,
+            iM: this.K
         }),
         this.channel.open(),
-        this.Y = 2,
-        OOo(this))
+        this.j = 2,
+        fQh(this))
     }
     ;
-    g.H.disconnect = function(a) {
-        this.j = a === void 0 ? 0 : a;
-        this.B.stop();
-        SXj(this);
-        this.channel && (this.j !== 0 ? this.L.ui = "" + this.j : delete this.L.ui,
+    g.M.disconnect = function(e) {
+        this.D = e === void 0 ? 0 : e;
+        this.Z.stop();
+        AgL(this);
+        this.channel && (this.D !== 0 ? this.K.ui = "" + this.D : delete this.K.ui,
         this.channel.close());
-        this.j = 0
+        this.D = 0
     }
     ;
-    g.H.gy = function() {
-        return this.B.isActive() ? this.B.L - Date.now() : NaN
+    g.M.T0 = function() {
+        return this.Z.isActive() ? this.Z.K - Date.now() : NaN
     }
     ;
-    g.H.pk = function() {
-        var a = this.B;
-        g.sb(a.V);
-        a.start()
+    g.M.z$ = function() {
+        var e = this.Z;
+        g.lB(e.X);
+        e.start()
     }
     ;
-    g.H.sendMessage = function(a, I) {
-        this.channel && (SXj(this),
-        a = Object.assign({}, {
-            _sc: a
-        }, I),
-        this.channel.send(a))
+    g.M.sendMessage = function(e, L) {
+        this.channel && (AgL(this),
+        e = Object.assign({}, {
+            _sc: e
+        }, L),
+        this.channel.send(e))
     }
     ;
-    g.H.VO = function(a) {
-        a || this.B.stop();
-        a ? this.J["X-YouTube-LoungeId-Token"] = a : delete this.J["X-YouTube-LoungeId-Token"]
+    g.M.BH = function(e) {
+        e || this.Z.stop();
+        e ? this.G["X-YouTube-LoungeId-Token"] = e : delete this.G["X-YouTube-LoungeId-Token"]
     }
     ;
-    g.H.getDeviceId = function() {
-        return this.V ? this.V.id : ""
+    g.M.getDeviceId = function() {
+        return this.X ? this.X.id : ""
     }
     ;
-    g.H.publish = function(a) {
-        return this.U.publish.apply(this.U, [a].concat(g.A(g.OS.apply(1, arguments))))
+    g.M.publish = function(e) {
+        return this.B.publish.apply(this.B, [e].concat(g.V(g.HM.apply(1, arguments))))
     }
     ;
-    g.H.subscribe = function(a, I, U) {
-        return this.U.subscribe(a, I, U)
+    g.M.subscribe = function(e, L, c) {
+        return this.B.subscribe(e, L, c)
     }
     ;
-    g.H.unsubscribe = function(a, I, U) {
-        return this.U.unsubscribe(a, I, U)
+    g.M.unsubscribe = function(e, L, c) {
+        return this.B.unsubscribe(e, L, c)
     }
     ;
-    g.H.sK = function(a) {
-        return this.U.sK(a)
+    g.M.EV = function(e) {
+        return this.B.EV(e)
     }
     ;
-    g.H.dispose = function() {
-        this.Va || (this.Va = !0,
-        g.Kf(this.U),
+    g.M.dispose = function() {
+        this.pS || (this.pS = !0,
+        g.L0(this.B),
         this.disconnect(),
-        g.Kf(this.B),
-        this.e8 = function() {
+        g.L0(this.Z),
+        this.Gm = function() {
             return ""
         }
         )
     }
     ;
-    g.H.Ox = function() {
-        return this.Va
+    g.M.We = function() {
+        return this.pS
     }
     ;
-    g.u(G1z, g.u7);
-    g.H = G1z.prototype;
-    g.H.connect = function(a, I) {
-        this.V.connect(a, I)
+    g.z(FdU, g.hi);
+    g.M = FdU.prototype;
+    g.M.connect = function(e, L) {
+        this.X.connect(e, L)
     }
     ;
-    g.H.disconnect = function(a) {
-        this.V.disconnect(a)
+    g.M.disconnect = function(e) {
+        this.X.disconnect(e)
     }
     ;
-    g.H.pk = function() {
-        this.V.pk()
+    g.M.z$ = function() {
+        this.X.z$()
     }
     ;
-    g.H.getDeviceId = function() {
-        return this.V.getDeviceId()
+    g.M.getDeviceId = function() {
+        return this.X.getDeviceId()
     }
     ;
-    g.H.gy = function() {
-        return this.V.gy()
+    g.M.T0 = function() {
+        return this.X.T0()
     }
     ;
-    g.H.oP = function() {
-        return this.V.Y === 3
+    g.M.Hm = function() {
+        return this.X.j === 3
     }
     ;
-    g.H.CV = function() {
+    g.M.Gv = function() {
         this.dispatchEvent("channelOpened")
     }
     ;
-    g.H.onClosed = function() {
+    g.M.onClosed = function() {
         this.dispatchEvent("channelClosed")
     }
     ;
-    g.H.onMessage = function(a) {
-        this.dispatchEvent(new k1z(a))
+    g.M.onMessage = function(e) {
+        this.dispatchEvent(new IQJ(e))
     }
     ;
-    g.H.onError = function() {
-        this.dispatchEvent(new VXJ(this.V.ZC === 401 ? 1 : 0))
+    g.M.onError = function() {
+        this.dispatchEvent(new BmM(this.X.Fc === 401 ? 1 : 0))
     }
     ;
-    g.H.sendMessage = function(a, I) {
-        this.V.sendMessage(a, I)
+    g.M.sendMessage = function(e, L) {
+        this.X.sendMessage(e, L)
     }
     ;
-    g.H.VO = function(a) {
-        this.V.VO(a)
+    g.M.BH = function(e) {
+        this.X.BH(e)
     }
     ;
-    g.H.dispose = function() {
-        this.V.dispose()
+    g.M.dispose = function() {
+        this.X.dispose()
     }
     ;
-    var Q7J = Date.now()
-      , vH = null
-      , U1 = Array(50)
-      , s1 = -1
-      , es = !1;
-    g.qd(TO, g.J_);
-    TO.prototype.m$ = function() {
+    var Jg9 = Date.now()
+      , eq = null
+      , BW = Array(50)
+      , Ie = -1
+      , xG = !1;
+    g.TL(oe, g.Yg);
+    oe.prototype.Pc = function() {
         return this.screens
     }
     ;
-    TO.prototype.contains = function(a) {
-        return !!tRm(this.screens, a)
+    oe.prototype.contains = function(e) {
+        return !!Yew(this.screens, e)
     }
     ;
-    TO.prototype.get = function(a) {
-        return a ? qV(this.screens, a) : null
+    oe.prototype.get = function(e) {
+        return e ? uu(this.screens, e) : null
     }
     ;
-    TO.prototype.info = function(a) {
-        ap(this.Y, a)
+    oe.prototype.info = function(e) {
+        LD(this.j, e)
     }
     ;
-    g.u(odo, g.J_);
-    g.H = odo.prototype;
-    g.H.start = function() {
-        !this.V && isNaN(this.ZN) && this.K8()
+    g.z(NmZ, g.Yg);
+    g.M = NmZ.prototype;
+    g.M.start = function() {
+        !this.X && isNaN(this.Jw) && this.DD()
     }
     ;
-    g.H.stop = function() {
-        this.V && (this.V.abort(),
-        this.V = null);
-        isNaN(this.ZN) || (g.M6(this.ZN),
-        this.ZN = NaN)
+    g.M.stop = function() {
+        this.X && (this.X.abort(),
+        this.X = null);
+        isNaN(this.Jw) || (g.ra(this.Jw),
+        this.Jw = NaN)
     }
     ;
-    g.H.Bs = function() {
+    g.M.KS = function() {
         this.stop();
-        g.J_.prototype.Bs.call(this)
+        g.Yg.prototype.KS.call(this)
     }
     ;
-    g.H.K8 = function() {
-        this.ZN = NaN;
-        this.V = g.lk(Dv(this.B, "/pairing/get_screen"), {
+    g.M.DD = function() {
+        this.Jw = NaN;
+        this.X = g.W3(nV(this.Z, "/pairing/get_screen"), {
             method: "POST",
             postParams: {
-                pairing_code: this.C
+                pairing_code: this.T
             },
             timeout: 5E3,
             onSuccess: (0,
-            g.e8)(this.T$, this),
+            g.RL)(this.Ut, this),
             onError: (0,
-            g.e8)(this.MN, this),
+            g.RL)(this.qK, this),
             onTimeout: (0,
-            g.e8)(this.G$, this)
+            g.RL)(this.I7, this)
         })
     }
     ;
-    g.H.T$ = function(a, I) {
-        this.V = null;
-        a = I.screen || {};
-        a.dialId = this.J;
-        a.name = this.Y;
-        I = -1;
-        this.U && a.shortLivedLoungeToken && a.shortLivedLoungeToken.value && a.shortLivedLoungeToken.refreshIntervalMs && (a.screenIdType = "shortLived",
-        a.loungeToken = a.shortLivedLoungeToken.value,
-        I = a.shortLivedLoungeToken.refreshIntervalMs);
-        this.publish("pairingComplete", new Cw(a), I)
+    g.M.Ut = function(e, L) {
+        this.X = null;
+        e = L.screen || {};
+        e.dialId = this.G;
+        e.name = this.j;
+        L = -1;
+        this.B && e.shortLivedLoungeToken && e.shortLivedLoungeToken.value && e.shortLivedLoungeToken.refreshIntervalMs && (e.screenIdType = "shortLived",
+        e.loungeToken = e.shortLivedLoungeToken.value,
+        L = e.shortLivedLoungeToken.refreshIntervalMs);
+        this.publish("pairingComplete", new rX(e), L)
     }
     ;
-    g.H.MN = function(a) {
-        this.V = null;
-        a.status && a.status == 404 ? this.L >= mJm.length ? this.publish("pairingFailed", Error("DIAL polling timed out")) : (a = mJm[this.L],
-        this.ZN = g.Vz((0,
-        g.e8)(this.K8, this), a),
-        this.L++) : this.publish("pairingFailed", Error("Server error " + a.status))
+    g.M.qK = function(e) {
+        this.X = null;
+        e.status && e.status == 404 ? this.K >= Vle.length ? this.publish("pairingFailed", Error("DIAL polling timed out")) : (e = Vle[this.K],
+        this.Jw = g.oC((0,
+        g.RL)(this.DD, this), e),
+        this.K++) : this.publish("pairingFailed", Error("Server error " + e.status))
     }
     ;
-    g.H.G$ = function() {
-        this.V = null;
+    g.M.I7 = function() {
+        this.X = null;
         this.publish("pairingFailed", Error("Server not responding"))
     }
     ;
-    var mJm = [2E3, 2E3, 1E3, 1E3, 1E3, 2E3, 2E3, 5E3, 5E3, 1E4];
-    g.qd(ri, TO);
-    g.H = ri.prototype;
-    g.H.start = function() {
-        Cv(this) && this.publish("screenChange");
-        !g.EV("yt-remote-lounge-token-expiration") && DOd(this);
-        g.M6(this.V);
-        this.V = g.Vz((0,
-        g.e8)(this.start, this), 1E4)
+    var Vle = [2E3, 2E3, 1E3, 1E3, 1E3, 2E3, 2E3, 5E3, 5E3, 1E4];
+    g.TL(rt, oe);
+    g.M = rt.prototype;
+    g.M.start = function() {
+        Sq(this) && this.publish("screenChange");
+        !g.iS("yt-remote-lounge-token-expiration") && mOZ(this);
+        g.ra(this.X);
+        this.X = g.oC((0,
+        g.RL)(this.start, this), 1E4)
     }
     ;
-    g.H.add = function(a, I) {
-        Cv(this);
-        zmd(this, a);
-        Hu(this, !1);
+    g.M.add = function(e, L) {
+        Sq(this);
+        Vtg(this, e);
+        hC(this, !1);
         this.publish("screenChange");
-        I(a);
-        a.token || DOd(this)
+        L(e);
+        e.token || mOZ(this)
     }
     ;
-    g.H.remove = function(a, I) {
-        var U = Cv(this);
-        NGj(this, a) && (Hu(this, !1),
-        U = !0);
-        I(a);
-        U && this.publish("screenChange")
+    g.M.remove = function(e, L) {
+        var c = Sq(this);
+        aQN(this, e) && (hC(this, !1),
+        c = !0);
+        L(e);
+        c && this.publish("screenChange")
     }
     ;
-    g.H.Vu = function(a, I, U, e) {
-        var T = Cv(this)
-          , C = this.get(a.id);
-        C ? (C.name != I && (C.name = I,
-        Hu(this, !1),
-        T = !0),
-        U(a)) : e(Error("no such local screen."));
-        T && this.publish("screenChange")
+    g.M.uc = function(e, L, c, I) {
+        var B = Sq(this)
+          , x = this.get(e.id);
+        x ? (x.name != L && (x.name = L,
+        hC(this, !1),
+        B = !0),
+        c(e)) : I(Error("no such local screen."));
+        B && this.publish("screenChange")
     }
     ;
-    g.H.Bs = function() {
-        g.M6(this.V);
-        ri.tT.Bs.call(this)
+    g.M.KS = function() {
+        g.ra(this.X);
+        rt.hj.KS.call(this)
     }
     ;
-    g.H.KKO = function(a) {
-        Cv(this);
-        var I = this.screens.length;
-        a = a && a.screens || [];
-        for (var U = a.length, e = 0; e < U; ++e) {
-            var T = a[e]
-              , C = this.get(T.screenId);
-            C && (C.token = T.loungeToken,
-            --I)
+    g.M.qt = function(e) {
+        Sq(this);
+        var L = this.screens.length;
+        e = e && e.screens || [];
+        for (var c = e.length, I = 0; I < c; ++I) {
+            var B = e[I]
+              , x = this.get(B.screenId);
+            x && (x.token = B.loungeToken,
+            --L)
         }
-        Hu(this, !I);
-        I && ap(this.Y, "Missed " + I + " lounge tokens.")
+        hC(this, !L);
+        L && LD(this.j, "Missed " + L + " lounge tokens.")
     }
     ;
-    g.H.t8X = function(a) {
-        ap(this.Y, "Requesting lounge tokens failed: " + a)
+    g.M.G4 = function(e) {
+        LD(this.j, "Requesting lounge tokens failed: " + e)
     }
     ;
-    g.u(aM8, g.J_);
-    g.H = aM8.prototype;
-    g.H.start = function() {
-        var a = parseInt(g.EV("yt-remote-fast-check-period") || "0", 10);
-        (this.J = g.rd() - 144E5 < a ? 0 : a) ? qi(this) : (this.J = g.rd() + 3E5,
-        g.yy("yt-remote-fast-check-period", this.J),
-        this.Ml())
+    g.z(Z$w, g.Yg);
+    g.M = Z$w.prototype;
+    g.M.start = function() {
+        var e = parseInt(g.iS("yt-remote-fast-check-period") || "0", 10);
+        (this.G = g.O9() - 144E5 < e ? 0 : e) ? Re(this) : (this.G = g.O9() + 3E5,
+        g.bS("yt-remote-fast-check-period", this.G),
+        this.S8())
     }
     ;
-    g.H.isEmpty = function() {
-        return g.vo(this.V)
+    g.M.isEmpty = function() {
+        return g.qQ(this.X)
     }
     ;
-    g.H.update = function() {
-        vdm("Updating availability on schedule.");
-        var a = this.Y()
-          , I = g.Rf(this.V, function(U, e) {
-            return U && !!qV(a, e)
+    g.M.update = function() {
+        yg9("Updating availability on schedule.");
+        var e = this.j()
+          , L = g.c2(this.X, function(c, I) {
+            return c && !!uu(e, I)
         }, this);
-        UNQ(this, I)
+        jMh(this, L)
     }
     ;
-    g.H.Bs = function() {
-        g.M6(this.B);
-        this.B = NaN;
-        this.L && (this.L.abort(),
-        this.L = null);
-        g.J_.prototype.Bs.call(this)
+    g.M.KS = function() {
+        g.ra(this.Z);
+        this.Z = NaN;
+        this.K && (this.K.abort(),
+        this.K = null);
+        g.Yg.prototype.KS.call(this)
     }
     ;
-    g.H.Ml = function() {
-        g.M6(this.B);
-        this.B = NaN;
-        this.L && this.L.abort();
-        var a = eTQ(this);
-        if (Abz(a)) {
-            var I = Dv(this.U, "/pairing/get_screen_availability");
-            this.L = this.U.sendRequest("POST", I, {
-                lounge_token: g.zm(a).join(",")
+    g.M.S8 = function() {
+        g.ra(this.Z);
+        this.Z = NaN;
+        this.K && this.K.abort();
+        var e = H$h(this);
+        if (ha9(e)) {
+            var L = nV(this.B, "/pairing/get_screen_availability");
+            this.K = this.B.sendRequest("POST", L, {
+                lounge_token: g.Rs(e).join(",")
             }, (0,
-            g.e8)(this.wL8, this, a), (0,
-            g.e8)(this.Ya8, this))
+            g.RL)(this.Awl, this, e), (0,
+            g.RL)(this.Jw0, this))
         } else
-            UNQ(this, {}),
-            qi(this)
+            jMh(this, {}),
+            Re(this)
     }
     ;
-    g.H.wL8 = function(a, I) {
-        this.L = null;
-        var U = g.zm(eTQ(this));
-        if (g.YJ(U, g.zm(a))) {
-            I = I.screens || [];
-            U = {};
-            for (var e = I.length, T = 0; T < e; ++T)
-                U[a[I[T].loungeToken]] = I[T].status == "online";
-            UNQ(this, U);
-            qi(this)
+    g.M.Awl = function(e, L) {
+        this.K = null;
+        var c = g.Rs(H$h(this));
+        if (g.E9(c, g.Rs(e))) {
+            L = L.screens || [];
+            c = {};
+            for (var I = L.length, B = 0; B < I; ++B)
+                c[e[L[B].loungeToken]] = L[B].status == "online";
+            jMh(this, c);
+            Re(this)
         } else
-            this.O1("Changing Screen set during request."),
-            this.Ml()
+            this.VZ("Changing Screen set during request."),
+            this.S8()
     }
     ;
-    g.H.Ya8 = function(a) {
-        this.O1("Screen availability failed: " + a);
-        this.L = null;
-        qi(this)
+    g.M.Jw0 = function(e) {
+        this.VZ("Screen availability failed: " + e);
+        this.K = null;
+        Re(this)
     }
     ;
-    g.H.O1 = function(a) {
-        ap("OnlineScreenService", a)
+    g.M.VZ = function(e) {
+        LD("OnlineScreenService", e)
     }
     ;
-    g.qd(Zh, TO);
-    g.H = Zh.prototype;
-    g.H.start = function() {
-        this.L.start();
-        this.V.start();
+    g.TL(u0, oe);
+    g.M = u0.prototype;
+    g.M.start = function() {
+        this.K.start();
+        this.X.start();
         this.screens.length && (this.publish("screenChange"),
-        this.V.isEmpty() || this.publish("onlineScreenChange"))
+        this.X.isEmpty() || this.publish("onlineScreenChange"))
     }
     ;
-    g.H.add = function(a, I, U) {
-        this.L.add(a, I, U)
+    g.M.add = function(e, L, c) {
+        this.K.add(e, L, c)
     }
     ;
-    g.H.remove = function(a, I, U) {
-        this.L.remove(a, I, U);
-        this.V.update()
+    g.M.remove = function(e, L, c) {
+        this.K.remove(e, L, c);
+        this.X.update()
     }
     ;
-    g.H.Vu = function(a, I, U, e) {
-        this.L.contains(a) ? this.L.Vu(a, I, U, e) : (a = "Updating name of unknown screen: " + a.name,
-        ap(this.Y, a),
-        e(Error(a)))
+    g.M.uc = function(e, L, c, I) {
+        this.K.contains(e) ? this.K.uc(e, L, c, I) : (e = "Updating name of unknown screen: " + e.name,
+        LD(this.j, e),
+        I(Error(e)))
     }
     ;
-    g.H.m$ = function(a) {
-        return a ? this.screens : g.j8(this.screens, g.Sa(this.B, function(I) {
-            return !this.contains(I)
+    g.M.Pc = function(e) {
+        return e ? this.screens : g.Jw(this.screens, g.ig(this.Z, function(L) {
+            return !this.contains(L)
         }, this))
     }
     ;
-    g.H.iX = function() {
-        return g.Sa(this.m$(!0), function(a) {
-            return !!this.V.V[a.id]
+    g.M.PS = function() {
+        return g.ig(this.Pc(!0), function(e) {
+            return !!this.X.X[e.id]
         }, this)
     }
     ;
-    g.H.s8 = function(a, I, U, e, T, C) {
-        var r = this;
-        this.info("getDialScreenByPairingCode " + a + " / " + I);
-        var q = new odo(this.J,a,I,U,e);
-        q.subscribe("pairingComplete", function(x, Z) {
-            g.Kf(q);
-            T(tZ(r, x), Z)
+    g.M.Cr = function(e, L, c, I, B, x) {
+        var S = this;
+        this.info("getDialScreenByPairingCode " + e + " / " + L);
+        var h = new NmZ(this.G,e,L,c,I);
+        h.subscribe("pairingComplete", function(R, u) {
+            g.L0(h);
+            B(tC(S, R), u)
         });
-        q.subscribe("pairingFailed", function(x) {
-            g.Kf(q);
-            C(x)
+        h.subscribe("pairingFailed", function(R) {
+            g.L0(h);
+            x(R)
         });
-        q.start();
+        h.start();
         return (0,
-        g.e8)(q.stop, q)
+        g.RL)(h.stop, h)
     }
     ;
-    g.H.Hy = function(a, I, U, e) {
-        g.lk(Dv(this.J, "/pairing/get_screen"), {
+    g.M.Vk = function(e, L, c, I) {
+        g.W3(nV(this.G, "/pairing/get_screen"), {
             method: "POST",
             postParams: {
-                pairing_code: a
+                pairing_code: e
             },
             timeout: 5E3,
             onSuccess: (0,
-            g.e8)(function(T, C) {
-                T = new Cw(C.screen || {});
-                if (!T.name || H5I(this, T.name)) {
+            g.RL)(function(B, x) {
+                B = new rX(x.screen || {});
+                if (!B.name || dOM(this, B.name)) {
                     a: {
-                        C = T.name;
-                        for (var r = 2, q = I(C, r); H5I(this, q); ) {
-                            r++;
-                            if (r > 20)
+                        x = B.name;
+                        for (var S = 2, h = L(x, S); dOM(this, h); ) {
+                            S++;
+                            if (S > 20)
                                 break a;
-                            q = I(C, r)
+                            h = L(x, S)
                         }
-                        C = q
+                        x = h
                     }
-                    T.name = C
+                    B.name = x
                 }
-                U(tZ(this, T))
+                c(tC(this, B))
             }, this),
             onError: (0,
-            g.e8)(function(T) {
-                e(Error("pairing request failed: " + T.status))
+            g.RL)(function(B) {
+                I(Error("pairing request failed: " + B.status))
             }, this),
             onTimeout: (0,
-            g.e8)(function() {
-                e(Error("pairing request timed out."))
+            g.RL)(function() {
+                I(Error("pairing request timed out."))
             }, this)
         })
     }
     ;
-    g.H.Bs = function() {
-        g.Kf(this.L);
-        g.Kf(this.V);
-        Zh.tT.Bs.call(this)
+    g.M.KS = function() {
+        g.L0(this.K);
+        g.L0(this.X);
+        u0.hj.KS.call(this)
     }
     ;
-    g.H.vaa = function() {
-        xNo(this);
+    g.M.yU = function() {
+        EiU(this);
         this.publish("screenChange");
-        this.V.update()
+        this.X.update()
     }
     ;
-    Zh.prototype.dispose = Zh.prototype.dispose;
-    g.qd(nv, g.J_);
-    g.H = nv.prototype;
-    g.H.Im = function(a) {
-        this.Ox() || (a && (bn(this, "" + a),
+    u0.prototype.dispose = u0.prototype.dispose;
+    g.TL(Ob, g.Yg);
+    g.M = Ob.prototype;
+    g.M.vv = function(e) {
+        this.We() || (e && (Tq(this, "" + e),
         this.publish("sessionFailed")),
-        this.V = null,
+        this.X = null,
         this.publish("sessionScreen", null))
     }
     ;
-    g.H.info = function(a) {
-        ap(this.dw, a)
+    g.M.info = function(e) {
+        LD(this.Ve, e)
     }
     ;
-    g.H.RY = function() {
+    g.M.OT = function() {
         return null
     }
     ;
-    g.H.nf = function(a) {
-        var I = this.L;
-        a ? (I.displayStatus = new chrome.cast.ReceiverDisplayStatus(a,[]),
-        I.displayStatus.showStop = !0) : I.displayStatus = null;
-        chrome.cast.setReceiverDisplayStatus(I, (0,
-        g.e8)(function() {
-            this.info("Updated receiver status for " + I.friendlyName + ": " + a)
+    g.M.BV = function(e) {
+        var L = this.K;
+        e ? (L.displayStatus = new chrome.cast.ReceiverDisplayStatus(e,[]),
+        L.displayStatus.showStop = !0) : L.displayStatus = null;
+        chrome.cast.setReceiverDisplayStatus(L, (0,
+        g.RL)(function() {
+            this.info("Updated receiver status for " + L.friendlyName + ": " + e)
         }, this), (0,
-        g.e8)(function() {
-            bn(this, "Failed to update receiver status for: " + I.friendlyName)
+        g.RL)(function() {
+            Tq(this, "Failed to update receiver status for: " + L.friendlyName)
         }, this))
     }
     ;
-    g.H.Bs = function() {
-        this.nf("");
-        nv.tT.Bs.call(this)
+    g.M.KS = function() {
+        this.BV("");
+        Ob.hj.KS.call(this)
     }
     ;
-    g.u(JZ, nv);
-    g.H = JZ.prototype;
-    g.H.l9 = function(a) {
-        if (this.B) {
-            if (this.B == a)
+    g.z(WW, Ob);
+    g.M = WW.prototype;
+    g.M.VN = function(e) {
+        if (this.Z) {
+            if (this.Z == e)
                 return;
-            bn(this, "Overriding cast session with new session object");
-            jbJ(this);
-            this.e8 = !1;
-            this.j = "unknown";
-            this.B.removeUpdateListener(this.gw);
-            this.B.removeMessageListener("urn:x-cast:com.google.youtube.mdx", this.tU)
+            Tq(this, "Overriding cast session with new session object");
+            Sxg(this);
+            this.Gm = !1;
+            this.D = "unknown";
+            this.Z.removeUpdateListener(this.h7);
+            this.Z.removeMessageListener("urn:x-cast:com.google.youtube.mdx", this.k9)
         }
-        this.B = a;
-        this.B.addUpdateListener(this.gw);
-        this.B.addMessageListener("urn:x-cast:com.google.youtube.mdx", this.tU);
-        uMo(this, "getMdxSessionStatus")
+        this.Z = e;
+        this.Z.addUpdateListener(this.h7);
+        this.Z.addMessageListener("urn:x-cast:com.google.youtube.mdx", this.k9);
+        cHM(this, "getMdxSessionStatus")
     }
     ;
-    g.H.hJ = function(a) {
-        this.info("launchWithParams no-op for Cast: " + g.m4(a))
+    g.M.uJ = function(e) {
+        this.info("launchWithParams no-op for Cast: " + g.yH(e))
     }
     ;
-    g.H.stop = function() {
-        this.B ? this.B.stop((0,
-        g.e8)(function() {
-            this.Im()
+    g.M.stop = function() {
+        this.Z ? this.Z.stop((0,
+        g.RL)(function() {
+            this.vv()
         }, this), (0,
-        g.e8)(function() {
-            this.Im(Error("Failed to stop receiver app."))
-        }, this)) : this.Im(Error("Stopping cast device without session."))
+        g.RL)(function() {
+            this.vv(Error("Failed to stop receiver app."))
+        }, this)) : this.vv(Error("Stopping cast device without session."))
     }
     ;
-    g.H.nf = function() {}
+    g.M.BV = function() {}
     ;
-    g.H.Bs = function() {
+    g.M.KS = function() {
         this.info("disposeInternal");
-        jbJ(this);
-        this.B && (this.B.removeUpdateListener(this.gw),
-        this.B.removeMessageListener("urn:x-cast:com.google.youtube.mdx", this.tU));
-        this.B = null;
-        nv.prototype.Bs.call(this)
+        Sxg(this);
+        this.Z && (this.Z.removeUpdateListener(this.h7),
+        this.Z.removeMessageListener("urn:x-cast:com.google.youtube.mdx", this.k9));
+        this.Z = null;
+        Ob.prototype.KS.call(this)
     }
     ;
-    g.H.x2x = function(a, I) {
-        if (!this.Ox())
-            if (I)
-                if (I = aZ(I),
-                g.If(I))
-                    switch (a = "" + I.type,
-                    I = I.data || {},
-                    this.info("onYoutubeMessage_: " + a + " " + g.m4(I)),
-                    a) {
+    g.M.GIq = function(e, L) {
+        if (!this.We())
+            if (L)
+                if (L = cp(L),
+                g.Se(L))
+                    switch (e = "" + L.type,
+                    L = L.data || {},
+                    this.info("onYoutubeMessage_: " + e + " " + g.yH(L)),
+                    e) {
                     case "mdxSessionStatus":
-                        KYI(this, I);
+                        niZ(this, L);
                         break;
                     case "loungeToken":
-                        kt8(this, I);
+                        IZL(this, L);
                         break;
                     default:
-                        bn(this, "Unknown youtube message: " + a)
+                        Tq(this, "Unknown youtube message: " + e)
                     }
                 else
-                    bn(this, "Unable to parse message.");
+                    Tq(this, "Unable to parse message.");
             else
-                bn(this, "No data in message.")
+                Tq(this, "No data in message.")
     }
     ;
-    g.H.fZ = function(a, I, U, e) {
-        g.M6(this.D);
-        this.D = 0;
-        rkG(this.J, this.L.label, a, this.L.friendlyName, (0,
-        g.e8)(function(T) {
-            T ? I(T) : e >= 0 ? (bn(this, "Screen " + a + " appears to be offline. " + e + " retries left."),
-            this.D = g.Vz((0,
-            g.e8)(this.fZ, this, a, I, U, e - 1), 300)) : U(Error("Unable to fetch screen."))
-        }, this), U)
+    g.M.SC = function(e, L, c, I) {
+        g.ra(this.J);
+        this.J = 0;
+        QMe(this.G, this.K.label, e, this.K.friendlyName, (0,
+        g.RL)(function(B) {
+            B ? L(B) : I >= 0 ? (Tq(this, "Screen " + e + " appears to be offline. " + I + " retries left."),
+            this.J = g.oC((0,
+            g.RL)(this.SC, this, e, L, c, I - 1), 300)) : c(Error("Unable to fetch screen."))
+        }, this), c)
     }
     ;
-    g.H.RY = function() {
-        return this.B
+    g.M.OT = function() {
+        return this.Z
     }
     ;
-    g.H.Qc = function(a) {
-        this.Ox() || a || (bn(this, "Cast session died."),
-        this.Im())
+    g.M.kS = function(e) {
+        this.We() || e || (Tq(this, "Cast session died."),
+        this.vv())
     }
     ;
-    g.u(un, nv);
-    g.H = un.prototype;
-    g.H.l9 = function(a) {
-        this.B = a;
-        this.B.addUpdateListener(this.Ux)
+    g.z(MC, Ob);
+    g.M = MC.prototype;
+    g.M.VN = function(e) {
+        this.Z = e;
+        this.Z.addUpdateListener(this.ye)
     }
     ;
-    g.H.hJ = function(a) {
-        this.zt = a;
-        this.Va()
+    g.M.uJ = function(e) {
+        this.Y9 = e;
+        this.pS()
     }
     ;
-    g.H.stop = function() {
-        Bqd(this);
-        this.B ? this.B.stop((0,
-        g.e8)(this.Im, this, null), (0,
-        g.e8)(this.Im, this, "Failed to stop DIAL device.")) : this.Im()
+    g.M.stop = function() {
+        TO9(this);
+        this.Z ? this.Z.stop((0,
+        g.RL)(this.vv, this, null), (0,
+        g.RL)(this.vv, this, "Failed to stop DIAL device.")) : this.vv()
     }
     ;
-    g.H.Bs = function() {
-        Bqd(this);
-        this.B && this.B.removeUpdateListener(this.Ux);
-        this.B = null;
-        nv.prototype.Bs.call(this)
+    g.M.KS = function() {
+        TO9(this);
+        this.Z && this.Z.removeUpdateListener(this.ye);
+        this.Z = null;
+        Ob.prototype.KS.call(this)
     }
     ;
-    g.H.fV = function(a) {
-        this.Ox() || a || (bn(this, "DIAL session died."),
-        this.U(),
-        this.U = function() {}
+    g.M.jh = function(e) {
+        this.We() || e || (Tq(this, "DIAL session died."),
+        this.B(),
+        this.B = function() {}
         ,
-        this.Im())
+        this.vv())
     }
     ;
-    g.u(AZ, nv);
-    AZ.prototype.stop = function() {
-        this.Im()
+    g.z(vW, Ob);
+    vW.prototype.stop = function() {
+        this.vv()
     }
     ;
-    AZ.prototype.l9 = function() {}
+    vW.prototype.VN = function() {}
     ;
-    AZ.prototype.hJ = function() {
-        g.M6(this.B);
-        this.B = NaN;
-        var a = qV(this.J.m$(), this.L.label);
-        a ? Kv(this, a) : this.Im(Error("No such screen"))
+    vW.prototype.uJ = function() {
+        g.ra(this.Z);
+        this.Z = NaN;
+        var e = uu(this.G.Pc(), this.K.label);
+        e ? qC(this, e) : this.vv(Error("No such screen"))
     }
     ;
-    AZ.prototype.Bs = function() {
-        g.M6(this.B);
-        this.B = NaN;
-        nv.prototype.Bs.call(this)
+    vW.prototype.KS = function() {
+        g.ra(this.Z);
+        this.Z = NaN;
+        Ob.prototype.KS.call(this)
     }
     ;
-    g.u(Mi, g.J_);
-    g.H = Mi.prototype;
-    g.H.init = function(a, I) {
+    g.z(fD, g.Yg);
+    g.M = fD.prototype;
+    g.M.init = function(e, L) {
         chrome.cast.timeout.requestSession = 3E4;
-        var U = new chrome.cast.SessionRequest(this.D,[chrome.cast.Capability.AUDIO_OUT]);
-        g.ik("desktop_enable_cast_connect") && (U.androidReceiverCompatible = !0);
-        this.j || (U.dialRequest = new chrome.cast.DialRequest("YouTube"));
-        var e = chrome.cast.AutoJoinPolicy.TAB_AND_ORIGIN_SCOPED;
-        a = a || this.Y ? chrome.cast.DefaultActionPolicy.CAST_THIS_TAB : chrome.cast.DefaultActionPolicy.CREATE_SESSION;
-        var T = (0,
-        g.e8)(this.iF8, this);
-        U = new chrome.cast.ApiConfig(U,(0,
-        g.e8)(this.Q2, this),T,e,a);
-        U.customDialLaunchCallback = (0,
-        g.e8)(this.vYa, this);
-        chrome.cast.initialize(U, (0,
-        g.e8)(function() {
-            this.Ox() || (chrome.cast.addReceiverActionListener(this.U),
-            w2J(),
-            this.L.subscribe("onlineScreenChange", (0,
-            g.e8)(this.V6, this)),
-            this.B = pGD(this),
-            chrome.cast.setCustomReceivers(this.B, function() {}, (0,
-            g.e8)(function(C) {
-                this.O1("Failed to set initial custom receivers: " + g.m4(C))
+        var c = new chrome.cast.SessionRequest(this.J,[chrome.cast.Capability.AUDIO_OUT]);
+        g.uL("desktop_enable_cast_connect") && (c.androidReceiverCompatible = !0);
+        this.D || (c.dialRequest = new chrome.cast.DialRequest("YouTube"));
+        var I = chrome.cast.AutoJoinPolicy.TAB_AND_ORIGIN_SCOPED;
+        e = e || this.j ? chrome.cast.DefaultActionPolicy.CAST_THIS_TAB : chrome.cast.DefaultActionPolicy.CREATE_SESSION;
+        var B = (0,
+        g.RL)(this.jIe, this);
+        c = new chrome.cast.ApiConfig(c,(0,
+        g.RL)(this.tL, this),B,I,e);
+        c.customDialLaunchCallback = (0,
+        g.RL)(this.v99, this);
+        chrome.cast.initialize(c, (0,
+        g.RL)(function() {
+            this.We() || (chrome.cast.addReceiverActionListener(this.B),
+            kIZ(),
+            this.K.subscribe("onlineScreenChange", (0,
+            g.RL)(this.gE, this)),
+            this.Z = zq9(this),
+            chrome.cast.setCustomReceivers(this.Z, function() {}, (0,
+            g.RL)(function(x) {
+                this.VZ("Failed to set initial custom receivers: " + g.yH(x))
             }, this)),
-            this.publish("yt-remote-cast2-availability-change", $y(this)),
-            I(!0))
+            this.publish("yt-remote-cast2-availability-change", Fp(this)),
+            L(!0))
         }, this), (0,
-        g.e8)(function(C) {
-            this.O1("Failed to initialize API: " + g.m4(C));
-            I(!1)
+        g.RL)(function(x) {
+            this.VZ("Failed to initialize API: " + g.yH(x));
+            L(!1)
         }, this))
     }
     ;
-    g.H.WZm = function(a, I) {
-        js("Setting connected screen ID: " + a + " -> " + I);
-        if (this.V) {
-            var U = this.V.V;
-            if (!a || U && U.id != a)
-                js("Unsetting old screen status: " + this.V.L.friendlyName),
-                Lv(this, null)
+    g.M.wM$ = function(e, L) {
+        AC("Setting connected screen ID: " + e + " -> " + L);
+        if (this.X) {
+            var c = this.X.X;
+            if (!e || c && c.id != e)
+                AC("Unsetting old screen status: " + this.X.K.friendlyName),
+                b0(this, null)
         }
-        if (a && I) {
-            if (!this.V) {
-                a = qV(this.L.m$(), a);
-                if (!a) {
-                    js("setConnectedScreenStatus: Unknown screen.");
+        if (e && L) {
+            if (!this.X) {
+                e = uu(this.K.Pc(), e);
+                if (!e) {
+                    AC("setConnectedScreenStatus: Unknown screen.");
                     return
                 }
-                if (a.idType == "shortLived") {
-                    js("setConnectedScreenStatus: Screen with id type to be short lived.");
+                if (e.idType == "shortLived") {
+                    AC("setConnectedScreenStatus: Screen with id type to be short lived.");
                     return
                 }
-                U = XG8(this, a);
-                U || (js("setConnectedScreenStatus: Connected receiver not custom..."),
-                U = new chrome.cast.Receiver(a.uuid ? a.uuid : a.id,a.name),
-                U.receiverType = chrome.cast.ReceiverType.CUSTOM,
-                this.B.push(U),
-                chrome.cast.setCustomReceivers(this.B, function() {}, (0,
-                g.e8)(function(e) {
-                    this.O1("Failed to set initial custom receivers: " + g.m4(e))
+                c = W7e(this, e);
+                c || (AC("setConnectedScreenStatus: Connected receiver not custom..."),
+                c = new chrome.cast.Receiver(e.uuid ? e.uuid : e.id,e.name),
+                c.receiverType = chrome.cast.ReceiverType.CUSTOM,
+                this.Z.push(c),
+                chrome.cast.setCustomReceivers(this.Z, function() {}, (0,
+                g.RL)(function(I) {
+                    this.VZ("Failed to set initial custom receivers: " + g.yH(I))
                 }, this)));
-                js("setConnectedScreenStatus: new active receiver: " + U.friendlyName);
-                Lv(this, new AZ(this.L,U), !0)
+                AC("setConnectedScreenStatus: new active receiver: " + c.friendlyName);
+                b0(this, new vW(this.K,c), !0)
             }
-            this.V.nf(I)
+            this.X.BV(L)
         } else
-            js("setConnectedScreenStatus: no screen.")
+            AC("setConnectedScreenStatus: no screen.")
     }
     ;
-    g.H.oL$ = function(a) {
-        this.Ox() ? this.O1("Setting connection data on disposed cast v2") : this.V ? this.V.hJ(a) : this.O1("Setting connection data without a session")
+    g.M.C0d = function(e) {
+        this.We() ? this.VZ("Setting connection data on disposed cast v2") : this.X ? this.X.uJ(e) : this.VZ("Setting connection data without a session")
     }
     ;
-    g.H.yc = function() {
-        this.Ox() ? this.O1("Stopping session on disposed cast v2") : this.V ? (this.V.stop(),
-        Lv(this, null)) : js("Stopping non-existing session")
+    g.M.R7 = function() {
+        this.We() ? this.VZ("Stopping session on disposed cast v2") : this.X ? (this.X.stop(),
+        b0(this, null)) : AC("Stopping non-existing session")
     }
     ;
-    g.H.requestSession = function() {
+    g.M.requestSession = function() {
         chrome.cast.requestSession((0,
-        g.e8)(this.Q2, this), (0,
-        g.e8)(this.z3O, this))
+        g.RL)(this.tL, this), (0,
+        g.RL)(this.vxd, this))
     }
     ;
-    g.H.Bs = function() {
-        this.L.unsubscribe("onlineScreenChange", (0,
-        g.e8)(this.V6, this));
-        window.chrome && chrome.cast && chrome.cast.removeReceiverActionListener(this.U);
-        var a = Edz
-          , I = g.NL("yt.mdx.remote.debug.handlers_");
-        g.Az(I || [], a);
-        g.Kf(this.V);
-        g.J_.prototype.Bs.call(this)
+    g.M.KS = function() {
+        this.K.unsubscribe("onlineScreenChange", (0,
+        g.RL)(this.gE, this));
+        window.chrome && chrome.cast && chrome.cast.removeReceiverActionListener(this.B);
+        var e = i$N
+          , L = g.BU("yt.mdx.remote.debug.handlers_");
+        g.i7(L || [], e);
+        g.L0(this.X);
+        g.Yg.prototype.KS.call(this)
     }
     ;
-    g.H.O1 = function(a) {
-        ap("Controller", a)
+    g.M.VZ = function(e) {
+        LD("Controller", e)
     }
     ;
-    g.H.rW = function(a, I) {
-        this.V == a && (I || Lv(this, null),
-        this.publish("yt-remote-cast2-session-change", I))
+    g.M.MB = function(e, L) {
+        this.X == e && (L || b0(this, null),
+        this.publish("yt-remote-cast2-session-change", L))
     }
     ;
-    g.H.jss = function(a, I) {
-        if (!this.Ox())
-            if (a)
-                switch (a.friendlyName = chrome.cast.unescape(a.friendlyName),
-                js("onReceiverAction_ " + a.label + " / " + a.friendlyName + "-- " + I),
-                I) {
+    g.M.Ipq = function(e, L) {
+        if (!this.We())
+            if (e)
+                switch (e.friendlyName = chrome.cast.unescape(e.friendlyName),
+                AC("onReceiverAction_ " + e.label + " / " + e.friendlyName + "-- " + L),
+                L) {
                 case chrome.cast.ReceiverAction.CAST:
-                    if (this.V)
-                        if (this.V.L.label != a.label)
-                            js("onReceiverAction_: Stopping active receiver: " + this.V.L.friendlyName),
-                            this.V.stop();
+                    if (this.X)
+                        if (this.X.K.label != e.label)
+                            AC("onReceiverAction_: Stopping active receiver: " + this.X.K.friendlyName),
+                            this.X.stop();
                         else {
-                            js("onReceiverAction_: Casting to active receiver.");
-                            this.V.V && this.publish("yt-remote-cast2-session-change", this.V.V);
+                            AC("onReceiverAction_: Casting to active receiver.");
+                            this.X.X && this.publish("yt-remote-cast2-session-change", this.X.X);
                             break
                         }
-                    switch (a.receiverType) {
+                    switch (e.receiverType) {
                     case chrome.cast.ReceiverType.CUSTOM:
-                        Lv(this, new AZ(this.L,a));
+                        b0(this, new vW(this.K,e));
                         break;
                     case chrome.cast.ReceiverType.DIAL:
-                        Lv(this, new un(this.L,a,this.J,this.config_));
+                        b0(this, new MC(this.K,e,this.G,this.config_));
                         break;
                     case chrome.cast.ReceiverType.CAST:
-                        Lv(this, new JZ(this.L,a,this.config_));
+                        b0(this, new WW(this.K,e,this.config_));
                         break;
                     default:
-                        this.O1("Unknown receiver type: " + a.receiverType)
+                        this.VZ("Unknown receiver type: " + e.receiverType)
                     }
                     break;
                 case chrome.cast.ReceiverAction.STOP:
-                    this.V && this.V.L.label == a.label ? this.V.stop() : this.O1("Stopping receiver w/o session: " + a.friendlyName)
+                    this.X && this.X.K.label == e.label ? this.X.stop() : this.VZ("Stopping receiver w/o session: " + e.friendlyName)
                 }
             else
-                this.O1("onReceiverAction_ called without receiver.")
+                this.VZ("onReceiverAction_ called without receiver.")
     }
     ;
-    g.H.vYa = function(a) {
-        if (this.Ox())
+    g.M.v99 = function(e) {
+        if (this.We())
             return Promise.reject(Error("disposed"));
-        var I = a.receiver;
-        I.receiverType != chrome.cast.ReceiverType.DIAL && (this.O1("Not DIAL receiver: " + I.friendlyName),
-        I.receiverType = chrome.cast.ReceiverType.DIAL);
-        var U = this.V ? this.V.L : null;
-        if (!U || U.label != I.label)
-            return this.O1("Receiving DIAL launch request for non-clicked DIAL receiver: " + I.friendlyName),
+        var L = e.receiver;
+        L.receiverType != chrome.cast.ReceiverType.DIAL && (this.VZ("Not DIAL receiver: " + L.friendlyName),
+        L.receiverType = chrome.cast.ReceiverType.DIAL);
+        var c = this.X ? this.X.K : null;
+        if (!c || c.label != L.label)
+            return this.VZ("Receiving DIAL launch request for non-clicked DIAL receiver: " + L.friendlyName),
             Promise.reject(Error("illegal DIAL launch"));
-        if (U && U.label == I.label && U.receiverType != chrome.cast.ReceiverType.DIAL) {
-            if (this.V.V)
-                return js("Reselecting dial screen."),
-                this.publish("yt-remote-cast2-session-change", this.V.V),
+        if (c && c.label == L.label && c.receiverType != chrome.cast.ReceiverType.DIAL) {
+            if (this.X.X)
+                return AC("Reselecting dial screen."),
+                this.publish("yt-remote-cast2-session-change", this.X.X),
                 Promise.resolve(new chrome.cast.DialLaunchResponse(!1));
-            this.O1('Changing CAST intent from "' + U.receiverType + '" to "dial" for ' + I.friendlyName);
-            Lv(this, new un(this.L,I,this.J,this.config_))
+            this.VZ('Changing CAST intent from "' + c.receiverType + '" to "dial" for ' + L.friendlyName);
+            b0(this, new MC(this.K,L,this.G,this.config_))
         }
-        I = this.V;
-        I.D = a;
-        I.D.appState == chrome.cast.DialAppState.RUNNING ? (a = I.D.extraData || {},
-        U = a.screenId || null,
-        ky(I) && a.loungeToken ? a.loungeTokenRefreshIntervalMs ? a = ckG(I, {
-            name: I.L.friendlyName,
-            screenId: a.screenId,
-            loungeToken: a.loungeToken,
-            dialId: I.D.receiver.label,
+        L = this.X;
+        L.J = e;
+        L.J.appState == chrome.cast.DialAppState.RUNNING ? (e = L.J.extraData || {},
+        c = e.screenId || null,
+        zq(L) && e.loungeToken ? e.loungeTokenRefreshIntervalMs ? e = t4e(L, {
+            name: L.K.friendlyName,
+            screenId: e.screenId,
+            loungeToken: e.loungeToken,
+            dialId: L.J.receiver.label,
             screenIdType: "shortLived"
-        }, a.loungeTokenRefreshIntervalMs) : (g.I0(Error("No loungeTokenRefreshIntervalMs presents in additionalData: " + JSON.stringify(a) + ".")),
-        a = WYQ(I, U)) : a = WYQ(I, U)) : a = LYJ(I);
-        return a
+        }, e.loungeTokenRefreshIntervalMs) : (g.jM(Error("No loungeTokenRefreshIntervalMs presents in additionalData: " + JSON.stringify(e) + ".")),
+        e = OFL(L, c)) : e = OFL(L, c)) : e = RqN(L);
+        return e
     }
     ;
-    g.H.Q2 = function(a) {
-        var I = this;
-        if (!this.Ox() && !this.Y) {
-            js("New cast session ID: " + a.sessionId);
-            var U = a.receiver;
-            if (U.receiverType != chrome.cast.ReceiverType.CUSTOM) {
-                if (!this.V)
-                    if (U.receiverType == chrome.cast.ReceiverType.CAST)
-                        js("Got resumed cast session before resumed mdx connection."),
-                        U.friendlyName = chrome.cast.unescape(U.friendlyName),
-                        Lv(this, new JZ(this.L,U,this.config_), !0);
+    g.M.tL = function(e) {
+        var L = this;
+        if (!this.We() && !this.j) {
+            AC("New cast session ID: " + e.sessionId);
+            var c = e.receiver;
+            if (c.receiverType != chrome.cast.ReceiverType.CUSTOM) {
+                if (!this.X)
+                    if (c.receiverType == chrome.cast.ReceiverType.CAST)
+                        AC("Got resumed cast session before resumed mdx connection."),
+                        c.friendlyName = chrome.cast.unescape(c.friendlyName),
+                        b0(this, new WW(this.K,c,this.config_), !0);
                     else {
-                        this.O1("Got non-cast session without previous mdx receiver event, or mdx resume.");
+                        this.VZ("Got non-cast session without previous mdx receiver event, or mdx resume.");
                         return
                     }
-                var e = this.V.L
-                  , T = qV(this.L.m$(), e.label);
-                T && ro(T, U.label) && e.receiverType != chrome.cast.ReceiverType.CAST && U.receiverType == chrome.cast.ReceiverType.CAST && (js("onSessionEstablished_: manual to cast session change " + U.friendlyName),
-                g.Kf(this.V),
-                this.V = new JZ(this.L,U,this.config_),
-                this.V.subscribe("sessionScreen", (0,
-                g.e8)(this.rW, this, this.V)),
-                this.V.subscribe("sessionFailed", function() {
-                    return PiD(I, I.V)
+                var I = this.X.K
+                  , B = uu(this.K.Pc(), I.label);
+                B && hd(B, c.label) && I.receiverType != chrome.cast.ReceiverType.CAST && c.receiverType == chrome.cast.ReceiverType.CAST && (AC("onSessionEstablished_: manual to cast session change " + c.friendlyName),
+                g.L0(this.X),
+                this.X = new WW(this.K,c,this.config_),
+                this.X.subscribe("sessionScreen", (0,
+                g.RL)(this.MB, this, this.X)),
+                this.X.subscribe("sessionFailed", function() {
+                    return M4N(L, L.X)
                 }),
-                this.V.hJ(null));
-                this.V.l9(a)
+                this.X.uJ(null));
+                this.X.VN(e)
             }
         }
     }
     ;
-    g.H.ra = function() {
-        return this.V ? this.V.RY() : null
+    g.M.BI = function() {
+        return this.X ? this.X.OT() : null
     }
     ;
-    g.H.z3O = function(a) {
-        this.Ox() || (this.O1("Failed to estabilish a session: " + g.m4(a)),
-        a.code != chrome.cast.ErrorCode.CANCEL && Lv(this, null),
+    g.M.vxd = function(e) {
+        this.We() || (this.VZ("Failed to estabilish a session: " + g.yH(e)),
+        e.code != chrome.cast.ErrorCode.CANCEL && b0(this, null),
         this.publish("yt-remote-cast2-session-failed"))
     }
     ;
-    g.H.iF8 = function(a) {
-        js("Receiver availability updated: " + a);
-        if (!this.Ox()) {
-            var I = $y(this);
-            this.C = a == chrome.cast.ReceiverAvailability.AVAILABLE;
-            $y(this) != I && this.publish("yt-remote-cast2-availability-change", $y(this))
+    g.M.jIe = function(e) {
+        AC("Receiver availability updated: " + e);
+        if (!this.We()) {
+            var L = Fp(this);
+            this.T = e == chrome.cast.ReceiverAvailability.AVAILABLE;
+            Fp(this) != L && this.publish("yt-remote-cast2-availability-change", Fp(this))
         }
     }
     ;
-    g.H.V6 = function() {
-        this.Ox() || (this.B = pGD(this),
-        js("Updating custom receivers: " + g.m4(this.B)),
-        chrome.cast.setCustomReceivers(this.B, function() {}, (0,
-        g.e8)(function() {
-            this.O1("Failed to set custom receivers.")
+    g.M.gE = function() {
+        this.We() || (this.Z = zq9(this),
+        AC("Updating custom receivers: " + g.yH(this.Z)),
+        chrome.cast.setCustomReceivers(this.Z, function() {}, (0,
+        g.RL)(function() {
+            this.VZ("Failed to set custom receivers.")
         }, this)),
-        this.publish("yt-remote-cast2-availability-change", $y(this)))
+        this.publish("yt-remote-cast2-availability-change", Fp(this)))
     }
     ;
-    Mi.prototype.setLaunchParams = Mi.prototype.oL$;
-    Mi.prototype.setConnectedScreenStatus = Mi.prototype.WZm;
-    Mi.prototype.stopSession = Mi.prototype.yc;
-    Mi.prototype.getCastSession = Mi.prototype.ra;
-    Mi.prototype.requestSession = Mi.prototype.requestSession;
-    Mi.prototype.init = Mi.prototype.init;
-    Mi.prototype.dispose = Mi.prototype.dispose;
-    var RTQ = [];
-    g.H = Pu.prototype;
-    g.H.reset = function(a) {
+    fD.prototype.setLaunchParams = fD.prototype.C0d;
+    fD.prototype.setConnectedScreenStatus = fD.prototype.wM$;
+    fD.prototype.stopSession = fD.prototype.R7;
+    fD.prototype.getCastSession = fD.prototype.BI;
+    fD.prototype.requestSession = fD.prototype.requestSession;
+    fD.prototype.init = fD.prototype.init;
+    fD.prototype.dispose = fD.prototype.dispose;
+    var gRL = [];
+    g.M = JC.prototype;
+    g.M.reset = function(e) {
         this.listId = "";
         this.index = -1;
         this.videoId = "";
-        hTz(this);
+        CM7(this);
         this.volume = -1;
         this.muted = !1;
-        a && (this.index = a.index,
-        this.listId = a.listId,
-        this.videoId = a.videoId,
-        this.playerState = a.playerState,
-        this.volume = a.volume,
-        this.muted = a.muted,
-        this.audioTrackId = a.audioTrackId,
-        this.trackData = a.trackData,
-        this.Mk = a.hasPrevious,
-        this.n1 = a.hasNext,
-        this.C = a.playerTime,
-        this.Y = a.playerTimeAt,
-        this.J = a.seekableStart,
-        this.V = a.seekableEnd,
-        this.U = a.duration,
-        this.D = a.loadedTime,
-        this.B = a.liveIngestionTime,
-        this.L = !isNaN(this.B))
+        e && (this.index = e.index,
+        this.listId = e.listId,
+        this.videoId = e.videoId,
+        this.playerState = e.playerState,
+        this.volume = e.volume,
+        this.muted = e.muted,
+        this.audioTrackId = e.audioTrackId,
+        this.trackData = e.trackData,
+        this.r9 = e.hasPrevious,
+        this.g$ = e.hasNext,
+        this.j = e.playerTime,
+        this.B = e.playerTimeAt,
+        this.K = e.seekableStart,
+        this.T = e.seekableEnd,
+        this.Z = e.duration,
+        this.J = e.loadedTime,
+        this.X = e.liveIngestionTime,
+        this.G = !isNaN(this.X))
     }
     ;
-    g.H.isPlaying = function() {
+    g.M.isPlaying = function() {
         return this.playerState == 1
     }
     ;
-    g.H.isBuffering = function() {
+    g.M.isBuffering = function() {
         return this.playerState == 3
     }
     ;
-    g.H.jp = function() {
+    g.M.ZT = function() {
         return this.playerState == 1081
     }
     ;
-    g.H.oE = function(a) {
-        this.U = isNaN(a) ? 0 : a
+    g.M.SF = function(e) {
+        this.Z = isNaN(e) ? 0 : e
     }
     ;
-    g.H.getDuration = function() {
-        return this.L ? this.U + pv(this) : this.U
+    g.M.getDuration = function() {
+        return this.G ? this.Z + V$(this) : this.Z
     }
     ;
-    g.H.clone = function() {
-        return new Pu(Nqf(this))
+    g.M.clone = function() {
+        return new JC(NON(this))
     }
     ;
-    g.u(GO, g.J_);
-    g.H = GO.prototype;
-    g.H.getState = function() {
-        return this.B
+    g.z(y$, g.Yg);
+    g.M = y$.prototype;
+    g.M.getState = function() {
+        return this.Z
     }
     ;
-    g.H.gy = function() {
-        return this.J.getReconnectTimeout()
+    g.M.T0 = function() {
+        return this.G.getReconnectTimeout()
     }
     ;
-    g.H.pk = function() {
-        this.J.reconnect()
+    g.M.z$ = function() {
+        this.G.reconnect()
     }
     ;
-    g.H.play = function() {
-        E1(this) ? (this.V ? this.V.play(null, g.KM, FC(this, "play")) : wi(this, "play"),
-        vLz(this, 1, Yy(ym(this))),
-        this.publish("remotePlayerChange")) : di(this, this.play)
+    g.M.play = function() {
+        pD(this) ? (this.X ? this.X.play(null, g.VD, l0(this, "play")) : HW(this, "play"),
+        ZFZ(this, 1, ae(Zv(this))),
+        this.publish("remotePlayerChange")) : $G(this, this.play)
     }
     ;
-    g.H.pause = function() {
-        E1(this) ? (this.V ? this.V.pause(null, g.KM, FC(this, "pause")) : wi(this, "pause"),
-        vLz(this, 2, Yy(ym(this))),
-        this.publish("remotePlayerChange")) : di(this, this.pause)
+    g.M.pause = function() {
+        pD(this) ? (this.X ? this.X.pause(null, g.VD, l0(this, "pause")) : HW(this, "pause"),
+        ZFZ(this, 2, ae(Zv(this))),
+        this.publish("remotePlayerChange")) : $G(this, this.pause)
     }
     ;
-    g.H.seekTo = function(a) {
-        if (E1(this)) {
-            if (this.V) {
-                var I = ym(this)
-                  , U = new chrome.cast.media.SeekRequest;
-                U.currentTime = a;
-                I.isPlaying() || I.isBuffering() ? U.resumeState = chrome.cast.media.ResumeState.PLAYBACK_START : U.resumeState = chrome.cast.media.ResumeState.PLAYBACK_PAUSE;
-                this.V.seek(U, g.KM, FC(this, "seekTo", {
-                    newTime: a
+    g.M.seekTo = function(e) {
+        if (pD(this)) {
+            if (this.X) {
+                var L = Zv(this)
+                  , c = new chrome.cast.media.SeekRequest;
+                c.currentTime = e;
+                L.isPlaying() || L.isBuffering() ? c.resumeState = chrome.cast.media.ResumeState.PLAYBACK_START : c.resumeState = chrome.cast.media.ResumeState.PLAYBACK_PAUSE;
+                this.X.seek(c, g.VD, l0(this, "seekTo", {
+                    newTime: e
                 }))
             } else
-                wi(this, "seekTo", {
-                    newTime: a
+                HW(this, "seekTo", {
+                    newTime: e
                 });
-            vLz(this, 3, a);
+            ZFZ(this, 3, e);
             this.publish("remotePlayerChange")
         } else
-            di(this, g.Co(this.seekTo, a))
+            $G(this, g.u7(this.seekTo, e))
     }
     ;
-    g.H.stop = function() {
-        if (E1(this)) {
-            this.V ? this.V.stop(null, g.KM, FC(this, "stopVideo")) : wi(this, "stopVideo");
-            var a = ym(this);
-            a.index = -1;
-            a.videoId = "";
-            hTz(a);
-            Rp(this, a);
+    g.M.stop = function() {
+        if (pD(this)) {
+            this.X ? this.X.stop(null, g.VD, l0(this, "stopVideo")) : HW(this, "stopVideo");
+            var e = Zv(this);
+            e.index = -1;
+            e.videoId = "";
+            CM7(e);
+            jq(this, e);
             this.publish("remotePlayerChange")
         } else
-            di(this, this.stop)
+            $G(this, this.stop)
     }
     ;
-    g.H.setVolume = function(a, I) {
-        if (E1(this)) {
-            var U = ym(this);
-            if (this.L) {
-                if (U.volume != a) {
-                    var e = Math.round(a) / 100;
-                    this.L.setReceiverVolumeLevel(e, (0,
-                    g.e8)(function() {
-                        Ip("set receiver volume: " + e)
+    g.M.setVolume = function(e, L) {
+        if (pD(this)) {
+            var c = Zv(this);
+            if (this.K) {
+                if (c.volume != e) {
+                    var I = Math.round(e) / 100;
+                    this.K.setReceiverVolumeLevel(I, (0,
+                    g.RL)(function() {
+                        cW("set receiver volume: " + I)
                     }, this), (0,
-                    g.e8)(function() {
-                        this.O1("failed to set receiver volume.")
+                    g.RL)(function() {
+                        this.VZ("failed to set receiver volume.")
                     }, this))
                 }
-                U.muted != I && this.L.setReceiverMuted(I, (0,
-                g.e8)(function() {
-                    Ip("set receiver muted: " + I)
+                c.muted != L && this.K.setReceiverMuted(L, (0,
+                g.RL)(function() {
+                    cW("set receiver muted: " + L)
                 }, this), (0,
-                g.e8)(function() {
-                    this.O1("failed to set receiver muted.")
+                g.RL)(function() {
+                    this.VZ("failed to set receiver muted.")
                 }, this))
             } else {
-                var T = {
-                    volume: a,
-                    muted: I
+                var B = {
+                    volume: e,
+                    muted: L
                 };
-                U.volume != -1 && (T.delta = a - U.volume);
-                wi(this, "setVolume", T)
+                c.volume != -1 && (B.delta = e - c.volume);
+                HW(this, "setVolume", B)
             }
-            U.muted = I;
-            U.volume = a;
-            Rp(this, U)
+            c.muted = L;
+            c.volume = e;
+            jq(this, c)
         } else
-            di(this, g.Co(this.setVolume, a, I))
+            $G(this, g.u7(this.setVolume, e, L))
     }
     ;
-    g.H.gY = function(a, I) {
-        if (E1(this)) {
-            var U = ym(this);
-            a = {
-                videoId: a
+    g.M.FZ = function(e, L) {
+        if (pD(this)) {
+            var c = Zv(this);
+            e = {
+                videoId: e
             };
-            I && (U.trackData = {
-                trackName: I.name,
-                languageCode: I.languageCode,
-                sourceLanguageCode: I.translationLanguage ? I.translationLanguage.languageCode : "",
-                languageName: I.languageName,
-                kind: I.kind
+            L && (c.trackData = {
+                trackName: L.name,
+                languageCode: L.languageCode,
+                sourceLanguageCode: L.translationLanguage ? L.translationLanguage.languageCode : "",
+                languageName: L.languageName,
+                kind: L.kind
             },
-            a.style = g.m4(I.style),
-            g.ep(a, U.trackData));
-            wi(this, "setSubtitlesTrack", a);
-            Rp(this, U)
+            e.style = g.yH(L.style),
+            g.so(e, c.trackData));
+            HW(this, "setSubtitlesTrack", e);
+            jq(this, c)
         } else
-            di(this, g.Co(this.gY, a, I))
+            $G(this, g.u7(this.FZ, e, L))
     }
     ;
-    g.H.setAudioTrack = function(a, I) {
-        E1(this) ? (I = I.getLanguageInfo().getId(),
-        wi(this, "setAudioTrack", {
-            videoId: a,
-            audioTrackId: I
+    g.M.setAudioTrack = function(e, L) {
+        pD(this) ? (L = L.getLanguageInfo().getId(),
+        HW(this, "setAudioTrack", {
+            videoId: e,
+            audioTrackId: L
         }),
-        a = ym(this),
-        a.audioTrackId = I,
-        Rp(this, a)) : di(this, g.Co(this.setAudioTrack, a, I))
+        e = Zv(this),
+        e.audioTrackId = L,
+        jq(this, e)) : $G(this, g.u7(this.setAudioTrack, e, L))
     }
     ;
-    g.H.playVideo = function(a, I, U, e, T, C, r) {
-        e = e === void 0 ? null : e;
-        T = T === void 0 ? null : T;
-        C = C === void 0 ? null : C;
-        r = r === void 0 ? null : r;
-        var q = ym(this)
-          , x = {
-            videoId: a
+    g.M.playVideo = function(e, L, c, I, B, x, S) {
+        I = I === void 0 ? null : I;
+        B = B === void 0 ? null : B;
+        x = x === void 0 ? null : x;
+        S = S === void 0 ? null : S;
+        var h = Zv(this)
+          , R = {
+            videoId: e
         };
-        U !== void 0 && (x.currentIndex = U);
-        O1(q, a, U || 0);
-        I !== void 0 && (fv(q, I),
-        x.currentTime = I);
-        e && (x.listId = e);
-        T && (x.playerParams = T);
-        C && (x.clickTrackingParams = C);
-        r && (x.locationInfo = g.m4(r));
-        wi(this, "setPlaylist", x);
-        e || Rp(this, q)
+        c !== void 0 && (R.currentIndex = c);
+        NC(h, e, c || 0);
+        L !== void 0 && (CD(h, L),
+        R.currentTime = L);
+        I && (R.listId = I);
+        B && (R.playerParams = B);
+        x && (R.clickTrackingParams = x);
+        S && (R.locationInfo = g.yH(S));
+        HW(this, "setPlaylist", R);
+        I || jq(this, h)
     }
     ;
-    g.H.M_ = function(a, I) {
-        if (E1(this)) {
-            if (a && I) {
-                var U = ym(this);
-                O1(U, a, I);
-                Rp(this, U)
+    g.M.ID = function(e, L) {
+        if (pD(this)) {
+            if (e && L) {
+                var c = Zv(this);
+                NC(c, e, L);
+                jq(this, c)
             }
-            wi(this, "previous")
+            HW(this, "previous")
         } else
-            di(this, g.Co(this.M_, a, I))
+            $G(this, g.u7(this.ID, e, L))
     }
     ;
-    g.H.nextVideo = function(a, I) {
-        if (E1(this)) {
-            if (a && I) {
-                var U = ym(this);
-                O1(U, a, I);
-                Rp(this, U)
+    g.M.nextVideo = function(e, L) {
+        if (pD(this)) {
+            if (e && L) {
+                var c = Zv(this);
+                NC(c, e, L);
+                jq(this, c)
             }
-            wi(this, "next")
+            HW(this, "next")
         } else
-            di(this, g.Co(this.nextVideo, a, I))
+            $G(this, g.u7(this.nextVideo, e, L))
     }
     ;
-    g.H.mw = function() {
-        if (E1(this)) {
-            wi(this, "clearPlaylist");
-            var a = ym(this);
-            a.reset();
-            Rp(this, a);
+    g.M.Vn = function() {
+        if (pD(this)) {
+            HW(this, "clearPlaylist");
+            var e = Zv(this);
+            e.reset();
+            jq(this, e);
             this.publish("remotePlayerChange")
         } else
-            di(this, this.mw)
+            $G(this, this.Vn)
     }
     ;
-    g.H.Hn = function() {
-        E1(this) ? wi(this, "dismissAutoplay") : di(this, this.Hn)
+    g.M.Dk = function() {
+        pD(this) ? HW(this, "dismissAutoplay") : $G(this, this.Dk)
     }
     ;
-    g.H.dispose = function() {
-        if (this.B != 3) {
-            var a = this.B;
-            this.B = 3;
-            this.publish("proxyStateChange", a, this.B)
+    g.M.dispose = function() {
+        if (this.Z != 3) {
+            var e = this.Z;
+            this.Z = 3;
+            this.publish("proxyStateChange", e, this.Z)
         }
-        g.J_.prototype.dispose.call(this)
+        g.Yg.prototype.dispose.call(this)
     }
     ;
-    g.H.Bs = function() {
-        DND(this);
-        this.J = null;
-        this.U.clear();
-        Ss(this, null);
-        g.J_.prototype.Bs.call(this)
+    g.M.KS = function() {
+        yHM(this);
+        this.G = null;
+        this.B.clear();
+        mz(this, null);
+        g.Yg.prototype.KS.call(this)
     }
     ;
-    g.H.iM = function(a) {
-        if ((a != this.B || a == 2) && this.B != 3 && a != 0) {
-            var I = this.B;
-            this.B = a;
-            this.publish("proxyStateChange", I, a);
-            if (a == 1)
-                for (; !this.U.isEmpty(); )
-                    I = a = this.U,
-                    I.V.length === 0 && (I.V = I.L,
-                    I.V.reverse(),
-                    I.L = []),
-                    a.V.pop().apply(this);
+    g.M.T3 = function(e) {
+        if ((e != this.Z || e == 2) && this.Z != 3 && e != 0) {
+            var L = this.Z;
+            this.Z = e;
+            this.publish("proxyStateChange", L, e);
+            if (e == 1)
+                for (; !this.B.isEmpty(); )
+                    L = e = this.B,
+                    L.X.length === 0 && (L.X = L.K,
+                    L.X.reverse(),
+                    L.K = []),
+                    e.X.pop().apply(this);
             else
-                a == 3 && this.dispose()
+                e == 3 && this.dispose()
         }
     }
     ;
-    g.H.lcw = function(a, I) {
-        this.publish(a, I)
+    g.M.GyS = function(e, L) {
+        this.publish(e, L)
     }
     ;
-    g.H.KnO = function(a) {
-        if (!a)
-            this.lO(null),
-            Ss(this, null);
-        else if (this.L.receiver.volume) {
-            a = this.L.receiver.volume;
-            var I = ym(this)
-              , U = Math.round(100 * a.level || 0);
-            if (I.volume != U || I.muted != a.muted)
-                Ip("Cast volume update: " + a.level + (a.muted ? " muted" : "")),
-                I.volume = U,
-                I.muted = !!a.muted,
-                Rp(this, I)
+    g.M.o9e = function(e) {
+        if (!e)
+            this.oN(null),
+            mz(this, null);
+        else if (this.K.receiver.volume) {
+            e = this.K.receiver.volume;
+            var L = Zv(this)
+              , c = Math.round(100 * e.level || 0);
+            if (L.volume != c || L.muted != e.muted)
+                cW("Cast volume update: " + e.level + (e.muted ? " muted" : "")),
+                L.volume = c,
+                L.muted = !!e.muted,
+                jq(this, L)
         }
     }
     ;
-    g.H.lO = function(a) {
-        Ip("Cast media: " + !!a);
-        this.V && this.V.removeUpdateListener(this.D);
-        if (this.V = a)
-            this.V.addUpdateListener(this.D),
-            awz(this),
+    g.M.oN = function(e) {
+        cW("Cast media: " + !!e);
+        this.X && this.X.removeUpdateListener(this.J);
+        if (this.X = e)
+            this.X.addUpdateListener(this.J),
+            p4w(this),
             this.publish("remotePlayerChange")
     }
     ;
-    g.H.tMX = function(a) {
-        a ? (awz(this),
-        this.publish("remotePlayerChange")) : this.lO(null)
+    g.M.wel = function(e) {
+        e ? (p4w(this),
+        this.publish("remotePlayerChange")) : this.oN(null)
     }
     ;
-    g.H.GJ = function() {
-        wi(this, "sendDebugCommand", {
+    g.M.rY = function() {
+        HW(this, "sendDebugCommand", {
             debugCommand: "stats4nerds "
         })
     }
     ;
-    g.H.oYm = function() {
-        var a = mNd();
-        a && Ss(this, a)
+    g.M.Pde = function() {
+        var e = w4M();
+        e && mz(this, e)
     }
     ;
-    g.H.O1 = function(a) {
-        ap("CP", a)
+    g.M.VZ = function(e) {
+        LD("CP", e)
     }
     ;
-    g.u(zO, g.J_);
-    g.H = zO.prototype;
-    g.H.connect = function(a, I) {
-        if (I) {
-            var U = I.listId
-              , e = I.videoId
-              , T = I.videoIds
-              , C = I.playerParams
-              , r = I.clickTrackingParams
-              , q = I.index
-              , x = {
-                videoId: e
+    g.z(dt, g.Yg);
+    g.M = dt.prototype;
+    g.M.connect = function(e, L) {
+        if (L) {
+            var c = L.listId
+              , I = L.videoId
+              , B = L.videoIds
+              , x = L.playerParams
+              , S = L.clickTrackingParams
+              , h = L.index
+              , R = {
+                videoId: I
             }
-              , Z = I.currentTime
-              , t = I.locationInfo;
-            I = I.loopMode;
-            Z !== void 0 && (x.currentTime = Z <= 5 ? 0 : Z);
-            C && (x.playerParams = C);
-            t && (x.locationInfo = t);
-            r && (x.clickTrackingParams = r);
-            U && (x.listId = U);
-            T && T.length > 0 && (x.videoIds = T.join(","));
-            q !== void 0 && (x.currentIndex = q);
-            this.Ux && (x.loopMode = I || "LOOP_MODE_OFF");
-            U && (this.V.listId = U);
-            this.V.videoId = e;
-            this.V.index = q || 0;
-            this.V.state = 3;
-            fv(this.V, Z);
-            this.U = "UNSUPPORTED";
-            U = this.Ux ? "setInitialState" : "setPlaylist";
-            mE("Connecting with " + U + " and params: " + g.m4(x));
-            this.L.connect({
-                method: U,
-                params: g.m4(x)
-            }, a, k8d())
+              , u = L.currentTime
+              , t = L.locationInfo;
+            L = L.loopMode;
+            u !== void 0 && (R.currentTime = u <= 5 ? 0 : u);
+            x && (R.playerParams = x);
+            t && (R.locationInfo = t);
+            S && (R.clickTrackingParams = S);
+            c && (R.listId = c);
+            B && B.length > 0 && (R.videoIds = B.join(","));
+            h !== void 0 && (R.currentIndex = h);
+            this.ye && (R.loopMode = L || "LOOP_MODE_OFF");
+            c && (this.X.listId = c);
+            this.X.videoId = I;
+            this.X.index = h || 0;
+            this.X.state = 3;
+            CD(this.X, u);
+            this.B = "UNSUPPORTED";
+            c = this.ye ? "setInitialState" : "setPlaylist";
+            PW("Connecting with " + c + " and params: " + g.yH(R));
+            this.K.connect({
+                method: c,
+                params: g.yH(R)
+            }, e, Bag())
         } else
-            mE("Connecting without params"),
-            this.L.connect({}, a, k8d());
-        enz(this)
+            PW("Connecting without params"),
+            this.K.connect({}, e, Bag());
+        lZw(this)
     }
     ;
-    g.H.VO = function(a) {
-        this.L.VO(a)
+    g.M.BH = function(e) {
+        this.K.BH(e)
     }
     ;
-    g.H.dispose = function() {
-        this.Ox() || (g.hj("yt.mdx.remote.remoteClient_", null),
+    g.M.dispose = function() {
+        this.We() || (g.IL("yt.mdx.remote.remoteClient_", null),
         this.publish("beforeDispose"),
-        Qm(this, 3));
-        g.J_.prototype.dispose.call(this)
+        Q$(this, 3));
+        g.Yg.prototype.dispose.call(this)
     }
     ;
-    g.H.Bs = function() {
-        T1o(this);
-        rEz(this);
-        CfD(this);
-        g.M6(this.D);
+    g.M.KS = function() {
+        PMM(this);
+        dKL(this);
+        QfJ(this);
+        g.ra(this.J);
+        this.J = NaN;
+        g.ra(this.D);
         this.D = NaN;
-        g.M6(this.j);
-        this.j = NaN;
-        this.J = null;
-        g.lR(this.Va);
-        this.Va.length = 0;
-        this.L.dispose();
-        g.J_.prototype.Bs.call(this);
-        this.U = this.C = this.B = this.V = this.L = null
+        this.G = null;
+        g.Tx(this.pS);
+        this.pS.length = 0;
+        this.K.dispose();
+        g.Yg.prototype.KS.call(this);
+        this.B = this.T = this.Z = this.X = this.K = null
     }
     ;
-    g.H.qZ = function(a) {
-        if (!this.B || this.B.length === 0)
+    g.M.lr = function(e) {
+        if (!this.Z || this.Z.length === 0)
             return !1;
-        for (var I = g.k(this.B), U = I.next(); !U.done; U = I.next())
-            if (!U.value.capabilities.has(a))
+        for (var L = g.f(this.Z), c = L.next(); !c.done; c = L.next())
+            if (!c.value.capabilities.has(e))
                 return !1;
         return !0
     }
     ;
-    g.H.l8 = function() {
-        var a = 3;
-        this.Ox() || (a = 0,
-        isNaN(this.P7()) ? this.L.oP() && isNaN(this.Y) && (a = 1) : a = 2);
-        return a
+    g.M.mu = function() {
+        var e = 3;
+        this.We() || (e = 0,
+        isNaN(this.cY()) ? this.K.Hm() && isNaN(this.j) && (e = 1) : e = 2);
+        return e
     }
     ;
-    g.H.VZ = function(a) {
-        mE("Disconnecting with " + a);
-        g.hj("yt.mdx.remote.remoteClient_", null);
-        T1o(this);
-        this.publish("beforeDisconnect", a);
-        a == 1 && ti();
-        this.L.disconnect(a);
+    g.M.Bj = function(e) {
+        PW("Disconnecting with " + e);
+        g.IL("yt.mdx.remote.remoteClient_", null);
+        PMM(this);
+        this.publish("beforeDisconnect", e);
+        e == 1 && qn();
+        this.K.disconnect(e);
         this.dispose()
     }
     ;
-    g.H.Z3 = function() {
-        var a = this.V;
-        this.J && (a = this.V.clone(),
-        O1(a, this.J, a.index));
-        return Nqf(a)
+    g.M.QA = function() {
+        var e = this.X;
+        this.G && (e = this.X.clone(),
+        NC(e, this.G, e.index));
+        return NON(e)
     }
     ;
-    g.H.bcK = function(a) {
-        var I = this
-          , U = new Pu(a);
-        U.videoId && U.videoId != this.V.videoId && (this.J = U.videoId,
-        g.M6(this.D),
-        this.D = g.Vz(function() {
-            if (I.J) {
-                var T = I.J;
-                I.J = null;
-                I.V.videoId != T && hZ(I, "getNowPlaying")
+    g.M.FF0 = function(e) {
+        var L = this
+          , c = new JC(e);
+        c.videoId && c.videoId != this.X.videoId && (this.G = c.videoId,
+        g.ra(this.J),
+        this.J = g.oC(function() {
+            if (L.G) {
+                var B = L.G;
+                L.G = null;
+                L.X.videoId != B && Ub(L, "getNowPlaying")
             }
         }, 5E3));
-        var e = [];
-        this.V.listId == U.listId && this.V.videoId == U.videoId && this.V.index == U.index || e.push("remoteQueueChange");
-        this.V.playerState == U.playerState && this.V.volume == U.volume && this.V.muted == U.muted && Yy(this.V) == Yy(U) && g.m4(this.V.trackData) == g.m4(U.trackData) || e.push("remotePlayerChange");
-        this.V.reset(a);
-        g.Gm(e, function(T) {
-            this.publish(T)
+        var I = [];
+        this.X.listId == c.listId && this.X.videoId == c.videoId && this.X.index == c.index || I.push("remoteQueueChange");
+        this.X.playerState == c.playerState && this.X.volume == c.volume && this.X.muted == c.muted && ae(this.X) == ae(c) && g.yH(this.X.trackData) == g.yH(c.trackData) || I.push("remotePlayerChange");
+        this.X.reset(e);
+        g.KZ(I, function(B) {
+            this.publish(B)
         }, this)
     }
     ;
-    g.H.Mq = function() {
-        var a = this.L.getDeviceId()
-          , I = g.Jz(this.B, function(U) {
-            return U.type == "REMOTE_CONTROL" && U.id != a
+    g.M.lU = function() {
+        var e = this.K.getDeviceId()
+          , L = g.vU(this.Z, function(c) {
+            return c.type == "REMOTE_CONTROL" && c.id != e
         });
-        return I ? I.id : ""
+        return L ? L.id : ""
     }
     ;
-    g.H.P7 = function() {
-        return this.L.gy()
+    g.M.cY = function() {
+        return this.K.T0()
     }
     ;
-    g.H.OI = function() {
-        return this.U || "UNSUPPORTED"
+    g.M.uQ = function() {
+        return this.B || "UNSUPPORTED"
     }
     ;
-    g.H.vQ = function() {
-        return this.C || ""
+    g.M.TL = function() {
+        return this.T || ""
     }
     ;
-    g.H.qN = function() {
-        !isNaN(this.P7()) && this.L.pk()
+    g.M.YS = function() {
+        !isNaN(this.cY()) && this.K.z$()
     }
     ;
-    g.H.JSw = function(a, I) {
-        hZ(this, a, I);
-        q0m(this)
+    g.M.cmm = function(e, L) {
+        Ub(this, e, L);
+        ERN(this)
     }
     ;
-    g.H.Bd = function() {
-        var a = g.ET("SAPISID", "") || g.ET("__Secure-1PAPISID") || ""
-          , I = g.ET("__Secure-3PAPISID", "") || "";
-        if (!a && !I)
+    g.M.Jx = function() {
+        var e = g.ka("SAPISID", "") || g.ka("__Secure-1PAPISID") || ""
+          , L = g.ka("__Secure-3PAPISID", "") || "";
+        if (!e && !L)
             return "";
-        a = g.Iq(g.aq(a), 2);
-        I = g.Iq(g.aq(I), 2);
-        return g.Iq(g.aq("," + a + "," + I), 2)
+        e = g.GM(g.iD(e), 2);
+        L = g.GM(g.iD(L), 2);
+        return g.GM(g.iD("," + e + "," + L), 2)
     }
     ;
-    zO.prototype.subscribe = zO.prototype.subscribe;
-    zO.prototype.unsubscribeByKey = zO.prototype.sK;
-    zO.prototype.getProxyState = zO.prototype.l8;
-    zO.prototype.disconnect = zO.prototype.VZ;
-    zO.prototype.getPlayerContextData = zO.prototype.Z3;
-    zO.prototype.setPlayerContextData = zO.prototype.bcK;
-    zO.prototype.getOtherConnectedRemoteId = zO.prototype.Mq;
-    zO.prototype.getReconnectTimeout = zO.prototype.P7;
-    zO.prototype.getAutoplayMode = zO.prototype.OI;
-    zO.prototype.getAutoplayVideoId = zO.prototype.vQ;
-    zO.prototype.reconnect = zO.prototype.qN;
-    zO.prototype.sendMessage = zO.prototype.JSw;
-    zO.prototype.getXsrfToken = zO.prototype.Bd;
-    zO.prototype.isCapabilitySupportedOnConnectedDevices = zO.prototype.qZ;
-    g.u(MdG, TO);
-    g.H = MdG.prototype;
-    g.H.m$ = function(a) {
-        return this.vX.$_gs(a)
+    dt.prototype.subscribe = dt.prototype.subscribe;
+    dt.prototype.unsubscribeByKey = dt.prototype.EV;
+    dt.prototype.getProxyState = dt.prototype.mu;
+    dt.prototype.disconnect = dt.prototype.Bj;
+    dt.prototype.getPlayerContextData = dt.prototype.QA;
+    dt.prototype.setPlayerContextData = dt.prototype.FF0;
+    dt.prototype.getOtherConnectedRemoteId = dt.prototype.lU;
+    dt.prototype.getReconnectTimeout = dt.prototype.cY;
+    dt.prototype.getAutoplayMode = dt.prototype.uQ;
+    dt.prototype.getAutoplayVideoId = dt.prototype.TL;
+    dt.prototype.reconnect = dt.prototype.YS;
+    dt.prototype.sendMessage = dt.prototype.cmm;
+    dt.prototype.getXsrfToken = dt.prototype.Jx;
+    dt.prototype.isCapabilitySupportedOnConnectedDevices = dt.prototype.lr;
+    g.z(Su7, oe);
+    g.M = Su7.prototype;
+    g.M.Pc = function(e) {
+        return this.R9.$_gs(e)
     }
     ;
-    g.H.contains = function(a) {
-        return !!this.vX.$_c(a)
+    g.M.contains = function(e) {
+        return !!this.R9.$_c(e)
     }
     ;
-    g.H.get = function(a) {
-        return this.vX.$_g(a)
+    g.M.get = function(e) {
+        return this.R9.$_g(e)
     }
     ;
-    g.H.start = function() {
-        this.vX.$_st()
+    g.M.start = function() {
+        this.R9.$_st()
     }
     ;
-    g.H.add = function(a, I, U) {
-        this.vX.$_a(a, I, U)
+    g.M.add = function(e, L, c) {
+        this.R9.$_a(e, L, c)
     }
     ;
-    g.H.remove = function(a, I, U) {
-        this.vX.$_r(a, I, U)
+    g.M.remove = function(e, L, c) {
+        this.R9.$_r(e, L, c)
     }
     ;
-    g.H.Vu = function(a, I, U, e) {
-        this.vX.$_un(a, I, U, e)
+    g.M.uc = function(e, L, c, I) {
+        this.R9.$_un(e, L, c, I)
     }
     ;
-    g.H.Bs = function() {
-        for (var a = this.V.length, I = 0; I < a; ++I)
-            this.vX.$_ubk(this.V[I]);
-        this.V.length = 0;
-        this.vX = null;
-        TO.prototype.Bs.call(this)
+    g.M.KS = function() {
+        for (var e = this.X.length, L = 0; L < e; ++L)
+            this.R9.$_ubk(this.X[L]);
+        this.X.length = 0;
+        this.R9 = null;
+        oe.prototype.KS.call(this)
     }
     ;
-    g.H.Dp = function() {
+    g.M.uF = function() {
         this.publish("screenChange")
     }
     ;
-    g.H.gw8 = function() {
+    g.M.BTS = function() {
         this.publish("onlineScreenChange")
     }
     ;
-    Zh.prototype.$_st = Zh.prototype.start;
-    Zh.prototype.$_gspc = Zh.prototype.Hy;
-    Zh.prototype.$_gsppc = Zh.prototype.s8;
-    Zh.prototype.$_c = Zh.prototype.contains;
-    Zh.prototype.$_g = Zh.prototype.get;
-    Zh.prototype.$_a = Zh.prototype.add;
-    Zh.prototype.$_un = Zh.prototype.Vu;
-    Zh.prototype.$_r = Zh.prototype.remove;
-    Zh.prototype.$_gs = Zh.prototype.m$;
-    Zh.prototype.$_gos = Zh.prototype.iX;
-    Zh.prototype.$_s = Zh.prototype.subscribe;
-    Zh.prototype.$_ubk = Zh.prototype.sK;
-    var Cy = null
-      , q2 = !1
-      , Ni = null
-      , op = null
-      , PfJ = null
-      , IG = [];
-    g.u(S0j, g.S);
-    g.H = S0j.prototype;
-    g.H.Bs = function() {
-        g.S.prototype.Bs.call(this);
-        this.L.stop();
-        this.B.stop();
-        this.D.stop();
-        var a = this.dL;
-        a.unsubscribe("proxyStateChange", this.GY, this);
-        a.unsubscribe("remotePlayerChange", this.sj, this);
-        a.unsubscribe("remoteQueueChange", this.g0, this);
-        a.unsubscribe("previousNextChange", this.NG, this);
-        a.unsubscribe("nowAutoplaying", this.wW, this);
-        a.unsubscribe("autoplayDismissed", this.RH, this);
-        this.dL = this.V = null
+    u0.prototype.$_st = u0.prototype.start;
+    u0.prototype.$_gspc = u0.prototype.Vk;
+    u0.prototype.$_gsppc = u0.prototype.Cr;
+    u0.prototype.$_c = u0.prototype.contains;
+    u0.prototype.$_g = u0.prototype.get;
+    u0.prototype.$_a = u0.prototype.add;
+    u0.prototype.$_un = u0.prototype.uc;
+    u0.prototype.$_r = u0.prototype.remove;
+    u0.prototype.$_gs = u0.prototype.Pc;
+    u0.prototype.$_gos = u0.prototype.PS;
+    u0.prototype.$_s = u0.prototype.subscribe;
+    u0.prototype.$_ubk = u0.prototype.EV;
+    var xt = null
+      , rg = !1
+      , Eb = null
+      , Xp = null
+      , z2e = null
+      , e$ = [];
+    g.z(F9e, g.p);
+    g.M = F9e.prototype;
+    g.M.KS = function() {
+        g.p.prototype.KS.call(this);
+        this.K.stop();
+        this.Z.stop();
+        this.J.stop();
+        var e = this.Lf;
+        e.unsubscribe("proxyStateChange", this.yq, this);
+        e.unsubscribe("remotePlayerChange", this.Fg, this);
+        e.unsubscribe("remoteQueueChange", this.b8, this);
+        e.unsubscribe("previousNextChange", this.Y5, this);
+        e.unsubscribe("nowAutoplaying", this.IQ, this);
+        e.unsubscribe("autoplayDismissed", this.ix, this);
+        this.Lf = this.X = null
     }
     ;
-    g.H.rK = function(a) {
-        var I = g.OS.apply(1, arguments);
-        if (this.dL.B != 2)
-            if (x0(this)) {
-                if (!ym(this.dL).jp() || a !== "control_seek")
-                    switch (a) {
+    g.M.yB = function(e) {
+        var L = g.HM.apply(1, arguments);
+        if (this.Lf.Z != 2)
+            if (hZ(this)) {
+                if (!Zv(this.Lf).ZT() || e !== "control_seek")
+                    switch (e) {
                     case "control_toggle_play_pause":
-                        ym(this.dL).isPlaying() ? this.dL.pause() : this.dL.play();
+                        Zv(this.Lf).isPlaying() ? this.Lf.pause() : this.Lf.play();
                         break;
                     case "control_play":
-                        this.dL.play();
+                        this.Lf.play();
                         break;
                     case "control_pause":
-                        this.dL.pause();
+                        this.Lf.pause();
                         break;
                     case "control_seek":
-                        this.C.A5(I[0], I[1]);
+                        this.T.SI(L[0], L[1]);
                         break;
                     case "control_subtitles_set_track":
-                        yEJ(this, I[0]);
+                        iGM(this, L[0]);
                         break;
                     case "control_set_audio_track":
-                        this.setAudioTrack(I[0])
+                        this.setAudioTrack(L[0])
                     }
             } else
-                switch (a) {
+                switch (e) {
                 case "control_toggle_play_pause":
                 case "control_play":
                 case "control_pause":
-                    I = this.K.getCurrentTime();
-                    Zr(this, I === 0 ? void 0 : I);
+                    L = this.V.getCurrentTime();
+                    RO(this, L === 0 ? void 0 : L);
                     break;
                 case "control_seek":
-                    Zr(this, I[0]);
+                    RO(this, L[0]);
                     break;
                 case "control_subtitles_set_track":
-                    yEJ(this, I[0]);
+                    iGM(this, L[0]);
                     break;
                 case "control_set_audio_track":
-                    this.setAudioTrack(I[0])
+                    this.setAudioTrack(L[0])
                 }
     }
     ;
-    g.H.hIg = function(a) {
-        this.D.Wy(a)
+    g.M.W$e = function(e) {
+        this.J.Ep(e)
     }
     ;
-    g.H.ULa = function(a) {
-        this.rK("control_subtitles_set_track", g.vo(a) ? null : a)
+    g.M.FIY = function(e) {
+        this.yB("control_subtitles_set_track", g.qQ(e) ? null : e)
     }
     ;
-    g.H.Ho = function() {
-        var a = this.K.getOption("captions", "track");
-        g.vo(a) || yEJ(this, a)
+    g.M.WE = function() {
+        var e = this.V.getOption("captions", "track");
+        g.qQ(e) || iGM(this, e)
     }
     ;
-    g.H.Cv = function(a) {
-        this.V.Cv(a, this.K.getVideoData().lengthSeconds)
+    g.M.Ty = function(e) {
+        this.X.Ty(e, this.V.getVideoData().lengthSeconds)
     }
     ;
-    g.H.Fns = function() {
-        g.vo(this.J) || EbJ(this, this.J);
-        this.U = !1
+    g.M.h$$ = function() {
+        g.qQ(this.G) || GrJ(this, this.G);
+        this.B = !1
     }
     ;
-    g.H.GY = function(a, I) {
-        this.B.stop();
-        I === 2 && this.Uz()
+    g.M.yq = function(e, L) {
+        this.Z.stop();
+        L === 2 && this.IX()
     }
     ;
-    g.H.sj = function() {
-        if (x0(this)) {
-            this.L.stop();
-            var a = ym(this.dL);
-            switch (a.playerState) {
+    g.M.Fg = function() {
+        if (hZ(this)) {
+            this.K.stop();
+            var e = Zv(this.Lf);
+            switch (e.playerState) {
             case 1080:
             case 1081:
             case 1084:
             case 1085:
-                this.V.b7 = 1;
+                this.X.RF = 1;
                 break;
             case 1082:
             case 1083:
-                this.V.b7 = 0;
+                this.X.RF = 0;
                 break;
             default:
-                this.V.b7 = -1
+                this.X.RF = -1
             }
-            switch (a.playerState) {
+            switch (e.playerState) {
             case 1081:
             case 1:
-                this.eM(new g.xP(8));
-                this.z_();
+                this.Xp(new g.WX(8));
+                this.U1();
                 break;
             case 1085:
             case 3:
-                this.eM(new g.xP(9));
+                this.Xp(new g.WX(9));
                 break;
             case 1083:
             case 0:
-                this.eM(new g.xP(2));
-                this.C.stop();
-                this.Cv(this.K.getVideoData().lengthSeconds);
+                this.Xp(new g.WX(2));
+                this.T.stop();
+                this.Ty(this.V.getVideoData().lengthSeconds);
                 break;
             case 1084:
-                this.eM(new g.xP(4));
+                this.Xp(new g.WX(4));
                 break;
             case 2:
-                this.eM(new g.xP(4));
-                this.Cv(Yy(a));
+                this.Xp(new g.WX(4));
+                this.Ty(ae(e));
                 break;
             case -1:
-                this.eM(new g.xP(64));
+                this.Xp(new g.WX(64));
                 break;
             case -1E3:
-                this.eM(new g.xP(128,{
+                this.Xp(new g.WX(128,{
                     errorCode: "mdx.remoteerror",
                     errorMessage: "Dieses Video ist nicht f\u00fcr die Remote-Wiedergabe verf\u00fcgbar.",
-                    dB: 2
+                    wF: 2
                 }))
             }
-            a = ym(this.dL).trackData;
-            var I = this.J;
-            (a || I ? a && I && a.trackName == I.trackName && a.languageCode == I.languageCode && a.languageName == I.languageName && a.kind == I.kind : 1) || (this.J = a,
-            EbJ(this, a));
-            a = ym(this.dL);
-            a.volume === -1 || Math.round(this.K.getVolume()) === a.volume && this.K.isMuted() === a.muted || this.j.isActive() || this.zV()
+            e = Zv(this.Lf).trackData;
+            var L = this.G;
+            (e || L ? e && L && e.trackName == L.trackName && e.languageCode == L.languageCode && e.languageName == L.languageName && e.kind == L.kind : 1) || (this.G = e,
+            GrJ(this, e));
+            e = Zv(this.Lf);
+            e.volume === -1 || Math.round(this.V.getVolume()) === e.volume && this.V.isMuted() === e.muted || this.D.isActive() || this.Yl()
         } else
-            G9j(this)
+            bGL(this)
     }
     ;
-    g.H.NG = function() {
-        this.K.publish("mdxpreviousnextchange")
+    g.M.Y5 = function() {
+        this.V.publish("mdxpreviousnextchange")
     }
     ;
-    g.H.g0 = function() {
-        x0(this) || G9j(this)
+    g.M.b8 = function() {
+        hZ(this) || bGL(this)
     }
     ;
-    g.H.wW = function(a) {
-        isNaN(a) || this.K.publish("mdxnowautoplaying", a)
+    g.M.IQ = function(e) {
+        isNaN(e) || this.V.publish("mdxnowautoplaying", e)
     }
     ;
-    g.H.RH = function() {
-        this.K.publish("mdxautoplaycanceled")
+    g.M.ix = function() {
+        this.V.publish("mdxautoplaycanceled")
     }
     ;
-    g.H.setAudioTrack = function(a) {
-        x0(this) && this.dL.setAudioTrack(this.K.getVideoData(1).videoId, a)
+    g.M.setAudioTrack = function(e) {
+        hZ(this) && this.Lf.setAudioTrack(this.V.getVideoData(1).videoId, e)
     }
     ;
-    g.H.seekTo = function(a, I) {
-        ym(this.dL).playerState === -1 ? Zr(this, a) : I && this.dL.seekTo(a)
+    g.M.seekTo = function(e, L) {
+        Zv(this.Lf).playerState === -1 ? RO(this, e) : L && this.Lf.seekTo(e)
     }
     ;
-    g.H.zV = function() {
-        var a = this;
-        if (x0(this)) {
-            var I = ym(this.dL);
-            this.events.YY(this.Va);
-            I.muted ? this.K.mute() : this.K.unMute();
-            this.K.setVolume(I.volume);
-            this.Va = this.events.G(this.K, "onVolumeChange", function(U) {
-                Y08(a, U)
+    g.M.Yl = function() {
+        var e = this;
+        if (hZ(this)) {
+            var L = Zv(this.Lf);
+            this.events.j6(this.pS);
+            L.muted ? this.V.mute() : this.V.unMute();
+            this.V.setVolume(L.volume);
+            this.pS = this.events.C(this.V, "onVolumeChange", function(c) {
+                f0e(e, c)
             })
         }
     }
     ;
-    g.H.z_ = function() {
-        this.L.stop();
-        if (!this.dL.Ox()) {
-            var a = ym(this.dL);
-            a.isPlaying() && this.eM(new g.xP(8));
-            this.Cv(Yy(a));
-            this.L.start()
+    g.M.U1 = function() {
+        this.K.stop();
+        if (!this.Lf.We()) {
+            var e = Zv(this.Lf);
+            e.isPlaying() && this.Xp(new g.WX(8));
+            this.Ty(ae(e));
+            this.K.start()
         }
     }
     ;
-    g.H.Uz = function() {
-        this.B.stop();
-        this.L.stop();
-        var a = this.dL.gy();
-        this.dL.B == 2 && !isNaN(a) && this.B.start()
+    g.M.IX = function() {
+        this.Z.stop();
+        this.K.stop();
+        var e = this.Lf.T0();
+        this.Lf.Z == 2 && !isNaN(e) && this.Z.start()
     }
     ;
-    g.H.eM = function(a) {
-        this.B.stop();
-        var I = this.Y;
-        if (!g.JG(I, a)) {
-            var U = g.Q(a, 2);
-            U !== g.Q(this.Y, 2) && this.K.vD(U);
-            this.Y = a;
-            w$m(this.V, I, a)
+    g.M.Xp = function(e) {
+        this.Z.stop();
+        var L = this.j;
+        if (!g.Af(L, e)) {
+            var c = g.E(e, 2);
+            c !== g.E(this.j, 2) && this.V.Tn(c);
+            this.j = e;
+            DcJ(this.X, L, e)
         }
     }
     ;
-    g.H = dJ8.prototype;
-    g.H.getCurrentTime = function() {
-        return this.V.getCurrentTime()
+    g.z(gv9, g.n_);
+    g.M = gv9.prototype;
+    g.M.getCurrentTime = function() {
+        return this.X.getCurrentTime()
     }
     ;
-    g.H.getPlayerState = function() {
-        return this.V.Gn
+    g.M.getDuration = function() {
+        return this.X.getDuration()
     }
     ;
-    g.H.pauseVideo = function() {
-        this.V.DD("control_pause")
+    g.M.sR = function() {
+        return this.X.sR()
     }
     ;
-    g.H.playVideo = function() {
-        var a = this;
-        return g.f(function(I) {
-            a.V.DD("control_play");
-            return I.return()
+    g.M.u2 = function() {
+        return this.X.u2()
+    }
+    ;
+    g.M.wP = function() {
+        return this.X.wP()
+    }
+    ;
+    g.M.Tw = function() {
+        return this.X.Tw()
+    }
+    ;
+    g.M.getPlayerState = function() {
+        return this.X.mZ
+    }
+    ;
+    g.M.isAtLiveHead = function() {
+        return this.X.isAtLiveHead()
+    }
+    ;
+    g.M.pauseVideo = function() {
+        this.X.C5("control_pause")
+    }
+    ;
+    g.M.playVideo = function() {
+        var e = this;
+        return g.Z(function(L) {
+            e.X.C5("control_play");
+            return L.return()
         })
     }
     ;
-    g.H.seekTo = function(a, I) {
-        this.V.DD("control_seek", a, !(I == null ? 0 : I.uw))
+    g.M.seekTo = function(e, L) {
+        this.X.C5("control_seek", e, !(L == null ? 0 : L.vB))
     }
     ;
-    g.H.lw = function(a) {
-        this.V.DD("control_set_audio_track", a);
+    g.M.oL = function(e) {
+        this.X.C5("control_set_audio_track", e);
         return !0
     }
     ;
-    g.u(tx, g.F);
-    tx.prototype.P5 = function() {
+    g.z(ut, g.U);
+    ut.prototype.Fp = function() {
         this.fade.show()
     }
     ;
-    tx.prototype.v8 = function() {
+    ut.prototype.y5 = function() {
         this.fade.hide()
     }
     ;
-    tx.prototype.V = function() {
-        Kw("mdx-privacy-popup-cancel");
-        this.v8()
+    ut.prototype.X = function() {
+        Wp("mdx-privacy-popup-cancel");
+        this.y5()
     }
     ;
-    tx.prototype.L = function() {
-        Kw("mdx-privacy-popup-confirm");
-        this.v8()
+    ut.prototype.K = function() {
+        Wp("mdx-privacy-popup-confirm");
+        this.y5()
     }
     ;
-    g.u(ny, g.F);
-    ny.prototype.onStateChange = function(a) {
-        this.FQ(a.state)
+    g.z(tZ, g.U);
+    tZ.prototype.onStateChange = function(e) {
+        this.Oq(e.state)
     }
     ;
-    ny.prototype.FQ = function(a) {
+    tZ.prototype.Oq = function(e) {
         if (this.api.getPresentingPlayerType() === 3) {
-            var I = {
+            var L = {
                 RECEIVER_NAME: this.api.getOption("remote", "currentReceiver").name
             };
-            a = g.Q(a, 128) ? g.ji("Fehler auf $RECEIVER_NAME", I) : a.isPlaying() || a.isPaused() ? g.ji("Wiedergabe \u00fcber $RECEIVER_NAME", I) : g.ji("Verbunden mit $RECEIVER_NAME", I);
-            this.updateValue("statustext", a);
+            e = g.E(e, 128) ? g.nC("Fehler auf $RECEIVER_NAME", L) : e.isPlaying() || e.isPaused() ? g.nC("Wiedergabe \u00fcber $RECEIVER_NAME", L) : g.nC("Verbunden mit $RECEIVER_NAME", L);
+            this.updateValue("statustext", e);
             this.fade.show()
         } else
             this.fade.hide()
     }
     ;
-    g.u(Ky, g.p4);
-    Ky.prototype.J = function() {
-        var a = this.K.getOption("remote", "receivers");
-        a && a.length > 1 && !this.K.getOption("remote", "quickCast") ? (this.sF = g.yG(a, this.V, this),
-        this.Mx(g.FX(a, this.V)),
-        a = g.O(this.K.getOption("remote", "currentReceiver")),
-        a = this.V(a),
-        this.options[a] && this.Ln(a),
+    g.z(O2, g.lQ);
+    O2.prototype.G = function() {
+        var e = this.V.getOption("remote", "receivers");
+        e && e.length > 1 && !this.V.getOption("remote", "quickCast") ? (this.Tx = g.YN(e, this.X, this),
+        this.Ip(g.Mt(e, this.X)),
+        e = this.V.getOption("remote", "currentReceiver"),
+        e = this.X(e),
+        this.options[e] && this.XC(e),
         this.enable(!0)) : this.enable(!1)
     }
     ;
-    Ky.prototype.V = function(a) {
-        return a.key
+    O2.prototype.X = function(e) {
+        return e.key
     }
     ;
-    Ky.prototype.C1 = function(a) {
-        return a === "cast-selector-receiver" ? "Streamen\u2026" : this.sF[a].name
+    O2.prototype.UC = function(e) {
+        return e === "cast-selector-receiver" ? "Streamen\u2026" : this.Tx[e].name
     }
     ;
-    Ky.prototype.o1 = function(a) {
-        g.p4.prototype.o1.call(this, a);
-        this.K.setOption("remote", "currentReceiver", this.sF[a]);
-        this.tN.v8()
+    O2.prototype.GV = function(e) {
+        g.lQ.prototype.GV.call(this, e);
+        this.V.setOption("remote", "currentReceiver", this.Tx[e]);
+        this.G_.y5()
     }
     ;
-    g.u(Rnz, g.nu);
-    g.H = Rnz.prototype;
-    g.H.create = function() {
-        var a = this.player.X()
-          , I = g.dV(a);
-        a = {
+    g.z(krU, g.Vk);
+    g.M = krU.prototype;
+    g.M.create = function() {
+        var e = this.player.S()
+          , L = g.eb(e);
+        e = {
             device: "Desktop",
             app: "youtube-desktop",
-            loadCastApiSetupScript: a.N("mdx_load_cast_api_bootstrap_script"),
-            enableDialLoungeToken: a.N("enable_dial_short_lived_lounge_token"),
-            enableCastLoungeToken: a.N("enable_cast_short_lived_lounge_token")
+            loadCastApiSetupScript: e.Y("mdx_load_cast_api_bootstrap_script"),
+            enableDialLoungeToken: e.Y("enable_dial_short_lived_lounge_token"),
+            enableCastLoungeToken: e.Y("enable_cast_short_lived_lounge_token")
         };
-        gb8(I, a);
-        this.subscriptions.push(g.ZM("yt-remote-before-disconnect", this.Jhw, this));
-        this.subscriptions.push(g.ZM("yt-remote-connection-change", this.sdU, this));
-        this.subscriptions.push(g.ZM("yt-remote-receiver-availability-change", this.TY, this));
-        this.subscriptions.push(g.ZM("yt-remote-auto-connect", this.ElU, this));
-        this.subscriptions.push(g.ZM("yt-remote-receiver-resumed", this.c48, this));
-        this.subscriptions.push(g.ZM("mdx-privacy-popup-confirm", this.pZx, this));
-        this.subscriptions.push(g.ZM("mdx-privacy-popup-cancel", this.z1O, this));
-        this.TY()
+        tlJ(L, e);
+        this.subscriptions.push(g.Qo("yt-remote-before-disconnect", this.c7_, this));
+        this.subscriptions.push(g.Qo("yt-remote-connection-change", this.B0e, this));
+        this.subscriptions.push(g.Qo("yt-remote-receiver-availability-change", this.cQ, this));
+        this.subscriptions.push(g.Qo("yt-remote-auto-connect", this.kyl, this));
+        this.subscriptions.push(g.Qo("yt-remote-receiver-resumed", this.V6_, this));
+        this.subscriptions.push(g.Qo("mdx-privacy-popup-confirm", this.v0Y, this));
+        this.subscriptions.push(g.Qo("mdx-privacy-popup-cancel", this.QUe, this));
+        this.cQ()
     }
     ;
-    g.H.load = function() {
+    g.M.load = function() {
         this.player.cancelPlayback();
-        g.nu.prototype.load.call(this);
-        this.m9 = new dJ8(this);
-        this.player.iD(this.m9);
-        this.C3 = new S0j(this,this.player,this.dL);
-        var a = (a = fwG()) ? a.currentTime : 0;
-        var I = X$J() ? new GO(g.O(T2()),void 0) : null;
-        a == 0 && I && (a = Yy(ym(I)));
-        a !== 0 && this.Cv(a);
-        w$m(this, this.Gn, this.Gn);
-        this.player.dP(6)
+        g.Vk.prototype.load.call(this);
+        this.uE = new gv9(this.player.S(),this);
+        this.player.lD(this.uE);
+        this.UA = new F9e(this,this.player,this.Lf);
+        var e = (e = vvw()) ? e.currentTime : 0;
+        var L = Mlh() ? new y$(Bh(),void 0) : null;
+        e == 0 && L && (e = ae(Zv(L)));
+        e !== 0 && this.Ty(e);
+        DcJ(this, this.mZ, this.mZ);
+        this.player.gX(6)
     }
     ;
-    g.H.unload = function() {
+    g.M.unload = function() {
         this.player.publish("mdxautoplaycanceled");
-        this.player.fq();
-        this.DT = this.Sr;
-        g.bH(this.C3, this.dL);
-        this.dL = this.m9 = this.C3 = null;
-        g.nu.prototype.unload.call(this);
-        this.player.dP(5);
-        b0(this)
+        this.player.RJ();
+        this.sD = this.U5;
+        g.cs(this.UA, this.Lf);
+        this.Lf = this.uE = this.UA = null;
+        g.Vk.prototype.unload.call(this);
+        this.player.gX(5);
+        qW(this)
     }
     ;
-    g.H.Bs = function() {
-        g.tk(this.subscriptions);
-        g.nu.prototype.Bs.call(this)
+    g.M.KS = function() {
+        g.dO(this.subscriptions);
+        g.Vk.prototype.KS.call(this)
     }
     ;
-    g.H.DD = function(a) {
-        var I = g.OS.apply(1, arguments);
-        this.loaded && this.C3.rK.apply(this.C3, [a].concat(g.A(I)))
+    g.M.C5 = function(e) {
+        var L = g.HM.apply(1, arguments);
+        this.loaded && this.UA.yB.apply(this.UA, [e].concat(g.V(L)))
     }
     ;
-    g.H.getAdState = function() {
-        return this.b7
+    g.M.getAdState = function() {
+        return this.RF
     }
     ;
-    g.H.Mk = function() {
-        return this.dL ? ym(this.dL).Mk : !1
+    g.M.r9 = function() {
+        return this.Lf ? Zv(this.Lf).r9 : !1
     }
     ;
-    g.H.n1 = function() {
-        return this.dL ? ym(this.dL).n1 : !1
+    g.M.g$ = function() {
+        return this.Lf ? Zv(this.Lf).g$ : !1
     }
     ;
-    g.H.Cv = function(a, I) {
-        this.xK = a || 0;
-        this.player.publish("progresssync", a, I);
-        this.player.s9("onVideoProgress", a || 0)
+    g.M.Ty = function(e, L) {
+        this.Dr = e || 0;
+        this.player.publish("progresssync", e, L);
+        this.player.Kb("onVideoProgress", e || 0)
     }
     ;
-    g.H.getCurrentTime = function() {
-        return this.xK
+    g.M.getCurrentTime = function() {
+        return this.Dr
     }
     ;
-    g.H.getProgressState = function() {
-        var a = ym(this.dL)
-          , I = this.player.getVideoData();
+    g.M.getDuration = function() {
+        return Zv(this.Lf).getDuration() || 0
+    }
+    ;
+    g.M.sR = function() {
+        var e = Zv(this.Lf);
+        return e.G ? e.X + V$(e) : e.X
+    }
+    ;
+    g.M.u2 = function() {
+        return Zv(this.Lf).J
+    }
+    ;
+    g.M.wP = function() {
+        return aZ7(Zv(this.Lf))
+    }
+    ;
+    g.M.Tw = function() {
+        var e = Zv(this.Lf);
+        return e.K > 0 ? e.K + V$(e) : e.K
+    }
+    ;
+    g.M.getProgressState = function() {
+        var e = Zv(this.Lf)
+          , L = this.player.getVideoData();
         return {
             airingStart: 0,
             airingEnd: 0,
-            allowSeeking: !a.jp() && this.player.MV(),
-            clipEnd: I.clipEnd,
-            clipStart: I.clipStart,
+            allowSeeking: !e.ZT() && this.player.Xk(),
+            clipEnd: L.clipEnd,
+            clipStart: L.clipStart,
             current: this.getCurrentTime(),
             displayedStart: -1,
-            duration: a.getDuration(),
-            ingestionTime: a.L ? a.B + pv(a) : a.B,
-            isAtLiveHead: (a.L ? a.V + pv(a) : a.V) - this.getCurrentTime() <= 1,
-            loaded: a.D,
-            seekableEnd: a.L ? a.V + pv(a) : a.V,
-            seekableStart: a.J > 0 ? a.J + pv(a) : a.J,
+            duration: this.getDuration(),
+            ingestionTime: this.sR(),
+            isAtLiveHead: this.isAtLiveHead(),
+            loaded: this.u2(),
+            seekableEnd: this.wP(),
+            seekableStart: this.Tw(),
             offset: 0,
             viewerLivestreamJoinMediaTime: 0
         }
     }
     ;
-    g.H.nextVideo = function() {
-        this.dL && this.dL.nextVideo()
+    g.M.isAtLiveHead = function() {
+        return aZ7(Zv(this.Lf)) - this.getCurrentTime() <= 1
     }
     ;
-    g.H.M_ = function() {
-        this.dL && this.dL.M_()
+    g.M.nextVideo = function() {
+        this.Lf && this.Lf.nextVideo()
     }
     ;
-    g.H.Jhw = function(a) {
-        a === 1 && (this.AP = this.dL ? ym(this.dL) : null)
+    g.M.ID = function() {
+        this.Lf && this.Lf.ID()
     }
     ;
-    g.H.sdU = function() {
-        var a = X$J() ? new GO(g.O(T2()),void 0) : null;
-        if (a) {
-            var I = this.DT;
+    g.M.c7_ = function(e) {
+        e === 1 && (this.MN = this.Lf ? Zv(this.Lf) : null)
+    }
+    ;
+    g.M.B0e = function() {
+        var e = Mlh() ? new y$(Bh(),void 0) : null;
+        if (e) {
+            var L = this.sD;
             this.loaded && this.unload();
-            this.dL = a;
-            this.AP = null;
-            I.key !== this.Sr.key && (this.DT = I,
+            this.Lf = e;
+            this.MN = null;
+            L.key !== this.U5.key && (this.sD = L,
             this.load())
         } else
-            g.Kf(this.dL),
-            this.dL = null,
+            g.L0(this.Lf),
+            this.Lf = null,
             this.loaded && (this.unload(),
-            (a = this.AP) && a.videoId === this.player.getVideoData().videoId && this.player.cueVideoById(a.videoId, Yy(a)));
+            (e = this.MN) && e.videoId === this.player.getVideoData().videoId && this.player.cueVideoById(e.videoId, ae(e)));
         this.player.publish("videodatachange", "newdata", this.player.getVideoData(), 3)
     }
     ;
-    g.H.TY = function() {
-        var a = [this.Sr]
-          , I = a.concat
-          , U = cEd();
-        ln() && g.EV("yt-remote-cast-available") && U.push({
+    g.M.cQ = function() {
+        var e = [this.U5]
+          , L = e.concat
+          , c = OG7();
+        kG() && g.iS("yt-remote-cast-available") && c.push({
             key: "cast-selector-receiver",
             name: "Cast..."
         });
-        this.sF = I.call(a, U);
-        a = lwo() || this.Sr;
-        Jx(this, a);
-        this.player.s9("onMdxReceiversChange")
+        this.Tx = L.call(e, c);
+        e = TiN() || this.U5;
+        T_(this, e);
+        this.player.Kb("onMdxReceiversChange")
     }
     ;
-    g.H.ElU = function() {
-        var a = g.O(lwo());
-        Jx(this, a)
+    g.M.kyl = function() {
+        var e = TiN();
+        T_(this, e)
     }
     ;
-    g.H.c48 = function() {
-        this.DT = g.O(lwo())
+    g.M.V6_ = function() {
+        this.sD = TiN()
     }
     ;
-    g.H.pZx = function() {
-        this.wZ = !0;
-        b0(this);
-        q2 = !1;
-        Cy && H9(Cy, 1);
-        Cy = null
+    g.M.v0Y = function() {
+        this.El = !0;
+        qW(this);
+        rg = !1;
+        xt && S$(xt, 1);
+        xt = null
     }
     ;
-    g.H.z1O = function() {
-        this.wZ = !1;
-        b0(this);
-        Jx(this, this.Sr);
-        this.DT = this.Sr;
-        q2 = !1;
-        Cy = null;
+    g.M.QUe = function() {
+        this.El = !1;
+        qW(this);
+        T_(this, this.U5);
+        this.sD = this.U5;
+        rg = !1;
+        xt = null;
         this.player.playVideo()
     }
     ;
-    g.H.BB = function(a, I) {
-        switch (a) {
+    g.M.zY = function(e, L) {
+        switch (e) {
         case "casting":
             return this.loaded;
         case "receivers":
-            return this.sF;
+            return this.Tx;
         case "currentReceiver":
-            return I && (I.key === "cast-selector-receiver" ? Qbj() : Jx(this, I)),
-            this.loaded ? this.DT : this.Sr;
+            return L && (L.key === "cast-selector-receiver" ? JHM() : T_(this, L)),
+            this.loaded ? this.sD : this.U5;
         case "quickCast":
-            return this.sF.length === 2 && this.sF[1].key === "cast-selector-receiver" ? (I && Qbj(),
+            return this.Tx.length === 2 && this.Tx[1].key === "cast-selector-receiver" ? (L && JHM(),
             !0) : !1
         }
     }
     ;
-    g.H.GJ = function() {
-        this.dL.GJ()
+    g.M.rY = function() {
+        this.Lf.rY()
     }
     ;
-    g.H.hj = function() {
+    g.M.bC = function() {
         return !1
     }
     ;
-    g.H.getOptions = function() {
+    g.M.getOptions = function() {
         return ["casting", "receivers", "currentReceiver", "quickCast"]
     }
     ;
-    g.H.isLoggedIn = function() {
-        var a, I;
-        return ((a = g.D5("PLAYER_CONFIG")) == null ? void 0 : (I = a.args) == null ? void 0 : I.authuser) !== void 0 ? !0 : !(!g.D5("SESSION_INDEX") && !g.D5("LOGGED_IN"))
+    g.M.isLoggedIn = function() {
+        var e, L;
+        return ((e = g.Zu("PLAYER_CONFIG")) == null ? void 0 : (L = e.args) == null ? void 0 : L.authuser) !== void 0 ? !0 : !(!g.Zu("SESSION_INDEX") && !g.Zu("LOGGED_IN"))
     }
     ;
-    g.th("remote", Rnz);
+    g.JK("remote", krU);
 }
 )(_yt_player);
